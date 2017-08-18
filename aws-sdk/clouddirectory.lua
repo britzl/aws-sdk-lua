@@ -6653,12 +6653,12 @@ function M.TagList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -6682,8 +6682,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -6696,13 +6701,13 @@ end
 function M.ListTypedLinkFacetNamesAsync(ListTypedLinkFacetNamesRequest, cb)
 	assert(ListTypedLinkFacetNamesRequest, "You must provide a ListTypedLinkFacetNamesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListTypedLinkFacetNames",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListTypedLinkFacetNames",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/typedlink/facet/list", ListTypedLinkFacetNamesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/facet/list", ListTypedLinkFacetNamesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6728,13 +6733,13 @@ end
 function M.ListIncomingTypedLinksAsync(ListIncomingTypedLinksRequest, cb)
 	assert(ListIncomingTypedLinksRequest, "You must provide a ListIncomingTypedLinksRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListIncomingTypedLinks",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListIncomingTypedLinks",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/typedlink/incoming", ListIncomingTypedLinksRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/incoming", ListIncomingTypedLinksRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6760,13 +6765,13 @@ end
 function M.ListDirectoriesAsync(ListDirectoriesRequest, cb)
 	assert(ListDirectoriesRequest, "You must provide a ListDirectoriesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListDirectories",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListDirectories",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/directory/list", ListDirectoriesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/directory/list", ListDirectoriesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6792,13 +6797,13 @@ end
 function M.CreateSchemaAsync(CreateSchemaRequest, cb)
 	assert(CreateSchemaRequest, "You must provide a CreateSchemaRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateSchema",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateSchema",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/schema/create", CreateSchemaRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/create", CreateSchemaRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6824,13 +6829,13 @@ end
 function M.UpdateSchemaAsync(UpdateSchemaRequest, cb)
 	assert(UpdateSchemaRequest, "You must provide a UpdateSchemaRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateSchema",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateSchema",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/schema/update", UpdateSchemaRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/update", UpdateSchemaRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6856,13 +6861,13 @@ end
 function M.CreateObjectAsync(CreateObjectRequest, cb)
 	assert(CreateObjectRequest, "You must provide a CreateObjectRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateObject",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateObject",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/object", CreateObjectRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object", CreateObjectRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6888,13 +6893,13 @@ end
 function M.EnableDirectoryAsync(EnableDirectoryRequest, cb)
 	assert(EnableDirectoryRequest, "You must provide a EnableDirectoryRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".EnableDirectory",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".EnableDirectory",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/directory/enable", EnableDirectoryRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/directory/enable", EnableDirectoryRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6920,13 +6925,13 @@ end
 function M.GetObjectInformationAsync(GetObjectInformationRequest, cb)
 	assert(GetObjectInformationRequest, "You must provide a GetObjectInformationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetObjectInformation",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetObjectInformation",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/object/information", GetObjectInformationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/information", GetObjectInformationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6952,13 +6957,13 @@ end
 function M.GetSchemaAsJsonAsync(GetSchemaAsJsonRequest, cb)
 	assert(GetSchemaAsJsonRequest, "You must provide a GetSchemaAsJsonRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetSchemaAsJson",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetSchemaAsJson",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/schema/json", GetSchemaAsJsonRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/json", GetSchemaAsJsonRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6984,13 +6989,13 @@ end
 function M.BatchWriteAsync(BatchWriteRequest, cb)
 	assert(BatchWriteRequest, "You must provide a BatchWriteRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".BatchWrite",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".BatchWrite",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/batchwrite", BatchWriteRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/batchwrite", BatchWriteRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7016,13 +7021,13 @@ end
 function M.ListFacetNamesAsync(ListFacetNamesRequest, cb)
 	assert(ListFacetNamesRequest, "You must provide a ListFacetNamesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListFacetNames",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListFacetNames",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/facet/list", ListFacetNamesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/facet/list", ListFacetNamesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7048,13 +7053,13 @@ end
 function M.CreateDirectoryAsync(CreateDirectoryRequest, cb)
 	assert(CreateDirectoryRequest, "You must provide a CreateDirectoryRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateDirectory",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateDirectory",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/directory/create", CreateDirectoryRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/directory/create", CreateDirectoryRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7080,13 +7085,13 @@ end
 function M.CreateIndexAsync(CreateIndexRequest, cb)
 	assert(CreateIndexRequest, "You must provide a CreateIndexRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateIndex",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateIndex",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/index", CreateIndexRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/index", CreateIndexRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7112,13 +7117,13 @@ end
 function M.DeleteFacetAsync(DeleteFacetRequest, cb)
 	assert(DeleteFacetRequest, "You must provide a DeleteFacetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteFacet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteFacet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/facet/delete", DeleteFacetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/facet/delete", DeleteFacetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7144,13 +7149,13 @@ end
 function M.DetachPolicyAsync(DetachPolicyRequest, cb)
 	assert(DetachPolicyRequest, "You must provide a DetachPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DetachPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DetachPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/policy/detach", DetachPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/policy/detach", DetachPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7176,13 +7181,13 @@ end
 function M.DetachObjectAsync(DetachObjectRequest, cb)
 	assert(DetachObjectRequest, "You must provide a DetachObjectRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DetachObject",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DetachObject",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/object/detach", DetachObjectRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/detach", DetachObjectRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7208,13 +7213,13 @@ end
 function M.ListObjectChildrenAsync(ListObjectChildrenRequest, cb)
 	assert(ListObjectChildrenRequest, "You must provide a ListObjectChildrenRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListObjectChildren",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListObjectChildren",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/object/children", ListObjectChildrenRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/children", ListObjectChildrenRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7240,13 +7245,13 @@ end
 function M.ListObjectAttributesAsync(ListObjectAttributesRequest, cb)
 	assert(ListObjectAttributesRequest, "You must provide a ListObjectAttributesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListObjectAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListObjectAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/object/attributes", ListObjectAttributesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/attributes", ListObjectAttributesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7272,13 +7277,13 @@ end
 function M.AddFacetToObjectAsync(AddFacetToObjectRequest, cb)
 	assert(AddFacetToObjectRequest, "You must provide a AddFacetToObjectRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AddFacetToObject",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AddFacetToObject",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/object/facets", AddFacetToObjectRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/facets", AddFacetToObjectRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7304,13 +7309,13 @@ end
 function M.PutSchemaFromJsonAsync(PutSchemaFromJsonRequest, cb)
 	assert(PutSchemaFromJsonRequest, "You must provide a PutSchemaFromJsonRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutSchemaFromJson",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutSchemaFromJson",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/schema/json", PutSchemaFromJsonRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/json", PutSchemaFromJsonRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7336,13 +7341,13 @@ end
 function M.ListPolicyAttachmentsAsync(ListPolicyAttachmentsRequest, cb)
 	assert(ListPolicyAttachmentsRequest, "You must provide a ListPolicyAttachmentsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListPolicyAttachments",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListPolicyAttachments",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/policy/attachment", ListPolicyAttachmentsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/policy/attachment", ListPolicyAttachmentsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7368,13 +7373,13 @@ end
 function M.CreateFacetAsync(CreateFacetRequest, cb)
 	assert(CreateFacetRequest, "You must provide a CreateFacetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateFacet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateFacet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/facet/create", CreateFacetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/facet/create", CreateFacetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7400,13 +7405,13 @@ end
 function M.ListObjectParentsAsync(ListObjectParentsRequest, cb)
 	assert(ListObjectParentsRequest, "You must provide a ListObjectParentsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListObjectParents",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListObjectParents",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/object/parent", ListObjectParentsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/parent", ListObjectParentsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7432,13 +7437,13 @@ end
 function M.BatchReadAsync(BatchReadRequest, cb)
 	assert(BatchReadRequest, "You must provide a BatchReadRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".BatchRead",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".BatchRead",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/batchread", BatchReadRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/batchread", BatchReadRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7464,13 +7469,13 @@ end
 function M.DetachTypedLinkAsync(DetachTypedLinkRequest, cb)
 	assert(DetachTypedLinkRequest, "You must provide a DetachTypedLinkRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DetachTypedLink",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DetachTypedLink",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/typedlink/detach", DetachTypedLinkRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/detach", DetachTypedLinkRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7496,13 +7501,13 @@ end
 function M.RemoveFacetFromObjectAsync(RemoveFacetFromObjectRequest, cb)
 	assert(RemoveFacetFromObjectRequest, "You must provide a RemoveFacetFromObjectRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RemoveFacetFromObject",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RemoveFacetFromObject",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/object/facets/delete", RemoveFacetFromObjectRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/facets/delete", RemoveFacetFromObjectRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7528,13 +7533,13 @@ end
 function M.LookupPolicyAsync(LookupPolicyRequest, cb)
 	assert(LookupPolicyRequest, "You must provide a LookupPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".LookupPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".LookupPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/policy/lookup", LookupPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/policy/lookup", LookupPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7560,13 +7565,13 @@ end
 function M.ListObjectParentPathsAsync(ListObjectParentPathsRequest, cb)
 	assert(ListObjectParentPathsRequest, "You must provide a ListObjectParentPathsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListObjectParentPaths",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListObjectParentPaths",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/object/parentpaths", ListObjectParentPathsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/parentpaths", ListObjectParentPathsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7592,13 +7597,13 @@ end
 function M.TagResourceAsync(TagResourceRequest, cb)
 	assert(TagResourceRequest, "You must provide a TagResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".TagResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".TagResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/tags/add", TagResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/tags/add", TagResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7624,13 +7629,13 @@ end
 function M.ListAttachedIndicesAsync(ListAttachedIndicesRequest, cb)
 	assert(ListAttachedIndicesRequest, "You must provide a ListAttachedIndicesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListAttachedIndices",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListAttachedIndices",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/object/indices", ListAttachedIndicesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/indices", ListAttachedIndicesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7656,13 +7661,13 @@ end
 function M.AttachTypedLinkAsync(AttachTypedLinkRequest, cb)
 	assert(AttachTypedLinkRequest, "You must provide a AttachTypedLinkRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AttachTypedLink",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AttachTypedLink",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/typedlink/attach", AttachTypedLinkRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/attach", AttachTypedLinkRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7688,13 +7693,13 @@ end
 function M.UpdateObjectAttributesAsync(UpdateObjectAttributesRequest, cb)
 	assert(UpdateObjectAttributesRequest, "You must provide a UpdateObjectAttributesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateObjectAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateObjectAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/object/update", UpdateObjectAttributesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/update", UpdateObjectAttributesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7720,13 +7725,13 @@ end
 function M.ListTypedLinkFacetAttributesAsync(ListTypedLinkFacetAttributesRequest, cb)
 	assert(ListTypedLinkFacetAttributesRequest, "You must provide a ListTypedLinkFacetAttributesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListTypedLinkFacetAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListTypedLinkFacetAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/typedlink/facet/attributes", ListTypedLinkFacetAttributesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/facet/attributes", ListTypedLinkFacetAttributesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7752,13 +7757,13 @@ end
 function M.ListPublishedSchemaArnsAsync(ListPublishedSchemaArnsRequest, cb)
 	assert(ListPublishedSchemaArnsRequest, "You must provide a ListPublishedSchemaArnsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListPublishedSchemaArns",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListPublishedSchemaArns",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/schema/published", ListPublishedSchemaArnsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/published", ListPublishedSchemaArnsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7784,13 +7789,13 @@ end
 function M.DeleteDirectoryAsync(DeleteDirectoryRequest, cb)
 	assert(DeleteDirectoryRequest, "You must provide a DeleteDirectoryRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteDirectory",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDirectory",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/directory", DeleteDirectoryRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/directory", DeleteDirectoryRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7816,13 +7821,13 @@ end
 function M.PublishSchemaAsync(PublishSchemaRequest, cb)
 	assert(PublishSchemaRequest, "You must provide a PublishSchemaRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PublishSchema",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PublishSchema",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/schema/publish", PublishSchemaRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/publish", PublishSchemaRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7848,13 +7853,13 @@ end
 function M.GetFacetAsync(GetFacetRequest, cb)
 	assert(GetFacetRequest, "You must provide a GetFacetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetFacet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetFacet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/facet", GetFacetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/facet", GetFacetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7880,13 +7885,13 @@ end
 function M.DeleteSchemaAsync(DeleteSchemaRequest, cb)
 	assert(DeleteSchemaRequest, "You must provide a DeleteSchemaRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteSchema",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteSchema",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/schema", DeleteSchemaRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema", DeleteSchemaRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7912,13 +7917,13 @@ end
 function M.AttachPolicyAsync(AttachPolicyRequest, cb)
 	assert(AttachPolicyRequest, "You must provide a AttachPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AttachPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AttachPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/policy/attach", AttachPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/policy/attach", AttachPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7944,13 +7949,13 @@ end
 function M.DisableDirectoryAsync(DisableDirectoryRequest, cb)
 	assert(DisableDirectoryRequest, "You must provide a DisableDirectoryRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DisableDirectory",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DisableDirectory",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/directory/disable", DisableDirectoryRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/directory/disable", DisableDirectoryRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7976,13 +7981,13 @@ end
 function M.ListFacetAttributesAsync(ListFacetAttributesRequest, cb)
 	assert(ListFacetAttributesRequest, "You must provide a ListFacetAttributesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListFacetAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListFacetAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/facet/attributes", ListFacetAttributesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/facet/attributes", ListFacetAttributesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8008,13 +8013,13 @@ end
 function M.DeleteTypedLinkFacetAsync(DeleteTypedLinkFacetRequest, cb)
 	assert(DeleteTypedLinkFacetRequest, "You must provide a DeleteTypedLinkFacetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteTypedLinkFacet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteTypedLinkFacet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/typedlink/facet/delete", DeleteTypedLinkFacetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/facet/delete", DeleteTypedLinkFacetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8040,13 +8045,13 @@ end
 function M.UpdateTypedLinkFacetAsync(UpdateTypedLinkFacetRequest, cb)
 	assert(UpdateTypedLinkFacetRequest, "You must provide a UpdateTypedLinkFacetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateTypedLinkFacet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateTypedLinkFacet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/typedlink/facet", UpdateTypedLinkFacetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/facet", UpdateTypedLinkFacetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8072,13 +8077,13 @@ end
 function M.DetachFromIndexAsync(DetachFromIndexRequest, cb)
 	assert(DetachFromIndexRequest, "You must provide a DetachFromIndexRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DetachFromIndex",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DetachFromIndex",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/index/detach", DetachFromIndexRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/index/detach", DetachFromIndexRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8104,13 +8109,13 @@ end
 function M.ListAppliedSchemaArnsAsync(ListAppliedSchemaArnsRequest, cb)
 	assert(ListAppliedSchemaArnsRequest, "You must provide a ListAppliedSchemaArnsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListAppliedSchemaArns",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListAppliedSchemaArns",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/schema/applied", ListAppliedSchemaArnsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/applied", ListAppliedSchemaArnsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8136,13 +8141,13 @@ end
 function M.ListObjectPoliciesAsync(ListObjectPoliciesRequest, cb)
 	assert(ListObjectPoliciesRequest, "You must provide a ListObjectPoliciesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListObjectPolicies",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListObjectPolicies",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/object/policy", ListObjectPoliciesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/policy", ListObjectPoliciesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8168,13 +8173,13 @@ end
 function M.ApplySchemaAsync(ApplySchemaRequest, cb)
 	assert(ApplySchemaRequest, "You must provide a ApplySchemaRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ApplySchema",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ApplySchema",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/schema/apply", ApplySchemaRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/apply", ApplySchemaRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8200,13 +8205,13 @@ end
 function M.ListDevelopmentSchemaArnsAsync(ListDevelopmentSchemaArnsRequest, cb)
 	assert(ListDevelopmentSchemaArnsRequest, "You must provide a ListDevelopmentSchemaArnsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListDevelopmentSchemaArns",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListDevelopmentSchemaArns",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/schema/development", ListDevelopmentSchemaArnsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/development", ListDevelopmentSchemaArnsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8232,13 +8237,13 @@ end
 function M.GetDirectoryAsync(GetDirectoryRequest, cb)
 	assert(GetDirectoryRequest, "You must provide a GetDirectoryRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetDirectory",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetDirectory",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/directory/get", GetDirectoryRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/directory/get", GetDirectoryRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8264,13 +8269,13 @@ end
 function M.AttachObjectAsync(AttachObjectRequest, cb)
 	assert(AttachObjectRequest, "You must provide a AttachObjectRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AttachObject",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AttachObject",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/object/attach", AttachObjectRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/attach", AttachObjectRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8296,13 +8301,13 @@ end
 function M.ListTagsForResourceAsync(ListTagsForResourceRequest, cb)
 	assert(ListTagsForResourceRequest, "You must provide a ListTagsForResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListTagsForResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListTagsForResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/tags", ListTagsForResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/tags", ListTagsForResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8328,13 +8333,13 @@ end
 function M.UntagResourceAsync(UntagResourceRequest, cb)
 	assert(UntagResourceRequest, "You must provide a UntagResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UntagResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UntagResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/tags/remove", UntagResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/tags/remove", UntagResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8360,13 +8365,13 @@ end
 function M.CreateTypedLinkFacetAsync(CreateTypedLinkFacetRequest, cb)
 	assert(CreateTypedLinkFacetRequest, "You must provide a CreateTypedLinkFacetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateTypedLinkFacet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateTypedLinkFacet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/typedlink/facet/create", CreateTypedLinkFacetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/facet/create", CreateTypedLinkFacetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8392,13 +8397,13 @@ end
 function M.AttachToIndexAsync(AttachToIndexRequest, cb)
 	assert(AttachToIndexRequest, "You must provide a AttachToIndexRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AttachToIndex",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AttachToIndex",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/index/attach", AttachToIndexRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/index/attach", AttachToIndexRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8424,13 +8429,13 @@ end
 function M.ListIndexAsync(ListIndexRequest, cb)
 	assert(ListIndexRequest, "You must provide a ListIndexRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListIndex",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListIndex",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/index/targets", ListIndexRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/index/targets", ListIndexRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8456,13 +8461,13 @@ end
 function M.UpdateFacetAsync(UpdateFacetRequest, cb)
 	assert(UpdateFacetRequest, "You must provide a UpdateFacetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateFacet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateFacet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/facet", UpdateFacetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/facet", UpdateFacetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8488,13 +8493,13 @@ end
 function M.ListOutgoingTypedLinksAsync(ListOutgoingTypedLinksRequest, cb)
 	assert(ListOutgoingTypedLinksRequest, "You must provide a ListOutgoingTypedLinksRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListOutgoingTypedLinks",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListOutgoingTypedLinks",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/typedlink/outgoing", ListOutgoingTypedLinksRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/outgoing", ListOutgoingTypedLinksRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8520,13 +8525,13 @@ end
 function M.DeleteObjectAsync(DeleteObjectRequest, cb)
 	assert(DeleteObjectRequest, "You must provide a DeleteObjectRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteObject",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteObject",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/object/delete", DeleteObjectRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/delete", DeleteObjectRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8552,13 +8557,13 @@ end
 function M.GetTypedLinkFacetInformationAsync(GetTypedLinkFacetInformationRequest, cb)
 	assert(GetTypedLinkFacetInformationRequest, "You must provide a GetTypedLinkFacetInformationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetTypedLinkFacetInformation",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetTypedLinkFacetInformation",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/amazonclouddirectory/2017-01-11/typedlink/facet/get", GetTypedLinkFacetInformationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/facet/get", GetTypedLinkFacetInformationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

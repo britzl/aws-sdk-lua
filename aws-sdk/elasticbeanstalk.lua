@@ -5830,12 +5830,12 @@ function M.EventDescriptionList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -5859,8 +5859,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -5873,13 +5878,13 @@ end
 function M.DescribeApplicationVersionsAsync(DescribeApplicationVersionsMessage, cb)
 	assert(DescribeApplicationVersionsMessage, "You must provide a DescribeApplicationVersionsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeApplicationVersions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeApplicationVersions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeApplicationVersionsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeApplicationVersionsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5905,13 +5910,13 @@ end
 function M.RequestEnvironmentInfoAsync(RequestEnvironmentInfoMessage, cb)
 	assert(RequestEnvironmentInfoMessage, "You must provide a RequestEnvironmentInfoMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RequestEnvironmentInfo",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RequestEnvironmentInfo",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RequestEnvironmentInfoMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RequestEnvironmentInfoMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5937,13 +5942,13 @@ end
 function M.DescribeEnvironmentResourcesAsync(DescribeEnvironmentResourcesMessage, cb)
 	assert(DescribeEnvironmentResourcesMessage, "You must provide a DescribeEnvironmentResourcesMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeEnvironmentResources",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEnvironmentResources",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeEnvironmentResourcesMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeEnvironmentResourcesMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5969,13 +5974,13 @@ end
 function M.DescribeEventsAsync(DescribeEventsMessage, cb)
 	assert(DescribeEventsMessage, "You must provide a DescribeEventsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeEvents",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEvents",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeEventsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeEventsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6001,13 +6006,13 @@ end
 function M.DescribeEnvironmentHealthAsync(DescribeEnvironmentHealthRequest, cb)
 	assert(DescribeEnvironmentHealthRequest, "You must provide a DescribeEnvironmentHealthRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeEnvironmentHealth",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEnvironmentHealth",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeEnvironmentHealthRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeEnvironmentHealthRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6033,13 +6038,13 @@ end
 function M.UpdateApplicationResourceLifecycleAsync(UpdateApplicationResourceLifecycleMessage, cb)
 	assert(UpdateApplicationResourceLifecycleMessage, "You must provide a UpdateApplicationResourceLifecycleMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateApplicationResourceLifecycle",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateApplicationResourceLifecycle",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateApplicationResourceLifecycleMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateApplicationResourceLifecycleMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6065,13 +6070,13 @@ end
 function M.UpdateApplicationVersionAsync(UpdateApplicationVersionMessage, cb)
 	assert(UpdateApplicationVersionMessage, "You must provide a UpdateApplicationVersionMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateApplicationVersion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateApplicationVersion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateApplicationVersionMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateApplicationVersionMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6097,13 +6102,13 @@ end
 function M.DeleteApplicationAsync(DeleteApplicationMessage, cb)
 	assert(DeleteApplicationMessage, "You must provide a DeleteApplicationMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteApplication",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteApplication",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteApplicationMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteApplicationMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6129,13 +6134,13 @@ end
 function M.ApplyEnvironmentManagedActionAsync(ApplyEnvironmentManagedActionRequest, cb)
 	assert(ApplyEnvironmentManagedActionRequest, "You must provide a ApplyEnvironmentManagedActionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ApplyEnvironmentManagedAction",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ApplyEnvironmentManagedAction",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ApplyEnvironmentManagedActionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ApplyEnvironmentManagedActionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6161,13 +6166,13 @@ end
 function M.DescribeConfigurationOptionsAsync(DescribeConfigurationOptionsMessage, cb)
 	assert(DescribeConfigurationOptionsMessage, "You must provide a DescribeConfigurationOptionsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeConfigurationOptions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeConfigurationOptions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeConfigurationOptionsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeConfigurationOptionsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6193,13 +6198,13 @@ end
 function M.DescribeEnvironmentManagedActionHistoryAsync(DescribeEnvironmentManagedActionHistoryRequest, cb)
 	assert(DescribeEnvironmentManagedActionHistoryRequest, "You must provide a DescribeEnvironmentManagedActionHistoryRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeEnvironmentManagedActionHistory",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEnvironmentManagedActionHistory",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeEnvironmentManagedActionHistoryRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeEnvironmentManagedActionHistoryRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6225,13 +6230,13 @@ end
 function M.DeleteConfigurationTemplateAsync(DeleteConfigurationTemplateMessage, cb)
 	assert(DeleteConfigurationTemplateMessage, "You must provide a DeleteConfigurationTemplateMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteConfigurationTemplate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteConfigurationTemplate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteConfigurationTemplateMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteConfigurationTemplateMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6257,13 +6262,13 @@ end
 function M.ValidateConfigurationSettingsAsync(ValidateConfigurationSettingsMessage, cb)
 	assert(ValidateConfigurationSettingsMessage, "You must provide a ValidateConfigurationSettingsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ValidateConfigurationSettings",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ValidateConfigurationSettings",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ValidateConfigurationSettingsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ValidateConfigurationSettingsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6287,13 +6292,13 @@ end
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListAvailableSolutionStacksAsync(cb)
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListAvailableSolutionStacks",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListAvailableSolutionStacks",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", {}, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6318,13 +6323,13 @@ end
 function M.ComposeEnvironmentsAsync(ComposeEnvironmentsMessage, cb)
 	assert(ComposeEnvironmentsMessage, "You must provide a ComposeEnvironmentsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ComposeEnvironments",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ComposeEnvironments",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ComposeEnvironmentsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ComposeEnvironmentsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6350,13 +6355,13 @@ end
 function M.DescribeConfigurationSettingsAsync(DescribeConfigurationSettingsMessage, cb)
 	assert(DescribeConfigurationSettingsMessage, "You must provide a DescribeConfigurationSettingsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeConfigurationSettings",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeConfigurationSettings",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeConfigurationSettingsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeConfigurationSettingsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6382,13 +6387,13 @@ end
 function M.CreateApplicationAsync(CreateApplicationMessage, cb)
 	assert(CreateApplicationMessage, "You must provide a CreateApplicationMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateApplication",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateApplication",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateApplicationMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateApplicationMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6414,13 +6419,13 @@ end
 function M.UpdateConfigurationTemplateAsync(UpdateConfigurationTemplateMessage, cb)
 	assert(UpdateConfigurationTemplateMessage, "You must provide a UpdateConfigurationTemplateMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateConfigurationTemplate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateConfigurationTemplate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateConfigurationTemplateMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateConfigurationTemplateMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6446,13 +6451,13 @@ end
 function M.DeleteApplicationVersionAsync(DeleteApplicationVersionMessage, cb)
 	assert(DeleteApplicationVersionMessage, "You must provide a DeleteApplicationVersionMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteApplicationVersion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteApplicationVersion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteApplicationVersionMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteApplicationVersionMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6478,13 +6483,13 @@ end
 function M.RetrieveEnvironmentInfoAsync(RetrieveEnvironmentInfoMessage, cb)
 	assert(RetrieveEnvironmentInfoMessage, "You must provide a RetrieveEnvironmentInfoMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RetrieveEnvironmentInfo",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RetrieveEnvironmentInfo",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RetrieveEnvironmentInfoMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RetrieveEnvironmentInfoMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6510,13 +6515,13 @@ end
 function M.UpdateApplicationAsync(UpdateApplicationMessage, cb)
 	assert(UpdateApplicationMessage, "You must provide a UpdateApplicationMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateApplication",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateApplication",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateApplicationMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateApplicationMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6542,13 +6547,13 @@ end
 function M.UpdateEnvironmentAsync(UpdateEnvironmentMessage, cb)
 	assert(UpdateEnvironmentMessage, "You must provide a UpdateEnvironmentMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateEnvironment",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateEnvironment",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateEnvironmentMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateEnvironmentMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6574,13 +6579,13 @@ end
 function M.DescribeEnvironmentsAsync(DescribeEnvironmentsMessage, cb)
 	assert(DescribeEnvironmentsMessage, "You must provide a DescribeEnvironmentsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeEnvironments",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEnvironments",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeEnvironmentsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeEnvironmentsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6606,13 +6611,13 @@ end
 function M.ListPlatformVersionsAsync(ListPlatformVersionsRequest, cb)
 	assert(ListPlatformVersionsRequest, "You must provide a ListPlatformVersionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListPlatformVersions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListPlatformVersions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListPlatformVersionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListPlatformVersionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6638,13 +6643,13 @@ end
 function M.DescribeEnvironmentManagedActionsAsync(DescribeEnvironmentManagedActionsRequest, cb)
 	assert(DescribeEnvironmentManagedActionsRequest, "You must provide a DescribeEnvironmentManagedActionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeEnvironmentManagedActions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEnvironmentManagedActions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeEnvironmentManagedActionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeEnvironmentManagedActionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6670,13 +6675,13 @@ end
 function M.AbortEnvironmentUpdateAsync(AbortEnvironmentUpdateMessage, cb)
 	assert(AbortEnvironmentUpdateMessage, "You must provide a AbortEnvironmentUpdateMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AbortEnvironmentUpdate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AbortEnvironmentUpdate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AbortEnvironmentUpdateMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AbortEnvironmentUpdateMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6702,13 +6707,13 @@ end
 function M.TerminateEnvironmentAsync(TerminateEnvironmentMessage, cb)
 	assert(TerminateEnvironmentMessage, "You must provide a TerminateEnvironmentMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".TerminateEnvironment",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".TerminateEnvironment",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", TerminateEnvironmentMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", TerminateEnvironmentMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6734,13 +6739,13 @@ end
 function M.DeleteEnvironmentConfigurationAsync(DeleteEnvironmentConfigurationMessage, cb)
 	assert(DeleteEnvironmentConfigurationMessage, "You must provide a DeleteEnvironmentConfigurationMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteEnvironmentConfiguration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteEnvironmentConfiguration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteEnvironmentConfigurationMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteEnvironmentConfigurationMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6766,13 +6771,13 @@ end
 function M.CreateEnvironmentAsync(CreateEnvironmentMessage, cb)
 	assert(CreateEnvironmentMessage, "You must provide a CreateEnvironmentMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateEnvironment",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateEnvironment",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateEnvironmentMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateEnvironmentMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6798,13 +6803,13 @@ end
 function M.SwapEnvironmentCNAMEsAsync(SwapEnvironmentCNAMEsMessage, cb)
 	assert(SwapEnvironmentCNAMEsMessage, "You must provide a SwapEnvironmentCNAMEsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SwapEnvironmentCNAMEs",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SwapEnvironmentCNAMEs",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SwapEnvironmentCNAMEsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SwapEnvironmentCNAMEsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6830,13 +6835,13 @@ end
 function M.DeletePlatformVersionAsync(DeletePlatformVersionRequest, cb)
 	assert(DeletePlatformVersionRequest, "You must provide a DeletePlatformVersionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeletePlatformVersion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeletePlatformVersion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeletePlatformVersionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeletePlatformVersionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6860,13 +6865,13 @@ end
 -- @param cb Callback function accepting two args: response, error_message
 function M.CreateStorageLocationAsync(cb)
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateStorageLocation",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateStorageLocation",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", {}, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6891,13 +6896,13 @@ end
 function M.RebuildEnvironmentAsync(RebuildEnvironmentMessage, cb)
 	assert(RebuildEnvironmentMessage, "You must provide a RebuildEnvironmentMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RebuildEnvironment",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RebuildEnvironment",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RebuildEnvironmentMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RebuildEnvironmentMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6923,13 +6928,13 @@ end
 function M.RestartAppServerAsync(RestartAppServerMessage, cb)
 	assert(RestartAppServerMessage, "You must provide a RestartAppServerMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RestartAppServer",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RestartAppServer",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RestartAppServerMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RestartAppServerMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6955,13 +6960,13 @@ end
 function M.DescribeApplicationsAsync(DescribeApplicationsMessage, cb)
 	assert(DescribeApplicationsMessage, "You must provide a DescribeApplicationsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeApplications",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeApplications",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeApplicationsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeApplicationsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6987,13 +6992,13 @@ end
 function M.CreatePlatformVersionAsync(CreatePlatformVersionRequest, cb)
 	assert(CreatePlatformVersionRequest, "You must provide a CreatePlatformVersionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreatePlatformVersion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreatePlatformVersion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreatePlatformVersionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreatePlatformVersionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7019,13 +7024,13 @@ end
 function M.DescribePlatformVersionAsync(DescribePlatformVersionRequest, cb)
 	assert(DescribePlatformVersionRequest, "You must provide a DescribePlatformVersionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribePlatformVersion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribePlatformVersion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribePlatformVersionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribePlatformVersionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7051,13 +7056,13 @@ end
 function M.DescribeInstancesHealthAsync(DescribeInstancesHealthRequest, cb)
 	assert(DescribeInstancesHealthRequest, "You must provide a DescribeInstancesHealthRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeInstancesHealth",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeInstancesHealth",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeInstancesHealthRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeInstancesHealthRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7083,13 +7088,13 @@ end
 function M.CreateApplicationVersionAsync(CreateApplicationVersionMessage, cb)
 	assert(CreateApplicationVersionMessage, "You must provide a CreateApplicationVersionMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateApplicationVersion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateApplicationVersion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateApplicationVersionMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateApplicationVersionMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7115,13 +7120,13 @@ end
 function M.CreateConfigurationTemplateAsync(CreateConfigurationTemplateMessage, cb)
 	assert(CreateConfigurationTemplateMessage, "You must provide a CreateConfigurationTemplateMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateConfigurationTemplate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateConfigurationTemplate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateConfigurationTemplateMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateConfigurationTemplateMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7147,13 +7152,13 @@ end
 function M.CheckDNSAvailabilityAsync(CheckDNSAvailabilityMessage, cb)
 	assert(CheckDNSAvailabilityMessage, "You must provide a CheckDNSAvailabilityMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CheckDNSAvailability",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CheckDNSAvailability",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CheckDNSAvailabilityMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CheckDNSAvailabilityMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end

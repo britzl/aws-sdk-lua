@@ -1474,12 +1474,12 @@ function M.ServiceList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -1503,8 +1503,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -1517,13 +1522,13 @@ end
 function M.GetServiceGraphAsync(GetServiceGraphRequest, cb)
 	assert(GetServiceGraphRequest, "You must provide a GetServiceGraphRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetServiceGraph",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetServiceGraph",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/ServiceGraph", GetServiceGraphRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/ServiceGraph", GetServiceGraphRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1549,13 +1554,13 @@ end
 function M.PutTraceSegmentsAsync(PutTraceSegmentsRequest, cb)
 	assert(PutTraceSegmentsRequest, "You must provide a PutTraceSegmentsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutTraceSegments",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutTraceSegments",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/TraceSegments", PutTraceSegmentsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/TraceSegments", PutTraceSegmentsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1581,13 +1586,13 @@ end
 function M.GetTraceSummariesAsync(GetTraceSummariesRequest, cb)
 	assert(GetTraceSummariesRequest, "You must provide a GetTraceSummariesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetTraceSummaries",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetTraceSummaries",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/TraceSummaries", GetTraceSummariesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/TraceSummaries", GetTraceSummariesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1613,13 +1618,13 @@ end
 function M.GetTraceGraphAsync(GetTraceGraphRequest, cb)
 	assert(GetTraceGraphRequest, "You must provide a GetTraceGraphRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetTraceGraph",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetTraceGraph",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/TraceGraph", GetTraceGraphRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/TraceGraph", GetTraceGraphRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1645,13 +1650,13 @@ end
 function M.BatchGetTracesAsync(BatchGetTracesRequest, cb)
 	assert(BatchGetTracesRequest, "You must provide a BatchGetTracesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".BatchGetTraces",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".BatchGetTraces",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/Traces", BatchGetTracesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/Traces", BatchGetTracesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1677,13 +1682,13 @@ end
 function M.PutTelemetryRecordsAsync(PutTelemetryRecordsRequest, cb)
 	assert(PutTelemetryRecordsRequest, "You must provide a PutTelemetryRecordsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutTelemetryRecords",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutTelemetryRecords",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/TelemetryRecords", PutTelemetryRecordsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/TelemetryRecords", PutTelemetryRecordsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

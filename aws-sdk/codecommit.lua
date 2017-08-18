@@ -2564,12 +2564,12 @@ function M.RepositoryTriggerExecutionFailureList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -2593,8 +2593,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -2607,13 +2612,13 @@ end
 function M.TestRepositoryTriggersAsync(TestRepositoryTriggersInput, cb)
 	assert(TestRepositoryTriggersInput, "You must provide a TestRepositoryTriggersInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.TestRepositoryTriggers",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.TestRepositoryTriggers",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", TestRepositoryTriggersInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", TestRepositoryTriggersInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2639,13 +2644,13 @@ end
 function M.GetRepositoryTriggersAsync(GetRepositoryTriggersInput, cb)
 	assert(GetRepositoryTriggersInput, "You must provide a GetRepositoryTriggersInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.GetRepositoryTriggers",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.GetRepositoryTriggers",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetRepositoryTriggersInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetRepositoryTriggersInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2671,13 +2676,13 @@ end
 function M.DeleteRepositoryAsync(DeleteRepositoryInput, cb)
 	assert(DeleteRepositoryInput, "You must provide a DeleteRepositoryInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.DeleteRepository",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.DeleteRepository",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteRepositoryInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteRepositoryInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2703,13 +2708,13 @@ end
 function M.UpdateRepositoryNameAsync(UpdateRepositoryNameInput, cb)
 	assert(UpdateRepositoryNameInput, "You must provide a UpdateRepositoryNameInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.UpdateRepositoryName",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.UpdateRepositoryName",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateRepositoryNameInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateRepositoryNameInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2735,13 +2740,13 @@ end
 function M.PutRepositoryTriggersAsync(PutRepositoryTriggersInput, cb)
 	assert(PutRepositoryTriggersInput, "You must provide a PutRepositoryTriggersInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.PutRepositoryTriggers",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.PutRepositoryTriggers",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutRepositoryTriggersInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutRepositoryTriggersInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2767,13 +2772,13 @@ end
 function M.CreateBranchAsync(CreateBranchInput, cb)
 	assert(CreateBranchInput, "You must provide a CreateBranchInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.CreateBranch",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.CreateBranch",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateBranchInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateBranchInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2799,13 +2804,13 @@ end
 function M.ListRepositoriesAsync(ListRepositoriesInput, cb)
 	assert(ListRepositoriesInput, "You must provide a ListRepositoriesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.ListRepositories",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.ListRepositories",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListRepositoriesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListRepositoriesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2831,13 +2836,13 @@ end
 function M.UpdateRepositoryDescriptionAsync(UpdateRepositoryDescriptionInput, cb)
 	assert(UpdateRepositoryDescriptionInput, "You must provide a UpdateRepositoryDescriptionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.UpdateRepositoryDescription",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.UpdateRepositoryDescription",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateRepositoryDescriptionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateRepositoryDescriptionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2863,13 +2868,13 @@ end
 function M.GetRepositoryAsync(GetRepositoryInput, cb)
 	assert(GetRepositoryInput, "You must provide a GetRepositoryInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.GetRepository",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.GetRepository",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetRepositoryInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetRepositoryInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2895,13 +2900,13 @@ end
 function M.UpdateDefaultBranchAsync(UpdateDefaultBranchInput, cb)
 	assert(UpdateDefaultBranchInput, "You must provide a UpdateDefaultBranchInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.UpdateDefaultBranch",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.UpdateDefaultBranch",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateDefaultBranchInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateDefaultBranchInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2927,13 +2932,13 @@ end
 function M.BatchGetRepositoriesAsync(BatchGetRepositoriesInput, cb)
 	assert(BatchGetRepositoriesInput, "You must provide a BatchGetRepositoriesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.BatchGetRepositories",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.BatchGetRepositories",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", BatchGetRepositoriesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", BatchGetRepositoriesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2959,13 +2964,13 @@ end
 function M.ListBranchesAsync(ListBranchesInput, cb)
 	assert(ListBranchesInput, "You must provide a ListBranchesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.ListBranches",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.ListBranches",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListBranchesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListBranchesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2991,13 +2996,13 @@ end
 function M.GetBlobAsync(GetBlobInput, cb)
 	assert(GetBlobInput, "You must provide a GetBlobInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.GetBlob",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.GetBlob",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetBlobInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetBlobInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3023,13 +3028,13 @@ end
 function M.GetBranchAsync(GetBranchInput, cb)
 	assert(GetBranchInput, "You must provide a GetBranchInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.GetBranch",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.GetBranch",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetBranchInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetBranchInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3055,13 +3060,13 @@ end
 function M.CreateRepositoryAsync(CreateRepositoryInput, cb)
 	assert(CreateRepositoryInput, "You must provide a CreateRepositoryInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.CreateRepository",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.CreateRepository",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateRepositoryInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateRepositoryInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3087,13 +3092,13 @@ end
 function M.GetCommitAsync(GetCommitInput, cb)
 	assert(GetCommitInput, "You must provide a GetCommitInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.GetCommit",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.GetCommit",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetCommitInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetCommitInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3119,13 +3124,13 @@ end
 function M.GetDifferencesAsync(GetDifferencesInput, cb)
 	assert(GetDifferencesInput, "You must provide a GetDifferencesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.GetDifferences",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.GetDifferences",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetDifferencesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetDifferencesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end

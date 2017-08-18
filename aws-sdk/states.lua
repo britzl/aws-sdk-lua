@@ -2390,12 +2390,12 @@ function M.HistoryEventList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -2419,8 +2419,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -2433,13 +2438,13 @@ end
 function M.StartExecutionAsync(StartExecutionInput, cb)
 	assert(StartExecutionInput, "You must provide a StartExecutionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.StartExecution",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.StartExecution",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StartExecutionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StartExecutionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2465,13 +2470,13 @@ end
 function M.ListExecutionsAsync(ListExecutionsInput, cb)
 	assert(ListExecutionsInput, "You must provide a ListExecutionsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.ListExecutions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.ListExecutions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListExecutionsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListExecutionsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2497,13 +2502,13 @@ end
 function M.StopExecutionAsync(StopExecutionInput, cb)
 	assert(StopExecutionInput, "You must provide a StopExecutionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.StopExecution",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.StopExecution",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StopExecutionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StopExecutionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2529,13 +2534,13 @@ end
 function M.DeleteActivityAsync(DeleteActivityInput, cb)
 	assert(DeleteActivityInput, "You must provide a DeleteActivityInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.DeleteActivity",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.DeleteActivity",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteActivityInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteActivityInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2561,13 +2566,13 @@ end
 function M.SendTaskHeartbeatAsync(SendTaskHeartbeatInput, cb)
 	assert(SendTaskHeartbeatInput, "You must provide a SendTaskHeartbeatInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.SendTaskHeartbeat",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.SendTaskHeartbeat",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SendTaskHeartbeatInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SendTaskHeartbeatInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2593,13 +2598,13 @@ end
 function M.DescribeExecutionAsync(DescribeExecutionInput, cb)
 	assert(DescribeExecutionInput, "You must provide a DescribeExecutionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.DescribeExecution",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.DescribeExecution",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeExecutionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeExecutionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2625,13 +2630,13 @@ end
 function M.ListStateMachinesAsync(ListStateMachinesInput, cb)
 	assert(ListStateMachinesInput, "You must provide a ListStateMachinesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.ListStateMachines",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.ListStateMachines",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListStateMachinesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListStateMachinesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2657,13 +2662,13 @@ end
 function M.GetExecutionHistoryAsync(GetExecutionHistoryInput, cb)
 	assert(GetExecutionHistoryInput, "You must provide a GetExecutionHistoryInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.GetExecutionHistory",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.GetExecutionHistory",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetExecutionHistoryInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetExecutionHistoryInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2689,13 +2694,13 @@ end
 function M.GetActivityTaskAsync(GetActivityTaskInput, cb)
 	assert(GetActivityTaskInput, "You must provide a GetActivityTaskInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.GetActivityTask",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.GetActivityTask",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetActivityTaskInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetActivityTaskInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2721,13 +2726,13 @@ end
 function M.ListActivitiesAsync(ListActivitiesInput, cb)
 	assert(ListActivitiesInput, "You must provide a ListActivitiesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.ListActivities",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.ListActivities",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListActivitiesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListActivitiesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2753,13 +2758,13 @@ end
 function M.CreateStateMachineAsync(CreateStateMachineInput, cb)
 	assert(CreateStateMachineInput, "You must provide a CreateStateMachineInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.CreateStateMachine",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.CreateStateMachine",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateStateMachineInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateStateMachineInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2785,13 +2790,13 @@ end
 function M.DescribeStateMachineAsync(DescribeStateMachineInput, cb)
 	assert(DescribeStateMachineInput, "You must provide a DescribeStateMachineInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.DescribeStateMachine",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.DescribeStateMachine",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeStateMachineInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeStateMachineInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2817,13 +2822,13 @@ end
 function M.DescribeActivityAsync(DescribeActivityInput, cb)
 	assert(DescribeActivityInput, "You must provide a DescribeActivityInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.DescribeActivity",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.DescribeActivity",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeActivityInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeActivityInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2849,13 +2854,13 @@ end
 function M.DeleteStateMachineAsync(DeleteStateMachineInput, cb)
 	assert(DeleteStateMachineInput, "You must provide a DeleteStateMachineInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.DeleteStateMachine",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.DeleteStateMachine",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteStateMachineInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteStateMachineInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2881,13 +2886,13 @@ end
 function M.CreateActivityAsync(CreateActivityInput, cb)
 	assert(CreateActivityInput, "You must provide a CreateActivityInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.CreateActivity",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.CreateActivity",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateActivityInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateActivityInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2913,13 +2918,13 @@ end
 function M.SendTaskFailureAsync(SendTaskFailureInput, cb)
 	assert(SendTaskFailureInput, "You must provide a SendTaskFailureInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.SendTaskFailure",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.SendTaskFailure",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SendTaskFailureInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SendTaskFailureInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2945,13 +2950,13 @@ end
 function M.SendTaskSuccessAsync(SendTaskSuccessInput, cb)
 	assert(SendTaskSuccessInput, "You must provide a SendTaskSuccessInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.SendTaskSuccess",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.SendTaskSuccess",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SendTaskSuccessInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SendTaskSuccessInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end

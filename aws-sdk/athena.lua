@@ -1497,12 +1497,12 @@ function M.RowList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -1526,8 +1526,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -1540,13 +1545,13 @@ end
 function M.BatchGetQueryExecutionAsync(BatchGetQueryExecutionInput, cb)
 	assert(BatchGetQueryExecutionInput, "You must provide a BatchGetQueryExecutionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonAthena.BatchGetQueryExecution",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonAthena.BatchGetQueryExecution",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", BatchGetQueryExecutionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", BatchGetQueryExecutionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1572,13 +1577,13 @@ end
 function M.DeleteNamedQueryAsync(DeleteNamedQueryInput, cb)
 	assert(DeleteNamedQueryInput, "You must provide a DeleteNamedQueryInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonAthena.DeleteNamedQuery",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonAthena.DeleteNamedQuery",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteNamedQueryInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteNamedQueryInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1604,13 +1609,13 @@ end
 function M.ListNamedQueriesAsync(ListNamedQueriesInput, cb)
 	assert(ListNamedQueriesInput, "You must provide a ListNamedQueriesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonAthena.ListNamedQueries",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonAthena.ListNamedQueries",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListNamedQueriesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListNamedQueriesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1636,13 +1641,13 @@ end
 function M.StopQueryExecutionAsync(StopQueryExecutionInput, cb)
 	assert(StopQueryExecutionInput, "You must provide a StopQueryExecutionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonAthena.StopQueryExecution",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonAthena.StopQueryExecution",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StopQueryExecutionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StopQueryExecutionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1668,13 +1673,13 @@ end
 function M.BatchGetNamedQueryAsync(BatchGetNamedQueryInput, cb)
 	assert(BatchGetNamedQueryInput, "You must provide a BatchGetNamedQueryInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonAthena.BatchGetNamedQuery",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonAthena.BatchGetNamedQuery",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", BatchGetNamedQueryInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", BatchGetNamedQueryInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1700,13 +1705,13 @@ end
 function M.StartQueryExecutionAsync(StartQueryExecutionInput, cb)
 	assert(StartQueryExecutionInput, "You must provide a StartQueryExecutionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonAthena.StartQueryExecution",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonAthena.StartQueryExecution",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StartQueryExecutionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StartQueryExecutionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1732,13 +1737,13 @@ end
 function M.GetNamedQueryAsync(GetNamedQueryInput, cb)
 	assert(GetNamedQueryInput, "You must provide a GetNamedQueryInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonAthena.GetNamedQuery",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonAthena.GetNamedQuery",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetNamedQueryInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetNamedQueryInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1764,13 +1769,13 @@ end
 function M.ListQueryExecutionsAsync(ListQueryExecutionsInput, cb)
 	assert(ListQueryExecutionsInput, "You must provide a ListQueryExecutionsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonAthena.ListQueryExecutions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonAthena.ListQueryExecutions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListQueryExecutionsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListQueryExecutionsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1796,13 +1801,13 @@ end
 function M.GetQueryExecutionAsync(GetQueryExecutionInput, cb)
 	assert(GetQueryExecutionInput, "You must provide a GetQueryExecutionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonAthena.GetQueryExecution",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonAthena.GetQueryExecution",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetQueryExecutionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetQueryExecutionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1828,13 +1833,13 @@ end
 function M.GetQueryResultsAsync(GetQueryResultsInput, cb)
 	assert(GetQueryResultsInput, "You must provide a GetQueryResultsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonAthena.GetQueryResults",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonAthena.GetQueryResults",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetQueryResultsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetQueryResultsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1860,13 +1865,13 @@ end
 function M.CreateNamedQueryAsync(CreateNamedQueryInput, cb)
 	assert(CreateNamedQueryInput, "You must provide a CreateNamedQueryInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonAthena.CreateNamedQuery",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonAthena.CreateNamedQuery",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateNamedQueryInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateNamedQueryInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end

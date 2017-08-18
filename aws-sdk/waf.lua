@@ -4614,12 +4614,12 @@ function M.RuleSummaries(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -4643,8 +4643,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -4657,13 +4662,13 @@ end
 function M.CreateSizeConstraintSetAsync(CreateSizeConstraintSetRequest, cb)
 	assert(CreateSizeConstraintSetRequest, "You must provide a CreateSizeConstraintSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.CreateSizeConstraintSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.CreateSizeConstraintSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateSizeConstraintSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateSizeConstraintSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4689,13 +4694,13 @@ end
 function M.ListIPSetsAsync(ListIPSetsRequest, cb)
 	assert(ListIPSetsRequest, "You must provide a ListIPSetsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.ListIPSets",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.ListIPSets",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListIPSetsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListIPSetsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4721,13 +4726,13 @@ end
 function M.DeleteRateBasedRuleAsync(DeleteRateBasedRuleRequest, cb)
 	assert(DeleteRateBasedRuleRequest, "You must provide a DeleteRateBasedRuleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.DeleteRateBasedRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.DeleteRateBasedRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteRateBasedRuleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteRateBasedRuleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4753,13 +4758,13 @@ end
 function M.ListWebACLsAsync(ListWebACLsRequest, cb)
 	assert(ListWebACLsRequest, "You must provide a ListWebACLsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.ListWebACLs",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.ListWebACLs",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListWebACLsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListWebACLsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4785,13 +4790,13 @@ end
 function M.GetChangeTokenStatusAsync(GetChangeTokenStatusRequest, cb)
 	assert(GetChangeTokenStatusRequest, "You must provide a GetChangeTokenStatusRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetChangeTokenStatus",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetChangeTokenStatus",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetChangeTokenStatusRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetChangeTokenStatusRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4817,13 +4822,13 @@ end
 function M.DeleteSqlInjectionMatchSetAsync(DeleteSqlInjectionMatchSetRequest, cb)
 	assert(DeleteSqlInjectionMatchSetRequest, "You must provide a DeleteSqlInjectionMatchSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.DeleteSqlInjectionMatchSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.DeleteSqlInjectionMatchSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteSqlInjectionMatchSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteSqlInjectionMatchSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4849,13 +4854,13 @@ end
 function M.ListByteMatchSetsAsync(ListByteMatchSetsRequest, cb)
 	assert(ListByteMatchSetsRequest, "You must provide a ListByteMatchSetsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.ListByteMatchSets",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.ListByteMatchSets",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListByteMatchSetsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListByteMatchSetsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4881,13 +4886,13 @@ end
 function M.CreateRuleAsync(CreateRuleRequest, cb)
 	assert(CreateRuleRequest, "You must provide a CreateRuleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.CreateRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.CreateRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateRuleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateRuleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4913,13 +4918,13 @@ end
 function M.GetRateBasedRuleManagedKeysAsync(GetRateBasedRuleManagedKeysRequest, cb)
 	assert(GetRateBasedRuleManagedKeysRequest, "You must provide a GetRateBasedRuleManagedKeysRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetRateBasedRuleManagedKeys",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetRateBasedRuleManagedKeys",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetRateBasedRuleManagedKeysRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetRateBasedRuleManagedKeysRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4945,13 +4950,13 @@ end
 function M.CreateSqlInjectionMatchSetAsync(CreateSqlInjectionMatchSetRequest, cb)
 	assert(CreateSqlInjectionMatchSetRequest, "You must provide a CreateSqlInjectionMatchSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.CreateSqlInjectionMatchSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.CreateSqlInjectionMatchSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateSqlInjectionMatchSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateSqlInjectionMatchSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4977,13 +4982,13 @@ end
 function M.ListRateBasedRulesAsync(ListRateBasedRulesRequest, cb)
 	assert(ListRateBasedRulesRequest, "You must provide a ListRateBasedRulesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.ListRateBasedRules",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.ListRateBasedRules",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListRateBasedRulesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListRateBasedRulesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5009,13 +5014,13 @@ end
 function M.DeleteByteMatchSetAsync(DeleteByteMatchSetRequest, cb)
 	assert(DeleteByteMatchSetRequest, "You must provide a DeleteByteMatchSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.DeleteByteMatchSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.DeleteByteMatchSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteByteMatchSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteByteMatchSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5041,13 +5046,13 @@ end
 function M.GetIPSetAsync(GetIPSetRequest, cb)
 	assert(GetIPSetRequest, "You must provide a GetIPSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetIPSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetIPSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetIPSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetIPSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5073,13 +5078,13 @@ end
 function M.ListSqlInjectionMatchSetsAsync(ListSqlInjectionMatchSetsRequest, cb)
 	assert(ListSqlInjectionMatchSetsRequest, "You must provide a ListSqlInjectionMatchSetsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.ListSqlInjectionMatchSets",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.ListSqlInjectionMatchSets",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListSqlInjectionMatchSetsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListSqlInjectionMatchSetsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5105,13 +5110,13 @@ end
 function M.DeleteRuleAsync(DeleteRuleRequest, cb)
 	assert(DeleteRuleRequest, "You must provide a DeleteRuleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.DeleteRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.DeleteRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteRuleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteRuleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5137,13 +5142,13 @@ end
 function M.DeleteXssMatchSetAsync(DeleteXssMatchSetRequest, cb)
 	assert(DeleteXssMatchSetRequest, "You must provide a DeleteXssMatchSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.DeleteXssMatchSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.DeleteXssMatchSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteXssMatchSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteXssMatchSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5169,13 +5174,13 @@ end
 function M.UpdateIPSetAsync(UpdateIPSetRequest, cb)
 	assert(UpdateIPSetRequest, "You must provide a UpdateIPSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.UpdateIPSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.UpdateIPSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateIPSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateIPSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5201,13 +5206,13 @@ end
 function M.UpdateRuleAsync(UpdateRuleRequest, cb)
 	assert(UpdateRuleRequest, "You must provide a UpdateRuleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.UpdateRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.UpdateRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateRuleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateRuleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5233,13 +5238,13 @@ end
 function M.GetByteMatchSetAsync(GetByteMatchSetRequest, cb)
 	assert(GetByteMatchSetRequest, "You must provide a GetByteMatchSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetByteMatchSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetByteMatchSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetByteMatchSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetByteMatchSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5265,13 +5270,13 @@ end
 function M.CreateXssMatchSetAsync(CreateXssMatchSetRequest, cb)
 	assert(CreateXssMatchSetRequest, "You must provide a CreateXssMatchSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.CreateXssMatchSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.CreateXssMatchSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateXssMatchSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateXssMatchSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5297,13 +5302,13 @@ end
 function M.UpdateRateBasedRuleAsync(UpdateRateBasedRuleRequest, cb)
 	assert(UpdateRateBasedRuleRequest, "You must provide a UpdateRateBasedRuleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.UpdateRateBasedRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.UpdateRateBasedRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateRateBasedRuleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateRateBasedRuleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5329,13 +5334,13 @@ end
 function M.GetChangeTokenAsync(GetChangeTokenRequest, cb)
 	assert(GetChangeTokenRequest, "You must provide a GetChangeTokenRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetChangeToken",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetChangeToken",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetChangeTokenRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetChangeTokenRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5361,13 +5366,13 @@ end
 function M.ListXssMatchSetsAsync(ListXssMatchSetsRequest, cb)
 	assert(ListXssMatchSetsRequest, "You must provide a ListXssMatchSetsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.ListXssMatchSets",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.ListXssMatchSets",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListXssMatchSetsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListXssMatchSetsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5393,13 +5398,13 @@ end
 function M.GetSizeConstraintSetAsync(GetSizeConstraintSetRequest, cb)
 	assert(GetSizeConstraintSetRequest, "You must provide a GetSizeConstraintSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetSizeConstraintSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetSizeConstraintSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetSizeConstraintSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetSizeConstraintSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5425,13 +5430,13 @@ end
 function M.CreateIPSetAsync(CreateIPSetRequest, cb)
 	assert(CreateIPSetRequest, "You must provide a CreateIPSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.CreateIPSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.CreateIPSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateIPSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateIPSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5457,13 +5462,13 @@ end
 function M.GetXssMatchSetAsync(GetXssMatchSetRequest, cb)
 	assert(GetXssMatchSetRequest, "You must provide a GetXssMatchSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetXssMatchSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetXssMatchSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetXssMatchSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetXssMatchSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5489,13 +5494,13 @@ end
 function M.UpdateXssMatchSetAsync(UpdateXssMatchSetRequest, cb)
 	assert(UpdateXssMatchSetRequest, "You must provide a UpdateXssMatchSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.UpdateXssMatchSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.UpdateXssMatchSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateXssMatchSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateXssMatchSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5521,13 +5526,13 @@ end
 function M.GetRateBasedRuleAsync(GetRateBasedRuleRequest, cb)
 	assert(GetRateBasedRuleRequest, "You must provide a GetRateBasedRuleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetRateBasedRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetRateBasedRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetRateBasedRuleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetRateBasedRuleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5553,13 +5558,13 @@ end
 function M.UpdateSizeConstraintSetAsync(UpdateSizeConstraintSetRequest, cb)
 	assert(UpdateSizeConstraintSetRequest, "You must provide a UpdateSizeConstraintSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.UpdateSizeConstraintSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.UpdateSizeConstraintSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateSizeConstraintSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateSizeConstraintSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5585,13 +5590,13 @@ end
 function M.CreateRateBasedRuleAsync(CreateRateBasedRuleRequest, cb)
 	assert(CreateRateBasedRuleRequest, "You must provide a CreateRateBasedRuleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.CreateRateBasedRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.CreateRateBasedRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateRateBasedRuleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateRateBasedRuleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5617,13 +5622,13 @@ end
 function M.ListRulesAsync(ListRulesRequest, cb)
 	assert(ListRulesRequest, "You must provide a ListRulesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.ListRules",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.ListRules",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListRulesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListRulesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5649,13 +5654,13 @@ end
 function M.GetSampledRequestsAsync(GetSampledRequestsRequest, cb)
 	assert(GetSampledRequestsRequest, "You must provide a GetSampledRequestsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetSampledRequests",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetSampledRequests",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetSampledRequestsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetSampledRequestsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5681,13 +5686,13 @@ end
 function M.CreateWebACLAsync(CreateWebACLRequest, cb)
 	assert(CreateWebACLRequest, "You must provide a CreateWebACLRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.CreateWebACL",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.CreateWebACL",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateWebACLRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateWebACLRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5713,13 +5718,13 @@ end
 function M.DeleteWebACLAsync(DeleteWebACLRequest, cb)
 	assert(DeleteWebACLRequest, "You must provide a DeleteWebACLRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.DeleteWebACL",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.DeleteWebACL",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteWebACLRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteWebACLRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5745,13 +5750,13 @@ end
 function M.GetRuleAsync(GetRuleRequest, cb)
 	assert(GetRuleRequest, "You must provide a GetRuleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetRuleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetRuleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5777,13 +5782,13 @@ end
 function M.DeleteSizeConstraintSetAsync(DeleteSizeConstraintSetRequest, cb)
 	assert(DeleteSizeConstraintSetRequest, "You must provide a DeleteSizeConstraintSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.DeleteSizeConstraintSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.DeleteSizeConstraintSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteSizeConstraintSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteSizeConstraintSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5809,13 +5814,13 @@ end
 function M.UpdateSqlInjectionMatchSetAsync(UpdateSqlInjectionMatchSetRequest, cb)
 	assert(UpdateSqlInjectionMatchSetRequest, "You must provide a UpdateSqlInjectionMatchSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.UpdateSqlInjectionMatchSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.UpdateSqlInjectionMatchSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateSqlInjectionMatchSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateSqlInjectionMatchSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5841,13 +5846,13 @@ end
 function M.UpdateWebACLAsync(UpdateWebACLRequest, cb)
 	assert(UpdateWebACLRequest, "You must provide a UpdateWebACLRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.UpdateWebACL",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.UpdateWebACL",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateWebACLRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateWebACLRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5873,13 +5878,13 @@ end
 function M.CreateByteMatchSetAsync(CreateByteMatchSetRequest, cb)
 	assert(CreateByteMatchSetRequest, "You must provide a CreateByteMatchSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.CreateByteMatchSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.CreateByteMatchSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateByteMatchSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateByteMatchSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5905,13 +5910,13 @@ end
 function M.GetWebACLAsync(GetWebACLRequest, cb)
 	assert(GetWebACLRequest, "You must provide a GetWebACLRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetWebACL",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetWebACL",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetWebACLRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetWebACLRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5937,13 +5942,13 @@ end
 function M.UpdateByteMatchSetAsync(UpdateByteMatchSetRequest, cb)
 	assert(UpdateByteMatchSetRequest, "You must provide a UpdateByteMatchSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.UpdateByteMatchSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.UpdateByteMatchSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateByteMatchSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateByteMatchSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5969,13 +5974,13 @@ end
 function M.GetSqlInjectionMatchSetAsync(GetSqlInjectionMatchSetRequest, cb)
 	assert(GetSqlInjectionMatchSetRequest, "You must provide a GetSqlInjectionMatchSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetSqlInjectionMatchSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.GetSqlInjectionMatchSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetSqlInjectionMatchSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetSqlInjectionMatchSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6001,13 +6006,13 @@ end
 function M.ListSizeConstraintSetsAsync(ListSizeConstraintSetsRequest, cb)
 	assert(ListSizeConstraintSetsRequest, "You must provide a ListSizeConstraintSetsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.ListSizeConstraintSets",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.ListSizeConstraintSets",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListSizeConstraintSetsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListSizeConstraintSetsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6033,13 +6038,13 @@ end
 function M.DeleteIPSetAsync(DeleteIPSetRequest, cb)
 	assert(DeleteIPSetRequest, "You must provide a DeleteIPSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.DeleteIPSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_20150824.DeleteIPSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteIPSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteIPSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

@@ -1929,12 +1929,12 @@ function M.TagList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -1958,8 +1958,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -1972,13 +1977,13 @@ end
 function M.RemoveTagsAsync(RemoveTagsRequest, cb)
 	assert(RemoveTagsRequest, "You must provide a RemoveTagsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RemoveTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RemoveTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2015-01-01/tags-removal", RemoveTagsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-01-01/tags-removal", RemoveTagsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2004,13 +2009,13 @@ end
 function M.DeleteElasticsearchDomainAsync(DeleteElasticsearchDomainRequest, cb)
 	assert(DeleteElasticsearchDomainRequest, "You must provide a DeleteElasticsearchDomainRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteElasticsearchDomain",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteElasticsearchDomain",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/2015-01-01/es/domain/{DomainName}", DeleteElasticsearchDomainRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-01-01/es/domain/{DomainName}", DeleteElasticsearchDomainRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2036,13 +2041,13 @@ end
 function M.AddTagsAsync(AddTagsRequest, cb)
 	assert(AddTagsRequest, "You must provide a AddTagsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AddTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AddTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2015-01-01/tags", AddTagsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-01-01/tags", AddTagsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2068,13 +2073,13 @@ end
 function M.DescribeElasticsearchInstanceTypeLimitsAsync(DescribeElasticsearchInstanceTypeLimitsRequest, cb)
 	assert(DescribeElasticsearchInstanceTypeLimitsRequest, "You must provide a DescribeElasticsearchInstanceTypeLimitsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeElasticsearchInstanceTypeLimits",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeElasticsearchInstanceTypeLimits",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2015-01-01/es/instanceTypeLimits/{ElasticsearchVersion}/{InstanceType}", DescribeElasticsearchInstanceTypeLimitsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-01-01/es/instanceTypeLimits/{ElasticsearchVersion}/{InstanceType}", DescribeElasticsearchInstanceTypeLimitsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2100,13 +2105,13 @@ end
 function M.UpdateElasticsearchDomainConfigAsync(UpdateElasticsearchDomainConfigRequest, cb)
 	assert(UpdateElasticsearchDomainConfigRequest, "You must provide a UpdateElasticsearchDomainConfigRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateElasticsearchDomainConfig",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateElasticsearchDomainConfig",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2015-01-01/es/domain/{DomainName}/config", UpdateElasticsearchDomainConfigRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-01-01/es/domain/{DomainName}/config", UpdateElasticsearchDomainConfigRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2132,13 +2137,13 @@ end
 function M.DescribeElasticsearchDomainConfigAsync(DescribeElasticsearchDomainConfigRequest, cb)
 	assert(DescribeElasticsearchDomainConfigRequest, "You must provide a DescribeElasticsearchDomainConfigRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeElasticsearchDomainConfig",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeElasticsearchDomainConfig",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2015-01-01/es/domain/{DomainName}/config", DescribeElasticsearchDomainConfigRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-01-01/es/domain/{DomainName}/config", DescribeElasticsearchDomainConfigRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2164,13 +2169,13 @@ end
 function M.CreateElasticsearchDomainAsync(CreateElasticsearchDomainRequest, cb)
 	assert(CreateElasticsearchDomainRequest, "You must provide a CreateElasticsearchDomainRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateElasticsearchDomain",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateElasticsearchDomain",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2015-01-01/es/domain", CreateElasticsearchDomainRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-01-01/es/domain", CreateElasticsearchDomainRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2196,13 +2201,13 @@ end
 function M.DescribeElasticsearchDomainsAsync(DescribeElasticsearchDomainsRequest, cb)
 	assert(DescribeElasticsearchDomainsRequest, "You must provide a DescribeElasticsearchDomainsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeElasticsearchDomains",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeElasticsearchDomains",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2015-01-01/es/domain-info", DescribeElasticsearchDomainsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-01-01/es/domain-info", DescribeElasticsearchDomainsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2228,13 +2233,13 @@ end
 function M.ListElasticsearchInstanceTypesAsync(ListElasticsearchInstanceTypesRequest, cb)
 	assert(ListElasticsearchInstanceTypesRequest, "You must provide a ListElasticsearchInstanceTypesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListElasticsearchInstanceTypes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListElasticsearchInstanceTypes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2015-01-01/es/instanceTypes/{ElasticsearchVersion}", ListElasticsearchInstanceTypesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-01-01/es/instanceTypes/{ElasticsearchVersion}", ListElasticsearchInstanceTypesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2260,13 +2265,13 @@ end
 function M.ListElasticsearchVersionsAsync(ListElasticsearchVersionsRequest, cb)
 	assert(ListElasticsearchVersionsRequest, "You must provide a ListElasticsearchVersionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListElasticsearchVersions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListElasticsearchVersions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2015-01-01/es/versions", ListElasticsearchVersionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-01-01/es/versions", ListElasticsearchVersionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2290,13 +2295,13 @@ end
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListDomainNamesAsync(cb)
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListDomainNames",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListDomainNames",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2015-01-01/domain", {}, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-01-01/domain", {}, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2321,13 +2326,13 @@ end
 function M.ListTagsAsync(ListTagsRequest, cb)
 	assert(ListTagsRequest, "You must provide a ListTagsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2015-01-01/tags/", ListTagsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-01-01/tags/", ListTagsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2353,13 +2358,13 @@ end
 function M.DescribeElasticsearchDomainAsync(DescribeElasticsearchDomainRequest, cb)
 	assert(DescribeElasticsearchDomainRequest, "You must provide a DescribeElasticsearchDomainRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeElasticsearchDomain",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeElasticsearchDomain",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2015-01-01/es/domain/{DomainName}", DescribeElasticsearchDomainRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-01-01/es/domain/{DomainName}", DescribeElasticsearchDomainRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

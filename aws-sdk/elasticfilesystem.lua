@@ -1428,12 +1428,12 @@ function M.TagKeys(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -1457,8 +1457,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -1471,13 +1476,13 @@ end
 function M.DeleteTagsAsync(DeleteTagsRequest, cb)
 	assert(DeleteTagsRequest, "You must provide a DeleteTagsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2015-02-01/delete-tags/{FileSystemId}", DeleteTagsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-02-01/delete-tags/{FileSystemId}", DeleteTagsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1503,13 +1508,13 @@ end
 function M.DescribeMountTargetSecurityGroupsAsync(DescribeMountTargetSecurityGroupsRequest, cb)
 	assert(DescribeMountTargetSecurityGroupsRequest, "You must provide a DescribeMountTargetSecurityGroupsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeMountTargetSecurityGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeMountTargetSecurityGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2015-02-01/mount-targets/{MountTargetId}/security-groups", DescribeMountTargetSecurityGroupsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-02-01/mount-targets/{MountTargetId}/security-groups", DescribeMountTargetSecurityGroupsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1535,13 +1540,13 @@ end
 function M.DeleteFileSystemAsync(DeleteFileSystemRequest, cb)
 	assert(DeleteFileSystemRequest, "You must provide a DeleteFileSystemRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteFileSystem",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteFileSystem",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/2015-02-01/file-systems/{FileSystemId}", DeleteFileSystemRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-02-01/file-systems/{FileSystemId}", DeleteFileSystemRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1567,13 +1572,13 @@ end
 function M.CreateTagsAsync(CreateTagsRequest, cb)
 	assert(CreateTagsRequest, "You must provide a CreateTagsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2015-02-01/create-tags/{FileSystemId}", CreateTagsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-02-01/create-tags/{FileSystemId}", CreateTagsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1599,13 +1604,13 @@ end
 function M.CreateMountTargetAsync(CreateMountTargetRequest, cb)
 	assert(CreateMountTargetRequest, "You must provide a CreateMountTargetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateMountTarget",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateMountTarget",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2015-02-01/mount-targets", CreateMountTargetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-02-01/mount-targets", CreateMountTargetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1631,13 +1636,13 @@ end
 function M.DescribeFileSystemsAsync(DescribeFileSystemsRequest, cb)
 	assert(DescribeFileSystemsRequest, "You must provide a DescribeFileSystemsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeFileSystems",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeFileSystems",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2015-02-01/file-systems", DescribeFileSystemsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-02-01/file-systems", DescribeFileSystemsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1663,13 +1668,13 @@ end
 function M.DescribeTagsAsync(DescribeTagsRequest, cb)
 	assert(DescribeTagsRequest, "You must provide a DescribeTagsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2015-02-01/tags/{FileSystemId}/", DescribeTagsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-02-01/tags/{FileSystemId}/", DescribeTagsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1695,13 +1700,13 @@ end
 function M.ModifyMountTargetSecurityGroupsAsync(ModifyMountTargetSecurityGroupsRequest, cb)
 	assert(ModifyMountTargetSecurityGroupsRequest, "You must provide a ModifyMountTargetSecurityGroupsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyMountTargetSecurityGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyMountTargetSecurityGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/2015-02-01/mount-targets/{MountTargetId}/security-groups", ModifyMountTargetSecurityGroupsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-02-01/mount-targets/{MountTargetId}/security-groups", ModifyMountTargetSecurityGroupsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1727,13 +1732,13 @@ end
 function M.DescribeMountTargetsAsync(DescribeMountTargetsRequest, cb)
 	assert(DescribeMountTargetsRequest, "You must provide a DescribeMountTargetsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeMountTargets",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeMountTargets",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2015-02-01/mount-targets", DescribeMountTargetsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-02-01/mount-targets", DescribeMountTargetsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1759,13 +1764,13 @@ end
 function M.CreateFileSystemAsync(CreateFileSystemRequest, cb)
 	assert(CreateFileSystemRequest, "You must provide a CreateFileSystemRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateFileSystem",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateFileSystem",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2015-02-01/file-systems", CreateFileSystemRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-02-01/file-systems", CreateFileSystemRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1791,13 +1796,13 @@ end
 function M.DeleteMountTargetAsync(DeleteMountTargetRequest, cb)
 	assert(DeleteMountTargetRequest, "You must provide a DeleteMountTargetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteMountTarget",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteMountTarget",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/2015-02-01/mount-targets/{MountTargetId}", DeleteMountTargetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-02-01/mount-targets/{MountTargetId}", DeleteMountTargetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

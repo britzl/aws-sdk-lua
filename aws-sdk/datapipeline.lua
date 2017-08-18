@@ -2043,12 +2043,12 @@ function M.validationMessages(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -2072,8 +2072,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -2086,13 +2091,13 @@ end
 function M.RemoveTagsAsync(RemoveTagsInput, cb)
 	assert(RemoveTagsInput, "You must provide a RemoveTagsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DataPipeline.RemoveTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.RemoveTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RemoveTagsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RemoveTagsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2118,13 +2123,13 @@ end
 function M.DeactivatePipelineAsync(DeactivatePipelineInput, cb)
 	assert(DeactivatePipelineInput, "You must provide a DeactivatePipelineInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DataPipeline.DeactivatePipeline",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.DeactivatePipeline",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeactivatePipelineInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeactivatePipelineInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2150,13 +2155,13 @@ end
 function M.AddTagsAsync(AddTagsInput, cb)
 	assert(AddTagsInput, "You must provide a AddTagsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DataPipeline.AddTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.AddTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddTagsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddTagsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2182,13 +2187,13 @@ end
 function M.ValidatePipelineDefinitionAsync(ValidatePipelineDefinitionInput, cb)
 	assert(ValidatePipelineDefinitionInput, "You must provide a ValidatePipelineDefinitionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DataPipeline.ValidatePipelineDefinition",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.ValidatePipelineDefinition",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ValidatePipelineDefinitionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ValidatePipelineDefinitionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2214,13 +2219,13 @@ end
 function M.ListPipelinesAsync(ListPipelinesInput, cb)
 	assert(ListPipelinesInput, "You must provide a ListPipelinesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DataPipeline.ListPipelines",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.ListPipelines",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListPipelinesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListPipelinesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2246,13 +2251,13 @@ end
 function M.DeletePipelineAsync(DeletePipelineInput, cb)
 	assert(DeletePipelineInput, "You must provide a DeletePipelineInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DataPipeline.DeletePipeline",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.DeletePipeline",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeletePipelineInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeletePipelineInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2278,13 +2283,13 @@ end
 function M.DescribeObjectsAsync(DescribeObjectsInput, cb)
 	assert(DescribeObjectsInput, "You must provide a DescribeObjectsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DataPipeline.DescribeObjects",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.DescribeObjects",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeObjectsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeObjectsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2310,13 +2315,13 @@ end
 function M.QueryObjectsAsync(QueryObjectsInput, cb)
 	assert(QueryObjectsInput, "You must provide a QueryObjectsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DataPipeline.QueryObjects",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.QueryObjects",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", QueryObjectsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", QueryObjectsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2342,13 +2347,13 @@ end
 function M.SetStatusAsync(SetStatusInput, cb)
 	assert(SetStatusInput, "You must provide a SetStatusInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DataPipeline.SetStatus",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.SetStatus",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetStatusInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetStatusInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2374,13 +2379,13 @@ end
 function M.SetTaskStatusAsync(SetTaskStatusInput, cb)
 	assert(SetTaskStatusInput, "You must provide a SetTaskStatusInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DataPipeline.SetTaskStatus",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.SetTaskStatus",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetTaskStatusInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetTaskStatusInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2406,13 +2411,13 @@ end
 function M.PutPipelineDefinitionAsync(PutPipelineDefinitionInput, cb)
 	assert(PutPipelineDefinitionInput, "You must provide a PutPipelineDefinitionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DataPipeline.PutPipelineDefinition",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.PutPipelineDefinition",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutPipelineDefinitionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutPipelineDefinitionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2438,13 +2443,13 @@ end
 function M.PollForTaskAsync(PollForTaskInput, cb)
 	assert(PollForTaskInput, "You must provide a PollForTaskInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DataPipeline.PollForTask",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.PollForTask",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PollForTaskInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PollForTaskInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2470,13 +2475,13 @@ end
 function M.ActivatePipelineAsync(ActivatePipelineInput, cb)
 	assert(ActivatePipelineInput, "You must provide a ActivatePipelineInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DataPipeline.ActivatePipeline",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.ActivatePipeline",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ActivatePipelineInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ActivatePipelineInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2502,13 +2507,13 @@ end
 function M.CreatePipelineAsync(CreatePipelineInput, cb)
 	assert(CreatePipelineInput, "You must provide a CreatePipelineInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DataPipeline.CreatePipeline",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.CreatePipeline",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreatePipelineInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreatePipelineInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2534,13 +2539,13 @@ end
 function M.EvaluateExpressionAsync(EvaluateExpressionInput, cb)
 	assert(EvaluateExpressionInput, "You must provide a EvaluateExpressionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DataPipeline.EvaluateExpression",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.EvaluateExpression",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", EvaluateExpressionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", EvaluateExpressionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2566,13 +2571,13 @@ end
 function M.GetPipelineDefinitionAsync(GetPipelineDefinitionInput, cb)
 	assert(GetPipelineDefinitionInput, "You must provide a GetPipelineDefinitionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DataPipeline.GetPipelineDefinition",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.GetPipelineDefinition",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetPipelineDefinitionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetPipelineDefinitionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2598,13 +2603,13 @@ end
 function M.ReportTaskProgressAsync(ReportTaskProgressInput, cb)
 	assert(ReportTaskProgressInput, "You must provide a ReportTaskProgressInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DataPipeline.ReportTaskProgress",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.ReportTaskProgress",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ReportTaskProgressInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ReportTaskProgressInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2630,13 +2635,13 @@ end
 function M.ReportTaskRunnerHeartbeatAsync(ReportTaskRunnerHeartbeatInput, cb)
 	assert(ReportTaskRunnerHeartbeatInput, "You must provide a ReportTaskRunnerHeartbeatInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DataPipeline.ReportTaskRunnerHeartbeat",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.ReportTaskRunnerHeartbeat",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ReportTaskRunnerHeartbeatInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ReportTaskRunnerHeartbeatInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2662,13 +2667,13 @@ end
 function M.DescribePipelinesAsync(DescribePipelinesInput, cb)
 	assert(DescribePipelinesInput, "You must provide a DescribePipelinesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DataPipeline.DescribePipelines",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.DescribePipelines",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribePipelinesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribePipelinesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end

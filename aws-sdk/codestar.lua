@@ -1606,12 +1606,12 @@ function M.ProjectsList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -1635,8 +1635,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -1649,13 +1654,13 @@ end
 function M.AssociateTeamMemberAsync(AssociateTeamMemberRequest, cb)
 	assert(AssociateTeamMemberRequest, "You must provide a AssociateTeamMemberRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.AssociateTeamMember",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.AssociateTeamMember",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AssociateTeamMemberRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AssociateTeamMemberRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1681,13 +1686,13 @@ end
 function M.DisassociateTeamMemberAsync(DisassociateTeamMemberRequest, cb)
 	assert(DisassociateTeamMemberRequest, "You must provide a DisassociateTeamMemberRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.DisassociateTeamMember",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.DisassociateTeamMember",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisassociateTeamMemberRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisassociateTeamMemberRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1713,13 +1718,13 @@ end
 function M.UpdateTeamMemberAsync(UpdateTeamMemberRequest, cb)
 	assert(UpdateTeamMemberRequest, "You must provide a UpdateTeamMemberRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.UpdateTeamMember",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.UpdateTeamMember",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateTeamMemberRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateTeamMemberRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1745,13 +1750,13 @@ end
 function M.CreateUserProfileAsync(CreateUserProfileRequest, cb)
 	assert(CreateUserProfileRequest, "You must provide a CreateUserProfileRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.CreateUserProfile",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.CreateUserProfile",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateUserProfileRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateUserProfileRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1777,13 +1782,13 @@ end
 function M.UpdateUserProfileAsync(UpdateUserProfileRequest, cb)
 	assert(UpdateUserProfileRequest, "You must provide a UpdateUserProfileRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.UpdateUserProfile",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.UpdateUserProfile",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateUserProfileRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateUserProfileRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1809,13 +1814,13 @@ end
 function M.ListUserProfilesAsync(ListUserProfilesRequest, cb)
 	assert(ListUserProfilesRequest, "You must provide a ListUserProfilesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.ListUserProfiles",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.ListUserProfiles",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListUserProfilesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListUserProfilesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1841,13 +1846,13 @@ end
 function M.ListResourcesAsync(ListResourcesRequest, cb)
 	assert(ListResourcesRequest, "You must provide a ListResourcesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.ListResources",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.ListResources",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListResourcesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListResourcesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1873,13 +1878,13 @@ end
 function M.CreateProjectAsync(CreateProjectRequest, cb)
 	assert(CreateProjectRequest, "You must provide a CreateProjectRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.CreateProject",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.CreateProject",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateProjectRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateProjectRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1905,13 +1910,13 @@ end
 function M.ListProjectsAsync(ListProjectsRequest, cb)
 	assert(ListProjectsRequest, "You must provide a ListProjectsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.ListProjects",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.ListProjects",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListProjectsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListProjectsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1937,13 +1942,13 @@ end
 function M.ListTeamMembersAsync(ListTeamMembersRequest, cb)
 	assert(ListTeamMembersRequest, "You must provide a ListTeamMembersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.ListTeamMembers",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.ListTeamMembers",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListTeamMembersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListTeamMembersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1969,13 +1974,13 @@ end
 function M.DeleteProjectAsync(DeleteProjectRequest, cb)
 	assert(DeleteProjectRequest, "You must provide a DeleteProjectRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.DeleteProject",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.DeleteProject",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteProjectRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteProjectRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2001,13 +2006,13 @@ end
 function M.DescribeProjectAsync(DescribeProjectRequest, cb)
 	assert(DescribeProjectRequest, "You must provide a DescribeProjectRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.DescribeProject",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.DescribeProject",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeProjectRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeProjectRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2033,13 +2038,13 @@ end
 function M.UpdateProjectAsync(UpdateProjectRequest, cb)
 	assert(UpdateProjectRequest, "You must provide a UpdateProjectRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.UpdateProject",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.UpdateProject",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateProjectRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateProjectRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2065,13 +2070,13 @@ end
 function M.DescribeUserProfileAsync(DescribeUserProfileRequest, cb)
 	assert(DescribeUserProfileRequest, "You must provide a DescribeUserProfileRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.DescribeUserProfile",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.DescribeUserProfile",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeUserProfileRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeUserProfileRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2097,13 +2102,13 @@ end
 function M.DeleteUserProfileAsync(DeleteUserProfileRequest, cb)
 	assert(DeleteUserProfileRequest, "You must provide a DeleteUserProfileRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.DeleteUserProfile",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.DeleteUserProfile",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteUserProfileRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteUserProfileRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

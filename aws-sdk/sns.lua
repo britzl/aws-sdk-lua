@@ -2139,12 +2139,12 @@ function M.ListOfEndpoints(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -2168,8 +2168,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -2182,13 +2187,13 @@ end
 function M.ListPlatformApplicationsAsync(ListPlatformApplicationsInput, cb)
 	assert(ListPlatformApplicationsInput, "You must provide a ListPlatformApplicationsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListPlatformApplications",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListPlatformApplications",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListPlatformApplicationsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListPlatformApplicationsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2214,13 +2219,13 @@ end
 function M.SetPlatformApplicationAttributesAsync(SetPlatformApplicationAttributesInput, cb)
 	assert(SetPlatformApplicationAttributesInput, "You must provide a SetPlatformApplicationAttributesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SetPlatformApplicationAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetPlatformApplicationAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetPlatformApplicationAttributesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetPlatformApplicationAttributesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2246,13 +2251,13 @@ end
 function M.ListSubscriptionsByTopicAsync(ListSubscriptionsByTopicInput, cb)
 	assert(ListSubscriptionsByTopicInput, "You must provide a ListSubscriptionsByTopicInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListSubscriptionsByTopic",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListSubscriptionsByTopic",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListSubscriptionsByTopicInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListSubscriptionsByTopicInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2278,13 +2283,13 @@ end
 function M.ListSubscriptionsAsync(ListSubscriptionsInput, cb)
 	assert(ListSubscriptionsInput, "You must provide a ListSubscriptionsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListSubscriptions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListSubscriptions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListSubscriptionsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListSubscriptionsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2310,13 +2315,13 @@ end
 function M.ListPhoneNumbersOptedOutAsync(ListPhoneNumbersOptedOutInput, cb)
 	assert(ListPhoneNumbersOptedOutInput, "You must provide a ListPhoneNumbersOptedOutInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListPhoneNumbersOptedOut",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListPhoneNumbersOptedOut",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListPhoneNumbersOptedOutInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListPhoneNumbersOptedOutInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2342,13 +2347,13 @@ end
 function M.ConfirmSubscriptionAsync(ConfirmSubscriptionInput, cb)
 	assert(ConfirmSubscriptionInput, "You must provide a ConfirmSubscriptionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ConfirmSubscription",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ConfirmSubscription",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ConfirmSubscriptionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ConfirmSubscriptionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2374,13 +2379,13 @@ end
 function M.SetTopicAttributesAsync(SetTopicAttributesInput, cb)
 	assert(SetTopicAttributesInput, "You must provide a SetTopicAttributesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SetTopicAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetTopicAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetTopicAttributesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetTopicAttributesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2406,13 +2411,13 @@ end
 function M.SetEndpointAttributesAsync(SetEndpointAttributesInput, cb)
 	assert(SetEndpointAttributesInput, "You must provide a SetEndpointAttributesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SetEndpointAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetEndpointAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetEndpointAttributesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetEndpointAttributesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2438,13 +2443,13 @@ end
 function M.CheckIfPhoneNumberIsOptedOutAsync(CheckIfPhoneNumberIsOptedOutInput, cb)
 	assert(CheckIfPhoneNumberIsOptedOutInput, "You must provide a CheckIfPhoneNumberIsOptedOutInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CheckIfPhoneNumberIsOptedOut",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CheckIfPhoneNumberIsOptedOut",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CheckIfPhoneNumberIsOptedOutInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CheckIfPhoneNumberIsOptedOutInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2470,13 +2475,13 @@ end
 function M.AddPermissionAsync(AddPermissionInput, cb)
 	assert(AddPermissionInput, "You must provide a AddPermissionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AddPermission",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AddPermission",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddPermissionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddPermissionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2502,13 +2507,13 @@ end
 function M.UnsubscribeAsync(UnsubscribeInput, cb)
 	assert(UnsubscribeInput, "You must provide a UnsubscribeInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".Unsubscribe",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".Unsubscribe",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UnsubscribeInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UnsubscribeInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2534,13 +2539,13 @@ end
 function M.GetSubscriptionAttributesAsync(GetSubscriptionAttributesInput, cb)
 	assert(GetSubscriptionAttributesInput, "You must provide a GetSubscriptionAttributesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetSubscriptionAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetSubscriptionAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetSubscriptionAttributesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetSubscriptionAttributesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2566,13 +2571,13 @@ end
 function M.CreatePlatformEndpointAsync(CreatePlatformEndpointInput, cb)
 	assert(CreatePlatformEndpointInput, "You must provide a CreatePlatformEndpointInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreatePlatformEndpoint",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreatePlatformEndpoint",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreatePlatformEndpointInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreatePlatformEndpointInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2598,13 +2603,13 @@ end
 function M.RemovePermissionAsync(RemovePermissionInput, cb)
 	assert(RemovePermissionInput, "You must provide a RemovePermissionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RemovePermission",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RemovePermission",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RemovePermissionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RemovePermissionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2630,13 +2635,13 @@ end
 function M.CreateTopicAsync(CreateTopicInput, cb)
 	assert(CreateTopicInput, "You must provide a CreateTopicInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateTopic",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateTopic",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateTopicInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateTopicInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2662,13 +2667,13 @@ end
 function M.SetSubscriptionAttributesAsync(SetSubscriptionAttributesInput, cb)
 	assert(SetSubscriptionAttributesInput, "You must provide a SetSubscriptionAttributesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SetSubscriptionAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetSubscriptionAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetSubscriptionAttributesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetSubscriptionAttributesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2694,13 +2699,13 @@ end
 function M.CreatePlatformApplicationAsync(CreatePlatformApplicationInput, cb)
 	assert(CreatePlatformApplicationInput, "You must provide a CreatePlatformApplicationInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreatePlatformApplication",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreatePlatformApplication",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreatePlatformApplicationInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreatePlatformApplicationInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2726,13 +2731,13 @@ end
 function M.GetPlatformApplicationAttributesAsync(GetPlatformApplicationAttributesInput, cb)
 	assert(GetPlatformApplicationAttributesInput, "You must provide a GetPlatformApplicationAttributesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetPlatformApplicationAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetPlatformApplicationAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetPlatformApplicationAttributesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetPlatformApplicationAttributesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2758,13 +2763,13 @@ end
 function M.GetSMSAttributesAsync(GetSMSAttributesInput, cb)
 	assert(GetSMSAttributesInput, "You must provide a GetSMSAttributesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetSMSAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetSMSAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetSMSAttributesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetSMSAttributesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2790,13 +2795,13 @@ end
 function M.PublishAsync(PublishInput, cb)
 	assert(PublishInput, "You must provide a PublishInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".Publish",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".Publish",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PublishInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PublishInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2822,13 +2827,13 @@ end
 function M.SetSMSAttributesAsync(SetSMSAttributesInput, cb)
 	assert(SetSMSAttributesInput, "You must provide a SetSMSAttributesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SetSMSAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetSMSAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetSMSAttributesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetSMSAttributesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2854,13 +2859,13 @@ end
 function M.ListEndpointsByPlatformApplicationAsync(ListEndpointsByPlatformApplicationInput, cb)
 	assert(ListEndpointsByPlatformApplicationInput, "You must provide a ListEndpointsByPlatformApplicationInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListEndpointsByPlatformApplication",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListEndpointsByPlatformApplication",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListEndpointsByPlatformApplicationInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListEndpointsByPlatformApplicationInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2886,13 +2891,13 @@ end
 function M.GetEndpointAttributesAsync(GetEndpointAttributesInput, cb)
 	assert(GetEndpointAttributesInput, "You must provide a GetEndpointAttributesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetEndpointAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetEndpointAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetEndpointAttributesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetEndpointAttributesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2918,13 +2923,13 @@ end
 function M.DeleteEndpointAsync(DeleteEndpointInput, cb)
 	assert(DeleteEndpointInput, "You must provide a DeleteEndpointInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteEndpoint",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteEndpoint",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteEndpointInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteEndpointInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2950,13 +2955,13 @@ end
 function M.DeletePlatformApplicationAsync(DeletePlatformApplicationInput, cb)
 	assert(DeletePlatformApplicationInput, "You must provide a DeletePlatformApplicationInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeletePlatformApplication",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeletePlatformApplication",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeletePlatformApplicationInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeletePlatformApplicationInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2982,13 +2987,13 @@ end
 function M.GetTopicAttributesAsync(GetTopicAttributesInput, cb)
 	assert(GetTopicAttributesInput, "You must provide a GetTopicAttributesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetTopicAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetTopicAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetTopicAttributesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetTopicAttributesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3014,13 +3019,13 @@ end
 function M.SubscribeAsync(SubscribeInput, cb)
 	assert(SubscribeInput, "You must provide a SubscribeInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".Subscribe",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".Subscribe",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SubscribeInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SubscribeInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3046,13 +3051,13 @@ end
 function M.DeleteTopicAsync(DeleteTopicInput, cb)
 	assert(DeleteTopicInput, "You must provide a DeleteTopicInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteTopic",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteTopic",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteTopicInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteTopicInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3078,13 +3083,13 @@ end
 function M.OptInPhoneNumberAsync(OptInPhoneNumberInput, cb)
 	assert(OptInPhoneNumberInput, "You must provide a OptInPhoneNumberInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".OptInPhoneNumber",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".OptInPhoneNumber",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", OptInPhoneNumberInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", OptInPhoneNumberInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3110,13 +3115,13 @@ end
 function M.ListTopicsAsync(ListTopicsInput, cb)
 	assert(ListTopicsInput, "You must provide a ListTopicsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListTopics",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListTopics",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListTopicsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListTopicsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end

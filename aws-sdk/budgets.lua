@@ -1457,12 +1457,12 @@ function M.NotificationWithSubscribersList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -1486,8 +1486,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -1500,13 +1505,13 @@ end
 function M.DescribeBudgetAsync(DescribeBudgetRequest, cb)
 	assert(DescribeBudgetRequest, "You must provide a DescribeBudgetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.DescribeBudget",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.DescribeBudget",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeBudgetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeBudgetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1532,13 +1537,13 @@ end
 function M.DescribeNotificationsForBudgetAsync(DescribeNotificationsForBudgetRequest, cb)
 	assert(DescribeNotificationsForBudgetRequest, "You must provide a DescribeNotificationsForBudgetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.DescribeNotificationsForBudget",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.DescribeNotificationsForBudget",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeNotificationsForBudgetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeNotificationsForBudgetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1564,13 +1569,13 @@ end
 function M.CreateSubscriberAsync(CreateSubscriberRequest, cb)
 	assert(CreateSubscriberRequest, "You must provide a CreateSubscriberRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.CreateSubscriber",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.CreateSubscriber",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateSubscriberRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateSubscriberRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1596,13 +1601,13 @@ end
 function M.CreateNotificationAsync(CreateNotificationRequest, cb)
 	assert(CreateNotificationRequest, "You must provide a CreateNotificationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.CreateNotification",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.CreateNotification",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateNotificationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateNotificationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1628,13 +1633,13 @@ end
 function M.UpdateNotificationAsync(UpdateNotificationRequest, cb)
 	assert(UpdateNotificationRequest, "You must provide a UpdateNotificationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.UpdateNotification",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.UpdateNotification",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateNotificationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateNotificationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1660,13 +1665,13 @@ end
 function M.UpdateBudgetAsync(UpdateBudgetRequest, cb)
 	assert(UpdateBudgetRequest, "You must provide a UpdateBudgetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.UpdateBudget",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.UpdateBudget",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateBudgetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateBudgetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1692,13 +1697,13 @@ end
 function M.CreateBudgetAsync(CreateBudgetRequest, cb)
 	assert(CreateBudgetRequest, "You must provide a CreateBudgetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.CreateBudget",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.CreateBudget",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateBudgetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateBudgetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1724,13 +1729,13 @@ end
 function M.DeleteNotificationAsync(DeleteNotificationRequest, cb)
 	assert(DeleteNotificationRequest, "You must provide a DeleteNotificationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.DeleteNotification",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.DeleteNotification",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteNotificationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteNotificationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1756,13 +1761,13 @@ end
 function M.DescribeSubscribersForNotificationAsync(DescribeSubscribersForNotificationRequest, cb)
 	assert(DescribeSubscribersForNotificationRequest, "You must provide a DescribeSubscribersForNotificationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.DescribeSubscribersForNotification",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.DescribeSubscribersForNotification",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeSubscribersForNotificationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeSubscribersForNotificationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1788,13 +1793,13 @@ end
 function M.DeleteSubscriberAsync(DeleteSubscriberRequest, cb)
 	assert(DeleteSubscriberRequest, "You must provide a DeleteSubscriberRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.DeleteSubscriber",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.DeleteSubscriber",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteSubscriberRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteSubscriberRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1820,13 +1825,13 @@ end
 function M.DescribeBudgetsAsync(DescribeBudgetsRequest, cb)
 	assert(DescribeBudgetsRequest, "You must provide a DescribeBudgetsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.DescribeBudgets",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.DescribeBudgets",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeBudgetsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeBudgetsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1852,13 +1857,13 @@ end
 function M.DeleteBudgetAsync(DeleteBudgetRequest, cb)
 	assert(DeleteBudgetRequest, "You must provide a DeleteBudgetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.DeleteBudget",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.DeleteBudget",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteBudgetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteBudgetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1884,13 +1889,13 @@ end
 function M.UpdateSubscriberAsync(UpdateSubscriberRequest, cb)
 	assert(UpdateSubscriberRequest, "You must provide a UpdateSubscriberRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.UpdateSubscriber",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.UpdateSubscriber",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateSubscriberRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateSubscriberRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

@@ -4288,12 +4288,12 @@ function M.UserActivities(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -4317,8 +4317,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -4331,13 +4336,13 @@ end
 function M.DeactivateUserAsync(DeactivateUserRequest, cb)
 	assert(DeactivateUserRequest, "You must provide a DeactivateUserRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeactivateUser",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeactivateUser",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/api/v1/users/{UserId}/activation", DeactivateUserRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/users/{UserId}/activation", DeactivateUserRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4363,13 +4368,13 @@ end
 function M.DescribeRootFoldersAsync(DescribeRootFoldersRequest, cb)
 	assert(DescribeRootFoldersRequest, "You must provide a DescribeRootFoldersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeRootFolders",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeRootFolders",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/api/v1/me/root", DescribeRootFoldersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/me/root", DescribeRootFoldersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4395,13 +4400,13 @@ end
 function M.AddResourcePermissionsAsync(AddResourcePermissionsRequest, cb)
 	assert(AddResourcePermissionsRequest, "You must provide a AddResourcePermissionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AddResourcePermissions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AddResourcePermissions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/api/v1/resources/{ResourceId}/permissions", AddResourcePermissionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/resources/{ResourceId}/permissions", AddResourcePermissionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4427,13 +4432,13 @@ end
 function M.DeleteFolderAsync(DeleteFolderRequest, cb)
 	assert(DeleteFolderRequest, "You must provide a DeleteFolderRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteFolder",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteFolder",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/api/v1/folders/{FolderId}", DeleteFolderRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/folders/{FolderId}", DeleteFolderRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4459,13 +4464,13 @@ end
 function M.DescribeUsersAsync(DescribeUsersRequest, cb)
 	assert(DescribeUsersRequest, "You must provide a DescribeUsersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeUsers",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeUsers",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/api/v1/users", DescribeUsersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/users", DescribeUsersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4491,13 +4496,13 @@ end
 function M.UpdateDocumentVersionAsync(UpdateDocumentVersionRequest, cb)
 	assert(UpdateDocumentVersionRequest, "You must provide a UpdateDocumentVersionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateDocumentVersion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateDocumentVersion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PATCH")
 	if request_handler then
-		request_handler(uri .. "/api/v1/documents/{DocumentId}/versions/{VersionId}", UpdateDocumentVersionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/documents/{DocumentId}/versions/{VersionId}", UpdateDocumentVersionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4523,13 +4528,13 @@ end
 function M.DeleteCustomMetadataAsync(DeleteCustomMetadataRequest, cb)
 	assert(DeleteCustomMetadataRequest, "You must provide a DeleteCustomMetadataRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteCustomMetadata",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteCustomMetadata",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/api/v1/resources/{ResourceId}/customMetadata", DeleteCustomMetadataRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/resources/{ResourceId}/customMetadata", DeleteCustomMetadataRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4555,13 +4560,13 @@ end
 function M.CreateLabelsAsync(CreateLabelsRequest, cb)
 	assert(CreateLabelsRequest, "You must provide a CreateLabelsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateLabels",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateLabels",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/api/v1/resources/{ResourceId}/labels", CreateLabelsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/resources/{ResourceId}/labels", CreateLabelsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4587,13 +4592,13 @@ end
 function M.InitiateDocumentVersionUploadAsync(InitiateDocumentVersionUploadRequest, cb)
 	assert(InitiateDocumentVersionUploadRequest, "You must provide a InitiateDocumentVersionUploadRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".InitiateDocumentVersionUpload",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".InitiateDocumentVersionUpload",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/api/v1/documents", InitiateDocumentVersionUploadRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/documents", InitiateDocumentVersionUploadRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4619,13 +4624,13 @@ end
 function M.CreateCustomMetadataAsync(CreateCustomMetadataRequest, cb)
 	assert(CreateCustomMetadataRequest, "You must provide a CreateCustomMetadataRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateCustomMetadata",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateCustomMetadata",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/api/v1/resources/{ResourceId}/customMetadata", CreateCustomMetadataRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/resources/{ResourceId}/customMetadata", CreateCustomMetadataRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4651,13 +4656,13 @@ end
 function M.GetDocumentAsync(GetDocumentRequest, cb)
 	assert(GetDocumentRequest, "You must provide a GetDocumentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetDocument",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetDocument",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/api/v1/documents/{DocumentId}", GetDocumentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/documents/{DocumentId}", GetDocumentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4683,13 +4688,13 @@ end
 function M.GetDocumentPathAsync(GetDocumentPathRequest, cb)
 	assert(GetDocumentPathRequest, "You must provide a GetDocumentPathRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetDocumentPath",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetDocumentPath",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/api/v1/documents/{DocumentId}/path", GetDocumentPathRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/documents/{DocumentId}/path", GetDocumentPathRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4715,13 +4720,13 @@ end
 function M.RemoveAllResourcePermissionsAsync(RemoveAllResourcePermissionsRequest, cb)
 	assert(RemoveAllResourcePermissionsRequest, "You must provide a RemoveAllResourcePermissionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RemoveAllResourcePermissions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RemoveAllResourcePermissions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/api/v1/resources/{ResourceId}/permissions", RemoveAllResourcePermissionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/resources/{ResourceId}/permissions", RemoveAllResourcePermissionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4747,13 +4752,13 @@ end
 function M.UpdateUserAsync(UpdateUserRequest, cb)
 	assert(UpdateUserRequest, "You must provide a UpdateUserRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateUser",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateUser",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PATCH")
 	if request_handler then
-		request_handler(uri .. "/api/v1/users/{UserId}", UpdateUserRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/users/{UserId}", UpdateUserRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4779,13 +4784,13 @@ end
 function M.GetCurrentUserAsync(GetCurrentUserRequest, cb)
 	assert(GetCurrentUserRequest, "You must provide a GetCurrentUserRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetCurrentUser",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetCurrentUser",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/api/v1/me", GetCurrentUserRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/me", GetCurrentUserRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4811,13 +4816,13 @@ end
 function M.UpdateFolderAsync(UpdateFolderRequest, cb)
 	assert(UpdateFolderRequest, "You must provide a UpdateFolderRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateFolder",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateFolder",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PATCH")
 	if request_handler then
-		request_handler(uri .. "/api/v1/folders/{FolderId}", UpdateFolderRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/folders/{FolderId}", UpdateFolderRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4843,13 +4848,13 @@ end
 function M.DeleteCommentAsync(DeleteCommentRequest, cb)
 	assert(DeleteCommentRequest, "You must provide a DeleteCommentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteComment",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteComment",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/api/v1/documents/{DocumentId}/versions/{VersionId}/comment/{CommentId}", DeleteCommentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/documents/{DocumentId}/versions/{VersionId}/comment/{CommentId}", DeleteCommentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4875,13 +4880,13 @@ end
 function M.CreateUserAsync(CreateUserRequest, cb)
 	assert(CreateUserRequest, "You must provide a CreateUserRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateUser",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateUser",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/api/v1/users", CreateUserRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/users", CreateUserRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4907,13 +4912,13 @@ end
 function M.DeleteFolderContentsAsync(DeleteFolderContentsRequest, cb)
 	assert(DeleteFolderContentsRequest, "You must provide a DeleteFolderContentsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteFolderContents",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteFolderContents",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/api/v1/folders/{FolderId}/contents", DeleteFolderContentsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/folders/{FolderId}/contents", DeleteFolderContentsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4939,13 +4944,13 @@ end
 function M.DeleteNotificationSubscriptionAsync(DeleteNotificationSubscriptionRequest, cb)
 	assert(DeleteNotificationSubscriptionRequest, "You must provide a DeleteNotificationSubscriptionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteNotificationSubscription",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteNotificationSubscription",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/api/v1/organizations/{OrganizationId}/subscriptions/{SubscriptionId}", DeleteNotificationSubscriptionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/organizations/{OrganizationId}/subscriptions/{SubscriptionId}", DeleteNotificationSubscriptionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4971,13 +4976,13 @@ end
 function M.AbortDocumentVersionUploadAsync(AbortDocumentVersionUploadRequest, cb)
 	assert(AbortDocumentVersionUploadRequest, "You must provide a AbortDocumentVersionUploadRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AbortDocumentVersionUpload",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AbortDocumentVersionUpload",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/api/v1/documents/{DocumentId}/versions/{VersionId}", AbortDocumentVersionUploadRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/documents/{DocumentId}/versions/{VersionId}", AbortDocumentVersionUploadRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5003,13 +5008,13 @@ end
 function M.DescribeNotificationSubscriptionsAsync(DescribeNotificationSubscriptionsRequest, cb)
 	assert(DescribeNotificationSubscriptionsRequest, "You must provide a DescribeNotificationSubscriptionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeNotificationSubscriptions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeNotificationSubscriptions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/api/v1/organizations/{OrganizationId}/subscriptions", DescribeNotificationSubscriptionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/organizations/{OrganizationId}/subscriptions", DescribeNotificationSubscriptionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5035,13 +5040,13 @@ end
 function M.CreateCommentAsync(CreateCommentRequest, cb)
 	assert(CreateCommentRequest, "You must provide a CreateCommentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateComment",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateComment",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/api/v1/documents/{DocumentId}/versions/{VersionId}/comment", CreateCommentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/documents/{DocumentId}/versions/{VersionId}/comment", CreateCommentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5067,13 +5072,13 @@ end
 function M.GetDocumentVersionAsync(GetDocumentVersionRequest, cb)
 	assert(GetDocumentVersionRequest, "You must provide a GetDocumentVersionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetDocumentVersion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetDocumentVersion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/api/v1/documents/{DocumentId}/versions/{VersionId}", GetDocumentVersionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/documents/{DocumentId}/versions/{VersionId}", GetDocumentVersionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5099,13 +5104,13 @@ end
 function M.GetFolderPathAsync(GetFolderPathRequest, cb)
 	assert(GetFolderPathRequest, "You must provide a GetFolderPathRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetFolderPath",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetFolderPath",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/api/v1/folders/{FolderId}/path", GetFolderPathRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/folders/{FolderId}/path", GetFolderPathRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5131,13 +5136,13 @@ end
 function M.DescribeFolderContentsAsync(DescribeFolderContentsRequest, cb)
 	assert(DescribeFolderContentsRequest, "You must provide a DescribeFolderContentsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeFolderContents",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeFolderContents",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/api/v1/folders/{FolderId}/contents", DescribeFolderContentsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/folders/{FolderId}/contents", DescribeFolderContentsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5163,13 +5168,13 @@ end
 function M.CreateFolderAsync(CreateFolderRequest, cb)
 	assert(CreateFolderRequest, "You must provide a CreateFolderRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateFolder",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateFolder",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/api/v1/folders", CreateFolderRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/folders", CreateFolderRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5195,13 +5200,13 @@ end
 function M.DescribeResourcePermissionsAsync(DescribeResourcePermissionsRequest, cb)
 	assert(DescribeResourcePermissionsRequest, "You must provide a DescribeResourcePermissionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeResourcePermissions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeResourcePermissions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/api/v1/resources/{ResourceId}/permissions", DescribeResourcePermissionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/resources/{ResourceId}/permissions", DescribeResourcePermissionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5227,13 +5232,13 @@ end
 function M.CreateNotificationSubscriptionAsync(CreateNotificationSubscriptionRequest, cb)
 	assert(CreateNotificationSubscriptionRequest, "You must provide a CreateNotificationSubscriptionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateNotificationSubscription",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateNotificationSubscription",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/api/v1/organizations/{OrganizationId}/subscriptions", CreateNotificationSubscriptionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/organizations/{OrganizationId}/subscriptions", CreateNotificationSubscriptionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5259,13 +5264,13 @@ end
 function M.UpdateDocumentAsync(UpdateDocumentRequest, cb)
 	assert(UpdateDocumentRequest, "You must provide a UpdateDocumentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateDocument",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateDocument",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PATCH")
 	if request_handler then
-		request_handler(uri .. "/api/v1/documents/{DocumentId}", UpdateDocumentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/documents/{DocumentId}", UpdateDocumentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5291,13 +5296,13 @@ end
 function M.DescribeCommentsAsync(DescribeCommentsRequest, cb)
 	assert(DescribeCommentsRequest, "You must provide a DescribeCommentsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeComments",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeComments",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/api/v1/documents/{DocumentId}/versions/{VersionId}/comments", DescribeCommentsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/documents/{DocumentId}/versions/{VersionId}/comments", DescribeCommentsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5323,13 +5328,13 @@ end
 function M.DeleteUserAsync(DeleteUserRequest, cb)
 	assert(DeleteUserRequest, "You must provide a DeleteUserRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteUser",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteUser",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/api/v1/users/{UserId}", DeleteUserRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/users/{UserId}", DeleteUserRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5355,13 +5360,13 @@ end
 function M.DeleteDocumentAsync(DeleteDocumentRequest, cb)
 	assert(DeleteDocumentRequest, "You must provide a DeleteDocumentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteDocument",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDocument",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/api/v1/documents/{DocumentId}", DeleteDocumentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/documents/{DocumentId}", DeleteDocumentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5387,13 +5392,13 @@ end
 function M.DescribeActivitiesAsync(DescribeActivitiesRequest, cb)
 	assert(DescribeActivitiesRequest, "You must provide a DescribeActivitiesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeActivities",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeActivities",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/api/v1/activities", DescribeActivitiesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/activities", DescribeActivitiesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5419,13 +5424,13 @@ end
 function M.ActivateUserAsync(ActivateUserRequest, cb)
 	assert(ActivateUserRequest, "You must provide a ActivateUserRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ActivateUser",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ActivateUser",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/api/v1/users/{UserId}/activation", ActivateUserRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/users/{UserId}/activation", ActivateUserRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5451,13 +5456,13 @@ end
 function M.GetFolderAsync(GetFolderRequest, cb)
 	assert(GetFolderRequest, "You must provide a GetFolderRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetFolder",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetFolder",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/api/v1/folders/{FolderId}", GetFolderRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/folders/{FolderId}", GetFolderRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5483,13 +5488,13 @@ end
 function M.RemoveResourcePermissionAsync(RemoveResourcePermissionRequest, cb)
 	assert(RemoveResourcePermissionRequest, "You must provide a RemoveResourcePermissionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RemoveResourcePermission",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RemoveResourcePermission",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/api/v1/resources/{ResourceId}/permissions/{PrincipalId}", RemoveResourcePermissionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/resources/{ResourceId}/permissions/{PrincipalId}", RemoveResourcePermissionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5515,13 +5520,13 @@ end
 function M.DeleteLabelsAsync(DeleteLabelsRequest, cb)
 	assert(DeleteLabelsRequest, "You must provide a DeleteLabelsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteLabels",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteLabels",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/api/v1/resources/{ResourceId}/labels", DeleteLabelsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/resources/{ResourceId}/labels", DeleteLabelsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5547,13 +5552,13 @@ end
 function M.DescribeDocumentVersionsAsync(DescribeDocumentVersionsRequest, cb)
 	assert(DescribeDocumentVersionsRequest, "You must provide a DescribeDocumentVersionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeDocumentVersions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDocumentVersions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/api/v1/documents/{DocumentId}/versions", DescribeDocumentVersionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/api/v1/documents/{DocumentId}/versions", DescribeDocumentVersionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

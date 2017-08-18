@@ -2521,12 +2521,12 @@ function M.VaultList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -2550,8 +2550,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -2564,13 +2569,13 @@ end
 function M.ListTagsForVaultAsync(ListTagsForVaultInput, cb)
 	assert(ListTagsForVaultInput, "You must provide a ListTagsForVaultInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListTagsForVault",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListTagsForVault",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/vaults/{vaultName}/tags", ListTagsForVaultInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/tags", ListTagsForVaultInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2596,13 +2601,13 @@ end
 function M.ListJobsAsync(ListJobsInput, cb)
 	assert(ListJobsInput, "You must provide a ListJobsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListJobs",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListJobs",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/vaults/{vaultName}/jobs", ListJobsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/jobs", ListJobsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2628,13 +2633,13 @@ end
 function M.DeleteVaultAsync(DeleteVaultInput, cb)
 	assert(DeleteVaultInput, "You must provide a DeleteVaultInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteVault",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteVault",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/vaults/{vaultName}", DeleteVaultInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}", DeleteVaultInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2660,13 +2665,13 @@ end
 function M.DeleteVaultNotificationsAsync(DeleteVaultNotificationsInput, cb)
 	assert(DeleteVaultNotificationsInput, "You must provide a DeleteVaultNotificationsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteVaultNotifications",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteVaultNotifications",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/vaults/{vaultName}/notification-configuration", DeleteVaultNotificationsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/notification-configuration", DeleteVaultNotificationsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2692,13 +2697,13 @@ end
 function M.ListPartsAsync(ListPartsInput, cb)
 	assert(ListPartsInput, "You must provide a ListPartsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListParts",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListParts",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}", ListPartsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}", ListPartsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2724,13 +2729,13 @@ end
 function M.ListProvisionedCapacityAsync(ListProvisionedCapacityInput, cb)
 	assert(ListProvisionedCapacityInput, "You must provide a ListProvisionedCapacityInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListProvisionedCapacity",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListProvisionedCapacity",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/provisioned-capacity", ListProvisionedCapacityInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/provisioned-capacity", ListProvisionedCapacityInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2756,13 +2761,13 @@ end
 function M.DeleteArchiveAsync(DeleteArchiveInput, cb)
 	assert(DeleteArchiveInput, "You must provide a DeleteArchiveInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteArchive",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteArchive",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/vaults/{vaultName}/archives/{archiveId}", DeleteArchiveInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/archives/{archiveId}", DeleteArchiveInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2788,13 +2793,13 @@ end
 function M.PurchaseProvisionedCapacityAsync(PurchaseProvisionedCapacityInput, cb)
 	assert(PurchaseProvisionedCapacityInput, "You must provide a PurchaseProvisionedCapacityInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PurchaseProvisionedCapacity",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PurchaseProvisionedCapacity",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/provisioned-capacity", PurchaseProvisionedCapacityInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/provisioned-capacity", PurchaseProvisionedCapacityInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2820,13 +2825,13 @@ end
 function M.GetJobOutputAsync(GetJobOutputInput, cb)
 	assert(GetJobOutputInput, "You must provide a GetJobOutputInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetJobOutput",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetJobOutput",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/vaults/{vaultName}/jobs/{jobId}/output", GetJobOutputInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/jobs/{jobId}/output", GetJobOutputInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2852,13 +2857,13 @@ end
 function M.AddTagsToVaultAsync(AddTagsToVaultInput, cb)
 	assert(AddTagsToVaultInput, "You must provide a AddTagsToVaultInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AddTagsToVault",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AddTagsToVault",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/vaults/{vaultName}/tags?operation=add", AddTagsToVaultInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/tags?operation=add", AddTagsToVaultInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2884,13 +2889,13 @@ end
 function M.InitiateVaultLockAsync(InitiateVaultLockInput, cb)
 	assert(InitiateVaultLockInput, "You must provide a InitiateVaultLockInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".InitiateVaultLock",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".InitiateVaultLock",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/vaults/{vaultName}/lock-policy", InitiateVaultLockInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/lock-policy", InitiateVaultLockInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2916,13 +2921,13 @@ end
 function M.ListVaultsAsync(ListVaultsInput, cb)
 	assert(ListVaultsInput, "You must provide a ListVaultsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListVaults",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListVaults",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/vaults", ListVaultsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/vaults", ListVaultsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2948,13 +2953,13 @@ end
 function M.GetVaultLockAsync(GetVaultLockInput, cb)
 	assert(GetVaultLockInput, "You must provide a GetVaultLockInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetVaultLock",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetVaultLock",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/vaults/{vaultName}/lock-policy", GetVaultLockInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/lock-policy", GetVaultLockInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2980,13 +2985,13 @@ end
 function M.DescribeJobAsync(DescribeJobInput, cb)
 	assert(DescribeJobInput, "You must provide a DescribeJobInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeJob",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeJob",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/vaults/{vaultName}/jobs/{jobId}", DescribeJobInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/jobs/{jobId}", DescribeJobInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3012,13 +3017,13 @@ end
 function M.GetVaultAccessPolicyAsync(GetVaultAccessPolicyInput, cb)
 	assert(GetVaultAccessPolicyInput, "You must provide a GetVaultAccessPolicyInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetVaultAccessPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetVaultAccessPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/vaults/{vaultName}/access-policy", GetVaultAccessPolicyInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/access-policy", GetVaultAccessPolicyInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3044,13 +3049,13 @@ end
 function M.CompleteMultipartUploadAsync(CompleteMultipartUploadInput, cb)
 	assert(CompleteMultipartUploadInput, "You must provide a CompleteMultipartUploadInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CompleteMultipartUpload",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CompleteMultipartUpload",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}", CompleteMultipartUploadInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}", CompleteMultipartUploadInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3076,13 +3081,13 @@ end
 function M.SetVaultAccessPolicyAsync(SetVaultAccessPolicyInput, cb)
 	assert(SetVaultAccessPolicyInput, "You must provide a SetVaultAccessPolicyInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SetVaultAccessPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetVaultAccessPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/vaults/{vaultName}/access-policy", SetVaultAccessPolicyInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/access-policy", SetVaultAccessPolicyInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3108,13 +3113,13 @@ end
 function M.UploadMultipartPartAsync(UploadMultipartPartInput, cb)
 	assert(UploadMultipartPartInput, "You must provide a UploadMultipartPartInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UploadMultipartPart",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UploadMultipartPart",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}", UploadMultipartPartInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}", UploadMultipartPartInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3140,13 +3145,13 @@ end
 function M.GetVaultNotificationsAsync(GetVaultNotificationsInput, cb)
 	assert(GetVaultNotificationsInput, "You must provide a GetVaultNotificationsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetVaultNotifications",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetVaultNotifications",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/vaults/{vaultName}/notification-configuration", GetVaultNotificationsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/notification-configuration", GetVaultNotificationsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3172,13 +3177,13 @@ end
 function M.DeleteVaultAccessPolicyAsync(DeleteVaultAccessPolicyInput, cb)
 	assert(DeleteVaultAccessPolicyInput, "You must provide a DeleteVaultAccessPolicyInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteVaultAccessPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteVaultAccessPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/vaults/{vaultName}/access-policy", DeleteVaultAccessPolicyInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/access-policy", DeleteVaultAccessPolicyInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3204,13 +3209,13 @@ end
 function M.DescribeVaultAsync(DescribeVaultInput, cb)
 	assert(DescribeVaultInput, "You must provide a DescribeVaultInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeVault",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeVault",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/vaults/{vaultName}", DescribeVaultInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}", DescribeVaultInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3236,13 +3241,13 @@ end
 function M.ListMultipartUploadsAsync(ListMultipartUploadsInput, cb)
 	assert(ListMultipartUploadsInput, "You must provide a ListMultipartUploadsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListMultipartUploads",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListMultipartUploads",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/vaults/{vaultName}/multipart-uploads", ListMultipartUploadsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/multipart-uploads", ListMultipartUploadsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3268,13 +3273,13 @@ end
 function M.CompleteVaultLockAsync(CompleteVaultLockInput, cb)
 	assert(CompleteVaultLockInput, "You must provide a CompleteVaultLockInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CompleteVaultLock",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CompleteVaultLock",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/vaults/{vaultName}/lock-policy/{lockId}", CompleteVaultLockInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/lock-policy/{lockId}", CompleteVaultLockInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3300,13 +3305,13 @@ end
 function M.SetDataRetrievalPolicyAsync(SetDataRetrievalPolicyInput, cb)
 	assert(SetDataRetrievalPolicyInput, "You must provide a SetDataRetrievalPolicyInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SetDataRetrievalPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetDataRetrievalPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/policies/data-retrieval", SetDataRetrievalPolicyInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/policies/data-retrieval", SetDataRetrievalPolicyInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3332,13 +3337,13 @@ end
 function M.AbortVaultLockAsync(AbortVaultLockInput, cb)
 	assert(AbortVaultLockInput, "You must provide a AbortVaultLockInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AbortVaultLock",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AbortVaultLock",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/vaults/{vaultName}/lock-policy", AbortVaultLockInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/lock-policy", AbortVaultLockInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3364,13 +3369,13 @@ end
 function M.AbortMultipartUploadAsync(AbortMultipartUploadInput, cb)
 	assert(AbortMultipartUploadInput, "You must provide a AbortMultipartUploadInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AbortMultipartUpload",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AbortMultipartUpload",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}", AbortMultipartUploadInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}", AbortMultipartUploadInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3396,13 +3401,13 @@ end
 function M.RemoveTagsFromVaultAsync(RemoveTagsFromVaultInput, cb)
 	assert(RemoveTagsFromVaultInput, "You must provide a RemoveTagsFromVaultInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RemoveTagsFromVault",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RemoveTagsFromVault",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/vaults/{vaultName}/tags?operation=remove", RemoveTagsFromVaultInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/tags?operation=remove", RemoveTagsFromVaultInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3428,13 +3433,13 @@ end
 function M.CreateVaultAsync(CreateVaultInput, cb)
 	assert(CreateVaultInput, "You must provide a CreateVaultInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateVault",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateVault",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/vaults/{vaultName}", CreateVaultInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}", CreateVaultInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3460,13 +3465,13 @@ end
 function M.InitiateJobAsync(InitiateJobInput, cb)
 	assert(InitiateJobInput, "You must provide a InitiateJobInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".InitiateJob",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".InitiateJob",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/vaults/{vaultName}/jobs", InitiateJobInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/jobs", InitiateJobInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3492,13 +3497,13 @@ end
 function M.InitiateMultipartUploadAsync(InitiateMultipartUploadInput, cb)
 	assert(InitiateMultipartUploadInput, "You must provide a InitiateMultipartUploadInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".InitiateMultipartUpload",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".InitiateMultipartUpload",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/vaults/{vaultName}/multipart-uploads", InitiateMultipartUploadInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/multipart-uploads", InitiateMultipartUploadInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3524,13 +3529,13 @@ end
 function M.GetDataRetrievalPolicyAsync(GetDataRetrievalPolicyInput, cb)
 	assert(GetDataRetrievalPolicyInput, "You must provide a GetDataRetrievalPolicyInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetDataRetrievalPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetDataRetrievalPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/policies/data-retrieval", GetDataRetrievalPolicyInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/policies/data-retrieval", GetDataRetrievalPolicyInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3556,13 +3561,13 @@ end
 function M.SetVaultNotificationsAsync(SetVaultNotificationsInput, cb)
 	assert(SetVaultNotificationsInput, "You must provide a SetVaultNotificationsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SetVaultNotifications",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetVaultNotifications",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/vaults/{vaultName}/notification-configuration", SetVaultNotificationsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/notification-configuration", SetVaultNotificationsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3588,13 +3593,13 @@ end
 function M.UploadArchiveAsync(UploadArchiveInput, cb)
 	assert(UploadArchiveInput, "You must provide a UploadArchiveInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UploadArchive",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UploadArchive",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/{accountId}/vaults/{vaultName}/archives", UploadArchiveInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/archives", UploadArchiveInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end

@@ -4201,12 +4201,12 @@ function M.ResourceGroupTags(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -4230,8 +4230,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -4244,13 +4249,13 @@ end
 function M.DeleteAssessmentTargetAsync(DeleteAssessmentTargetRequest, cb)
 	assert(DeleteAssessmentTargetRequest, "You must provide a DeleteAssessmentTargetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.DeleteAssessmentTarget",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.DeleteAssessmentTarget",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteAssessmentTargetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteAssessmentTargetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4276,13 +4281,13 @@ end
 function M.UpdateAssessmentTargetAsync(UpdateAssessmentTargetRequest, cb)
 	assert(UpdateAssessmentTargetRequest, "You must provide a UpdateAssessmentTargetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.UpdateAssessmentTarget",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.UpdateAssessmentTarget",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateAssessmentTargetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateAssessmentTargetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4308,13 +4313,13 @@ end
 function M.RemoveAttributesFromFindingsAsync(RemoveAttributesFromFindingsRequest, cb)
 	assert(RemoveAttributesFromFindingsRequest, "You must provide a RemoveAttributesFromFindingsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.RemoveAttributesFromFindings",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.RemoveAttributesFromFindings",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RemoveAttributesFromFindingsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RemoveAttributesFromFindingsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4340,13 +4345,13 @@ end
 function M.GetTelemetryMetadataAsync(GetTelemetryMetadataRequest, cb)
 	assert(GetTelemetryMetadataRequest, "You must provide a GetTelemetryMetadataRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.GetTelemetryMetadata",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.GetTelemetryMetadata",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetTelemetryMetadataRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetTelemetryMetadataRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4372,13 +4377,13 @@ end
 function M.DescribeAssessmentRunsAsync(DescribeAssessmentRunsRequest, cb)
 	assert(DescribeAssessmentRunsRequest, "You must provide a DescribeAssessmentRunsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.DescribeAssessmentRuns",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.DescribeAssessmentRuns",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeAssessmentRunsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeAssessmentRunsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4404,13 +4409,13 @@ end
 function M.StartAssessmentRunAsync(StartAssessmentRunRequest, cb)
 	assert(StartAssessmentRunRequest, "You must provide a StartAssessmentRunRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.StartAssessmentRun",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.StartAssessmentRun",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StartAssessmentRunRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StartAssessmentRunRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4434,13 +4439,13 @@ end
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeCrossAccountAccessRoleAsync(cb)
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.DescribeCrossAccountAccessRole",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.DescribeCrossAccountAccessRole",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", {}, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4465,13 +4470,13 @@ end
 function M.DescribeAssessmentTargetsAsync(DescribeAssessmentTargetsRequest, cb)
 	assert(DescribeAssessmentTargetsRequest, "You must provide a DescribeAssessmentTargetsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.DescribeAssessmentTargets",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.DescribeAssessmentTargets",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeAssessmentTargetsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeAssessmentTargetsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4497,13 +4502,13 @@ end
 function M.ListRulesPackagesAsync(ListRulesPackagesRequest, cb)
 	assert(ListRulesPackagesRequest, "You must provide a ListRulesPackagesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.ListRulesPackages",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.ListRulesPackages",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListRulesPackagesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListRulesPackagesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4529,13 +4534,13 @@ end
 function M.StopAssessmentRunAsync(StopAssessmentRunRequest, cb)
 	assert(StopAssessmentRunRequest, "You must provide a StopAssessmentRunRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.StopAssessmentRun",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.StopAssessmentRun",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StopAssessmentRunRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StopAssessmentRunRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4561,13 +4566,13 @@ end
 function M.ListAssessmentTemplatesAsync(ListAssessmentTemplatesRequest, cb)
 	assert(ListAssessmentTemplatesRequest, "You must provide a ListAssessmentTemplatesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.ListAssessmentTemplates",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.ListAssessmentTemplates",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListAssessmentTemplatesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListAssessmentTemplatesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4593,13 +4598,13 @@ end
 function M.DescribeFindingsAsync(DescribeFindingsRequest, cb)
 	assert(DescribeFindingsRequest, "You must provide a DescribeFindingsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.DescribeFindings",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.DescribeFindings",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeFindingsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeFindingsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4625,13 +4630,13 @@ end
 function M.DeleteAssessmentTemplateAsync(DeleteAssessmentTemplateRequest, cb)
 	assert(DeleteAssessmentTemplateRequest, "You must provide a DeleteAssessmentTemplateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.DeleteAssessmentTemplate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.DeleteAssessmentTemplate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteAssessmentTemplateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteAssessmentTemplateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4657,13 +4662,13 @@ end
 function M.DescribeResourceGroupsAsync(DescribeResourceGroupsRequest, cb)
 	assert(DescribeResourceGroupsRequest, "You must provide a DescribeResourceGroupsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.DescribeResourceGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.DescribeResourceGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeResourceGroupsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeResourceGroupsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4689,13 +4694,13 @@ end
 function M.ListFindingsAsync(ListFindingsRequest, cb)
 	assert(ListFindingsRequest, "You must provide a ListFindingsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.ListFindings",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.ListFindings",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListFindingsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListFindingsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4721,13 +4726,13 @@ end
 function M.ListEventSubscriptionsAsync(ListEventSubscriptionsRequest, cb)
 	assert(ListEventSubscriptionsRequest, "You must provide a ListEventSubscriptionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.ListEventSubscriptions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.ListEventSubscriptions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListEventSubscriptionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListEventSubscriptionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4753,13 +4758,13 @@ end
 function M.ListAssessmentTargetsAsync(ListAssessmentTargetsRequest, cb)
 	assert(ListAssessmentTargetsRequest, "You must provide a ListAssessmentTargetsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.ListAssessmentTargets",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.ListAssessmentTargets",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListAssessmentTargetsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListAssessmentTargetsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4785,13 +4790,13 @@ end
 function M.SetTagsForResourceAsync(SetTagsForResourceRequest, cb)
 	assert(SetTagsForResourceRequest, "You must provide a SetTagsForResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.SetTagsForResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.SetTagsForResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetTagsForResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetTagsForResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4817,13 +4822,13 @@ end
 function M.DeleteAssessmentRunAsync(DeleteAssessmentRunRequest, cb)
 	assert(DeleteAssessmentRunRequest, "You must provide a DeleteAssessmentRunRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.DeleteAssessmentRun",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.DeleteAssessmentRun",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteAssessmentRunRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteAssessmentRunRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4849,13 +4854,13 @@ end
 function M.CreateAssessmentTargetAsync(CreateAssessmentTargetRequest, cb)
 	assert(CreateAssessmentTargetRequest, "You must provide a CreateAssessmentTargetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.CreateAssessmentTarget",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.CreateAssessmentTarget",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateAssessmentTargetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateAssessmentTargetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4881,13 +4886,13 @@ end
 function M.UnsubscribeFromEventAsync(UnsubscribeFromEventRequest, cb)
 	assert(UnsubscribeFromEventRequest, "You must provide a UnsubscribeFromEventRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.UnsubscribeFromEvent",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.UnsubscribeFromEvent",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UnsubscribeFromEventRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UnsubscribeFromEventRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4913,13 +4918,13 @@ end
 function M.ListAssessmentRunsAsync(ListAssessmentRunsRequest, cb)
 	assert(ListAssessmentRunsRequest, "You must provide a ListAssessmentRunsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.ListAssessmentRuns",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.ListAssessmentRuns",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListAssessmentRunsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListAssessmentRunsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4945,13 +4950,13 @@ end
 function M.RegisterCrossAccountAccessRoleAsync(RegisterCrossAccountAccessRoleRequest, cb)
 	assert(RegisterCrossAccountAccessRoleRequest, "You must provide a RegisterCrossAccountAccessRoleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.RegisterCrossAccountAccessRole",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.RegisterCrossAccountAccessRole",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RegisterCrossAccountAccessRoleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RegisterCrossAccountAccessRoleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4977,13 +4982,13 @@ end
 function M.AddAttributesToFindingsAsync(AddAttributesToFindingsRequest, cb)
 	assert(AddAttributesToFindingsRequest, "You must provide a AddAttributesToFindingsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.AddAttributesToFindings",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.AddAttributesToFindings",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddAttributesToFindingsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddAttributesToFindingsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5009,13 +5014,13 @@ end
 function M.CreateResourceGroupAsync(CreateResourceGroupRequest, cb)
 	assert(CreateResourceGroupRequest, "You must provide a CreateResourceGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.CreateResourceGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.CreateResourceGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateResourceGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateResourceGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5041,13 +5046,13 @@ end
 function M.DescribeAssessmentTemplatesAsync(DescribeAssessmentTemplatesRequest, cb)
 	assert(DescribeAssessmentTemplatesRequest, "You must provide a DescribeAssessmentTemplatesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.DescribeAssessmentTemplates",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.DescribeAssessmentTemplates",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeAssessmentTemplatesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeAssessmentTemplatesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5073,13 +5078,13 @@ end
 function M.PreviewAgentsAsync(PreviewAgentsRequest, cb)
 	assert(PreviewAgentsRequest, "You must provide a PreviewAgentsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.PreviewAgents",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.PreviewAgents",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PreviewAgentsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PreviewAgentsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5105,13 +5110,13 @@ end
 function M.CreateAssessmentTemplateAsync(CreateAssessmentTemplateRequest, cb)
 	assert(CreateAssessmentTemplateRequest, "You must provide a CreateAssessmentTemplateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.CreateAssessmentTemplate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.CreateAssessmentTemplate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateAssessmentTemplateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateAssessmentTemplateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5137,13 +5142,13 @@ end
 function M.SubscribeToEventAsync(SubscribeToEventRequest, cb)
 	assert(SubscribeToEventRequest, "You must provide a SubscribeToEventRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.SubscribeToEvent",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.SubscribeToEvent",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SubscribeToEventRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SubscribeToEventRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5169,13 +5174,13 @@ end
 function M.DescribeRulesPackagesAsync(DescribeRulesPackagesRequest, cb)
 	assert(DescribeRulesPackagesRequest, "You must provide a DescribeRulesPackagesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.DescribeRulesPackages",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.DescribeRulesPackages",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeRulesPackagesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeRulesPackagesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5201,13 +5206,13 @@ end
 function M.ListTagsForResourceAsync(ListTagsForResourceRequest, cb)
 	assert(ListTagsForResourceRequest, "You must provide a ListTagsForResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.ListTagsForResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.ListTagsForResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListTagsForResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListTagsForResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5233,13 +5238,13 @@ end
 function M.ListAssessmentRunAgentsAsync(ListAssessmentRunAgentsRequest, cb)
 	assert(ListAssessmentRunAgentsRequest, "You must provide a ListAssessmentRunAgentsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.ListAssessmentRunAgents",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.ListAssessmentRunAgents",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListAssessmentRunAgentsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListAssessmentRunAgentsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5265,13 +5270,13 @@ end
 function M.GetAssessmentReportAsync(GetAssessmentReportRequest, cb)
 	assert(GetAssessmentReportRequest, "You must provide a GetAssessmentReportRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "InspectorService.GetAssessmentReport",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.GetAssessmentReport",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetAssessmentReportRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetAssessmentReportRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

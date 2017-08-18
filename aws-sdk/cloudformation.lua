@@ -3575,12 +3575,12 @@ function M.ParameterDeclarations(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -3604,8 +3604,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -3618,13 +3623,13 @@ end
 function M.DescribeStackResourceAsync(DescribeStackResourceInput, cb)
 	assert(DescribeStackResourceInput, "You must provide a DescribeStackResourceInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeStackResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeStackResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeStackResourceInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeStackResourceInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3650,13 +3655,13 @@ end
 function M.ListStackResourcesAsync(ListStackResourcesInput, cb)
 	assert(ListStackResourcesInput, "You must provide a ListStackResourcesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListStackResources",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListStackResources",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListStackResourcesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListStackResourcesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3682,13 +3687,13 @@ end
 function M.ValidateTemplateAsync(ValidateTemplateInput, cb)
 	assert(ValidateTemplateInput, "You must provide a ValidateTemplateInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ValidateTemplate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ValidateTemplate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ValidateTemplateInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ValidateTemplateInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3714,13 +3719,13 @@ end
 function M.DescribeStackResourcesAsync(DescribeStackResourcesInput, cb)
 	assert(DescribeStackResourcesInput, "You must provide a DescribeStackResourcesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeStackResources",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeStackResources",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeStackResourcesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeStackResourcesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3746,13 +3751,13 @@ end
 function M.ListImportsAsync(ListImportsInput, cb)
 	assert(ListImportsInput, "You must provide a ListImportsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListImports",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListImports",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListImportsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListImportsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3778,13 +3783,13 @@ end
 function M.CreateStackAsync(CreateStackInput, cb)
 	assert(CreateStackInput, "You must provide a CreateStackInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateStack",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateStack",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateStackInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateStackInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3810,13 +3815,13 @@ end
 function M.GetTemplateSummaryAsync(GetTemplateSummaryInput, cb)
 	assert(GetTemplateSummaryInput, "You must provide a GetTemplateSummaryInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetTemplateSummary",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetTemplateSummary",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetTemplateSummaryInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetTemplateSummaryInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3842,13 +3847,13 @@ end
 function M.CancelUpdateStackAsync(CancelUpdateStackInput, cb)
 	assert(CancelUpdateStackInput, "You must provide a CancelUpdateStackInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CancelUpdateStack",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CancelUpdateStack",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CancelUpdateStackInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CancelUpdateStackInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3874,13 +3879,13 @@ end
 function M.ContinueUpdateRollbackAsync(ContinueUpdateRollbackInput, cb)
 	assert(ContinueUpdateRollbackInput, "You must provide a ContinueUpdateRollbackInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ContinueUpdateRollback",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ContinueUpdateRollback",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ContinueUpdateRollbackInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ContinueUpdateRollbackInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3906,13 +3911,13 @@ end
 function M.ListChangeSetsAsync(ListChangeSetsInput, cb)
 	assert(ListChangeSetsInput, "You must provide a ListChangeSetsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListChangeSets",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListChangeSets",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListChangeSetsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListChangeSetsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3938,13 +3943,13 @@ end
 function M.GetStackPolicyAsync(GetStackPolicyInput, cb)
 	assert(GetStackPolicyInput, "You must provide a GetStackPolicyInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetStackPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetStackPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetStackPolicyInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetStackPolicyInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3970,13 +3975,13 @@ end
 function M.ListExportsAsync(ListExportsInput, cb)
 	assert(ListExportsInput, "You must provide a ListExportsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListExports",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListExports",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListExportsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListExportsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4002,13 +4007,13 @@ end
 function M.DescribeStackEventsAsync(DescribeStackEventsInput, cb)
 	assert(DescribeStackEventsInput, "You must provide a DescribeStackEventsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeStackEvents",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeStackEvents",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeStackEventsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeStackEventsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4034,13 +4039,13 @@ end
 function M.SignalResourceAsync(SignalResourceInput, cb)
 	assert(SignalResourceInput, "You must provide a SignalResourceInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SignalResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SignalResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SignalResourceInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SignalResourceInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4066,13 +4071,13 @@ end
 function M.GetTemplateAsync(GetTemplateInput, cb)
 	assert(GetTemplateInput, "You must provide a GetTemplateInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetTemplate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetTemplate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetTemplateInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetTemplateInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4098,13 +4103,13 @@ end
 function M.DescribeChangeSetAsync(DescribeChangeSetInput, cb)
 	assert(DescribeChangeSetInput, "You must provide a DescribeChangeSetInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeChangeSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeChangeSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeChangeSetInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeChangeSetInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4130,13 +4135,13 @@ end
 function M.DeleteChangeSetAsync(DeleteChangeSetInput, cb)
 	assert(DeleteChangeSetInput, "You must provide a DeleteChangeSetInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteChangeSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteChangeSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteChangeSetInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteChangeSetInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4162,13 +4167,13 @@ end
 function M.CreateChangeSetAsync(CreateChangeSetInput, cb)
 	assert(CreateChangeSetInput, "You must provide a CreateChangeSetInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateChangeSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateChangeSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateChangeSetInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateChangeSetInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4194,13 +4199,13 @@ end
 function M.DescribeStacksAsync(DescribeStacksInput, cb)
 	assert(DescribeStacksInput, "You must provide a DescribeStacksInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeStacks",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeStacks",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeStacksInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeStacksInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4226,13 +4231,13 @@ end
 function M.UpdateStackAsync(UpdateStackInput, cb)
 	assert(UpdateStackInput, "You must provide a UpdateStackInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateStack",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateStack",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateStackInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateStackInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4258,13 +4263,13 @@ end
 function M.ExecuteChangeSetAsync(ExecuteChangeSetInput, cb)
 	assert(ExecuteChangeSetInput, "You must provide a ExecuteChangeSetInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ExecuteChangeSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ExecuteChangeSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ExecuteChangeSetInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ExecuteChangeSetInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4290,13 +4295,13 @@ end
 function M.DeleteStackAsync(DeleteStackInput, cb)
 	assert(DeleteStackInput, "You must provide a DeleteStackInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteStack",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteStack",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteStackInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteStackInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4322,13 +4327,13 @@ end
 function M.SetStackPolicyAsync(SetStackPolicyInput, cb)
 	assert(SetStackPolicyInput, "You must provide a SetStackPolicyInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SetStackPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetStackPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetStackPolicyInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetStackPolicyInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4354,13 +4359,13 @@ end
 function M.ListStacksAsync(ListStacksInput, cb)
 	assert(ListStacksInput, "You must provide a ListStacksInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListStacks",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListStacks",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListStacksInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListStacksInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4386,13 +4391,13 @@ end
 function M.EstimateTemplateCostAsync(EstimateTemplateCostInput, cb)
 	assert(EstimateTemplateCostInput, "You must provide a EstimateTemplateCostInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".EstimateTemplateCost",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".EstimateTemplateCost",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", EstimateTemplateCostInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", EstimateTemplateCostInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4418,13 +4423,13 @@ end
 function M.DescribeAccountLimitsAsync(DescribeAccountLimitsInput, cb)
 	assert(DescribeAccountLimitsInput, "You must provide a DescribeAccountLimitsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeAccountLimits",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAccountLimits",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeAccountLimitsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeAccountLimitsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end

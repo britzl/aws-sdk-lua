@@ -7290,12 +7290,12 @@ function M.ListOfStringTypes(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -7319,8 +7319,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -7333,13 +7338,13 @@ end
 function M.GetIdentityProviderByIdentifierAsync(GetIdentityProviderByIdentifierRequest, cb)
 	assert(GetIdentityProviderByIdentifierRequest, "You must provide a GetIdentityProviderByIdentifierRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.GetIdentityProviderByIdentifier",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.GetIdentityProviderByIdentifier",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetIdentityProviderByIdentifierRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetIdentityProviderByIdentifierRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7365,13 +7370,13 @@ end
 function M.ConfirmSignUpAsync(ConfirmSignUpRequest, cb)
 	assert(ConfirmSignUpRequest, "You must provide a ConfirmSignUpRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.ConfirmSignUp",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.ConfirmSignUp",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ConfirmSignUpRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ConfirmSignUpRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7397,13 +7402,13 @@ end
 function M.AdminDisableUserAsync(AdminDisableUserRequest, cb)
 	assert(AdminDisableUserRequest, "You must provide a AdminDisableUserRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminDisableUser",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminDisableUser",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AdminDisableUserRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AdminDisableUserRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7429,13 +7434,13 @@ end
 function M.AdminListDevicesAsync(AdminListDevicesRequest, cb)
 	assert(AdminListDevicesRequest, "You must provide a AdminListDevicesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminListDevices",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminListDevices",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AdminListDevicesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AdminListDevicesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7461,13 +7466,13 @@ end
 function M.AdminRemoveUserFromGroupAsync(AdminRemoveUserFromGroupRequest, cb)
 	assert(AdminRemoveUserFromGroupRequest, "You must provide a AdminRemoveUserFromGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminRemoveUserFromGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminRemoveUserFromGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AdminRemoveUserFromGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AdminRemoveUserFromGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7493,13 +7498,13 @@ end
 function M.ForgotPasswordAsync(ForgotPasswordRequest, cb)
 	assert(ForgotPasswordRequest, "You must provide a ForgotPasswordRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.ForgotPassword",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.ForgotPassword",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ForgotPasswordRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ForgotPasswordRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7525,13 +7530,13 @@ end
 function M.AdminUpdateUserAttributesAsync(AdminUpdateUserAttributesRequest, cb)
 	assert(AdminUpdateUserAttributesRequest, "You must provide a AdminUpdateUserAttributesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminUpdateUserAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminUpdateUserAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AdminUpdateUserAttributesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AdminUpdateUserAttributesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7557,13 +7562,13 @@ end
 function M.SignUpAsync(SignUpRequest, cb)
 	assert(SignUpRequest, "You must provide a SignUpRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.SignUp",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.SignUp",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SignUpRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SignUpRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7589,13 +7594,13 @@ end
 function M.AdminCreateUserAsync(AdminCreateUserRequest, cb)
 	assert(AdminCreateUserRequest, "You must provide a AdminCreateUserRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminCreateUser",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminCreateUser",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AdminCreateUserRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AdminCreateUserRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7621,13 +7626,13 @@ end
 function M.UpdateUserAttributesAsync(UpdateUserAttributesRequest, cb)
 	assert(UpdateUserAttributesRequest, "You must provide a UpdateUserAttributesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.UpdateUserAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.UpdateUserAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateUserAttributesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateUserAttributesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7653,13 +7658,13 @@ end
 function M.DescribeUserPoolDomainAsync(DescribeUserPoolDomainRequest, cb)
 	assert(DescribeUserPoolDomainRequest, "You must provide a DescribeUserPoolDomainRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.DescribeUserPoolDomain",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.DescribeUserPoolDomain",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeUserPoolDomainRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeUserPoolDomainRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7685,13 +7690,13 @@ end
 function M.ForgetDeviceAsync(ForgetDeviceRequest, cb)
 	assert(ForgetDeviceRequest, "You must provide a ForgetDeviceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.ForgetDevice",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.ForgetDevice",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ForgetDeviceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ForgetDeviceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7717,13 +7722,13 @@ end
 function M.DeleteIdentityProviderAsync(DeleteIdentityProviderRequest, cb)
 	assert(DeleteIdentityProviderRequest, "You must provide a DeleteIdentityProviderRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.DeleteIdentityProvider",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.DeleteIdentityProvider",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteIdentityProviderRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteIdentityProviderRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7749,13 +7754,13 @@ end
 function M.ConfirmForgotPasswordAsync(ConfirmForgotPasswordRequest, cb)
 	assert(ConfirmForgotPasswordRequest, "You must provide a ConfirmForgotPasswordRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.ConfirmForgotPassword",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.ConfirmForgotPassword",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ConfirmForgotPasswordRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ConfirmForgotPasswordRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7781,13 +7786,13 @@ end
 function M.CreateGroupAsync(CreateGroupRequest, cb)
 	assert(CreateGroupRequest, "You must provide a CreateGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.CreateGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.CreateGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7813,13 +7818,13 @@ end
 function M.VerifyUserAttributeAsync(VerifyUserAttributeRequest, cb)
 	assert(VerifyUserAttributeRequest, "You must provide a VerifyUserAttributeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.VerifyUserAttribute",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.VerifyUserAttribute",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", VerifyUserAttributeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", VerifyUserAttributeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7845,13 +7850,13 @@ end
 function M.AdminResetUserPasswordAsync(AdminResetUserPasswordRequest, cb)
 	assert(AdminResetUserPasswordRequest, "You must provide a AdminResetUserPasswordRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminResetUserPassword",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminResetUserPassword",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AdminResetUserPasswordRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AdminResetUserPasswordRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7877,13 +7882,13 @@ end
 function M.DeleteUserPoolAsync(DeleteUserPoolRequest, cb)
 	assert(DeleteUserPoolRequest, "You must provide a DeleteUserPoolRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.DeleteUserPool",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.DeleteUserPool",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteUserPoolRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteUserPoolRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7909,13 +7914,13 @@ end
 function M.AdminConfirmSignUpAsync(AdminConfirmSignUpRequest, cb)
 	assert(AdminConfirmSignUpRequest, "You must provide a AdminConfirmSignUpRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminConfirmSignUp",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminConfirmSignUp",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AdminConfirmSignUpRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AdminConfirmSignUpRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7941,13 +7946,13 @@ end
 function M.UpdateUserPoolAsync(UpdateUserPoolRequest, cb)
 	assert(UpdateUserPoolRequest, "You must provide a UpdateUserPoolRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.UpdateUserPool",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.UpdateUserPool",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateUserPoolRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateUserPoolRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7973,13 +7978,13 @@ end
 function M.ListUserPoolClientsAsync(ListUserPoolClientsRequest, cb)
 	assert(ListUserPoolClientsRequest, "You must provide a ListUserPoolClientsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.ListUserPoolClients",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.ListUserPoolClients",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListUserPoolClientsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListUserPoolClientsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8005,13 +8010,13 @@ end
 function M.DescribeUserPoolAsync(DescribeUserPoolRequest, cb)
 	assert(DescribeUserPoolRequest, "You must provide a DescribeUserPoolRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.DescribeUserPool",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.DescribeUserPool",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeUserPoolRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeUserPoolRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8037,13 +8042,13 @@ end
 function M.StopUserImportJobAsync(StopUserImportJobRequest, cb)
 	assert(StopUserImportJobRequest, "You must provide a StopUserImportJobRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.StopUserImportJob",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.StopUserImportJob",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StopUserImportJobRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StopUserImportJobRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8069,13 +8074,13 @@ end
 function M.ListUserPoolsAsync(ListUserPoolsRequest, cb)
 	assert(ListUserPoolsRequest, "You must provide a ListUserPoolsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.ListUserPools",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.ListUserPools",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListUserPoolsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListUserPoolsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8101,13 +8106,13 @@ end
 function M.AdminUserGlobalSignOutAsync(AdminUserGlobalSignOutRequest, cb)
 	assert(AdminUserGlobalSignOutRequest, "You must provide a AdminUserGlobalSignOutRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminUserGlobalSignOut",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminUserGlobalSignOut",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AdminUserGlobalSignOutRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AdminUserGlobalSignOutRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8133,13 +8138,13 @@ end
 function M.DeleteUserPoolDomainAsync(DeleteUserPoolDomainRequest, cb)
 	assert(DeleteUserPoolDomainRequest, "You must provide a DeleteUserPoolDomainRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.DeleteUserPoolDomain",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.DeleteUserPoolDomain",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteUserPoolDomainRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteUserPoolDomainRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8165,13 +8170,13 @@ end
 function M.AdminGetDeviceAsync(AdminGetDeviceRequest, cb)
 	assert(AdminGetDeviceRequest, "You must provide a AdminGetDeviceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminGetDevice",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminGetDevice",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AdminGetDeviceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AdminGetDeviceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8197,13 +8202,13 @@ end
 function M.DeleteGroupAsync(DeleteGroupRequest, cb)
 	assert(DeleteGroupRequest, "You must provide a DeleteGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.DeleteGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.DeleteGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8229,13 +8234,13 @@ end
 function M.ResendConfirmationCodeAsync(ResendConfirmationCodeRequest, cb)
 	assert(ResendConfirmationCodeRequest, "You must provide a ResendConfirmationCodeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.ResendConfirmationCode",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.ResendConfirmationCode",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ResendConfirmationCodeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ResendConfirmationCodeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8261,13 +8266,13 @@ end
 function M.GetUserAttributeVerificationCodeAsync(GetUserAttributeVerificationCodeRequest, cb)
 	assert(GetUserAttributeVerificationCodeRequest, "You must provide a GetUserAttributeVerificationCodeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.GetUserAttributeVerificationCode",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.GetUserAttributeVerificationCode",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetUserAttributeVerificationCodeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetUserAttributeVerificationCodeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8293,13 +8298,13 @@ end
 function M.GetUserAsync(GetUserRequest, cb)
 	assert(GetUserRequest, "You must provide a GetUserRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.GetUser",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.GetUser",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetUserRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetUserRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8325,13 +8330,13 @@ end
 function M.ConfirmDeviceAsync(ConfirmDeviceRequest, cb)
 	assert(ConfirmDeviceRequest, "You must provide a ConfirmDeviceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.ConfirmDevice",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.ConfirmDevice",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ConfirmDeviceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ConfirmDeviceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8357,13 +8362,13 @@ end
 function M.ChangePasswordAsync(ChangePasswordRequest, cb)
 	assert(ChangePasswordRequest, "You must provide a ChangePasswordRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.ChangePassword",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.ChangePassword",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ChangePasswordRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ChangePasswordRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8389,13 +8394,13 @@ end
 function M.GetCSVHeaderAsync(GetCSVHeaderRequest, cb)
 	assert(GetCSVHeaderRequest, "You must provide a GetCSVHeaderRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.GetCSVHeader",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.GetCSVHeader",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetCSVHeaderRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetCSVHeaderRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8421,13 +8426,13 @@ end
 function M.ListUsersAsync(ListUsersRequest, cb)
 	assert(ListUsersRequest, "You must provide a ListUsersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.ListUsers",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.ListUsers",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListUsersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListUsersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8453,13 +8458,13 @@ end
 function M.AdminUpdateDeviceStatusAsync(AdminUpdateDeviceStatusRequest, cb)
 	assert(AdminUpdateDeviceStatusRequest, "You must provide a AdminUpdateDeviceStatusRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminUpdateDeviceStatus",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminUpdateDeviceStatus",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AdminUpdateDeviceStatusRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AdminUpdateDeviceStatusRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8485,13 +8490,13 @@ end
 function M.DescribeIdentityProviderAsync(DescribeIdentityProviderRequest, cb)
 	assert(DescribeIdentityProviderRequest, "You must provide a DescribeIdentityProviderRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.DescribeIdentityProvider",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.DescribeIdentityProvider",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeIdentityProviderRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeIdentityProviderRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8517,13 +8522,13 @@ end
 function M.DeleteUserAttributesAsync(DeleteUserAttributesRequest, cb)
 	assert(DeleteUserAttributesRequest, "You must provide a DeleteUserAttributesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.DeleteUserAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.DeleteUserAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteUserAttributesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteUserAttributesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8549,13 +8554,13 @@ end
 function M.UpdateIdentityProviderAsync(UpdateIdentityProviderRequest, cb)
 	assert(UpdateIdentityProviderRequest, "You must provide a UpdateIdentityProviderRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.UpdateIdentityProvider",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.UpdateIdentityProvider",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateIdentityProviderRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateIdentityProviderRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8581,13 +8586,13 @@ end
 function M.GetGroupAsync(GetGroupRequest, cb)
 	assert(GetGroupRequest, "You must provide a GetGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.GetGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.GetGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8613,13 +8618,13 @@ end
 function M.AdminEnableUserAsync(AdminEnableUserRequest, cb)
 	assert(AdminEnableUserRequest, "You must provide a AdminEnableUserRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminEnableUser",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminEnableUser",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AdminEnableUserRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AdminEnableUserRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8645,13 +8650,13 @@ end
 function M.UpdateUserPoolClientAsync(UpdateUserPoolClientRequest, cb)
 	assert(UpdateUserPoolClientRequest, "You must provide a UpdateUserPoolClientRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.UpdateUserPoolClient",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.UpdateUserPoolClient",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateUserPoolClientRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateUserPoolClientRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8677,13 +8682,13 @@ end
 function M.AddCustomAttributesAsync(AddCustomAttributesRequest, cb)
 	assert(AddCustomAttributesRequest, "You must provide a AddCustomAttributesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AddCustomAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AddCustomAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddCustomAttributesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddCustomAttributesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8709,13 +8714,13 @@ end
 function M.AdminForgetDeviceAsync(AdminForgetDeviceRequest, cb)
 	assert(AdminForgetDeviceRequest, "You must provide a AdminForgetDeviceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminForgetDevice",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminForgetDevice",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AdminForgetDeviceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AdminForgetDeviceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8741,13 +8746,13 @@ end
 function M.CreateUserPoolClientAsync(CreateUserPoolClientRequest, cb)
 	assert(CreateUserPoolClientRequest, "You must provide a CreateUserPoolClientRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.CreateUserPoolClient",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.CreateUserPoolClient",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateUserPoolClientRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateUserPoolClientRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8773,13 +8778,13 @@ end
 function M.AdminListGroupsForUserAsync(AdminListGroupsForUserRequest, cb)
 	assert(AdminListGroupsForUserRequest, "You must provide a AdminListGroupsForUserRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminListGroupsForUser",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminListGroupsForUser",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AdminListGroupsForUserRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AdminListGroupsForUserRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8805,13 +8810,13 @@ end
 function M.ListGroupsAsync(ListGroupsRequest, cb)
 	assert(ListGroupsRequest, "You must provide a ListGroupsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.ListGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.ListGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListGroupsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListGroupsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8837,13 +8842,13 @@ end
 function M.DescribeUserPoolClientAsync(DescribeUserPoolClientRequest, cb)
 	assert(DescribeUserPoolClientRequest, "You must provide a DescribeUserPoolClientRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.DescribeUserPoolClient",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.DescribeUserPoolClient",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeUserPoolClientRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeUserPoolClientRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8869,13 +8874,13 @@ end
 function M.AdminDeleteUserAsync(AdminDeleteUserRequest, cb)
 	assert(AdminDeleteUserRequest, "You must provide a AdminDeleteUserRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminDeleteUser",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminDeleteUser",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AdminDeleteUserRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AdminDeleteUserRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8901,13 +8906,13 @@ end
 function M.AdminInitiateAuthAsync(AdminInitiateAuthRequest, cb)
 	assert(AdminInitiateAuthRequest, "You must provide a AdminInitiateAuthRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminInitiateAuth",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminInitiateAuth",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AdminInitiateAuthRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AdminInitiateAuthRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8933,13 +8938,13 @@ end
 function M.AdminGetUserAsync(AdminGetUserRequest, cb)
 	assert(AdminGetUserRequest, "You must provide a AdminGetUserRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminGetUser",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminGetUser",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AdminGetUserRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AdminGetUserRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8965,13 +8970,13 @@ end
 function M.UpdateDeviceStatusAsync(UpdateDeviceStatusRequest, cb)
 	assert(UpdateDeviceStatusRequest, "You must provide a UpdateDeviceStatusRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.UpdateDeviceStatus",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.UpdateDeviceStatus",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateDeviceStatusRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateDeviceStatusRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8997,13 +9002,13 @@ end
 function M.ListUserImportJobsAsync(ListUserImportJobsRequest, cb)
 	assert(ListUserImportJobsRequest, "You must provide a ListUserImportJobsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.ListUserImportJobs",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.ListUserImportJobs",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListUserImportJobsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListUserImportJobsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9029,13 +9034,13 @@ end
 function M.ListDevicesAsync(ListDevicesRequest, cb)
 	assert(ListDevicesRequest, "You must provide a ListDevicesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.ListDevices",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.ListDevices",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListDevicesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListDevicesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9061,13 +9066,13 @@ end
 function M.GetDeviceAsync(GetDeviceRequest, cb)
 	assert(GetDeviceRequest, "You must provide a GetDeviceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.GetDevice",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.GetDevice",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetDeviceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetDeviceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9093,13 +9098,13 @@ end
 function M.ListUsersInGroupAsync(ListUsersInGroupRequest, cb)
 	assert(ListUsersInGroupRequest, "You must provide a ListUsersInGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.ListUsersInGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.ListUsersInGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListUsersInGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListUsersInGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9125,13 +9130,13 @@ end
 function M.GlobalSignOutAsync(GlobalSignOutRequest, cb)
 	assert(GlobalSignOutRequest, "You must provide a GlobalSignOutRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.GlobalSignOut",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.GlobalSignOut",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GlobalSignOutRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GlobalSignOutRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9157,13 +9162,13 @@ end
 function M.CreateUserImportJobAsync(CreateUserImportJobRequest, cb)
 	assert(CreateUserImportJobRequest, "You must provide a CreateUserImportJobRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.CreateUserImportJob",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.CreateUserImportJob",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateUserImportJobRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateUserImportJobRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9189,13 +9194,13 @@ end
 function M.AdminSetUserSettingsAsync(AdminSetUserSettingsRequest, cb)
 	assert(AdminSetUserSettingsRequest, "You must provide a AdminSetUserSettingsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminSetUserSettings",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminSetUserSettings",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AdminSetUserSettingsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AdminSetUserSettingsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9221,13 +9226,13 @@ end
 function M.DeleteUserAsync(DeleteUserRequest, cb)
 	assert(DeleteUserRequest, "You must provide a DeleteUserRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.DeleteUser",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.DeleteUser",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteUserRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteUserRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9253,13 +9258,13 @@ end
 function M.InitiateAuthAsync(InitiateAuthRequest, cb)
 	assert(InitiateAuthRequest, "You must provide a InitiateAuthRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.InitiateAuth",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.InitiateAuth",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", InitiateAuthRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", InitiateAuthRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9285,13 +9290,13 @@ end
 function M.ListIdentityProvidersAsync(ListIdentityProvidersRequest, cb)
 	assert(ListIdentityProvidersRequest, "You must provide a ListIdentityProvidersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.ListIdentityProviders",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.ListIdentityProviders",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListIdentityProvidersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListIdentityProvidersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9317,13 +9322,13 @@ end
 function M.SetUserSettingsAsync(SetUserSettingsRequest, cb)
 	assert(SetUserSettingsRequest, "You must provide a SetUserSettingsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.SetUserSettings",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.SetUserSettings",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetUserSettingsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetUserSettingsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9349,13 +9354,13 @@ end
 function M.CreateUserPoolDomainAsync(CreateUserPoolDomainRequest, cb)
 	assert(CreateUserPoolDomainRequest, "You must provide a CreateUserPoolDomainRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.CreateUserPoolDomain",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.CreateUserPoolDomain",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateUserPoolDomainRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateUserPoolDomainRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9381,13 +9386,13 @@ end
 function M.RespondToAuthChallengeAsync(RespondToAuthChallengeRequest, cb)
 	assert(RespondToAuthChallengeRequest, "You must provide a RespondToAuthChallengeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.RespondToAuthChallenge",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.RespondToAuthChallenge",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RespondToAuthChallengeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RespondToAuthChallengeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9413,13 +9418,13 @@ end
 function M.StartUserImportJobAsync(StartUserImportJobRequest, cb)
 	assert(StartUserImportJobRequest, "You must provide a StartUserImportJobRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.StartUserImportJob",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.StartUserImportJob",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StartUserImportJobRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StartUserImportJobRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9445,13 +9450,13 @@ end
 function M.DescribeUserImportJobAsync(DescribeUserImportJobRequest, cb)
 	assert(DescribeUserImportJobRequest, "You must provide a DescribeUserImportJobRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.DescribeUserImportJob",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.DescribeUserImportJob",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeUserImportJobRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeUserImportJobRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9477,13 +9482,13 @@ end
 function M.UpdateGroupAsync(UpdateGroupRequest, cb)
 	assert(UpdateGroupRequest, "You must provide a UpdateGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.UpdateGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.UpdateGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9509,13 +9514,13 @@ end
 function M.AdminAddUserToGroupAsync(AdminAddUserToGroupRequest, cb)
 	assert(AdminAddUserToGroupRequest, "You must provide a AdminAddUserToGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminAddUserToGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminAddUserToGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AdminAddUserToGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AdminAddUserToGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9541,13 +9546,13 @@ end
 function M.CreateUserPoolAsync(CreateUserPoolRequest, cb)
 	assert(CreateUserPoolRequest, "You must provide a CreateUserPoolRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.CreateUserPool",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.CreateUserPool",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateUserPoolRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateUserPoolRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9573,13 +9578,13 @@ end
 function M.AdminDeleteUserAttributesAsync(AdminDeleteUserAttributesRequest, cb)
 	assert(AdminDeleteUserAttributesRequest, "You must provide a AdminDeleteUserAttributesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminDeleteUserAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminDeleteUserAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AdminDeleteUserAttributesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AdminDeleteUserAttributesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9605,13 +9610,13 @@ end
 function M.DeleteUserPoolClientAsync(DeleteUserPoolClientRequest, cb)
 	assert(DeleteUserPoolClientRequest, "You must provide a DeleteUserPoolClientRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.DeleteUserPoolClient",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.DeleteUserPoolClient",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteUserPoolClientRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteUserPoolClientRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9637,13 +9642,13 @@ end
 function M.AdminRespondToAuthChallengeAsync(AdminRespondToAuthChallengeRequest, cb)
 	assert(AdminRespondToAuthChallengeRequest, "You must provide a AdminRespondToAuthChallengeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminRespondToAuthChallenge",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.AdminRespondToAuthChallenge",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AdminRespondToAuthChallengeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AdminRespondToAuthChallengeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9669,13 +9674,13 @@ end
 function M.CreateIdentityProviderAsync(CreateIdentityProviderRequest, cb)
 	assert(CreateIdentityProviderRequest, "You must provide a CreateIdentityProviderRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.CreateIdentityProvider",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityProviderService.CreateIdentityProvider",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateIdentityProviderRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateIdentityProviderRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

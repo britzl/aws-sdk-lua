@@ -5743,12 +5743,12 @@ function M.TagList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -5772,8 +5772,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -5786,13 +5791,13 @@ end
 function M.GetDeploymentConfigAsync(GetDeploymentConfigInput, cb)
 	assert(GetDeploymentConfigInput, "You must provide a GetDeploymentConfigInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.GetDeploymentConfig",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.GetDeploymentConfig",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetDeploymentConfigInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetDeploymentConfigInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5818,13 +5823,13 @@ end
 function M.UpdateDeploymentGroupAsync(UpdateDeploymentGroupInput, cb)
 	assert(UpdateDeploymentGroupInput, "You must provide a UpdateDeploymentGroupInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.UpdateDeploymentGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.UpdateDeploymentGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateDeploymentGroupInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateDeploymentGroupInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5850,13 +5855,13 @@ end
 function M.BatchGetDeploymentsAsync(BatchGetDeploymentsInput, cb)
 	assert(BatchGetDeploymentsInput, "You must provide a BatchGetDeploymentsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.BatchGetDeployments",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.BatchGetDeployments",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", BatchGetDeploymentsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", BatchGetDeploymentsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5882,13 +5887,13 @@ end
 function M.ContinueDeploymentAsync(ContinueDeploymentInput, cb)
 	assert(ContinueDeploymentInput, "You must provide a ContinueDeploymentInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.ContinueDeployment",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.ContinueDeployment",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ContinueDeploymentInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ContinueDeploymentInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5914,13 +5919,13 @@ end
 function M.GetDeploymentGroupAsync(GetDeploymentGroupInput, cb)
 	assert(GetDeploymentGroupInput, "You must provide a GetDeploymentGroupInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.GetDeploymentGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.GetDeploymentGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetDeploymentGroupInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetDeploymentGroupInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5946,13 +5951,13 @@ end
 function M.ListDeploymentGroupsAsync(ListDeploymentGroupsInput, cb)
 	assert(ListDeploymentGroupsInput, "You must provide a ListDeploymentGroupsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.ListDeploymentGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.ListDeploymentGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListDeploymentGroupsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListDeploymentGroupsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5978,13 +5983,13 @@ end
 function M.DeleteApplicationAsync(DeleteApplicationInput, cb)
 	assert(DeleteApplicationInput, "You must provide a DeleteApplicationInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.DeleteApplication",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.DeleteApplication",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteApplicationInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteApplicationInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6010,13 +6015,13 @@ end
 function M.CreateDeploymentAsync(CreateDeploymentInput, cb)
 	assert(CreateDeploymentInput, "You must provide a CreateDeploymentInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.CreateDeployment",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.CreateDeployment",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateDeploymentInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateDeploymentInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6042,13 +6047,13 @@ end
 function M.StopDeploymentAsync(StopDeploymentInput, cb)
 	assert(StopDeploymentInput, "You must provide a StopDeploymentInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.StopDeployment",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.StopDeployment",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StopDeploymentInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StopDeploymentInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6074,13 +6079,13 @@ end
 function M.DeleteDeploymentConfigAsync(DeleteDeploymentConfigInput, cb)
 	assert(DeleteDeploymentConfigInput, "You must provide a DeleteDeploymentConfigInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.DeleteDeploymentConfig",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.DeleteDeploymentConfig",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteDeploymentConfigInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteDeploymentConfigInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6106,13 +6111,13 @@ end
 function M.RemoveTagsFromOnPremisesInstancesAsync(RemoveTagsFromOnPremisesInstancesInput, cb)
 	assert(RemoveTagsFromOnPremisesInstancesInput, "You must provide a RemoveTagsFromOnPremisesInstancesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.RemoveTagsFromOnPremisesInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.RemoveTagsFromOnPremisesInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RemoveTagsFromOnPremisesInstancesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RemoveTagsFromOnPremisesInstancesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6138,13 +6143,13 @@ end
 function M.RegisterOnPremisesInstanceAsync(RegisterOnPremisesInstanceInput, cb)
 	assert(RegisterOnPremisesInstanceInput, "You must provide a RegisterOnPremisesInstanceInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.RegisterOnPremisesInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.RegisterOnPremisesInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RegisterOnPremisesInstanceInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RegisterOnPremisesInstanceInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6170,13 +6175,13 @@ end
 function M.ListOnPremisesInstancesAsync(ListOnPremisesInstancesInput, cb)
 	assert(ListOnPremisesInstancesInput, "You must provide a ListOnPremisesInstancesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.ListOnPremisesInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.ListOnPremisesInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListOnPremisesInstancesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListOnPremisesInstancesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6202,13 +6207,13 @@ end
 function M.ListDeploymentConfigsAsync(ListDeploymentConfigsInput, cb)
 	assert(ListDeploymentConfigsInput, "You must provide a ListDeploymentConfigsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.ListDeploymentConfigs",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.ListDeploymentConfigs",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListDeploymentConfigsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListDeploymentConfigsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6234,13 +6239,13 @@ end
 function M.GetApplicationAsync(GetApplicationInput, cb)
 	assert(GetApplicationInput, "You must provide a GetApplicationInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.GetApplication",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.GetApplication",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetApplicationInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetApplicationInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6266,13 +6271,13 @@ end
 function M.GetDeploymentInstanceAsync(GetDeploymentInstanceInput, cb)
 	assert(GetDeploymentInstanceInput, "You must provide a GetDeploymentInstanceInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.GetDeploymentInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.GetDeploymentInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetDeploymentInstanceInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetDeploymentInstanceInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6298,13 +6303,13 @@ end
 function M.SkipWaitTimeForInstanceTerminationAsync(SkipWaitTimeForInstanceTerminationInput, cb)
 	assert(SkipWaitTimeForInstanceTerminationInput, "You must provide a SkipWaitTimeForInstanceTerminationInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.SkipWaitTimeForInstanceTermination",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.SkipWaitTimeForInstanceTermination",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SkipWaitTimeForInstanceTerminationInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SkipWaitTimeForInstanceTerminationInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6330,13 +6335,13 @@ end
 function M.BatchGetDeploymentGroupsAsync(BatchGetDeploymentGroupsInput, cb)
 	assert(BatchGetDeploymentGroupsInput, "You must provide a BatchGetDeploymentGroupsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.BatchGetDeploymentGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.BatchGetDeploymentGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", BatchGetDeploymentGroupsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", BatchGetDeploymentGroupsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6362,13 +6367,13 @@ end
 function M.BatchGetOnPremisesInstancesAsync(BatchGetOnPremisesInstancesInput, cb)
 	assert(BatchGetOnPremisesInstancesInput, "You must provide a BatchGetOnPremisesInstancesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.BatchGetOnPremisesInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.BatchGetOnPremisesInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", BatchGetOnPremisesInstancesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", BatchGetOnPremisesInstancesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6394,13 +6399,13 @@ end
 function M.GetApplicationRevisionAsync(GetApplicationRevisionInput, cb)
 	assert(GetApplicationRevisionInput, "You must provide a GetApplicationRevisionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.GetApplicationRevision",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.GetApplicationRevision",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetApplicationRevisionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetApplicationRevisionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6426,13 +6431,13 @@ end
 function M.BatchGetDeploymentInstancesAsync(BatchGetDeploymentInstancesInput, cb)
 	assert(BatchGetDeploymentInstancesInput, "You must provide a BatchGetDeploymentInstancesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.BatchGetDeploymentInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.BatchGetDeploymentInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", BatchGetDeploymentInstancesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", BatchGetDeploymentInstancesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6458,13 +6463,13 @@ end
 function M.UpdateApplicationAsync(UpdateApplicationInput, cb)
 	assert(UpdateApplicationInput, "You must provide a UpdateApplicationInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.UpdateApplication",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.UpdateApplication",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateApplicationInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateApplicationInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6490,13 +6495,13 @@ end
 function M.CreateDeploymentGroupAsync(CreateDeploymentGroupInput, cb)
 	assert(CreateDeploymentGroupInput, "You must provide a CreateDeploymentGroupInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.CreateDeploymentGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.CreateDeploymentGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateDeploymentGroupInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateDeploymentGroupInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6522,13 +6527,13 @@ end
 function M.ListApplicationRevisionsAsync(ListApplicationRevisionsInput, cb)
 	assert(ListApplicationRevisionsInput, "You must provide a ListApplicationRevisionsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.ListApplicationRevisions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.ListApplicationRevisions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListApplicationRevisionsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListApplicationRevisionsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6554,13 +6559,13 @@ end
 function M.ListDeploymentInstancesAsync(ListDeploymentInstancesInput, cb)
 	assert(ListDeploymentInstancesInput, "You must provide a ListDeploymentInstancesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.ListDeploymentInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.ListDeploymentInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListDeploymentInstancesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListDeploymentInstancesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6586,13 +6591,13 @@ end
 function M.BatchGetApplicationRevisionsAsync(BatchGetApplicationRevisionsInput, cb)
 	assert(BatchGetApplicationRevisionsInput, "You must provide a BatchGetApplicationRevisionsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.BatchGetApplicationRevisions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.BatchGetApplicationRevisions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", BatchGetApplicationRevisionsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", BatchGetApplicationRevisionsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6618,13 +6623,13 @@ end
 function M.DeregisterOnPremisesInstanceAsync(DeregisterOnPremisesInstanceInput, cb)
 	assert(DeregisterOnPremisesInstanceInput, "You must provide a DeregisterOnPremisesInstanceInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.DeregisterOnPremisesInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.DeregisterOnPremisesInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeregisterOnPremisesInstanceInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeregisterOnPremisesInstanceInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6650,13 +6655,13 @@ end
 function M.CreateDeploymentConfigAsync(CreateDeploymentConfigInput, cb)
 	assert(CreateDeploymentConfigInput, "You must provide a CreateDeploymentConfigInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.CreateDeploymentConfig",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.CreateDeploymentConfig",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateDeploymentConfigInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateDeploymentConfigInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6682,13 +6687,13 @@ end
 function M.GetOnPremisesInstanceAsync(GetOnPremisesInstanceInput, cb)
 	assert(GetOnPremisesInstanceInput, "You must provide a GetOnPremisesInstanceInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.GetOnPremisesInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.GetOnPremisesInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetOnPremisesInstanceInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetOnPremisesInstanceInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6714,13 +6719,13 @@ end
 function M.AddTagsToOnPremisesInstancesAsync(AddTagsToOnPremisesInstancesInput, cb)
 	assert(AddTagsToOnPremisesInstancesInput, "You must provide a AddTagsToOnPremisesInstancesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.AddTagsToOnPremisesInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.AddTagsToOnPremisesInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddTagsToOnPremisesInstancesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddTagsToOnPremisesInstancesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6746,13 +6751,13 @@ end
 function M.CreateApplicationAsync(CreateApplicationInput, cb)
 	assert(CreateApplicationInput, "You must provide a CreateApplicationInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.CreateApplication",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.CreateApplication",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateApplicationInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateApplicationInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6778,13 +6783,13 @@ end
 function M.ListDeploymentsAsync(ListDeploymentsInput, cb)
 	assert(ListDeploymentsInput, "You must provide a ListDeploymentsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.ListDeployments",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.ListDeployments",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListDeploymentsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListDeploymentsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6810,13 +6815,13 @@ end
 function M.ListApplicationsAsync(ListApplicationsInput, cb)
 	assert(ListApplicationsInput, "You must provide a ListApplicationsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.ListApplications",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.ListApplications",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListApplicationsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListApplicationsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6842,13 +6847,13 @@ end
 function M.DeleteDeploymentGroupAsync(DeleteDeploymentGroupInput, cb)
 	assert(DeleteDeploymentGroupInput, "You must provide a DeleteDeploymentGroupInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.DeleteDeploymentGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.DeleteDeploymentGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteDeploymentGroupInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteDeploymentGroupInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6874,13 +6879,13 @@ end
 function M.ListGitHubAccountTokenNamesAsync(ListGitHubAccountTokenNamesInput, cb)
 	assert(ListGitHubAccountTokenNamesInput, "You must provide a ListGitHubAccountTokenNamesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.ListGitHubAccountTokenNames",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.ListGitHubAccountTokenNames",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListGitHubAccountTokenNamesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListGitHubAccountTokenNamesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6906,13 +6911,13 @@ end
 function M.RegisterApplicationRevisionAsync(RegisterApplicationRevisionInput, cb)
 	assert(RegisterApplicationRevisionInput, "You must provide a RegisterApplicationRevisionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.RegisterApplicationRevision",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.RegisterApplicationRevision",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RegisterApplicationRevisionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RegisterApplicationRevisionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6938,13 +6943,13 @@ end
 function M.GetDeploymentAsync(GetDeploymentInput, cb)
 	assert(GetDeploymentInput, "You must provide a GetDeploymentInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.GetDeployment",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.GetDeployment",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetDeploymentInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetDeploymentInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6970,13 +6975,13 @@ end
 function M.BatchGetApplicationsAsync(BatchGetApplicationsInput, cb)
 	assert(BatchGetApplicationsInput, "You must provide a BatchGetApplicationsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.BatchGetApplications",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.BatchGetApplications",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", BatchGetApplicationsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", BatchGetApplicationsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end

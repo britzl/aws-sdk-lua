@@ -5886,12 +5886,12 @@ function M.Instances(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -5915,8 +5915,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -5929,13 +5934,13 @@ end
 function M.DeregisterVolumeAsync(DeregisterVolumeRequest, cb)
 	assert(DeregisterVolumeRequest, "You must provide a DeregisterVolumeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DeregisterVolume",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DeregisterVolume",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeregisterVolumeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeregisterVolumeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5961,13 +5966,13 @@ end
 function M.DeregisterInstanceAsync(DeregisterInstanceRequest, cb)
 	assert(DeregisterInstanceRequest, "You must provide a DeregisterInstanceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DeregisterInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DeregisterInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeregisterInstanceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeregisterInstanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5993,13 +5998,13 @@ end
 function M.DescribeTimeBasedAutoScalingAsync(DescribeTimeBasedAutoScalingRequest, cb)
 	assert(DescribeTimeBasedAutoScalingRequest, "You must provide a DescribeTimeBasedAutoScalingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeTimeBasedAutoScaling",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeTimeBasedAutoScaling",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeTimeBasedAutoScalingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeTimeBasedAutoScalingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6025,13 +6030,13 @@ end
 function M.RebootInstanceAsync(RebootInstanceRequest, cb)
 	assert(RebootInstanceRequest, "You must provide a RebootInstanceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.RebootInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.RebootInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RebootInstanceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RebootInstanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6057,13 +6062,13 @@ end
 function M.StartStackAsync(StartStackRequest, cb)
 	assert(StartStackRequest, "You must provide a StartStackRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.StartStack",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.StartStack",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StartStackRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StartStackRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6089,13 +6094,13 @@ end
 function M.UnassignInstanceAsync(UnassignInstanceRequest, cb)
 	assert(UnassignInstanceRequest, "You must provide a UnassignInstanceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UnassignInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UnassignInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UnassignInstanceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UnassignInstanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6121,13 +6126,13 @@ end
 function M.DisassociateElasticIpAsync(DisassociateElasticIpRequest, cb)
 	assert(DisassociateElasticIpRequest, "You must provide a DisassociateElasticIpRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DisassociateElasticIp",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DisassociateElasticIp",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisassociateElasticIpRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisassociateElasticIpRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6153,13 +6158,13 @@ end
 function M.CreateUserProfileAsync(CreateUserProfileRequest, cb)
 	assert(CreateUserProfileRequest, "You must provide a CreateUserProfileRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.CreateUserProfile",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.CreateUserProfile",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateUserProfileRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateUserProfileRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6185,13 +6190,13 @@ end
 function M.AttachElasticLoadBalancerAsync(AttachElasticLoadBalancerRequest, cb)
 	assert(AttachElasticLoadBalancerRequest, "You must provide a AttachElasticLoadBalancerRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.AttachElasticLoadBalancer",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.AttachElasticLoadBalancer",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AttachElasticLoadBalancerRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AttachElasticLoadBalancerRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6217,13 +6222,13 @@ end
 function M.RegisterEcsClusterAsync(RegisterEcsClusterRequest, cb)
 	assert(RegisterEcsClusterRequest, "You must provide a RegisterEcsClusterRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.RegisterEcsCluster",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.RegisterEcsCluster",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RegisterEcsClusterRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RegisterEcsClusterRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6249,13 +6254,13 @@ end
 function M.DescribeLayersAsync(DescribeLayersRequest, cb)
 	assert(DescribeLayersRequest, "You must provide a DescribeLayersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeLayers",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeLayers",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeLayersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeLayersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6281,13 +6286,13 @@ end
 function M.UpdateElasticIpAsync(UpdateElasticIpRequest, cb)
 	assert(UpdateElasticIpRequest, "You must provide a UpdateElasticIpRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UpdateElasticIp",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UpdateElasticIp",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateElasticIpRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateElasticIpRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6313,13 +6318,13 @@ end
 function M.DeleteInstanceAsync(DeleteInstanceRequest, cb)
 	assert(DeleteInstanceRequest, "You must provide a DeleteInstanceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DeleteInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DeleteInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteInstanceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteInstanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6345,13 +6350,13 @@ end
 function M.DetachElasticLoadBalancerAsync(DetachElasticLoadBalancerRequest, cb)
 	assert(DetachElasticLoadBalancerRequest, "You must provide a DetachElasticLoadBalancerRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DetachElasticLoadBalancer",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DetachElasticLoadBalancer",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DetachElasticLoadBalancerRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DetachElasticLoadBalancerRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6377,13 +6382,13 @@ end
 function M.CreateDeploymentAsync(CreateDeploymentRequest, cb)
 	assert(CreateDeploymentRequest, "You must provide a CreateDeploymentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.CreateDeployment",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.CreateDeployment",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateDeploymentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateDeploymentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6409,13 +6414,13 @@ end
 function M.UnassignVolumeAsync(UnassignVolumeRequest, cb)
 	assert(UnassignVolumeRequest, "You must provide a UnassignVolumeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UnassignVolume",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UnassignVolume",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UnassignVolumeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UnassignVolumeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6441,13 +6446,13 @@ end
 function M.DeleteUserProfileAsync(DeleteUserProfileRequest, cb)
 	assert(DeleteUserProfileRequest, "You must provide a DeleteUserProfileRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DeleteUserProfile",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DeleteUserProfile",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteUserProfileRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteUserProfileRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6473,13 +6478,13 @@ end
 function M.CreateStackAsync(CreateStackRequest, cb)
 	assert(CreateStackRequest, "You must provide a CreateStackRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.CreateStack",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.CreateStack",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateStackRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateStackRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6505,13 +6510,13 @@ end
 function M.UpdateRdsDbInstanceAsync(UpdateRdsDbInstanceRequest, cb)
 	assert(UpdateRdsDbInstanceRequest, "You must provide a UpdateRdsDbInstanceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UpdateRdsDbInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UpdateRdsDbInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateRdsDbInstanceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateRdsDbInstanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6537,13 +6542,13 @@ end
 function M.GetHostnameSuggestionAsync(GetHostnameSuggestionRequest, cb)
 	assert(GetHostnameSuggestionRequest, "You must provide a GetHostnameSuggestionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.GetHostnameSuggestion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.GetHostnameSuggestion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetHostnameSuggestionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetHostnameSuggestionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6569,13 +6574,13 @@ end
 function M.DescribeInstancesAsync(DescribeInstancesRequest, cb)
 	assert(DescribeInstancesRequest, "You must provide a DescribeInstancesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeInstancesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeInstancesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6601,13 +6606,13 @@ end
 function M.DescribeCommandsAsync(DescribeCommandsRequest, cb)
 	assert(DescribeCommandsRequest, "You must provide a DescribeCommandsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeCommands",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeCommands",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeCommandsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeCommandsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6631,13 +6636,13 @@ end
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeMyUserProfileAsync(cb)
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeMyUserProfile",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeMyUserProfile",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", {}, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6662,13 +6667,13 @@ end
 function M.DeregisterElasticIpAsync(DeregisterElasticIpRequest, cb)
 	assert(DeregisterElasticIpRequest, "You must provide a DeregisterElasticIpRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DeregisterElasticIp",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DeregisterElasticIp",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeregisterElasticIpRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeregisterElasticIpRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6694,13 +6699,13 @@ end
 function M.DescribeAgentVersionsAsync(DescribeAgentVersionsRequest, cb)
 	assert(DescribeAgentVersionsRequest, "You must provide a DescribeAgentVersionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeAgentVersions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeAgentVersions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeAgentVersionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeAgentVersionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6726,13 +6731,13 @@ end
 function M.StopStackAsync(StopStackRequest, cb)
 	assert(StopStackRequest, "You must provide a StopStackRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.StopStack",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.StopStack",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StopStackRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StopStackRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6758,13 +6763,13 @@ end
 function M.DescribeAppsAsync(DescribeAppsRequest, cb)
 	assert(DescribeAppsRequest, "You must provide a DescribeAppsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeApps",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeApps",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeAppsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeAppsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6790,13 +6795,13 @@ end
 function M.DescribeElasticIpsAsync(DescribeElasticIpsRequest, cb)
 	assert(DescribeElasticIpsRequest, "You must provide a DescribeElasticIpsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeElasticIps",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeElasticIps",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeElasticIpsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeElasticIpsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6822,13 +6827,13 @@ end
 function M.UpdateVolumeAsync(UpdateVolumeRequest, cb)
 	assert(UpdateVolumeRequest, "You must provide a UpdateVolumeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UpdateVolume",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UpdateVolume",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateVolumeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateVolumeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6854,13 +6859,13 @@ end
 function M.StartInstanceAsync(StartInstanceRequest, cb)
 	assert(StartInstanceRequest, "You must provide a StartInstanceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.StartInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.StartInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StartInstanceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StartInstanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6886,13 +6891,13 @@ end
 function M.UpdateMyUserProfileAsync(UpdateMyUserProfileRequest, cb)
 	assert(UpdateMyUserProfileRequest, "You must provide a UpdateMyUserProfileRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UpdateMyUserProfile",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UpdateMyUserProfile",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateMyUserProfileRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateMyUserProfileRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6918,13 +6923,13 @@ end
 function M.DeleteAppAsync(DeleteAppRequest, cb)
 	assert(DeleteAppRequest, "You must provide a DeleteAppRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DeleteApp",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DeleteApp",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteAppRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteAppRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6950,13 +6955,13 @@ end
 function M.UpdateInstanceAsync(UpdateInstanceRequest, cb)
 	assert(UpdateInstanceRequest, "You must provide a UpdateInstanceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UpdateInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UpdateInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateInstanceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateInstanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6982,13 +6987,13 @@ end
 function M.RegisterElasticIpAsync(RegisterElasticIpRequest, cb)
 	assert(RegisterElasticIpRequest, "You must provide a RegisterElasticIpRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.RegisterElasticIp",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.RegisterElasticIp",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RegisterElasticIpRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RegisterElasticIpRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7014,13 +7019,13 @@ end
 function M.TagResourceAsync(TagResourceRequest, cb)
 	assert(TagResourceRequest, "You must provide a TagResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.TagResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.TagResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", TagResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", TagResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7046,13 +7051,13 @@ end
 function M.DeregisterRdsDbInstanceAsync(DeregisterRdsDbInstanceRequest, cb)
 	assert(DeregisterRdsDbInstanceRequest, "You must provide a DeregisterRdsDbInstanceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DeregisterRdsDbInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DeregisterRdsDbInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeregisterRdsDbInstanceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeregisterRdsDbInstanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7078,13 +7083,13 @@ end
 function M.DescribeRaidArraysAsync(DescribeRaidArraysRequest, cb)
 	assert(DescribeRaidArraysRequest, "You must provide a DescribeRaidArraysRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeRaidArrays",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeRaidArrays",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeRaidArraysRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeRaidArraysRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7110,13 +7115,13 @@ end
 function M.RegisterVolumeAsync(RegisterVolumeRequest, cb)
 	assert(RegisterVolumeRequest, "You must provide a RegisterVolumeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.RegisterVolume",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.RegisterVolume",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RegisterVolumeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RegisterVolumeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7142,13 +7147,13 @@ end
 function M.SetPermissionAsync(SetPermissionRequest, cb)
 	assert(SetPermissionRequest, "You must provide a SetPermissionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.SetPermission",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.SetPermission",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetPermissionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetPermissionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7174,13 +7179,13 @@ end
 function M.DescribeDeploymentsAsync(DescribeDeploymentsRequest, cb)
 	assert(DescribeDeploymentsRequest, "You must provide a DescribeDeploymentsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeDeployments",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeDeployments",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeDeploymentsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeDeploymentsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7206,13 +7211,13 @@ end
 function M.ListTagsAsync(ListTagsRequest, cb)
 	assert(ListTagsRequest, "You must provide a ListTagsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.ListTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.ListTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListTagsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListTagsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7238,13 +7243,13 @@ end
 function M.CloneStackAsync(CloneStackRequest, cb)
 	assert(CloneStackRequest, "You must provide a CloneStackRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.CloneStack",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.CloneStack",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CloneStackRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CloneStackRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7270,13 +7275,13 @@ end
 function M.DescribeServiceErrorsAsync(DescribeServiceErrorsRequest, cb)
 	assert(DescribeServiceErrorsRequest, "You must provide a DescribeServiceErrorsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeServiceErrors",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeServiceErrors",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeServiceErrorsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeServiceErrorsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7302,13 +7307,13 @@ end
 function M.AssociateElasticIpAsync(AssociateElasticIpRequest, cb)
 	assert(AssociateElasticIpRequest, "You must provide a AssociateElasticIpRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.AssociateElasticIp",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.AssociateElasticIp",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AssociateElasticIpRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AssociateElasticIpRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7334,13 +7339,13 @@ end
 function M.CreateInstanceAsync(CreateInstanceRequest, cb)
 	assert(CreateInstanceRequest, "You must provide a CreateInstanceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.CreateInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.CreateInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateInstanceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateInstanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7366,13 +7371,13 @@ end
 function M.DescribeElasticLoadBalancersAsync(DescribeElasticLoadBalancersRequest, cb)
 	assert(DescribeElasticLoadBalancersRequest, "You must provide a DescribeElasticLoadBalancersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeElasticLoadBalancers",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeElasticLoadBalancers",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeElasticLoadBalancersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeElasticLoadBalancersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7398,13 +7403,13 @@ end
 function M.DeregisterEcsClusterAsync(DeregisterEcsClusterRequest, cb)
 	assert(DeregisterEcsClusterRequest, "You must provide a DeregisterEcsClusterRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DeregisterEcsCluster",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DeregisterEcsCluster",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeregisterEcsClusterRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeregisterEcsClusterRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7430,13 +7435,13 @@ end
 function M.DescribeEcsClustersAsync(DescribeEcsClustersRequest, cb)
 	assert(DescribeEcsClustersRequest, "You must provide a DescribeEcsClustersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeEcsClusters",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeEcsClusters",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeEcsClustersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeEcsClustersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7462,13 +7467,13 @@ end
 function M.RegisterRdsDbInstanceAsync(RegisterRdsDbInstanceRequest, cb)
 	assert(RegisterRdsDbInstanceRequest, "You must provide a RegisterRdsDbInstanceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.RegisterRdsDbInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.RegisterRdsDbInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RegisterRdsDbInstanceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RegisterRdsDbInstanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7494,13 +7499,13 @@ end
 function M.SetTimeBasedAutoScalingAsync(SetTimeBasedAutoScalingRequest, cb)
 	assert(SetTimeBasedAutoScalingRequest, "You must provide a SetTimeBasedAutoScalingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.SetTimeBasedAutoScaling",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.SetTimeBasedAutoScaling",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetTimeBasedAutoScalingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetTimeBasedAutoScalingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7526,13 +7531,13 @@ end
 function M.DescribeLoadBasedAutoScalingAsync(DescribeLoadBasedAutoScalingRequest, cb)
 	assert(DescribeLoadBasedAutoScalingRequest, "You must provide a DescribeLoadBasedAutoScalingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeLoadBasedAutoScaling",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeLoadBasedAutoScaling",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeLoadBasedAutoScalingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeLoadBasedAutoScalingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7558,13 +7563,13 @@ end
 function M.AssignInstanceAsync(AssignInstanceRequest, cb)
 	assert(AssignInstanceRequest, "You must provide a AssignInstanceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.AssignInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.AssignInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AssignInstanceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AssignInstanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7590,13 +7595,13 @@ end
 function M.SetLoadBasedAutoScalingAsync(SetLoadBasedAutoScalingRequest, cb)
 	assert(SetLoadBasedAutoScalingRequest, "You must provide a SetLoadBasedAutoScalingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.SetLoadBasedAutoScaling",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.SetLoadBasedAutoScaling",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetLoadBasedAutoScalingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetLoadBasedAutoScalingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7622,13 +7627,13 @@ end
 function M.DescribeStackSummaryAsync(DescribeStackSummaryRequest, cb)
 	assert(DescribeStackSummaryRequest, "You must provide a DescribeStackSummaryRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeStackSummary",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeStackSummary",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeStackSummaryRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeStackSummaryRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7654,13 +7659,13 @@ end
 function M.StopInstanceAsync(StopInstanceRequest, cb)
 	assert(StopInstanceRequest, "You must provide a StopInstanceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.StopInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.StopInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StopInstanceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StopInstanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7686,13 +7691,13 @@ end
 function M.DescribeStacksAsync(DescribeStacksRequest, cb)
 	assert(DescribeStacksRequest, "You must provide a DescribeStacksRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeStacks",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeStacks",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeStacksRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeStacksRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7718,13 +7723,13 @@ end
 function M.CreateLayerAsync(CreateLayerRequest, cb)
 	assert(CreateLayerRequest, "You must provide a CreateLayerRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.CreateLayer",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.CreateLayer",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateLayerRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateLayerRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7750,13 +7755,13 @@ end
 function M.UpdateStackAsync(UpdateStackRequest, cb)
 	assert(UpdateStackRequest, "You must provide a UpdateStackRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UpdateStack",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UpdateStack",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateStackRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateStackRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7782,13 +7787,13 @@ end
 function M.GrantAccessAsync(GrantAccessRequest, cb)
 	assert(GrantAccessRequest, "You must provide a GrantAccessRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.GrantAccess",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.GrantAccess",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GrantAccessRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GrantAccessRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7814,13 +7819,13 @@ end
 function M.CreateAppAsync(CreateAppRequest, cb)
 	assert(CreateAppRequest, "You must provide a CreateAppRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.CreateApp",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.CreateApp",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateAppRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateAppRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7846,13 +7851,13 @@ end
 function M.UntagResourceAsync(UntagResourceRequest, cb)
 	assert(UntagResourceRequest, "You must provide a UntagResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UntagResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UntagResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UntagResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UntagResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7878,13 +7883,13 @@ end
 function M.DescribePermissionsAsync(DescribePermissionsRequest, cb)
 	assert(DescribePermissionsRequest, "You must provide a DescribePermissionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribePermissions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribePermissions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribePermissionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribePermissionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7910,13 +7915,13 @@ end
 function M.DeleteLayerAsync(DeleteLayerRequest, cb)
 	assert(DeleteLayerRequest, "You must provide a DeleteLayerRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DeleteLayer",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DeleteLayer",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteLayerRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteLayerRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7942,13 +7947,13 @@ end
 function M.DescribeVolumesAsync(DescribeVolumesRequest, cb)
 	assert(DescribeVolumesRequest, "You must provide a DescribeVolumesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeVolumes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeVolumes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeVolumesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeVolumesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7974,13 +7979,13 @@ end
 function M.DescribeStackProvisioningParametersAsync(DescribeStackProvisioningParametersRequest, cb)
 	assert(DescribeStackProvisioningParametersRequest, "You must provide a DescribeStackProvisioningParametersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeStackProvisioningParameters",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeStackProvisioningParameters",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeStackProvisioningParametersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeStackProvisioningParametersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8006,13 +8011,13 @@ end
 function M.RegisterInstanceAsync(RegisterInstanceRequest, cb)
 	assert(RegisterInstanceRequest, "You must provide a RegisterInstanceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.RegisterInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.RegisterInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RegisterInstanceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RegisterInstanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8038,13 +8043,13 @@ end
 function M.DeleteStackAsync(DeleteStackRequest, cb)
 	assert(DeleteStackRequest, "You must provide a DeleteStackRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DeleteStack",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DeleteStack",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteStackRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteStackRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8070,13 +8075,13 @@ end
 function M.AssignVolumeAsync(AssignVolumeRequest, cb)
 	assert(AssignVolumeRequest, "You must provide a AssignVolumeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.AssignVolume",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.AssignVolume",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AssignVolumeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AssignVolumeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8102,13 +8107,13 @@ end
 function M.UpdateAppAsync(UpdateAppRequest, cb)
 	assert(UpdateAppRequest, "You must provide a UpdateAppRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UpdateApp",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UpdateApp",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateAppRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateAppRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8134,13 +8139,13 @@ end
 function M.DescribeRdsDbInstancesAsync(DescribeRdsDbInstancesRequest, cb)
 	assert(DescribeRdsDbInstancesRequest, "You must provide a DescribeRdsDbInstancesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeRdsDbInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeRdsDbInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeRdsDbInstancesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeRdsDbInstancesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8166,13 +8171,13 @@ end
 function M.UpdateUserProfileAsync(UpdateUserProfileRequest, cb)
 	assert(UpdateUserProfileRequest, "You must provide a UpdateUserProfileRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UpdateUserProfile",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UpdateUserProfile",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateUserProfileRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateUserProfileRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8198,13 +8203,13 @@ end
 function M.DescribeUserProfilesAsync(DescribeUserProfilesRequest, cb)
 	assert(DescribeUserProfilesRequest, "You must provide a DescribeUserProfilesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeUserProfiles",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeUserProfiles",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeUserProfilesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeUserProfilesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8230,13 +8235,13 @@ end
 function M.UpdateLayerAsync(UpdateLayerRequest, cb)
 	assert(UpdateLayerRequest, "You must provide a UpdateLayerRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UpdateLayer",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UpdateLayer",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateLayerRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateLayerRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

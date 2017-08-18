@@ -2166,12 +2166,12 @@ function M.CommunicationList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -2195,8 +2195,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -2209,13 +2214,13 @@ end
 function M.CreateCaseAsync(CreateCaseRequest, cb)
 	assert(CreateCaseRequest, "You must provide a CreateCaseRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.CreateCase",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.CreateCase",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateCaseRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateCaseRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2241,13 +2246,13 @@ end
 function M.AddAttachmentsToSetAsync(AddAttachmentsToSetRequest, cb)
 	assert(AddAttachmentsToSetRequest, "You must provide a AddAttachmentsToSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.AddAttachmentsToSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.AddAttachmentsToSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddAttachmentsToSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddAttachmentsToSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2273,13 +2278,13 @@ end
 function M.AddCommunicationToCaseAsync(AddCommunicationToCaseRequest, cb)
 	assert(AddCommunicationToCaseRequest, "You must provide a AddCommunicationToCaseRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.AddCommunicationToCase",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.AddCommunicationToCase",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddCommunicationToCaseRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddCommunicationToCaseRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2305,13 +2310,13 @@ end
 function M.DescribeTrustedAdvisorCheckRefreshStatusesAsync(DescribeTrustedAdvisorCheckRefreshStatusesRequest, cb)
 	assert(DescribeTrustedAdvisorCheckRefreshStatusesRequest, "You must provide a DescribeTrustedAdvisorCheckRefreshStatusesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.DescribeTrustedAdvisorCheckRefreshStatuses",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.DescribeTrustedAdvisorCheckRefreshStatuses",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeTrustedAdvisorCheckRefreshStatusesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeTrustedAdvisorCheckRefreshStatusesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2337,13 +2342,13 @@ end
 function M.DescribeTrustedAdvisorCheckResultAsync(DescribeTrustedAdvisorCheckResultRequest, cb)
 	assert(DescribeTrustedAdvisorCheckResultRequest, "You must provide a DescribeTrustedAdvisorCheckResultRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.DescribeTrustedAdvisorCheckResult",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.DescribeTrustedAdvisorCheckResult",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeTrustedAdvisorCheckResultRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeTrustedAdvisorCheckResultRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2369,13 +2374,13 @@ end
 function M.ResolveCaseAsync(ResolveCaseRequest, cb)
 	assert(ResolveCaseRequest, "You must provide a ResolveCaseRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.ResolveCase",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.ResolveCase",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ResolveCaseRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ResolveCaseRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2401,13 +2406,13 @@ end
 function M.DescribeSeverityLevelsAsync(DescribeSeverityLevelsRequest, cb)
 	assert(DescribeSeverityLevelsRequest, "You must provide a DescribeSeverityLevelsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.DescribeSeverityLevels",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.DescribeSeverityLevels",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeSeverityLevelsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeSeverityLevelsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2433,13 +2438,13 @@ end
 function M.DescribeCasesAsync(DescribeCasesRequest, cb)
 	assert(DescribeCasesRequest, "You must provide a DescribeCasesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.DescribeCases",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.DescribeCases",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeCasesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeCasesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2465,13 +2470,13 @@ end
 function M.RefreshTrustedAdvisorCheckAsync(RefreshTrustedAdvisorCheckRequest, cb)
 	assert(RefreshTrustedAdvisorCheckRequest, "You must provide a RefreshTrustedAdvisorCheckRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.RefreshTrustedAdvisorCheck",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.RefreshTrustedAdvisorCheck",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RefreshTrustedAdvisorCheckRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RefreshTrustedAdvisorCheckRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2497,13 +2502,13 @@ end
 function M.DescribeAttachmentAsync(DescribeAttachmentRequest, cb)
 	assert(DescribeAttachmentRequest, "You must provide a DescribeAttachmentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.DescribeAttachment",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.DescribeAttachment",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeAttachmentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeAttachmentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2529,13 +2534,13 @@ end
 function M.DescribeTrustedAdvisorChecksAsync(DescribeTrustedAdvisorChecksRequest, cb)
 	assert(DescribeTrustedAdvisorChecksRequest, "You must provide a DescribeTrustedAdvisorChecksRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.DescribeTrustedAdvisorChecks",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.DescribeTrustedAdvisorChecks",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeTrustedAdvisorChecksRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeTrustedAdvisorChecksRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2561,13 +2566,13 @@ end
 function M.DescribeTrustedAdvisorCheckSummariesAsync(DescribeTrustedAdvisorCheckSummariesRequest, cb)
 	assert(DescribeTrustedAdvisorCheckSummariesRequest, "You must provide a DescribeTrustedAdvisorCheckSummariesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.DescribeTrustedAdvisorCheckSummaries",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.DescribeTrustedAdvisorCheckSummaries",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeTrustedAdvisorCheckSummariesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeTrustedAdvisorCheckSummariesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2593,13 +2598,13 @@ end
 function M.DescribeCommunicationsAsync(DescribeCommunicationsRequest, cb)
 	assert(DescribeCommunicationsRequest, "You must provide a DescribeCommunicationsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.DescribeCommunications",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.DescribeCommunications",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeCommunicationsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeCommunicationsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2625,13 +2630,13 @@ end
 function M.DescribeServicesAsync(DescribeServicesRequest, cb)
 	assert(DescribeServicesRequest, "You must provide a DescribeServicesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.DescribeServices",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.DescribeServices",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeServicesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeServicesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

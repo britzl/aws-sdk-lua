@@ -1502,12 +1502,12 @@ function M.ReplicationJobList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -1531,8 +1531,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -1545,13 +1550,13 @@ end
 function M.ImportServerCatalogAsync(ImportServerCatalogRequest, cb)
 	assert(ImportServerCatalogRequest, "You must provide a ImportServerCatalogRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.ImportServerCatalog",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.ImportServerCatalog",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ImportServerCatalogRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ImportServerCatalogRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1577,13 +1582,13 @@ end
 function M.GetConnectorsAsync(GetConnectorsRequest, cb)
 	assert(GetConnectorsRequest, "You must provide a GetConnectorsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.GetConnectors",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.GetConnectors",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetConnectorsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetConnectorsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1609,13 +1614,13 @@ end
 function M.DeleteReplicationJobAsync(DeleteReplicationJobRequest, cb)
 	assert(DeleteReplicationJobRequest, "You must provide a DeleteReplicationJobRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.DeleteReplicationJob",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.DeleteReplicationJob",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteReplicationJobRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteReplicationJobRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1641,13 +1646,13 @@ end
 function M.StartOnDemandReplicationRunAsync(StartOnDemandReplicationRunRequest, cb)
 	assert(StartOnDemandReplicationRunRequest, "You must provide a StartOnDemandReplicationRunRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.StartOnDemandReplicationRun",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.StartOnDemandReplicationRun",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StartOnDemandReplicationRunRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StartOnDemandReplicationRunRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1673,13 +1678,13 @@ end
 function M.GetServersAsync(GetServersRequest, cb)
 	assert(GetServersRequest, "You must provide a GetServersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.GetServers",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.GetServers",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetServersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetServersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1705,13 +1710,13 @@ end
 function M.GetReplicationRunsAsync(GetReplicationRunsRequest, cb)
 	assert(GetReplicationRunsRequest, "You must provide a GetReplicationRunsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.GetReplicationRuns",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.GetReplicationRuns",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetReplicationRunsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetReplicationRunsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1737,13 +1742,13 @@ end
 function M.GetReplicationJobsAsync(GetReplicationJobsRequest, cb)
 	assert(GetReplicationJobsRequest, "You must provide a GetReplicationJobsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.GetReplicationJobs",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.GetReplicationJobs",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetReplicationJobsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetReplicationJobsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1769,13 +1774,13 @@ end
 function M.DisassociateConnectorAsync(DisassociateConnectorRequest, cb)
 	assert(DisassociateConnectorRequest, "You must provide a DisassociateConnectorRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.DisassociateConnector",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.DisassociateConnector",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisassociateConnectorRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisassociateConnectorRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1801,13 +1806,13 @@ end
 function M.CreateReplicationJobAsync(CreateReplicationJobRequest, cb)
 	assert(CreateReplicationJobRequest, "You must provide a CreateReplicationJobRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.CreateReplicationJob",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.CreateReplicationJob",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateReplicationJobRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateReplicationJobRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1833,13 +1838,13 @@ end
 function M.UpdateReplicationJobAsync(UpdateReplicationJobRequest, cb)
 	assert(UpdateReplicationJobRequest, "You must provide a UpdateReplicationJobRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.UpdateReplicationJob",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.UpdateReplicationJob",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateReplicationJobRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateReplicationJobRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1865,13 +1870,13 @@ end
 function M.DeleteServerCatalogAsync(DeleteServerCatalogRequest, cb)
 	assert(DeleteServerCatalogRequest, "You must provide a DeleteServerCatalogRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.DeleteServerCatalog",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.DeleteServerCatalog",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteServerCatalogRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteServerCatalogRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

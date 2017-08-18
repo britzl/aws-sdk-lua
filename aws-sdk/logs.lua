@@ -2726,12 +2726,12 @@ function M.TagList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -2755,8 +2755,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -2769,13 +2774,13 @@ end
 function M.PutDestinationAsync(PutDestinationRequest, cb)
 	assert(PutDestinationRequest, "You must provide a PutDestinationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Logs_20140328.PutDestination",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.PutDestination",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutDestinationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutDestinationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2801,13 +2806,13 @@ end
 function M.DeleteDestinationAsync(DeleteDestinationRequest, cb)
 	assert(DeleteDestinationRequest, "You must provide a DeleteDestinationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Logs_20140328.DeleteDestination",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.DeleteDestination",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteDestinationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteDestinationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2833,13 +2838,13 @@ end
 function M.ListTagsLogGroupAsync(ListTagsLogGroupRequest, cb)
 	assert(ListTagsLogGroupRequest, "You must provide a ListTagsLogGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Logs_20140328.ListTagsLogGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.ListTagsLogGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListTagsLogGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListTagsLogGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2865,13 +2870,13 @@ end
 function M.DescribeLogStreamsAsync(DescribeLogStreamsRequest, cb)
 	assert(DescribeLogStreamsRequest, "You must provide a DescribeLogStreamsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Logs_20140328.DescribeLogStreams",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.DescribeLogStreams",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeLogStreamsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeLogStreamsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2897,13 +2902,13 @@ end
 function M.CreateExportTaskAsync(CreateExportTaskRequest, cb)
 	assert(CreateExportTaskRequest, "You must provide a CreateExportTaskRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Logs_20140328.CreateExportTask",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.CreateExportTask",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateExportTaskRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateExportTaskRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2929,13 +2934,13 @@ end
 function M.TestMetricFilterAsync(TestMetricFilterRequest, cb)
 	assert(TestMetricFilterRequest, "You must provide a TestMetricFilterRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Logs_20140328.TestMetricFilter",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.TestMetricFilter",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", TestMetricFilterRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", TestMetricFilterRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2961,13 +2966,13 @@ end
 function M.DeleteLogGroupAsync(DeleteLogGroupRequest, cb)
 	assert(DeleteLogGroupRequest, "You must provide a DeleteLogGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Logs_20140328.DeleteLogGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.DeleteLogGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteLogGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteLogGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2993,13 +2998,13 @@ end
 function M.DescribeMetricFiltersAsync(DescribeMetricFiltersRequest, cb)
 	assert(DescribeMetricFiltersRequest, "You must provide a DescribeMetricFiltersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Logs_20140328.DescribeMetricFilters",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.DescribeMetricFilters",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeMetricFiltersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeMetricFiltersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3025,13 +3030,13 @@ end
 function M.FilterLogEventsAsync(FilterLogEventsRequest, cb)
 	assert(FilterLogEventsRequest, "You must provide a FilterLogEventsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Logs_20140328.FilterLogEvents",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.FilterLogEvents",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", FilterLogEventsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", FilterLogEventsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3057,13 +3062,13 @@ end
 function M.CreateLogGroupAsync(CreateLogGroupRequest, cb)
 	assert(CreateLogGroupRequest, "You must provide a CreateLogGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Logs_20140328.CreateLogGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.CreateLogGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateLogGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateLogGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3089,13 +3094,13 @@ end
 function M.DeleteSubscriptionFilterAsync(DeleteSubscriptionFilterRequest, cb)
 	assert(DeleteSubscriptionFilterRequest, "You must provide a DeleteSubscriptionFilterRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Logs_20140328.DeleteSubscriptionFilter",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.DeleteSubscriptionFilter",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteSubscriptionFilterRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteSubscriptionFilterRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3121,13 +3126,13 @@ end
 function M.PutMetricFilterAsync(PutMetricFilterRequest, cb)
 	assert(PutMetricFilterRequest, "You must provide a PutMetricFilterRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Logs_20140328.PutMetricFilter",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.PutMetricFilter",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutMetricFilterRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutMetricFilterRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3153,13 +3158,13 @@ end
 function M.PutLogEventsAsync(PutLogEventsRequest, cb)
 	assert(PutLogEventsRequest, "You must provide a PutLogEventsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Logs_20140328.PutLogEvents",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.PutLogEvents",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutLogEventsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutLogEventsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3185,13 +3190,13 @@ end
 function M.DescribeLogGroupsAsync(DescribeLogGroupsRequest, cb)
 	assert(DescribeLogGroupsRequest, "You must provide a DescribeLogGroupsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Logs_20140328.DescribeLogGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.DescribeLogGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeLogGroupsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeLogGroupsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3217,13 +3222,13 @@ end
 function M.DescribeDestinationsAsync(DescribeDestinationsRequest, cb)
 	assert(DescribeDestinationsRequest, "You must provide a DescribeDestinationsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Logs_20140328.DescribeDestinations",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.DescribeDestinations",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeDestinationsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeDestinationsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3249,13 +3254,13 @@ end
 function M.PutRetentionPolicyAsync(PutRetentionPolicyRequest, cb)
 	assert(PutRetentionPolicyRequest, "You must provide a PutRetentionPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Logs_20140328.PutRetentionPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.PutRetentionPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutRetentionPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutRetentionPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3281,13 +3286,13 @@ end
 function M.DescribeSubscriptionFiltersAsync(DescribeSubscriptionFiltersRequest, cb)
 	assert(DescribeSubscriptionFiltersRequest, "You must provide a DescribeSubscriptionFiltersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Logs_20140328.DescribeSubscriptionFilters",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.DescribeSubscriptionFilters",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeSubscriptionFiltersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeSubscriptionFiltersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3313,13 +3318,13 @@ end
 function M.DescribeExportTasksAsync(DescribeExportTasksRequest, cb)
 	assert(DescribeExportTasksRequest, "You must provide a DescribeExportTasksRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Logs_20140328.DescribeExportTasks",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.DescribeExportTasks",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeExportTasksRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeExportTasksRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3345,13 +3350,13 @@ end
 function M.TagLogGroupAsync(TagLogGroupRequest, cb)
 	assert(TagLogGroupRequest, "You must provide a TagLogGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Logs_20140328.TagLogGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.TagLogGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", TagLogGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", TagLogGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3377,13 +3382,13 @@ end
 function M.PutSubscriptionFilterAsync(PutSubscriptionFilterRequest, cb)
 	assert(PutSubscriptionFilterRequest, "You must provide a PutSubscriptionFilterRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Logs_20140328.PutSubscriptionFilter",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.PutSubscriptionFilter",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutSubscriptionFilterRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutSubscriptionFilterRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3409,13 +3414,13 @@ end
 function M.DeleteMetricFilterAsync(DeleteMetricFilterRequest, cb)
 	assert(DeleteMetricFilterRequest, "You must provide a DeleteMetricFilterRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Logs_20140328.DeleteMetricFilter",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.DeleteMetricFilter",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteMetricFilterRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteMetricFilterRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3441,13 +3446,13 @@ end
 function M.PutDestinationPolicyAsync(PutDestinationPolicyRequest, cb)
 	assert(PutDestinationPolicyRequest, "You must provide a PutDestinationPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Logs_20140328.PutDestinationPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.PutDestinationPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutDestinationPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutDestinationPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3473,13 +3478,13 @@ end
 function M.CreateLogStreamAsync(CreateLogStreamRequest, cb)
 	assert(CreateLogStreamRequest, "You must provide a CreateLogStreamRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Logs_20140328.CreateLogStream",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.CreateLogStream",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateLogStreamRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateLogStreamRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3505,13 +3510,13 @@ end
 function M.CancelExportTaskAsync(CancelExportTaskRequest, cb)
 	assert(CancelExportTaskRequest, "You must provide a CancelExportTaskRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Logs_20140328.CancelExportTask",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.CancelExportTask",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CancelExportTaskRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CancelExportTaskRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3537,13 +3542,13 @@ end
 function M.UntagLogGroupAsync(UntagLogGroupRequest, cb)
 	assert(UntagLogGroupRequest, "You must provide a UntagLogGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Logs_20140328.UntagLogGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.UntagLogGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UntagLogGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UntagLogGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3569,13 +3574,13 @@ end
 function M.DeleteRetentionPolicyAsync(DeleteRetentionPolicyRequest, cb)
 	assert(DeleteRetentionPolicyRequest, "You must provide a DeleteRetentionPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Logs_20140328.DeleteRetentionPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.DeleteRetentionPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteRetentionPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteRetentionPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3601,13 +3606,13 @@ end
 function M.GetLogEventsAsync(GetLogEventsRequest, cb)
 	assert(GetLogEventsRequest, "You must provide a GetLogEventsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Logs_20140328.GetLogEvents",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.GetLogEvents",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetLogEventsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetLogEventsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3633,13 +3638,13 @@ end
 function M.DeleteLogStreamAsync(DeleteLogStreamRequest, cb)
 	assert(DeleteLogStreamRequest, "You must provide a DeleteLogStreamRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Logs_20140328.DeleteLogStream",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.DeleteLogStream",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteLogStreamRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteLogStreamRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

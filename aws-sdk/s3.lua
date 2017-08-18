@@ -9026,12 +9026,12 @@ function M.AnalyticsConfigurationList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -9055,8 +9055,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -9069,13 +9074,13 @@ end
 function M.ListObjectVersionsAsync(ListObjectVersionsRequest, cb)
 	assert(ListObjectVersionsRequest, "You must provide a ListObjectVersionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListObjectVersions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListObjectVersions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?versions", ListObjectVersionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?versions", ListObjectVersionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9101,13 +9106,13 @@ end
 function M.PutBucketPolicyAsync(PutBucketPolicyRequest, cb)
 	assert(PutBucketPolicyRequest, "You must provide a PutBucketPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutBucketPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutBucketPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?policy", PutBucketPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?policy", PutBucketPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9133,13 +9138,13 @@ end
 function M.ListBucketInventoryConfigurationsAsync(ListBucketInventoryConfigurationsRequest, cb)
 	assert(ListBucketInventoryConfigurationsRequest, "You must provide a ListBucketInventoryConfigurationsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListBucketInventoryConfigurations",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListBucketInventoryConfigurations",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?inventory", ListBucketInventoryConfigurationsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?inventory", ListBucketInventoryConfigurationsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9165,13 +9170,13 @@ end
 function M.DeleteBucketPolicyAsync(DeleteBucketPolicyRequest, cb)
 	assert(DeleteBucketPolicyRequest, "You must provide a DeleteBucketPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteBucketPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteBucketPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?policy", DeleteBucketPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?policy", DeleteBucketPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9197,13 +9202,13 @@ end
 function M.PutBucketLifecycleConfigurationAsync(PutBucketLifecycleConfigurationRequest, cb)
 	assert(PutBucketLifecycleConfigurationRequest, "You must provide a PutBucketLifecycleConfigurationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutBucketLifecycleConfiguration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutBucketLifecycleConfiguration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?lifecycle", PutBucketLifecycleConfigurationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?lifecycle", PutBucketLifecycleConfigurationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9229,13 +9234,13 @@ end
 function M.PutBucketRequestPaymentAsync(PutBucketRequestPaymentRequest, cb)
 	assert(PutBucketRequestPaymentRequest, "You must provide a PutBucketRequestPaymentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutBucketRequestPayment",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutBucketRequestPayment",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?requestPayment", PutBucketRequestPaymentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?requestPayment", PutBucketRequestPaymentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9261,13 +9266,13 @@ end
 function M.ListObjectsAsync(ListObjectsRequest, cb)
 	assert(ListObjectsRequest, "You must provide a ListObjectsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListObjects",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListObjects",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}", ListObjectsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}", ListObjectsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9293,13 +9298,13 @@ end
 function M.GetBucketMetricsConfigurationAsync(GetBucketMetricsConfigurationRequest, cb)
 	assert(GetBucketMetricsConfigurationRequest, "You must provide a GetBucketMetricsConfigurationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetBucketMetricsConfiguration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketMetricsConfiguration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?metrics", GetBucketMetricsConfigurationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?metrics", GetBucketMetricsConfigurationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9325,13 +9330,13 @@ end
 function M.PutBucketInventoryConfigurationAsync(PutBucketInventoryConfigurationRequest, cb)
 	assert(PutBucketInventoryConfigurationRequest, "You must provide a PutBucketInventoryConfigurationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutBucketInventoryConfiguration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutBucketInventoryConfiguration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?inventory", PutBucketInventoryConfigurationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?inventory", PutBucketInventoryConfigurationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9357,13 +9362,13 @@ end
 function M.PutBucketLoggingAsync(PutBucketLoggingRequest, cb)
 	assert(PutBucketLoggingRequest, "You must provide a PutBucketLoggingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutBucketLogging",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutBucketLogging",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?logging", PutBucketLoggingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?logging", PutBucketLoggingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9389,13 +9394,13 @@ end
 function M.PutBucketReplicationAsync(PutBucketReplicationRequest, cb)
 	assert(PutBucketReplicationRequest, "You must provide a PutBucketReplicationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutBucketReplication",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutBucketReplication",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?replication", PutBucketReplicationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?replication", PutBucketReplicationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9421,13 +9426,13 @@ end
 function M.PutBucketAccelerateConfigurationAsync(PutBucketAccelerateConfigurationRequest, cb)
 	assert(PutBucketAccelerateConfigurationRequest, "You must provide a PutBucketAccelerateConfigurationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutBucketAccelerateConfiguration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutBucketAccelerateConfiguration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?accelerate", PutBucketAccelerateConfigurationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?accelerate", PutBucketAccelerateConfigurationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9453,13 +9458,13 @@ end
 function M.PutBucketAclAsync(PutBucketAclRequest, cb)
 	assert(PutBucketAclRequest, "You must provide a PutBucketAclRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutBucketAcl",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutBucketAcl",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?acl", PutBucketAclRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?acl", PutBucketAclRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9485,13 +9490,13 @@ end
 function M.UploadPartAsync(UploadPartRequest, cb)
 	assert(UploadPartRequest, "You must provide a UploadPartRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UploadPart",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UploadPart",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}/{Key+}", UploadPartRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}/{Key+}", UploadPartRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9517,13 +9522,13 @@ end
 function M.PutObjectAsync(PutObjectRequest, cb)
 	assert(PutObjectRequest, "You must provide a PutObjectRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutObject",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutObject",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}/{Key+}", PutObjectRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}/{Key+}", PutObjectRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9549,13 +9554,13 @@ end
 function M.DeleteBucketCorsAsync(DeleteBucketCorsRequest, cb)
 	assert(DeleteBucketCorsRequest, "You must provide a DeleteBucketCorsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteBucketCors",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteBucketCors",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?cors", DeleteBucketCorsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?cors", DeleteBucketCorsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9581,13 +9586,13 @@ end
 function M.PutBucketVersioningAsync(PutBucketVersioningRequest, cb)
 	assert(PutBucketVersioningRequest, "You must provide a PutBucketVersioningRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutBucketVersioning",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutBucketVersioning",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?versioning", PutBucketVersioningRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?versioning", PutBucketVersioningRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9613,13 +9618,13 @@ end
 function M.GetBucketCorsAsync(GetBucketCorsRequest, cb)
 	assert(GetBucketCorsRequest, "You must provide a GetBucketCorsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetBucketCors",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketCors",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?cors", GetBucketCorsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?cors", GetBucketCorsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9645,13 +9650,13 @@ end
 function M.GetBucketAclAsync(GetBucketAclRequest, cb)
 	assert(GetBucketAclRequest, "You must provide a GetBucketAclRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetBucketAcl",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketAcl",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?acl", GetBucketAclRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?acl", GetBucketAclRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9677,13 +9682,13 @@ end
 function M.DeleteBucketMetricsConfigurationAsync(DeleteBucketMetricsConfigurationRequest, cb)
 	assert(DeleteBucketMetricsConfigurationRequest, "You must provide a DeleteBucketMetricsConfigurationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteBucketMetricsConfiguration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteBucketMetricsConfiguration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?metrics", DeleteBucketMetricsConfigurationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?metrics", DeleteBucketMetricsConfigurationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9709,13 +9714,13 @@ end
 function M.GetBucketLoggingAsync(GetBucketLoggingRequest, cb)
 	assert(GetBucketLoggingRequest, "You must provide a GetBucketLoggingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetBucketLogging",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketLogging",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?logging", GetBucketLoggingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?logging", GetBucketLoggingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9741,13 +9746,13 @@ end
 function M.GetObjectTaggingAsync(GetObjectTaggingRequest, cb)
 	assert(GetObjectTaggingRequest, "You must provide a GetObjectTaggingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetObjectTagging",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetObjectTagging",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}/{Key+}?tagging", GetObjectTaggingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}/{Key+}?tagging", GetObjectTaggingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9773,13 +9778,13 @@ end
 function M.HeadBucketAsync(HeadBucketRequest, cb)
 	assert(HeadBucketRequest, "You must provide a HeadBucketRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".HeadBucket",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".HeadBucket",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("HEAD")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}", HeadBucketRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}", HeadBucketRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9805,13 +9810,13 @@ end
 function M.ListBucketMetricsConfigurationsAsync(ListBucketMetricsConfigurationsRequest, cb)
 	assert(ListBucketMetricsConfigurationsRequest, "You must provide a ListBucketMetricsConfigurationsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListBucketMetricsConfigurations",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListBucketMetricsConfigurations",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?metrics", ListBucketMetricsConfigurationsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?metrics", ListBucketMetricsConfigurationsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9835,13 +9840,13 @@ end
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListBucketsAsync(cb)
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListBuckets",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListBuckets",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/", {}, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9866,13 +9871,13 @@ end
 function M.DeleteBucketWebsiteAsync(DeleteBucketWebsiteRequest, cb)
 	assert(DeleteBucketWebsiteRequest, "You must provide a DeleteBucketWebsiteRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteBucketWebsite",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteBucketWebsite",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?website", DeleteBucketWebsiteRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?website", DeleteBucketWebsiteRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9898,13 +9903,13 @@ end
 function M.DeleteBucketInventoryConfigurationAsync(DeleteBucketInventoryConfigurationRequest, cb)
 	assert(DeleteBucketInventoryConfigurationRequest, "You must provide a DeleteBucketInventoryConfigurationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteBucketInventoryConfiguration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteBucketInventoryConfiguration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?inventory", DeleteBucketInventoryConfigurationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?inventory", DeleteBucketInventoryConfigurationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9930,13 +9935,13 @@ end
 function M.GetBucketNotificationConfigurationAsync(GetBucketNotificationConfigurationRequest, cb)
 	assert(GetBucketNotificationConfigurationRequest, "You must provide a GetBucketNotificationConfigurationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetBucketNotificationConfiguration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketNotificationConfiguration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?notification", GetBucketNotificationConfigurationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?notification", GetBucketNotificationConfigurationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9962,13 +9967,13 @@ end
 function M.DeleteObjectsAsync(DeleteObjectsRequest, cb)
 	assert(DeleteObjectsRequest, "You must provide a DeleteObjectsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteObjects",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteObjects",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?delete", DeleteObjectsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?delete", DeleteObjectsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9994,13 +9999,13 @@ end
 function M.DeleteBucketReplicationAsync(DeleteBucketReplicationRequest, cb)
 	assert(DeleteBucketReplicationRequest, "You must provide a DeleteBucketReplicationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteBucketReplication",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteBucketReplication",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?replication", DeleteBucketReplicationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?replication", DeleteBucketReplicationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10026,13 +10031,13 @@ end
 function M.PutBucketWebsiteAsync(PutBucketWebsiteRequest, cb)
 	assert(PutBucketWebsiteRequest, "You must provide a PutBucketWebsiteRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutBucketWebsite",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutBucketWebsite",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?website", PutBucketWebsiteRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?website", PutBucketWebsiteRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10058,13 +10063,13 @@ end
 function M.CopyObjectAsync(CopyObjectRequest, cb)
 	assert(CopyObjectRequest, "You must provide a CopyObjectRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CopyObject",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CopyObject",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}/{Key+}", CopyObjectRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}/{Key+}", CopyObjectRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10090,13 +10095,13 @@ end
 function M.GetBucketReplicationAsync(GetBucketReplicationRequest, cb)
 	assert(GetBucketReplicationRequest, "You must provide a GetBucketReplicationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetBucketReplication",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketReplication",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?replication", GetBucketReplicationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?replication", GetBucketReplicationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10122,13 +10127,13 @@ end
 function M.GetBucketAnalyticsConfigurationAsync(GetBucketAnalyticsConfigurationRequest, cb)
 	assert(GetBucketAnalyticsConfigurationRequest, "You must provide a GetBucketAnalyticsConfigurationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetBucketAnalyticsConfiguration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketAnalyticsConfiguration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?analytics", GetBucketAnalyticsConfigurationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?analytics", GetBucketAnalyticsConfigurationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10154,13 +10159,13 @@ end
 function M.PutBucketNotificationConfigurationAsync(PutBucketNotificationConfigurationRequest, cb)
 	assert(PutBucketNotificationConfigurationRequest, "You must provide a PutBucketNotificationConfigurationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutBucketNotificationConfiguration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutBucketNotificationConfiguration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?notification", PutBucketNotificationConfigurationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?notification", PutBucketNotificationConfigurationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10186,13 +10191,13 @@ end
 function M.GetBucketAccelerateConfigurationAsync(GetBucketAccelerateConfigurationRequest, cb)
 	assert(GetBucketAccelerateConfigurationRequest, "You must provide a GetBucketAccelerateConfigurationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetBucketAccelerateConfiguration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketAccelerateConfiguration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?accelerate", GetBucketAccelerateConfigurationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?accelerate", GetBucketAccelerateConfigurationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10218,13 +10223,13 @@ end
 function M.DeleteObjectTaggingAsync(DeleteObjectTaggingRequest, cb)
 	assert(DeleteObjectTaggingRequest, "You must provide a DeleteObjectTaggingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteObjectTagging",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteObjectTagging",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}/{Key+}?tagging", DeleteObjectTaggingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}/{Key+}?tagging", DeleteObjectTaggingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10250,13 +10255,13 @@ end
 function M.DeleteBucketTaggingAsync(DeleteBucketTaggingRequest, cb)
 	assert(DeleteBucketTaggingRequest, "You must provide a DeleteBucketTaggingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteBucketTagging",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteBucketTagging",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?tagging", DeleteBucketTaggingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?tagging", DeleteBucketTaggingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10282,13 +10287,13 @@ end
 function M.GetObjectTorrentAsync(GetObjectTorrentRequest, cb)
 	assert(GetObjectTorrentRequest, "You must provide a GetObjectTorrentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetObjectTorrent",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetObjectTorrent",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}/{Key+}?torrent", GetObjectTorrentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}/{Key+}?torrent", GetObjectTorrentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10314,13 +10319,13 @@ end
 function M.CreateBucketAsync(CreateBucketRequest, cb)
 	assert(CreateBucketRequest, "You must provide a CreateBucketRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateBucket",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateBucket",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}", CreateBucketRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}", CreateBucketRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10346,13 +10351,13 @@ end
 function M.CompleteMultipartUploadAsync(CompleteMultipartUploadRequest, cb)
 	assert(CompleteMultipartUploadRequest, "You must provide a CompleteMultipartUploadRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CompleteMultipartUpload",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CompleteMultipartUpload",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}/{Key+}", CompleteMultipartUploadRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}/{Key+}", CompleteMultipartUploadRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10378,13 +10383,13 @@ end
 function M.GetBucketWebsiteAsync(GetBucketWebsiteRequest, cb)
 	assert(GetBucketWebsiteRequest, "You must provide a GetBucketWebsiteRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetBucketWebsite",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketWebsite",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?website", GetBucketWebsiteRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?website", GetBucketWebsiteRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10410,13 +10415,13 @@ end
 function M.CreateMultipartUploadAsync(CreateMultipartUploadRequest, cb)
 	assert(CreateMultipartUploadRequest, "You must provide a CreateMultipartUploadRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateMultipartUpload",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateMultipartUpload",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}/{Key+}?uploads", CreateMultipartUploadRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}/{Key+}?uploads", CreateMultipartUploadRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10442,13 +10447,13 @@ end
 function M.DeleteBucketAsync(DeleteBucketRequest, cb)
 	assert(DeleteBucketRequest, "You must provide a DeleteBucketRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteBucket",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteBucket",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}", DeleteBucketRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}", DeleteBucketRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10474,13 +10479,13 @@ end
 function M.GetObjectAsync(GetObjectRequest, cb)
 	assert(GetObjectRequest, "You must provide a GetObjectRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetObject",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetObject",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}/{Key+}", GetObjectRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}/{Key+}", GetObjectRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10506,13 +10511,13 @@ end
 function M.PutObjectTaggingAsync(PutObjectTaggingRequest, cb)
 	assert(PutObjectTaggingRequest, "You must provide a PutObjectTaggingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutObjectTagging",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutObjectTagging",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}/{Key+}?tagging", PutObjectTaggingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}/{Key+}?tagging", PutObjectTaggingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10538,13 +10543,13 @@ end
 function M.GetBucketPolicyAsync(GetBucketPolicyRequest, cb)
 	assert(GetBucketPolicyRequest, "You must provide a GetBucketPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetBucketPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?policy", GetBucketPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?policy", GetBucketPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10570,13 +10575,13 @@ end
 function M.GetBucketVersioningAsync(GetBucketVersioningRequest, cb)
 	assert(GetBucketVersioningRequest, "You must provide a GetBucketVersioningRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetBucketVersioning",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketVersioning",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?versioning", GetBucketVersioningRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?versioning", GetBucketVersioningRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10602,13 +10607,13 @@ end
 function M.HeadObjectAsync(HeadObjectRequest, cb)
 	assert(HeadObjectRequest, "You must provide a HeadObjectRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".HeadObject",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".HeadObject",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("HEAD")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}/{Key+}", HeadObjectRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}/{Key+}", HeadObjectRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10634,13 +10639,13 @@ end
 function M.ListMultipartUploadsAsync(ListMultipartUploadsRequest, cb)
 	assert(ListMultipartUploadsRequest, "You must provide a ListMultipartUploadsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListMultipartUploads",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListMultipartUploads",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?uploads", ListMultipartUploadsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?uploads", ListMultipartUploadsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10666,13 +10671,13 @@ end
 function M.GetBucketLifecycleConfigurationAsync(GetBucketLifecycleConfigurationRequest, cb)
 	assert(GetBucketLifecycleConfigurationRequest, "You must provide a GetBucketLifecycleConfigurationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetBucketLifecycleConfiguration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketLifecycleConfiguration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?lifecycle", GetBucketLifecycleConfigurationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?lifecycle", GetBucketLifecycleConfigurationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10698,13 +10703,13 @@ end
 function M.GetBucketRequestPaymentAsync(GetBucketRequestPaymentRequest, cb)
 	assert(GetBucketRequestPaymentRequest, "You must provide a GetBucketRequestPaymentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetBucketRequestPayment",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketRequestPayment",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?requestPayment", GetBucketRequestPaymentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?requestPayment", GetBucketRequestPaymentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10730,13 +10735,13 @@ end
 function M.PutBucketCorsAsync(PutBucketCorsRequest, cb)
 	assert(PutBucketCorsRequest, "You must provide a PutBucketCorsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutBucketCors",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutBucketCors",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?cors", PutBucketCorsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?cors", PutBucketCorsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10762,13 +10767,13 @@ end
 function M.PutBucketTaggingAsync(PutBucketTaggingRequest, cb)
 	assert(PutBucketTaggingRequest, "You must provide a PutBucketTaggingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutBucketTagging",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutBucketTagging",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?tagging", PutBucketTaggingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?tagging", PutBucketTaggingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10794,13 +10799,13 @@ end
 function M.GetBucketTaggingAsync(GetBucketTaggingRequest, cb)
 	assert(GetBucketTaggingRequest, "You must provide a GetBucketTaggingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetBucketTagging",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketTagging",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?tagging", GetBucketTaggingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?tagging", GetBucketTaggingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10826,13 +10831,13 @@ end
 function M.AbortMultipartUploadAsync(AbortMultipartUploadRequest, cb)
 	assert(AbortMultipartUploadRequest, "You must provide a AbortMultipartUploadRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AbortMultipartUpload",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AbortMultipartUpload",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}/{Key+}", AbortMultipartUploadRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}/{Key+}", AbortMultipartUploadRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10858,13 +10863,13 @@ end
 function M.PutObjectAclAsync(PutObjectAclRequest, cb)
 	assert(PutObjectAclRequest, "You must provide a PutObjectAclRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutObjectAcl",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutObjectAcl",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}/{Key+}?acl", PutObjectAclRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}/{Key+}?acl", PutObjectAclRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10890,13 +10895,13 @@ end
 function M.ListObjectsV2Async(ListObjectsV2Request, cb)
 	assert(ListObjectsV2Request, "You must provide a ListObjectsV2Request")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListObjectsV2",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListObjectsV2",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?list-type=2", ListObjectsV2Request, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?list-type=2", ListObjectsV2Request, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10922,13 +10927,13 @@ end
 function M.GetBucketLocationAsync(GetBucketLocationRequest, cb)
 	assert(GetBucketLocationRequest, "You must provide a GetBucketLocationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetBucketLocation",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketLocation",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?location", GetBucketLocationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?location", GetBucketLocationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10954,13 +10959,13 @@ end
 function M.GetBucketInventoryConfigurationAsync(GetBucketInventoryConfigurationRequest, cb)
 	assert(GetBucketInventoryConfigurationRequest, "You must provide a GetBucketInventoryConfigurationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetBucketInventoryConfiguration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketInventoryConfiguration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?inventory", GetBucketInventoryConfigurationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?inventory", GetBucketInventoryConfigurationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10986,13 +10991,13 @@ end
 function M.DeleteBucketLifecycleAsync(DeleteBucketLifecycleRequest, cb)
 	assert(DeleteBucketLifecycleRequest, "You must provide a DeleteBucketLifecycleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteBucketLifecycle",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteBucketLifecycle",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?lifecycle", DeleteBucketLifecycleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?lifecycle", DeleteBucketLifecycleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11018,13 +11023,13 @@ end
 function M.PutBucketAnalyticsConfigurationAsync(PutBucketAnalyticsConfigurationRequest, cb)
 	assert(PutBucketAnalyticsConfigurationRequest, "You must provide a PutBucketAnalyticsConfigurationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutBucketAnalyticsConfiguration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutBucketAnalyticsConfiguration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?analytics", PutBucketAnalyticsConfigurationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?analytics", PutBucketAnalyticsConfigurationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11050,13 +11055,13 @@ end
 function M.ListPartsAsync(ListPartsRequest, cb)
 	assert(ListPartsRequest, "You must provide a ListPartsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListParts",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListParts",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}/{Key+}", ListPartsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}/{Key+}", ListPartsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11082,13 +11087,13 @@ end
 function M.ListBucketAnalyticsConfigurationsAsync(ListBucketAnalyticsConfigurationsRequest, cb)
 	assert(ListBucketAnalyticsConfigurationsRequest, "You must provide a ListBucketAnalyticsConfigurationsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListBucketAnalyticsConfigurations",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListBucketAnalyticsConfigurations",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?analytics", ListBucketAnalyticsConfigurationsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?analytics", ListBucketAnalyticsConfigurationsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11114,13 +11119,13 @@ end
 function M.GetObjectAclAsync(GetObjectAclRequest, cb)
 	assert(GetObjectAclRequest, "You must provide a GetObjectAclRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetObjectAcl",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetObjectAcl",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}/{Key+}?acl", GetObjectAclRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}/{Key+}?acl", GetObjectAclRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11146,13 +11151,13 @@ end
 function M.UploadPartCopyAsync(UploadPartCopyRequest, cb)
 	assert(UploadPartCopyRequest, "You must provide a UploadPartCopyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UploadPartCopy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UploadPartCopy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}/{Key+}", UploadPartCopyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}/{Key+}", UploadPartCopyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11178,13 +11183,13 @@ end
 function M.PutBucketMetricsConfigurationAsync(PutBucketMetricsConfigurationRequest, cb)
 	assert(PutBucketMetricsConfigurationRequest, "You must provide a PutBucketMetricsConfigurationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutBucketMetricsConfiguration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutBucketMetricsConfiguration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?metrics", PutBucketMetricsConfigurationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?metrics", PutBucketMetricsConfigurationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11210,13 +11215,13 @@ end
 function M.DeleteObjectAsync(DeleteObjectRequest, cb)
 	assert(DeleteObjectRequest, "You must provide a DeleteObjectRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteObject",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteObject",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}/{Key+}", DeleteObjectRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}/{Key+}", DeleteObjectRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11242,13 +11247,13 @@ end
 function M.RestoreObjectAsync(RestoreObjectRequest, cb)
 	assert(RestoreObjectRequest, "You must provide a RestoreObjectRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RestoreObject",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RestoreObject",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}/{Key+}?restore", RestoreObjectRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}/{Key+}?restore", RestoreObjectRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11274,13 +11279,13 @@ end
 function M.DeleteBucketAnalyticsConfigurationAsync(DeleteBucketAnalyticsConfigurationRequest, cb)
 	assert(DeleteBucketAnalyticsConfigurationRequest, "You must provide a DeleteBucketAnalyticsConfigurationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteBucketAnalyticsConfiguration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteBucketAnalyticsConfiguration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/{Bucket}?analytics", DeleteBucketAnalyticsConfigurationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/{Bucket}?analytics", DeleteBucketAnalyticsConfigurationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

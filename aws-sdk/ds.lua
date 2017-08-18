@@ -4297,12 +4297,12 @@ function M.AvailabilityZones(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -4326,8 +4326,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -4340,13 +4345,13 @@ end
 function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceRequest, cb)
 	assert(RemoveTagsFromResourceRequest, "You must provide a RemoveTagsFromResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.RemoveTagsFromResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.RemoveTagsFromResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RemoveTagsFromResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RemoveTagsFromResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4372,13 +4377,13 @@ end
 function M.CreateComputerAsync(CreateComputerRequest, cb)
 	assert(CreateComputerRequest, "You must provide a CreateComputerRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.CreateComputer",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.CreateComputer",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateComputerRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateComputerRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4404,13 +4409,13 @@ end
 function M.EnableRadiusAsync(EnableRadiusRequest, cb)
 	assert(EnableRadiusRequest, "You must provide a EnableRadiusRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.EnableRadius",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.EnableRadius",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", EnableRadiusRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", EnableRadiusRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4436,13 +4441,13 @@ end
 function M.DeleteConditionalForwarderAsync(DeleteConditionalForwarderRequest, cb)
 	assert(DeleteConditionalForwarderRequest, "You must provide a DeleteConditionalForwarderRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DeleteConditionalForwarder",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DeleteConditionalForwarder",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteConditionalForwarderRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteConditionalForwarderRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4468,13 +4473,13 @@ end
 function M.CreateDirectoryAsync(CreateDirectoryRequest, cb)
 	assert(CreateDirectoryRequest, "You must provide a CreateDirectoryRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.CreateDirectory",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.CreateDirectory",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateDirectoryRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateDirectoryRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4500,13 +4505,13 @@ end
 function M.DescribeSnapshotsAsync(DescribeSnapshotsRequest, cb)
 	assert(DescribeSnapshotsRequest, "You must provide a DescribeSnapshotsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DescribeSnapshots",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DescribeSnapshots",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeSnapshotsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeSnapshotsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4532,13 +4537,13 @@ end
 function M.VerifyTrustAsync(VerifyTrustRequest, cb)
 	assert(VerifyTrustRequest, "You must provide a VerifyTrustRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.VerifyTrust",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.VerifyTrust",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", VerifyTrustRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", VerifyTrustRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4564,13 +4569,13 @@ end
 function M.DeleteSnapshotAsync(DeleteSnapshotRequest, cb)
 	assert(DeleteSnapshotRequest, "You must provide a DeleteSnapshotRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DeleteSnapshot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DeleteSnapshot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteSnapshotRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteSnapshotRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4596,13 +4601,13 @@ end
 function M.UpdateRadiusAsync(UpdateRadiusRequest, cb)
 	assert(UpdateRadiusRequest, "You must provide a UpdateRadiusRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.UpdateRadius",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.UpdateRadius",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateRadiusRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateRadiusRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4628,13 +4633,13 @@ end
 function M.DisableRadiusAsync(DisableRadiusRequest, cb)
 	assert(DisableRadiusRequest, "You must provide a DisableRadiusRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DisableRadius",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DisableRadius",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisableRadiusRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisableRadiusRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4660,13 +4665,13 @@ end
 function M.AddTagsToResourceAsync(AddTagsToResourceRequest, cb)
 	assert(AddTagsToResourceRequest, "You must provide a AddTagsToResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.AddTagsToResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.AddTagsToResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddTagsToResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddTagsToResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4692,13 +4697,13 @@ end
 function M.DescribeConditionalForwardersAsync(DescribeConditionalForwardersRequest, cb)
 	assert(DescribeConditionalForwardersRequest, "You must provide a DescribeConditionalForwardersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DescribeConditionalForwarders",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DescribeConditionalForwarders",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeConditionalForwardersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeConditionalForwardersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4724,13 +4729,13 @@ end
 function M.DescribeEventTopicsAsync(DescribeEventTopicsRequest, cb)
 	assert(DescribeEventTopicsRequest, "You must provide a DescribeEventTopicsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DescribeEventTopics",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DescribeEventTopics",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeEventTopicsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeEventTopicsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4756,13 +4761,13 @@ end
 function M.EnableSsoAsync(EnableSsoRequest, cb)
 	assert(EnableSsoRequest, "You must provide a EnableSsoRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.EnableSso",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.EnableSso",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", EnableSsoRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", EnableSsoRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4788,13 +4793,13 @@ end
 function M.ListIpRoutesAsync(ListIpRoutesRequest, cb)
 	assert(ListIpRoutesRequest, "You must provide a ListIpRoutesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.ListIpRoutes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.ListIpRoutes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListIpRoutesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListIpRoutesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4820,13 +4825,13 @@ end
 function M.RemoveIpRoutesAsync(RemoveIpRoutesRequest, cb)
 	assert(RemoveIpRoutesRequest, "You must provide a RemoveIpRoutesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.RemoveIpRoutes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.RemoveIpRoutes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RemoveIpRoutesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RemoveIpRoutesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4852,13 +4857,13 @@ end
 function M.CreateAliasAsync(CreateAliasRequest, cb)
 	assert(CreateAliasRequest, "You must provide a CreateAliasRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.CreateAlias",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.CreateAlias",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateAliasRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateAliasRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4884,13 +4889,13 @@ end
 function M.ConnectDirectoryAsync(ConnectDirectoryRequest, cb)
 	assert(ConnectDirectoryRequest, "You must provide a ConnectDirectoryRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.ConnectDirectory",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.ConnectDirectory",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ConnectDirectoryRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ConnectDirectoryRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4916,13 +4921,13 @@ end
 function M.DeleteDirectoryAsync(DeleteDirectoryRequest, cb)
 	assert(DeleteDirectoryRequest, "You must provide a DeleteDirectoryRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DeleteDirectory",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DeleteDirectory",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteDirectoryRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteDirectoryRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4948,13 +4953,13 @@ end
 function M.AddIpRoutesAsync(AddIpRoutesRequest, cb)
 	assert(AddIpRoutesRequest, "You must provide a AddIpRoutesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.AddIpRoutes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.AddIpRoutes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddIpRoutesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddIpRoutesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4980,13 +4985,13 @@ end
 function M.CancelSchemaExtensionAsync(CancelSchemaExtensionRequest, cb)
 	assert(CancelSchemaExtensionRequest, "You must provide a CancelSchemaExtensionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.CancelSchemaExtension",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.CancelSchemaExtension",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CancelSchemaExtensionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CancelSchemaExtensionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5012,13 +5017,13 @@ end
 function M.CreateConditionalForwarderAsync(CreateConditionalForwarderRequest, cb)
 	assert(CreateConditionalForwarderRequest, "You must provide a CreateConditionalForwarderRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.CreateConditionalForwarder",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.CreateConditionalForwarder",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateConditionalForwarderRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateConditionalForwarderRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5044,13 +5049,13 @@ end
 function M.RestoreFromSnapshotAsync(RestoreFromSnapshotRequest, cb)
 	assert(RestoreFromSnapshotRequest, "You must provide a RestoreFromSnapshotRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.RestoreFromSnapshot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.RestoreFromSnapshot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RestoreFromSnapshotRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RestoreFromSnapshotRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5076,13 +5081,13 @@ end
 function M.ListSchemaExtensionsAsync(ListSchemaExtensionsRequest, cb)
 	assert(ListSchemaExtensionsRequest, "You must provide a ListSchemaExtensionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.ListSchemaExtensions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.ListSchemaExtensions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListSchemaExtensionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListSchemaExtensionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5108,13 +5113,13 @@ end
 function M.DescribeTrustsAsync(DescribeTrustsRequest, cb)
 	assert(DescribeTrustsRequest, "You must provide a DescribeTrustsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DescribeTrusts",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DescribeTrusts",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeTrustsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeTrustsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5140,13 +5145,13 @@ end
 function M.DeregisterEventTopicAsync(DeregisterEventTopicRequest, cb)
 	assert(DeregisterEventTopicRequest, "You must provide a DeregisterEventTopicRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DeregisterEventTopic",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DeregisterEventTopic",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeregisterEventTopicRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeregisterEventTopicRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5172,13 +5177,13 @@ end
 function M.UpdateConditionalForwarderAsync(UpdateConditionalForwarderRequest, cb)
 	assert(UpdateConditionalForwarderRequest, "You must provide a UpdateConditionalForwarderRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.UpdateConditionalForwarder",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.UpdateConditionalForwarder",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateConditionalForwarderRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateConditionalForwarderRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5204,13 +5209,13 @@ end
 function M.CreateTrustAsync(CreateTrustRequest, cb)
 	assert(CreateTrustRequest, "You must provide a CreateTrustRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.CreateTrust",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.CreateTrust",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateTrustRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateTrustRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5236,13 +5241,13 @@ end
 function M.GetDirectoryLimitsAsync(GetDirectoryLimitsRequest, cb)
 	assert(GetDirectoryLimitsRequest, "You must provide a GetDirectoryLimitsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.GetDirectoryLimits",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.GetDirectoryLimits",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetDirectoryLimitsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetDirectoryLimitsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5268,13 +5273,13 @@ end
 function M.CreateMicrosoftADAsync(CreateMicrosoftADRequest, cb)
 	assert(CreateMicrosoftADRequest, "You must provide a CreateMicrosoftADRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.CreateMicrosoftAD",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.CreateMicrosoftAD",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateMicrosoftADRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateMicrosoftADRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5300,13 +5305,13 @@ end
 function M.RegisterEventTopicAsync(RegisterEventTopicRequest, cb)
 	assert(RegisterEventTopicRequest, "You must provide a RegisterEventTopicRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.RegisterEventTopic",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.RegisterEventTopic",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RegisterEventTopicRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RegisterEventTopicRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5332,13 +5337,13 @@ end
 function M.GetSnapshotLimitsAsync(GetSnapshotLimitsRequest, cb)
 	assert(GetSnapshotLimitsRequest, "You must provide a GetSnapshotLimitsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.GetSnapshotLimits",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.GetSnapshotLimits",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetSnapshotLimitsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetSnapshotLimitsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5364,13 +5369,13 @@ end
 function M.DeleteTrustAsync(DeleteTrustRequest, cb)
 	assert(DeleteTrustRequest, "You must provide a DeleteTrustRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DeleteTrust",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DeleteTrust",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteTrustRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteTrustRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5396,13 +5401,13 @@ end
 function M.DescribeDirectoriesAsync(DescribeDirectoriesRequest, cb)
 	assert(DescribeDirectoriesRequest, "You must provide a DescribeDirectoriesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DescribeDirectories",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DescribeDirectories",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeDirectoriesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeDirectoriesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5428,13 +5433,13 @@ end
 function M.StartSchemaExtensionAsync(StartSchemaExtensionRequest, cb)
 	assert(StartSchemaExtensionRequest, "You must provide a StartSchemaExtensionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.StartSchemaExtension",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.StartSchemaExtension",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StartSchemaExtensionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StartSchemaExtensionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5460,13 +5465,13 @@ end
 function M.ListTagsForResourceAsync(ListTagsForResourceRequest, cb)
 	assert(ListTagsForResourceRequest, "You must provide a ListTagsForResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.ListTagsForResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.ListTagsForResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListTagsForResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListTagsForResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5492,13 +5497,13 @@ end
 function M.CreateSnapshotAsync(CreateSnapshotRequest, cb)
 	assert(CreateSnapshotRequest, "You must provide a CreateSnapshotRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.CreateSnapshot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.CreateSnapshot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateSnapshotRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateSnapshotRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5524,13 +5529,13 @@ end
 function M.DisableSsoAsync(DisableSsoRequest, cb)
 	assert(DisableSsoRequest, "You must provide a DisableSsoRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DisableSso",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DisableSso",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisableSsoRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisableSsoRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

@@ -2172,12 +2172,12 @@ function M.SecurityGroupIdList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -2201,8 +2201,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -2215,13 +2220,13 @@ end
 function M.UpdateStackAsync(UpdateStackRequest, cb)
 	assert(UpdateStackRequest, "You must provide a UpdateStackRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.UpdateStack",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.UpdateStack",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateStackRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateStackRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2247,13 +2252,13 @@ end
 function M.CreateFleetAsync(CreateFleetRequest, cb)
 	assert(CreateFleetRequest, "You must provide a CreateFleetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.CreateFleet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.CreateFleet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateFleetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateFleetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2279,13 +2284,13 @@ end
 function M.DeleteFleetAsync(DeleteFleetRequest, cb)
 	assert(DeleteFleetRequest, "You must provide a DeleteFleetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.DeleteFleet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.DeleteFleet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteFleetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteFleetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2311,13 +2316,13 @@ end
 function M.CreateStreamingURLAsync(CreateStreamingURLRequest, cb)
 	assert(CreateStreamingURLRequest, "You must provide a CreateStreamingURLRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.CreateStreamingURL",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.CreateStreamingURL",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateStreamingURLRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateStreamingURLRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2343,13 +2348,13 @@ end
 function M.DescribeSessionsAsync(DescribeSessionsRequest, cb)
 	assert(DescribeSessionsRequest, "You must provide a DescribeSessionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.DescribeSessions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.DescribeSessions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeSessionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeSessionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2375,13 +2380,13 @@ end
 function M.AssociateFleetAsync(AssociateFleetRequest, cb)
 	assert(AssociateFleetRequest, "You must provide a AssociateFleetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.AssociateFleet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.AssociateFleet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AssociateFleetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AssociateFleetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2407,13 +2412,13 @@ end
 function M.StopFleetAsync(StopFleetRequest, cb)
 	assert(StopFleetRequest, "You must provide a StopFleetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.StopFleet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.StopFleet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StopFleetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StopFleetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2439,13 +2444,13 @@ end
 function M.DescribeFleetsAsync(DescribeFleetsRequest, cb)
 	assert(DescribeFleetsRequest, "You must provide a DescribeFleetsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.DescribeFleets",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.DescribeFleets",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeFleetsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeFleetsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2471,13 +2476,13 @@ end
 function M.UpdateFleetAsync(UpdateFleetRequest, cb)
 	assert(UpdateFleetRequest, "You must provide a UpdateFleetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.UpdateFleet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.UpdateFleet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateFleetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateFleetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2503,13 +2508,13 @@ end
 function M.DescribeImagesAsync(DescribeImagesRequest, cb)
 	assert(DescribeImagesRequest, "You must provide a DescribeImagesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.DescribeImages",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.DescribeImages",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeImagesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeImagesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2535,13 +2540,13 @@ end
 function M.DeleteStackAsync(DeleteStackRequest, cb)
 	assert(DeleteStackRequest, "You must provide a DeleteStackRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.DeleteStack",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.DeleteStack",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteStackRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteStackRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2567,13 +2572,13 @@ end
 function M.ExpireSessionAsync(ExpireSessionRequest, cb)
 	assert(ExpireSessionRequest, "You must provide a ExpireSessionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.ExpireSession",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.ExpireSession",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ExpireSessionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ExpireSessionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2599,13 +2604,13 @@ end
 function M.ListAssociatedStacksAsync(ListAssociatedStacksRequest, cb)
 	assert(ListAssociatedStacksRequest, "You must provide a ListAssociatedStacksRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.ListAssociatedStacks",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.ListAssociatedStacks",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListAssociatedStacksRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListAssociatedStacksRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2631,13 +2636,13 @@ end
 function M.ListAssociatedFleetsAsync(ListAssociatedFleetsRequest, cb)
 	assert(ListAssociatedFleetsRequest, "You must provide a ListAssociatedFleetsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.ListAssociatedFleets",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.ListAssociatedFleets",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListAssociatedFleetsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListAssociatedFleetsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2663,13 +2668,13 @@ end
 function M.StartFleetAsync(StartFleetRequest, cb)
 	assert(StartFleetRequest, "You must provide a StartFleetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.StartFleet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.StartFleet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StartFleetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StartFleetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2695,13 +2700,13 @@ end
 function M.DisassociateFleetAsync(DisassociateFleetRequest, cb)
 	assert(DisassociateFleetRequest, "You must provide a DisassociateFleetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.DisassociateFleet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.DisassociateFleet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisassociateFleetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisassociateFleetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2727,13 +2732,13 @@ end
 function M.DescribeStacksAsync(DescribeStacksRequest, cb)
 	assert(DescribeStacksRequest, "You must provide a DescribeStacksRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.DescribeStacks",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.DescribeStacks",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeStacksRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeStacksRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2759,13 +2764,13 @@ end
 function M.CreateStackAsync(CreateStackRequest, cb)
 	assert(CreateStackRequest, "You must provide a CreateStackRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.CreateStack",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.CreateStack",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateStackRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateStackRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

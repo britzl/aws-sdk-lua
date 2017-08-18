@@ -2147,12 +2147,12 @@ function M.JobDefinitionList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -2176,8 +2176,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -2190,13 +2195,13 @@ end
 function M.ListJobsAsync(ListJobsRequest, cb)
 	assert(ListJobsRequest, "You must provide a ListJobsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListJobs",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListJobs",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/v1/listjobs", ListJobsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/listjobs", ListJobsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2222,13 +2227,13 @@ end
 function M.SubmitJobAsync(SubmitJobRequest, cb)
 	assert(SubmitJobRequest, "You must provide a SubmitJobRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SubmitJob",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SubmitJob",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/v1/submitjob", SubmitJobRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/submitjob", SubmitJobRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2254,13 +2259,13 @@ end
 function M.UpdateJobQueueAsync(UpdateJobQueueRequest, cb)
 	assert(UpdateJobQueueRequest, "You must provide a UpdateJobQueueRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateJobQueue",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateJobQueue",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/v1/updatejobqueue", UpdateJobQueueRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/updatejobqueue", UpdateJobQueueRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2286,13 +2291,13 @@ end
 function M.UpdateComputeEnvironmentAsync(UpdateComputeEnvironmentRequest, cb)
 	assert(UpdateComputeEnvironmentRequest, "You must provide a UpdateComputeEnvironmentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateComputeEnvironment",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateComputeEnvironment",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/v1/updatecomputeenvironment", UpdateComputeEnvironmentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/updatecomputeenvironment", UpdateComputeEnvironmentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2318,13 +2323,13 @@ end
 function M.DeregisterJobDefinitionAsync(DeregisterJobDefinitionRequest, cb)
 	assert(DeregisterJobDefinitionRequest, "You must provide a DeregisterJobDefinitionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeregisterJobDefinition",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeregisterJobDefinition",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/v1/deregisterjobdefinition", DeregisterJobDefinitionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/deregisterjobdefinition", DeregisterJobDefinitionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2350,13 +2355,13 @@ end
 function M.DescribeJobQueuesAsync(DescribeJobQueuesRequest, cb)
 	assert(DescribeJobQueuesRequest, "You must provide a DescribeJobQueuesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeJobQueues",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeJobQueues",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/v1/describejobqueues", DescribeJobQueuesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/describejobqueues", DescribeJobQueuesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2382,13 +2387,13 @@ end
 function M.CreateComputeEnvironmentAsync(CreateComputeEnvironmentRequest, cb)
 	assert(CreateComputeEnvironmentRequest, "You must provide a CreateComputeEnvironmentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateComputeEnvironment",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateComputeEnvironment",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/v1/createcomputeenvironment", CreateComputeEnvironmentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/createcomputeenvironment", CreateComputeEnvironmentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2414,13 +2419,13 @@ end
 function M.DeleteComputeEnvironmentAsync(DeleteComputeEnvironmentRequest, cb)
 	assert(DeleteComputeEnvironmentRequest, "You must provide a DeleteComputeEnvironmentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteComputeEnvironment",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteComputeEnvironment",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/v1/deletecomputeenvironment", DeleteComputeEnvironmentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/deletecomputeenvironment", DeleteComputeEnvironmentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2446,13 +2451,13 @@ end
 function M.DescribeComputeEnvironmentsAsync(DescribeComputeEnvironmentsRequest, cb)
 	assert(DescribeComputeEnvironmentsRequest, "You must provide a DescribeComputeEnvironmentsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeComputeEnvironments",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeComputeEnvironments",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/v1/describecomputeenvironments", DescribeComputeEnvironmentsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/describecomputeenvironments", DescribeComputeEnvironmentsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2478,13 +2483,13 @@ end
 function M.CreateJobQueueAsync(CreateJobQueueRequest, cb)
 	assert(CreateJobQueueRequest, "You must provide a CreateJobQueueRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateJobQueue",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateJobQueue",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/v1/createjobqueue", CreateJobQueueRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/createjobqueue", CreateJobQueueRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2510,13 +2515,13 @@ end
 function M.RegisterJobDefinitionAsync(RegisterJobDefinitionRequest, cb)
 	assert(RegisterJobDefinitionRequest, "You must provide a RegisterJobDefinitionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RegisterJobDefinition",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RegisterJobDefinition",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/v1/registerjobdefinition", RegisterJobDefinitionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/registerjobdefinition", RegisterJobDefinitionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2542,13 +2547,13 @@ end
 function M.CancelJobAsync(CancelJobRequest, cb)
 	assert(CancelJobRequest, "You must provide a CancelJobRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CancelJob",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CancelJob",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/v1/canceljob", CancelJobRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/canceljob", CancelJobRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2574,13 +2579,13 @@ end
 function M.DescribeJobDefinitionsAsync(DescribeJobDefinitionsRequest, cb)
 	assert(DescribeJobDefinitionsRequest, "You must provide a DescribeJobDefinitionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeJobDefinitions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeJobDefinitions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/v1/describejobdefinitions", DescribeJobDefinitionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/describejobdefinitions", DescribeJobDefinitionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2606,13 +2611,13 @@ end
 function M.DeleteJobQueueAsync(DeleteJobQueueRequest, cb)
 	assert(DeleteJobQueueRequest, "You must provide a DeleteJobQueueRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteJobQueue",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteJobQueue",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/v1/deletejobqueue", DeleteJobQueueRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/deletejobqueue", DeleteJobQueueRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2638,13 +2643,13 @@ end
 function M.DescribeJobsAsync(DescribeJobsRequest, cb)
 	assert(DescribeJobsRequest, "You must provide a DescribeJobsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeJobs",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeJobs",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/v1/describejobs", DescribeJobsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/describejobs", DescribeJobsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2670,13 +2675,13 @@ end
 function M.TerminateJobAsync(TerminateJobRequest, cb)
 	assert(TerminateJobRequest, "You must provide a TerminateJobRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".TerminateJob",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".TerminateJob",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/v1/terminatejob", TerminateJobRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/terminatejob", TerminateJobRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

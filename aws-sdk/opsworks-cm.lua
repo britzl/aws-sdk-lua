@@ -1630,12 +1630,12 @@ function M.Backups(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -1659,8 +1659,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -1673,13 +1678,13 @@ end
 function M.DescribeServersAsync(DescribeServersRequest, cb)
 	assert(DescribeServersRequest, "You must provide a DescribeServersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.DescribeServers",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.DescribeServers",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeServersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeServersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1705,13 +1710,13 @@ end
 function M.DescribeNodeAssociationStatusAsync(DescribeNodeAssociationStatusRequest, cb)
 	assert(DescribeNodeAssociationStatusRequest, "You must provide a DescribeNodeAssociationStatusRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.DescribeNodeAssociationStatus",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.DescribeNodeAssociationStatus",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeNodeAssociationStatusRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeNodeAssociationStatusRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1737,13 +1742,13 @@ end
 function M.DeleteServerAsync(DeleteServerRequest, cb)
 	assert(DeleteServerRequest, "You must provide a DeleteServerRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.DeleteServer",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.DeleteServer",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteServerRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteServerRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1769,13 +1774,13 @@ end
 function M.DescribeBackupsAsync(DescribeBackupsRequest, cb)
 	assert(DescribeBackupsRequest, "You must provide a DescribeBackupsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.DescribeBackups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.DescribeBackups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeBackupsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeBackupsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1801,13 +1806,13 @@ end
 function M.RestoreServerAsync(RestoreServerRequest, cb)
 	assert(RestoreServerRequest, "You must provide a RestoreServerRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.RestoreServer",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.RestoreServer",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RestoreServerRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RestoreServerRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1833,13 +1838,13 @@ end
 function M.UpdateServerEngineAttributesAsync(UpdateServerEngineAttributesRequest, cb)
 	assert(UpdateServerEngineAttributesRequest, "You must provide a UpdateServerEngineAttributesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.UpdateServerEngineAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.UpdateServerEngineAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateServerEngineAttributesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateServerEngineAttributesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1865,13 +1870,13 @@ end
 function M.DescribeAccountAttributesAsync(DescribeAccountAttributesRequest, cb)
 	assert(DescribeAccountAttributesRequest, "You must provide a DescribeAccountAttributesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.DescribeAccountAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.DescribeAccountAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeAccountAttributesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeAccountAttributesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1897,13 +1902,13 @@ end
 function M.DescribeEventsAsync(DescribeEventsRequest, cb)
 	assert(DescribeEventsRequest, "You must provide a DescribeEventsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.DescribeEvents",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.DescribeEvents",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeEventsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeEventsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1929,13 +1934,13 @@ end
 function M.DeleteBackupAsync(DeleteBackupRequest, cb)
 	assert(DeleteBackupRequest, "You must provide a DeleteBackupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.DeleteBackup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.DeleteBackup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteBackupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteBackupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1961,13 +1966,13 @@ end
 function M.CreateServerAsync(CreateServerRequest, cb)
 	assert(CreateServerRequest, "You must provide a CreateServerRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.CreateServer",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.CreateServer",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateServerRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateServerRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1993,13 +1998,13 @@ end
 function M.CreateBackupAsync(CreateBackupRequest, cb)
 	assert(CreateBackupRequest, "You must provide a CreateBackupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.CreateBackup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.CreateBackup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateBackupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateBackupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2025,13 +2030,13 @@ end
 function M.StartMaintenanceAsync(StartMaintenanceRequest, cb)
 	assert(StartMaintenanceRequest, "You must provide a StartMaintenanceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.StartMaintenance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.StartMaintenance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StartMaintenanceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StartMaintenanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2057,13 +2062,13 @@ end
 function M.UpdateServerAsync(UpdateServerRequest, cb)
 	assert(UpdateServerRequest, "You must provide a UpdateServerRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.UpdateServer",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.UpdateServer",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateServerRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateServerRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2089,13 +2094,13 @@ end
 function M.AssociateNodeAsync(AssociateNodeRequest, cb)
 	assert(AssociateNodeRequest, "You must provide a AssociateNodeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.AssociateNode",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.AssociateNode",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AssociateNodeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AssociateNodeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2121,13 +2126,13 @@ end
 function M.DisassociateNodeAsync(DisassociateNodeRequest, cb)
 	assert(DisassociateNodeRequest, "You must provide a DisassociateNodeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.DisassociateNode",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.DisassociateNode",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisassociateNodeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisassociateNodeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

@@ -4290,12 +4290,12 @@ function M.FilterList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -4319,8 +4319,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -4333,13 +4338,13 @@ end
 function M.RefreshSchemasAsync(RefreshSchemasMessage, cb)
 	assert(RefreshSchemasMessage, "You must provide a RefreshSchemasMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.RefreshSchemas",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.RefreshSchemas",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RefreshSchemasMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RefreshSchemasMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4365,13 +4370,13 @@ end
 function M.DescribeCertificatesAsync(DescribeCertificatesMessage, cb)
 	assert(DescribeCertificatesMessage, "You must provide a DescribeCertificatesMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeCertificates",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeCertificates",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeCertificatesMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeCertificatesMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4397,13 +4402,13 @@ end
 function M.DescribeReplicationInstancesAsync(DescribeReplicationInstancesMessage, cb)
 	assert(DescribeReplicationInstancesMessage, "You must provide a DescribeReplicationInstancesMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeReplicationInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeReplicationInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeReplicationInstancesMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeReplicationInstancesMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4429,13 +4434,13 @@ end
 function M.CreateReplicationSubnetGroupAsync(CreateReplicationSubnetGroupMessage, cb)
 	assert(CreateReplicationSubnetGroupMessage, "You must provide a CreateReplicationSubnetGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.CreateReplicationSubnetGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.CreateReplicationSubnetGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateReplicationSubnetGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateReplicationSubnetGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4461,13 +4466,13 @@ end
 function M.DescribeEventsAsync(DescribeEventsMessage, cb)
 	assert(DescribeEventsMessage, "You must provide a DescribeEventsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeEvents",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeEvents",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeEventsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeEventsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4493,13 +4498,13 @@ end
 function M.DescribeEventSubscriptionsAsync(DescribeEventSubscriptionsMessage, cb)
 	assert(DescribeEventSubscriptionsMessage, "You must provide a DescribeEventSubscriptionsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeEventSubscriptions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeEventSubscriptions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeEventSubscriptionsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeEventSubscriptionsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4525,13 +4530,13 @@ end
 function M.CreateReplicationTaskAsync(CreateReplicationTaskMessage, cb)
 	assert(CreateReplicationTaskMessage, "You must provide a CreateReplicationTaskMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.CreateReplicationTask",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.CreateReplicationTask",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateReplicationTaskMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateReplicationTaskMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4557,13 +4562,13 @@ end
 function M.DeleteReplicationInstanceAsync(DeleteReplicationInstanceMessage, cb)
 	assert(DeleteReplicationInstanceMessage, "You must provide a DeleteReplicationInstanceMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DeleteReplicationInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DeleteReplicationInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteReplicationInstanceMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteReplicationInstanceMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4589,13 +4594,13 @@ end
 function M.ModifyReplicationInstanceAsync(ModifyReplicationInstanceMessage, cb)
 	assert(ModifyReplicationInstanceMessage, "You must provide a ModifyReplicationInstanceMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.ModifyReplicationInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.ModifyReplicationInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyReplicationInstanceMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyReplicationInstanceMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4621,13 +4626,13 @@ end
 function M.DescribeTableStatisticsAsync(DescribeTableStatisticsMessage, cb)
 	assert(DescribeTableStatisticsMessage, "You must provide a DescribeTableStatisticsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeTableStatistics",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeTableStatistics",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeTableStatisticsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeTableStatisticsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4653,13 +4658,13 @@ end
 function M.DescribeEventCategoriesAsync(DescribeEventCategoriesMessage, cb)
 	assert(DescribeEventCategoriesMessage, "You must provide a DescribeEventCategoriesMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeEventCategories",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeEventCategories",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeEventCategoriesMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeEventCategoriesMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4685,13 +4690,13 @@ end
 function M.StartReplicationTaskAsync(StartReplicationTaskMessage, cb)
 	assert(StartReplicationTaskMessage, "You must provide a StartReplicationTaskMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.StartReplicationTask",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.StartReplicationTask",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StartReplicationTaskMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StartReplicationTaskMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4717,13 +4722,13 @@ end
 function M.DeleteReplicationSubnetGroupAsync(DeleteReplicationSubnetGroupMessage, cb)
 	assert(DeleteReplicationSubnetGroupMessage, "You must provide a DeleteReplicationSubnetGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DeleteReplicationSubnetGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DeleteReplicationSubnetGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteReplicationSubnetGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteReplicationSubnetGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4749,13 +4754,13 @@ end
 function M.AddTagsToResourceAsync(AddTagsToResourceMessage, cb)
 	assert(AddTagsToResourceMessage, "You must provide a AddTagsToResourceMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.AddTagsToResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.AddTagsToResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddTagsToResourceMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddTagsToResourceMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4781,13 +4786,13 @@ end
 function M.DescribeAccountAttributesAsync(DescribeAccountAttributesMessage, cb)
 	assert(DescribeAccountAttributesMessage, "You must provide a DescribeAccountAttributesMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeAccountAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeAccountAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeAccountAttributesMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeAccountAttributesMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4813,13 +4818,13 @@ end
 function M.DeleteCertificateAsync(DeleteCertificateMessage, cb)
 	assert(DeleteCertificateMessage, "You must provide a DeleteCertificateMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DeleteCertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DeleteCertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteCertificateMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteCertificateMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4845,13 +4850,13 @@ end
 function M.TestConnectionAsync(TestConnectionMessage, cb)
 	assert(TestConnectionMessage, "You must provide a TestConnectionMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.TestConnection",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.TestConnection",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", TestConnectionMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", TestConnectionMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4877,13 +4882,13 @@ end
 function M.DescribeEndpointsAsync(DescribeEndpointsMessage, cb)
 	assert(DescribeEndpointsMessage, "You must provide a DescribeEndpointsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeEndpoints",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeEndpoints",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeEndpointsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeEndpointsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4909,13 +4914,13 @@ end
 function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceMessage, cb)
 	assert(RemoveTagsFromResourceMessage, "You must provide a RemoveTagsFromResourceMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.RemoveTagsFromResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.RemoveTagsFromResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RemoveTagsFromResourceMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RemoveTagsFromResourceMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4941,13 +4946,13 @@ end
 function M.CreateEndpointAsync(CreateEndpointMessage, cb)
 	assert(CreateEndpointMessage, "You must provide a CreateEndpointMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.CreateEndpoint",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.CreateEndpoint",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateEndpointMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateEndpointMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4973,13 +4978,13 @@ end
 function M.DeleteReplicationTaskAsync(DeleteReplicationTaskMessage, cb)
 	assert(DeleteReplicationTaskMessage, "You must provide a DeleteReplicationTaskMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DeleteReplicationTask",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DeleteReplicationTask",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteReplicationTaskMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteReplicationTaskMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5005,13 +5010,13 @@ end
 function M.DescribeRefreshSchemasStatusAsync(DescribeRefreshSchemasStatusMessage, cb)
 	assert(DescribeRefreshSchemasStatusMessage, "You must provide a DescribeRefreshSchemasStatusMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeRefreshSchemasStatus",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeRefreshSchemasStatus",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeRefreshSchemasStatusMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeRefreshSchemasStatusMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5037,13 +5042,13 @@ end
 function M.ModifyEndpointAsync(ModifyEndpointMessage, cb)
 	assert(ModifyEndpointMessage, "You must provide a ModifyEndpointMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.ModifyEndpoint",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.ModifyEndpoint",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyEndpointMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyEndpointMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5069,13 +5074,13 @@ end
 function M.ReloadTablesAsync(ReloadTablesMessage, cb)
 	assert(ReloadTablesMessage, "You must provide a ReloadTablesMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.ReloadTables",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.ReloadTables",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ReloadTablesMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ReloadTablesMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5101,13 +5106,13 @@ end
 function M.ModifyReplicationSubnetGroupAsync(ModifyReplicationSubnetGroupMessage, cb)
 	assert(ModifyReplicationSubnetGroupMessage, "You must provide a ModifyReplicationSubnetGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.ModifyReplicationSubnetGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.ModifyReplicationSubnetGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyReplicationSubnetGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyReplicationSubnetGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5133,13 +5138,13 @@ end
 function M.DescribeSchemasAsync(DescribeSchemasMessage, cb)
 	assert(DescribeSchemasMessage, "You must provide a DescribeSchemasMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeSchemas",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeSchemas",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeSchemasMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeSchemasMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5165,13 +5170,13 @@ end
 function M.DeleteEventSubscriptionAsync(DeleteEventSubscriptionMessage, cb)
 	assert(DeleteEventSubscriptionMessage, "You must provide a DeleteEventSubscriptionMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DeleteEventSubscription",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DeleteEventSubscription",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteEventSubscriptionMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteEventSubscriptionMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5197,13 +5202,13 @@ end
 function M.ModifyEventSubscriptionAsync(ModifyEventSubscriptionMessage, cb)
 	assert(ModifyEventSubscriptionMessage, "You must provide a ModifyEventSubscriptionMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.ModifyEventSubscription",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.ModifyEventSubscription",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyEventSubscriptionMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyEventSubscriptionMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5229,13 +5234,13 @@ end
 function M.DescribeConnectionsAsync(DescribeConnectionsMessage, cb)
 	assert(DescribeConnectionsMessage, "You must provide a DescribeConnectionsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeConnections",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeConnections",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeConnectionsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeConnectionsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5261,13 +5266,13 @@ end
 function M.CreateReplicationInstanceAsync(CreateReplicationInstanceMessage, cb)
 	assert(CreateReplicationInstanceMessage, "You must provide a CreateReplicationInstanceMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.CreateReplicationInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.CreateReplicationInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateReplicationInstanceMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateReplicationInstanceMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5293,13 +5298,13 @@ end
 function M.ImportCertificateAsync(ImportCertificateMessage, cb)
 	assert(ImportCertificateMessage, "You must provide a ImportCertificateMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.ImportCertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.ImportCertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ImportCertificateMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ImportCertificateMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5325,13 +5330,13 @@ end
 function M.DescribeReplicationSubnetGroupsAsync(DescribeReplicationSubnetGroupsMessage, cb)
 	assert(DescribeReplicationSubnetGroupsMessage, "You must provide a DescribeReplicationSubnetGroupsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeReplicationSubnetGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeReplicationSubnetGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeReplicationSubnetGroupsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeReplicationSubnetGroupsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5357,13 +5362,13 @@ end
 function M.StopReplicationTaskAsync(StopReplicationTaskMessage, cb)
 	assert(StopReplicationTaskMessage, "You must provide a StopReplicationTaskMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.StopReplicationTask",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.StopReplicationTask",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StopReplicationTaskMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StopReplicationTaskMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5389,13 +5394,13 @@ end
 function M.DescribeEndpointTypesAsync(DescribeEndpointTypesMessage, cb)
 	assert(DescribeEndpointTypesMessage, "You must provide a DescribeEndpointTypesMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeEndpointTypes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeEndpointTypes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeEndpointTypesMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeEndpointTypesMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5421,13 +5426,13 @@ end
 function M.DescribeReplicationTasksAsync(DescribeReplicationTasksMessage, cb)
 	assert(DescribeReplicationTasksMessage, "You must provide a DescribeReplicationTasksMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeReplicationTasks",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeReplicationTasks",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeReplicationTasksMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeReplicationTasksMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5453,13 +5458,13 @@ end
 function M.CreateEventSubscriptionAsync(CreateEventSubscriptionMessage, cb)
 	assert(CreateEventSubscriptionMessage, "You must provide a CreateEventSubscriptionMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.CreateEventSubscription",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.CreateEventSubscription",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateEventSubscriptionMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateEventSubscriptionMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5485,13 +5490,13 @@ end
 function M.DeleteEndpointAsync(DeleteEndpointMessage, cb)
 	assert(DeleteEndpointMessage, "You must provide a DeleteEndpointMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DeleteEndpoint",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DeleteEndpoint",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteEndpointMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteEndpointMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5517,13 +5522,13 @@ end
 function M.DescribeOrderableReplicationInstancesAsync(DescribeOrderableReplicationInstancesMessage, cb)
 	assert(DescribeOrderableReplicationInstancesMessage, "You must provide a DescribeOrderableReplicationInstancesMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeOrderableReplicationInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeOrderableReplicationInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeOrderableReplicationInstancesMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeOrderableReplicationInstancesMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5549,13 +5554,13 @@ end
 function M.ModifyReplicationTaskAsync(ModifyReplicationTaskMessage, cb)
 	assert(ModifyReplicationTaskMessage, "You must provide a ModifyReplicationTaskMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.ModifyReplicationTask",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.ModifyReplicationTask",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyReplicationTaskMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyReplicationTaskMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5581,13 +5586,13 @@ end
 function M.ListTagsForResourceAsync(ListTagsForResourceMessage, cb)
 	assert(ListTagsForResourceMessage, "You must provide a ListTagsForResourceMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.ListTagsForResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.ListTagsForResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListTagsForResourceMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListTagsForResourceMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end

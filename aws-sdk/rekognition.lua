@@ -2304,12 +2304,12 @@ function M.FaceMatchList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -2333,8 +2333,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -2347,13 +2352,13 @@ end
 function M.DeleteCollectionAsync(DeleteCollectionRequest, cb)
 	assert(DeleteCollectionRequest, "You must provide a DeleteCollectionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "RekognitionService.DeleteCollection",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "RekognitionService.DeleteCollection",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteCollectionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteCollectionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2379,13 +2384,13 @@ end
 function M.ListFacesAsync(ListFacesRequest, cb)
 	assert(ListFacesRequest, "You must provide a ListFacesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "RekognitionService.ListFaces",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "RekognitionService.ListFaces",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListFacesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListFacesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2411,13 +2416,13 @@ end
 function M.IndexFacesAsync(IndexFacesRequest, cb)
 	assert(IndexFacesRequest, "You must provide a IndexFacesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "RekognitionService.IndexFaces",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "RekognitionService.IndexFaces",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", IndexFacesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", IndexFacesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2443,13 +2448,13 @@ end
 function M.SearchFacesAsync(SearchFacesRequest, cb)
 	assert(SearchFacesRequest, "You must provide a SearchFacesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "RekognitionService.SearchFaces",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "RekognitionService.SearchFaces",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SearchFacesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SearchFacesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2475,13 +2480,13 @@ end
 function M.GetCelebrityInfoAsync(GetCelebrityInfoRequest, cb)
 	assert(GetCelebrityInfoRequest, "You must provide a GetCelebrityInfoRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "RekognitionService.GetCelebrityInfo",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "RekognitionService.GetCelebrityInfo",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetCelebrityInfoRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetCelebrityInfoRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2507,13 +2512,13 @@ end
 function M.DetectLabelsAsync(DetectLabelsRequest, cb)
 	assert(DetectLabelsRequest, "You must provide a DetectLabelsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "RekognitionService.DetectLabels",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "RekognitionService.DetectLabels",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DetectLabelsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DetectLabelsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2539,13 +2544,13 @@ end
 function M.DetectModerationLabelsAsync(DetectModerationLabelsRequest, cb)
 	assert(DetectModerationLabelsRequest, "You must provide a DetectModerationLabelsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "RekognitionService.DetectModerationLabels",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "RekognitionService.DetectModerationLabels",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DetectModerationLabelsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DetectModerationLabelsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2571,13 +2576,13 @@ end
 function M.ListCollectionsAsync(ListCollectionsRequest, cb)
 	assert(ListCollectionsRequest, "You must provide a ListCollectionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "RekognitionService.ListCollections",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "RekognitionService.ListCollections",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListCollectionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListCollectionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2603,13 +2608,13 @@ end
 function M.CreateCollectionAsync(CreateCollectionRequest, cb)
 	assert(CreateCollectionRequest, "You must provide a CreateCollectionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "RekognitionService.CreateCollection",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "RekognitionService.CreateCollection",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateCollectionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateCollectionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2635,13 +2640,13 @@ end
 function M.CompareFacesAsync(CompareFacesRequest, cb)
 	assert(CompareFacesRequest, "You must provide a CompareFacesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "RekognitionService.CompareFaces",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "RekognitionService.CompareFaces",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CompareFacesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CompareFacesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2667,13 +2672,13 @@ end
 function M.DeleteFacesAsync(DeleteFacesRequest, cb)
 	assert(DeleteFacesRequest, "You must provide a DeleteFacesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "RekognitionService.DeleteFaces",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "RekognitionService.DeleteFaces",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteFacesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteFacesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2699,13 +2704,13 @@ end
 function M.SearchFacesByImageAsync(SearchFacesByImageRequest, cb)
 	assert(SearchFacesByImageRequest, "You must provide a SearchFacesByImageRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "RekognitionService.SearchFacesByImage",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "RekognitionService.SearchFacesByImage",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SearchFacesByImageRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SearchFacesByImageRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2731,13 +2736,13 @@ end
 function M.DetectFacesAsync(DetectFacesRequest, cb)
 	assert(DetectFacesRequest, "You must provide a DetectFacesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "RekognitionService.DetectFaces",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "RekognitionService.DetectFaces",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DetectFacesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DetectFacesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2763,13 +2768,13 @@ end
 function M.RecognizeCelebritiesAsync(RecognizeCelebritiesRequest, cb)
 	assert(RecognizeCelebritiesRequest, "You must provide a RecognizeCelebritiesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "RekognitionService.RecognizeCelebrities",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "RekognitionService.RecognizeCelebrities",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RecognizeCelebritiesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RecognizeCelebritiesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

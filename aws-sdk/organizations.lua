@@ -3948,12 +3948,12 @@ function M.Roots(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -3977,8 +3977,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -3991,13 +3996,13 @@ end
 function M.DeclineHandshakeAsync(DeclineHandshakeRequest, cb)
 	assert(DeclineHandshakeRequest, "You must provide a DeclineHandshakeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DeclineHandshake",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DeclineHandshake",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeclineHandshakeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeclineHandshakeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4023,13 +4028,13 @@ end
 function M.DisablePolicyTypeAsync(DisablePolicyTypeRequest, cb)
 	assert(DisablePolicyTypeRequest, "You must provide a DisablePolicyTypeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DisablePolicyType",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DisablePolicyType",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisablePolicyTypeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisablePolicyTypeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4055,13 +4060,13 @@ end
 function M.DescribeCreateAccountStatusAsync(DescribeCreateAccountStatusRequest, cb)
 	assert(DescribeCreateAccountStatusRequest, "You must provide a DescribeCreateAccountStatusRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DescribeCreateAccountStatus",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DescribeCreateAccountStatus",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeCreateAccountStatusRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeCreateAccountStatusRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4087,13 +4092,13 @@ end
 function M.ListOrganizationalUnitsForParentAsync(ListOrganizationalUnitsForParentRequest, cb)
 	assert(ListOrganizationalUnitsForParentRequest, "You must provide a ListOrganizationalUnitsForParentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListOrganizationalUnitsForParent",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListOrganizationalUnitsForParent",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListOrganizationalUnitsForParentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListOrganizationalUnitsForParentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4119,13 +4124,13 @@ end
 function M.DescribeOrganizationalUnitAsync(DescribeOrganizationalUnitRequest, cb)
 	assert(DescribeOrganizationalUnitRequest, "You must provide a DescribeOrganizationalUnitRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DescribeOrganizationalUnit",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DescribeOrganizationalUnit",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeOrganizationalUnitRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeOrganizationalUnitRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4151,13 +4156,13 @@ end
 function M.AcceptHandshakeAsync(AcceptHandshakeRequest, cb)
 	assert(AcceptHandshakeRequest, "You must provide a AcceptHandshakeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.AcceptHandshake",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.AcceptHandshake",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AcceptHandshakeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AcceptHandshakeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4183,13 +4188,13 @@ end
 function M.DeleteOrganizationalUnitAsync(DeleteOrganizationalUnitRequest, cb)
 	assert(DeleteOrganizationalUnitRequest, "You must provide a DeleteOrganizationalUnitRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DeleteOrganizationalUnit",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DeleteOrganizationalUnit",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteOrganizationalUnitRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteOrganizationalUnitRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4215,13 +4220,13 @@ end
 function M.DeletePolicyAsync(DeletePolicyRequest, cb)
 	assert(DeletePolicyRequest, "You must provide a DeletePolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DeletePolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DeletePolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeletePolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeletePolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4247,13 +4252,13 @@ end
 function M.DetachPolicyAsync(DetachPolicyRequest, cb)
 	assert(DetachPolicyRequest, "You must provide a DetachPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DetachPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DetachPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DetachPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DetachPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4279,13 +4284,13 @@ end
 function M.ListHandshakesForAccountAsync(ListHandshakesForAccountRequest, cb)
 	assert(ListHandshakesForAccountRequest, "You must provide a ListHandshakesForAccountRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListHandshakesForAccount",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListHandshakesForAccount",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListHandshakesForAccountRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListHandshakesForAccountRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4311,13 +4316,13 @@ end
 function M.RemoveAccountFromOrganizationAsync(RemoveAccountFromOrganizationRequest, cb)
 	assert(RemoveAccountFromOrganizationRequest, "You must provide a RemoveAccountFromOrganizationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.RemoveAccountFromOrganization",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.RemoveAccountFromOrganization",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RemoveAccountFromOrganizationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RemoveAccountFromOrganizationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4343,13 +4348,13 @@ end
 function M.EnableAllFeaturesAsync(EnableAllFeaturesRequest, cb)
 	assert(EnableAllFeaturesRequest, "You must provide a EnableAllFeaturesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.EnableAllFeatures",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.EnableAllFeatures",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", EnableAllFeaturesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", EnableAllFeaturesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4373,13 +4378,13 @@ end
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteOrganizationAsync(cb)
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DeleteOrganization",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DeleteOrganization",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", {}, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4404,13 +4409,13 @@ end
 function M.ListPoliciesForTargetAsync(ListPoliciesForTargetRequest, cb)
 	assert(ListPoliciesForTargetRequest, "You must provide a ListPoliciesForTargetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListPoliciesForTarget",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListPoliciesForTarget",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListPoliciesForTargetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListPoliciesForTargetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4436,13 +4441,13 @@ end
 function M.DescribePolicyAsync(DescribePolicyRequest, cb)
 	assert(DescribePolicyRequest, "You must provide a DescribePolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DescribePolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DescribePolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribePolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribePolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4468,13 +4473,13 @@ end
 function M.ListCreateAccountStatusAsync(ListCreateAccountStatusRequest, cb)
 	assert(ListCreateAccountStatusRequest, "You must provide a ListCreateAccountStatusRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListCreateAccountStatus",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListCreateAccountStatus",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListCreateAccountStatusRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListCreateAccountStatusRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4500,13 +4505,13 @@ end
 function M.CreateAccountAsync(CreateAccountRequest, cb)
 	assert(CreateAccountRequest, "You must provide a CreateAccountRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.CreateAccount",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.CreateAccount",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateAccountRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateAccountRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4532,13 +4537,13 @@ end
 function M.CancelHandshakeAsync(CancelHandshakeRequest, cb)
 	assert(CancelHandshakeRequest, "You must provide a CancelHandshakeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.CancelHandshake",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.CancelHandshake",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CancelHandshakeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CancelHandshakeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4564,13 +4569,13 @@ end
 function M.ListAccountsAsync(ListAccountsRequest, cb)
 	assert(ListAccountsRequest, "You must provide a ListAccountsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListAccounts",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListAccounts",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListAccountsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListAccountsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4596,13 +4601,13 @@ end
 function M.AttachPolicyAsync(AttachPolicyRequest, cb)
 	assert(AttachPolicyRequest, "You must provide a AttachPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.AttachPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.AttachPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AttachPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AttachPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4628,13 +4633,13 @@ end
 function M.MoveAccountAsync(MoveAccountRequest, cb)
 	assert(MoveAccountRequest, "You must provide a MoveAccountRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.MoveAccount",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.MoveAccount",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", MoveAccountRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", MoveAccountRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4658,13 +4663,13 @@ end
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeOrganizationAsync(cb)
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DescribeOrganization",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DescribeOrganization",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", {}, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4689,13 +4694,13 @@ end
 function M.ListChildrenAsync(ListChildrenRequest, cb)
 	assert(ListChildrenRequest, "You must provide a ListChildrenRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListChildren",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListChildren",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListChildrenRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListChildrenRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4721,13 +4726,13 @@ end
 function M.CreateOrganizationAsync(CreateOrganizationRequest, cb)
 	assert(CreateOrganizationRequest, "You must provide a CreateOrganizationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.CreateOrganization",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.CreateOrganization",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateOrganizationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateOrganizationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4753,13 +4758,13 @@ end
 function M.UpdatePolicyAsync(UpdatePolicyRequest, cb)
 	assert(UpdatePolicyRequest, "You must provide a UpdatePolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.UpdatePolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.UpdatePolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdatePolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdatePolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4783,13 +4788,13 @@ end
 -- @param cb Callback function accepting two args: response, error_message
 function M.LeaveOrganizationAsync(cb)
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.LeaveOrganization",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.LeaveOrganization",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", {}, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4814,13 +4819,13 @@ end
 function M.CreateOrganizationalUnitAsync(CreateOrganizationalUnitRequest, cb)
 	assert(CreateOrganizationalUnitRequest, "You must provide a CreateOrganizationalUnitRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.CreateOrganizationalUnit",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.CreateOrganizationalUnit",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateOrganizationalUnitRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateOrganizationalUnitRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4846,13 +4851,13 @@ end
 function M.EnablePolicyTypeAsync(EnablePolicyTypeRequest, cb)
 	assert(EnablePolicyTypeRequest, "You must provide a EnablePolicyTypeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.EnablePolicyType",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.EnablePolicyType",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", EnablePolicyTypeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", EnablePolicyTypeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4878,13 +4883,13 @@ end
 function M.DescribeAccountAsync(DescribeAccountRequest, cb)
 	assert(DescribeAccountRequest, "You must provide a DescribeAccountRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DescribeAccount",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DescribeAccount",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeAccountRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeAccountRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4910,13 +4915,13 @@ end
 function M.InviteAccountToOrganizationAsync(InviteAccountToOrganizationRequest, cb)
 	assert(InviteAccountToOrganizationRequest, "You must provide a InviteAccountToOrganizationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.InviteAccountToOrganization",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.InviteAccountToOrganization",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", InviteAccountToOrganizationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", InviteAccountToOrganizationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4942,13 +4947,13 @@ end
 function M.ListPoliciesAsync(ListPoliciesRequest, cb)
 	assert(ListPoliciesRequest, "You must provide a ListPoliciesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListPolicies",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListPolicies",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListPoliciesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListPoliciesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4974,13 +4979,13 @@ end
 function M.ListAccountsForParentAsync(ListAccountsForParentRequest, cb)
 	assert(ListAccountsForParentRequest, "You must provide a ListAccountsForParentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListAccountsForParent",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListAccountsForParent",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListAccountsForParentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListAccountsForParentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5006,13 +5011,13 @@ end
 function M.DescribeHandshakeAsync(DescribeHandshakeRequest, cb)
 	assert(DescribeHandshakeRequest, "You must provide a DescribeHandshakeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DescribeHandshake",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DescribeHandshake",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeHandshakeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeHandshakeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5038,13 +5043,13 @@ end
 function M.ListParentsAsync(ListParentsRequest, cb)
 	assert(ListParentsRequest, "You must provide a ListParentsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListParents",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListParents",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListParentsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListParentsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5070,13 +5075,13 @@ end
 function M.UpdateOrganizationalUnitAsync(UpdateOrganizationalUnitRequest, cb)
 	assert(UpdateOrganizationalUnitRequest, "You must provide a UpdateOrganizationalUnitRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.UpdateOrganizationalUnit",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.UpdateOrganizationalUnit",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateOrganizationalUnitRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateOrganizationalUnitRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5102,13 +5107,13 @@ end
 function M.ListHandshakesForOrganizationAsync(ListHandshakesForOrganizationRequest, cb)
 	assert(ListHandshakesForOrganizationRequest, "You must provide a ListHandshakesForOrganizationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListHandshakesForOrganization",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListHandshakesForOrganization",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListHandshakesForOrganizationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListHandshakesForOrganizationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5134,13 +5139,13 @@ end
 function M.CreatePolicyAsync(CreatePolicyRequest, cb)
 	assert(CreatePolicyRequest, "You must provide a CreatePolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.CreatePolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.CreatePolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreatePolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreatePolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5166,13 +5171,13 @@ end
 function M.ListTargetsForPolicyAsync(ListTargetsForPolicyRequest, cb)
 	assert(ListTargetsForPolicyRequest, "You must provide a ListTargetsForPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListTargetsForPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListTargetsForPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListTargetsForPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListTargetsForPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5198,13 +5203,13 @@ end
 function M.ListRootsAsync(ListRootsRequest, cb)
 	assert(ListRootsRequest, "You must provide a ListRootsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListRoots",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListRoots",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListRootsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListRootsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

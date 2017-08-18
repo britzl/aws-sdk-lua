@@ -5159,12 +5159,12 @@ function M.SupportedProductsList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -5188,8 +5188,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -5202,13 +5207,13 @@ end
 function M.CancelStepsAsync(CancelStepsInput, cb)
 	assert(CancelStepsInput, "You must provide a CancelStepsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.CancelSteps",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.CancelSteps",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CancelStepsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CancelStepsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5234,13 +5239,13 @@ end
 function M.RemoveAutoScalingPolicyAsync(RemoveAutoScalingPolicyInput, cb)
 	assert(RemoveAutoScalingPolicyInput, "You must provide a RemoveAutoScalingPolicyInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.RemoveAutoScalingPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.RemoveAutoScalingPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RemoveAutoScalingPolicyInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RemoveAutoScalingPolicyInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5266,13 +5271,13 @@ end
 function M.CreateSecurityConfigurationAsync(CreateSecurityConfigurationInput, cb)
 	assert(CreateSecurityConfigurationInput, "You must provide a CreateSecurityConfigurationInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.CreateSecurityConfiguration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.CreateSecurityConfiguration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateSecurityConfigurationInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateSecurityConfigurationInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5298,13 +5303,13 @@ end
 function M.RunJobFlowAsync(RunJobFlowInput, cb)
 	assert(RunJobFlowInput, "You must provide a RunJobFlowInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.RunJobFlow",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.RunJobFlow",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RunJobFlowInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RunJobFlowInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5330,13 +5335,13 @@ end
 function M.DescribeSecurityConfigurationAsync(DescribeSecurityConfigurationInput, cb)
 	assert(DescribeSecurityConfigurationInput, "You must provide a DescribeSecurityConfigurationInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.DescribeSecurityConfiguration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.DescribeSecurityConfiguration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeSecurityConfigurationInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeSecurityConfigurationInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5362,13 +5367,13 @@ end
 function M.ListSecurityConfigurationsAsync(ListSecurityConfigurationsInput, cb)
 	assert(ListSecurityConfigurationsInput, "You must provide a ListSecurityConfigurationsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.ListSecurityConfigurations",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.ListSecurityConfigurations",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListSecurityConfigurationsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListSecurityConfigurationsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5394,13 +5399,13 @@ end
 function M.SetTerminationProtectionAsync(SetTerminationProtectionInput, cb)
 	assert(SetTerminationProtectionInput, "You must provide a SetTerminationProtectionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.SetTerminationProtection",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.SetTerminationProtection",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetTerminationProtectionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetTerminationProtectionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5426,13 +5431,13 @@ end
 function M.DeleteSecurityConfigurationAsync(DeleteSecurityConfigurationInput, cb)
 	assert(DeleteSecurityConfigurationInput, "You must provide a DeleteSecurityConfigurationInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.DeleteSecurityConfiguration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.DeleteSecurityConfiguration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteSecurityConfigurationInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteSecurityConfigurationInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5458,13 +5463,13 @@ end
 function M.AddInstanceGroupsAsync(AddInstanceGroupsInput, cb)
 	assert(AddInstanceGroupsInput, "You must provide a AddInstanceGroupsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.AddInstanceGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.AddInstanceGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddInstanceGroupsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddInstanceGroupsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5490,13 +5495,13 @@ end
 function M.ListBootstrapActionsAsync(ListBootstrapActionsInput, cb)
 	assert(ListBootstrapActionsInput, "You must provide a ListBootstrapActionsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.ListBootstrapActions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.ListBootstrapActions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListBootstrapActionsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListBootstrapActionsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5522,13 +5527,13 @@ end
 function M.ListClustersAsync(ListClustersInput, cb)
 	assert(ListClustersInput, "You must provide a ListClustersInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.ListClusters",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.ListClusters",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListClustersInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListClustersInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5554,13 +5559,13 @@ end
 function M.ListInstancesAsync(ListInstancesInput, cb)
 	assert(ListInstancesInput, "You must provide a ListInstancesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.ListInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.ListInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListInstancesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListInstancesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5586,13 +5591,13 @@ end
 function M.DescribeClusterAsync(DescribeClusterInput, cb)
 	assert(DescribeClusterInput, "You must provide a DescribeClusterInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.DescribeCluster",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.DescribeCluster",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeClusterInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeClusterInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5618,13 +5623,13 @@ end
 function M.ListStepsAsync(ListStepsInput, cb)
 	assert(ListStepsInput, "You must provide a ListStepsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.ListSteps",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.ListSteps",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListStepsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListStepsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5650,13 +5655,13 @@ end
 function M.RemoveTagsAsync(RemoveTagsInput, cb)
 	assert(RemoveTagsInput, "You must provide a RemoveTagsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.RemoveTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.RemoveTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RemoveTagsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RemoveTagsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5682,13 +5687,13 @@ end
 function M.ModifyInstanceGroupsAsync(ModifyInstanceGroupsInput, cb)
 	assert(ModifyInstanceGroupsInput, "You must provide a ModifyInstanceGroupsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.ModifyInstanceGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.ModifyInstanceGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyInstanceGroupsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyInstanceGroupsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5714,13 +5719,13 @@ end
 function M.PutAutoScalingPolicyAsync(PutAutoScalingPolicyInput, cb)
 	assert(PutAutoScalingPolicyInput, "You must provide a PutAutoScalingPolicyInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.PutAutoScalingPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.PutAutoScalingPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutAutoScalingPolicyInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutAutoScalingPolicyInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5746,13 +5751,13 @@ end
 function M.AddInstanceFleetAsync(AddInstanceFleetInput, cb)
 	assert(AddInstanceFleetInput, "You must provide a AddInstanceFleetInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.AddInstanceFleet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.AddInstanceFleet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddInstanceFleetInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddInstanceFleetInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5778,13 +5783,13 @@ end
 function M.SetVisibleToAllUsersAsync(SetVisibleToAllUsersInput, cb)
 	assert(SetVisibleToAllUsersInput, "You must provide a SetVisibleToAllUsersInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.SetVisibleToAllUsers",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.SetVisibleToAllUsers",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetVisibleToAllUsersInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetVisibleToAllUsersInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5810,13 +5815,13 @@ end
 function M.ListInstanceFleetsAsync(ListInstanceFleetsInput, cb)
 	assert(ListInstanceFleetsInput, "You must provide a ListInstanceFleetsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.ListInstanceFleets",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.ListInstanceFleets",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListInstanceFleetsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListInstanceFleetsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5842,13 +5847,13 @@ end
 function M.TerminateJobFlowsAsync(TerminateJobFlowsInput, cb)
 	assert(TerminateJobFlowsInput, "You must provide a TerminateJobFlowsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.TerminateJobFlows",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.TerminateJobFlows",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", TerminateJobFlowsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", TerminateJobFlowsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5874,13 +5879,13 @@ end
 function M.AddTagsAsync(AddTagsInput, cb)
 	assert(AddTagsInput, "You must provide a AddTagsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.AddTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.AddTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddTagsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddTagsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5906,13 +5911,13 @@ end
 function M.ModifyInstanceFleetAsync(ModifyInstanceFleetInput, cb)
 	assert(ModifyInstanceFleetInput, "You must provide a ModifyInstanceFleetInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.ModifyInstanceFleet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.ModifyInstanceFleet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyInstanceFleetInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyInstanceFleetInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5938,13 +5943,13 @@ end
 function M.AddJobFlowStepsAsync(AddJobFlowStepsInput, cb)
 	assert(AddJobFlowStepsInput, "You must provide a AddJobFlowStepsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.AddJobFlowSteps",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.AddJobFlowSteps",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddJobFlowStepsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddJobFlowStepsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5970,13 +5975,13 @@ end
 function M.ListInstanceGroupsAsync(ListInstanceGroupsInput, cb)
 	assert(ListInstanceGroupsInput, "You must provide a ListInstanceGroupsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.ListInstanceGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.ListInstanceGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListInstanceGroupsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListInstanceGroupsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6002,13 +6007,13 @@ end
 function M.DescribeStepAsync(DescribeStepInput, cb)
 	assert(DescribeStepInput, "You must provide a DescribeStepInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.DescribeStep",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.DescribeStep",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeStepInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeStepInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end

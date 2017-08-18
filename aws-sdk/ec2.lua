@@ -23758,12 +23758,12 @@ function M.VgwTelemetryList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -23787,8 +23787,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -23801,13 +23806,13 @@ end
 function M.DeleteTagsAsync(DeleteTagsRequest, cb)
 	assert(DeleteTagsRequest, "You must provide a DeleteTagsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteTagsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteTagsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -23833,13 +23838,13 @@ end
 function M.ResetSnapshotAttributeAsync(ResetSnapshotAttributeRequest, cb)
 	assert(ResetSnapshotAttributeRequest, "You must provide a ResetSnapshotAttributeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ResetSnapshotAttribute",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ResetSnapshotAttribute",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ResetSnapshotAttributeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ResetSnapshotAttributeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -23865,13 +23870,13 @@ end
 function M.DescribeCustomerGatewaysAsync(DescribeCustomerGatewaysRequest, cb)
 	assert(DescribeCustomerGatewaysRequest, "You must provide a DescribeCustomerGatewaysRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeCustomerGateways",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeCustomerGateways",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeCustomerGatewaysRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeCustomerGatewaysRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -23897,13 +23902,13 @@ end
 function M.EnableVpcClassicLinkDnsSupportAsync(EnableVpcClassicLinkDnsSupportRequest, cb)
 	assert(EnableVpcClassicLinkDnsSupportRequest, "You must provide a EnableVpcClassicLinkDnsSupportRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".EnableVpcClassicLinkDnsSupport",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".EnableVpcClassicLinkDnsSupport",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", EnableVpcClassicLinkDnsSupportRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", EnableVpcClassicLinkDnsSupportRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -23929,13 +23934,13 @@ end
 function M.DescribeNetworkAclsAsync(DescribeNetworkAclsRequest, cb)
 	assert(DescribeNetworkAclsRequest, "You must provide a DescribeNetworkAclsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeNetworkAcls",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeNetworkAcls",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeNetworkAclsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeNetworkAclsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -23961,13 +23966,13 @@ end
 function M.DescribeImageAttributeAsync(DescribeImageAttributeRequest, cb)
 	assert(DescribeImageAttributeRequest, "You must provide a DescribeImageAttributeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeImageAttribute",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeImageAttribute",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeImageAttributeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeImageAttributeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -23993,13 +23998,13 @@ end
 function M.CancelConversionTaskAsync(CancelConversionRequest, cb)
 	assert(CancelConversionRequest, "You must provide a CancelConversionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CancelConversionTask",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CancelConversionTask",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CancelConversionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CancelConversionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -24025,13 +24030,13 @@ end
 function M.CancelImportTaskAsync(CancelImportTaskRequest, cb)
 	assert(CancelImportTaskRequest, "You must provide a CancelImportTaskRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CancelImportTask",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CancelImportTask",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CancelImportTaskRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CancelImportTaskRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -24057,13 +24062,13 @@ end
 function M.CreateVpnConnectionRouteAsync(CreateVpnConnectionRouteRequest, cb)
 	assert(CreateVpnConnectionRouteRequest, "You must provide a CreateVpnConnectionRouteRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateVpnConnectionRoute",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateVpnConnectionRoute",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateVpnConnectionRouteRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateVpnConnectionRouteRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -24089,13 +24094,13 @@ end
 function M.DescribeRouteTablesAsync(DescribeRouteTablesRequest, cb)
 	assert(DescribeRouteTablesRequest, "You must provide a DescribeRouteTablesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeRouteTables",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeRouteTables",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeRouteTablesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeRouteTablesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -24121,13 +24126,13 @@ end
 function M.ResetImageAttributeAsync(ResetImageAttributeRequest, cb)
 	assert(ResetImageAttributeRequest, "You must provide a ResetImageAttributeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ResetImageAttribute",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ResetImageAttribute",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ResetImageAttributeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ResetImageAttributeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -24153,13 +24158,13 @@ end
 function M.CreateRouteTableAsync(CreateRouteTableRequest, cb)
 	assert(CreateRouteTableRequest, "You must provide a CreateRouteTableRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateRouteTable",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateRouteTable",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateRouteTableRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateRouteTableRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -24185,13 +24190,13 @@ end
 function M.ReplaceRouteTableAssociationAsync(ReplaceRouteTableAssociationRequest, cb)
 	assert(ReplaceRouteTableAssociationRequest, "You must provide a ReplaceRouteTableAssociationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ReplaceRouteTableAssociation",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ReplaceRouteTableAssociation",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ReplaceRouteTableAssociationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ReplaceRouteTableAssociationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -24217,13 +24222,13 @@ end
 function M.CreateVpcEndpointAsync(CreateVpcEndpointRequest, cb)
 	assert(CreateVpcEndpointRequest, "You must provide a CreateVpcEndpointRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateVpcEndpoint",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateVpcEndpoint",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateVpcEndpointRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateVpcEndpointRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -24249,13 +24254,13 @@ end
 function M.RegisterImageAsync(RegisterImageRequest, cb)
 	assert(RegisterImageRequest, "You must provide a RegisterImageRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RegisterImage",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RegisterImage",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RegisterImageRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RegisterImageRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -24281,13 +24286,13 @@ end
 function M.AssociateDhcpOptionsAsync(AssociateDhcpOptionsRequest, cb)
 	assert(AssociateDhcpOptionsRequest, "You must provide a AssociateDhcpOptionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AssociateDhcpOptions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AssociateDhcpOptions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AssociateDhcpOptionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AssociateDhcpOptionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -24313,13 +24318,13 @@ end
 function M.ImportKeyPairAsync(ImportKeyPairRequest, cb)
 	assert(ImportKeyPairRequest, "You must provide a ImportKeyPairRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ImportKeyPair",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ImportKeyPair",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ImportKeyPairRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ImportKeyPairRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -24345,13 +24350,13 @@ end
 function M.DescribeAvailabilityZonesAsync(DescribeAvailabilityZonesRequest, cb)
 	assert(DescribeAvailabilityZonesRequest, "You must provide a DescribeAvailabilityZonesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeAvailabilityZones",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAvailabilityZones",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeAvailabilityZonesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeAvailabilityZonesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -24377,13 +24382,13 @@ end
 function M.RequestSpotInstancesAsync(RequestSpotInstancesRequest, cb)
 	assert(RequestSpotInstancesRequest, "You must provide a RequestSpotInstancesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RequestSpotInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RequestSpotInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RequestSpotInstancesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RequestSpotInstancesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -24409,13 +24414,13 @@ end
 function M.DescribeVpnGatewaysAsync(DescribeVpnGatewaysRequest, cb)
 	assert(DescribeVpnGatewaysRequest, "You must provide a DescribeVpnGatewaysRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeVpnGateways",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeVpnGateways",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeVpnGatewaysRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeVpnGatewaysRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -24441,13 +24446,13 @@ end
 function M.AcceptVpcPeeringConnectionAsync(AcceptVpcPeeringConnectionRequest, cb)
 	assert(AcceptVpcPeeringConnectionRequest, "You must provide a AcceptVpcPeeringConnectionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AcceptVpcPeeringConnection",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AcceptVpcPeeringConnection",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AcceptVpcPeeringConnectionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AcceptVpcPeeringConnectionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -24473,13 +24478,13 @@ end
 function M.DescribeReservedInstancesModificationsAsync(DescribeReservedInstancesModificationsRequest, cb)
 	assert(DescribeReservedInstancesModificationsRequest, "You must provide a DescribeReservedInstancesModificationsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeReservedInstancesModifications",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeReservedInstancesModifications",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeReservedInstancesModificationsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeReservedInstancesModificationsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -24505,13 +24510,13 @@ end
 function M.GetPasswordDataAsync(GetPasswordDataRequest, cb)
 	assert(GetPasswordDataRequest, "You must provide a GetPasswordDataRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetPasswordData",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetPasswordData",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetPasswordDataRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetPasswordDataRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -24537,13 +24542,13 @@ end
 function M.DescribeImportSnapshotTasksAsync(DescribeImportSnapshotTasksRequest, cb)
 	assert(DescribeImportSnapshotTasksRequest, "You must provide a DescribeImportSnapshotTasksRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeImportSnapshotTasks",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeImportSnapshotTasks",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeImportSnapshotTasksRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeImportSnapshotTasksRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -24569,13 +24574,13 @@ end
 function M.UnassignIpv6AddressesAsync(UnassignIpv6AddressesRequest, cb)
 	assert(UnassignIpv6AddressesRequest, "You must provide a UnassignIpv6AddressesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UnassignIpv6Addresses",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UnassignIpv6Addresses",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UnassignIpv6AddressesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UnassignIpv6AddressesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -24601,13 +24606,13 @@ end
 function M.DeleteVpnConnectionAsync(DeleteVpnConnectionRequest, cb)
 	assert(DeleteVpnConnectionRequest, "You must provide a DeleteVpnConnectionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteVpnConnection",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteVpnConnection",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteVpnConnectionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteVpnConnectionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -24633,13 +24638,13 @@ end
 function M.AttachVpnGatewayAsync(AttachVpnGatewayRequest, cb)
 	assert(AttachVpnGatewayRequest, "You must provide a AttachVpnGatewayRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AttachVpnGateway",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AttachVpnGateway",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AttachVpnGatewayRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AttachVpnGatewayRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -24665,13 +24670,13 @@ end
 function M.ImportImageAsync(ImportImageRequest, cb)
 	assert(ImportImageRequest, "You must provide a ImportImageRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ImportImage",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ImportImage",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ImportImageRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ImportImageRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -24697,13 +24702,13 @@ end
 function M.DescribeAddressesAsync(DescribeAddressesRequest, cb)
 	assert(DescribeAddressesRequest, "You must provide a DescribeAddressesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeAddresses",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAddresses",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeAddressesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeAddressesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -24729,13 +24734,13 @@ end
 function M.DisassociateIamInstanceProfileAsync(DisassociateIamInstanceProfileRequest, cb)
 	assert(DisassociateIamInstanceProfileRequest, "You must provide a DisassociateIamInstanceProfileRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DisassociateIamInstanceProfile",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DisassociateIamInstanceProfile",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisassociateIamInstanceProfileRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisassociateIamInstanceProfileRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -24761,13 +24766,13 @@ end
 function M.AssociateIamInstanceProfileAsync(AssociateIamInstanceProfileRequest, cb)
 	assert(AssociateIamInstanceProfileRequest, "You must provide a AssociateIamInstanceProfileRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AssociateIamInstanceProfile",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AssociateIamInstanceProfile",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AssociateIamInstanceProfileRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AssociateIamInstanceProfileRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -24793,13 +24798,13 @@ end
 function M.PurchaseHostReservationAsync(PurchaseHostReservationRequest, cb)
 	assert(PurchaseHostReservationRequest, "You must provide a PurchaseHostReservationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PurchaseHostReservation",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PurchaseHostReservation",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PurchaseHostReservationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PurchaseHostReservationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -24825,13 +24830,13 @@ end
 function M.BundleInstanceAsync(BundleInstanceRequest, cb)
 	assert(BundleInstanceRequest, "You must provide a BundleInstanceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".BundleInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".BundleInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", BundleInstanceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", BundleInstanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -24857,13 +24862,13 @@ end
 function M.DescribeReservedInstancesAsync(DescribeReservedInstancesRequest, cb)
 	assert(DescribeReservedInstancesRequest, "You must provide a DescribeReservedInstancesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeReservedInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeReservedInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeReservedInstancesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeReservedInstancesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -24889,13 +24894,13 @@ end
 function M.CreateNetworkAclAsync(CreateNetworkAclRequest, cb)
 	assert(CreateNetworkAclRequest, "You must provide a CreateNetworkAclRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateNetworkAcl",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateNetworkAcl",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateNetworkAclRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateNetworkAclRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -24921,13 +24926,13 @@ end
 function M.CreateImageAsync(CreateImageRequest, cb)
 	assert(CreateImageRequest, "You must provide a CreateImageRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateImage",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateImage",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateImageRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateImageRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -24953,13 +24958,13 @@ end
 function M.ModifyHostsAsync(ModifyHostsRequest, cb)
 	assert(ModifyHostsRequest, "You must provide a ModifyHostsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyHosts",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyHosts",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyHostsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyHostsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -24985,13 +24990,13 @@ end
 function M.RebootInstancesAsync(RebootInstancesRequest, cb)
 	assert(RebootInstancesRequest, "You must provide a RebootInstancesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RebootInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RebootInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RebootInstancesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RebootInstancesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -25017,13 +25022,13 @@ end
 function M.DescribeVpcEndpointsAsync(DescribeVpcEndpointsRequest, cb)
 	assert(DescribeVpcEndpointsRequest, "You must provide a DescribeVpcEndpointsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeVpcEndpoints",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeVpcEndpoints",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeVpcEndpointsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeVpcEndpointsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -25049,13 +25054,13 @@ end
 function M.ModifyIdentityIdFormatAsync(ModifyIdentityIdFormatRequest, cb)
 	assert(ModifyIdentityIdFormatRequest, "You must provide a ModifyIdentityIdFormatRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyIdentityIdFormat",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyIdentityIdFormat",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyIdentityIdFormatRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyIdentityIdFormatRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -25081,13 +25086,13 @@ end
 function M.DescribeSpotFleetRequestHistoryAsync(DescribeSpotFleetRequestHistoryRequest, cb)
 	assert(DescribeSpotFleetRequestHistoryRequest, "You must provide a DescribeSpotFleetRequestHistoryRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeSpotFleetRequestHistory",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSpotFleetRequestHistory",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeSpotFleetRequestHistoryRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeSpotFleetRequestHistoryRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -25113,13 +25118,13 @@ end
 function M.PurchaseScheduledInstancesAsync(PurchaseScheduledInstancesRequest, cb)
 	assert(PurchaseScheduledInstancesRequest, "You must provide a PurchaseScheduledInstancesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PurchaseScheduledInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PurchaseScheduledInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PurchaseScheduledInstancesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PurchaseScheduledInstancesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -25145,13 +25150,13 @@ end
 function M.ReplaceIamInstanceProfileAssociationAsync(ReplaceIamInstanceProfileAssociationRequest, cb)
 	assert(ReplaceIamInstanceProfileAssociationRequest, "You must provide a ReplaceIamInstanceProfileAssociationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ReplaceIamInstanceProfileAssociation",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ReplaceIamInstanceProfileAssociation",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ReplaceIamInstanceProfileAssociationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ReplaceIamInstanceProfileAssociationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -25177,13 +25182,13 @@ end
 function M.DetachVolumeAsync(DetachVolumeRequest, cb)
 	assert(DetachVolumeRequest, "You must provide a DetachVolumeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DetachVolume",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DetachVolume",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DetachVolumeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DetachVolumeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -25209,13 +25214,13 @@ end
 function M.DescribeIamInstanceProfileAssociationsAsync(DescribeIamInstanceProfileAssociationsRequest, cb)
 	assert(DescribeIamInstanceProfileAssociationsRequest, "You must provide a DescribeIamInstanceProfileAssociationsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeIamInstanceProfileAssociations",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeIamInstanceProfileAssociations",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeIamInstanceProfileAssociationsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeIamInstanceProfileAssociationsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -25241,13 +25246,13 @@ end
 function M.AssignPrivateIpAddressesAsync(AssignPrivateIpAddressesRequest, cb)
 	assert(AssignPrivateIpAddressesRequest, "You must provide a AssignPrivateIpAddressesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AssignPrivateIpAddresses",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AssignPrivateIpAddresses",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AssignPrivateIpAddressesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AssignPrivateIpAddressesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -25273,13 +25278,13 @@ end
 function M.CancelExportTaskAsync(CancelExportTaskRequest, cb)
 	assert(CancelExportTaskRequest, "You must provide a CancelExportTaskRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CancelExportTask",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CancelExportTask",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CancelExportTaskRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CancelExportTaskRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -25305,13 +25310,13 @@ end
 function M.DetachVpnGatewayAsync(DetachVpnGatewayRequest, cb)
 	assert(DetachVpnGatewayRequest, "You must provide a DetachVpnGatewayRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DetachVpnGateway",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DetachVpnGateway",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DetachVpnGatewayRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DetachVpnGatewayRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -25337,13 +25342,13 @@ end
 function M.DescribeVpcAttributeAsync(DescribeVpcAttributeRequest, cb)
 	assert(DescribeVpcAttributeRequest, "You must provide a DescribeVpcAttributeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeVpcAttribute",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeVpcAttribute",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeVpcAttributeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeVpcAttributeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -25369,13 +25374,13 @@ end
 function M.CancelBundleTaskAsync(CancelBundleTaskRequest, cb)
 	assert(CancelBundleTaskRequest, "You must provide a CancelBundleTaskRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CancelBundleTask",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CancelBundleTask",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CancelBundleTaskRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CancelBundleTaskRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -25401,13 +25406,13 @@ end
 function M.DescribeNatGatewaysAsync(DescribeNatGatewaysRequest, cb)
 	assert(DescribeNatGatewaysRequest, "You must provide a DescribeNatGatewaysRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeNatGateways",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeNatGateways",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeNatGatewaysRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeNatGatewaysRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -25433,13 +25438,13 @@ end
 function M.DisassociateSubnetCidrBlockAsync(DisassociateSubnetCidrBlockRequest, cb)
 	assert(DisassociateSubnetCidrBlockRequest, "You must provide a DisassociateSubnetCidrBlockRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DisassociateSubnetCidrBlock",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DisassociateSubnetCidrBlock",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisassociateSubnetCidrBlockRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisassociateSubnetCidrBlockRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -25465,13 +25470,13 @@ end
 function M.CreateVpcPeeringConnectionAsync(CreateVpcPeeringConnectionRequest, cb)
 	assert(CreateVpcPeeringConnectionRequest, "You must provide a CreateVpcPeeringConnectionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateVpcPeeringConnection",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateVpcPeeringConnection",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateVpcPeeringConnectionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateVpcPeeringConnectionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -25497,13 +25502,13 @@ end
 function M.ModifyIdFormatAsync(ModifyIdFormatRequest, cb)
 	assert(ModifyIdFormatRequest, "You must provide a ModifyIdFormatRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyIdFormat",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyIdFormat",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyIdFormatRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyIdFormatRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -25529,13 +25534,13 @@ end
 function M.DescribeSpotFleetRequestsAsync(DescribeSpotFleetRequestsRequest, cb)
 	assert(DescribeSpotFleetRequestsRequest, "You must provide a DescribeSpotFleetRequestsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeSpotFleetRequests",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSpotFleetRequests",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeSpotFleetRequestsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeSpotFleetRequestsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -25561,13 +25566,13 @@ end
 function M.AllocateHostsAsync(AllocateHostsRequest, cb)
 	assert(AllocateHostsRequest, "You must provide a AllocateHostsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AllocateHosts",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AllocateHosts",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AllocateHostsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AllocateHostsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -25593,13 +25598,13 @@ end
 function M.DeleteNetworkAclAsync(DeleteNetworkAclRequest, cb)
 	assert(DeleteNetworkAclRequest, "You must provide a DeleteNetworkAclRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteNetworkAcl",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteNetworkAcl",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteNetworkAclRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteNetworkAclRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -25625,13 +25630,13 @@ end
 function M.GetHostReservationPurchasePreviewAsync(GetHostReservationPurchasePreviewRequest, cb)
 	assert(GetHostReservationPurchasePreviewRequest, "You must provide a GetHostReservationPurchasePreviewRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetHostReservationPurchasePreview",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetHostReservationPurchasePreview",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetHostReservationPurchasePreviewRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetHostReservationPurchasePreviewRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -25657,13 +25662,13 @@ end
 function M.CopyImageAsync(CopyImageRequest, cb)
 	assert(CopyImageRequest, "You must provide a CopyImageRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CopyImage",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CopyImage",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CopyImageRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CopyImageRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -25689,13 +25694,13 @@ end
 function M.CreateSnapshotAsync(CreateSnapshotRequest, cb)
 	assert(CreateSnapshotRequest, "You must provide a CreateSnapshotRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateSnapshot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateSnapshot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateSnapshotRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateSnapshotRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -25721,13 +25726,13 @@ end
 function M.CreateSubnetAsync(CreateSubnetRequest, cb)
 	assert(CreateSubnetRequest, "You must provide a CreateSubnetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateSubnet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateSubnet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateSubnetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateSubnetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -25753,13 +25758,13 @@ end
 function M.RequestSpotFleetAsync(RequestSpotFleetRequest, cb)
 	assert(RequestSpotFleetRequest, "You must provide a RequestSpotFleetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RequestSpotFleet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RequestSpotFleet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RequestSpotFleetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RequestSpotFleetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -25785,13 +25790,13 @@ end
 function M.ModifyImageAttributeAsync(ModifyImageAttributeRequest, cb)
 	assert(ModifyImageAttributeRequest, "You must provide a ModifyImageAttributeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyImageAttribute",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyImageAttribute",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyImageAttributeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyImageAttributeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -25817,13 +25822,13 @@ end
 function M.AssociateSubnetCidrBlockAsync(AssociateSubnetCidrBlockRequest, cb)
 	assert(AssociateSubnetCidrBlockRequest, "You must provide a AssociateSubnetCidrBlockRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AssociateSubnetCidrBlock",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AssociateSubnetCidrBlock",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AssociateSubnetCidrBlockRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AssociateSubnetCidrBlockRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -25849,13 +25854,13 @@ end
 function M.StartInstancesAsync(StartInstancesRequest, cb)
 	assert(StartInstancesRequest, "You must provide a StartInstancesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".StartInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".StartInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StartInstancesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StartInstancesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -25881,13 +25886,13 @@ end
 function M.DescribeSpotInstanceRequestsAsync(DescribeSpotInstanceRequestsRequest, cb)
 	assert(DescribeSpotInstanceRequestsRequest, "You must provide a DescribeSpotInstanceRequestsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeSpotInstanceRequests",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSpotInstanceRequests",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeSpotInstanceRequestsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeSpotInstanceRequestsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -25913,13 +25918,13 @@ end
 function M.DisableVgwRoutePropagationAsync(DisableVgwRoutePropagationRequest, cb)
 	assert(DisableVgwRoutePropagationRequest, "You must provide a DisableVgwRoutePropagationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DisableVgwRoutePropagation",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DisableVgwRoutePropagation",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisableVgwRoutePropagationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisableVgwRoutePropagationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -25945,13 +25950,13 @@ end
 function M.DescribeVpcsAsync(DescribeVpcsRequest, cb)
 	assert(DescribeVpcsRequest, "You must provide a DescribeVpcsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeVpcs",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeVpcs",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeVpcsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeVpcsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -25977,13 +25982,13 @@ end
 function M.DisassociateAddressAsync(DisassociateAddressRequest, cb)
 	assert(DisassociateAddressRequest, "You must provide a DisassociateAddressRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DisassociateAddress",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DisassociateAddress",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisassociateAddressRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisassociateAddressRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -26009,13 +26014,13 @@ end
 function M.ModifySnapshotAttributeAsync(ModifySnapshotAttributeRequest, cb)
 	assert(ModifySnapshotAttributeRequest, "You must provide a ModifySnapshotAttributeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifySnapshotAttribute",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifySnapshotAttribute",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifySnapshotAttributeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifySnapshotAttributeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -26041,13 +26046,13 @@ end
 function M.MoveAddressToVpcAsync(MoveAddressToVpcRequest, cb)
 	assert(MoveAddressToVpcRequest, "You must provide a MoveAddressToVpcRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".MoveAddressToVpc",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".MoveAddressToVpc",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", MoveAddressToVpcRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", MoveAddressToVpcRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -26073,13 +26078,13 @@ end
 function M.CreateVpcAsync(CreateVpcRequest, cb)
 	assert(CreateVpcRequest, "You must provide a CreateVpcRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateVpc",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateVpc",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateVpcRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateVpcRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -26105,13 +26110,13 @@ end
 function M.DescribeVpcEndpointServicesAsync(DescribeVpcEndpointServicesRequest, cb)
 	assert(DescribeVpcEndpointServicesRequest, "You must provide a DescribeVpcEndpointServicesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeVpcEndpointServices",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeVpcEndpointServices",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeVpcEndpointServicesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeVpcEndpointServicesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -26137,13 +26142,13 @@ end
 function M.CancelSpotFleetRequestsAsync(CancelSpotFleetRequestsRequest, cb)
 	assert(CancelSpotFleetRequestsRequest, "You must provide a CancelSpotFleetRequestsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CancelSpotFleetRequests",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CancelSpotFleetRequests",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CancelSpotFleetRequestsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CancelSpotFleetRequestsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -26169,13 +26174,13 @@ end
 function M.UnmonitorInstancesAsync(UnmonitorInstancesRequest, cb)
 	assert(UnmonitorInstancesRequest, "You must provide a UnmonitorInstancesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UnmonitorInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UnmonitorInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UnmonitorInstancesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UnmonitorInstancesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -26201,13 +26206,13 @@ end
 function M.DeleteSubnetAsync(DeleteSubnetRequest, cb)
 	assert(DeleteSubnetRequest, "You must provide a DeleteSubnetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteSubnet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteSubnet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteSubnetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteSubnetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -26233,13 +26238,13 @@ end
 function M.CreatePlacementGroupAsync(CreatePlacementGroupRequest, cb)
 	assert(CreatePlacementGroupRequest, "You must provide a CreatePlacementGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreatePlacementGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreatePlacementGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreatePlacementGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreatePlacementGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -26265,13 +26270,13 @@ end
 function M.CopySnapshotAsync(CopySnapshotRequest, cb)
 	assert(CopySnapshotRequest, "You must provide a CopySnapshotRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CopySnapshot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CopySnapshot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CopySnapshotRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CopySnapshotRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -26297,13 +26302,13 @@ end
 function M.DisableVpcClassicLinkDnsSupportAsync(DisableVpcClassicLinkDnsSupportRequest, cb)
 	assert(DisableVpcClassicLinkDnsSupportRequest, "You must provide a DisableVpcClassicLinkDnsSupportRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DisableVpcClassicLinkDnsSupport",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DisableVpcClassicLinkDnsSupport",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisableVpcClassicLinkDnsSupportRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisableVpcClassicLinkDnsSupportRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -26329,13 +26334,13 @@ end
 function M.DescribeHostReservationOfferingsAsync(DescribeHostReservationOfferingsRequest, cb)
 	assert(DescribeHostReservationOfferingsRequest, "You must provide a DescribeHostReservationOfferingsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeHostReservationOfferings",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeHostReservationOfferings",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeHostReservationOfferingsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeHostReservationOfferingsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -26361,13 +26366,13 @@ end
 function M.DescribeVolumesModificationsAsync(DescribeVolumesModificationsRequest, cb)
 	assert(DescribeVolumesModificationsRequest, "You must provide a DescribeVolumesModificationsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeVolumesModifications",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeVolumesModifications",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeVolumesModificationsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeVolumesModificationsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -26393,13 +26398,13 @@ end
 function M.AssociateVpcCidrBlockAsync(AssociateVpcCidrBlockRequest, cb)
 	assert(AssociateVpcCidrBlockRequest, "You must provide a AssociateVpcCidrBlockRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AssociateVpcCidrBlock",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AssociateVpcCidrBlock",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AssociateVpcCidrBlockRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AssociateVpcCidrBlockRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -26425,13 +26430,13 @@ end
 function M.AssociateAddressAsync(AssociateAddressRequest, cb)
 	assert(AssociateAddressRequest, "You must provide a AssociateAddressRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AssociateAddress",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AssociateAddress",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AssociateAddressRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AssociateAddressRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -26457,13 +26462,13 @@ end
 function M.DeleteCustomerGatewayAsync(DeleteCustomerGatewayRequest, cb)
 	assert(DeleteCustomerGatewayRequest, "You must provide a DeleteCustomerGatewayRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteCustomerGateway",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteCustomerGateway",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteCustomerGatewayRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteCustomerGatewayRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -26489,13 +26494,13 @@ end
 function M.CreateInternetGatewayAsync(CreateInternetGatewayRequest, cb)
 	assert(CreateInternetGatewayRequest, "You must provide a CreateInternetGatewayRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateInternetGateway",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateInternetGateway",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateInternetGatewayRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateInternetGatewayRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -26521,13 +26526,13 @@ end
 function M.AttachClassicLinkVpcAsync(AttachClassicLinkVpcRequest, cb)
 	assert(AttachClassicLinkVpcRequest, "You must provide a AttachClassicLinkVpcRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AttachClassicLinkVpc",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AttachClassicLinkVpc",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AttachClassicLinkVpcRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AttachClassicLinkVpcRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -26553,13 +26558,13 @@ end
 function M.DescribeSpotPriceHistoryAsync(DescribeSpotPriceHistoryRequest, cb)
 	assert(DescribeSpotPriceHistoryRequest, "You must provide a DescribeSpotPriceHistoryRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeSpotPriceHistory",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSpotPriceHistory",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeSpotPriceHistoryRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeSpotPriceHistoryRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -26585,13 +26590,13 @@ end
 function M.DescribeDhcpOptionsAsync(DescribeDhcpOptionsRequest, cb)
 	assert(DescribeDhcpOptionsRequest, "You must provide a DescribeDhcpOptionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeDhcpOptions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDhcpOptions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeDhcpOptionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeDhcpOptionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -26617,13 +26622,13 @@ end
 function M.DeleteVpcPeeringConnectionAsync(DeleteVpcPeeringConnectionRequest, cb)
 	assert(DeleteVpcPeeringConnectionRequest, "You must provide a DeleteVpcPeeringConnectionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteVpcPeeringConnection",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteVpcPeeringConnection",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteVpcPeeringConnectionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteVpcPeeringConnectionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -26649,13 +26654,13 @@ end
 function M.DescribeFlowLogsAsync(DescribeFlowLogsRequest, cb)
 	assert(DescribeFlowLogsRequest, "You must provide a DescribeFlowLogsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeFlowLogs",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeFlowLogs",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeFlowLogsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeFlowLogsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -26681,13 +26686,13 @@ end
 function M.CreateNetworkAclEntryAsync(CreateNetworkAclEntryRequest, cb)
 	assert(CreateNetworkAclEntryRequest, "You must provide a CreateNetworkAclEntryRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateNetworkAclEntry",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateNetworkAclEntry",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateNetworkAclEntryRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateNetworkAclEntryRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -26713,13 +26718,13 @@ end
 function M.ReleaseHostsAsync(ReleaseHostsRequest, cb)
 	assert(ReleaseHostsRequest, "You must provide a ReleaseHostsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ReleaseHosts",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ReleaseHosts",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ReleaseHostsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ReleaseHostsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -26745,13 +26750,13 @@ end
 function M.RestoreAddressToClassicAsync(RestoreAddressToClassicRequest, cb)
 	assert(RestoreAddressToClassicRequest, "You must provide a RestoreAddressToClassicRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RestoreAddressToClassic",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RestoreAddressToClassic",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RestoreAddressToClassicRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RestoreAddressToClassicRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -26777,13 +26782,13 @@ end
 function M.CreateNetworkInterfaceAsync(CreateNetworkInterfaceRequest, cb)
 	assert(CreateNetworkInterfaceRequest, "You must provide a CreateNetworkInterfaceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateNetworkInterface",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateNetworkInterface",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateNetworkInterfaceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateNetworkInterfaceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -26809,13 +26814,13 @@ end
 function M.DescribeRegionsAsync(DescribeRegionsRequest, cb)
 	assert(DescribeRegionsRequest, "You must provide a DescribeRegionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeRegions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeRegions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeRegionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeRegionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -26841,13 +26846,13 @@ end
 function M.RevokeSecurityGroupIngressAsync(RevokeSecurityGroupIngressRequest, cb)
 	assert(RevokeSecurityGroupIngressRequest, "You must provide a RevokeSecurityGroupIngressRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RevokeSecurityGroupIngress",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RevokeSecurityGroupIngress",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RevokeSecurityGroupIngressRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RevokeSecurityGroupIngressRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -26873,13 +26878,13 @@ end
 function M.UnassignPrivateIpAddressesAsync(UnassignPrivateIpAddressesRequest, cb)
 	assert(UnassignPrivateIpAddressesRequest, "You must provide a UnassignPrivateIpAddressesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UnassignPrivateIpAddresses",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UnassignPrivateIpAddresses",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UnassignPrivateIpAddressesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UnassignPrivateIpAddressesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -26905,13 +26910,13 @@ end
 function M.AttachInternetGatewayAsync(AttachInternetGatewayRequest, cb)
 	assert(AttachInternetGatewayRequest, "You must provide a AttachInternetGatewayRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AttachInternetGateway",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AttachInternetGateway",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AttachInternetGatewayRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AttachInternetGatewayRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -26937,13 +26942,13 @@ end
 function M.CreateInstanceExportTaskAsync(CreateInstanceExportTaskRequest, cb)
 	assert(CreateInstanceExportTaskRequest, "You must provide a CreateInstanceExportTaskRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateInstanceExportTask",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateInstanceExportTask",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateInstanceExportTaskRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateInstanceExportTaskRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -26969,13 +26974,13 @@ end
 function M.DeleteDhcpOptionsAsync(DeleteDhcpOptionsRequest, cb)
 	assert(DeleteDhcpOptionsRequest, "You must provide a DeleteDhcpOptionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteDhcpOptions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDhcpOptions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteDhcpOptionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteDhcpOptionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27001,13 +27006,13 @@ end
 function M.ResetNetworkInterfaceAttributeAsync(ResetNetworkInterfaceAttributeRequest, cb)
 	assert(ResetNetworkInterfaceAttributeRequest, "You must provide a ResetNetworkInterfaceAttributeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ResetNetworkInterfaceAttribute",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ResetNetworkInterfaceAttribute",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ResetNetworkInterfaceAttributeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ResetNetworkInterfaceAttributeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27033,13 +27038,13 @@ end
 function M.ModifyReservedInstancesAsync(ModifyReservedInstancesRequest, cb)
 	assert(ModifyReservedInstancesRequest, "You must provide a ModifyReservedInstancesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyReservedInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyReservedInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyReservedInstancesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyReservedInstancesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27065,13 +27070,13 @@ end
 function M.DetachNetworkInterfaceAsync(DetachNetworkInterfaceRequest, cb)
 	assert(DetachNetworkInterfaceRequest, "You must provide a DetachNetworkInterfaceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DetachNetworkInterface",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DetachNetworkInterface",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DetachNetworkInterfaceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DetachNetworkInterfaceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27097,13 +27102,13 @@ end
 function M.DescribeImportImageTasksAsync(DescribeImportImageTasksRequest, cb)
 	assert(DescribeImportImageTasksRequest, "You must provide a DescribeImportImageTasksRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeImportImageTasks",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeImportImageTasks",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeImportImageTasksRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeImportImageTasksRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27129,13 +27134,13 @@ end
 function M.DescribeSpotFleetInstancesAsync(DescribeSpotFleetInstancesRequest, cb)
 	assert(DescribeSpotFleetInstancesRequest, "You must provide a DescribeSpotFleetInstancesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeSpotFleetInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSpotFleetInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeSpotFleetInstancesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeSpotFleetInstancesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27161,13 +27166,13 @@ end
 function M.EnableVpcClassicLinkAsync(EnableVpcClassicLinkRequest, cb)
 	assert(EnableVpcClassicLinkRequest, "You must provide a EnableVpcClassicLinkRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".EnableVpcClassicLink",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".EnableVpcClassicLink",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", EnableVpcClassicLinkRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", EnableVpcClassicLinkRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27193,13 +27198,13 @@ end
 function M.CreateFlowLogsAsync(CreateFlowLogsRequest, cb)
 	assert(CreateFlowLogsRequest, "You must provide a CreateFlowLogsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateFlowLogs",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateFlowLogs",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateFlowLogsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateFlowLogsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27225,13 +27230,13 @@ end
 function M.DisassociateVpcCidrBlockAsync(DisassociateVpcCidrBlockRequest, cb)
 	assert(DisassociateVpcCidrBlockRequest, "You must provide a DisassociateVpcCidrBlockRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DisassociateVpcCidrBlock",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DisassociateVpcCidrBlock",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisassociateVpcCidrBlockRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisassociateVpcCidrBlockRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27257,13 +27262,13 @@ end
 function M.DescribeVolumeStatusAsync(DescribeVolumeStatusRequest, cb)
 	assert(DescribeVolumeStatusRequest, "You must provide a DescribeVolumeStatusRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeVolumeStatus",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeVolumeStatus",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeVolumeStatusRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeVolumeStatusRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27289,13 +27294,13 @@ end
 function M.DescribeHostsAsync(DescribeHostsRequest, cb)
 	assert(DescribeHostsRequest, "You must provide a DescribeHostsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeHosts",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeHosts",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeHostsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeHostsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27321,13 +27326,13 @@ end
 function M.DescribeVpcPeeringConnectionsAsync(DescribeVpcPeeringConnectionsRequest, cb)
 	assert(DescribeVpcPeeringConnectionsRequest, "You must provide a DescribeVpcPeeringConnectionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeVpcPeeringConnections",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeVpcPeeringConnections",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeVpcPeeringConnectionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeVpcPeeringConnectionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27353,13 +27358,13 @@ end
 function M.DescribeVolumesAsync(DescribeVolumesRequest, cb)
 	assert(DescribeVolumesRequest, "You must provide a DescribeVolumesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeVolumes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeVolumes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeVolumesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeVolumesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27385,13 +27390,13 @@ end
 function M.DeleteNetworkInterfaceAsync(DeleteNetworkInterfaceRequest, cb)
 	assert(DeleteNetworkInterfaceRequest, "You must provide a DeleteNetworkInterfaceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteNetworkInterface",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteNetworkInterface",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteNetworkInterfaceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteNetworkInterfaceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27417,13 +27422,13 @@ end
 function M.DescribeVpnConnectionsAsync(DescribeVpnConnectionsRequest, cb)
 	assert(DescribeVpnConnectionsRequest, "You must provide a DescribeVpnConnectionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeVpnConnections",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeVpnConnections",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeVpnConnectionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeVpnConnectionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27449,13 +27454,13 @@ end
 function M.DeleteVpcEndpointsAsync(DeleteVpcEndpointsRequest, cb)
 	assert(DeleteVpcEndpointsRequest, "You must provide a DeleteVpcEndpointsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteVpcEndpoints",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteVpcEndpoints",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteVpcEndpointsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteVpcEndpointsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27481,13 +27486,13 @@ end
 function M.DescribeVolumeAttributeAsync(DescribeVolumeAttributeRequest, cb)
 	assert(DescribeVolumeAttributeRequest, "You must provide a DescribeVolumeAttributeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeVolumeAttribute",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeVolumeAttribute",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeVolumeAttributeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeVolumeAttributeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27513,13 +27518,13 @@ end
 function M.DeleteKeyPairAsync(DeleteKeyPairRequest, cb)
 	assert(DeleteKeyPairRequest, "You must provide a DeleteKeyPairRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteKeyPair",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteKeyPair",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteKeyPairRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteKeyPairRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27545,13 +27550,13 @@ end
 function M.DeleteNatGatewayAsync(DeleteNatGatewayRequest, cb)
 	assert(DeleteNatGatewayRequest, "You must provide a DeleteNatGatewayRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteNatGateway",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteNatGateway",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteNatGatewayRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteNatGatewayRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27577,13 +27582,13 @@ end
 function M.ModifyInstancePlacementAsync(ModifyInstancePlacementRequest, cb)
 	assert(ModifyInstancePlacementRequest, "You must provide a ModifyInstancePlacementRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyInstancePlacement",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyInstancePlacement",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyInstancePlacementRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyInstancePlacementRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27609,13 +27614,13 @@ end
 function M.ReplaceNetworkAclEntryAsync(ReplaceNetworkAclEntryRequest, cb)
 	assert(ReplaceNetworkAclEntryRequest, "You must provide a ReplaceNetworkAclEntryRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ReplaceNetworkAclEntry",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ReplaceNetworkAclEntry",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ReplaceNetworkAclEntryRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ReplaceNetworkAclEntryRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27641,13 +27646,13 @@ end
 function M.CreateEgressOnlyInternetGatewayAsync(CreateEgressOnlyInternetGatewayRequest, cb)
 	assert(CreateEgressOnlyInternetGatewayRequest, "You must provide a CreateEgressOnlyInternetGatewayRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateEgressOnlyInternetGateway",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateEgressOnlyInternetGateway",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateEgressOnlyInternetGatewayRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateEgressOnlyInternetGatewayRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27673,13 +27678,13 @@ end
 function M.DeleteInternetGatewayAsync(DeleteInternetGatewayRequest, cb)
 	assert(DeleteInternetGatewayRequest, "You must provide a DeleteInternetGatewayRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteInternetGateway",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteInternetGateway",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteInternetGatewayRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteInternetGatewayRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27705,13 +27710,13 @@ end
 function M.CreateVolumeAsync(CreateVolumeRequest, cb)
 	assert(CreateVolumeRequest, "You must provide a CreateVolumeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateVolume",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateVolume",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateVolumeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateVolumeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27737,13 +27742,13 @@ end
 function M.RunInstancesAsync(RunInstancesRequest, cb)
 	assert(RunInstancesRequest, "You must provide a RunInstancesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RunInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RunInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RunInstancesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RunInstancesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27769,13 +27774,13 @@ end
 function M.DescribeScheduledInstancesAsync(DescribeScheduledInstancesRequest, cb)
 	assert(DescribeScheduledInstancesRequest, "You must provide a DescribeScheduledInstancesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeScheduledInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeScheduledInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeScheduledInstancesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeScheduledInstancesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27801,13 +27806,13 @@ end
 function M.DeleteRouteAsync(DeleteRouteRequest, cb)
 	assert(DeleteRouteRequest, "You must provide a DeleteRouteRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteRoute",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteRoute",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteRouteRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteRouteRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27833,13 +27838,13 @@ end
 function M.DisableVpcClassicLinkAsync(DisableVpcClassicLinkRequest, cb)
 	assert(DisableVpcClassicLinkRequest, "You must provide a DisableVpcClassicLinkRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DisableVpcClassicLink",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DisableVpcClassicLink",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisableVpcClassicLinkRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisableVpcClassicLinkRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27865,13 +27870,13 @@ end
 function M.AttachNetworkInterfaceAsync(AttachNetworkInterfaceRequest, cb)
 	assert(AttachNetworkInterfaceRequest, "You must provide a AttachNetworkInterfaceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AttachNetworkInterface",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AttachNetworkInterface",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AttachNetworkInterfaceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AttachNetworkInterfaceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27897,13 +27902,13 @@ end
 function M.CreateNatGatewayAsync(CreateNatGatewayRequest, cb)
 	assert(CreateNatGatewayRequest, "You must provide a CreateNatGatewayRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateNatGateway",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateNatGateway",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateNatGatewayRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateNatGatewayRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27929,13 +27934,13 @@ end
 function M.DeleteVpnConnectionRouteAsync(DeleteVpnConnectionRouteRequest, cb)
 	assert(DeleteVpnConnectionRouteRequest, "You must provide a DeleteVpnConnectionRouteRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteVpnConnectionRoute",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteVpnConnectionRoute",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteVpnConnectionRouteRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteVpnConnectionRouteRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27961,13 +27966,13 @@ end
 function M.CancelSpotInstanceRequestsAsync(CancelSpotInstanceRequestsRequest, cb)
 	assert(CancelSpotInstanceRequestsRequest, "You must provide a CancelSpotInstanceRequestsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CancelSpotInstanceRequests",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CancelSpotInstanceRequests",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CancelSpotInstanceRequestsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CancelSpotInstanceRequestsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -27993,13 +27998,13 @@ end
 function M.CreateKeyPairAsync(CreateKeyPairRequest, cb)
 	assert(CreateKeyPairRequest, "You must provide a CreateKeyPairRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateKeyPair",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateKeyPair",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateKeyPairRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateKeyPairRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -28025,13 +28030,13 @@ end
 function M.DescribeNetworkInterfaceAttributeAsync(DescribeNetworkInterfaceAttributeRequest, cb)
 	assert(DescribeNetworkInterfaceAttributeRequest, "You must provide a DescribeNetworkInterfaceAttributeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeNetworkInterfaceAttribute",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeNetworkInterfaceAttribute",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeNetworkInterfaceAttributeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeNetworkInterfaceAttributeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -28057,13 +28062,13 @@ end
 function M.DescribeIdFormatAsync(DescribeIdFormatRequest, cb)
 	assert(DescribeIdFormatRequest, "You must provide a DescribeIdFormatRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeIdFormat",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeIdFormat",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeIdFormatRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeIdFormatRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -28089,13 +28094,13 @@ end
 function M.DeleteSnapshotAsync(DeleteSnapshotRequest, cb)
 	assert(DeleteSnapshotRequest, "You must provide a DeleteSnapshotRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteSnapshot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteSnapshot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteSnapshotRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteSnapshotRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -28121,13 +28126,13 @@ end
 function M.DescribeMovingAddressesAsync(DescribeMovingAddressesRequest, cb)
 	assert(DescribeMovingAddressesRequest, "You must provide a DescribeMovingAddressesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeMovingAddresses",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeMovingAddresses",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeMovingAddressesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeMovingAddressesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -28153,13 +28158,13 @@ end
 function M.DescribeInstanceAttributeAsync(DescribeInstanceAttributeRequest, cb)
 	assert(DescribeInstanceAttributeRequest, "You must provide a DescribeInstanceAttributeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeInstanceAttribute",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeInstanceAttribute",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeInstanceAttributeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeInstanceAttributeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -28185,13 +28190,13 @@ end
 function M.DeregisterImageAsync(DeregisterImageRequest, cb)
 	assert(DeregisterImageRequest, "You must provide a DeregisterImageRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeregisterImage",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeregisterImage",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeregisterImageRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeregisterImageRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -28217,13 +28222,13 @@ end
 function M.DeleteVpnGatewayAsync(DeleteVpnGatewayRequest, cb)
 	assert(DeleteVpnGatewayRequest, "You must provide a DeleteVpnGatewayRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteVpnGateway",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteVpnGateway",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteVpnGatewayRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteVpnGatewayRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -28249,13 +28254,13 @@ end
 function M.ReportInstanceStatusAsync(ReportInstanceStatusRequest, cb)
 	assert(ReportInstanceStatusRequest, "You must provide a ReportInstanceStatusRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ReportInstanceStatus",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ReportInstanceStatus",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ReportInstanceStatusRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ReportInstanceStatusRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -28281,13 +28286,13 @@ end
 function M.CancelReservedInstancesListingAsync(CancelReservedInstancesListingRequest, cb)
 	assert(CancelReservedInstancesListingRequest, "You must provide a CancelReservedInstancesListingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CancelReservedInstancesListing",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CancelReservedInstancesListing",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CancelReservedInstancesListingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CancelReservedInstancesListingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -28313,13 +28318,13 @@ end
 function M.DescribePrefixListsAsync(DescribePrefixListsRequest, cb)
 	assert(DescribePrefixListsRequest, "You must provide a DescribePrefixListsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribePrefixLists",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribePrefixLists",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribePrefixListsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribePrefixListsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -28345,13 +28350,13 @@ end
 function M.DescribeSnapshotAttributeAsync(DescribeSnapshotAttributeRequest, cb)
 	assert(DescribeSnapshotAttributeRequest, "You must provide a DescribeSnapshotAttributeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeSnapshotAttribute",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSnapshotAttribute",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeSnapshotAttributeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeSnapshotAttributeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -28377,13 +28382,13 @@ end
 function M.PurchaseReservedInstancesOfferingAsync(PurchaseReservedInstancesOfferingRequest, cb)
 	assert(PurchaseReservedInstancesOfferingRequest, "You must provide a PurchaseReservedInstancesOfferingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PurchaseReservedInstancesOffering",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PurchaseReservedInstancesOffering",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PurchaseReservedInstancesOfferingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PurchaseReservedInstancesOfferingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -28409,13 +28414,13 @@ end
 function M.ModifySubnetAttributeAsync(ModifySubnetAttributeRequest, cb)
 	assert(ModifySubnetAttributeRequest, "You must provide a ModifySubnetAttributeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifySubnetAttribute",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifySubnetAttribute",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifySubnetAttributeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifySubnetAttributeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -28441,13 +28446,13 @@ end
 function M.DescribeNetworkInterfacesAsync(DescribeNetworkInterfacesRequest, cb)
 	assert(DescribeNetworkInterfacesRequest, "You must provide a DescribeNetworkInterfacesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeNetworkInterfaces",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeNetworkInterfaces",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeNetworkInterfacesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeNetworkInterfacesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -28473,13 +28478,13 @@ end
 function M.ConfirmProductInstanceAsync(ConfirmProductInstanceRequest, cb)
 	assert(ConfirmProductInstanceRequest, "You must provide a ConfirmProductInstanceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ConfirmProductInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ConfirmProductInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ConfirmProductInstanceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ConfirmProductInstanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -28505,13 +28510,13 @@ end
 function M.DescribeExportTasksAsync(DescribeExportTasksRequest, cb)
 	assert(DescribeExportTasksRequest, "You must provide a DescribeExportTasksRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeExportTasks",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeExportTasks",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeExportTasksRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeExportTasksRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -28537,13 +28542,13 @@ end
 function M.DetachInternetGatewayAsync(DetachInternetGatewayRequest, cb)
 	assert(DetachInternetGatewayRequest, "You must provide a DetachInternetGatewayRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DetachInternetGateway",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DetachInternetGateway",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DetachInternetGatewayRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DetachInternetGatewayRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -28569,13 +28574,13 @@ end
 function M.DeleteNetworkAclEntryAsync(DeleteNetworkAclEntryRequest, cb)
 	assert(DeleteNetworkAclEntryRequest, "You must provide a DeleteNetworkAclEntryRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteNetworkAclEntry",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteNetworkAclEntry",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteNetworkAclEntryRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteNetworkAclEntryRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -28601,13 +28606,13 @@ end
 function M.CreateFpgaImageAsync(CreateFpgaImageRequest, cb)
 	assert(CreateFpgaImageRequest, "You must provide a CreateFpgaImageRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateFpgaImage",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateFpgaImage",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateFpgaImageRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateFpgaImageRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -28633,13 +28638,13 @@ end
 function M.CreateCustomerGatewayAsync(CreateCustomerGatewayRequest, cb)
 	assert(CreateCustomerGatewayRequest, "You must provide a CreateCustomerGatewayRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateCustomerGateway",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateCustomerGateway",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateCustomerGatewayRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateCustomerGatewayRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -28665,13 +28670,13 @@ end
 function M.ResetInstanceAttributeAsync(ResetInstanceAttributeRequest, cb)
 	assert(ResetInstanceAttributeRequest, "You must provide a ResetInstanceAttributeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ResetInstanceAttribute",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ResetInstanceAttribute",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ResetInstanceAttributeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ResetInstanceAttributeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -28697,13 +28702,13 @@ end
 function M.CreateSecurityGroupAsync(CreateSecurityGroupRequest, cb)
 	assert(CreateSecurityGroupRequest, "You must provide a CreateSecurityGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateSecurityGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateSecurityGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateSecurityGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateSecurityGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -28729,13 +28734,13 @@ end
 function M.DescribeInternetGatewaysAsync(DescribeInternetGatewaysRequest, cb)
 	assert(DescribeInternetGatewaysRequest, "You must provide a DescribeInternetGatewaysRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeInternetGateways",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeInternetGateways",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeInternetGatewaysRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeInternetGatewaysRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -28761,13 +28766,13 @@ end
 function M.ModifyNetworkInterfaceAttributeAsync(ModifyNetworkInterfaceAttributeRequest, cb)
 	assert(ModifyNetworkInterfaceAttributeRequest, "You must provide a ModifyNetworkInterfaceAttributeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyNetworkInterfaceAttribute",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyNetworkInterfaceAttribute",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyNetworkInterfaceAttributeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyNetworkInterfaceAttributeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -28793,13 +28798,13 @@ end
 function M.AttachVolumeAsync(AttachVolumeRequest, cb)
 	assert(AttachVolumeRequest, "You must provide a AttachVolumeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AttachVolume",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AttachVolume",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AttachVolumeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AttachVolumeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -28825,13 +28830,13 @@ end
 function M.DescribeSnapshotsAsync(DescribeSnapshotsRequest, cb)
 	assert(DescribeSnapshotsRequest, "You must provide a DescribeSnapshotsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeSnapshots",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSnapshots",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeSnapshotsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeSnapshotsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -28857,13 +28862,13 @@ end
 function M.TerminateInstancesAsync(TerminateInstancesRequest, cb)
 	assert(TerminateInstancesRequest, "You must provide a TerminateInstancesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".TerminateInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".TerminateInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", TerminateInstancesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", TerminateInstancesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -28889,13 +28894,13 @@ end
 function M.AcceptReservedInstancesExchangeQuoteAsync(AcceptReservedInstancesExchangeQuoteRequest, cb)
 	assert(AcceptReservedInstancesExchangeQuoteRequest, "You must provide a AcceptReservedInstancesExchangeQuoteRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AcceptReservedInstancesExchangeQuote",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AcceptReservedInstancesExchangeQuote",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AcceptReservedInstancesExchangeQuoteRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AcceptReservedInstancesExchangeQuoteRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -28921,13 +28926,13 @@ end
 function M.DeleteSpotDatafeedSubscriptionAsync(DeleteSpotDatafeedSubscriptionRequest, cb)
 	assert(DeleteSpotDatafeedSubscriptionRequest, "You must provide a DeleteSpotDatafeedSubscriptionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteSpotDatafeedSubscription",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteSpotDatafeedSubscription",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteSpotDatafeedSubscriptionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteSpotDatafeedSubscriptionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -28953,13 +28958,13 @@ end
 function M.DeletePlacementGroupAsync(DeletePlacementGroupRequest, cb)
 	assert(DeletePlacementGroupRequest, "You must provide a DeletePlacementGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeletePlacementGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeletePlacementGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeletePlacementGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeletePlacementGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -28985,13 +28990,13 @@ end
 function M.DeleteRouteTableAsync(DeleteRouteTableRequest, cb)
 	assert(DeleteRouteTableRequest, "You must provide a DeleteRouteTableRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteRouteTable",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteRouteTable",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteRouteTableRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteRouteTableRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -29017,13 +29022,13 @@ end
 function M.DescribeKeyPairsAsync(DescribeKeyPairsRequest, cb)
 	assert(DescribeKeyPairsRequest, "You must provide a DescribeKeyPairsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeKeyPairs",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeKeyPairs",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeKeyPairsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeKeyPairsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -29049,13 +29054,13 @@ end
 function M.DescribeStaleSecurityGroupsAsync(DescribeStaleSecurityGroupsRequest, cb)
 	assert(DescribeStaleSecurityGroupsRequest, "You must provide a DescribeStaleSecurityGroupsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeStaleSecurityGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeStaleSecurityGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeStaleSecurityGroupsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeStaleSecurityGroupsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -29081,13 +29086,13 @@ end
 function M.DescribeReservedInstancesOfferingsAsync(DescribeReservedInstancesOfferingsRequest, cb)
 	assert(DescribeReservedInstancesOfferingsRequest, "You must provide a DescribeReservedInstancesOfferingsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeReservedInstancesOfferings",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeReservedInstancesOfferings",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeReservedInstancesOfferingsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeReservedInstancesOfferingsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -29113,13 +29118,13 @@ end
 function M.GetConsoleScreenshotAsync(GetConsoleScreenshotRequest, cb)
 	assert(GetConsoleScreenshotRequest, "You must provide a GetConsoleScreenshotRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetConsoleScreenshot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetConsoleScreenshot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetConsoleScreenshotRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetConsoleScreenshotRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -29145,13 +29150,13 @@ end
 function M.DescribeAccountAttributesAsync(DescribeAccountAttributesRequest, cb)
 	assert(DescribeAccountAttributesRequest, "You must provide a DescribeAccountAttributesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeAccountAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAccountAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeAccountAttributesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeAccountAttributesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -29177,13 +29182,13 @@ end
 function M.AssignIpv6AddressesAsync(AssignIpv6AddressesRequest, cb)
 	assert(AssignIpv6AddressesRequest, "You must provide a AssignIpv6AddressesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AssignIpv6Addresses",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AssignIpv6Addresses",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AssignIpv6AddressesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AssignIpv6AddressesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -29209,13 +29214,13 @@ end
 function M.AuthorizeSecurityGroupEgressAsync(AuthorizeSecurityGroupEgressRequest, cb)
 	assert(AuthorizeSecurityGroupEgressRequest, "You must provide a AuthorizeSecurityGroupEgressRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AuthorizeSecurityGroupEgress",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AuthorizeSecurityGroupEgress",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AuthorizeSecurityGroupEgressRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AuthorizeSecurityGroupEgressRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -29241,13 +29246,13 @@ end
 function M.AllocateAddressAsync(AllocateAddressRequest, cb)
 	assert(AllocateAddressRequest, "You must provide a AllocateAddressRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AllocateAddress",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AllocateAddress",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AllocateAddressRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AllocateAddressRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -29273,13 +29278,13 @@ end
 function M.AuthorizeSecurityGroupIngressAsync(AuthorizeSecurityGroupIngressRequest, cb)
 	assert(AuthorizeSecurityGroupIngressRequest, "You must provide a AuthorizeSecurityGroupIngressRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AuthorizeSecurityGroupIngress",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AuthorizeSecurityGroupIngress",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AuthorizeSecurityGroupIngressRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AuthorizeSecurityGroupIngressRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -29305,13 +29310,13 @@ end
 function M.CreateSpotDatafeedSubscriptionAsync(CreateSpotDatafeedSubscriptionRequest, cb)
 	assert(CreateSpotDatafeedSubscriptionRequest, "You must provide a CreateSpotDatafeedSubscriptionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateSpotDatafeedSubscription",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateSpotDatafeedSubscription",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateSpotDatafeedSubscriptionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateSpotDatafeedSubscriptionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -29337,13 +29342,13 @@ end
 function M.ImportInstanceAsync(ImportInstanceRequest, cb)
 	assert(ImportInstanceRequest, "You must provide a ImportInstanceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ImportInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ImportInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ImportInstanceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ImportInstanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -29369,13 +29374,13 @@ end
 function M.StopInstancesAsync(StopInstancesRequest, cb)
 	assert(StopInstancesRequest, "You must provide a StopInstancesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".StopInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".StopInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StopInstancesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StopInstancesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -29401,13 +29406,13 @@ end
 function M.ReleaseAddressAsync(ReleaseAddressRequest, cb)
 	assert(ReleaseAddressRequest, "You must provide a ReleaseAddressRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ReleaseAddress",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ReleaseAddress",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ReleaseAddressRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ReleaseAddressRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -29433,13 +29438,13 @@ end
 function M.DescribeFpgaImagesAsync(DescribeFpgaImagesRequest, cb)
 	assert(DescribeFpgaImagesRequest, "You must provide a DescribeFpgaImagesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeFpgaImages",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeFpgaImages",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeFpgaImagesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeFpgaImagesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -29465,13 +29470,13 @@ end
 function M.RejectVpcPeeringConnectionAsync(RejectVpcPeeringConnectionRequest, cb)
 	assert(RejectVpcPeeringConnectionRequest, "You must provide a RejectVpcPeeringConnectionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RejectVpcPeeringConnection",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RejectVpcPeeringConnection",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RejectVpcPeeringConnectionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RejectVpcPeeringConnectionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -29497,13 +29502,13 @@ end
 function M.MonitorInstancesAsync(MonitorInstancesRequest, cb)
 	assert(MonitorInstancesRequest, "You must provide a MonitorInstancesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".MonitorInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".MonitorInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", MonitorInstancesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", MonitorInstancesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -29529,13 +29534,13 @@ end
 function M.DescribeImagesAsync(DescribeImagesRequest, cb)
 	assert(DescribeImagesRequest, "You must provide a DescribeImagesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeImages",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeImages",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeImagesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeImagesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -29561,13 +29566,13 @@ end
 function M.DisassociateRouteTableAsync(DisassociateRouteTableRequest, cb)
 	assert(DisassociateRouteTableRequest, "You must provide a DisassociateRouteTableRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DisassociateRouteTable",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DisassociateRouteTable",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisassociateRouteTableRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisassociateRouteTableRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -29593,13 +29598,13 @@ end
 function M.ReplaceRouteAsync(ReplaceRouteRequest, cb)
 	assert(ReplaceRouteRequest, "You must provide a ReplaceRouteRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ReplaceRoute",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ReplaceRoute",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ReplaceRouteRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ReplaceRouteRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -29625,13 +29630,13 @@ end
 function M.AssociateRouteTableAsync(AssociateRouteTableRequest, cb)
 	assert(AssociateRouteTableRequest, "You must provide a AssociateRouteTableRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AssociateRouteTable",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AssociateRouteTable",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AssociateRouteTableRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AssociateRouteTableRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -29657,13 +29662,13 @@ end
 function M.DeleteVpcAsync(DeleteVpcRequest, cb)
 	assert(DeleteVpcRequest, "You must provide a DeleteVpcRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteVpc",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteVpc",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteVpcRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteVpcRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -29689,13 +29694,13 @@ end
 function M.DescribeSpotDatafeedSubscriptionAsync(DescribeSpotDatafeedSubscriptionRequest, cb)
 	assert(DescribeSpotDatafeedSubscriptionRequest, "You must provide a DescribeSpotDatafeedSubscriptionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeSpotDatafeedSubscription",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSpotDatafeedSubscription",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeSpotDatafeedSubscriptionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeSpotDatafeedSubscriptionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -29721,13 +29726,13 @@ end
 function M.DescribePlacementGroupsAsync(DescribePlacementGroupsRequest, cb)
 	assert(DescribePlacementGroupsRequest, "You must provide a DescribePlacementGroupsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribePlacementGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribePlacementGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribePlacementGroupsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribePlacementGroupsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -29753,13 +29758,13 @@ end
 function M.DescribeInstancesAsync(DescribeInstancesRequest, cb)
 	assert(DescribeInstancesRequest, "You must provide a DescribeInstancesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeInstancesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeInstancesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -29785,13 +29790,13 @@ end
 function M.CreateRouteAsync(CreateRouteRequest, cb)
 	assert(CreateRouteRequest, "You must provide a CreateRouteRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateRoute",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateRoute",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateRouteRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateRouteRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -29817,13 +29822,13 @@ end
 function M.DeleteEgressOnlyInternetGatewayAsync(DeleteEgressOnlyInternetGatewayRequest, cb)
 	assert(DeleteEgressOnlyInternetGatewayRequest, "You must provide a DeleteEgressOnlyInternetGatewayRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteEgressOnlyInternetGateway",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteEgressOnlyInternetGateway",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteEgressOnlyInternetGatewayRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteEgressOnlyInternetGatewayRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -29849,13 +29854,13 @@ end
 function M.DescribeSecurityGroupsAsync(DescribeSecurityGroupsRequest, cb)
 	assert(DescribeSecurityGroupsRequest, "You must provide a DescribeSecurityGroupsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeSecurityGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSecurityGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeSecurityGroupsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeSecurityGroupsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -29881,13 +29886,13 @@ end
 function M.CreateDhcpOptionsAsync(CreateDhcpOptionsRequest, cb)
 	assert(CreateDhcpOptionsRequest, "You must provide a CreateDhcpOptionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateDhcpOptions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateDhcpOptions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateDhcpOptionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateDhcpOptionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -29913,13 +29918,13 @@ end
 function M.RevokeSecurityGroupEgressAsync(RevokeSecurityGroupEgressRequest, cb)
 	assert(RevokeSecurityGroupEgressRequest, "You must provide a RevokeSecurityGroupEgressRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RevokeSecurityGroupEgress",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RevokeSecurityGroupEgress",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RevokeSecurityGroupEgressRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RevokeSecurityGroupEgressRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -29945,13 +29950,13 @@ end
 function M.CreateVpnGatewayAsync(CreateVpnGatewayRequest, cb)
 	assert(CreateVpnGatewayRequest, "You must provide a CreateVpnGatewayRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateVpnGateway",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateVpnGateway",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateVpnGatewayRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateVpnGatewayRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -29977,13 +29982,13 @@ end
 function M.DescribeBundleTasksAsync(DescribeBundleTasksRequest, cb)
 	assert(DescribeBundleTasksRequest, "You must provide a DescribeBundleTasksRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeBundleTasks",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeBundleTasks",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeBundleTasksRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeBundleTasksRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -30009,13 +30014,13 @@ end
 function M.DescribeReservedInstancesListingsAsync(DescribeReservedInstancesListingsRequest, cb)
 	assert(DescribeReservedInstancesListingsRequest, "You must provide a DescribeReservedInstancesListingsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeReservedInstancesListings",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeReservedInstancesListings",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeReservedInstancesListingsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeReservedInstancesListingsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -30041,13 +30046,13 @@ end
 function M.GetReservedInstancesExchangeQuoteAsync(GetReservedInstancesExchangeQuoteRequest, cb)
 	assert(GetReservedInstancesExchangeQuoteRequest, "You must provide a GetReservedInstancesExchangeQuoteRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetReservedInstancesExchangeQuote",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetReservedInstancesExchangeQuote",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetReservedInstancesExchangeQuoteRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetReservedInstancesExchangeQuoteRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -30073,13 +30078,13 @@ end
 function M.DescribeClassicLinkInstancesAsync(DescribeClassicLinkInstancesRequest, cb)
 	assert(DescribeClassicLinkInstancesRequest, "You must provide a DescribeClassicLinkInstancesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeClassicLinkInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeClassicLinkInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeClassicLinkInstancesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeClassicLinkInstancesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -30105,13 +30110,13 @@ end
 function M.ModifySpotFleetRequestAsync(ModifySpotFleetRequestRequest, cb)
 	assert(ModifySpotFleetRequestRequest, "You must provide a ModifySpotFleetRequestRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifySpotFleetRequest",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifySpotFleetRequest",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifySpotFleetRequestRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifySpotFleetRequestRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -30137,13 +30142,13 @@ end
 function M.DeleteVolumeAsync(DeleteVolumeRequest, cb)
 	assert(DeleteVolumeRequest, "You must provide a DeleteVolumeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteVolume",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteVolume",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteVolumeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteVolumeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -30169,13 +30174,13 @@ end
 function M.DescribeConversionTasksAsync(DescribeConversionTasksRequest, cb)
 	assert(DescribeConversionTasksRequest, "You must provide a DescribeConversionTasksRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeConversionTasks",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeConversionTasks",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeConversionTasksRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeConversionTasksRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -30201,13 +30206,13 @@ end
 function M.DescribeVpcClassicLinkDnsSupportAsync(DescribeVpcClassicLinkDnsSupportRequest, cb)
 	assert(DescribeVpcClassicLinkDnsSupportRequest, "You must provide a DescribeVpcClassicLinkDnsSupportRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeVpcClassicLinkDnsSupport",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeVpcClassicLinkDnsSupport",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeVpcClassicLinkDnsSupportRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeVpcClassicLinkDnsSupportRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -30233,13 +30238,13 @@ end
 function M.DeleteSecurityGroupAsync(DeleteSecurityGroupRequest, cb)
 	assert(DeleteSecurityGroupRequest, "You must provide a DeleteSecurityGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteSecurityGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteSecurityGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteSecurityGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteSecurityGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -30265,13 +30270,13 @@ end
 function M.DescribeSubnetsAsync(DescribeSubnetsRequest, cb)
 	assert(DescribeSubnetsRequest, "You must provide a DescribeSubnetsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeSubnets",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSubnets",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeSubnetsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeSubnetsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -30297,13 +30302,13 @@ end
 function M.DescribeVpcClassicLinkAsync(DescribeVpcClassicLinkRequest, cb)
 	assert(DescribeVpcClassicLinkRequest, "You must provide a DescribeVpcClassicLinkRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeVpcClassicLink",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeVpcClassicLink",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeVpcClassicLinkRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeVpcClassicLinkRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -30329,13 +30334,13 @@ end
 function M.DescribeIdentityIdFormatAsync(DescribeIdentityIdFormatRequest, cb)
 	assert(DescribeIdentityIdFormatRequest, "You must provide a DescribeIdentityIdFormatRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeIdentityIdFormat",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeIdentityIdFormat",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeIdentityIdFormatRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeIdentityIdFormatRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -30361,13 +30366,13 @@ end
 function M.ModifyVpcPeeringConnectionOptionsAsync(ModifyVpcPeeringConnectionOptionsRequest, cb)
 	assert(ModifyVpcPeeringConnectionOptionsRequest, "You must provide a ModifyVpcPeeringConnectionOptionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyVpcPeeringConnectionOptions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyVpcPeeringConnectionOptions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyVpcPeeringConnectionOptionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyVpcPeeringConnectionOptionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -30393,13 +30398,13 @@ end
 function M.ModifyVolumeAttributeAsync(ModifyVolumeAttributeRequest, cb)
 	assert(ModifyVolumeAttributeRequest, "You must provide a ModifyVolumeAttributeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyVolumeAttribute",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyVolumeAttribute",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyVolumeAttributeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyVolumeAttributeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -30425,13 +30430,13 @@ end
 function M.ImportVolumeAsync(ImportVolumeRequest, cb)
 	assert(ImportVolumeRequest, "You must provide a ImportVolumeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ImportVolume",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ImportVolume",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ImportVolumeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ImportVolumeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -30457,13 +30462,13 @@ end
 function M.ImportSnapshotAsync(ImportSnapshotRequest, cb)
 	assert(ImportSnapshotRequest, "You must provide a ImportSnapshotRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ImportSnapshot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ImportSnapshot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ImportSnapshotRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ImportSnapshotRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -30489,13 +30494,13 @@ end
 function M.GetConsoleOutputAsync(GetConsoleOutputRequest, cb)
 	assert(GetConsoleOutputRequest, "You must provide a GetConsoleOutputRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetConsoleOutput",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetConsoleOutput",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetConsoleOutputRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetConsoleOutputRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -30521,13 +30526,13 @@ end
 function M.DescribeTagsAsync(DescribeTagsRequest, cb)
 	assert(DescribeTagsRequest, "You must provide a DescribeTagsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeTagsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeTagsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -30553,13 +30558,13 @@ end
 function M.EnableVgwRoutePropagationAsync(EnableVgwRoutePropagationRequest, cb)
 	assert(EnableVgwRoutePropagationRequest, "You must provide a EnableVgwRoutePropagationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".EnableVgwRoutePropagation",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".EnableVgwRoutePropagation",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", EnableVgwRoutePropagationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", EnableVgwRoutePropagationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -30585,13 +30590,13 @@ end
 function M.ModifyVpcEndpointAsync(ModifyVpcEndpointRequest, cb)
 	assert(ModifyVpcEndpointRequest, "You must provide a ModifyVpcEndpointRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyVpcEndpoint",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyVpcEndpoint",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyVpcEndpointRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyVpcEndpointRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -30617,13 +30622,13 @@ end
 function M.DescribeInstanceStatusAsync(DescribeInstanceStatusRequest, cb)
 	assert(DescribeInstanceStatusRequest, "You must provide a DescribeInstanceStatusRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeInstanceStatus",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeInstanceStatus",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeInstanceStatusRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeInstanceStatusRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -30649,13 +30654,13 @@ end
 function M.ModifyVpcAttributeAsync(ModifyVpcAttributeRequest, cb)
 	assert(ModifyVpcAttributeRequest, "You must provide a ModifyVpcAttributeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyVpcAttribute",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyVpcAttribute",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyVpcAttributeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyVpcAttributeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -30681,13 +30686,13 @@ end
 function M.EnableVolumeIOAsync(EnableVolumeIORequest, cb)
 	assert(EnableVolumeIORequest, "You must provide a EnableVolumeIORequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".EnableVolumeIO",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".EnableVolumeIO",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", EnableVolumeIORequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", EnableVolumeIORequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -30713,13 +30718,13 @@ end
 function M.CreateTagsAsync(CreateTagsRequest, cb)
 	assert(CreateTagsRequest, "You must provide a CreateTagsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateTagsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateTagsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -30745,13 +30750,13 @@ end
 function M.DescribeSecurityGroupReferencesAsync(DescribeSecurityGroupReferencesRequest, cb)
 	assert(DescribeSecurityGroupReferencesRequest, "You must provide a DescribeSecurityGroupReferencesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeSecurityGroupReferences",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSecurityGroupReferences",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeSecurityGroupReferencesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeSecurityGroupReferencesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -30777,13 +30782,13 @@ end
 function M.DeleteFlowLogsAsync(DeleteFlowLogsRequest, cb)
 	assert(DeleteFlowLogsRequest, "You must provide a DeleteFlowLogsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteFlowLogs",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteFlowLogs",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteFlowLogsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteFlowLogsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -30809,13 +30814,13 @@ end
 function M.ReplaceNetworkAclAssociationAsync(ReplaceNetworkAclAssociationRequest, cb)
 	assert(ReplaceNetworkAclAssociationRequest, "You must provide a ReplaceNetworkAclAssociationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ReplaceNetworkAclAssociation",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ReplaceNetworkAclAssociation",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ReplaceNetworkAclAssociationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ReplaceNetworkAclAssociationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -30841,13 +30846,13 @@ end
 function M.CreateVpnConnectionAsync(CreateVpnConnectionRequest, cb)
 	assert(CreateVpnConnectionRequest, "You must provide a CreateVpnConnectionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateVpnConnection",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateVpnConnection",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateVpnConnectionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateVpnConnectionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -30873,13 +30878,13 @@ end
 function M.DetachClassicLinkVpcAsync(DetachClassicLinkVpcRequest, cb)
 	assert(DetachClassicLinkVpcRequest, "You must provide a DetachClassicLinkVpcRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DetachClassicLinkVpc",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DetachClassicLinkVpc",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DetachClassicLinkVpcRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DetachClassicLinkVpcRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -30905,13 +30910,13 @@ end
 function M.CreateReservedInstancesListingAsync(CreateReservedInstancesListingRequest, cb)
 	assert(CreateReservedInstancesListingRequest, "You must provide a CreateReservedInstancesListingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateReservedInstancesListing",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateReservedInstancesListing",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateReservedInstancesListingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateReservedInstancesListingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -30937,13 +30942,13 @@ end
 function M.DescribeHostReservationsAsync(DescribeHostReservationsRequest, cb)
 	assert(DescribeHostReservationsRequest, "You must provide a DescribeHostReservationsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeHostReservations",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeHostReservations",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeHostReservationsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeHostReservationsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -30969,13 +30974,13 @@ end
 function M.DescribeEgressOnlyInternetGatewaysAsync(DescribeEgressOnlyInternetGatewaysRequest, cb)
 	assert(DescribeEgressOnlyInternetGatewaysRequest, "You must provide a DescribeEgressOnlyInternetGatewaysRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeEgressOnlyInternetGateways",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEgressOnlyInternetGateways",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeEgressOnlyInternetGatewaysRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeEgressOnlyInternetGatewaysRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -31001,13 +31006,13 @@ end
 function M.ModifyInstanceAttributeAsync(ModifyInstanceAttributeRequest, cb)
 	assert(ModifyInstanceAttributeRequest, "You must provide a ModifyInstanceAttributeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyInstanceAttribute",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyInstanceAttribute",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyInstanceAttributeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyInstanceAttributeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -31033,13 +31038,13 @@ end
 function M.ModifyVolumeAsync(ModifyVolumeRequest, cb)
 	assert(ModifyVolumeRequest, "You must provide a ModifyVolumeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyVolume",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyVolume",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyVolumeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyVolumeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -31065,13 +31070,13 @@ end
 function M.RunScheduledInstancesAsync(RunScheduledInstancesRequest, cb)
 	assert(RunScheduledInstancesRequest, "You must provide a RunScheduledInstancesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RunScheduledInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RunScheduledInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RunScheduledInstancesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RunScheduledInstancesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -31097,13 +31102,13 @@ end
 function M.DescribeScheduledInstanceAvailabilityAsync(DescribeScheduledInstanceAvailabilityRequest, cb)
 	assert(DescribeScheduledInstanceAvailabilityRequest, "You must provide a DescribeScheduledInstanceAvailabilityRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeScheduledInstanceAvailability",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeScheduledInstanceAvailability",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeScheduledInstanceAvailabilityRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeScheduledInstanceAvailabilityRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

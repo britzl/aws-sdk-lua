@@ -2832,12 +2832,12 @@ function M.KeyList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -2861,8 +2861,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -2875,13 +2880,13 @@ end
 function M.EncryptAsync(EncryptRequest, cb)
 	assert(EncryptRequest, "You must provide a EncryptRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.Encrypt",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.Encrypt",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", EncryptRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", EncryptRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2907,13 +2912,13 @@ end
 function M.DecryptAsync(DecryptRequest, cb)
 	assert(DecryptRequest, "You must provide a DecryptRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.Decrypt",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.Decrypt",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DecryptRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DecryptRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2939,13 +2944,13 @@ end
 function M.UpdateAliasAsync(UpdateAliasRequest, cb)
 	assert(UpdateAliasRequest, "You must provide a UpdateAliasRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.UpdateAlias",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.UpdateAlias",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateAliasRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateAliasRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2971,13 +2976,13 @@ end
 function M.ImportKeyMaterialAsync(ImportKeyMaterialRequest, cb)
 	assert(ImportKeyMaterialRequest, "You must provide a ImportKeyMaterialRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.ImportKeyMaterial",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.ImportKeyMaterial",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ImportKeyMaterialRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ImportKeyMaterialRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3003,13 +3008,13 @@ end
 function M.DisableKeyAsync(DisableKeyRequest, cb)
 	assert(DisableKeyRequest, "You must provide a DisableKeyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.DisableKey",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.DisableKey",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisableKeyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisableKeyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3035,13 +3040,13 @@ end
 function M.GenerateDataKeyWithoutPlaintextAsync(GenerateDataKeyWithoutPlaintextRequest, cb)
 	assert(GenerateDataKeyWithoutPlaintextRequest, "You must provide a GenerateDataKeyWithoutPlaintextRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.GenerateDataKeyWithoutPlaintext",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.GenerateDataKeyWithoutPlaintext",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GenerateDataKeyWithoutPlaintextRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GenerateDataKeyWithoutPlaintextRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3067,13 +3072,13 @@ end
 function M.GenerateDataKeyAsync(GenerateDataKeyRequest, cb)
 	assert(GenerateDataKeyRequest, "You must provide a GenerateDataKeyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.GenerateDataKey",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.GenerateDataKey",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GenerateDataKeyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GenerateDataKeyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3099,13 +3104,13 @@ end
 function M.ListResourceTagsAsync(ListResourceTagsRequest, cb)
 	assert(ListResourceTagsRequest, "You must provide a ListResourceTagsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.ListResourceTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.ListResourceTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListResourceTagsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListResourceTagsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3131,13 +3136,13 @@ end
 function M.ListAliasesAsync(ListAliasesRequest, cb)
 	assert(ListAliasesRequest, "You must provide a ListAliasesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.ListAliases",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.ListAliases",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListAliasesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListAliasesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3163,13 +3168,13 @@ end
 function M.CancelKeyDeletionAsync(CancelKeyDeletionRequest, cb)
 	assert(CancelKeyDeletionRequest, "You must provide a CancelKeyDeletionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.CancelKeyDeletion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.CancelKeyDeletion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CancelKeyDeletionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CancelKeyDeletionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3195,13 +3200,13 @@ end
 function M.GetKeyRotationStatusAsync(GetKeyRotationStatusRequest, cb)
 	assert(GetKeyRotationStatusRequest, "You must provide a GetKeyRotationStatusRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.GetKeyRotationStatus",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.GetKeyRotationStatus",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetKeyRotationStatusRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetKeyRotationStatusRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3227,13 +3232,13 @@ end
 function M.ListKeyPoliciesAsync(ListKeyPoliciesRequest, cb)
 	assert(ListKeyPoliciesRequest, "You must provide a ListKeyPoliciesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.ListKeyPolicies",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.ListKeyPolicies",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListKeyPoliciesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListKeyPoliciesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3259,13 +3264,13 @@ end
 function M.DeleteAliasAsync(DeleteAliasRequest, cb)
 	assert(DeleteAliasRequest, "You must provide a DeleteAliasRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.DeleteAlias",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.DeleteAlias",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteAliasRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteAliasRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3291,13 +3296,13 @@ end
 function M.RetireGrantAsync(RetireGrantRequest, cb)
 	assert(RetireGrantRequest, "You must provide a RetireGrantRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.RetireGrant",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.RetireGrant",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RetireGrantRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RetireGrantRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3323,13 +3328,13 @@ end
 function M.TagResourceAsync(TagResourceRequest, cb)
 	assert(TagResourceRequest, "You must provide a TagResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.TagResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.TagResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", TagResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", TagResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3355,13 +3360,13 @@ end
 function M.DescribeKeyAsync(DescribeKeyRequest, cb)
 	assert(DescribeKeyRequest, "You must provide a DescribeKeyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.DescribeKey",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.DescribeKey",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeKeyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeKeyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3387,13 +3392,13 @@ end
 function M.ListKeysAsync(ListKeysRequest, cb)
 	assert(ListKeysRequest, "You must provide a ListKeysRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.ListKeys",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.ListKeys",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListKeysRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListKeysRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3419,13 +3424,13 @@ end
 function M.GenerateRandomAsync(GenerateRandomRequest, cb)
 	assert(GenerateRandomRequest, "You must provide a GenerateRandomRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.GenerateRandom",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.GenerateRandom",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GenerateRandomRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GenerateRandomRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3451,13 +3456,13 @@ end
 function M.GetKeyPolicyAsync(GetKeyPolicyRequest, cb)
 	assert(GetKeyPolicyRequest, "You must provide a GetKeyPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.GetKeyPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.GetKeyPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetKeyPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetKeyPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3483,13 +3488,13 @@ end
 function M.CreateGrantAsync(CreateGrantRequest, cb)
 	assert(CreateGrantRequest, "You must provide a CreateGrantRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.CreateGrant",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.CreateGrant",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateGrantRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateGrantRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3515,13 +3520,13 @@ end
 function M.CreateKeyAsync(CreateKeyRequest, cb)
 	assert(CreateKeyRequest, "You must provide a CreateKeyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.CreateKey",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.CreateKey",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateKeyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateKeyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3547,13 +3552,13 @@ end
 function M.ReEncryptAsync(ReEncryptRequest, cb)
 	assert(ReEncryptRequest, "You must provide a ReEncryptRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.ReEncrypt",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.ReEncrypt",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ReEncryptRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ReEncryptRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3579,13 +3584,13 @@ end
 function M.GetParametersForImportAsync(GetParametersForImportRequest, cb)
 	assert(GetParametersForImportRequest, "You must provide a GetParametersForImportRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.GetParametersForImport",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.GetParametersForImport",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetParametersForImportRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetParametersForImportRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3611,13 +3616,13 @@ end
 function M.DisableKeyRotationAsync(DisableKeyRotationRequest, cb)
 	assert(DisableKeyRotationRequest, "You must provide a DisableKeyRotationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.DisableKeyRotation",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.DisableKeyRotation",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisableKeyRotationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisableKeyRotationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3643,13 +3648,13 @@ end
 function M.ListRetirableGrantsAsync(ListRetirableGrantsRequest, cb)
 	assert(ListRetirableGrantsRequest, "You must provide a ListRetirableGrantsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.ListRetirableGrants",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.ListRetirableGrants",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListRetirableGrantsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListRetirableGrantsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3675,13 +3680,13 @@ end
 function M.ScheduleKeyDeletionAsync(ScheduleKeyDeletionRequest, cb)
 	assert(ScheduleKeyDeletionRequest, "You must provide a ScheduleKeyDeletionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.ScheduleKeyDeletion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.ScheduleKeyDeletion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ScheduleKeyDeletionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ScheduleKeyDeletionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3707,13 +3712,13 @@ end
 function M.CreateAliasAsync(CreateAliasRequest, cb)
 	assert(CreateAliasRequest, "You must provide a CreateAliasRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.CreateAlias",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.CreateAlias",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateAliasRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateAliasRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3739,13 +3744,13 @@ end
 function M.EnableKeyRotationAsync(EnableKeyRotationRequest, cb)
 	assert(EnableKeyRotationRequest, "You must provide a EnableKeyRotationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.EnableKeyRotation",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.EnableKeyRotation",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", EnableKeyRotationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", EnableKeyRotationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3771,13 +3776,13 @@ end
 function M.UntagResourceAsync(UntagResourceRequest, cb)
 	assert(UntagResourceRequest, "You must provide a UntagResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.UntagResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.UntagResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UntagResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UntagResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3803,13 +3808,13 @@ end
 function M.ListGrantsAsync(ListGrantsRequest, cb)
 	assert(ListGrantsRequest, "You must provide a ListGrantsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.ListGrants",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.ListGrants",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListGrantsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListGrantsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3835,13 +3840,13 @@ end
 function M.EnableKeyAsync(EnableKeyRequest, cb)
 	assert(EnableKeyRequest, "You must provide a EnableKeyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.EnableKey",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.EnableKey",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", EnableKeyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", EnableKeyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3867,13 +3872,13 @@ end
 function M.DeleteImportedKeyMaterialAsync(DeleteImportedKeyMaterialRequest, cb)
 	assert(DeleteImportedKeyMaterialRequest, "You must provide a DeleteImportedKeyMaterialRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.DeleteImportedKeyMaterial",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.DeleteImportedKeyMaterial",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteImportedKeyMaterialRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteImportedKeyMaterialRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3899,13 +3904,13 @@ end
 function M.UpdateKeyDescriptionAsync(UpdateKeyDescriptionRequest, cb)
 	assert(UpdateKeyDescriptionRequest, "You must provide a UpdateKeyDescriptionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.UpdateKeyDescription",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.UpdateKeyDescription",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateKeyDescriptionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateKeyDescriptionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3931,13 +3936,13 @@ end
 function M.RevokeGrantAsync(RevokeGrantRequest, cb)
 	assert(RevokeGrantRequest, "You must provide a RevokeGrantRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.RevokeGrant",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.RevokeGrant",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RevokeGrantRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RevokeGrantRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3963,13 +3968,13 @@ end
 function M.PutKeyPolicyAsync(PutKeyPolicyRequest, cb)
 	assert(PutKeyPolicyRequest, "You must provide a PutKeyPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "TrentService.PutKeyPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "TrentService.PutKeyPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutKeyPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutKeyPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

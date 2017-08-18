@@ -1970,12 +1970,12 @@ function M.DatasetList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -1999,8 +1999,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -2013,13 +2018,13 @@ end
 function M.SetCognitoEventsAsync(SetCognitoEventsRequest, cb)
 	assert(SetCognitoEventsRequest, "You must provide a SetCognitoEventsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SetCognitoEvents",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetCognitoEvents",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/identitypools/{IdentityPoolId}/events", SetCognitoEventsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/events", SetCognitoEventsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2045,13 +2050,13 @@ end
 function M.DescribeIdentityUsageAsync(DescribeIdentityUsageRequest, cb)
 	assert(DescribeIdentityUsageRequest, "You must provide a DescribeIdentityUsageRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeIdentityUsage",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeIdentityUsage",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/identitypools/{IdentityPoolId}/identities/{IdentityId}", DescribeIdentityUsageRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/identities/{IdentityId}", DescribeIdentityUsageRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2077,13 +2082,13 @@ end
 function M.ListRecordsAsync(ListRecordsRequest, cb)
 	assert(ListRecordsRequest, "You must provide a ListRecordsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListRecords",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListRecords",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}/records", ListRecordsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}/records", ListRecordsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2109,13 +2114,13 @@ end
 function M.DescribeDatasetAsync(DescribeDatasetRequest, cb)
 	assert(DescribeDatasetRequest, "You must provide a DescribeDatasetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeDataset",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDataset",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}", DescribeDatasetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}", DescribeDatasetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2141,13 +2146,13 @@ end
 function M.BulkPublishAsync(BulkPublishRequest, cb)
 	assert(BulkPublishRequest, "You must provide a BulkPublishRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".BulkPublish",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".BulkPublish",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/identitypools/{IdentityPoolId}/bulkpublish", BulkPublishRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/bulkpublish", BulkPublishRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2173,13 +2178,13 @@ end
 function M.UnsubscribeFromDatasetAsync(UnsubscribeFromDatasetRequest, cb)
 	assert(UnsubscribeFromDatasetRequest, "You must provide a UnsubscribeFromDatasetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UnsubscribeFromDataset",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UnsubscribeFromDataset",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}/subscriptions/{DeviceId}", UnsubscribeFromDatasetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}/subscriptions/{DeviceId}", UnsubscribeFromDatasetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2205,13 +2210,13 @@ end
 function M.ListIdentityPoolUsageAsync(ListIdentityPoolUsageRequest, cb)
 	assert(ListIdentityPoolUsageRequest, "You must provide a ListIdentityPoolUsageRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListIdentityPoolUsage",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListIdentityPoolUsage",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/identitypools", ListIdentityPoolUsageRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/identitypools", ListIdentityPoolUsageRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2237,13 +2242,13 @@ end
 function M.RegisterDeviceAsync(RegisterDeviceRequest, cb)
 	assert(RegisterDeviceRequest, "You must provide a RegisterDeviceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RegisterDevice",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RegisterDevice",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/identitypools/{IdentityPoolId}/identity/{IdentityId}/device", RegisterDeviceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/identity/{IdentityId}/device", RegisterDeviceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2269,13 +2274,13 @@ end
 function M.GetBulkPublishDetailsAsync(GetBulkPublishDetailsRequest, cb)
 	assert(GetBulkPublishDetailsRequest, "You must provide a GetBulkPublishDetailsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetBulkPublishDetails",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetBulkPublishDetails",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/identitypools/{IdentityPoolId}/getBulkPublishDetails", GetBulkPublishDetailsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/getBulkPublishDetails", GetBulkPublishDetailsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2301,13 +2306,13 @@ end
 function M.GetCognitoEventsAsync(GetCognitoEventsRequest, cb)
 	assert(GetCognitoEventsRequest, "You must provide a GetCognitoEventsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetCognitoEvents",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetCognitoEvents",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/identitypools/{IdentityPoolId}/events", GetCognitoEventsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/events", GetCognitoEventsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2333,13 +2338,13 @@ end
 function M.DeleteDatasetAsync(DeleteDatasetRequest, cb)
 	assert(DeleteDatasetRequest, "You must provide a DeleteDatasetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteDataset",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDataset",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}", DeleteDatasetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}", DeleteDatasetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2365,13 +2370,13 @@ end
 function M.DescribeIdentityPoolUsageAsync(DescribeIdentityPoolUsageRequest, cb)
 	assert(DescribeIdentityPoolUsageRequest, "You must provide a DescribeIdentityPoolUsageRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeIdentityPoolUsage",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeIdentityPoolUsage",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/identitypools/{IdentityPoolId}", DescribeIdentityPoolUsageRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/identitypools/{IdentityPoolId}", DescribeIdentityPoolUsageRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2397,13 +2402,13 @@ end
 function M.UpdateRecordsAsync(UpdateRecordsRequest, cb)
 	assert(UpdateRecordsRequest, "You must provide a UpdateRecordsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateRecords",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateRecords",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}", UpdateRecordsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}", UpdateRecordsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2429,13 +2434,13 @@ end
 function M.SubscribeToDatasetAsync(SubscribeToDatasetRequest, cb)
 	assert(SubscribeToDatasetRequest, "You must provide a SubscribeToDatasetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SubscribeToDataset",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SubscribeToDataset",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}/subscriptions/{DeviceId}", SubscribeToDatasetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}/subscriptions/{DeviceId}", SubscribeToDatasetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2461,13 +2466,13 @@ end
 function M.SetIdentityPoolConfigurationAsync(SetIdentityPoolConfigurationRequest, cb)
 	assert(SetIdentityPoolConfigurationRequest, "You must provide a SetIdentityPoolConfigurationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SetIdentityPoolConfiguration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetIdentityPoolConfiguration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/identitypools/{IdentityPoolId}/configuration", SetIdentityPoolConfigurationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/configuration", SetIdentityPoolConfigurationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2493,13 +2498,13 @@ end
 function M.GetIdentityPoolConfigurationAsync(GetIdentityPoolConfigurationRequest, cb)
 	assert(GetIdentityPoolConfigurationRequest, "You must provide a GetIdentityPoolConfigurationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetIdentityPoolConfiguration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetIdentityPoolConfiguration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/identitypools/{IdentityPoolId}/configuration", GetIdentityPoolConfigurationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/configuration", GetIdentityPoolConfigurationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2525,13 +2530,13 @@ end
 function M.ListDatasetsAsync(ListDatasetsRequest, cb)
 	assert(ListDatasetsRequest, "You must provide a ListDatasetsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListDatasets",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListDatasets",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets", ListDatasetsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets", ListDatasetsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

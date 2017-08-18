@@ -2019,12 +2019,12 @@ function M.EventTriggerDefinitionList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -2048,8 +2048,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -2062,13 +2067,13 @@ end
 function M.ListJobsAsync(ListJobsRequest, cb)
 	assert(ListJobsRequest, "You must provide a ListJobsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.ListJobs",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.ListJobs",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListJobsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListJobsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2094,13 +2099,13 @@ end
 function M.ListClusterJobsAsync(ListClusterJobsRequest, cb)
 	assert(ListClusterJobsRequest, "You must provide a ListClusterJobsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.ListClusterJobs",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.ListClusterJobs",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListClusterJobsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListClusterJobsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2126,13 +2131,13 @@ end
 function M.GetJobUnlockCodeAsync(GetJobUnlockCodeRequest, cb)
 	assert(GetJobUnlockCodeRequest, "You must provide a GetJobUnlockCodeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.GetJobUnlockCode",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.GetJobUnlockCode",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetJobUnlockCodeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetJobUnlockCodeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2158,13 +2163,13 @@ end
 function M.CreateJobAsync(CreateJobRequest, cb)
 	assert(CreateJobRequest, "You must provide a CreateJobRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.CreateJob",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.CreateJob",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateJobRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateJobRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2190,13 +2195,13 @@ end
 function M.ListClustersAsync(ListClustersRequest, cb)
 	assert(ListClustersRequest, "You must provide a ListClustersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.ListClusters",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.ListClusters",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListClustersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListClustersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2222,13 +2227,13 @@ end
 function M.CreateClusterAsync(CreateClusterRequest, cb)
 	assert(CreateClusterRequest, "You must provide a CreateClusterRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.CreateCluster",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.CreateCluster",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateClusterRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateClusterRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2254,13 +2259,13 @@ end
 function M.UpdateJobAsync(UpdateJobRequest, cb)
 	assert(UpdateJobRequest, "You must provide a UpdateJobRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.UpdateJob",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.UpdateJob",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateJobRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateJobRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2286,13 +2291,13 @@ end
 function M.GetSnowballUsageAsync(GetSnowballUsageRequest, cb)
 	assert(GetSnowballUsageRequest, "You must provide a GetSnowballUsageRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.GetSnowballUsage",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.GetSnowballUsage",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetSnowballUsageRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetSnowballUsageRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2318,13 +2323,13 @@ end
 function M.GetJobManifestAsync(GetJobManifestRequest, cb)
 	assert(GetJobManifestRequest, "You must provide a GetJobManifestRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.GetJobManifest",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.GetJobManifest",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetJobManifestRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetJobManifestRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2350,13 +2355,13 @@ end
 function M.CreateAddressAsync(CreateAddressRequest, cb)
 	assert(CreateAddressRequest, "You must provide a CreateAddressRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.CreateAddress",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.CreateAddress",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateAddressRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateAddressRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2382,13 +2387,13 @@ end
 function M.DescribeAddressAsync(DescribeAddressRequest, cb)
 	assert(DescribeAddressRequest, "You must provide a DescribeAddressRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.DescribeAddress",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.DescribeAddress",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeAddressRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeAddressRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2414,13 +2419,13 @@ end
 function M.DescribeAddressesAsync(DescribeAddressesRequest, cb)
 	assert(DescribeAddressesRequest, "You must provide a DescribeAddressesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.DescribeAddresses",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.DescribeAddresses",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeAddressesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeAddressesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2446,13 +2451,13 @@ end
 function M.CancelJobAsync(CancelJobRequest, cb)
 	assert(CancelJobRequest, "You must provide a CancelJobRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.CancelJob",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.CancelJob",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CancelJobRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CancelJobRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2478,13 +2483,13 @@ end
 function M.CancelClusterAsync(CancelClusterRequest, cb)
 	assert(CancelClusterRequest, "You must provide a CancelClusterRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.CancelCluster",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.CancelCluster",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CancelClusterRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CancelClusterRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2510,13 +2515,13 @@ end
 function M.DescribeJobAsync(DescribeJobRequest, cb)
 	assert(DescribeJobRequest, "You must provide a DescribeJobRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.DescribeJob",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.DescribeJob",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeJobRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeJobRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2542,13 +2547,13 @@ end
 function M.DescribeClusterAsync(DescribeClusterRequest, cb)
 	assert(DescribeClusterRequest, "You must provide a DescribeClusterRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.DescribeCluster",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.DescribeCluster",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeClusterRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeClusterRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2574,13 +2579,13 @@ end
 function M.UpdateClusterAsync(UpdateClusterRequest, cb)
 	assert(UpdateClusterRequest, "You must provide a UpdateClusterRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.UpdateCluster",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.UpdateCluster",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateClusterRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateClusterRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

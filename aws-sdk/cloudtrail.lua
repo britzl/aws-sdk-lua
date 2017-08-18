@@ -2140,12 +2140,12 @@ function M.DataResources(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -2169,8 +2169,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -2183,13 +2188,13 @@ end
 function M.DeleteTrailAsync(DeleteTrailRequest, cb)
 	assert(DeleteTrailRequest, "You must provide a DeleteTrailRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.DeleteTrail",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.DeleteTrail",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteTrailRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteTrailRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2215,13 +2220,13 @@ end
 function M.RemoveTagsAsync(RemoveTagsRequest, cb)
 	assert(RemoveTagsRequest, "You must provide a RemoveTagsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.RemoveTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.RemoveTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RemoveTagsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RemoveTagsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2247,13 +2252,13 @@ end
 function M.GetEventSelectorsAsync(GetEventSelectorsRequest, cb)
 	assert(GetEventSelectorsRequest, "You must provide a GetEventSelectorsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.GetEventSelectors",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.GetEventSelectors",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetEventSelectorsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetEventSelectorsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2279,13 +2284,13 @@ end
 function M.AddTagsAsync(AddTagsRequest, cb)
 	assert(AddTagsRequest, "You must provide a AddTagsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.AddTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.AddTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddTagsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddTagsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2311,13 +2316,13 @@ end
 function M.StartLoggingAsync(StartLoggingRequest, cb)
 	assert(StartLoggingRequest, "You must provide a StartLoggingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.StartLogging",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.StartLogging",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StartLoggingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StartLoggingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2343,13 +2348,13 @@ end
 function M.GetTrailStatusAsync(GetTrailStatusRequest, cb)
 	assert(GetTrailStatusRequest, "You must provide a GetTrailStatusRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.GetTrailStatus",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.GetTrailStatus",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetTrailStatusRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetTrailStatusRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2375,13 +2380,13 @@ end
 function M.ListPublicKeysAsync(ListPublicKeysRequest, cb)
 	assert(ListPublicKeysRequest, "You must provide a ListPublicKeysRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.ListPublicKeys",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.ListPublicKeys",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListPublicKeysRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListPublicKeysRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2407,13 +2412,13 @@ end
 function M.StopLoggingAsync(StopLoggingRequest, cb)
 	assert(StopLoggingRequest, "You must provide a StopLoggingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.StopLogging",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.StopLogging",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StopLoggingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StopLoggingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2439,13 +2444,13 @@ end
 function M.PutEventSelectorsAsync(PutEventSelectorsRequest, cb)
 	assert(PutEventSelectorsRequest, "You must provide a PutEventSelectorsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.PutEventSelectors",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.PutEventSelectors",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutEventSelectorsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutEventSelectorsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2471,13 +2476,13 @@ end
 function M.DescribeTrailsAsync(DescribeTrailsRequest, cb)
 	assert(DescribeTrailsRequest, "You must provide a DescribeTrailsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.DescribeTrails",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.DescribeTrails",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeTrailsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeTrailsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2503,13 +2508,13 @@ end
 function M.CreateTrailAsync(CreateTrailRequest, cb)
 	assert(CreateTrailRequest, "You must provide a CreateTrailRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.CreateTrail",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.CreateTrail",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateTrailRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateTrailRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2535,13 +2540,13 @@ end
 function M.UpdateTrailAsync(UpdateTrailRequest, cb)
 	assert(UpdateTrailRequest, "You must provide a UpdateTrailRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.UpdateTrail",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.UpdateTrail",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateTrailRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateTrailRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2567,13 +2572,13 @@ end
 function M.ListTagsAsync(ListTagsRequest, cb)
 	assert(ListTagsRequest, "You must provide a ListTagsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.ListTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.ListTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListTagsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListTagsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2599,13 +2604,13 @@ end
 function M.LookupEventsAsync(LookupEventsRequest, cb)
 	assert(LookupEventsRequest, "You must provide a LookupEventsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.LookupEvents",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.LookupEvents",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", LookupEventsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", LookupEventsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

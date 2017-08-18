@@ -5505,12 +5505,12 @@ function M.CACertificates(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -5534,8 +5534,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -5548,13 +5553,13 @@ end
 function M.ReplaceTopicRuleAsync(ReplaceTopicRuleRequest, cb)
 	assert(ReplaceTopicRuleRequest, "You must provide a ReplaceTopicRuleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ReplaceTopicRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ReplaceTopicRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PATCH")
 	if request_handler then
-		request_handler(uri .. "/rules/{ruleName}", ReplaceTopicRuleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/rules/{ruleName}", ReplaceTopicRuleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5580,13 +5585,13 @@ end
 function M.DeleteThingTypeAsync(DeleteThingTypeRequest, cb)
 	assert(DeleteThingTypeRequest, "You must provide a DeleteThingTypeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteThingType",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteThingType",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/thing-types/{thingTypeName}", DeleteThingTypeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/thing-types/{thingTypeName}", DeleteThingTypeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5612,13 +5617,13 @@ end
 function M.DetachThingPrincipalAsync(DetachThingPrincipalRequest, cb)
 	assert(DetachThingPrincipalRequest, "You must provide a DetachThingPrincipalRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DetachThingPrincipal",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DetachThingPrincipal",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/things/{thingName}/principals", DetachThingPrincipalRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/things/{thingName}/principals", DetachThingPrincipalRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5644,13 +5649,13 @@ end
 function M.DeprecateThingTypeAsync(DeprecateThingTypeRequest, cb)
 	assert(DeprecateThingTypeRequest, "You must provide a DeprecateThingTypeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeprecateThingType",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeprecateThingType",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/thing-types/{thingTypeName}/deprecate", DeprecateThingTypeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/thing-types/{thingTypeName}/deprecate", DeprecateThingTypeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5676,13 +5681,13 @@ end
 function M.ListPolicyVersionsAsync(ListPolicyVersionsRequest, cb)
 	assert(ListPolicyVersionsRequest, "You must provide a ListPolicyVersionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListPolicyVersions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListPolicyVersions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/policies/{policyName}/version", ListPolicyVersionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/policies/{policyName}/version", ListPolicyVersionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5708,13 +5713,13 @@ end
 function M.DeletePolicyAsync(DeletePolicyRequest, cb)
 	assert(DeletePolicyRequest, "You must provide a DeletePolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeletePolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeletePolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/policies/{policyName}", DeletePolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/policies/{policyName}", DeletePolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5740,13 +5745,13 @@ end
 function M.DeletePolicyVersionAsync(DeletePolicyVersionRequest, cb)
 	assert(DeletePolicyVersionRequest, "You must provide a DeletePolicyVersionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeletePolicyVersion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeletePolicyVersion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/policies/{policyName}/version/{policyVersionId}", DeletePolicyVersionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/policies/{policyName}/version/{policyVersionId}", DeletePolicyVersionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5772,13 +5777,13 @@ end
 function M.CreateTopicRuleAsync(CreateTopicRuleRequest, cb)
 	assert(CreateTopicRuleRequest, "You must provide a CreateTopicRuleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateTopicRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateTopicRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/rules/{ruleName}", CreateTopicRuleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/rules/{ruleName}", CreateTopicRuleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5804,13 +5809,13 @@ end
 function M.SetDefaultPolicyVersionAsync(SetDefaultPolicyVersionRequest, cb)
 	assert(SetDefaultPolicyVersionRequest, "You must provide a SetDefaultPolicyVersionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SetDefaultPolicyVersion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetDefaultPolicyVersion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PATCH")
 	if request_handler then
-		request_handler(uri .. "/policies/{policyName}/version/{policyVersionId}", SetDefaultPolicyVersionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/policies/{policyName}/version/{policyVersionId}", SetDefaultPolicyVersionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5836,13 +5841,13 @@ end
 function M.DisableTopicRuleAsync(DisableTopicRuleRequest, cb)
 	assert(DisableTopicRuleRequest, "You must provide a DisableTopicRuleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DisableTopicRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DisableTopicRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/rules/{ruleName}/disable", DisableTopicRuleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/rules/{ruleName}/disable", DisableTopicRuleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5868,13 +5873,13 @@ end
 function M.ListPrincipalPoliciesAsync(ListPrincipalPoliciesRequest, cb)
 	assert(ListPrincipalPoliciesRequest, "You must provide a ListPrincipalPoliciesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListPrincipalPolicies",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListPrincipalPolicies",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/principal-policies", ListPrincipalPoliciesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/principal-policies", ListPrincipalPoliciesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5900,13 +5905,13 @@ end
 function M.GetLoggingOptionsAsync(GetLoggingOptionsRequest, cb)
 	assert(GetLoggingOptionsRequest, "You must provide a GetLoggingOptionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetLoggingOptions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetLoggingOptions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/loggingOptions", GetLoggingOptionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/loggingOptions", GetLoggingOptionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5932,13 +5937,13 @@ end
 function M.TransferCertificateAsync(TransferCertificateRequest, cb)
 	assert(TransferCertificateRequest, "You must provide a TransferCertificateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".TransferCertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".TransferCertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PATCH")
 	if request_handler then
-		request_handler(uri .. "/transfer-certificate/{certificateId}", TransferCertificateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/transfer-certificate/{certificateId}", TransferCertificateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5964,13 +5969,13 @@ end
 function M.GetPolicyAsync(GetPolicyRequest, cb)
 	assert(GetPolicyRequest, "You must provide a GetPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/policies/{policyName}", GetPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/policies/{policyName}", GetPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5996,13 +6001,13 @@ end
 function M.RejectCertificateTransferAsync(RejectCertificateTransferRequest, cb)
 	assert(RejectCertificateTransferRequest, "You must provide a RejectCertificateTransferRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RejectCertificateTransfer",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RejectCertificateTransfer",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PATCH")
 	if request_handler then
-		request_handler(uri .. "/reject-certificate-transfer/{certificateId}", RejectCertificateTransferRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/reject-certificate-transfer/{certificateId}", RejectCertificateTransferRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6028,13 +6033,13 @@ end
 function M.ListCertificatesAsync(ListCertificatesRequest, cb)
 	assert(ListCertificatesRequest, "You must provide a ListCertificatesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListCertificates",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListCertificates",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/certificates", ListCertificatesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/certificates", ListCertificatesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6060,13 +6065,13 @@ end
 function M.DeleteCACertificateAsync(DeleteCACertificateRequest, cb)
 	assert(DeleteCACertificateRequest, "You must provide a DeleteCACertificateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteCACertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteCACertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/cacertificate/{caCertificateId}", DeleteCACertificateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/cacertificate/{caCertificateId}", DeleteCACertificateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6092,13 +6097,13 @@ end
 function M.DeleteCertificateAsync(DeleteCertificateRequest, cb)
 	assert(DeleteCertificateRequest, "You must provide a DeleteCertificateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteCertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteCertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/certificates/{certificateId}", DeleteCertificateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/certificates/{certificateId}", DeleteCertificateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6124,13 +6129,13 @@ end
 function M.ListPolicyPrincipalsAsync(ListPolicyPrincipalsRequest, cb)
 	assert(ListPolicyPrincipalsRequest, "You must provide a ListPolicyPrincipalsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListPolicyPrincipals",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListPolicyPrincipals",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/policy-principals", ListPolicyPrincipalsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/policy-principals", ListPolicyPrincipalsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6156,13 +6161,13 @@ end
 function M.AttachPrincipalPolicyAsync(AttachPrincipalPolicyRequest, cb)
 	assert(AttachPrincipalPolicyRequest, "You must provide a AttachPrincipalPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AttachPrincipalPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AttachPrincipalPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/principal-policies/{policyName}", AttachPrincipalPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/principal-policies/{policyName}", AttachPrincipalPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6188,13 +6193,13 @@ end
 function M.ListCACertificatesAsync(ListCACertificatesRequest, cb)
 	assert(ListCACertificatesRequest, "You must provide a ListCACertificatesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListCACertificates",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListCACertificates",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/cacertificates", ListCACertificatesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/cacertificates", ListCACertificatesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6220,13 +6225,13 @@ end
 function M.CreateThingTypeAsync(CreateThingTypeRequest, cb)
 	assert(CreateThingTypeRequest, "You must provide a CreateThingTypeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateThingType",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateThingType",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/thing-types/{thingTypeName}", CreateThingTypeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/thing-types/{thingTypeName}", CreateThingTypeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6252,13 +6257,13 @@ end
 function M.ListOutgoingCertificatesAsync(ListOutgoingCertificatesRequest, cb)
 	assert(ListOutgoingCertificatesRequest, "You must provide a ListOutgoingCertificatesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListOutgoingCertificates",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListOutgoingCertificates",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/certificates-out-going", ListOutgoingCertificatesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/certificates-out-going", ListOutgoingCertificatesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6284,13 +6289,13 @@ end
 function M.DeleteRegistrationCodeAsync(DeleteRegistrationCodeRequest, cb)
 	assert(DeleteRegistrationCodeRequest, "You must provide a DeleteRegistrationCodeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteRegistrationCode",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteRegistrationCode",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/registrationcode", DeleteRegistrationCodeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/registrationcode", DeleteRegistrationCodeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6316,13 +6321,13 @@ end
 function M.DescribeCACertificateAsync(DescribeCACertificateRequest, cb)
 	assert(DescribeCACertificateRequest, "You must provide a DescribeCACertificateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeCACertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeCACertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/cacertificate/{caCertificateId}", DescribeCACertificateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/cacertificate/{caCertificateId}", DescribeCACertificateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6348,13 +6353,13 @@ end
 function M.GetPolicyVersionAsync(GetPolicyVersionRequest, cb)
 	assert(GetPolicyVersionRequest, "You must provide a GetPolicyVersionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetPolicyVersion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetPolicyVersion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/policies/{policyName}/version/{policyVersionId}", GetPolicyVersionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/policies/{policyName}/version/{policyVersionId}", GetPolicyVersionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6380,13 +6385,13 @@ end
 function M.ListThingTypesAsync(ListThingTypesRequest, cb)
 	assert(ListThingTypesRequest, "You must provide a ListThingTypesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListThingTypes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListThingTypes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/thing-types", ListThingTypesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/thing-types", ListThingTypesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6412,13 +6417,13 @@ end
 function M.GetTopicRuleAsync(GetTopicRuleRequest, cb)
 	assert(GetTopicRuleRequest, "You must provide a GetTopicRuleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetTopicRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetTopicRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/rules/{ruleName}", GetTopicRuleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/rules/{ruleName}", GetTopicRuleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6444,13 +6449,13 @@ end
 function M.CreateKeysAndCertificateAsync(CreateKeysAndCertificateRequest, cb)
 	assert(CreateKeysAndCertificateRequest, "You must provide a CreateKeysAndCertificateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateKeysAndCertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateKeysAndCertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/keys-and-certificate", CreateKeysAndCertificateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/keys-and-certificate", CreateKeysAndCertificateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6476,13 +6481,13 @@ end
 function M.AcceptCertificateTransferAsync(AcceptCertificateTransferRequest, cb)
 	assert(AcceptCertificateTransferRequest, "You must provide a AcceptCertificateTransferRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AcceptCertificateTransfer",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AcceptCertificateTransfer",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PATCH")
 	if request_handler then
-		request_handler(uri .. "/accept-certificate-transfer/{certificateId}", AcceptCertificateTransferRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/accept-certificate-transfer/{certificateId}", AcceptCertificateTransferRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6508,13 +6513,13 @@ end
 function M.DeleteThingAsync(DeleteThingRequest, cb)
 	assert(DeleteThingRequest, "You must provide a DeleteThingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteThing",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteThing",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/things/{thingName}", DeleteThingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/things/{thingName}", DeleteThingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6540,13 +6545,13 @@ end
 function M.ListThingsAsync(ListThingsRequest, cb)
 	assert(ListThingsRequest, "You must provide a ListThingsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListThings",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListThings",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/things", ListThingsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/things", ListThingsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6572,13 +6577,13 @@ end
 function M.ListCertificatesByCAAsync(ListCertificatesByCARequest, cb)
 	assert(ListCertificatesByCARequest, "You must provide a ListCertificatesByCARequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListCertificatesByCA",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListCertificatesByCA",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/certificates-by-ca/{caCertificateId}", ListCertificatesByCARequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/certificates-by-ca/{caCertificateId}", ListCertificatesByCARequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6604,13 +6609,13 @@ end
 function M.UpdateCertificateAsync(UpdateCertificateRequest, cb)
 	assert(UpdateCertificateRequest, "You must provide a UpdateCertificateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateCertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateCertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/certificates/{certificateId}", UpdateCertificateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/certificates/{certificateId}", UpdateCertificateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6636,13 +6641,13 @@ end
 function M.GetRegistrationCodeAsync(GetRegistrationCodeRequest, cb)
 	assert(GetRegistrationCodeRequest, "You must provide a GetRegistrationCodeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetRegistrationCode",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetRegistrationCode",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/registrationcode", GetRegistrationCodeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/registrationcode", GetRegistrationCodeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6668,13 +6673,13 @@ end
 function M.ListPrincipalThingsAsync(ListPrincipalThingsRequest, cb)
 	assert(ListPrincipalThingsRequest, "You must provide a ListPrincipalThingsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListPrincipalThings",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListPrincipalThings",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/principals/things", ListPrincipalThingsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/principals/things", ListPrincipalThingsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6700,13 +6705,13 @@ end
 function M.CancelCertificateTransferAsync(CancelCertificateTransferRequest, cb)
 	assert(CancelCertificateTransferRequest, "You must provide a CancelCertificateTransferRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CancelCertificateTransfer",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CancelCertificateTransfer",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PATCH")
 	if request_handler then
-		request_handler(uri .. "/cancel-certificate-transfer/{certificateId}", CancelCertificateTransferRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/cancel-certificate-transfer/{certificateId}", CancelCertificateTransferRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6732,13 +6737,13 @@ end
 function M.RegisterCACertificateAsync(RegisterCACertificateRequest, cb)
 	assert(RegisterCACertificateRequest, "You must provide a RegisterCACertificateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RegisterCACertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RegisterCACertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/cacertificate", RegisterCACertificateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/cacertificate", RegisterCACertificateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6764,13 +6769,13 @@ end
 function M.DescribeCertificateAsync(DescribeCertificateRequest, cb)
 	assert(DescribeCertificateRequest, "You must provide a DescribeCertificateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeCertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeCertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/certificates/{certificateId}", DescribeCertificateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/certificates/{certificateId}", DescribeCertificateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6796,13 +6801,13 @@ end
 function M.DescribeEndpointAsync(DescribeEndpointRequest, cb)
 	assert(DescribeEndpointRequest, "You must provide a DescribeEndpointRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeEndpoint",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEndpoint",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/endpoint", DescribeEndpointRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/endpoint", DescribeEndpointRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6828,13 +6833,13 @@ end
 function M.ListTopicRulesAsync(ListTopicRulesRequest, cb)
 	assert(ListTopicRulesRequest, "You must provide a ListTopicRulesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListTopicRules",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListTopicRules",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/rules", ListTopicRulesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/rules", ListTopicRulesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6860,13 +6865,13 @@ end
 function M.CreatePolicyVersionAsync(CreatePolicyVersionRequest, cb)
 	assert(CreatePolicyVersionRequest, "You must provide a CreatePolicyVersionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreatePolicyVersion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreatePolicyVersion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/policies/{policyName}/version", CreatePolicyVersionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/policies/{policyName}/version", CreatePolicyVersionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6892,13 +6897,13 @@ end
 function M.CreateCertificateFromCsrAsync(CreateCertificateFromCsrRequest, cb)
 	assert(CreateCertificateFromCsrRequest, "You must provide a CreateCertificateFromCsrRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateCertificateFromCsr",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateCertificateFromCsr",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/certificates", CreateCertificateFromCsrRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/certificates", CreateCertificateFromCsrRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6924,13 +6929,13 @@ end
 function M.DescribeThingTypeAsync(DescribeThingTypeRequest, cb)
 	assert(DescribeThingTypeRequest, "You must provide a DescribeThingTypeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeThingType",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeThingType",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/thing-types/{thingTypeName}", DescribeThingTypeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/thing-types/{thingTypeName}", DescribeThingTypeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6956,13 +6961,13 @@ end
 function M.ListPoliciesAsync(ListPoliciesRequest, cb)
 	assert(ListPoliciesRequest, "You must provide a ListPoliciesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListPolicies",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListPolicies",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/policies", ListPoliciesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/policies", ListPoliciesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6988,13 +6993,13 @@ end
 function M.CreateThingAsync(CreateThingRequest, cb)
 	assert(CreateThingRequest, "You must provide a CreateThingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateThing",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateThing",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/things/{thingName}", CreateThingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/things/{thingName}", CreateThingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7020,13 +7025,13 @@ end
 function M.UpdateCACertificateAsync(UpdateCACertificateRequest, cb)
 	assert(UpdateCACertificateRequest, "You must provide a UpdateCACertificateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateCACertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateCACertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/cacertificate/{caCertificateId}", UpdateCACertificateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/cacertificate/{caCertificateId}", UpdateCACertificateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7052,13 +7057,13 @@ end
 function M.UpdateThingAsync(UpdateThingRequest, cb)
 	assert(UpdateThingRequest, "You must provide a UpdateThingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateThing",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateThing",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PATCH")
 	if request_handler then
-		request_handler(uri .. "/things/{thingName}", UpdateThingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/things/{thingName}", UpdateThingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7084,13 +7089,13 @@ end
 function M.AttachThingPrincipalAsync(AttachThingPrincipalRequest, cb)
 	assert(AttachThingPrincipalRequest, "You must provide a AttachThingPrincipalRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AttachThingPrincipal",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AttachThingPrincipal",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/things/{thingName}/principals", AttachThingPrincipalRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/things/{thingName}/principals", AttachThingPrincipalRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7116,13 +7121,13 @@ end
 function M.DetachPrincipalPolicyAsync(DetachPrincipalPolicyRequest, cb)
 	assert(DetachPrincipalPolicyRequest, "You must provide a DetachPrincipalPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DetachPrincipalPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DetachPrincipalPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/principal-policies/{policyName}", DetachPrincipalPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/principal-policies/{policyName}", DetachPrincipalPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7148,13 +7153,13 @@ end
 function M.EnableTopicRuleAsync(EnableTopicRuleRequest, cb)
 	assert(EnableTopicRuleRequest, "You must provide a EnableTopicRuleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".EnableTopicRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".EnableTopicRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/rules/{ruleName}/enable", EnableTopicRuleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/rules/{ruleName}/enable", EnableTopicRuleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7180,13 +7185,13 @@ end
 function M.CreatePolicyAsync(CreatePolicyRequest, cb)
 	assert(CreatePolicyRequest, "You must provide a CreatePolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreatePolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreatePolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/policies/{policyName}", CreatePolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/policies/{policyName}", CreatePolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7212,13 +7217,13 @@ end
 function M.RegisterCertificateAsync(RegisterCertificateRequest, cb)
 	assert(RegisterCertificateRequest, "You must provide a RegisterCertificateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RegisterCertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RegisterCertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/certificate/register", RegisterCertificateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/certificate/register", RegisterCertificateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7244,13 +7249,13 @@ end
 function M.DescribeThingAsync(DescribeThingRequest, cb)
 	assert(DescribeThingRequest, "You must provide a DescribeThingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeThing",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeThing",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/things/{thingName}", DescribeThingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/things/{thingName}", DescribeThingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7276,13 +7281,13 @@ end
 function M.SetLoggingOptionsAsync(SetLoggingOptionsRequest, cb)
 	assert(SetLoggingOptionsRequest, "You must provide a SetLoggingOptionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SetLoggingOptions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetLoggingOptions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/loggingOptions", SetLoggingOptionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/loggingOptions", SetLoggingOptionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7308,13 +7313,13 @@ end
 function M.ListThingPrincipalsAsync(ListThingPrincipalsRequest, cb)
 	assert(ListThingPrincipalsRequest, "You must provide a ListThingPrincipalsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListThingPrincipals",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListThingPrincipals",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/things/{thingName}/principals", ListThingPrincipalsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/things/{thingName}/principals", ListThingPrincipalsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7340,13 +7345,13 @@ end
 function M.DeleteTopicRuleAsync(DeleteTopicRuleRequest, cb)
 	assert(DeleteTopicRuleRequest, "You must provide a DeleteTopicRuleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteTopicRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteTopicRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/rules/{ruleName}", DeleteTopicRuleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/rules/{ruleName}", DeleteTopicRuleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

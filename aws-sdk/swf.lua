@@ -6010,12 +6010,12 @@ function M.TagList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -6039,8 +6039,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -6053,13 +6058,13 @@ end
 function M.SignalWorkflowExecutionAsync(SignalWorkflowExecutionInput, cb)
 	assert(SignalWorkflowExecutionInput, "You must provide a SignalWorkflowExecutionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.SignalWorkflowExecution",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.SignalWorkflowExecution",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SignalWorkflowExecutionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SignalWorkflowExecutionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6085,13 +6090,13 @@ end
 function M.DescribeWorkflowExecutionAsync(DescribeWorkflowExecutionInput, cb)
 	assert(DescribeWorkflowExecutionInput, "You must provide a DescribeWorkflowExecutionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.DescribeWorkflowExecution",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.DescribeWorkflowExecution",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeWorkflowExecutionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeWorkflowExecutionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6117,13 +6122,13 @@ end
 function M.GetWorkflowExecutionHistoryAsync(GetWorkflowExecutionHistoryInput, cb)
 	assert(GetWorkflowExecutionHistoryInput, "You must provide a GetWorkflowExecutionHistoryInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.GetWorkflowExecutionHistory",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.GetWorkflowExecutionHistory",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetWorkflowExecutionHistoryInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetWorkflowExecutionHistoryInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6149,13 +6154,13 @@ end
 function M.CountOpenWorkflowExecutionsAsync(CountOpenWorkflowExecutionsInput, cb)
 	assert(CountOpenWorkflowExecutionsInput, "You must provide a CountOpenWorkflowExecutionsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.CountOpenWorkflowExecutions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.CountOpenWorkflowExecutions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CountOpenWorkflowExecutionsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CountOpenWorkflowExecutionsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6181,13 +6186,13 @@ end
 function M.RespondActivityTaskFailedAsync(RespondActivityTaskFailedInput, cb)
 	assert(RespondActivityTaskFailedInput, "You must provide a RespondActivityTaskFailedInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.RespondActivityTaskFailed",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.RespondActivityTaskFailed",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RespondActivityTaskFailedInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RespondActivityTaskFailedInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6213,13 +6218,13 @@ end
 function M.PollForActivityTaskAsync(PollForActivityTaskInput, cb)
 	assert(PollForActivityTaskInput, "You must provide a PollForActivityTaskInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.PollForActivityTask",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.PollForActivityTask",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PollForActivityTaskInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PollForActivityTaskInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6245,13 +6250,13 @@ end
 function M.ListDomainsAsync(ListDomainsInput, cb)
 	assert(ListDomainsInput, "You must provide a ListDomainsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.ListDomains",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.ListDomains",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListDomainsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListDomainsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6277,13 +6282,13 @@ end
 function M.StartWorkflowExecutionAsync(StartWorkflowExecutionInput, cb)
 	assert(StartWorkflowExecutionInput, "You must provide a StartWorkflowExecutionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.StartWorkflowExecution",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.StartWorkflowExecution",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StartWorkflowExecutionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StartWorkflowExecutionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6309,13 +6314,13 @@ end
 function M.RespondDecisionTaskCompletedAsync(RespondDecisionTaskCompletedInput, cb)
 	assert(RespondDecisionTaskCompletedInput, "You must provide a RespondDecisionTaskCompletedInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.RespondDecisionTaskCompleted",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.RespondDecisionTaskCompleted",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RespondDecisionTaskCompletedInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RespondDecisionTaskCompletedInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6341,13 +6346,13 @@ end
 function M.RegisterActivityTypeAsync(RegisterActivityTypeInput, cb)
 	assert(RegisterActivityTypeInput, "You must provide a RegisterActivityTypeInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.RegisterActivityType",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.RegisterActivityType",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RegisterActivityTypeInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RegisterActivityTypeInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6373,13 +6378,13 @@ end
 function M.RequestCancelWorkflowExecutionAsync(RequestCancelWorkflowExecutionInput, cb)
 	assert(RequestCancelWorkflowExecutionInput, "You must provide a RequestCancelWorkflowExecutionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.RequestCancelWorkflowExecution",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.RequestCancelWorkflowExecution",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RequestCancelWorkflowExecutionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RequestCancelWorkflowExecutionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6405,13 +6410,13 @@ end
 function M.ListActivityTypesAsync(ListActivityTypesInput, cb)
 	assert(ListActivityTypesInput, "You must provide a ListActivityTypesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.ListActivityTypes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.ListActivityTypes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListActivityTypesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListActivityTypesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6437,13 +6442,13 @@ end
 function M.PollForDecisionTaskAsync(PollForDecisionTaskInput, cb)
 	assert(PollForDecisionTaskInput, "You must provide a PollForDecisionTaskInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.PollForDecisionTask",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.PollForDecisionTask",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PollForDecisionTaskInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PollForDecisionTaskInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6469,13 +6474,13 @@ end
 function M.ListOpenWorkflowExecutionsAsync(ListOpenWorkflowExecutionsInput, cb)
 	assert(ListOpenWorkflowExecutionsInput, "You must provide a ListOpenWorkflowExecutionsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.ListOpenWorkflowExecutions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.ListOpenWorkflowExecutions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListOpenWorkflowExecutionsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListOpenWorkflowExecutionsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6501,13 +6506,13 @@ end
 function M.CountClosedWorkflowExecutionsAsync(CountClosedWorkflowExecutionsInput, cb)
 	assert(CountClosedWorkflowExecutionsInput, "You must provide a CountClosedWorkflowExecutionsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.CountClosedWorkflowExecutions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.CountClosedWorkflowExecutions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CountClosedWorkflowExecutionsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CountClosedWorkflowExecutionsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6533,13 +6538,13 @@ end
 function M.RegisterWorkflowTypeAsync(RegisterWorkflowTypeInput, cb)
 	assert(RegisterWorkflowTypeInput, "You must provide a RegisterWorkflowTypeInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.RegisterWorkflowType",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.RegisterWorkflowType",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RegisterWorkflowTypeInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RegisterWorkflowTypeInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6565,13 +6570,13 @@ end
 function M.DescribeDomainAsync(DescribeDomainInput, cb)
 	assert(DescribeDomainInput, "You must provide a DescribeDomainInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.DescribeDomain",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.DescribeDomain",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeDomainInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeDomainInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6597,13 +6602,13 @@ end
 function M.ListClosedWorkflowExecutionsAsync(ListClosedWorkflowExecutionsInput, cb)
 	assert(ListClosedWorkflowExecutionsInput, "You must provide a ListClosedWorkflowExecutionsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.ListClosedWorkflowExecutions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.ListClosedWorkflowExecutions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListClosedWorkflowExecutionsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListClosedWorkflowExecutionsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6629,13 +6634,13 @@ end
 function M.TerminateWorkflowExecutionAsync(TerminateWorkflowExecutionInput, cb)
 	assert(TerminateWorkflowExecutionInput, "You must provide a TerminateWorkflowExecutionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.TerminateWorkflowExecution",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.TerminateWorkflowExecution",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", TerminateWorkflowExecutionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", TerminateWorkflowExecutionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6661,13 +6666,13 @@ end
 function M.DeprecateWorkflowTypeAsync(DeprecateWorkflowTypeInput, cb)
 	assert(DeprecateWorkflowTypeInput, "You must provide a DeprecateWorkflowTypeInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.DeprecateWorkflowType",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.DeprecateWorkflowType",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeprecateWorkflowTypeInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeprecateWorkflowTypeInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6693,13 +6698,13 @@ end
 function M.DescribeActivityTypeAsync(DescribeActivityTypeInput, cb)
 	assert(DescribeActivityTypeInput, "You must provide a DescribeActivityTypeInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.DescribeActivityType",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.DescribeActivityType",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeActivityTypeInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeActivityTypeInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6725,13 +6730,13 @@ end
 function M.CountPendingDecisionTasksAsync(CountPendingDecisionTasksInput, cb)
 	assert(CountPendingDecisionTasksInput, "You must provide a CountPendingDecisionTasksInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.CountPendingDecisionTasks",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.CountPendingDecisionTasks",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CountPendingDecisionTasksInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CountPendingDecisionTasksInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6757,13 +6762,13 @@ end
 function M.ListWorkflowTypesAsync(ListWorkflowTypesInput, cb)
 	assert(ListWorkflowTypesInput, "You must provide a ListWorkflowTypesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.ListWorkflowTypes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.ListWorkflowTypes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListWorkflowTypesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListWorkflowTypesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6789,13 +6794,13 @@ end
 function M.DeprecateDomainAsync(DeprecateDomainInput, cb)
 	assert(DeprecateDomainInput, "You must provide a DeprecateDomainInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.DeprecateDomain",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.DeprecateDomain",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeprecateDomainInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeprecateDomainInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6821,13 +6826,13 @@ end
 function M.RespondActivityTaskCanceledAsync(RespondActivityTaskCanceledInput, cb)
 	assert(RespondActivityTaskCanceledInput, "You must provide a RespondActivityTaskCanceledInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.RespondActivityTaskCanceled",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.RespondActivityTaskCanceled",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RespondActivityTaskCanceledInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RespondActivityTaskCanceledInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6853,13 +6858,13 @@ end
 function M.DescribeWorkflowTypeAsync(DescribeWorkflowTypeInput, cb)
 	assert(DescribeWorkflowTypeInput, "You must provide a DescribeWorkflowTypeInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.DescribeWorkflowType",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.DescribeWorkflowType",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeWorkflowTypeInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeWorkflowTypeInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6885,13 +6890,13 @@ end
 function M.RegisterDomainAsync(RegisterDomainInput, cb)
 	assert(RegisterDomainInput, "You must provide a RegisterDomainInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.RegisterDomain",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.RegisterDomain",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RegisterDomainInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RegisterDomainInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6917,13 +6922,13 @@ end
 function M.RecordActivityTaskHeartbeatAsync(RecordActivityTaskHeartbeatInput, cb)
 	assert(RecordActivityTaskHeartbeatInput, "You must provide a RecordActivityTaskHeartbeatInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.RecordActivityTaskHeartbeat",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.RecordActivityTaskHeartbeat",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RecordActivityTaskHeartbeatInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RecordActivityTaskHeartbeatInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6949,13 +6954,13 @@ end
 function M.CountPendingActivityTasksAsync(CountPendingActivityTasksInput, cb)
 	assert(CountPendingActivityTasksInput, "You must provide a CountPendingActivityTasksInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.CountPendingActivityTasks",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.CountPendingActivityTasks",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CountPendingActivityTasksInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CountPendingActivityTasksInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6981,13 +6986,13 @@ end
 function M.DeprecateActivityTypeAsync(DeprecateActivityTypeInput, cb)
 	assert(DeprecateActivityTypeInput, "You must provide a DeprecateActivityTypeInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.DeprecateActivityType",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.DeprecateActivityType",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeprecateActivityTypeInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeprecateActivityTypeInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7013,13 +7018,13 @@ end
 function M.RespondActivityTaskCompletedAsync(RespondActivityTaskCompletedInput, cb)
 	assert(RespondActivityTaskCompletedInput, "You must provide a RespondActivityTaskCompletedInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.RespondActivityTaskCompleted",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.RespondActivityTaskCompleted",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RespondActivityTaskCompletedInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RespondActivityTaskCompletedInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end

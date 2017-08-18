@@ -4052,12 +4052,12 @@ function M.TagList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -4081,8 +4081,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -4095,13 +4100,13 @@ end
 function M.RegisterTargetsAsync(RegisterTargetsInput, cb)
 	assert(RegisterTargetsInput, "You must provide a RegisterTargetsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RegisterTargets",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RegisterTargets",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RegisterTargetsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RegisterTargetsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4127,13 +4132,13 @@ end
 function M.DescribeSSLPoliciesAsync(DescribeSSLPoliciesInput, cb)
 	assert(DescribeSSLPoliciesInput, "You must provide a DescribeSSLPoliciesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeSSLPolicies",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSSLPolicies",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeSSLPoliciesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeSSLPoliciesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4159,13 +4164,13 @@ end
 function M.SetSecurityGroupsAsync(SetSecurityGroupsInput, cb)
 	assert(SetSecurityGroupsInput, "You must provide a SetSecurityGroupsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SetSecurityGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetSecurityGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetSecurityGroupsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetSecurityGroupsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4191,13 +4196,13 @@ end
 function M.DeleteListenerAsync(DeleteListenerInput, cb)
 	assert(DeleteListenerInput, "You must provide a DeleteListenerInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteListener",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteListener",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteListenerInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteListenerInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4223,13 +4228,13 @@ end
 function M.ModifyTargetGroupAsync(ModifyTargetGroupInput, cb)
 	assert(ModifyTargetGroupInput, "You must provide a ModifyTargetGroupInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyTargetGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyTargetGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyTargetGroupInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyTargetGroupInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4255,13 +4260,13 @@ end
 function M.CreateRuleAsync(CreateRuleInput, cb)
 	assert(CreateRuleInput, "You must provide a CreateRuleInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateRuleInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateRuleInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4287,13 +4292,13 @@ end
 function M.SetRulePrioritiesAsync(SetRulePrioritiesInput, cb)
 	assert(SetRulePrioritiesInput, "You must provide a SetRulePrioritiesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SetRulePriorities",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetRulePriorities",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetRulePrioritiesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetRulePrioritiesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4319,13 +4324,13 @@ end
 function M.ModifyTargetGroupAttributesAsync(ModifyTargetGroupAttributesInput, cb)
 	assert(ModifyTargetGroupAttributesInput, "You must provide a ModifyTargetGroupAttributesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyTargetGroupAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyTargetGroupAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyTargetGroupAttributesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyTargetGroupAttributesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4351,13 +4356,13 @@ end
 function M.DescribeLoadBalancerAttributesAsync(DescribeLoadBalancerAttributesInput, cb)
 	assert(DescribeLoadBalancerAttributesInput, "You must provide a DescribeLoadBalancerAttributesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeLoadBalancerAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeLoadBalancerAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeLoadBalancerAttributesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeLoadBalancerAttributesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4383,13 +4388,13 @@ end
 function M.SetIpAddressTypeAsync(SetIpAddressTypeInput, cb)
 	assert(SetIpAddressTypeInput, "You must provide a SetIpAddressTypeInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SetIpAddressType",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetIpAddressType",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetIpAddressTypeInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetIpAddressTypeInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4415,13 +4420,13 @@ end
 function M.ModifyListenerAsync(ModifyListenerInput, cb)
 	assert(ModifyListenerInput, "You must provide a ModifyListenerInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyListener",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyListener",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyListenerInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyListenerInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4447,13 +4452,13 @@ end
 function M.DeleteLoadBalancerAsync(DeleteLoadBalancerInput, cb)
 	assert(DeleteLoadBalancerInput, "You must provide a DeleteLoadBalancerInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteLoadBalancer",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteLoadBalancer",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteLoadBalancerInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteLoadBalancerInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4479,13 +4484,13 @@ end
 function M.DeleteRuleAsync(DeleteRuleInput, cb)
 	assert(DeleteRuleInput, "You must provide a DeleteRuleInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteRuleInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteRuleInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4511,13 +4516,13 @@ end
 function M.DeleteTargetGroupAsync(DeleteTargetGroupInput, cb)
 	assert(DeleteTargetGroupInput, "You must provide a DeleteTargetGroupInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteTargetGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteTargetGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteTargetGroupInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteTargetGroupInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4543,13 +4548,13 @@ end
 function M.DescribeTargetGroupAttributesAsync(DescribeTargetGroupAttributesInput, cb)
 	assert(DescribeTargetGroupAttributesInput, "You must provide a DescribeTargetGroupAttributesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeTargetGroupAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeTargetGroupAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeTargetGroupAttributesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeTargetGroupAttributesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4575,13 +4580,13 @@ end
 function M.DescribeLoadBalancersAsync(DescribeLoadBalancersInput, cb)
 	assert(DescribeLoadBalancersInput, "You must provide a DescribeLoadBalancersInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeLoadBalancers",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeLoadBalancers",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeLoadBalancersInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeLoadBalancersInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4607,13 +4612,13 @@ end
 function M.DescribeListenersAsync(DescribeListenersInput, cb)
 	assert(DescribeListenersInput, "You must provide a DescribeListenersInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeListeners",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeListeners",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeListenersInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeListenersInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4639,13 +4644,13 @@ end
 function M.RemoveTagsAsync(RemoveTagsInput, cb)
 	assert(RemoveTagsInput, "You must provide a RemoveTagsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RemoveTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RemoveTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RemoveTagsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RemoveTagsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4671,13 +4676,13 @@ end
 function M.CreateListenerAsync(CreateListenerInput, cb)
 	assert(CreateListenerInput, "You must provide a CreateListenerInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateListener",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateListener",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateListenerInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateListenerInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4703,13 +4708,13 @@ end
 function M.SetSubnetsAsync(SetSubnetsInput, cb)
 	assert(SetSubnetsInput, "You must provide a SetSubnetsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SetSubnets",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetSubnets",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetSubnetsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetSubnetsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4735,13 +4740,13 @@ end
 function M.DescribeTagsAsync(DescribeTagsInput, cb)
 	assert(DescribeTagsInput, "You must provide a DescribeTagsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeTagsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeTagsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4767,13 +4772,13 @@ end
 function M.ModifyRuleAsync(ModifyRuleInput, cb)
 	assert(ModifyRuleInput, "You must provide a ModifyRuleInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyRuleInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyRuleInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4799,13 +4804,13 @@ end
 function M.CreateTargetGroupAsync(CreateTargetGroupInput, cb)
 	assert(CreateTargetGroupInput, "You must provide a CreateTargetGroupInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateTargetGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateTargetGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateTargetGroupInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateTargetGroupInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4831,13 +4836,13 @@ end
 function M.AddTagsAsync(AddTagsInput, cb)
 	assert(AddTagsInput, "You must provide a AddTagsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AddTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AddTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddTagsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddTagsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4863,13 +4868,13 @@ end
 function M.DescribeTargetGroupsAsync(DescribeTargetGroupsInput, cb)
 	assert(DescribeTargetGroupsInput, "You must provide a DescribeTargetGroupsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeTargetGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeTargetGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeTargetGroupsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeTargetGroupsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4895,13 +4900,13 @@ end
 function M.DeregisterTargetsAsync(DeregisterTargetsInput, cb)
 	assert(DeregisterTargetsInput, "You must provide a DeregisterTargetsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeregisterTargets",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeregisterTargets",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeregisterTargetsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeregisterTargetsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4927,13 +4932,13 @@ end
 function M.ModifyLoadBalancerAttributesAsync(ModifyLoadBalancerAttributesInput, cb)
 	assert(ModifyLoadBalancerAttributesInput, "You must provide a ModifyLoadBalancerAttributesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyLoadBalancerAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyLoadBalancerAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyLoadBalancerAttributesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyLoadBalancerAttributesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4959,13 +4964,13 @@ end
 function M.DescribeRulesAsync(DescribeRulesInput, cb)
 	assert(DescribeRulesInput, "You must provide a DescribeRulesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeRules",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeRules",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeRulesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeRulesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4991,13 +4996,13 @@ end
 function M.DescribeTargetHealthAsync(DescribeTargetHealthInput, cb)
 	assert(DescribeTargetHealthInput, "You must provide a DescribeTargetHealthInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeTargetHealth",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeTargetHealth",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeTargetHealthInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeTargetHealthInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5023,13 +5028,13 @@ end
 function M.CreateLoadBalancerAsync(CreateLoadBalancerInput, cb)
 	assert(CreateLoadBalancerInput, "You must provide a CreateLoadBalancerInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateLoadBalancer",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateLoadBalancer",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateLoadBalancerInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateLoadBalancerInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5055,13 +5060,13 @@ end
 function M.DescribeAccountLimitsAsync(DescribeAccountLimitsInput, cb)
 	assert(DescribeAccountLimitsInput, "You must provide a DescribeAccountLimitsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeAccountLimits",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAccountLimits",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeAccountLimitsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeAccountLimitsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end

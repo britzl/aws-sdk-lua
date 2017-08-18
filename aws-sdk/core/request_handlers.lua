@@ -1,12 +1,20 @@
 local content_encoder = require "aws-sdk.core.content_encoder"
-
+local request_signer = require "aws-sdk.core.request_signer"
+local request_headers = require "aws-sdk.core.request_headers"
 
 local M = {}
 
 
-function M.post(uri, input, headers, metadata, cb)
-	local post_data = content_encoder.encode(metadata.protocol, input)
-	http.request(uri, "POST", function(self, id, response)
+function M.post(base_uri, request_uri, input, headers, settings, cb)
+	local post_data = content_encoder.encode(settings.protocol, input)
+
+	headers[request_headers.AWS_DATE_HEADER] = os.date('%Y%m%dT%H%M%SZ')
+	headers[request_headers.HOST_HEADER] = settings.endpoint
+	local authorization = request_signer.sign_v4(request_uri, post_data, headers, settings)
+	headers[request_headers.AUTHORIZATION_HEADER] = authorization
+	headers[request_headers.HOST_HEADER] = nil
+
+	http.request(base_uri .. request_uri, "POST", function(self, _, response)
 		if response.status >= 200 and response.status < 300 then
 			cb(json.decode(response.response))
 		else
@@ -14,7 +22,6 @@ function M.post(uri, input, headers, metadata, cb)
 			cb(false, "Error")
 		end
 	end, headers, post_data)
-
 end
 
 

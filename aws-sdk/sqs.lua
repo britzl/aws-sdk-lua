@@ -1780,12 +1780,12 @@ function M.AttributeNameList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -1809,8 +1809,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -1823,13 +1828,13 @@ end
 function M.CreateQueueAsync(CreateQueueRequest, cb)
 	assert(CreateQueueRequest, "You must provide a CreateQueueRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateQueue",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateQueue",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateQueueRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateQueueRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1855,13 +1860,13 @@ end
 function M.GetQueueAttributesAsync(GetQueueAttributesRequest, cb)
 	assert(GetQueueAttributesRequest, "You must provide a GetQueueAttributesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetQueueAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetQueueAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetQueueAttributesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetQueueAttributesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1887,13 +1892,13 @@ end
 function M.SetQueueAttributesAsync(SetQueueAttributesRequest, cb)
 	assert(SetQueueAttributesRequest, "You must provide a SetQueueAttributesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SetQueueAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetQueueAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetQueueAttributesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetQueueAttributesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1919,13 +1924,13 @@ end
 function M.GetQueueUrlAsync(GetQueueUrlRequest, cb)
 	assert(GetQueueUrlRequest, "You must provide a GetQueueUrlRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetQueueUrl",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetQueueUrl",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetQueueUrlRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetQueueUrlRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1951,13 +1956,13 @@ end
 function M.DeleteMessageBatchAsync(DeleteMessageBatchRequest, cb)
 	assert(DeleteMessageBatchRequest, "You must provide a DeleteMessageBatchRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteMessageBatch",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteMessageBatch",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteMessageBatchRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteMessageBatchRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1983,13 +1988,13 @@ end
 function M.SendMessageBatchAsync(SendMessageBatchRequest, cb)
 	assert(SendMessageBatchRequest, "You must provide a SendMessageBatchRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SendMessageBatch",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SendMessageBatch",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SendMessageBatchRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SendMessageBatchRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2015,13 +2020,13 @@ end
 function M.ListDeadLetterSourceQueuesAsync(ListDeadLetterSourceQueuesRequest, cb)
 	assert(ListDeadLetterSourceQueuesRequest, "You must provide a ListDeadLetterSourceQueuesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListDeadLetterSourceQueues",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListDeadLetterSourceQueues",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListDeadLetterSourceQueuesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListDeadLetterSourceQueuesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2047,13 +2052,13 @@ end
 function M.ChangeMessageVisibilityAsync(ChangeMessageVisibilityRequest, cb)
 	assert(ChangeMessageVisibilityRequest, "You must provide a ChangeMessageVisibilityRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ChangeMessageVisibility",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ChangeMessageVisibility",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ChangeMessageVisibilityRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ChangeMessageVisibilityRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2079,13 +2084,13 @@ end
 function M.AddPermissionAsync(AddPermissionRequest, cb)
 	assert(AddPermissionRequest, "You must provide a AddPermissionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AddPermission",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AddPermission",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddPermissionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddPermissionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2111,13 +2116,13 @@ end
 function M.ChangeMessageVisibilityBatchAsync(ChangeMessageVisibilityBatchRequest, cb)
 	assert(ChangeMessageVisibilityBatchRequest, "You must provide a ChangeMessageVisibilityBatchRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ChangeMessageVisibilityBatch",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ChangeMessageVisibilityBatch",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ChangeMessageVisibilityBatchRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ChangeMessageVisibilityBatchRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2143,13 +2148,13 @@ end
 function M.SendMessageAsync(SendMessageRequest, cb)
 	assert(SendMessageRequest, "You must provide a SendMessageRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SendMessage",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SendMessage",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SendMessageRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SendMessageRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2175,13 +2180,13 @@ end
 function M.DeleteQueueAsync(DeleteQueueRequest, cb)
 	assert(DeleteQueueRequest, "You must provide a DeleteQueueRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteQueue",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteQueue",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteQueueRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteQueueRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2207,13 +2212,13 @@ end
 function M.PurgeQueueAsync(PurgeQueueRequest, cb)
 	assert(PurgeQueueRequest, "You must provide a PurgeQueueRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PurgeQueue",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PurgeQueue",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PurgeQueueRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PurgeQueueRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2239,13 +2244,13 @@ end
 function M.ReceiveMessageAsync(ReceiveMessageRequest, cb)
 	assert(ReceiveMessageRequest, "You must provide a ReceiveMessageRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ReceiveMessage",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ReceiveMessage",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ReceiveMessageRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ReceiveMessageRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2271,13 +2276,13 @@ end
 function M.DeleteMessageAsync(DeleteMessageRequest, cb)
 	assert(DeleteMessageRequest, "You must provide a DeleteMessageRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteMessage",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteMessage",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteMessageRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteMessageRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2303,13 +2308,13 @@ end
 function M.ListQueuesAsync(ListQueuesRequest, cb)
 	assert(ListQueuesRequest, "You must provide a ListQueuesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListQueues",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListQueues",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListQueuesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListQueuesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2335,13 +2340,13 @@ end
 function M.RemovePermissionAsync(RemovePermissionRequest, cb)
 	assert(RemovePermissionRequest, "You must provide a RemovePermissionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RemovePermission",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RemovePermission",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RemovePermissionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RemovePermissionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

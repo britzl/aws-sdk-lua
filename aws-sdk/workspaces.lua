@@ -2212,12 +2212,12 @@ function M.TagList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -2241,8 +2241,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -2255,13 +2260,13 @@ end
 function M.DeleteTagsAsync(DeleteTagsRequest, cb)
 	assert(DeleteTagsRequest, "You must provide a DeleteTagsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "WorkspacesService.DeleteTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "WorkspacesService.DeleteTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteTagsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteTagsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2287,13 +2292,13 @@ end
 function M.DescribeWorkspacesAsync(DescribeWorkspacesRequest, cb)
 	assert(DescribeWorkspacesRequest, "You must provide a DescribeWorkspacesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "WorkspacesService.DescribeWorkspaces",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "WorkspacesService.DescribeWorkspaces",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeWorkspacesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeWorkspacesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2319,13 +2324,13 @@ end
 function M.TerminateWorkspacesAsync(TerminateWorkspacesRequest, cb)
 	assert(TerminateWorkspacesRequest, "You must provide a TerminateWorkspacesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "WorkspacesService.TerminateWorkspaces",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "WorkspacesService.TerminateWorkspaces",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", TerminateWorkspacesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", TerminateWorkspacesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2351,13 +2356,13 @@ end
 function M.CreateTagsAsync(CreateTagsRequest, cb)
 	assert(CreateTagsRequest, "You must provide a CreateTagsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "WorkspacesService.CreateTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "WorkspacesService.CreateTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateTagsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateTagsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2383,13 +2388,13 @@ end
 function M.DescribeWorkspaceBundlesAsync(DescribeWorkspaceBundlesRequest, cb)
 	assert(DescribeWorkspaceBundlesRequest, "You must provide a DescribeWorkspaceBundlesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "WorkspacesService.DescribeWorkspaceBundles",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "WorkspacesService.DescribeWorkspaceBundles",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeWorkspaceBundlesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeWorkspaceBundlesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2415,13 +2420,13 @@ end
 function M.DescribeWorkspaceDirectoriesAsync(DescribeWorkspaceDirectoriesRequest, cb)
 	assert(DescribeWorkspaceDirectoriesRequest, "You must provide a DescribeWorkspaceDirectoriesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "WorkspacesService.DescribeWorkspaceDirectories",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "WorkspacesService.DescribeWorkspaceDirectories",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeWorkspaceDirectoriesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeWorkspaceDirectoriesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2447,13 +2452,13 @@ end
 function M.DescribeWorkspacesConnectionStatusAsync(DescribeWorkspacesConnectionStatusRequest, cb)
 	assert(DescribeWorkspacesConnectionStatusRequest, "You must provide a DescribeWorkspacesConnectionStatusRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "WorkspacesService.DescribeWorkspacesConnectionStatus",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "WorkspacesService.DescribeWorkspacesConnectionStatus",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeWorkspacesConnectionStatusRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeWorkspacesConnectionStatusRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2479,13 +2484,13 @@ end
 function M.RebuildWorkspacesAsync(RebuildWorkspacesRequest, cb)
 	assert(RebuildWorkspacesRequest, "You must provide a RebuildWorkspacesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "WorkspacesService.RebuildWorkspaces",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "WorkspacesService.RebuildWorkspaces",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RebuildWorkspacesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RebuildWorkspacesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2511,13 +2516,13 @@ end
 function M.DescribeTagsAsync(DescribeTagsRequest, cb)
 	assert(DescribeTagsRequest, "You must provide a DescribeTagsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "WorkspacesService.DescribeTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "WorkspacesService.DescribeTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeTagsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeTagsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2543,13 +2548,13 @@ end
 function M.RebootWorkspacesAsync(RebootWorkspacesRequest, cb)
 	assert(RebootWorkspacesRequest, "You must provide a RebootWorkspacesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "WorkspacesService.RebootWorkspaces",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "WorkspacesService.RebootWorkspaces",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RebootWorkspacesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RebootWorkspacesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2575,13 +2580,13 @@ end
 function M.CreateWorkspacesAsync(CreateWorkspacesRequest, cb)
 	assert(CreateWorkspacesRequest, "You must provide a CreateWorkspacesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "WorkspacesService.CreateWorkspaces",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "WorkspacesService.CreateWorkspaces",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateWorkspacesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateWorkspacesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2607,13 +2612,13 @@ end
 function M.StopWorkspacesAsync(StopWorkspacesRequest, cb)
 	assert(StopWorkspacesRequest, "You must provide a StopWorkspacesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "WorkspacesService.StopWorkspaces",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "WorkspacesService.StopWorkspaces",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StopWorkspacesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StopWorkspacesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2639,13 +2644,13 @@ end
 function M.ModifyWorkspacePropertiesAsync(ModifyWorkspacePropertiesRequest, cb)
 	assert(ModifyWorkspacePropertiesRequest, "You must provide a ModifyWorkspacePropertiesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "WorkspacesService.ModifyWorkspaceProperties",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "WorkspacesService.ModifyWorkspaceProperties",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyWorkspacePropertiesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyWorkspacePropertiesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2671,13 +2676,13 @@ end
 function M.StartWorkspacesAsync(StartWorkspacesRequest, cb)
 	assert(StartWorkspacesRequest, "You must provide a StartWorkspacesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "WorkspacesService.StartWorkspaces",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "WorkspacesService.StartWorkspaces",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StartWorkspacesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StartWorkspacesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

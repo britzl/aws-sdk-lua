@@ -4265,12 +4265,12 @@ function M.InputArtifactList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -4294,8 +4294,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -4308,13 +4313,13 @@ end
 function M.EnableStageTransitionAsync(EnableStageTransitionInput, cb)
 	assert(EnableStageTransitionInput, "You must provide a EnableStageTransitionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.EnableStageTransition",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.EnableStageTransition",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", EnableStageTransitionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", EnableStageTransitionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4340,13 +4345,13 @@ end
 function M.RetryStageExecutionAsync(RetryStageExecutionInput, cb)
 	assert(RetryStageExecutionInput, "You must provide a RetryStageExecutionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.RetryStageExecution",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.RetryStageExecution",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RetryStageExecutionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RetryStageExecutionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4372,13 +4377,13 @@ end
 function M.PutJobSuccessResultAsync(PutJobSuccessResultInput, cb)
 	assert(PutJobSuccessResultInput, "You must provide a PutJobSuccessResultInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.PutJobSuccessResult",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.PutJobSuccessResult",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutJobSuccessResultInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutJobSuccessResultInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4404,13 +4409,13 @@ end
 function M.PollForThirdPartyJobsAsync(PollForThirdPartyJobsInput, cb)
 	assert(PollForThirdPartyJobsInput, "You must provide a PollForThirdPartyJobsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.PollForThirdPartyJobs",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.PollForThirdPartyJobs",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PollForThirdPartyJobsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PollForThirdPartyJobsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4436,13 +4441,13 @@ end
 function M.GetThirdPartyJobDetailsAsync(GetThirdPartyJobDetailsInput, cb)
 	assert(GetThirdPartyJobDetailsInput, "You must provide a GetThirdPartyJobDetailsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.GetThirdPartyJobDetails",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.GetThirdPartyJobDetails",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetThirdPartyJobDetailsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetThirdPartyJobDetailsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4468,13 +4473,13 @@ end
 function M.DeletePipelineAsync(DeletePipelineInput, cb)
 	assert(DeletePipelineInput, "You must provide a DeletePipelineInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.DeletePipeline",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.DeletePipeline",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeletePipelineInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeletePipelineInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4500,13 +4505,13 @@ end
 function M.UpdatePipelineAsync(UpdatePipelineInput, cb)
 	assert(UpdatePipelineInput, "You must provide a UpdatePipelineInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.UpdatePipeline",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.UpdatePipeline",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdatePipelineInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdatePipelineInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4532,13 +4537,13 @@ end
 function M.AcknowledgeThirdPartyJobAsync(AcknowledgeThirdPartyJobInput, cb)
 	assert(AcknowledgeThirdPartyJobInput, "You must provide a AcknowledgeThirdPartyJobInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.AcknowledgeThirdPartyJob",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.AcknowledgeThirdPartyJob",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AcknowledgeThirdPartyJobInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AcknowledgeThirdPartyJobInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4564,13 +4569,13 @@ end
 function M.ListActionTypesAsync(ListActionTypesInput, cb)
 	assert(ListActionTypesInput, "You must provide a ListActionTypesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.ListActionTypes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.ListActionTypes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListActionTypesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListActionTypesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4596,13 +4601,13 @@ end
 function M.PutJobFailureResultAsync(PutJobFailureResultInput, cb)
 	assert(PutJobFailureResultInput, "You must provide a PutJobFailureResultInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.PutJobFailureResult",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.PutJobFailureResult",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutJobFailureResultInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutJobFailureResultInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4628,13 +4633,13 @@ end
 function M.GetPipelineExecutionAsync(GetPipelineExecutionInput, cb)
 	assert(GetPipelineExecutionInput, "You must provide a GetPipelineExecutionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.GetPipelineExecution",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.GetPipelineExecution",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetPipelineExecutionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetPipelineExecutionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4660,13 +4665,13 @@ end
 function M.PutThirdPartyJobSuccessResultAsync(PutThirdPartyJobSuccessResultInput, cb)
 	assert(PutThirdPartyJobSuccessResultInput, "You must provide a PutThirdPartyJobSuccessResultInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.PutThirdPartyJobSuccessResult",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.PutThirdPartyJobSuccessResult",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutThirdPartyJobSuccessResultInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutThirdPartyJobSuccessResultInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4692,13 +4697,13 @@ end
 function M.AcknowledgeJobAsync(AcknowledgeJobInput, cb)
 	assert(AcknowledgeJobInput, "You must provide a AcknowledgeJobInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.AcknowledgeJob",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.AcknowledgeJob",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AcknowledgeJobInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AcknowledgeJobInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4724,13 +4729,13 @@ end
 function M.PutActionRevisionAsync(PutActionRevisionInput, cb)
 	assert(PutActionRevisionInput, "You must provide a PutActionRevisionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.PutActionRevision",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.PutActionRevision",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutActionRevisionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutActionRevisionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4756,13 +4761,13 @@ end
 function M.ListPipelinesAsync(ListPipelinesInput, cb)
 	assert(ListPipelinesInput, "You must provide a ListPipelinesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.ListPipelines",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.ListPipelines",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListPipelinesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListPipelinesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4788,13 +4793,13 @@ end
 function M.StartPipelineExecutionAsync(StartPipelineExecutionInput, cb)
 	assert(StartPipelineExecutionInput, "You must provide a StartPipelineExecutionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.StartPipelineExecution",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.StartPipelineExecution",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StartPipelineExecutionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StartPipelineExecutionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4820,13 +4825,13 @@ end
 function M.PutApprovalResultAsync(PutApprovalResultInput, cb)
 	assert(PutApprovalResultInput, "You must provide a PutApprovalResultInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.PutApprovalResult",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.PutApprovalResult",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutApprovalResultInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutApprovalResultInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4852,13 +4857,13 @@ end
 function M.PutThirdPartyJobFailureResultAsync(PutThirdPartyJobFailureResultInput, cb)
 	assert(PutThirdPartyJobFailureResultInput, "You must provide a PutThirdPartyJobFailureResultInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.PutThirdPartyJobFailureResult",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.PutThirdPartyJobFailureResult",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutThirdPartyJobFailureResultInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutThirdPartyJobFailureResultInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4884,13 +4889,13 @@ end
 function M.PollForJobsAsync(PollForJobsInput, cb)
 	assert(PollForJobsInput, "You must provide a PollForJobsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.PollForJobs",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.PollForJobs",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PollForJobsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PollForJobsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4916,13 +4921,13 @@ end
 function M.GetPipelineStateAsync(GetPipelineStateInput, cb)
 	assert(GetPipelineStateInput, "You must provide a GetPipelineStateInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.GetPipelineState",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.GetPipelineState",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetPipelineStateInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetPipelineStateInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4948,13 +4953,13 @@ end
 function M.CreateCustomActionTypeAsync(CreateCustomActionTypeInput, cb)
 	assert(CreateCustomActionTypeInput, "You must provide a CreateCustomActionTypeInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.CreateCustomActionType",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.CreateCustomActionType",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateCustomActionTypeInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateCustomActionTypeInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4980,13 +4985,13 @@ end
 function M.CreatePipelineAsync(CreatePipelineInput, cb)
 	assert(CreatePipelineInput, "You must provide a CreatePipelineInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.CreatePipeline",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.CreatePipeline",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreatePipelineInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreatePipelineInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5012,13 +5017,13 @@ end
 function M.GetJobDetailsAsync(GetJobDetailsInput, cb)
 	assert(GetJobDetailsInput, "You must provide a GetJobDetailsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.GetJobDetails",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.GetJobDetails",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetJobDetailsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetJobDetailsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5044,13 +5049,13 @@ end
 function M.GetPipelineAsync(GetPipelineInput, cb)
 	assert(GetPipelineInput, "You must provide a GetPipelineInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.GetPipeline",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.GetPipeline",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetPipelineInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetPipelineInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5076,13 +5081,13 @@ end
 function M.DeleteCustomActionTypeAsync(DeleteCustomActionTypeInput, cb)
 	assert(DeleteCustomActionTypeInput, "You must provide a DeleteCustomActionTypeInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.DeleteCustomActionType",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.DeleteCustomActionType",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteCustomActionTypeInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteCustomActionTypeInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5108,13 +5113,13 @@ end
 function M.ListPipelineExecutionsAsync(ListPipelineExecutionsInput, cb)
 	assert(ListPipelineExecutionsInput, "You must provide a ListPipelineExecutionsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.ListPipelineExecutions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.ListPipelineExecutions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListPipelineExecutionsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListPipelineExecutionsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5140,13 +5145,13 @@ end
 function M.DisableStageTransitionAsync(DisableStageTransitionInput, cb)
 	assert(DisableStageTransitionInput, "You must provide a DisableStageTransitionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.DisableStageTransition",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.DisableStageTransition",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisableStageTransitionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisableStageTransitionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end

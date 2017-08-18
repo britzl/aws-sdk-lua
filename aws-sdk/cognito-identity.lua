@@ -1950,12 +1950,12 @@ function M.SAMLProviderList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -1979,8 +1979,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -1993,13 +1998,13 @@ end
 function M.MergeDeveloperIdentitiesAsync(MergeDeveloperIdentitiesInput, cb)
 	assert(MergeDeveloperIdentitiesInput, "You must provide a MergeDeveloperIdentitiesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.MergeDeveloperIdentities",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.MergeDeveloperIdentities",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", MergeDeveloperIdentitiesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", MergeDeveloperIdentitiesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2025,13 +2030,13 @@ end
 function M.GetIdentityPoolRolesAsync(GetIdentityPoolRolesInput, cb)
 	assert(GetIdentityPoolRolesInput, "You must provide a GetIdentityPoolRolesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.GetIdentityPoolRoles",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.GetIdentityPoolRoles",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetIdentityPoolRolesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetIdentityPoolRolesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2057,13 +2062,13 @@ end
 function M.DeleteIdentitiesAsync(DeleteIdentitiesInput, cb)
 	assert(DeleteIdentitiesInput, "You must provide a DeleteIdentitiesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.DeleteIdentities",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.DeleteIdentities",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteIdentitiesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteIdentitiesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2089,13 +2094,13 @@ end
 function M.GetOpenIdTokenForDeveloperIdentityAsync(GetOpenIdTokenForDeveloperIdentityInput, cb)
 	assert(GetOpenIdTokenForDeveloperIdentityInput, "You must provide a GetOpenIdTokenForDeveloperIdentityInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.GetOpenIdTokenForDeveloperIdentity",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.GetOpenIdTokenForDeveloperIdentity",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetOpenIdTokenForDeveloperIdentityInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetOpenIdTokenForDeveloperIdentityInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2121,13 +2126,13 @@ end
 function M.LookupDeveloperIdentityAsync(LookupDeveloperIdentityInput, cb)
 	assert(LookupDeveloperIdentityInput, "You must provide a LookupDeveloperIdentityInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.LookupDeveloperIdentity",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.LookupDeveloperIdentity",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", LookupDeveloperIdentityInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", LookupDeveloperIdentityInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2153,13 +2158,13 @@ end
 function M.ListIdentityPoolsAsync(ListIdentityPoolsInput, cb)
 	assert(ListIdentityPoolsInput, "You must provide a ListIdentityPoolsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.ListIdentityPools",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.ListIdentityPools",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListIdentityPoolsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListIdentityPoolsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2185,13 +2190,13 @@ end
 function M.DescribeIdentityAsync(DescribeIdentityInput, cb)
 	assert(DescribeIdentityInput, "You must provide a DescribeIdentityInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.DescribeIdentity",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.DescribeIdentity",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeIdentityInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeIdentityInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2217,13 +2222,13 @@ end
 function M.GetIdAsync(GetIdInput, cb)
 	assert(GetIdInput, "You must provide a GetIdInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.GetId",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.GetId",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetIdInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetIdInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2249,13 +2254,13 @@ end
 function M.UnlinkIdentityAsync(UnlinkIdentityInput, cb)
 	assert(UnlinkIdentityInput, "You must provide a UnlinkIdentityInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.UnlinkIdentity",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.UnlinkIdentity",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UnlinkIdentityInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UnlinkIdentityInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2281,13 +2286,13 @@ end
 function M.ListIdentitiesAsync(ListIdentitiesInput, cb)
 	assert(ListIdentitiesInput, "You must provide a ListIdentitiesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.ListIdentities",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.ListIdentities",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListIdentitiesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListIdentitiesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2313,13 +2318,13 @@ end
 function M.DeleteIdentityPoolAsync(DeleteIdentityPoolInput, cb)
 	assert(DeleteIdentityPoolInput, "You must provide a DeleteIdentityPoolInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.DeleteIdentityPool",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.DeleteIdentityPool",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteIdentityPoolInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteIdentityPoolInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2345,13 +2350,13 @@ end
 function M.GetCredentialsForIdentityAsync(GetCredentialsForIdentityInput, cb)
 	assert(GetCredentialsForIdentityInput, "You must provide a GetCredentialsForIdentityInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.GetCredentialsForIdentity",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.GetCredentialsForIdentity",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetCredentialsForIdentityInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetCredentialsForIdentityInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2377,13 +2382,13 @@ end
 function M.UpdateIdentityPoolAsync(IdentityPool, cb)
 	assert(IdentityPool, "You must provide a IdentityPool")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.UpdateIdentityPool",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.UpdateIdentityPool",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", IdentityPool, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", IdentityPool, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2409,13 +2414,13 @@ end
 function M.SetIdentityPoolRolesAsync(SetIdentityPoolRolesInput, cb)
 	assert(SetIdentityPoolRolesInput, "You must provide a SetIdentityPoolRolesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.SetIdentityPoolRoles",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.SetIdentityPoolRoles",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetIdentityPoolRolesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetIdentityPoolRolesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2441,13 +2446,13 @@ end
 function M.UnlinkDeveloperIdentityAsync(UnlinkDeveloperIdentityInput, cb)
 	assert(UnlinkDeveloperIdentityInput, "You must provide a UnlinkDeveloperIdentityInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.UnlinkDeveloperIdentity",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.UnlinkDeveloperIdentity",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UnlinkDeveloperIdentityInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UnlinkDeveloperIdentityInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2473,13 +2478,13 @@ end
 function M.DescribeIdentityPoolAsync(DescribeIdentityPoolInput, cb)
 	assert(DescribeIdentityPoolInput, "You must provide a DescribeIdentityPoolInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.DescribeIdentityPool",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.DescribeIdentityPool",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeIdentityPoolInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeIdentityPoolInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2505,13 +2510,13 @@ end
 function M.GetOpenIdTokenAsync(GetOpenIdTokenInput, cb)
 	assert(GetOpenIdTokenInput, "You must provide a GetOpenIdTokenInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.GetOpenIdToken",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.GetOpenIdToken",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetOpenIdTokenInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetOpenIdTokenInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2537,13 +2542,13 @@ end
 function M.CreateIdentityPoolAsync(CreateIdentityPoolInput, cb)
 	assert(CreateIdentityPoolInput, "You must provide a CreateIdentityPoolInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.CreateIdentityPool",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.CreateIdentityPool",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateIdentityPoolInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateIdentityPoolInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end

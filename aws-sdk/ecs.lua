@@ -3824,12 +3824,12 @@ function M.PlacementStrategies(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -3853,8 +3853,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -3867,13 +3872,13 @@ end
 function M.CreateServiceAsync(CreateServiceRequest, cb)
 	assert(CreateServiceRequest, "You must provide a CreateServiceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.CreateService",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.CreateService",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateServiceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateServiceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3899,13 +3904,13 @@ end
 function M.SubmitContainerStateChangeAsync(SubmitContainerStateChangeRequest, cb)
 	assert(SubmitContainerStateChangeRequest, "You must provide a SubmitContainerStateChangeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.SubmitContainerStateChange",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.SubmitContainerStateChange",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SubmitContainerStateChangeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SubmitContainerStateChangeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3931,13 +3936,13 @@ end
 function M.ListAttributesAsync(ListAttributesRequest, cb)
 	assert(ListAttributesRequest, "You must provide a ListAttributesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.ListAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.ListAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListAttributesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListAttributesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3963,13 +3968,13 @@ end
 function M.CreateClusterAsync(CreateClusterRequest, cb)
 	assert(CreateClusterRequest, "You must provide a CreateClusterRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.CreateCluster",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.CreateCluster",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateClusterRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateClusterRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3995,13 +4000,13 @@ end
 function M.SubmitTaskStateChangeAsync(SubmitTaskStateChangeRequest, cb)
 	assert(SubmitTaskStateChangeRequest, "You must provide a SubmitTaskStateChangeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.SubmitTaskStateChange",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.SubmitTaskStateChange",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SubmitTaskStateChangeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SubmitTaskStateChangeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4027,13 +4032,13 @@ end
 function M.ListTaskDefinitionFamiliesAsync(ListTaskDefinitionFamiliesRequest, cb)
 	assert(ListTaskDefinitionFamiliesRequest, "You must provide a ListTaskDefinitionFamiliesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.ListTaskDefinitionFamilies",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.ListTaskDefinitionFamilies",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListTaskDefinitionFamiliesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListTaskDefinitionFamiliesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4059,13 +4064,13 @@ end
 function M.DeleteServiceAsync(DeleteServiceRequest, cb)
 	assert(DeleteServiceRequest, "You must provide a DeleteServiceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DeleteService",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DeleteService",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteServiceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteServiceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4091,13 +4096,13 @@ end
 function M.ListContainerInstancesAsync(ListContainerInstancesRequest, cb)
 	assert(ListContainerInstancesRequest, "You must provide a ListContainerInstancesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.ListContainerInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.ListContainerInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListContainerInstancesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListContainerInstancesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4123,13 +4128,13 @@ end
 function M.DescribeServicesAsync(DescribeServicesRequest, cb)
 	assert(DescribeServicesRequest, "You must provide a DescribeServicesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DescribeServices",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DescribeServices",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeServicesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeServicesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4155,13 +4160,13 @@ end
 function M.DeleteClusterAsync(DeleteClusterRequest, cb)
 	assert(DeleteClusterRequest, "You must provide a DeleteClusterRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DeleteCluster",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DeleteCluster",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteClusterRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteClusterRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4187,13 +4192,13 @@ end
 function M.UpdateServiceAsync(UpdateServiceRequest, cb)
 	assert(UpdateServiceRequest, "You must provide a UpdateServiceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.UpdateService",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.UpdateService",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateServiceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateServiceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4219,13 +4224,13 @@ end
 function M.ListClustersAsync(ListClustersRequest, cb)
 	assert(ListClustersRequest, "You must provide a ListClustersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.ListClusters",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.ListClusters",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListClustersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListClustersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4251,13 +4256,13 @@ end
 function M.DeregisterTaskDefinitionAsync(DeregisterTaskDefinitionRequest, cb)
 	assert(DeregisterTaskDefinitionRequest, "You must provide a DeregisterTaskDefinitionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DeregisterTaskDefinition",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DeregisterTaskDefinition",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeregisterTaskDefinitionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeregisterTaskDefinitionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4283,13 +4288,13 @@ end
 function M.RegisterTaskDefinitionAsync(RegisterTaskDefinitionRequest, cb)
 	assert(RegisterTaskDefinitionRequest, "You must provide a RegisterTaskDefinitionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.RegisterTaskDefinition",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.RegisterTaskDefinition",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RegisterTaskDefinitionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RegisterTaskDefinitionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4315,13 +4320,13 @@ end
 function M.StopTaskAsync(StopTaskRequest, cb)
 	assert(StopTaskRequest, "You must provide a StopTaskRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.StopTask",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.StopTask",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StopTaskRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StopTaskRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4347,13 +4352,13 @@ end
 function M.ListTaskDefinitionsAsync(ListTaskDefinitionsRequest, cb)
 	assert(ListTaskDefinitionsRequest, "You must provide a ListTaskDefinitionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.ListTaskDefinitions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.ListTaskDefinitions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListTaskDefinitionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListTaskDefinitionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4379,13 +4384,13 @@ end
 function M.DescribeClustersAsync(DescribeClustersRequest, cb)
 	assert(DescribeClustersRequest, "You must provide a DescribeClustersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DescribeClusters",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DescribeClusters",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeClustersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeClustersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4411,13 +4416,13 @@ end
 function M.UpdateContainerAgentAsync(UpdateContainerAgentRequest, cb)
 	assert(UpdateContainerAgentRequest, "You must provide a UpdateContainerAgentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.UpdateContainerAgent",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.UpdateContainerAgent",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateContainerAgentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateContainerAgentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4443,13 +4448,13 @@ end
 function M.DeleteAttributesAsync(DeleteAttributesRequest, cb)
 	assert(DeleteAttributesRequest, "You must provide a DeleteAttributesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DeleteAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DeleteAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteAttributesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteAttributesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4475,13 +4480,13 @@ end
 function M.ListServicesAsync(ListServicesRequest, cb)
 	assert(ListServicesRequest, "You must provide a ListServicesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.ListServices",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.ListServices",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListServicesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListServicesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4507,13 +4512,13 @@ end
 function M.PutAttributesAsync(PutAttributesRequest, cb)
 	assert(PutAttributesRequest, "You must provide a PutAttributesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.PutAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.PutAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutAttributesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutAttributesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4539,13 +4544,13 @@ end
 function M.StartTaskAsync(StartTaskRequest, cb)
 	assert(StartTaskRequest, "You must provide a StartTaskRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.StartTask",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.StartTask",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StartTaskRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StartTaskRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4571,13 +4576,13 @@ end
 function M.RegisterContainerInstanceAsync(RegisterContainerInstanceRequest, cb)
 	assert(RegisterContainerInstanceRequest, "You must provide a RegisterContainerInstanceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.RegisterContainerInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.RegisterContainerInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RegisterContainerInstanceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RegisterContainerInstanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4603,13 +4608,13 @@ end
 function M.DescribeTaskDefinitionAsync(DescribeTaskDefinitionRequest, cb)
 	assert(DescribeTaskDefinitionRequest, "You must provide a DescribeTaskDefinitionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DescribeTaskDefinition",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DescribeTaskDefinition",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeTaskDefinitionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeTaskDefinitionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4635,13 +4640,13 @@ end
 function M.DescribeTasksAsync(DescribeTasksRequest, cb)
 	assert(DescribeTasksRequest, "You must provide a DescribeTasksRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DescribeTasks",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DescribeTasks",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeTasksRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeTasksRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4667,13 +4672,13 @@ end
 function M.UpdateContainerInstancesStateAsync(UpdateContainerInstancesStateRequest, cb)
 	assert(UpdateContainerInstancesStateRequest, "You must provide a UpdateContainerInstancesStateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.UpdateContainerInstancesState",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.UpdateContainerInstancesState",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateContainerInstancesStateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateContainerInstancesStateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4699,13 +4704,13 @@ end
 function M.DeregisterContainerInstanceAsync(DeregisterContainerInstanceRequest, cb)
 	assert(DeregisterContainerInstanceRequest, "You must provide a DeregisterContainerInstanceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DeregisterContainerInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DeregisterContainerInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeregisterContainerInstanceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeregisterContainerInstanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4731,13 +4736,13 @@ end
 function M.ListTasksAsync(ListTasksRequest, cb)
 	assert(ListTasksRequest, "You must provide a ListTasksRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.ListTasks",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.ListTasks",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListTasksRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListTasksRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4763,13 +4768,13 @@ end
 function M.DescribeContainerInstancesAsync(DescribeContainerInstancesRequest, cb)
 	assert(DescribeContainerInstancesRequest, "You must provide a DescribeContainerInstancesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DescribeContainerInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DescribeContainerInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeContainerInstancesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeContainerInstancesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4795,13 +4800,13 @@ end
 function M.RunTaskAsync(RunTaskRequest, cb)
 	assert(RunTaskRequest, "You must provide a RunTaskRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.RunTask",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.RunTask",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RunTaskRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RunTaskRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4827,13 +4832,13 @@ end
 function M.DiscoverPollEndpointAsync(DiscoverPollEndpointRequest, cb)
 	assert(DiscoverPollEndpointRequest, "You must provide a DiscoverPollEndpointRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DiscoverPollEndpoint",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DiscoverPollEndpoint",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DiscoverPollEndpointRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DiscoverPollEndpointRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

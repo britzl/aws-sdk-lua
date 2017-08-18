@@ -4938,12 +4938,12 @@ function M.RecurringCharges(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -4967,8 +4967,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -4981,13 +4986,13 @@ end
 function M.ListSamplesAsync(ListSamplesRequest, cb)
 	assert(ListSamplesRequest, "You must provide a ListSamplesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListSamples",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListSamples",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListSamplesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListSamplesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5013,13 +5018,13 @@ end
 function M.PurchaseOfferingAsync(PurchaseOfferingRequest, cb)
 	assert(PurchaseOfferingRequest, "You must provide a PurchaseOfferingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.PurchaseOffering",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.PurchaseOffering",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PurchaseOfferingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PurchaseOfferingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5045,13 +5050,13 @@ end
 function M.GetUploadAsync(GetUploadRequest, cb)
 	assert(GetUploadRequest, "You must provide a GetUploadRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetUpload",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetUpload",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetUploadRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetUploadRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5077,13 +5082,13 @@ end
 function M.ListOfferingPromotionsAsync(ListOfferingPromotionsRequest, cb)
 	assert(ListOfferingPromotionsRequest, "You must provide a ListOfferingPromotionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListOfferingPromotions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListOfferingPromotions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListOfferingPromotionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListOfferingPromotionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5109,13 +5114,13 @@ end
 function M.UpdateDevicePoolAsync(UpdateDevicePoolRequest, cb)
 	assert(UpdateDevicePoolRequest, "You must provide a UpdateDevicePoolRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.UpdateDevicePool",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.UpdateDevicePool",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateDevicePoolRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateDevicePoolRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5141,13 +5146,13 @@ end
 function M.StopRunAsync(StopRunRequest, cb)
 	assert(StopRunRequest, "You must provide a StopRunRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.StopRun",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.StopRun",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StopRunRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StopRunRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5173,13 +5178,13 @@ end
 function M.CreateRemoteAccessSessionAsync(CreateRemoteAccessSessionRequest, cb)
 	assert(CreateRemoteAccessSessionRequest, "You must provide a CreateRemoteAccessSessionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.CreateRemoteAccessSession",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.CreateRemoteAccessSession",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateRemoteAccessSessionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateRemoteAccessSessionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5205,13 +5210,13 @@ end
 function M.ListOfferingsAsync(ListOfferingsRequest, cb)
 	assert(ListOfferingsRequest, "You must provide a ListOfferingsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListOfferings",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListOfferings",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListOfferingsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListOfferingsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5237,13 +5242,13 @@ end
 function M.GetTestAsync(GetTestRequest, cb)
 	assert(GetTestRequest, "You must provide a GetTestRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetTest",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetTest",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetTestRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetTestRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5269,13 +5274,13 @@ end
 function M.DeleteNetworkProfileAsync(DeleteNetworkProfileRequest, cb)
 	assert(DeleteNetworkProfileRequest, "You must provide a DeleteNetworkProfileRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.DeleteNetworkProfile",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.DeleteNetworkProfile",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteNetworkProfileRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteNetworkProfileRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5301,13 +5306,13 @@ end
 function M.ListProjectsAsync(ListProjectsRequest, cb)
 	assert(ListProjectsRequest, "You must provide a ListProjectsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListProjects",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListProjects",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListProjectsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListProjectsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5333,13 +5338,13 @@ end
 function M.ListNetworkProfilesAsync(ListNetworkProfilesRequest, cb)
 	assert(ListNetworkProfilesRequest, "You must provide a ListNetworkProfilesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListNetworkProfiles",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListNetworkProfiles",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListNetworkProfilesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListNetworkProfilesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5365,13 +5370,13 @@ end
 function M.DeleteUploadAsync(DeleteUploadRequest, cb)
 	assert(DeleteUploadRequest, "You must provide a DeleteUploadRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.DeleteUpload",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.DeleteUpload",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteUploadRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteUploadRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5397,13 +5402,13 @@ end
 function M.GetSuiteAsync(GetSuiteRequest, cb)
 	assert(GetSuiteRequest, "You must provide a GetSuiteRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetSuite",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetSuite",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetSuiteRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetSuiteRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5429,13 +5434,13 @@ end
 function M.DeleteRemoteAccessSessionAsync(DeleteRemoteAccessSessionRequest, cb)
 	assert(DeleteRemoteAccessSessionRequest, "You must provide a DeleteRemoteAccessSessionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.DeleteRemoteAccessSession",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.DeleteRemoteAccessSession",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteRemoteAccessSessionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteRemoteAccessSessionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5461,13 +5466,13 @@ end
 function M.DeleteRunAsync(DeleteRunRequest, cb)
 	assert(DeleteRunRequest, "You must provide a DeleteRunRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.DeleteRun",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.DeleteRun",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteRunRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteRunRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5493,13 +5498,13 @@ end
 function M.ListOfferingTransactionsAsync(ListOfferingTransactionsRequest, cb)
 	assert(ListOfferingTransactionsRequest, "You must provide a ListOfferingTransactionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListOfferingTransactions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListOfferingTransactions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListOfferingTransactionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListOfferingTransactionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5525,13 +5530,13 @@ end
 function M.GetProjectAsync(GetProjectRequest, cb)
 	assert(GetProjectRequest, "You must provide a GetProjectRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetProject",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetProject",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetProjectRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetProjectRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5557,13 +5562,13 @@ end
 function M.InstallToRemoteAccessSessionAsync(InstallToRemoteAccessSessionRequest, cb)
 	assert(InstallToRemoteAccessSessionRequest, "You must provide a InstallToRemoteAccessSessionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.InstallToRemoteAccessSession",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.InstallToRemoteAccessSession",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", InstallToRemoteAccessSessionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", InstallToRemoteAccessSessionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5589,13 +5594,13 @@ end
 function M.ListUniqueProblemsAsync(ListUniqueProblemsRequest, cb)
 	assert(ListUniqueProblemsRequest, "You must provide a ListUniqueProblemsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListUniqueProblems",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListUniqueProblems",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListUniqueProblemsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListUniqueProblemsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5621,13 +5626,13 @@ end
 function M.ListDevicePoolsAsync(ListDevicePoolsRequest, cb)
 	assert(ListDevicePoolsRequest, "You must provide a ListDevicePoolsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListDevicePools",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListDevicePools",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListDevicePoolsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListDevicePoolsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5653,13 +5658,13 @@ end
 function M.CreateUploadAsync(CreateUploadRequest, cb)
 	assert(CreateUploadRequest, "You must provide a CreateUploadRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.CreateUpload",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.CreateUpload",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateUploadRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateUploadRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5685,13 +5690,13 @@ end
 function M.GetDevicePoolCompatibilityAsync(GetDevicePoolCompatibilityRequest, cb)
 	assert(GetDevicePoolCompatibilityRequest, "You must provide a GetDevicePoolCompatibilityRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetDevicePoolCompatibility",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetDevicePoolCompatibility",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetDevicePoolCompatibilityRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetDevicePoolCompatibilityRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5717,13 +5722,13 @@ end
 function M.DeleteDevicePoolAsync(DeleteDevicePoolRequest, cb)
 	assert(DeleteDevicePoolRequest, "You must provide a DeleteDevicePoolRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.DeleteDevicePool",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.DeleteDevicePool",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteDevicePoolRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteDevicePoolRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5749,13 +5754,13 @@ end
 function M.ListTestsAsync(ListTestsRequest, cb)
 	assert(ListTestsRequest, "You must provide a ListTestsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListTests",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListTests",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListTestsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListTestsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5781,13 +5786,13 @@ end
 function M.UpdateProjectAsync(UpdateProjectRequest, cb)
 	assert(UpdateProjectRequest, "You must provide a UpdateProjectRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.UpdateProject",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.UpdateProject",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateProjectRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateProjectRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5813,13 +5818,13 @@ end
 function M.ListSuitesAsync(ListSuitesRequest, cb)
 	assert(ListSuitesRequest, "You must provide a ListSuitesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListSuites",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListSuites",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListSuitesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListSuitesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5845,13 +5850,13 @@ end
 function M.GetDevicePoolAsync(GetDevicePoolRequest, cb)
 	assert(GetDevicePoolRequest, "You must provide a GetDevicePoolRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetDevicePool",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetDevicePool",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetDevicePoolRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetDevicePoolRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5877,13 +5882,13 @@ end
 function M.StopRemoteAccessSessionAsync(StopRemoteAccessSessionRequest, cb)
 	assert(StopRemoteAccessSessionRequest, "You must provide a StopRemoteAccessSessionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.StopRemoteAccessSession",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.StopRemoteAccessSession",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StopRemoteAccessSessionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StopRemoteAccessSessionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5909,13 +5914,13 @@ end
 function M.RenewOfferingAsync(RenewOfferingRequest, cb)
 	assert(RenewOfferingRequest, "You must provide a RenewOfferingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.RenewOffering",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.RenewOffering",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RenewOfferingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RenewOfferingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5941,13 +5946,13 @@ end
 function M.GetRemoteAccessSessionAsync(GetRemoteAccessSessionRequest, cb)
 	assert(GetRemoteAccessSessionRequest, "You must provide a GetRemoteAccessSessionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetRemoteAccessSession",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetRemoteAccessSession",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetRemoteAccessSessionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetRemoteAccessSessionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5973,13 +5978,13 @@ end
 function M.ListJobsAsync(ListJobsRequest, cb)
 	assert(ListJobsRequest, "You must provide a ListJobsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListJobs",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListJobs",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListJobsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListJobsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6005,13 +6010,13 @@ end
 function M.GetRunAsync(GetRunRequest, cb)
 	assert(GetRunRequest, "You must provide a GetRunRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetRun",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetRun",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetRunRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetRunRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6037,13 +6042,13 @@ end
 function M.ListUploadsAsync(ListUploadsRequest, cb)
 	assert(ListUploadsRequest, "You must provide a ListUploadsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListUploads",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListUploads",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListUploadsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListUploadsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6069,13 +6074,13 @@ end
 function M.UpdateNetworkProfileAsync(UpdateNetworkProfileRequest, cb)
 	assert(UpdateNetworkProfileRequest, "You must provide a UpdateNetworkProfileRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.UpdateNetworkProfile",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.UpdateNetworkProfile",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateNetworkProfileRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateNetworkProfileRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6101,13 +6106,13 @@ end
 function M.ListRemoteAccessSessionsAsync(ListRemoteAccessSessionsRequest, cb)
 	assert(ListRemoteAccessSessionsRequest, "You must provide a ListRemoteAccessSessionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListRemoteAccessSessions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListRemoteAccessSessions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListRemoteAccessSessionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListRemoteAccessSessionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6133,13 +6138,13 @@ end
 function M.GetNetworkProfileAsync(GetNetworkProfileRequest, cb)
 	assert(GetNetworkProfileRequest, "You must provide a GetNetworkProfileRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetNetworkProfile",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetNetworkProfile",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetNetworkProfileRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetNetworkProfileRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6165,13 +6170,13 @@ end
 function M.CreateNetworkProfileAsync(CreateNetworkProfileRequest, cb)
 	assert(CreateNetworkProfileRequest, "You must provide a CreateNetworkProfileRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.CreateNetworkProfile",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.CreateNetworkProfile",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateNetworkProfileRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateNetworkProfileRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6197,13 +6202,13 @@ end
 function M.ListDevicesAsync(ListDevicesRequest, cb)
 	assert(ListDevicesRequest, "You must provide a ListDevicesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListDevices",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListDevices",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListDevicesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListDevicesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6229,13 +6234,13 @@ end
 function M.GetDeviceAsync(GetDeviceRequest, cb)
 	assert(GetDeviceRequest, "You must provide a GetDeviceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetDevice",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetDevice",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetDeviceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetDeviceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6261,13 +6266,13 @@ end
 function M.CreateDevicePoolAsync(CreateDevicePoolRequest, cb)
 	assert(CreateDevicePoolRequest, "You must provide a CreateDevicePoolRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.CreateDevicePool",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.CreateDevicePool",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateDevicePoolRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateDevicePoolRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6293,13 +6298,13 @@ end
 function M.ScheduleRunAsync(ScheduleRunRequest, cb)
 	assert(ScheduleRunRequest, "You must provide a ScheduleRunRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ScheduleRun",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ScheduleRun",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ScheduleRunRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ScheduleRunRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6325,13 +6330,13 @@ end
 function M.ListArtifactsAsync(ListArtifactsRequest, cb)
 	assert(ListArtifactsRequest, "You must provide a ListArtifactsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListArtifacts",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListArtifacts",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListArtifactsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListArtifactsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6357,13 +6362,13 @@ end
 function M.CreateProjectAsync(CreateProjectRequest, cb)
 	assert(CreateProjectRequest, "You must provide a CreateProjectRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.CreateProject",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.CreateProject",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateProjectRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateProjectRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6389,13 +6394,13 @@ end
 function M.GetJobAsync(GetJobRequest, cb)
 	assert(GetJobRequest, "You must provide a GetJobRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetJob",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetJob",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetJobRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetJobRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6421,13 +6426,13 @@ end
 function M.DeleteProjectAsync(DeleteProjectRequest, cb)
 	assert(DeleteProjectRequest, "You must provide a DeleteProjectRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.DeleteProject",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.DeleteProject",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteProjectRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteProjectRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6453,13 +6458,13 @@ end
 function M.ListRunsAsync(ListRunsRequest, cb)
 	assert(ListRunsRequest, "You must provide a ListRunsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListRuns",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListRuns",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListRunsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListRunsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6485,13 +6490,13 @@ end
 function M.GetAccountSettingsAsync(GetAccountSettingsRequest, cb)
 	assert(GetAccountSettingsRequest, "You must provide a GetAccountSettingsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetAccountSettings",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetAccountSettings",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetAccountSettingsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetAccountSettingsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6517,13 +6522,13 @@ end
 function M.GetOfferingStatusAsync(GetOfferingStatusRequest, cb)
 	assert(GetOfferingStatusRequest, "You must provide a GetOfferingStatusRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetOfferingStatus",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetOfferingStatus",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetOfferingStatusRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetOfferingStatusRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

@@ -5658,12 +5658,12 @@ function M.DiskIds(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -5687,8 +5687,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -5701,13 +5706,13 @@ end
 function M.DescribeSnapshotScheduleAsync(DescribeSnapshotScheduleInput, cb)
 	assert(DescribeSnapshotScheduleInput, "You must provide a DescribeSnapshotScheduleInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeSnapshotSchedule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeSnapshotSchedule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeSnapshotScheduleInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeSnapshotScheduleInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5733,13 +5738,13 @@ end
 function M.UpdateNFSFileShareAsync(UpdateNFSFileShareInput, cb)
 	assert(UpdateNFSFileShareInput, "You must provide a UpdateNFSFileShareInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.UpdateNFSFileShare",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.UpdateNFSFileShare",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateNFSFileShareInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateNFSFileShareInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5765,13 +5770,13 @@ end
 function M.DescribeTapeArchivesAsync(DescribeTapeArchivesInput, cb)
 	assert(DescribeTapeArchivesInput, "You must provide a DescribeTapeArchivesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeTapeArchives",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeTapeArchives",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeTapeArchivesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeTapeArchivesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5797,13 +5802,13 @@ end
 function M.DeleteFileShareAsync(DeleteFileShareInput, cb)
 	assert(DeleteFileShareInput, "You must provide a DeleteFileShareInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DeleteFileShare",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DeleteFileShare",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteFileShareInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteFileShareInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5829,13 +5834,13 @@ end
 function M.RefreshCacheAsync(RefreshCacheInput, cb)
 	assert(RefreshCacheInput, "You must provide a RefreshCacheInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.RefreshCache",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.RefreshCache",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RefreshCacheInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RefreshCacheInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5861,13 +5866,13 @@ end
 function M.DescribeMaintenanceStartTimeAsync(DescribeMaintenanceStartTimeInput, cb)
 	assert(DescribeMaintenanceStartTimeInput, "You must provide a DescribeMaintenanceStartTimeInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeMaintenanceStartTime",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeMaintenanceStartTime",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeMaintenanceStartTimeInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeMaintenanceStartTimeInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5893,13 +5898,13 @@ end
 function M.DescribeGatewayInformationAsync(DescribeGatewayInformationInput, cb)
 	assert(DescribeGatewayInformationInput, "You must provide a DescribeGatewayInformationInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeGatewayInformation",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeGatewayInformation",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeGatewayInformationInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeGatewayInformationInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5925,13 +5930,13 @@ end
 function M.UpdateGatewayInformationAsync(UpdateGatewayInformationInput, cb)
 	assert(UpdateGatewayInformationInput, "You must provide a UpdateGatewayInformationInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.UpdateGatewayInformation",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.UpdateGatewayInformation",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateGatewayInformationInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateGatewayInformationInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5957,13 +5962,13 @@ end
 function M.DisableGatewayAsync(DisableGatewayInput, cb)
 	assert(DisableGatewayInput, "You must provide a DisableGatewayInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DisableGateway",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DisableGateway",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisableGatewayInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisableGatewayInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5989,13 +5994,13 @@ end
 function M.ListFileSharesAsync(ListFileSharesInput, cb)
 	assert(ListFileSharesInput, "You must provide a ListFileSharesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ListFileShares",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ListFileShares",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListFileSharesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListFileSharesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6021,13 +6026,13 @@ end
 function M.UpdateMaintenanceStartTimeAsync(UpdateMaintenanceStartTimeInput, cb)
 	assert(UpdateMaintenanceStartTimeInput, "You must provide a UpdateMaintenanceStartTimeInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.UpdateMaintenanceStartTime",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.UpdateMaintenanceStartTime",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateMaintenanceStartTimeInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateMaintenanceStartTimeInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6053,13 +6058,13 @@ end
 function M.CreateTapesAsync(CreateTapesInput, cb)
 	assert(CreateTapesInput, "You must provide a CreateTapesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.CreateTapes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.CreateTapes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateTapesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateTapesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6085,13 +6090,13 @@ end
 function M.UpdateBandwidthRateLimitAsync(UpdateBandwidthRateLimitInput, cb)
 	assert(UpdateBandwidthRateLimitInput, "You must provide a UpdateBandwidthRateLimitInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.UpdateBandwidthRateLimit",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.UpdateBandwidthRateLimit",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateBandwidthRateLimitInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateBandwidthRateLimitInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6117,13 +6122,13 @@ end
 function M.CreateCachediSCSIVolumeAsync(CreateCachediSCSIVolumeInput, cb)
 	assert(CreateCachediSCSIVolumeInput, "You must provide a CreateCachediSCSIVolumeInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.CreateCachediSCSIVolume",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.CreateCachediSCSIVolume",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateCachediSCSIVolumeInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateCachediSCSIVolumeInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6149,13 +6154,13 @@ end
 function M.CreateTapeWithBarcodeAsync(CreateTapeWithBarcodeInput, cb)
 	assert(CreateTapeWithBarcodeInput, "You must provide a CreateTapeWithBarcodeInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.CreateTapeWithBarcode",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.CreateTapeWithBarcode",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateTapeWithBarcodeInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateTapeWithBarcodeInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6181,13 +6186,13 @@ end
 function M.DescribeChapCredentialsAsync(DescribeChapCredentialsInput, cb)
 	assert(DescribeChapCredentialsInput, "You must provide a DescribeChapCredentialsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeChapCredentials",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeChapCredentials",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeChapCredentialsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeChapCredentialsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6213,13 +6218,13 @@ end
 function M.ListLocalDisksAsync(ListLocalDisksInput, cb)
 	assert(ListLocalDisksInput, "You must provide a ListLocalDisksInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ListLocalDisks",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ListLocalDisks",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListLocalDisksInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListLocalDisksInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6245,13 +6250,13 @@ end
 function M.UpdateGatewaySoftwareNowAsync(UpdateGatewaySoftwareNowInput, cb)
 	assert(UpdateGatewaySoftwareNowInput, "You must provide a UpdateGatewaySoftwareNowInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.UpdateGatewaySoftwareNow",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.UpdateGatewaySoftwareNow",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateGatewaySoftwareNowInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateGatewaySoftwareNowInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6277,13 +6282,13 @@ end
 function M.ResetCacheAsync(ResetCacheInput, cb)
 	assert(ResetCacheInput, "You must provide a ResetCacheInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ResetCache",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ResetCache",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ResetCacheInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ResetCacheInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6309,13 +6314,13 @@ end
 function M.AddTagsToResourceAsync(AddTagsToResourceInput, cb)
 	assert(AddTagsToResourceInput, "You must provide a AddTagsToResourceInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.AddTagsToResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.AddTagsToResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddTagsToResourceInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddTagsToResourceInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6341,13 +6346,13 @@ end
 function M.RetrieveTapeArchiveAsync(RetrieveTapeArchiveInput, cb)
 	assert(RetrieveTapeArchiveInput, "You must provide a RetrieveTapeArchiveInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.RetrieveTapeArchive",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.RetrieveTapeArchive",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RetrieveTapeArchiveInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RetrieveTapeArchiveInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6373,13 +6378,13 @@ end
 function M.SetLocalConsolePasswordAsync(SetLocalConsolePasswordInput, cb)
 	assert(SetLocalConsolePasswordInput, "You must provide a SetLocalConsolePasswordInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.SetLocalConsolePassword",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.SetLocalConsolePassword",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetLocalConsolePasswordInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetLocalConsolePasswordInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6405,13 +6410,13 @@ end
 function M.UpdateSnapshotScheduleAsync(UpdateSnapshotScheduleInput, cb)
 	assert(UpdateSnapshotScheduleInput, "You must provide a UpdateSnapshotScheduleInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.UpdateSnapshotSchedule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.UpdateSnapshotSchedule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateSnapshotScheduleInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateSnapshotScheduleInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6437,13 +6442,13 @@ end
 function M.ListVolumeInitiatorsAsync(ListVolumeInitiatorsInput, cb)
 	assert(ListVolumeInitiatorsInput, "You must provide a ListVolumeInitiatorsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ListVolumeInitiators",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ListVolumeInitiators",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListVolumeInitiatorsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListVolumeInitiatorsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6469,13 +6474,13 @@ end
 function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceInput, cb)
 	assert(RemoveTagsFromResourceInput, "You must provide a RemoveTagsFromResourceInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.RemoveTagsFromResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.RemoveTagsFromResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RemoveTagsFromResourceInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RemoveTagsFromResourceInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6501,13 +6506,13 @@ end
 function M.CreateSnapshotFromVolumeRecoveryPointAsync(CreateSnapshotFromVolumeRecoveryPointInput, cb)
 	assert(CreateSnapshotFromVolumeRecoveryPointInput, "You must provide a CreateSnapshotFromVolumeRecoveryPointInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.CreateSnapshotFromVolumeRecoveryPoint",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.CreateSnapshotFromVolumeRecoveryPoint",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateSnapshotFromVolumeRecoveryPointInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateSnapshotFromVolumeRecoveryPointInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6533,13 +6538,13 @@ end
 function M.ListGatewaysAsync(ListGatewaysInput, cb)
 	assert(ListGatewaysInput, "You must provide a ListGatewaysInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ListGateways",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ListGateways",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListGatewaysInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListGatewaysInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6565,13 +6570,13 @@ end
 function M.DeleteChapCredentialsAsync(DeleteChapCredentialsInput, cb)
 	assert(DeleteChapCredentialsInput, "You must provide a DeleteChapCredentialsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DeleteChapCredentials",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DeleteChapCredentials",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteChapCredentialsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteChapCredentialsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6597,13 +6602,13 @@ end
 function M.DeleteVolumeAsync(DeleteVolumeInput, cb)
 	assert(DeleteVolumeInput, "You must provide a DeleteVolumeInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DeleteVolume",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DeleteVolume",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteVolumeInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteVolumeInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6629,13 +6634,13 @@ end
 function M.DescribeTapeRecoveryPointsAsync(DescribeTapeRecoveryPointsInput, cb)
 	assert(DescribeTapeRecoveryPointsInput, "You must provide a DescribeTapeRecoveryPointsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeTapeRecoveryPoints",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeTapeRecoveryPoints",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeTapeRecoveryPointsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeTapeRecoveryPointsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6661,13 +6666,13 @@ end
 function M.ActivateGatewayAsync(ActivateGatewayInput, cb)
 	assert(ActivateGatewayInput, "You must provide a ActivateGatewayInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ActivateGateway",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ActivateGateway",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ActivateGatewayInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ActivateGatewayInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6693,13 +6698,13 @@ end
 function M.DeleteTapeArchiveAsync(DeleteTapeArchiveInput, cb)
 	assert(DeleteTapeArchiveInput, "You must provide a DeleteTapeArchiveInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DeleteTapeArchive",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DeleteTapeArchive",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteTapeArchiveInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteTapeArchiveInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6725,13 +6730,13 @@ end
 function M.DescribeVTLDevicesAsync(DescribeVTLDevicesInput, cb)
 	assert(DescribeVTLDevicesInput, "You must provide a DescribeVTLDevicesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeVTLDevices",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeVTLDevices",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeVTLDevicesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeVTLDevicesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6757,13 +6762,13 @@ end
 function M.AddCacheAsync(AddCacheInput, cb)
 	assert(AddCacheInput, "You must provide a AddCacheInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.AddCache",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.AddCache",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddCacheInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddCacheInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6789,13 +6794,13 @@ end
 function M.ListVolumesAsync(ListVolumesInput, cb)
 	assert(ListVolumesInput, "You must provide a ListVolumesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ListVolumes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ListVolumes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListVolumesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListVolumesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6821,13 +6826,13 @@ end
 function M.DescribeCachediSCSIVolumesAsync(DescribeCachediSCSIVolumesInput, cb)
 	assert(DescribeCachediSCSIVolumesInput, "You must provide a DescribeCachediSCSIVolumesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeCachediSCSIVolumes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeCachediSCSIVolumes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeCachediSCSIVolumesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeCachediSCSIVolumesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6853,13 +6858,13 @@ end
 function M.RetrieveTapeRecoveryPointAsync(RetrieveTapeRecoveryPointInput, cb)
 	assert(RetrieveTapeRecoveryPointInput, "You must provide a RetrieveTapeRecoveryPointInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.RetrieveTapeRecoveryPoint",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.RetrieveTapeRecoveryPoint",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RetrieveTapeRecoveryPointInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RetrieveTapeRecoveryPointInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6885,13 +6890,13 @@ end
 function M.CancelRetrievalAsync(CancelRetrievalInput, cb)
 	assert(CancelRetrievalInput, "You must provide a CancelRetrievalInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.CancelRetrieval",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.CancelRetrieval",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CancelRetrievalInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CancelRetrievalInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6917,13 +6922,13 @@ end
 function M.DescribeBandwidthRateLimitAsync(DescribeBandwidthRateLimitInput, cb)
 	assert(DescribeBandwidthRateLimitInput, "You must provide a DescribeBandwidthRateLimitInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeBandwidthRateLimit",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeBandwidthRateLimit",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeBandwidthRateLimitInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeBandwidthRateLimitInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6949,13 +6954,13 @@ end
 function M.DescribeStorediSCSIVolumesAsync(DescribeStorediSCSIVolumesInput, cb)
 	assert(DescribeStorediSCSIVolumesInput, "You must provide a DescribeStorediSCSIVolumesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeStorediSCSIVolumes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeStorediSCSIVolumes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeStorediSCSIVolumesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeStorediSCSIVolumesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6981,13 +6986,13 @@ end
 function M.ListVolumeRecoveryPointsAsync(ListVolumeRecoveryPointsInput, cb)
 	assert(ListVolumeRecoveryPointsInput, "You must provide a ListVolumeRecoveryPointsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ListVolumeRecoveryPoints",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ListVolumeRecoveryPoints",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListVolumeRecoveryPointsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListVolumeRecoveryPointsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7013,13 +7018,13 @@ end
 function M.UpdateChapCredentialsAsync(UpdateChapCredentialsInput, cb)
 	assert(UpdateChapCredentialsInput, "You must provide a UpdateChapCredentialsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.UpdateChapCredentials",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.UpdateChapCredentials",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateChapCredentialsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateChapCredentialsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7045,13 +7050,13 @@ end
 function M.StartGatewayAsync(StartGatewayInput, cb)
 	assert(StartGatewayInput, "You must provide a StartGatewayInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.StartGateway",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.StartGateway",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StartGatewayInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StartGatewayInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7077,13 +7082,13 @@ end
 function M.DescribeCacheAsync(DescribeCacheInput, cb)
 	assert(DescribeCacheInput, "You must provide a DescribeCacheInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeCache",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeCache",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeCacheInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeCacheInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7109,13 +7114,13 @@ end
 function M.AddUploadBufferAsync(AddUploadBufferInput, cb)
 	assert(AddUploadBufferInput, "You must provide a AddUploadBufferInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.AddUploadBuffer",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.AddUploadBuffer",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddUploadBufferInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddUploadBufferInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7141,13 +7146,13 @@ end
 function M.DeleteSnapshotScheduleAsync(DeleteSnapshotScheduleInput, cb)
 	assert(DeleteSnapshotScheduleInput, "You must provide a DeleteSnapshotScheduleInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DeleteSnapshotSchedule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DeleteSnapshotSchedule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteSnapshotScheduleInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteSnapshotScheduleInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7173,13 +7178,13 @@ end
 function M.UpdateVTLDeviceTypeAsync(UpdateVTLDeviceTypeInput, cb)
 	assert(UpdateVTLDeviceTypeInput, "You must provide a UpdateVTLDeviceTypeInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.UpdateVTLDeviceType",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.UpdateVTLDeviceType",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateVTLDeviceTypeInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateVTLDeviceTypeInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7205,13 +7210,13 @@ end
 function M.DeleteTapeAsync(DeleteTapeInput, cb)
 	assert(DeleteTapeInput, "You must provide a DeleteTapeInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DeleteTape",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DeleteTape",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteTapeInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteTapeInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7237,13 +7242,13 @@ end
 function M.DeleteBandwidthRateLimitAsync(DeleteBandwidthRateLimitInput, cb)
 	assert(DeleteBandwidthRateLimitInput, "You must provide a DeleteBandwidthRateLimitInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DeleteBandwidthRateLimit",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DeleteBandwidthRateLimit",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteBandwidthRateLimitInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteBandwidthRateLimitInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7269,13 +7274,13 @@ end
 function M.ShutdownGatewayAsync(ShutdownGatewayInput, cb)
 	assert(ShutdownGatewayInput, "You must provide a ShutdownGatewayInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ShutdownGateway",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ShutdownGateway",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ShutdownGatewayInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ShutdownGatewayInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7301,13 +7306,13 @@ end
 function M.DescribeTapesAsync(DescribeTapesInput, cb)
 	assert(DescribeTapesInput, "You must provide a DescribeTapesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeTapes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeTapes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeTapesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeTapesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7333,13 +7338,13 @@ end
 function M.CreateNFSFileShareAsync(CreateNFSFileShareInput, cb)
 	assert(CreateNFSFileShareInput, "You must provide a CreateNFSFileShareInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.CreateNFSFileShare",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.CreateNFSFileShare",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateNFSFileShareInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateNFSFileShareInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7365,13 +7370,13 @@ end
 function M.CreateStorediSCSIVolumeAsync(CreateStorediSCSIVolumeInput, cb)
 	assert(CreateStorediSCSIVolumeInput, "You must provide a CreateStorediSCSIVolumeInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.CreateStorediSCSIVolume",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.CreateStorediSCSIVolume",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateStorediSCSIVolumeInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateStorediSCSIVolumeInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7397,13 +7402,13 @@ end
 function M.CancelArchivalAsync(CancelArchivalInput, cb)
 	assert(CancelArchivalInput, "You must provide a CancelArchivalInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.CancelArchival",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.CancelArchival",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CancelArchivalInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CancelArchivalInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7429,13 +7434,13 @@ end
 function M.ListTapesAsync(ListTapesInput, cb)
 	assert(ListTapesInput, "You must provide a ListTapesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ListTapes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ListTapes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListTapesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListTapesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7461,13 +7466,13 @@ end
 function M.DeleteGatewayAsync(DeleteGatewayInput, cb)
 	assert(DeleteGatewayInput, "You must provide a DeleteGatewayInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DeleteGateway",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DeleteGateway",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteGatewayInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteGatewayInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7493,13 +7498,13 @@ end
 function M.DescribeNFSFileSharesAsync(DescribeNFSFileSharesInput, cb)
 	assert(DescribeNFSFileSharesInput, "You must provide a DescribeNFSFileSharesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeNFSFileShares",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeNFSFileShares",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeNFSFileSharesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeNFSFileSharesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7525,13 +7530,13 @@ end
 function M.DescribeWorkingStorageAsync(DescribeWorkingStorageInput, cb)
 	assert(DescribeWorkingStorageInput, "You must provide a DescribeWorkingStorageInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeWorkingStorage",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeWorkingStorage",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeWorkingStorageInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeWorkingStorageInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7557,13 +7562,13 @@ end
 function M.DescribeUploadBufferAsync(DescribeUploadBufferInput, cb)
 	assert(DescribeUploadBufferInput, "You must provide a DescribeUploadBufferInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeUploadBuffer",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeUploadBuffer",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeUploadBufferInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeUploadBufferInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7589,13 +7594,13 @@ end
 function M.ListTagsForResourceAsync(ListTagsForResourceInput, cb)
 	assert(ListTagsForResourceInput, "You must provide a ListTagsForResourceInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ListTagsForResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ListTagsForResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListTagsForResourceInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListTagsForResourceInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7621,13 +7626,13 @@ end
 function M.AddWorkingStorageAsync(AddWorkingStorageInput, cb)
 	assert(AddWorkingStorageInput, "You must provide a AddWorkingStorageInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.AddWorkingStorage",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.AddWorkingStorage",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddWorkingStorageInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddWorkingStorageInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7653,13 +7658,13 @@ end
 function M.CreateSnapshotAsync(CreateSnapshotInput, cb)
 	assert(CreateSnapshotInput, "You must provide a CreateSnapshotInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.CreateSnapshot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.CreateSnapshot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateSnapshotInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateSnapshotInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end

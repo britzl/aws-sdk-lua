@@ -2982,12 +2982,12 @@ function M.InputUpdates(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -3011,8 +3011,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -3025,13 +3030,13 @@ end
 function M.DiscoverInputSchemaAsync(DiscoverInputSchemaRequest, cb)
 	assert(DiscoverInputSchemaRequest, "You must provide a DiscoverInputSchemaRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.DiscoverInputSchema",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.DiscoverInputSchema",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DiscoverInputSchemaRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DiscoverInputSchemaRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3057,13 +3062,13 @@ end
 function M.DeleteApplicationOutputAsync(DeleteApplicationOutputRequest, cb)
 	assert(DeleteApplicationOutputRequest, "You must provide a DeleteApplicationOutputRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.DeleteApplicationOutput",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.DeleteApplicationOutput",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteApplicationOutputRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteApplicationOutputRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3089,13 +3094,13 @@ end
 function M.AddApplicationReferenceDataSourceAsync(AddApplicationReferenceDataSourceRequest, cb)
 	assert(AddApplicationReferenceDataSourceRequest, "You must provide a AddApplicationReferenceDataSourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.AddApplicationReferenceDataSource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.AddApplicationReferenceDataSource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddApplicationReferenceDataSourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddApplicationReferenceDataSourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3121,13 +3126,13 @@ end
 function M.ListApplicationsAsync(ListApplicationsRequest, cb)
 	assert(ListApplicationsRequest, "You must provide a ListApplicationsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.ListApplications",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.ListApplications",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListApplicationsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListApplicationsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3153,13 +3158,13 @@ end
 function M.UpdateApplicationAsync(UpdateApplicationRequest, cb)
 	assert(UpdateApplicationRequest, "You must provide a UpdateApplicationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.UpdateApplication",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.UpdateApplication",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateApplicationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateApplicationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3185,13 +3190,13 @@ end
 function M.StopApplicationAsync(StopApplicationRequest, cb)
 	assert(StopApplicationRequest, "You must provide a StopApplicationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.StopApplication",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.StopApplication",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StopApplicationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StopApplicationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3217,13 +3222,13 @@ end
 function M.AddApplicationOutputAsync(AddApplicationOutputRequest, cb)
 	assert(AddApplicationOutputRequest, "You must provide a AddApplicationOutputRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.AddApplicationOutput",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.AddApplicationOutput",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddApplicationOutputRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddApplicationOutputRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3249,13 +3254,13 @@ end
 function M.DeleteApplicationAsync(DeleteApplicationRequest, cb)
 	assert(DeleteApplicationRequest, "You must provide a DeleteApplicationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.DeleteApplication",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.DeleteApplication",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteApplicationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteApplicationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3281,13 +3286,13 @@ end
 function M.AddApplicationCloudWatchLoggingOptionAsync(AddApplicationCloudWatchLoggingOptionRequest, cb)
 	assert(AddApplicationCloudWatchLoggingOptionRequest, "You must provide a AddApplicationCloudWatchLoggingOptionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.AddApplicationCloudWatchLoggingOption",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.AddApplicationCloudWatchLoggingOption",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddApplicationCloudWatchLoggingOptionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddApplicationCloudWatchLoggingOptionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3313,13 +3318,13 @@ end
 function M.DeleteApplicationCloudWatchLoggingOptionAsync(DeleteApplicationCloudWatchLoggingOptionRequest, cb)
 	assert(DeleteApplicationCloudWatchLoggingOptionRequest, "You must provide a DeleteApplicationCloudWatchLoggingOptionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.DeleteApplicationCloudWatchLoggingOption",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.DeleteApplicationCloudWatchLoggingOption",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteApplicationCloudWatchLoggingOptionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteApplicationCloudWatchLoggingOptionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3345,13 +3350,13 @@ end
 function M.AddApplicationInputAsync(AddApplicationInputRequest, cb)
 	assert(AddApplicationInputRequest, "You must provide a AddApplicationInputRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.AddApplicationInput",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.AddApplicationInput",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddApplicationInputRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddApplicationInputRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3377,13 +3382,13 @@ end
 function M.DescribeApplicationAsync(DescribeApplicationRequest, cb)
 	assert(DescribeApplicationRequest, "You must provide a DescribeApplicationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.DescribeApplication",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.DescribeApplication",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeApplicationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeApplicationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3409,13 +3414,13 @@ end
 function M.DeleteApplicationReferenceDataSourceAsync(DeleteApplicationReferenceDataSourceRequest, cb)
 	assert(DeleteApplicationReferenceDataSourceRequest, "You must provide a DeleteApplicationReferenceDataSourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.DeleteApplicationReferenceDataSource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.DeleteApplicationReferenceDataSource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteApplicationReferenceDataSourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteApplicationReferenceDataSourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3441,13 +3446,13 @@ end
 function M.StartApplicationAsync(StartApplicationRequest, cb)
 	assert(StartApplicationRequest, "You must provide a StartApplicationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.StartApplication",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.StartApplication",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StartApplicationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StartApplicationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3473,13 +3478,13 @@ end
 function M.CreateApplicationAsync(CreateApplicationRequest, cb)
 	assert(CreateApplicationRequest, "You must provide a CreateApplicationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.CreateApplication",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.CreateApplication",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateApplicationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateApplicationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

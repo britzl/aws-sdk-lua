@@ -4860,12 +4860,12 @@ function M.FleetAttributesList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -4889,8 +4889,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -4903,13 +4908,13 @@ end
 function M.RequestUploadCredentialsAsync(RequestUploadCredentialsInput, cb)
 	assert(RequestUploadCredentialsInput, "You must provide a RequestUploadCredentialsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.RequestUploadCredentials",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.RequestUploadCredentials",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RequestUploadCredentialsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RequestUploadCredentialsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4935,13 +4940,13 @@ end
 function M.UpdateRuntimeConfigurationAsync(UpdateRuntimeConfigurationInput, cb)
 	assert(UpdateRuntimeConfigurationInput, "You must provide a UpdateRuntimeConfigurationInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.UpdateRuntimeConfiguration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.UpdateRuntimeConfiguration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateRuntimeConfigurationInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateRuntimeConfigurationInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4967,13 +4972,13 @@ end
 function M.DeleteFleetAsync(DeleteFleetInput, cb)
 	assert(DeleteFleetInput, "You must provide a DeleteFleetInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.DeleteFleet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DeleteFleet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteFleetInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteFleetInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4999,13 +5004,13 @@ end
 function M.UpdateFleetCapacityAsync(UpdateFleetCapacityInput, cb)
 	assert(UpdateFleetCapacityInput, "You must provide a UpdateFleetCapacityInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.UpdateFleetCapacity",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.UpdateFleetCapacity",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateFleetCapacityInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateFleetCapacityInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5031,13 +5036,13 @@ end
 function M.DescribeRuntimeConfigurationAsync(DescribeRuntimeConfigurationInput, cb)
 	assert(DescribeRuntimeConfigurationInput, "You must provide a DescribeRuntimeConfigurationInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.DescribeRuntimeConfiguration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribeRuntimeConfiguration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeRuntimeConfigurationInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeRuntimeConfigurationInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5063,13 +5068,13 @@ end
 function M.DescribeGameSessionsAsync(DescribeGameSessionsInput, cb)
 	assert(DescribeGameSessionsInput, "You must provide a DescribeGameSessionsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.DescribeGameSessions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribeGameSessions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeGameSessionsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeGameSessionsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5095,13 +5100,13 @@ end
 function M.SearchGameSessionsAsync(SearchGameSessionsInput, cb)
 	assert(SearchGameSessionsInput, "You must provide a SearchGameSessionsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.SearchGameSessions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.SearchGameSessions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SearchGameSessionsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SearchGameSessionsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5127,13 +5132,13 @@ end
 function M.CreatePlayerSessionsAsync(CreatePlayerSessionsInput, cb)
 	assert(CreatePlayerSessionsInput, "You must provide a CreatePlayerSessionsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.CreatePlayerSessions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.CreatePlayerSessions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreatePlayerSessionsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreatePlayerSessionsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5159,13 +5164,13 @@ end
 function M.UpdateFleetPortSettingsAsync(UpdateFleetPortSettingsInput, cb)
 	assert(UpdateFleetPortSettingsInput, "You must provide a UpdateFleetPortSettingsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.UpdateFleetPortSettings",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.UpdateFleetPortSettings",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateFleetPortSettingsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateFleetPortSettingsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5191,13 +5196,13 @@ end
 function M.ListFleetsAsync(ListFleetsInput, cb)
 	assert(ListFleetsInput, "You must provide a ListFleetsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.ListFleets",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.ListFleets",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListFleetsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListFleetsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5223,13 +5228,13 @@ end
 function M.UpdateGameSessionAsync(UpdateGameSessionInput, cb)
 	assert(UpdateGameSessionInput, "You must provide a UpdateGameSessionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.UpdateGameSession",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.UpdateGameSession",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateGameSessionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateGameSessionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5255,13 +5260,13 @@ end
 function M.CreateGameSessionAsync(CreateGameSessionInput, cb)
 	assert(CreateGameSessionInput, "You must provide a CreateGameSessionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.CreateGameSession",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.CreateGameSession",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateGameSessionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateGameSessionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5287,13 +5292,13 @@ end
 function M.DescribeFleetCapacityAsync(DescribeFleetCapacityInput, cb)
 	assert(DescribeFleetCapacityInput, "You must provide a DescribeFleetCapacityInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.DescribeFleetCapacity",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribeFleetCapacity",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeFleetCapacityInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeFleetCapacityInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5319,13 +5324,13 @@ end
 function M.ListAliasesAsync(ListAliasesInput, cb)
 	assert(ListAliasesInput, "You must provide a ListAliasesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.ListAliases",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.ListAliases",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListAliasesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListAliasesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5351,13 +5356,13 @@ end
 function M.UpdateBuildAsync(UpdateBuildInput, cb)
 	assert(UpdateBuildInput, "You must provide a UpdateBuildInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.UpdateBuild",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.UpdateBuild",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateBuildInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateBuildInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5383,13 +5388,13 @@ end
 function M.DeleteBuildAsync(DeleteBuildInput, cb)
 	assert(DeleteBuildInput, "You must provide a DeleteBuildInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.DeleteBuild",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DeleteBuild",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteBuildInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteBuildInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5415,13 +5420,13 @@ end
 function M.PutScalingPolicyAsync(PutScalingPolicyInput, cb)
 	assert(PutScalingPolicyInput, "You must provide a PutScalingPolicyInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.PutScalingPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.PutScalingPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutScalingPolicyInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutScalingPolicyInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5447,13 +5452,13 @@ end
 function M.DescribeScalingPoliciesAsync(DescribeScalingPoliciesInput, cb)
 	assert(DescribeScalingPoliciesInput, "You must provide a DescribeScalingPoliciesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.DescribeScalingPolicies",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribeScalingPolicies",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeScalingPoliciesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeScalingPoliciesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5479,13 +5484,13 @@ end
 function M.DescribeInstancesAsync(DescribeInstancesInput, cb)
 	assert(DescribeInstancesInput, "You must provide a DescribeInstancesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.DescribeInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribeInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeInstancesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeInstancesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5511,13 +5516,13 @@ end
 function M.CreateBuildAsync(CreateBuildInput, cb)
 	assert(CreateBuildInput, "You must provide a CreateBuildInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.CreateBuild",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.CreateBuild",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateBuildInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateBuildInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5543,13 +5548,13 @@ end
 function M.DeleteGameSessionQueueAsync(DeleteGameSessionQueueInput, cb)
 	assert(DeleteGameSessionQueueInput, "You must provide a DeleteGameSessionQueueInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.DeleteGameSessionQueue",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DeleteGameSessionQueue",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteGameSessionQueueInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteGameSessionQueueInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5575,13 +5580,13 @@ end
 function M.CreatePlayerSessionAsync(CreatePlayerSessionInput, cb)
 	assert(CreatePlayerSessionInput, "You must provide a CreatePlayerSessionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.CreatePlayerSession",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.CreatePlayerSession",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreatePlayerSessionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreatePlayerSessionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5607,13 +5612,13 @@ end
 function M.UpdateFleetAttributesAsync(UpdateFleetAttributesInput, cb)
 	assert(UpdateFleetAttributesInput, "You must provide a UpdateFleetAttributesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.UpdateFleetAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.UpdateFleetAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateFleetAttributesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateFleetAttributesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5639,13 +5644,13 @@ end
 function M.DeleteAliasAsync(DeleteAliasInput, cb)
 	assert(DeleteAliasInput, "You must provide a DeleteAliasInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.DeleteAlias",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DeleteAlias",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteAliasInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteAliasInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5671,13 +5676,13 @@ end
 function M.DescribeFleetPortSettingsAsync(DescribeFleetPortSettingsInput, cb)
 	assert(DescribeFleetPortSettingsInput, "You must provide a DescribeFleetPortSettingsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.DescribeFleetPortSettings",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribeFleetPortSettings",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeFleetPortSettingsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeFleetPortSettingsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5703,13 +5708,13 @@ end
 function M.DescribePlayerSessionsAsync(DescribePlayerSessionsInput, cb)
 	assert(DescribePlayerSessionsInput, "You must provide a DescribePlayerSessionsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.DescribePlayerSessions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribePlayerSessions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribePlayerSessionsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribePlayerSessionsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5735,13 +5740,13 @@ end
 function M.DeleteScalingPolicyAsync(DeleteScalingPolicyInput, cb)
 	assert(DeleteScalingPolicyInput, "You must provide a DeleteScalingPolicyInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.DeleteScalingPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DeleteScalingPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteScalingPolicyInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteScalingPolicyInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5767,13 +5772,13 @@ end
 function M.DescribeGameSessionQueuesAsync(DescribeGameSessionQueuesInput, cb)
 	assert(DescribeGameSessionQueuesInput, "You must provide a DescribeGameSessionQueuesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.DescribeGameSessionQueues",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribeGameSessionQueues",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeGameSessionQueuesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeGameSessionQueuesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5799,13 +5804,13 @@ end
 function M.CreateAliasAsync(CreateAliasInput, cb)
 	assert(CreateAliasInput, "You must provide a CreateAliasInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.CreateAlias",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.CreateAlias",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateAliasInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateAliasInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5831,13 +5836,13 @@ end
 function M.UpdateAliasAsync(UpdateAliasInput, cb)
 	assert(UpdateAliasInput, "You must provide a UpdateAliasInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.UpdateAlias",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.UpdateAlias",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateAliasInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateAliasInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5863,13 +5868,13 @@ end
 function M.CreateFleetAsync(CreateFleetInput, cb)
 	assert(CreateFleetInput, "You must provide a CreateFleetInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.CreateFleet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.CreateFleet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateFleetInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateFleetInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5895,13 +5900,13 @@ end
 function M.DescribeGameSessionPlacementAsync(DescribeGameSessionPlacementInput, cb)
 	assert(DescribeGameSessionPlacementInput, "You must provide a DescribeGameSessionPlacementInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.DescribeGameSessionPlacement",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribeGameSessionPlacement",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeGameSessionPlacementInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeGameSessionPlacementInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5927,13 +5932,13 @@ end
 function M.GetInstanceAccessAsync(GetInstanceAccessInput, cb)
 	assert(GetInstanceAccessInput, "You must provide a GetInstanceAccessInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.GetInstanceAccess",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.GetInstanceAccess",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetInstanceAccessInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetInstanceAccessInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5959,13 +5964,13 @@ end
 function M.ListBuildsAsync(ListBuildsInput, cb)
 	assert(ListBuildsInput, "You must provide a ListBuildsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.ListBuilds",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.ListBuilds",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListBuildsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListBuildsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5991,13 +5996,13 @@ end
 function M.DescribeFleetAttributesAsync(DescribeFleetAttributesInput, cb)
 	assert(DescribeFleetAttributesInput, "You must provide a DescribeFleetAttributesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.DescribeFleetAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribeFleetAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeFleetAttributesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeFleetAttributesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6023,13 +6028,13 @@ end
 function M.ResolveAliasAsync(ResolveAliasInput, cb)
 	assert(ResolveAliasInput, "You must provide a ResolveAliasInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.ResolveAlias",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.ResolveAlias",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ResolveAliasInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ResolveAliasInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6055,13 +6060,13 @@ end
 function M.DescribeGameSessionDetailsAsync(DescribeGameSessionDetailsInput, cb)
 	assert(DescribeGameSessionDetailsInput, "You must provide a DescribeGameSessionDetailsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.DescribeGameSessionDetails",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribeGameSessionDetails",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeGameSessionDetailsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeGameSessionDetailsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6087,13 +6092,13 @@ end
 function M.StopGameSessionPlacementAsync(StopGameSessionPlacementInput, cb)
 	assert(StopGameSessionPlacementInput, "You must provide a StopGameSessionPlacementInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.StopGameSessionPlacement",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.StopGameSessionPlacement",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StopGameSessionPlacementInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StopGameSessionPlacementInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6119,13 +6124,13 @@ end
 function M.CreateGameSessionQueueAsync(CreateGameSessionQueueInput, cb)
 	assert(CreateGameSessionQueueInput, "You must provide a CreateGameSessionQueueInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.CreateGameSessionQueue",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.CreateGameSessionQueue",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateGameSessionQueueInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateGameSessionQueueInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6151,13 +6156,13 @@ end
 function M.DescribeAliasAsync(DescribeAliasInput, cb)
 	assert(DescribeAliasInput, "You must provide a DescribeAliasInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.DescribeAlias",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribeAlias",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeAliasInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeAliasInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6183,13 +6188,13 @@ end
 function M.StartGameSessionPlacementAsync(StartGameSessionPlacementInput, cb)
 	assert(StartGameSessionPlacementInput, "You must provide a StartGameSessionPlacementInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.StartGameSessionPlacement",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.StartGameSessionPlacement",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StartGameSessionPlacementInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StartGameSessionPlacementInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6215,13 +6220,13 @@ end
 function M.DescribeEC2InstanceLimitsAsync(DescribeEC2InstanceLimitsInput, cb)
 	assert(DescribeEC2InstanceLimitsInput, "You must provide a DescribeEC2InstanceLimitsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.DescribeEC2InstanceLimits",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribeEC2InstanceLimits",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeEC2InstanceLimitsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeEC2InstanceLimitsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6247,13 +6252,13 @@ end
 function M.UpdateGameSessionQueueAsync(UpdateGameSessionQueueInput, cb)
 	assert(UpdateGameSessionQueueInput, "You must provide a UpdateGameSessionQueueInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.UpdateGameSessionQueue",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.UpdateGameSessionQueue",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateGameSessionQueueInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateGameSessionQueueInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6279,13 +6284,13 @@ end
 function M.GetGameSessionLogUrlAsync(GetGameSessionLogUrlInput, cb)
 	assert(GetGameSessionLogUrlInput, "You must provide a GetGameSessionLogUrlInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.GetGameSessionLogUrl",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.GetGameSessionLogUrl",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetGameSessionLogUrlInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetGameSessionLogUrlInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6311,13 +6316,13 @@ end
 function M.DescribeBuildAsync(DescribeBuildInput, cb)
 	assert(DescribeBuildInput, "You must provide a DescribeBuildInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.DescribeBuild",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribeBuild",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeBuildInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeBuildInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6343,13 +6348,13 @@ end
 function M.DescribeFleetEventsAsync(DescribeFleetEventsInput, cb)
 	assert(DescribeFleetEventsInput, "You must provide a DescribeFleetEventsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.DescribeFleetEvents",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribeFleetEvents",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeFleetEventsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeFleetEventsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6375,13 +6380,13 @@ end
 function M.DescribeFleetUtilizationAsync(DescribeFleetUtilizationInput, cb)
 	assert(DescribeFleetUtilizationInput, "You must provide a DescribeFleetUtilizationInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "GameLift.DescribeFleetUtilization",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribeFleetUtilization",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeFleetUtilizationInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeFleetUtilizationInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end

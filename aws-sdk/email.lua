@@ -4890,12 +4890,12 @@ function M.ReceiptActionsList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -4919,8 +4919,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -4933,13 +4938,13 @@ end
 function M.CreateReceiptRuleAsync(CreateReceiptRuleRequest, cb)
 	assert(CreateReceiptRuleRequest, "You must provide a CreateReceiptRuleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateReceiptRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateReceiptRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateReceiptRuleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateReceiptRuleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4963,13 +4968,13 @@ end
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetSendStatisticsAsync(cb)
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetSendStatistics",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetSendStatistics",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", {}, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4994,13 +4999,13 @@ end
 function M.ReorderReceiptRuleSetAsync(ReorderReceiptRuleSetRequest, cb)
 	assert(ReorderReceiptRuleSetRequest, "You must provide a ReorderReceiptRuleSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ReorderReceiptRuleSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ReorderReceiptRuleSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ReorderReceiptRuleSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ReorderReceiptRuleSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5026,13 +5031,13 @@ end
 function M.GetIdentityPoliciesAsync(GetIdentityPoliciesRequest, cb)
 	assert(GetIdentityPoliciesRequest, "You must provide a GetIdentityPoliciesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetIdentityPolicies",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetIdentityPolicies",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetIdentityPoliciesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetIdentityPoliciesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5058,13 +5063,13 @@ end
 function M.VerifyEmailAddressAsync(VerifyEmailAddressRequest, cb)
 	assert(VerifyEmailAddressRequest, "You must provide a VerifyEmailAddressRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".VerifyEmailAddress",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".VerifyEmailAddress",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", VerifyEmailAddressRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", VerifyEmailAddressRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5090,13 +5095,13 @@ end
 function M.SetIdentityMailFromDomainAsync(SetIdentityMailFromDomainRequest, cb)
 	assert(SetIdentityMailFromDomainRequest, "You must provide a SetIdentityMailFromDomainRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SetIdentityMailFromDomain",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetIdentityMailFromDomain",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetIdentityMailFromDomainRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetIdentityMailFromDomainRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5122,13 +5127,13 @@ end
 function M.ListReceiptFiltersAsync(ListReceiptFiltersRequest, cb)
 	assert(ListReceiptFiltersRequest, "You must provide a ListReceiptFiltersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListReceiptFilters",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListReceiptFilters",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListReceiptFiltersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListReceiptFiltersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5154,13 +5159,13 @@ end
 function M.DescribeReceiptRuleSetAsync(DescribeReceiptRuleSetRequest, cb)
 	assert(DescribeReceiptRuleSetRequest, "You must provide a DescribeReceiptRuleSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeReceiptRuleSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeReceiptRuleSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeReceiptRuleSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeReceiptRuleSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5186,13 +5191,13 @@ end
 function M.DeleteReceiptFilterAsync(DeleteReceiptFilterRequest, cb)
 	assert(DeleteReceiptFilterRequest, "You must provide a DeleteReceiptFilterRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteReceiptFilter",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteReceiptFilter",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteReceiptFilterRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteReceiptFilterRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5218,13 +5223,13 @@ end
 function M.UpdateConfigurationSetEventDestinationAsync(UpdateConfigurationSetEventDestinationRequest, cb)
 	assert(UpdateConfigurationSetEventDestinationRequest, "You must provide a UpdateConfigurationSetEventDestinationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateConfigurationSetEventDestination",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateConfigurationSetEventDestination",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateConfigurationSetEventDestinationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateConfigurationSetEventDestinationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5250,13 +5255,13 @@ end
 function M.SetIdentityFeedbackForwardingEnabledAsync(SetIdentityFeedbackForwardingEnabledRequest, cb)
 	assert(SetIdentityFeedbackForwardingEnabledRequest, "You must provide a SetIdentityFeedbackForwardingEnabledRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SetIdentityFeedbackForwardingEnabled",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetIdentityFeedbackForwardingEnabled",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetIdentityFeedbackForwardingEnabledRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetIdentityFeedbackForwardingEnabledRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5282,13 +5287,13 @@ end
 function M.UpdateReceiptRuleAsync(UpdateReceiptRuleRequest, cb)
 	assert(UpdateReceiptRuleRequest, "You must provide a UpdateReceiptRuleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateReceiptRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateReceiptRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateReceiptRuleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateReceiptRuleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5314,13 +5319,13 @@ end
 function M.SendBounceAsync(SendBounceRequest, cb)
 	assert(SendBounceRequest, "You must provide a SendBounceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SendBounce",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SendBounce",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SendBounceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SendBounceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5346,13 +5351,13 @@ end
 function M.CreateConfigurationSetEventDestinationAsync(CreateConfigurationSetEventDestinationRequest, cb)
 	assert(CreateConfigurationSetEventDestinationRequest, "You must provide a CreateConfigurationSetEventDestinationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateConfigurationSetEventDestination",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateConfigurationSetEventDestination",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateConfigurationSetEventDestinationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateConfigurationSetEventDestinationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5378,13 +5383,13 @@ end
 function M.GetIdentityDkimAttributesAsync(GetIdentityDkimAttributesRequest, cb)
 	assert(GetIdentityDkimAttributesRequest, "You must provide a GetIdentityDkimAttributesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetIdentityDkimAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetIdentityDkimAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetIdentityDkimAttributesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetIdentityDkimAttributesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5410,13 +5415,13 @@ end
 function M.SetReceiptRulePositionAsync(SetReceiptRulePositionRequest, cb)
 	assert(SetReceiptRulePositionRequest, "You must provide a SetReceiptRulePositionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SetReceiptRulePosition",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetReceiptRulePosition",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetReceiptRulePositionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetReceiptRulePositionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5442,13 +5447,13 @@ end
 function M.DeleteReceiptRuleAsync(DeleteReceiptRuleRequest, cb)
 	assert(DeleteReceiptRuleRequest, "You must provide a DeleteReceiptRuleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteReceiptRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteReceiptRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteReceiptRuleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteReceiptRuleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5474,13 +5479,13 @@ end
 function M.DescribeConfigurationSetAsync(DescribeConfigurationSetRequest, cb)
 	assert(DescribeConfigurationSetRequest, "You must provide a DescribeConfigurationSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeConfigurationSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeConfigurationSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeConfigurationSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeConfigurationSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5504,13 +5509,13 @@ end
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListVerifiedEmailAddressesAsync(cb)
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListVerifiedEmailAddresses",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListVerifiedEmailAddresses",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", {}, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5535,13 +5540,13 @@ end
 function M.DeleteConfigurationSetAsync(DeleteConfigurationSetRequest, cb)
 	assert(DeleteConfigurationSetRequest, "You must provide a DeleteConfigurationSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteConfigurationSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteConfigurationSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteConfigurationSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteConfigurationSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5567,13 +5572,13 @@ end
 function M.CloneReceiptRuleSetAsync(CloneReceiptRuleSetRequest, cb)
 	assert(CloneReceiptRuleSetRequest, "You must provide a CloneReceiptRuleSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CloneReceiptRuleSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CloneReceiptRuleSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CloneReceiptRuleSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CloneReceiptRuleSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5599,13 +5604,13 @@ end
 function M.VerifyDomainIdentityAsync(VerifyDomainIdentityRequest, cb)
 	assert(VerifyDomainIdentityRequest, "You must provide a VerifyDomainIdentityRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".VerifyDomainIdentity",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".VerifyDomainIdentity",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", VerifyDomainIdentityRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", VerifyDomainIdentityRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5631,13 +5636,13 @@ end
 function M.DescribeActiveReceiptRuleSetAsync(DescribeActiveReceiptRuleSetRequest, cb)
 	assert(DescribeActiveReceiptRuleSetRequest, "You must provide a DescribeActiveReceiptRuleSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeActiveReceiptRuleSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeActiveReceiptRuleSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeActiveReceiptRuleSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeActiveReceiptRuleSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5663,13 +5668,13 @@ end
 function M.DeleteIdentityPolicyAsync(DeleteIdentityPolicyRequest, cb)
 	assert(DeleteIdentityPolicyRequest, "You must provide a DeleteIdentityPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteIdentityPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteIdentityPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteIdentityPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteIdentityPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5695,13 +5700,13 @@ end
 function M.SetActiveReceiptRuleSetAsync(SetActiveReceiptRuleSetRequest, cb)
 	assert(SetActiveReceiptRuleSetRequest, "You must provide a SetActiveReceiptRuleSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SetActiveReceiptRuleSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetActiveReceiptRuleSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetActiveReceiptRuleSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetActiveReceiptRuleSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5727,13 +5732,13 @@ end
 function M.DeleteReceiptRuleSetAsync(DeleteReceiptRuleSetRequest, cb)
 	assert(DeleteReceiptRuleSetRequest, "You must provide a DeleteReceiptRuleSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteReceiptRuleSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteReceiptRuleSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteReceiptRuleSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteReceiptRuleSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5759,13 +5764,13 @@ end
 function M.SetIdentityDkimEnabledAsync(SetIdentityDkimEnabledRequest, cb)
 	assert(SetIdentityDkimEnabledRequest, "You must provide a SetIdentityDkimEnabledRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SetIdentityDkimEnabled",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetIdentityDkimEnabled",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetIdentityDkimEnabledRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetIdentityDkimEnabledRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5789,13 +5794,13 @@ end
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetSendQuotaAsync(cb)
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetSendQuota",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetSendQuota",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", {}, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5820,13 +5825,13 @@ end
 function M.SetIdentityNotificationTopicAsync(SetIdentityNotificationTopicRequest, cb)
 	assert(SetIdentityNotificationTopicRequest, "You must provide a SetIdentityNotificationTopicRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SetIdentityNotificationTopic",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetIdentityNotificationTopic",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetIdentityNotificationTopicRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetIdentityNotificationTopicRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5852,13 +5857,13 @@ end
 function M.CreateConfigurationSetAsync(CreateConfigurationSetRequest, cb)
 	assert(CreateConfigurationSetRequest, "You must provide a CreateConfigurationSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateConfigurationSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateConfigurationSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateConfigurationSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateConfigurationSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5884,13 +5889,13 @@ end
 function M.DeleteVerifiedEmailAddressAsync(DeleteVerifiedEmailAddressRequest, cb)
 	assert(DeleteVerifiedEmailAddressRequest, "You must provide a DeleteVerifiedEmailAddressRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteVerifiedEmailAddress",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteVerifiedEmailAddress",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteVerifiedEmailAddressRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteVerifiedEmailAddressRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5916,13 +5921,13 @@ end
 function M.ListConfigurationSetsAsync(ListConfigurationSetsRequest, cb)
 	assert(ListConfigurationSetsRequest, "You must provide a ListConfigurationSetsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListConfigurationSets",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListConfigurationSets",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListConfigurationSetsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListConfigurationSetsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5948,13 +5953,13 @@ end
 function M.CreateReceiptFilterAsync(CreateReceiptFilterRequest, cb)
 	assert(CreateReceiptFilterRequest, "You must provide a CreateReceiptFilterRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateReceiptFilter",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateReceiptFilter",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateReceiptFilterRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateReceiptFilterRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5980,13 +5985,13 @@ end
 function M.DescribeReceiptRuleAsync(DescribeReceiptRuleRequest, cb)
 	assert(DescribeReceiptRuleRequest, "You must provide a DescribeReceiptRuleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeReceiptRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeReceiptRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeReceiptRuleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeReceiptRuleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6012,13 +6017,13 @@ end
 function M.ListReceiptRuleSetsAsync(ListReceiptRuleSetsRequest, cb)
 	assert(ListReceiptRuleSetsRequest, "You must provide a ListReceiptRuleSetsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListReceiptRuleSets",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListReceiptRuleSets",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListReceiptRuleSetsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListReceiptRuleSetsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6044,13 +6049,13 @@ end
 function M.GetIdentityNotificationAttributesAsync(GetIdentityNotificationAttributesRequest, cb)
 	assert(GetIdentityNotificationAttributesRequest, "You must provide a GetIdentityNotificationAttributesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetIdentityNotificationAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetIdentityNotificationAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetIdentityNotificationAttributesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetIdentityNotificationAttributesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6076,13 +6081,13 @@ end
 function M.SetIdentityHeadersInNotificationsEnabledAsync(SetIdentityHeadersInNotificationsEnabledRequest, cb)
 	assert(SetIdentityHeadersInNotificationsEnabledRequest, "You must provide a SetIdentityHeadersInNotificationsEnabledRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SetIdentityHeadersInNotificationsEnabled",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetIdentityHeadersInNotificationsEnabled",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetIdentityHeadersInNotificationsEnabledRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetIdentityHeadersInNotificationsEnabledRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6108,13 +6113,13 @@ end
 function M.SendEmailAsync(SendEmailRequest, cb)
 	assert(SendEmailRequest, "You must provide a SendEmailRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SendEmail",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SendEmail",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SendEmailRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SendEmailRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6140,13 +6145,13 @@ end
 function M.DeleteIdentityAsync(DeleteIdentityRequest, cb)
 	assert(DeleteIdentityRequest, "You must provide a DeleteIdentityRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteIdentity",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteIdentity",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteIdentityRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteIdentityRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6172,13 +6177,13 @@ end
 function M.VerifyDomainDkimAsync(VerifyDomainDkimRequest, cb)
 	assert(VerifyDomainDkimRequest, "You must provide a VerifyDomainDkimRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".VerifyDomainDkim",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".VerifyDomainDkim",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", VerifyDomainDkimRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", VerifyDomainDkimRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6204,13 +6209,13 @@ end
 function M.GetIdentityMailFromDomainAttributesAsync(GetIdentityMailFromDomainAttributesRequest, cb)
 	assert(GetIdentityMailFromDomainAttributesRequest, "You must provide a GetIdentityMailFromDomainAttributesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetIdentityMailFromDomainAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetIdentityMailFromDomainAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetIdentityMailFromDomainAttributesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetIdentityMailFromDomainAttributesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6236,13 +6241,13 @@ end
 function M.ListIdentityPoliciesAsync(ListIdentityPoliciesRequest, cb)
 	assert(ListIdentityPoliciesRequest, "You must provide a ListIdentityPoliciesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListIdentityPolicies",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListIdentityPolicies",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListIdentityPoliciesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListIdentityPoliciesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6268,13 +6273,13 @@ end
 function M.DeleteConfigurationSetEventDestinationAsync(DeleteConfigurationSetEventDestinationRequest, cb)
 	assert(DeleteConfigurationSetEventDestinationRequest, "You must provide a DeleteConfigurationSetEventDestinationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteConfigurationSetEventDestination",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteConfigurationSetEventDestination",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteConfigurationSetEventDestinationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteConfigurationSetEventDestinationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6300,13 +6305,13 @@ end
 function M.ListIdentitiesAsync(ListIdentitiesRequest, cb)
 	assert(ListIdentitiesRequest, "You must provide a ListIdentitiesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListIdentities",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListIdentities",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListIdentitiesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListIdentitiesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6332,13 +6337,13 @@ end
 function M.GetIdentityVerificationAttributesAsync(GetIdentityVerificationAttributesRequest, cb)
 	assert(GetIdentityVerificationAttributesRequest, "You must provide a GetIdentityVerificationAttributesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetIdentityVerificationAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetIdentityVerificationAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetIdentityVerificationAttributesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetIdentityVerificationAttributesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6364,13 +6369,13 @@ end
 function M.VerifyEmailIdentityAsync(VerifyEmailIdentityRequest, cb)
 	assert(VerifyEmailIdentityRequest, "You must provide a VerifyEmailIdentityRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".VerifyEmailIdentity",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".VerifyEmailIdentity",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", VerifyEmailIdentityRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", VerifyEmailIdentityRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6396,13 +6401,13 @@ end
 function M.PutIdentityPolicyAsync(PutIdentityPolicyRequest, cb)
 	assert(PutIdentityPolicyRequest, "You must provide a PutIdentityPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutIdentityPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutIdentityPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutIdentityPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutIdentityPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6428,13 +6433,13 @@ end
 function M.SendRawEmailAsync(SendRawEmailRequest, cb)
 	assert(SendRawEmailRequest, "You must provide a SendRawEmailRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SendRawEmail",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SendRawEmail",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SendRawEmailRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SendRawEmailRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6460,13 +6465,13 @@ end
 function M.CreateReceiptRuleSetAsync(CreateReceiptRuleSetRequest, cb)
 	assert(CreateReceiptRuleSetRequest, "You must provide a CreateReceiptRuleSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateReceiptRuleSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateReceiptRuleSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateReceiptRuleSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateReceiptRuleSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

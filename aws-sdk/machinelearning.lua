@@ -3675,12 +3675,12 @@ function M.TagList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -3704,8 +3704,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -3718,13 +3723,13 @@ end
 function M.DeleteTagsAsync(DeleteTagsInput, cb)
 	assert(DeleteTagsInput, "You must provide a DeleteTagsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DeleteTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DeleteTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteTagsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteTagsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3750,13 +3755,13 @@ end
 function M.UpdateBatchPredictionAsync(UpdateBatchPredictionInput, cb)
 	assert(UpdateBatchPredictionInput, "You must provide a UpdateBatchPredictionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.UpdateBatchPrediction",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.UpdateBatchPrediction",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateBatchPredictionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateBatchPredictionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3782,13 +3787,13 @@ end
 function M.GetEvaluationAsync(GetEvaluationInput, cb)
 	assert(GetEvaluationInput, "You must provide a GetEvaluationInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.GetEvaluation",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.GetEvaluation",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetEvaluationInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetEvaluationInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3814,13 +3819,13 @@ end
 function M.DescribeBatchPredictionsAsync(DescribeBatchPredictionsInput, cb)
 	assert(DescribeBatchPredictionsInput, "You must provide a DescribeBatchPredictionsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DescribeBatchPredictions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DescribeBatchPredictions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeBatchPredictionsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeBatchPredictionsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3846,13 +3851,13 @@ end
 function M.CreateEvaluationAsync(CreateEvaluationInput, cb)
 	assert(CreateEvaluationInput, "You must provide a CreateEvaluationInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.CreateEvaluation",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.CreateEvaluation",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateEvaluationInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateEvaluationInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3878,13 +3883,13 @@ end
 function M.DescribeMLModelsAsync(DescribeMLModelsInput, cb)
 	assert(DescribeMLModelsInput, "You must provide a DescribeMLModelsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DescribeMLModels",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DescribeMLModels",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeMLModelsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeMLModelsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3910,13 +3915,13 @@ end
 function M.DeleteMLModelAsync(DeleteMLModelInput, cb)
 	assert(DeleteMLModelInput, "You must provide a DeleteMLModelInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DeleteMLModel",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DeleteMLModel",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteMLModelInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteMLModelInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3942,13 +3947,13 @@ end
 function M.CreateDataSourceFromS3Async(CreateDataSourceFromS3Input, cb)
 	assert(CreateDataSourceFromS3Input, "You must provide a CreateDataSourceFromS3Input")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.CreateDataSourceFromS3",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.CreateDataSourceFromS3",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateDataSourceFromS3Input, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateDataSourceFromS3Input, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3974,13 +3979,13 @@ end
 function M.UpdateDataSourceAsync(UpdateDataSourceInput, cb)
 	assert(UpdateDataSourceInput, "You must provide a UpdateDataSourceInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.UpdateDataSource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.UpdateDataSource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateDataSourceInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateDataSourceInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4006,13 +4011,13 @@ end
 function M.DescribeEvaluationsAsync(DescribeEvaluationsInput, cb)
 	assert(DescribeEvaluationsInput, "You must provide a DescribeEvaluationsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DescribeEvaluations",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DescribeEvaluations",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeEvaluationsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeEvaluationsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4038,13 +4043,13 @@ end
 function M.CreateDataSourceFromRedshiftAsync(CreateDataSourceFromRedshiftInput, cb)
 	assert(CreateDataSourceFromRedshiftInput, "You must provide a CreateDataSourceFromRedshiftInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.CreateDataSourceFromRedshift",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.CreateDataSourceFromRedshift",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateDataSourceFromRedshiftInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateDataSourceFromRedshiftInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4070,13 +4075,13 @@ end
 function M.DescribeDataSourcesAsync(DescribeDataSourcesInput, cb)
 	assert(DescribeDataSourcesInput, "You must provide a DescribeDataSourcesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DescribeDataSources",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DescribeDataSources",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeDataSourcesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeDataSourcesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4102,13 +4107,13 @@ end
 function M.GetDataSourceAsync(GetDataSourceInput, cb)
 	assert(GetDataSourceInput, "You must provide a GetDataSourceInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.GetDataSource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.GetDataSource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetDataSourceInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetDataSourceInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4134,13 +4139,13 @@ end
 function M.CreateRealtimeEndpointAsync(CreateRealtimeEndpointInput, cb)
 	assert(CreateRealtimeEndpointInput, "You must provide a CreateRealtimeEndpointInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.CreateRealtimeEndpoint",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.CreateRealtimeEndpoint",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateRealtimeEndpointInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateRealtimeEndpointInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4166,13 +4171,13 @@ end
 function M.UpdateMLModelAsync(UpdateMLModelInput, cb)
 	assert(UpdateMLModelInput, "You must provide a UpdateMLModelInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.UpdateMLModel",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.UpdateMLModel",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateMLModelInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateMLModelInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4198,13 +4203,13 @@ end
 function M.DeleteRealtimeEndpointAsync(DeleteRealtimeEndpointInput, cb)
 	assert(DeleteRealtimeEndpointInput, "You must provide a DeleteRealtimeEndpointInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DeleteRealtimeEndpoint",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DeleteRealtimeEndpoint",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteRealtimeEndpointInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteRealtimeEndpointInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4230,13 +4235,13 @@ end
 function M.DescribeTagsAsync(DescribeTagsInput, cb)
 	assert(DescribeTagsInput, "You must provide a DescribeTagsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DescribeTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DescribeTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeTagsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeTagsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4262,13 +4267,13 @@ end
 function M.DeleteDataSourceAsync(DeleteDataSourceInput, cb)
 	assert(DeleteDataSourceInput, "You must provide a DeleteDataSourceInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DeleteDataSource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DeleteDataSource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteDataSourceInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteDataSourceInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4294,13 +4299,13 @@ end
 function M.CreateDataSourceFromRDSAsync(CreateDataSourceFromRDSInput, cb)
 	assert(CreateDataSourceFromRDSInput, "You must provide a CreateDataSourceFromRDSInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.CreateDataSourceFromRDS",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.CreateDataSourceFromRDS",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateDataSourceFromRDSInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateDataSourceFromRDSInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4326,13 +4331,13 @@ end
 function M.UpdateEvaluationAsync(UpdateEvaluationInput, cb)
 	assert(UpdateEvaluationInput, "You must provide a UpdateEvaluationInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.UpdateEvaluation",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.UpdateEvaluation",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateEvaluationInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateEvaluationInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4358,13 +4363,13 @@ end
 function M.AddTagsAsync(AddTagsInput, cb)
 	assert(AddTagsInput, "You must provide a AddTagsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.AddTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.AddTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddTagsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddTagsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4390,13 +4395,13 @@ end
 function M.PredictAsync(PredictInput, cb)
 	assert(PredictInput, "You must provide a PredictInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.Predict",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.Predict",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PredictInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PredictInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4422,13 +4427,13 @@ end
 function M.GetBatchPredictionAsync(GetBatchPredictionInput, cb)
 	assert(GetBatchPredictionInput, "You must provide a GetBatchPredictionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.GetBatchPrediction",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.GetBatchPrediction",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetBatchPredictionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetBatchPredictionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4454,13 +4459,13 @@ end
 function M.DeleteEvaluationAsync(DeleteEvaluationInput, cb)
 	assert(DeleteEvaluationInput, "You must provide a DeleteEvaluationInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DeleteEvaluation",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DeleteEvaluation",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteEvaluationInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteEvaluationInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4486,13 +4491,13 @@ end
 function M.DeleteBatchPredictionAsync(DeleteBatchPredictionInput, cb)
 	assert(DeleteBatchPredictionInput, "You must provide a DeleteBatchPredictionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DeleteBatchPrediction",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DeleteBatchPrediction",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteBatchPredictionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteBatchPredictionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4518,13 +4523,13 @@ end
 function M.CreateMLModelAsync(CreateMLModelInput, cb)
 	assert(CreateMLModelInput, "You must provide a CreateMLModelInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.CreateMLModel",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.CreateMLModel",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateMLModelInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateMLModelInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4550,13 +4555,13 @@ end
 function M.CreateBatchPredictionAsync(CreateBatchPredictionInput, cb)
 	assert(CreateBatchPredictionInput, "You must provide a CreateBatchPredictionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.CreateBatchPrediction",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.CreateBatchPrediction",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateBatchPredictionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateBatchPredictionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4582,13 +4587,13 @@ end
 function M.GetMLModelAsync(GetMLModelInput, cb)
 	assert(GetMLModelInput, "You must provide a GetMLModelInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.GetMLModel",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.GetMLModel",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetMLModelInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetMLModelInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end

@@ -2551,12 +2551,12 @@ function M.TagList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -2580,8 +2580,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -2594,13 +2599,13 @@ end
 function M.CreateParameterGroupAsync(CreateParameterGroupRequest, cb)
 	assert(CreateParameterGroupRequest, "You must provide a CreateParameterGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.CreateParameterGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.CreateParameterGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateParameterGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateParameterGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2626,13 +2631,13 @@ end
 function M.DeleteParameterGroupAsync(DeleteParameterGroupRequest, cb)
 	assert(DeleteParameterGroupRequest, "You must provide a DeleteParameterGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.DeleteParameterGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.DeleteParameterGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteParameterGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteParameterGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2658,13 +2663,13 @@ end
 function M.UpdateClusterAsync(UpdateClusterRequest, cb)
 	assert(UpdateClusterRequest, "You must provide a UpdateClusterRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.UpdateCluster",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.UpdateCluster",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateClusterRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateClusterRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2690,13 +2695,13 @@ end
 function M.UntagResourceAsync(UntagResourceRequest, cb)
 	assert(UntagResourceRequest, "You must provide a UntagResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.UntagResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.UntagResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UntagResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UntagResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2722,13 +2727,13 @@ end
 function M.CreateClusterAsync(CreateClusterRequest, cb)
 	assert(CreateClusterRequest, "You must provide a CreateClusterRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.CreateCluster",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.CreateCluster",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateClusterRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateClusterRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2754,13 +2759,13 @@ end
 function M.DescribeSubnetGroupsAsync(DescribeSubnetGroupsRequest, cb)
 	assert(DescribeSubnetGroupsRequest, "You must provide a DescribeSubnetGroupsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.DescribeSubnetGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.DescribeSubnetGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeSubnetGroupsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeSubnetGroupsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2786,13 +2791,13 @@ end
 function M.IncreaseReplicationFactorAsync(IncreaseReplicationFactorRequest, cb)
 	assert(IncreaseReplicationFactorRequest, "You must provide a IncreaseReplicationFactorRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.IncreaseReplicationFactor",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.IncreaseReplicationFactor",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", IncreaseReplicationFactorRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", IncreaseReplicationFactorRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2818,13 +2823,13 @@ end
 function M.TagResourceAsync(TagResourceRequest, cb)
 	assert(TagResourceRequest, "You must provide a TagResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.TagResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.TagResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", TagResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", TagResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2850,13 +2855,13 @@ end
 function M.UpdateSubnetGroupAsync(UpdateSubnetGroupRequest, cb)
 	assert(UpdateSubnetGroupRequest, "You must provide a UpdateSubnetGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.UpdateSubnetGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.UpdateSubnetGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateSubnetGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateSubnetGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2882,13 +2887,13 @@ end
 function M.DescribeParametersAsync(DescribeParametersRequest, cb)
 	assert(DescribeParametersRequest, "You must provide a DescribeParametersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.DescribeParameters",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.DescribeParameters",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeParametersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeParametersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2914,13 +2919,13 @@ end
 function M.DecreaseReplicationFactorAsync(DecreaseReplicationFactorRequest, cb)
 	assert(DecreaseReplicationFactorRequest, "You must provide a DecreaseReplicationFactorRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.DecreaseReplicationFactor",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.DecreaseReplicationFactor",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DecreaseReplicationFactorRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DecreaseReplicationFactorRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2946,13 +2951,13 @@ end
 function M.RebootNodeAsync(RebootNodeRequest, cb)
 	assert(RebootNodeRequest, "You must provide a RebootNodeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.RebootNode",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.RebootNode",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RebootNodeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RebootNodeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2978,13 +2983,13 @@ end
 function M.CreateSubnetGroupAsync(CreateSubnetGroupRequest, cb)
 	assert(CreateSubnetGroupRequest, "You must provide a CreateSubnetGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.CreateSubnetGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.CreateSubnetGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateSubnetGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateSubnetGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3010,13 +3015,13 @@ end
 function M.UpdateParameterGroupAsync(UpdateParameterGroupRequest, cb)
 	assert(UpdateParameterGroupRequest, "You must provide a UpdateParameterGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.UpdateParameterGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.UpdateParameterGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateParameterGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateParameterGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3042,13 +3047,13 @@ end
 function M.ListTagsAsync(ListTagsRequest, cb)
 	assert(ListTagsRequest, "You must provide a ListTagsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.ListTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.ListTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListTagsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListTagsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3074,13 +3079,13 @@ end
 function M.DescribeEventsAsync(DescribeEventsRequest, cb)
 	assert(DescribeEventsRequest, "You must provide a DescribeEventsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.DescribeEvents",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.DescribeEvents",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeEventsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeEventsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3106,13 +3111,13 @@ end
 function M.DeleteSubnetGroupAsync(DeleteSubnetGroupRequest, cb)
 	assert(DeleteSubnetGroupRequest, "You must provide a DeleteSubnetGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.DeleteSubnetGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.DeleteSubnetGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteSubnetGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteSubnetGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3138,13 +3143,13 @@ end
 function M.DescribeDefaultParametersAsync(DescribeDefaultParametersRequest, cb)
 	assert(DescribeDefaultParametersRequest, "You must provide a DescribeDefaultParametersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.DescribeDefaultParameters",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.DescribeDefaultParameters",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeDefaultParametersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeDefaultParametersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3170,13 +3175,13 @@ end
 function M.DescribeClustersAsync(DescribeClustersRequest, cb)
 	assert(DescribeClustersRequest, "You must provide a DescribeClustersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.DescribeClusters",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.DescribeClusters",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeClustersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeClustersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3202,13 +3207,13 @@ end
 function M.DescribeParameterGroupsAsync(DescribeParameterGroupsRequest, cb)
 	assert(DescribeParameterGroupsRequest, "You must provide a DescribeParameterGroupsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.DescribeParameterGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.DescribeParameterGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeParameterGroupsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeParameterGroupsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3234,13 +3239,13 @@ end
 function M.DeleteClusterAsync(DeleteClusterRequest, cb)
 	assert(DeleteClusterRequest, "You must provide a DeleteClusterRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.DeleteCluster",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.DeleteCluster",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteClusterRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteClusterRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

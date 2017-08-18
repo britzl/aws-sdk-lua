@@ -3596,12 +3596,12 @@ function M.WorkerBlockList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -3625,8 +3625,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -3639,13 +3644,13 @@ end
 function M.SendBonusAsync(SendBonusRequest, cb)
 	assert(SendBonusRequest, "You must provide a SendBonusRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.SendBonus",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.SendBonus",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SendBonusRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SendBonusRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3671,13 +3676,13 @@ end
 function M.AssociateQualificationWithWorkerAsync(AssociateQualificationWithWorkerRequest, cb)
 	assert(AssociateQualificationWithWorkerRequest, "You must provide a AssociateQualificationWithWorkerRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.AssociateQualificationWithWorker",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.AssociateQualificationWithWorker",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AssociateQualificationWithWorkerRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AssociateQualificationWithWorkerRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3703,13 +3708,13 @@ end
 function M.UpdateHITTypeOfHITAsync(UpdateHITTypeOfHITRequest, cb)
 	assert(UpdateHITTypeOfHITRequest, "You must provide a UpdateHITTypeOfHITRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.UpdateHITTypeOfHIT",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.UpdateHITTypeOfHIT",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateHITTypeOfHITRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateHITTypeOfHITRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3735,13 +3740,13 @@ end
 function M.UpdateNotificationSettingsAsync(UpdateNotificationSettingsRequest, cb)
 	assert(UpdateNotificationSettingsRequest, "You must provide a UpdateNotificationSettingsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.UpdateNotificationSettings",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.UpdateNotificationSettings",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateNotificationSettingsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateNotificationSettingsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3767,13 +3772,13 @@ end
 function M.ListWorkerBlocksAsync(ListWorkerBlocksRequest, cb)
 	assert(ListWorkerBlocksRequest, "You must provide a ListWorkerBlocksRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ListWorkerBlocks",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ListWorkerBlocks",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListWorkerBlocksRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListWorkerBlocksRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3799,13 +3804,13 @@ end
 function M.ListReviewableHITsAsync(ListReviewableHITsRequest, cb)
 	assert(ListReviewableHITsRequest, "You must provide a ListReviewableHITsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ListReviewableHITs",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ListReviewableHITs",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListReviewableHITsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListReviewableHITsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3831,13 +3836,13 @@ end
 function M.ListAssignmentsForHITAsync(ListAssignmentsForHITRequest, cb)
 	assert(ListAssignmentsForHITRequest, "You must provide a ListAssignmentsForHITRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ListAssignmentsForHIT",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ListAssignmentsForHIT",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListAssignmentsForHITRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListAssignmentsForHITRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3863,13 +3868,13 @@ end
 function M.DisassociateQualificationFromWorkerAsync(DisassociateQualificationFromWorkerRequest, cb)
 	assert(DisassociateQualificationFromWorkerRequest, "You must provide a DisassociateQualificationFromWorkerRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.DisassociateQualificationFromWorker",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.DisassociateQualificationFromWorker",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisassociateQualificationFromWorkerRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisassociateQualificationFromWorkerRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3895,13 +3900,13 @@ end
 function M.RejectQualificationRequestAsync(RejectQualificationRequestRequest, cb)
 	assert(RejectQualificationRequestRequest, "You must provide a RejectQualificationRequestRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.RejectQualificationRequest",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.RejectQualificationRequest",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RejectQualificationRequestRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RejectQualificationRequestRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3927,13 +3932,13 @@ end
 function M.CreateHITTypeAsync(CreateHITTypeRequest, cb)
 	assert(CreateHITTypeRequest, "You must provide a CreateHITTypeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.CreateHITType",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.CreateHITType",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateHITTypeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateHITTypeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3959,13 +3964,13 @@ end
 function M.GetFileUploadURLAsync(GetFileUploadURLRequest, cb)
 	assert(GetFileUploadURLRequest, "You must provide a GetFileUploadURLRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.GetFileUploadURL",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.GetFileUploadURL",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetFileUploadURLRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetFileUploadURLRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3991,13 +3996,13 @@ end
 function M.ListReviewPolicyResultsForHITAsync(ListReviewPolicyResultsForHITRequest, cb)
 	assert(ListReviewPolicyResultsForHITRequest, "You must provide a ListReviewPolicyResultsForHITRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ListReviewPolicyResultsForHIT",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ListReviewPolicyResultsForHIT",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListReviewPolicyResultsForHITRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListReviewPolicyResultsForHITRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4023,13 +4028,13 @@ end
 function M.UpdateExpirationForHITAsync(UpdateExpirationForHITRequest, cb)
 	assert(UpdateExpirationForHITRequest, "You must provide a UpdateExpirationForHITRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.UpdateExpirationForHIT",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.UpdateExpirationForHIT",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateExpirationForHITRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateExpirationForHITRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4055,13 +4060,13 @@ end
 function M.UpdateQualificationTypeAsync(UpdateQualificationTypeRequest, cb)
 	assert(UpdateQualificationTypeRequest, "You must provide a UpdateQualificationTypeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.UpdateQualificationType",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.UpdateQualificationType",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateQualificationTypeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateQualificationTypeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4087,13 +4092,13 @@ end
 function M.NotifyWorkersAsync(NotifyWorkersRequest, cb)
 	assert(NotifyWorkersRequest, "You must provide a NotifyWorkersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.NotifyWorkers",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.NotifyWorkers",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", NotifyWorkersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", NotifyWorkersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4119,13 +4124,13 @@ end
 function M.ListQualificationTypesAsync(ListQualificationTypesRequest, cb)
 	assert(ListQualificationTypesRequest, "You must provide a ListQualificationTypesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ListQualificationTypes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ListQualificationTypes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListQualificationTypesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListQualificationTypesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4151,13 +4156,13 @@ end
 function M.CreateHITAsync(CreateHITRequest, cb)
 	assert(CreateHITRequest, "You must provide a CreateHITRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.CreateHIT",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.CreateHIT",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateHITRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateHITRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4183,13 +4188,13 @@ end
 function M.ListHITsForQualificationTypeAsync(ListHITsForQualificationTypeRequest, cb)
 	assert(ListHITsForQualificationTypeRequest, "You must provide a ListHITsForQualificationTypeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ListHITsForQualificationType",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ListHITsForQualificationType",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListHITsForQualificationTypeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListHITsForQualificationTypeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4215,13 +4220,13 @@ end
 function M.AcceptQualificationRequestAsync(AcceptQualificationRequestRequest, cb)
 	assert(AcceptQualificationRequestRequest, "You must provide a AcceptQualificationRequestRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.AcceptQualificationRequest",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.AcceptQualificationRequest",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AcceptQualificationRequestRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AcceptQualificationRequestRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4247,13 +4252,13 @@ end
 function M.ListQualificationRequestsAsync(ListQualificationRequestsRequest, cb)
 	assert(ListQualificationRequestsRequest, "You must provide a ListQualificationRequestsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ListQualificationRequests",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ListQualificationRequests",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListQualificationRequestsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListQualificationRequestsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4279,13 +4284,13 @@ end
 function M.UpdateHITReviewStatusAsync(UpdateHITReviewStatusRequest, cb)
 	assert(UpdateHITReviewStatusRequest, "You must provide a UpdateHITReviewStatusRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.UpdateHITReviewStatus",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.UpdateHITReviewStatus",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateHITReviewStatusRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateHITReviewStatusRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4311,13 +4316,13 @@ end
 function M.ListHITsAsync(ListHITsRequest, cb)
 	assert(ListHITsRequest, "You must provide a ListHITsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ListHITs",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ListHITs",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListHITsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListHITsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4343,13 +4348,13 @@ end
 function M.ListWorkersWithQualificationTypeAsync(ListWorkersWithQualificationTypeRequest, cb)
 	assert(ListWorkersWithQualificationTypeRequest, "You must provide a ListWorkersWithQualificationTypeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ListWorkersWithQualificationType",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ListWorkersWithQualificationType",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListWorkersWithQualificationTypeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListWorkersWithQualificationTypeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4375,13 +4380,13 @@ end
 function M.GetAccountBalanceAsync(GetAccountBalanceRequest, cb)
 	assert(GetAccountBalanceRequest, "You must provide a GetAccountBalanceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.GetAccountBalance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.GetAccountBalance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetAccountBalanceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetAccountBalanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4407,13 +4412,13 @@ end
 function M.DeleteQualificationTypeAsync(DeleteQualificationTypeRequest, cb)
 	assert(DeleteQualificationTypeRequest, "You must provide a DeleteQualificationTypeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.DeleteQualificationType",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.DeleteQualificationType",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteQualificationTypeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteQualificationTypeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4439,13 +4444,13 @@ end
 function M.SendTestEventNotificationAsync(SendTestEventNotificationRequest, cb)
 	assert(SendTestEventNotificationRequest, "You must provide a SendTestEventNotificationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.SendTestEventNotification",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.SendTestEventNotification",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SendTestEventNotificationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SendTestEventNotificationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4471,13 +4476,13 @@ end
 function M.CreateHITWithHITTypeAsync(CreateHITWithHITTypeRequest, cb)
 	assert(CreateHITWithHITTypeRequest, "You must provide a CreateHITWithHITTypeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.CreateHITWithHITType",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.CreateHITWithHITType",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateHITWithHITTypeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateHITWithHITTypeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4503,13 +4508,13 @@ end
 function M.CreateWorkerBlockAsync(CreateWorkerBlockRequest, cb)
 	assert(CreateWorkerBlockRequest, "You must provide a CreateWorkerBlockRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.CreateWorkerBlock",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.CreateWorkerBlock",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateWorkerBlockRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateWorkerBlockRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4535,13 +4540,13 @@ end
 function M.ApproveAssignmentAsync(ApproveAssignmentRequest, cb)
 	assert(ApproveAssignmentRequest, "You must provide a ApproveAssignmentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ApproveAssignment",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ApproveAssignment",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ApproveAssignmentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ApproveAssignmentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4567,13 +4572,13 @@ end
 function M.ListBonusPaymentsAsync(ListBonusPaymentsRequest, cb)
 	assert(ListBonusPaymentsRequest, "You must provide a ListBonusPaymentsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ListBonusPayments",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ListBonusPayments",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListBonusPaymentsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListBonusPaymentsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4599,13 +4604,13 @@ end
 function M.DeleteHITAsync(DeleteHITRequest, cb)
 	assert(DeleteHITRequest, "You must provide a DeleteHITRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.DeleteHIT",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.DeleteHIT",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteHITRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteHITRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4631,13 +4636,13 @@ end
 function M.GetQualificationScoreAsync(GetQualificationScoreRequest, cb)
 	assert(GetQualificationScoreRequest, "You must provide a GetQualificationScoreRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.GetQualificationScore",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.GetQualificationScore",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetQualificationScoreRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetQualificationScoreRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4663,13 +4668,13 @@ end
 function M.DeleteWorkerBlockAsync(DeleteWorkerBlockRequest, cb)
 	assert(DeleteWorkerBlockRequest, "You must provide a DeleteWorkerBlockRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.DeleteWorkerBlock",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.DeleteWorkerBlock",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteWorkerBlockRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteWorkerBlockRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4695,13 +4700,13 @@ end
 function M.GetQualificationTypeAsync(GetQualificationTypeRequest, cb)
 	assert(GetQualificationTypeRequest, "You must provide a GetQualificationTypeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.GetQualificationType",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.GetQualificationType",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetQualificationTypeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetQualificationTypeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4727,13 +4732,13 @@ end
 function M.RejectAssignmentAsync(RejectAssignmentRequest, cb)
 	assert(RejectAssignmentRequest, "You must provide a RejectAssignmentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.RejectAssignment",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.RejectAssignment",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RejectAssignmentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RejectAssignmentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4759,13 +4764,13 @@ end
 function M.CreateQualificationTypeAsync(CreateQualificationTypeRequest, cb)
 	assert(CreateQualificationTypeRequest, "You must provide a CreateQualificationTypeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.CreateQualificationType",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.CreateQualificationType",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateQualificationTypeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateQualificationTypeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4791,13 +4796,13 @@ end
 function M.GetAssignmentAsync(GetAssignmentRequest, cb)
 	assert(GetAssignmentRequest, "You must provide a GetAssignmentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.GetAssignment",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.GetAssignment",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetAssignmentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetAssignmentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4823,13 +4828,13 @@ end
 function M.GetHITAsync(GetHITRequest, cb)
 	assert(GetHITRequest, "You must provide a GetHITRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.GetHIT",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.GetHIT",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetHITRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetHITRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4855,13 +4860,13 @@ end
 function M.CreateAdditionalAssignmentsForHITAsync(CreateAdditionalAssignmentsForHITRequest, cb)
 	assert(CreateAdditionalAssignmentsForHITRequest, "You must provide a CreateAdditionalAssignmentsForHITRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.CreateAdditionalAssignmentsForHIT",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.CreateAdditionalAssignmentsForHIT",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateAdditionalAssignmentsForHITRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateAdditionalAssignmentsForHITRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

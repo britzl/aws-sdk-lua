@@ -7486,12 +7486,12 @@ function M.TagList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -7515,8 +7515,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -7529,13 +7534,13 @@ end
 function M.DeleteTagsAsync(DeleteTagsMessage, cb)
 	assert(DeleteTagsMessage, "You must provide a DeleteTagsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteTagsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteTagsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7561,13 +7566,13 @@ end
 function M.DescribeDefaultClusterParametersAsync(DescribeDefaultClusterParametersMessage, cb)
 	assert(DescribeDefaultClusterParametersMessage, "You must provide a DescribeDefaultClusterParametersMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeDefaultClusterParameters",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDefaultClusterParameters",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeDefaultClusterParametersMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeDefaultClusterParametersMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7593,13 +7598,13 @@ end
 function M.DescribeClusterParameterGroupsAsync(DescribeClusterParameterGroupsMessage, cb)
 	assert(DescribeClusterParameterGroupsMessage, "You must provide a DescribeClusterParameterGroupsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeClusterParameterGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeClusterParameterGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeClusterParameterGroupsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeClusterParameterGroupsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7625,13 +7630,13 @@ end
 function M.RestoreFromClusterSnapshotAsync(RestoreFromClusterSnapshotMessage, cb)
 	assert(RestoreFromClusterSnapshotMessage, "You must provide a RestoreFromClusterSnapshotMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RestoreFromClusterSnapshot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RestoreFromClusterSnapshot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RestoreFromClusterSnapshotMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RestoreFromClusterSnapshotMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7657,13 +7662,13 @@ end
 function M.CreateClusterAsync(CreateClusterMessage, cb)
 	assert(CreateClusterMessage, "You must provide a CreateClusterMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateCluster",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateCluster",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateClusterMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateClusterMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7689,13 +7694,13 @@ end
 function M.CopyClusterSnapshotAsync(CopyClusterSnapshotMessage, cb)
 	assert(CopyClusterSnapshotMessage, "You must provide a CopyClusterSnapshotMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CopyClusterSnapshot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CopyClusterSnapshot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CopyClusterSnapshotMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CopyClusterSnapshotMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7721,13 +7726,13 @@ end
 function M.CreateClusterParameterGroupAsync(CreateClusterParameterGroupMessage, cb)
 	assert(CreateClusterParameterGroupMessage, "You must provide a CreateClusterParameterGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateClusterParameterGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateClusterParameterGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateClusterParameterGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateClusterParameterGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7753,13 +7758,13 @@ end
 function M.DescribeEventsAsync(DescribeEventsMessage, cb)
 	assert(DescribeEventsMessage, "You must provide a DescribeEventsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeEvents",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEvents",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeEventsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeEventsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7785,13 +7790,13 @@ end
 function M.DescribeEventSubscriptionsAsync(DescribeEventSubscriptionsMessage, cb)
 	assert(DescribeEventSubscriptionsMessage, "You must provide a DescribeEventSubscriptionsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeEventSubscriptions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEventSubscriptions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeEventSubscriptionsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeEventSubscriptionsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7817,13 +7822,13 @@ end
 function M.CreateEventSubscriptionAsync(CreateEventSubscriptionMessage, cb)
 	assert(CreateEventSubscriptionMessage, "You must provide a CreateEventSubscriptionMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateEventSubscription",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateEventSubscription",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateEventSubscriptionMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateEventSubscriptionMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7849,13 +7854,13 @@ end
 function M.DescribeHsmClientCertificatesAsync(DescribeHsmClientCertificatesMessage, cb)
 	assert(DescribeHsmClientCertificatesMessage, "You must provide a DescribeHsmClientCertificatesMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeHsmClientCertificates",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeHsmClientCertificates",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeHsmClientCertificatesMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeHsmClientCertificatesMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7881,13 +7886,13 @@ end
 function M.DeleteClusterAsync(DeleteClusterMessage, cb)
 	assert(DeleteClusterMessage, "You must provide a DeleteClusterMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteCluster",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteCluster",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteClusterMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteClusterMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7913,13 +7918,13 @@ end
 function M.CreateSnapshotCopyGrantAsync(CreateSnapshotCopyGrantMessage, cb)
 	assert(CreateSnapshotCopyGrantMessage, "You must provide a CreateSnapshotCopyGrantMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateSnapshotCopyGrant",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateSnapshotCopyGrant",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateSnapshotCopyGrantMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateSnapshotCopyGrantMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7945,13 +7950,13 @@ end
 function M.DescribeEventCategoriesAsync(DescribeEventCategoriesMessage, cb)
 	assert(DescribeEventCategoriesMessage, "You must provide a DescribeEventCategoriesMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeEventCategories",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEventCategories",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeEventCategoriesMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeEventCategoriesMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7977,13 +7982,13 @@ end
 function M.ModifySnapshotCopyRetentionPeriodAsync(ModifySnapshotCopyRetentionPeriodMessage, cb)
 	assert(ModifySnapshotCopyRetentionPeriodMessage, "You must provide a ModifySnapshotCopyRetentionPeriodMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifySnapshotCopyRetentionPeriod",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifySnapshotCopyRetentionPeriod",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifySnapshotCopyRetentionPeriodMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifySnapshotCopyRetentionPeriodMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8009,13 +8014,13 @@ end
 function M.GetClusterCredentialsAsync(GetClusterCredentialsMessage, cb)
 	assert(GetClusterCredentialsMessage, "You must provide a GetClusterCredentialsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetClusterCredentials",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetClusterCredentials",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetClusterCredentialsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetClusterCredentialsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8041,13 +8046,13 @@ end
 function M.DeleteSnapshotCopyGrantAsync(DeleteSnapshotCopyGrantMessage, cb)
 	assert(DeleteSnapshotCopyGrantMessage, "You must provide a DeleteSnapshotCopyGrantMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteSnapshotCopyGrant",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteSnapshotCopyGrant",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteSnapshotCopyGrantMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteSnapshotCopyGrantMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8073,13 +8078,13 @@ end
 function M.DescribeReservedNodesAsync(DescribeReservedNodesMessage, cb)
 	assert(DescribeReservedNodesMessage, "You must provide a DescribeReservedNodesMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeReservedNodes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeReservedNodes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeReservedNodesMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeReservedNodesMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8105,13 +8110,13 @@ end
 function M.AuthorizeSnapshotAccessAsync(AuthorizeSnapshotAccessMessage, cb)
 	assert(AuthorizeSnapshotAccessMessage, "You must provide a AuthorizeSnapshotAccessMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AuthorizeSnapshotAccess",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AuthorizeSnapshotAccess",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AuthorizeSnapshotAccessMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AuthorizeSnapshotAccessMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8137,13 +8142,13 @@ end
 function M.EnableLoggingAsync(EnableLoggingMessage, cb)
 	assert(EnableLoggingMessage, "You must provide a EnableLoggingMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".EnableLogging",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".EnableLogging",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", EnableLoggingMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", EnableLoggingMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8169,13 +8174,13 @@ end
 function M.DisableSnapshotCopyAsync(DisableSnapshotCopyMessage, cb)
 	assert(DisableSnapshotCopyMessage, "You must provide a DisableSnapshotCopyMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DisableSnapshotCopy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DisableSnapshotCopy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisableSnapshotCopyMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisableSnapshotCopyMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8201,13 +8206,13 @@ end
 function M.DeleteHsmClientCertificateAsync(DeleteHsmClientCertificateMessage, cb)
 	assert(DeleteHsmClientCertificateMessage, "You must provide a DeleteHsmClientCertificateMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteHsmClientCertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteHsmClientCertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteHsmClientCertificateMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteHsmClientCertificateMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8233,13 +8238,13 @@ end
 function M.RebootClusterAsync(RebootClusterMessage, cb)
 	assert(RebootClusterMessage, "You must provide a RebootClusterMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RebootCluster",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RebootCluster",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RebootClusterMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RebootClusterMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8265,13 +8270,13 @@ end
 function M.CreateHsmConfigurationAsync(CreateHsmConfigurationMessage, cb)
 	assert(CreateHsmConfigurationMessage, "You must provide a CreateHsmConfigurationMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateHsmConfiguration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateHsmConfiguration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateHsmConfigurationMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateHsmConfigurationMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8297,13 +8302,13 @@ end
 function M.RevokeSnapshotAccessAsync(RevokeSnapshotAccessMessage, cb)
 	assert(RevokeSnapshotAccessMessage, "You must provide a RevokeSnapshotAccessMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RevokeSnapshotAccess",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RevokeSnapshotAccess",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RevokeSnapshotAccessMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RevokeSnapshotAccessMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8329,13 +8334,13 @@ end
 function M.DescribeClustersAsync(DescribeClustersMessage, cb)
 	assert(DescribeClustersMessage, "You must provide a DescribeClustersMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeClusters",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeClusters",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeClustersMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeClustersMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8361,13 +8366,13 @@ end
 function M.ModifyClusterIamRolesAsync(ModifyClusterIamRolesMessage, cb)
 	assert(ModifyClusterIamRolesMessage, "You must provide a ModifyClusterIamRolesMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyClusterIamRoles",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyClusterIamRoles",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyClusterIamRolesMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyClusterIamRolesMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8393,13 +8398,13 @@ end
 function M.ResetClusterParameterGroupAsync(ResetClusterParameterGroupMessage, cb)
 	assert(ResetClusterParameterGroupMessage, "You must provide a ResetClusterParameterGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ResetClusterParameterGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ResetClusterParameterGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ResetClusterParameterGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ResetClusterParameterGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8425,13 +8430,13 @@ end
 function M.DescribeTableRestoreStatusAsync(DescribeTableRestoreStatusMessage, cb)
 	assert(DescribeTableRestoreStatusMessage, "You must provide a DescribeTableRestoreStatusMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeTableRestoreStatus",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeTableRestoreStatus",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeTableRestoreStatusMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeTableRestoreStatusMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8457,13 +8462,13 @@ end
 function M.DeleteClusterSecurityGroupAsync(DeleteClusterSecurityGroupMessage, cb)
 	assert(DeleteClusterSecurityGroupMessage, "You must provide a DeleteClusterSecurityGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteClusterSecurityGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteClusterSecurityGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteClusterSecurityGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteClusterSecurityGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8489,13 +8494,13 @@ end
 function M.ModifyClusterParameterGroupAsync(ModifyClusterParameterGroupMessage, cb)
 	assert(ModifyClusterParameterGroupMessage, "You must provide a ModifyClusterParameterGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyClusterParameterGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyClusterParameterGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyClusterParameterGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyClusterParameterGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8521,13 +8526,13 @@ end
 function M.DescribeClusterSnapshotsAsync(DescribeClusterSnapshotsMessage, cb)
 	assert(DescribeClusterSnapshotsMessage, "You must provide a DescribeClusterSnapshotsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeClusterSnapshots",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeClusterSnapshots",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeClusterSnapshotsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeClusterSnapshotsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8553,13 +8558,13 @@ end
 function M.CreateClusterSecurityGroupAsync(CreateClusterSecurityGroupMessage, cb)
 	assert(CreateClusterSecurityGroupMessage, "You must provide a CreateClusterSecurityGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateClusterSecurityGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateClusterSecurityGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateClusterSecurityGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateClusterSecurityGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8585,13 +8590,13 @@ end
 function M.DisableLoggingAsync(DisableLoggingMessage, cb)
 	assert(DisableLoggingMessage, "You must provide a DisableLoggingMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DisableLogging",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DisableLogging",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisableLoggingMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisableLoggingMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8617,13 +8622,13 @@ end
 function M.DescribeClusterVersionsAsync(DescribeClusterVersionsMessage, cb)
 	assert(DescribeClusterVersionsMessage, "You must provide a DescribeClusterVersionsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeClusterVersions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeClusterVersions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeClusterVersionsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeClusterVersionsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8649,13 +8654,13 @@ end
 function M.DescribeResizeAsync(DescribeResizeMessage, cb)
 	assert(DescribeResizeMessage, "You must provide a DescribeResizeMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeResize",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeResize",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeResizeMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeResizeMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8681,13 +8686,13 @@ end
 function M.DescribeClusterSubnetGroupsAsync(DescribeClusterSubnetGroupsMessage, cb)
 	assert(DescribeClusterSubnetGroupsMessage, "You must provide a DescribeClusterSubnetGroupsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeClusterSubnetGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeClusterSubnetGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeClusterSubnetGroupsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeClusterSubnetGroupsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8713,13 +8718,13 @@ end
 function M.AuthorizeClusterSecurityGroupIngressAsync(AuthorizeClusterSecurityGroupIngressMessage, cb)
 	assert(AuthorizeClusterSecurityGroupIngressMessage, "You must provide a AuthorizeClusterSecurityGroupIngressMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AuthorizeClusterSecurityGroupIngress",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AuthorizeClusterSecurityGroupIngress",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AuthorizeClusterSecurityGroupIngressMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AuthorizeClusterSecurityGroupIngressMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8745,13 +8750,13 @@ end
 function M.DescribeHsmConfigurationsAsync(DescribeHsmConfigurationsMessage, cb)
 	assert(DescribeHsmConfigurationsMessage, "You must provide a DescribeHsmConfigurationsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeHsmConfigurations",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeHsmConfigurations",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeHsmConfigurationsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeHsmConfigurationsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8777,13 +8782,13 @@ end
 function M.DeleteEventSubscriptionAsync(DeleteEventSubscriptionMessage, cb)
 	assert(DeleteEventSubscriptionMessage, "You must provide a DeleteEventSubscriptionMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteEventSubscription",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteEventSubscription",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteEventSubscriptionMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteEventSubscriptionMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8809,13 +8814,13 @@ end
 function M.DescribeTagsAsync(DescribeTagsMessage, cb)
 	assert(DescribeTagsMessage, "You must provide a DescribeTagsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeTagsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeTagsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8841,13 +8846,13 @@ end
 function M.DeleteHsmConfigurationAsync(DeleteHsmConfigurationMessage, cb)
 	assert(DeleteHsmConfigurationMessage, "You must provide a DeleteHsmConfigurationMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteHsmConfiguration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteHsmConfiguration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteHsmConfigurationMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteHsmConfigurationMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8873,13 +8878,13 @@ end
 function M.CreateClusterSubnetGroupAsync(CreateClusterSubnetGroupMessage, cb)
 	assert(CreateClusterSubnetGroupMessage, "You must provide a CreateClusterSubnetGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateClusterSubnetGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateClusterSubnetGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateClusterSubnetGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateClusterSubnetGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8905,13 +8910,13 @@ end
 function M.DescribeClusterParametersAsync(DescribeClusterParametersMessage, cb)
 	assert(DescribeClusterParametersMessage, "You must provide a DescribeClusterParametersMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeClusterParameters",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeClusterParameters",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeClusterParametersMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeClusterParametersMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8937,13 +8942,13 @@ end
 function M.CreateHsmClientCertificateAsync(CreateHsmClientCertificateMessage, cb)
 	assert(CreateHsmClientCertificateMessage, "You must provide a CreateHsmClientCertificateMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateHsmClientCertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateHsmClientCertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateHsmClientCertificateMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateHsmClientCertificateMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8969,13 +8974,13 @@ end
 function M.ModifyClusterSubnetGroupAsync(ModifyClusterSubnetGroupMessage, cb)
 	assert(ModifyClusterSubnetGroupMessage, "You must provide a ModifyClusterSubnetGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyClusterSubnetGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyClusterSubnetGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyClusterSubnetGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyClusterSubnetGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9001,13 +9006,13 @@ end
 function M.DescribeSnapshotCopyGrantsAsync(DescribeSnapshotCopyGrantsMessage, cb)
 	assert(DescribeSnapshotCopyGrantsMessage, "You must provide a DescribeSnapshotCopyGrantsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeSnapshotCopyGrants",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSnapshotCopyGrants",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeSnapshotCopyGrantsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeSnapshotCopyGrantsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9033,13 +9038,13 @@ end
 function M.DescribeOrderableClusterOptionsAsync(DescribeOrderableClusterOptionsMessage, cb)
 	assert(DescribeOrderableClusterOptionsMessage, "You must provide a DescribeOrderableClusterOptionsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeOrderableClusterOptions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeOrderableClusterOptions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeOrderableClusterOptionsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeOrderableClusterOptionsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9065,13 +9070,13 @@ end
 function M.ModifyClusterAsync(ModifyClusterMessage, cb)
 	assert(ModifyClusterMessage, "You must provide a ModifyClusterMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyCluster",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyCluster",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyClusterMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyClusterMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9097,13 +9102,13 @@ end
 function M.RotateEncryptionKeyAsync(RotateEncryptionKeyMessage, cb)
 	assert(RotateEncryptionKeyMessage, "You must provide a RotateEncryptionKeyMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RotateEncryptionKey",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RotateEncryptionKey",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RotateEncryptionKeyMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RotateEncryptionKeyMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9129,13 +9134,13 @@ end
 function M.EnableSnapshotCopyAsync(EnableSnapshotCopyMessage, cb)
 	assert(EnableSnapshotCopyMessage, "You must provide a EnableSnapshotCopyMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".EnableSnapshotCopy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".EnableSnapshotCopy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", EnableSnapshotCopyMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", EnableSnapshotCopyMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9161,13 +9166,13 @@ end
 function M.CreateClusterSnapshotAsync(CreateClusterSnapshotMessage, cb)
 	assert(CreateClusterSnapshotMessage, "You must provide a CreateClusterSnapshotMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateClusterSnapshot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateClusterSnapshot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateClusterSnapshotMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateClusterSnapshotMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9193,13 +9198,13 @@ end
 function M.DeleteClusterSnapshotAsync(DeleteClusterSnapshotMessage, cb)
 	assert(DeleteClusterSnapshotMessage, "You must provide a DeleteClusterSnapshotMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteClusterSnapshot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteClusterSnapshot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteClusterSnapshotMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteClusterSnapshotMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9225,13 +9230,13 @@ end
 function M.CreateTagsAsync(CreateTagsMessage, cb)
 	assert(CreateTagsMessage, "You must provide a CreateTagsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateTagsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateTagsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9257,13 +9262,13 @@ end
 function M.DescribeReservedNodeOfferingsAsync(DescribeReservedNodeOfferingsMessage, cb)
 	assert(DescribeReservedNodeOfferingsMessage, "You must provide a DescribeReservedNodeOfferingsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeReservedNodeOfferings",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeReservedNodeOfferings",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeReservedNodeOfferingsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeReservedNodeOfferingsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9289,13 +9294,13 @@ end
 function M.DescribeLoggingStatusAsync(DescribeLoggingStatusMessage, cb)
 	assert(DescribeLoggingStatusMessage, "You must provide a DescribeLoggingStatusMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeLoggingStatus",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeLoggingStatus",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeLoggingStatusMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeLoggingStatusMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9321,13 +9326,13 @@ end
 function M.ModifyEventSubscriptionAsync(ModifyEventSubscriptionMessage, cb)
 	assert(ModifyEventSubscriptionMessage, "You must provide a ModifyEventSubscriptionMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyEventSubscription",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyEventSubscription",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyEventSubscriptionMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyEventSubscriptionMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9353,13 +9358,13 @@ end
 function M.RestoreTableFromClusterSnapshotAsync(RestoreTableFromClusterSnapshotMessage, cb)
 	assert(RestoreTableFromClusterSnapshotMessage, "You must provide a RestoreTableFromClusterSnapshotMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RestoreTableFromClusterSnapshot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RestoreTableFromClusterSnapshot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RestoreTableFromClusterSnapshotMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RestoreTableFromClusterSnapshotMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9385,13 +9390,13 @@ end
 function M.DescribeClusterSecurityGroupsAsync(DescribeClusterSecurityGroupsMessage, cb)
 	assert(DescribeClusterSecurityGroupsMessage, "You must provide a DescribeClusterSecurityGroupsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeClusterSecurityGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeClusterSecurityGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeClusterSecurityGroupsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeClusterSecurityGroupsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9417,13 +9422,13 @@ end
 function M.RevokeClusterSecurityGroupIngressAsync(RevokeClusterSecurityGroupIngressMessage, cb)
 	assert(RevokeClusterSecurityGroupIngressMessage, "You must provide a RevokeClusterSecurityGroupIngressMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RevokeClusterSecurityGroupIngress",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RevokeClusterSecurityGroupIngress",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RevokeClusterSecurityGroupIngressMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RevokeClusterSecurityGroupIngressMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9449,13 +9454,13 @@ end
 function M.DeleteClusterParameterGroupAsync(DeleteClusterParameterGroupMessage, cb)
 	assert(DeleteClusterParameterGroupMessage, "You must provide a DeleteClusterParameterGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteClusterParameterGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteClusterParameterGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteClusterParameterGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteClusterParameterGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9481,13 +9486,13 @@ end
 function M.DeleteClusterSubnetGroupAsync(DeleteClusterSubnetGroupMessage, cb)
 	assert(DeleteClusterSubnetGroupMessage, "You must provide a DeleteClusterSubnetGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteClusterSubnetGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteClusterSubnetGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteClusterSubnetGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteClusterSubnetGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9513,13 +9518,13 @@ end
 function M.PurchaseReservedNodeOfferingAsync(PurchaseReservedNodeOfferingMessage, cb)
 	assert(PurchaseReservedNodeOfferingMessage, "You must provide a PurchaseReservedNodeOfferingMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PurchaseReservedNodeOffering",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PurchaseReservedNodeOffering",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PurchaseReservedNodeOfferingMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PurchaseReservedNodeOfferingMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end

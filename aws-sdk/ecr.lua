@@ -2301,12 +2301,12 @@ function M.GetAuthorizationTokenRegistryIdList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -2330,8 +2330,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -2344,13 +2349,13 @@ end
 function M.DescribeRepositoriesAsync(DescribeRepositoriesRequest, cb)
 	assert(DescribeRepositoriesRequest, "You must provide a DescribeRepositoriesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.DescribeRepositories",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.DescribeRepositories",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeRepositoriesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeRepositoriesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2376,13 +2381,13 @@ end
 function M.DeleteRepositoryAsync(DeleteRepositoryRequest, cb)
 	assert(DeleteRepositoryRequest, "You must provide a DeleteRepositoryRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.DeleteRepository",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.DeleteRepository",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteRepositoryRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteRepositoryRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2408,13 +2413,13 @@ end
 function M.BatchDeleteImageAsync(BatchDeleteImageRequest, cb)
 	assert(BatchDeleteImageRequest, "You must provide a BatchDeleteImageRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.BatchDeleteImage",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.BatchDeleteImage",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", BatchDeleteImageRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", BatchDeleteImageRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2440,13 +2445,13 @@ end
 function M.GetDownloadUrlForLayerAsync(GetDownloadUrlForLayerRequest, cb)
 	assert(GetDownloadUrlForLayerRequest, "You must provide a GetDownloadUrlForLayerRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.GetDownloadUrlForLayer",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.GetDownloadUrlForLayer",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetDownloadUrlForLayerRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetDownloadUrlForLayerRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2472,13 +2477,13 @@ end
 function M.PutImageAsync(PutImageRequest, cb)
 	assert(PutImageRequest, "You must provide a PutImageRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.PutImage",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.PutImage",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutImageRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutImageRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2504,13 +2509,13 @@ end
 function M.GetAuthorizationTokenAsync(GetAuthorizationTokenRequest, cb)
 	assert(GetAuthorizationTokenRequest, "You must provide a GetAuthorizationTokenRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.GetAuthorizationToken",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.GetAuthorizationToken",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetAuthorizationTokenRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetAuthorizationTokenRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2536,13 +2541,13 @@ end
 function M.ListImagesAsync(ListImagesRequest, cb)
 	assert(ListImagesRequest, "You must provide a ListImagesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.ListImages",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.ListImages",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListImagesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListImagesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2568,13 +2573,13 @@ end
 function M.GetRepositoryPolicyAsync(GetRepositoryPolicyRequest, cb)
 	assert(GetRepositoryPolicyRequest, "You must provide a GetRepositoryPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.GetRepositoryPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.GetRepositoryPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetRepositoryPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetRepositoryPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2600,13 +2605,13 @@ end
 function M.CompleteLayerUploadAsync(CompleteLayerUploadRequest, cb)
 	assert(CompleteLayerUploadRequest, "You must provide a CompleteLayerUploadRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.CompleteLayerUpload",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.CompleteLayerUpload",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CompleteLayerUploadRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CompleteLayerUploadRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2632,13 +2637,13 @@ end
 function M.DescribeImagesAsync(DescribeImagesRequest, cb)
 	assert(DescribeImagesRequest, "You must provide a DescribeImagesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.DescribeImages",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.DescribeImages",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeImagesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeImagesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2664,13 +2669,13 @@ end
 function M.InitiateLayerUploadAsync(InitiateLayerUploadRequest, cb)
 	assert(InitiateLayerUploadRequest, "You must provide a InitiateLayerUploadRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.InitiateLayerUpload",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.InitiateLayerUpload",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", InitiateLayerUploadRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", InitiateLayerUploadRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2696,13 +2701,13 @@ end
 function M.BatchGetImageAsync(BatchGetImageRequest, cb)
 	assert(BatchGetImageRequest, "You must provide a BatchGetImageRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.BatchGetImage",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.BatchGetImage",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", BatchGetImageRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", BatchGetImageRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2728,13 +2733,13 @@ end
 function M.SetRepositoryPolicyAsync(SetRepositoryPolicyRequest, cb)
 	assert(SetRepositoryPolicyRequest, "You must provide a SetRepositoryPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.SetRepositoryPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.SetRepositoryPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetRepositoryPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetRepositoryPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2760,13 +2765,13 @@ end
 function M.CreateRepositoryAsync(CreateRepositoryRequest, cb)
 	assert(CreateRepositoryRequest, "You must provide a CreateRepositoryRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.CreateRepository",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.CreateRepository",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateRepositoryRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateRepositoryRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2792,13 +2797,13 @@ end
 function M.BatchCheckLayerAvailabilityAsync(BatchCheckLayerAvailabilityRequest, cb)
 	assert(BatchCheckLayerAvailabilityRequest, "You must provide a BatchCheckLayerAvailabilityRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.BatchCheckLayerAvailability",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.BatchCheckLayerAvailability",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", BatchCheckLayerAvailabilityRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", BatchCheckLayerAvailabilityRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2824,13 +2829,13 @@ end
 function M.UploadLayerPartAsync(UploadLayerPartRequest, cb)
 	assert(UploadLayerPartRequest, "You must provide a UploadLayerPartRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.UploadLayerPart",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.UploadLayerPart",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UploadLayerPartRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UploadLayerPartRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2856,13 +2861,13 @@ end
 function M.DeleteRepositoryPolicyAsync(DeleteRepositoryPolicyRequest, cb)
 	assert(DeleteRepositoryPolicyRequest, "You must provide a DeleteRepositoryPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.DeleteRepositoryPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.DeleteRepositoryPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteRepositoryPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteRepositoryPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

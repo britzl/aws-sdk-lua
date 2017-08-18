@@ -973,12 +973,12 @@ function M.BucketList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -1002,8 +1002,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -1016,13 +1021,13 @@ end
 function M.SuggestAsync(SuggestRequest, cb)
 	assert(SuggestRequest, "You must provide a SuggestRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".Suggest",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".Suggest",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2013-01-01/suggest?format=sdk&pretty=true", SuggestRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-01-01/suggest?format=sdk&pretty=true", SuggestRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1048,13 +1053,13 @@ end
 function M.SearchAsync(SearchRequest, cb)
 	assert(SearchRequest, "You must provide a SearchRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".Search",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".Search",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2013-01-01/search?format=sdk&pretty=true", SearchRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-01-01/search?format=sdk&pretty=true", SearchRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1080,13 +1085,13 @@ end
 function M.UploadDocumentsAsync(UploadDocumentsRequest, cb)
 	assert(UploadDocumentsRequest, "You must provide a UploadDocumentsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UploadDocuments",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UploadDocuments",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2013-01-01/documents/batch?format=sdk", UploadDocumentsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-01-01/documents/batch?format=sdk", UploadDocumentsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

@@ -5636,12 +5636,12 @@ function M.ProductViewSummaries(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -5665,8 +5665,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -5679,13 +5684,13 @@ end
 function M.CreateConstraintAsync(CreateConstraintInput, cb)
 	assert(CreateConstraintInput, "You must provide a CreateConstraintInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.CreateConstraint",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.CreateConstraint",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateConstraintInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateConstraintInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5711,13 +5716,13 @@ end
 function M.DescribeProductAsAdminAsync(DescribeProductAsAdminInput, cb)
 	assert(DescribeProductAsAdminInput, "You must provide a DescribeProductAsAdminInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DescribeProductAsAdmin",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DescribeProductAsAdmin",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeProductAsAdminInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeProductAsAdminInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5743,13 +5748,13 @@ end
 function M.AssociateProductWithPortfolioAsync(AssociateProductWithPortfolioInput, cb)
 	assert(AssociateProductWithPortfolioInput, "You must provide a AssociateProductWithPortfolioInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.AssociateProductWithPortfolio",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.AssociateProductWithPortfolio",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AssociateProductWithPortfolioInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AssociateProductWithPortfolioInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5775,13 +5780,13 @@ end
 function M.ListPrincipalsForPortfolioAsync(ListPrincipalsForPortfolioInput, cb)
 	assert(ListPrincipalsForPortfolioInput, "You must provide a ListPrincipalsForPortfolioInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListPrincipalsForPortfolio",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListPrincipalsForPortfolio",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListPrincipalsForPortfolioInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListPrincipalsForPortfolioInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5807,13 +5812,13 @@ end
 function M.UpdateTagOptionAsync(UpdateTagOptionInput, cb)
 	assert(UpdateTagOptionInput, "You must provide a UpdateTagOptionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.UpdateTagOption",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.UpdateTagOption",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateTagOptionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateTagOptionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5839,13 +5844,13 @@ end
 function M.DisassociatePrincipalFromPortfolioAsync(DisassociatePrincipalFromPortfolioInput, cb)
 	assert(DisassociatePrincipalFromPortfolioInput, "You must provide a DisassociatePrincipalFromPortfolioInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DisassociatePrincipalFromPortfolio",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DisassociatePrincipalFromPortfolio",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisassociatePrincipalFromPortfolioInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisassociatePrincipalFromPortfolioInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5871,13 +5876,13 @@ end
 function M.AssociatePrincipalWithPortfolioAsync(AssociatePrincipalWithPortfolioInput, cb)
 	assert(AssociatePrincipalWithPortfolioInput, "You must provide a AssociatePrincipalWithPortfolioInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.AssociatePrincipalWithPortfolio",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.AssociatePrincipalWithPortfolio",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AssociatePrincipalWithPortfolioInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AssociatePrincipalWithPortfolioInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5903,13 +5908,13 @@ end
 function M.ListRecordHistoryAsync(ListRecordHistoryInput, cb)
 	assert(ListRecordHistoryInput, "You must provide a ListRecordHistoryInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListRecordHistory",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListRecordHistory",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListRecordHistoryInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListRecordHistoryInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5935,13 +5940,13 @@ end
 function M.SearchProductsAsAdminAsync(SearchProductsAsAdminInput, cb)
 	assert(SearchProductsAsAdminInput, "You must provide a SearchProductsAsAdminInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.SearchProductsAsAdmin",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.SearchProductsAsAdmin",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SearchProductsAsAdminInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SearchProductsAsAdminInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5967,13 +5972,13 @@ end
 function M.ListResourcesForTagOptionAsync(ListResourcesForTagOptionInput, cb)
 	assert(ListResourcesForTagOptionInput, "You must provide a ListResourcesForTagOptionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListResourcesForTagOption",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListResourcesForTagOption",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListResourcesForTagOptionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListResourcesForTagOptionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5999,13 +6004,13 @@ end
 function M.CreateProvisioningArtifactAsync(CreateProvisioningArtifactInput, cb)
 	assert(CreateProvisioningArtifactInput, "You must provide a CreateProvisioningArtifactInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.CreateProvisioningArtifact",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.CreateProvisioningArtifact",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateProvisioningArtifactInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateProvisioningArtifactInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6031,13 +6036,13 @@ end
 function M.ListPortfoliosAsync(ListPortfoliosInput, cb)
 	assert(ListPortfoliosInput, "You must provide a ListPortfoliosInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListPortfolios",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListPortfolios",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListPortfoliosInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListPortfoliosInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6063,13 +6068,13 @@ end
 function M.DescribeProductAsync(DescribeProductInput, cb)
 	assert(DescribeProductInput, "You must provide a DescribeProductInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DescribeProduct",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DescribeProduct",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeProductInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeProductInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6095,13 +6100,13 @@ end
 function M.CreatePortfolioShareAsync(CreatePortfolioShareInput, cb)
 	assert(CreatePortfolioShareInput, "You must provide a CreatePortfolioShareInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.CreatePortfolioShare",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.CreatePortfolioShare",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreatePortfolioShareInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreatePortfolioShareInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6127,13 +6132,13 @@ end
 function M.ListTagOptionsAsync(ListTagOptionsInput, cb)
 	assert(ListTagOptionsInput, "You must provide a ListTagOptionsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListTagOptions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListTagOptions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListTagOptionsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListTagOptionsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6159,13 +6164,13 @@ end
 function M.ListLaunchPathsAsync(ListLaunchPathsInput, cb)
 	assert(ListLaunchPathsInput, "You must provide a ListLaunchPathsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListLaunchPaths",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListLaunchPaths",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListLaunchPathsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListLaunchPathsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6191,13 +6196,13 @@ end
 function M.CreateProductAsync(CreateProductInput, cb)
 	assert(CreateProductInput, "You must provide a CreateProductInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.CreateProduct",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.CreateProduct",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateProductInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateProductInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6223,13 +6228,13 @@ end
 function M.ListAcceptedPortfolioSharesAsync(ListAcceptedPortfolioSharesInput, cb)
 	assert(ListAcceptedPortfolioSharesInput, "You must provide a ListAcceptedPortfolioSharesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListAcceptedPortfolioShares",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListAcceptedPortfolioShares",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListAcceptedPortfolioSharesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListAcceptedPortfolioSharesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6255,13 +6260,13 @@ end
 function M.ListPortfoliosForProductAsync(ListPortfoliosForProductInput, cb)
 	assert(ListPortfoliosForProductInput, "You must provide a ListPortfoliosForProductInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListPortfoliosForProduct",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListPortfoliosForProduct",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListPortfoliosForProductInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListPortfoliosForProductInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6287,13 +6292,13 @@ end
 function M.ListProvisioningArtifactsAsync(ListProvisioningArtifactsInput, cb)
 	assert(ListProvisioningArtifactsInput, "You must provide a ListProvisioningArtifactsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListProvisioningArtifacts",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListProvisioningArtifacts",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListProvisioningArtifactsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListProvisioningArtifactsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6319,13 +6324,13 @@ end
 function M.RejectPortfolioShareAsync(RejectPortfolioShareInput, cb)
 	assert(RejectPortfolioShareInput, "You must provide a RejectPortfolioShareInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.RejectPortfolioShare",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.RejectPortfolioShare",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RejectPortfolioShareInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RejectPortfolioShareInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6351,13 +6356,13 @@ end
 function M.DisassociateProductFromPortfolioAsync(DisassociateProductFromPortfolioInput, cb)
 	assert(DisassociateProductFromPortfolioInput, "You must provide a DisassociateProductFromPortfolioInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DisassociateProductFromPortfolio",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DisassociateProductFromPortfolio",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisassociateProductFromPortfolioInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisassociateProductFromPortfolioInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6383,13 +6388,13 @@ end
 function M.AcceptPortfolioShareAsync(AcceptPortfolioShareInput, cb)
 	assert(AcceptPortfolioShareInput, "You must provide a AcceptPortfolioShareInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.AcceptPortfolioShare",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.AcceptPortfolioShare",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AcceptPortfolioShareInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AcceptPortfolioShareInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6415,13 +6420,13 @@ end
 function M.DescribeProvisionedProductAsync(DescribeProvisionedProductInput, cb)
 	assert(DescribeProvisionedProductInput, "You must provide a DescribeProvisionedProductInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DescribeProvisionedProduct",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DescribeProvisionedProduct",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeProvisionedProductInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeProvisionedProductInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6447,13 +6452,13 @@ end
 function M.ListPortfolioAccessAsync(ListPortfolioAccessInput, cb)
 	assert(ListPortfolioAccessInput, "You must provide a ListPortfolioAccessInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListPortfolioAccess",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListPortfolioAccess",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListPortfolioAccessInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListPortfolioAccessInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6479,13 +6484,13 @@ end
 function M.DeleteProvisioningArtifactAsync(DeleteProvisioningArtifactInput, cb)
 	assert(DeleteProvisioningArtifactInput, "You must provide a DeleteProvisioningArtifactInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DeleteProvisioningArtifact",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DeleteProvisioningArtifact",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteProvisioningArtifactInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteProvisioningArtifactInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6511,13 +6516,13 @@ end
 function M.UpdateProvisioningArtifactAsync(UpdateProvisioningArtifactInput, cb)
 	assert(UpdateProvisioningArtifactInput, "You must provide a UpdateProvisioningArtifactInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.UpdateProvisioningArtifact",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.UpdateProvisioningArtifact",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateProvisioningArtifactInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateProvisioningArtifactInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6543,13 +6548,13 @@ end
 function M.DescribeConstraintAsync(DescribeConstraintInput, cb)
 	assert(DescribeConstraintInput, "You must provide a DescribeConstraintInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DescribeConstraint",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DescribeConstraint",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeConstraintInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeConstraintInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6575,13 +6580,13 @@ end
 function M.UpdatePortfolioAsync(UpdatePortfolioInput, cb)
 	assert(UpdatePortfolioInput, "You must provide a UpdatePortfolioInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.UpdatePortfolio",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.UpdatePortfolio",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdatePortfolioInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdatePortfolioInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6607,13 +6612,13 @@ end
 function M.DeletePortfolioAsync(DeletePortfolioInput, cb)
 	assert(DeletePortfolioInput, "You must provide a DeletePortfolioInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DeletePortfolio",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DeletePortfolio",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeletePortfolioInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeletePortfolioInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6639,13 +6644,13 @@ end
 function M.DescribeRecordAsync(DescribeRecordInput, cb)
 	assert(DescribeRecordInput, "You must provide a DescribeRecordInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DescribeRecord",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DescribeRecord",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeRecordInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeRecordInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6671,13 +6676,13 @@ end
 function M.AssociateTagOptionWithResourceAsync(AssociateTagOptionWithResourceInput, cb)
 	assert(AssociateTagOptionWithResourceInput, "You must provide a AssociateTagOptionWithResourceInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.AssociateTagOptionWithResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.AssociateTagOptionWithResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AssociateTagOptionWithResourceInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AssociateTagOptionWithResourceInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6703,13 +6708,13 @@ end
 function M.UpdateConstraintAsync(UpdateConstraintInput, cb)
 	assert(UpdateConstraintInput, "You must provide a UpdateConstraintInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.UpdateConstraint",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.UpdateConstraint",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateConstraintInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateConstraintInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6735,13 +6740,13 @@ end
 function M.DeleteProductAsync(DeleteProductInput, cb)
 	assert(DeleteProductInput, "You must provide a DeleteProductInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DeleteProduct",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DeleteProduct",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteProductInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteProductInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6767,13 +6772,13 @@ end
 function M.DescribeProductViewAsync(DescribeProductViewInput, cb)
 	assert(DescribeProductViewInput, "You must provide a DescribeProductViewInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DescribeProductView",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DescribeProductView",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeProductViewInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeProductViewInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6799,13 +6804,13 @@ end
 function M.TerminateProvisionedProductAsync(TerminateProvisionedProductInput, cb)
 	assert(TerminateProvisionedProductInput, "You must provide a TerminateProvisionedProductInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.TerminateProvisionedProduct",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.TerminateProvisionedProduct",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", TerminateProvisionedProductInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", TerminateProvisionedProductInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6831,13 +6836,13 @@ end
 function M.DescribePortfolioAsync(DescribePortfolioInput, cb)
 	assert(DescribePortfolioInput, "You must provide a DescribePortfolioInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DescribePortfolio",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DescribePortfolio",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribePortfolioInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribePortfolioInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6863,13 +6868,13 @@ end
 function M.DeletePortfolioShareAsync(DeletePortfolioShareInput, cb)
 	assert(DeletePortfolioShareInput, "You must provide a DeletePortfolioShareInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DeletePortfolioShare",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DeletePortfolioShare",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeletePortfolioShareInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeletePortfolioShareInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6895,13 +6900,13 @@ end
 function M.ScanProvisionedProductsAsync(ScanProvisionedProductsInput, cb)
 	assert(ScanProvisionedProductsInput, "You must provide a ScanProvisionedProductsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ScanProvisionedProducts",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ScanProvisionedProducts",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ScanProvisionedProductsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ScanProvisionedProductsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6927,13 +6932,13 @@ end
 function M.CreateTagOptionAsync(CreateTagOptionInput, cb)
 	assert(CreateTagOptionInput, "You must provide a CreateTagOptionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.CreateTagOption",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.CreateTagOption",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateTagOptionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateTagOptionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6959,13 +6964,13 @@ end
 function M.UpdateProvisionedProductAsync(UpdateProvisionedProductInput, cb)
 	assert(UpdateProvisionedProductInput, "You must provide a UpdateProvisionedProductInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.UpdateProvisionedProduct",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.UpdateProvisionedProduct",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateProvisionedProductInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateProvisionedProductInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6991,13 +6996,13 @@ end
 function M.UpdateProductAsync(UpdateProductInput, cb)
 	assert(UpdateProductInput, "You must provide a UpdateProductInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.UpdateProduct",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.UpdateProduct",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateProductInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateProductInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7023,13 +7028,13 @@ end
 function M.DescribeProvisioningArtifactAsync(DescribeProvisioningArtifactInput, cb)
 	assert(DescribeProvisioningArtifactInput, "You must provide a DescribeProvisioningArtifactInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DescribeProvisioningArtifact",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DescribeProvisioningArtifact",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeProvisioningArtifactInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeProvisioningArtifactInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7055,13 +7060,13 @@ end
 function M.ListConstraintsForPortfolioAsync(ListConstraintsForPortfolioInput, cb)
 	assert(ListConstraintsForPortfolioInput, "You must provide a ListConstraintsForPortfolioInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListConstraintsForPortfolio",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListConstraintsForPortfolio",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListConstraintsForPortfolioInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListConstraintsForPortfolioInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7087,13 +7092,13 @@ end
 function M.DisassociateTagOptionFromResourceAsync(DisassociateTagOptionFromResourceInput, cb)
 	assert(DisassociateTagOptionFromResourceInput, "You must provide a DisassociateTagOptionFromResourceInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DisassociateTagOptionFromResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DisassociateTagOptionFromResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisassociateTagOptionFromResourceInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisassociateTagOptionFromResourceInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7119,13 +7124,13 @@ end
 function M.SearchProductsAsync(SearchProductsInput, cb)
 	assert(SearchProductsInput, "You must provide a SearchProductsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.SearchProducts",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.SearchProducts",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SearchProductsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SearchProductsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7151,13 +7156,13 @@ end
 function M.DeleteConstraintAsync(DeleteConstraintInput, cb)
 	assert(DeleteConstraintInput, "You must provide a DeleteConstraintInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DeleteConstraint",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DeleteConstraint",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteConstraintInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteConstraintInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7183,13 +7188,13 @@ end
 function M.ProvisionProductAsync(ProvisionProductInput, cb)
 	assert(ProvisionProductInput, "You must provide a ProvisionProductInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ProvisionProduct",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ProvisionProduct",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ProvisionProductInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ProvisionProductInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7215,13 +7220,13 @@ end
 function M.CreatePortfolioAsync(CreatePortfolioInput, cb)
 	assert(CreatePortfolioInput, "You must provide a CreatePortfolioInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.CreatePortfolio",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.CreatePortfolio",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreatePortfolioInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreatePortfolioInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7247,13 +7252,13 @@ end
 function M.DescribeProvisioningParametersAsync(DescribeProvisioningParametersInput, cb)
 	assert(DescribeProvisioningParametersInput, "You must provide a DescribeProvisioningParametersInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DescribeProvisioningParameters",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DescribeProvisioningParameters",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeProvisioningParametersInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeProvisioningParametersInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7279,13 +7284,13 @@ end
 function M.DescribeTagOptionAsync(DescribeTagOptionInput, cb)
 	assert(DescribeTagOptionInput, "You must provide a DescribeTagOptionInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DescribeTagOption",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DescribeTagOption",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeTagOptionInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeTagOptionInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end

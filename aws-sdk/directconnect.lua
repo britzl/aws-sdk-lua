@@ -2867,12 +2867,12 @@ function M.TagList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -2896,8 +2896,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -2908,13 +2913,13 @@ end
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeVirtualGatewaysAsync(cb)
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.DescribeVirtualGateways",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DescribeVirtualGateways",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", {}, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2939,13 +2944,13 @@ end
 function M.CreateBGPPeerAsync(CreateBGPPeerRequest, cb)
 	assert(CreateBGPPeerRequest, "You must provide a CreateBGPPeerRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.CreateBGPPeer",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.CreateBGPPeer",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateBGPPeerRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateBGPPeerRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2971,13 +2976,13 @@ end
 function M.AllocateHostedConnectionAsync(AllocateHostedConnectionRequest, cb)
 	assert(AllocateHostedConnectionRequest, "You must provide a AllocateHostedConnectionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.AllocateHostedConnection",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.AllocateHostedConnection",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AllocateHostedConnectionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AllocateHostedConnectionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3003,13 +3008,13 @@ end
 function M.AssociateHostedConnectionAsync(AssociateHostedConnectionRequest, cb)
 	assert(AssociateHostedConnectionRequest, "You must provide a AssociateHostedConnectionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.AssociateHostedConnection",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.AssociateHostedConnection",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AssociateHostedConnectionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AssociateHostedConnectionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3035,13 +3040,13 @@ end
 function M.AllocatePublicVirtualInterfaceAsync(AllocatePublicVirtualInterfaceRequest, cb)
 	assert(AllocatePublicVirtualInterfaceRequest, "You must provide a AllocatePublicVirtualInterfaceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.AllocatePublicVirtualInterface",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.AllocatePublicVirtualInterface",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AllocatePublicVirtualInterfaceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AllocatePublicVirtualInterfaceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3067,13 +3072,13 @@ end
 function M.DeleteVirtualInterfaceAsync(DeleteVirtualInterfaceRequest, cb)
 	assert(DeleteVirtualInterfaceRequest, "You must provide a DeleteVirtualInterfaceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.DeleteVirtualInterface",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DeleteVirtualInterface",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteVirtualInterfaceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteVirtualInterfaceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3099,13 +3104,13 @@ end
 function M.CreateInterconnectAsync(CreateInterconnectRequest, cb)
 	assert(CreateInterconnectRequest, "You must provide a CreateInterconnectRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.CreateInterconnect",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.CreateInterconnect",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateInterconnectRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateInterconnectRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3131,13 +3136,13 @@ end
 function M.DescribeLagsAsync(DescribeLagsRequest, cb)
 	assert(DescribeLagsRequest, "You must provide a DescribeLagsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.DescribeLags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DescribeLags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeLagsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeLagsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3163,13 +3168,13 @@ end
 function M.DeleteBGPPeerAsync(DeleteBGPPeerRequest, cb)
 	assert(DeleteBGPPeerRequest, "You must provide a DeleteBGPPeerRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.DeleteBGPPeer",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DeleteBGPPeer",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteBGPPeerRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteBGPPeerRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3195,13 +3200,13 @@ end
 function M.AllocatePrivateVirtualInterfaceAsync(AllocatePrivateVirtualInterfaceRequest, cb)
 	assert(AllocatePrivateVirtualInterfaceRequest, "You must provide a AllocatePrivateVirtualInterfaceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.AllocatePrivateVirtualInterface",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.AllocatePrivateVirtualInterface",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AllocatePrivateVirtualInterfaceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AllocatePrivateVirtualInterfaceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3227,13 +3232,13 @@ end
 function M.AssociateConnectionWithLagAsync(AssociateConnectionWithLagRequest, cb)
 	assert(AssociateConnectionWithLagRequest, "You must provide a AssociateConnectionWithLagRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.AssociateConnectionWithLag",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.AssociateConnectionWithLag",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AssociateConnectionWithLagRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AssociateConnectionWithLagRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3259,13 +3264,13 @@ end
 function M.CreateLagAsync(CreateLagRequest, cb)
 	assert(CreateLagRequest, "You must provide a CreateLagRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.CreateLag",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.CreateLag",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateLagRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateLagRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3291,13 +3296,13 @@ end
 function M.ConfirmPublicVirtualInterfaceAsync(ConfirmPublicVirtualInterfaceRequest, cb)
 	assert(ConfirmPublicVirtualInterfaceRequest, "You must provide a ConfirmPublicVirtualInterfaceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.ConfirmPublicVirtualInterface",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.ConfirmPublicVirtualInterface",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ConfirmPublicVirtualInterfaceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ConfirmPublicVirtualInterfaceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3323,13 +3328,13 @@ end
 function M.DescribeLoaAsync(DescribeLoaRequest, cb)
 	assert(DescribeLoaRequest, "You must provide a DescribeLoaRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.DescribeLoa",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DescribeLoa",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeLoaRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeLoaRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3355,13 +3360,13 @@ end
 function M.DescribeHostedConnectionsAsync(DescribeHostedConnectionsRequest, cb)
 	assert(DescribeHostedConnectionsRequest, "You must provide a DescribeHostedConnectionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.DescribeHostedConnections",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DescribeHostedConnections",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeHostedConnectionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeHostedConnectionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3387,13 +3392,13 @@ end
 function M.DeleteInterconnectAsync(DeleteInterconnectRequest, cb)
 	assert(DeleteInterconnectRequest, "You must provide a DeleteInterconnectRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.DeleteInterconnect",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DeleteInterconnect",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteInterconnectRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteInterconnectRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3419,13 +3424,13 @@ end
 function M.DescribeVirtualInterfacesAsync(DescribeVirtualInterfacesRequest, cb)
 	assert(DescribeVirtualInterfacesRequest, "You must provide a DescribeVirtualInterfacesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.DescribeVirtualInterfaces",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DescribeVirtualInterfaces",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeVirtualInterfacesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeVirtualInterfacesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3451,13 +3456,13 @@ end
 function M.UpdateLagAsync(UpdateLagRequest, cb)
 	assert(UpdateLagRequest, "You must provide a UpdateLagRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.UpdateLag",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.UpdateLag",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateLagRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateLagRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3483,13 +3488,13 @@ end
 function M.ConfirmPrivateVirtualInterfaceAsync(ConfirmPrivateVirtualInterfaceRequest, cb)
 	assert(ConfirmPrivateVirtualInterfaceRequest, "You must provide a ConfirmPrivateVirtualInterfaceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.ConfirmPrivateVirtualInterface",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.ConfirmPrivateVirtualInterface",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ConfirmPrivateVirtualInterfaceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ConfirmPrivateVirtualInterfaceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3515,13 +3520,13 @@ end
 function M.DisassociateConnectionFromLagAsync(DisassociateConnectionFromLagRequest, cb)
 	assert(DisassociateConnectionFromLagRequest, "You must provide a DisassociateConnectionFromLagRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.DisassociateConnectionFromLag",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DisassociateConnectionFromLag",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisassociateConnectionFromLagRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisassociateConnectionFromLagRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3547,13 +3552,13 @@ end
 function M.ConfirmConnectionAsync(ConfirmConnectionRequest, cb)
 	assert(ConfirmConnectionRequest, "You must provide a ConfirmConnectionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.ConfirmConnection",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.ConfirmConnection",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ConfirmConnectionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ConfirmConnectionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3579,13 +3584,13 @@ end
 function M.DescribeInterconnectsAsync(DescribeInterconnectsRequest, cb)
 	assert(DescribeInterconnectsRequest, "You must provide a DescribeInterconnectsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.DescribeInterconnects",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DescribeInterconnects",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeInterconnectsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeInterconnectsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3611,13 +3616,13 @@ end
 function M.DescribeTagsAsync(DescribeTagsRequest, cb)
 	assert(DescribeTagsRequest, "You must provide a DescribeTagsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.DescribeTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DescribeTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeTagsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeTagsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3643,13 +3648,13 @@ end
 function M.DescribeConnectionsAsync(DescribeConnectionsRequest, cb)
 	assert(DescribeConnectionsRequest, "You must provide a DescribeConnectionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.DescribeConnections",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DescribeConnections",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeConnectionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeConnectionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3675,13 +3680,13 @@ end
 function M.CreatePublicVirtualInterfaceAsync(CreatePublicVirtualInterfaceRequest, cb)
 	assert(CreatePublicVirtualInterfaceRequest, "You must provide a CreatePublicVirtualInterfaceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.CreatePublicVirtualInterface",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.CreatePublicVirtualInterface",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreatePublicVirtualInterfaceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreatePublicVirtualInterfaceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3707,13 +3712,13 @@ end
 function M.CreateConnectionAsync(CreateConnectionRequest, cb)
 	assert(CreateConnectionRequest, "You must provide a CreateConnectionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.CreateConnection",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.CreateConnection",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateConnectionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateConnectionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3739,13 +3744,13 @@ end
 function M.TagResourceAsync(TagResourceRequest, cb)
 	assert(TagResourceRequest, "You must provide a TagResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.TagResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.TagResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", TagResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", TagResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3769,13 +3774,13 @@ end
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeLocationsAsync(cb)
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.DescribeLocations",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DescribeLocations",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", {}, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3800,13 +3805,13 @@ end
 function M.UntagResourceAsync(UntagResourceRequest, cb)
 	assert(UntagResourceRequest, "You must provide a UntagResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.UntagResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.UntagResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UntagResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UntagResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3832,13 +3837,13 @@ end
 function M.CreatePrivateVirtualInterfaceAsync(CreatePrivateVirtualInterfaceRequest, cb)
 	assert(CreatePrivateVirtualInterfaceRequest, "You must provide a CreatePrivateVirtualInterfaceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.CreatePrivateVirtualInterface",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.CreatePrivateVirtualInterface",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreatePrivateVirtualInterfaceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreatePrivateVirtualInterfaceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3864,13 +3869,13 @@ end
 function M.DeleteConnectionAsync(DeleteConnectionRequest, cb)
 	assert(DeleteConnectionRequest, "You must provide a DeleteConnectionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.DeleteConnection",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DeleteConnection",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteConnectionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteConnectionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3896,13 +3901,13 @@ end
 function M.DeleteLagAsync(DeleteLagRequest, cb)
 	assert(DeleteLagRequest, "You must provide a DeleteLagRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.DeleteLag",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DeleteLag",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteLagRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteLagRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3928,13 +3933,13 @@ end
 function M.AssociateVirtualInterfaceAsync(AssociateVirtualInterfaceRequest, cb)
 	assert(AssociateVirtualInterfaceRequest, "You must provide a AssociateVirtualInterfaceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "OvertureService.AssociateVirtualInterface",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.AssociateVirtualInterface",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AssociateVirtualInterfaceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AssociateVirtualInterfaceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

@@ -1276,12 +1276,12 @@ function M.TagList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -1305,8 +1305,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -1319,13 +1324,13 @@ end
 function M.ResendValidationEmailAsync(ResendValidationEmailRequest, cb)
 	assert(ResendValidationEmailRequest, "You must provide a ResendValidationEmailRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CertificateManager.ResendValidationEmail",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CertificateManager.ResendValidationEmail",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ResendValidationEmailRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ResendValidationEmailRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1351,13 +1356,13 @@ end
 function M.AddTagsToCertificateAsync(AddTagsToCertificateRequest, cb)
 	assert(AddTagsToCertificateRequest, "You must provide a AddTagsToCertificateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CertificateManager.AddTagsToCertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CertificateManager.AddTagsToCertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddTagsToCertificateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddTagsToCertificateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1383,13 +1388,13 @@ end
 function M.ListCertificatesAsync(ListCertificatesRequest, cb)
 	assert(ListCertificatesRequest, "You must provide a ListCertificatesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CertificateManager.ListCertificates",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CertificateManager.ListCertificates",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListCertificatesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListCertificatesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1415,13 +1420,13 @@ end
 function M.GetCertificateAsync(GetCertificateRequest, cb)
 	assert(GetCertificateRequest, "You must provide a GetCertificateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CertificateManager.GetCertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CertificateManager.GetCertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetCertificateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetCertificateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1447,13 +1452,13 @@ end
 function M.ListTagsForCertificateAsync(ListTagsForCertificateRequest, cb)
 	assert(ListTagsForCertificateRequest, "You must provide a ListTagsForCertificateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CertificateManager.ListTagsForCertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CertificateManager.ListTagsForCertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListTagsForCertificateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListTagsForCertificateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1479,13 +1484,13 @@ end
 function M.RemoveTagsFromCertificateAsync(RemoveTagsFromCertificateRequest, cb)
 	assert(RemoveTagsFromCertificateRequest, "You must provide a RemoveTagsFromCertificateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CertificateManager.RemoveTagsFromCertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CertificateManager.RemoveTagsFromCertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RemoveTagsFromCertificateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RemoveTagsFromCertificateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1511,13 +1516,13 @@ end
 function M.RequestCertificateAsync(RequestCertificateRequest, cb)
 	assert(RequestCertificateRequest, "You must provide a RequestCertificateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CertificateManager.RequestCertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CertificateManager.RequestCertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RequestCertificateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RequestCertificateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1543,13 +1548,13 @@ end
 function M.ImportCertificateAsync(ImportCertificateRequest, cb)
 	assert(ImportCertificateRequest, "You must provide a ImportCertificateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CertificateManager.ImportCertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CertificateManager.ImportCertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ImportCertificateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ImportCertificateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1575,13 +1580,13 @@ end
 function M.DeleteCertificateAsync(DeleteCertificateRequest, cb)
 	assert(DeleteCertificateRequest, "You must provide a DeleteCertificateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CertificateManager.DeleteCertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CertificateManager.DeleteCertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteCertificateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteCertificateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1607,13 +1612,13 @@ end
 function M.DescribeCertificateAsync(DescribeCertificateRequest, cb)
 	assert(DescribeCertificateRequest, "You must provide a DescribeCertificateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CertificateManager.DescribeCertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CertificateManager.DescribeCertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeCertificateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeCertificateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

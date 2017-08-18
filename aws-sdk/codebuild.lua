@@ -1692,12 +1692,12 @@ function M.EnvironmentLanguages(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -1721,8 +1721,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -1735,13 +1740,13 @@ end
 function M.ListBuildsAsync(ListBuildsInput, cb)
 	assert(ListBuildsInput, "You must provide a ListBuildsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.ListBuilds",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.ListBuilds",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListBuildsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListBuildsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1767,13 +1772,13 @@ end
 function M.StopBuildAsync(StopBuildInput, cb)
 	assert(StopBuildInput, "You must provide a StopBuildInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.StopBuild",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.StopBuild",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StopBuildInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StopBuildInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1799,13 +1804,13 @@ end
 function M.ListBuildsForProjectAsync(ListBuildsForProjectInput, cb)
 	assert(ListBuildsForProjectInput, "You must provide a ListBuildsForProjectInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.ListBuildsForProject",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.ListBuildsForProject",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListBuildsForProjectInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListBuildsForProjectInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1831,13 +1836,13 @@ end
 function M.BatchGetBuildsAsync(BatchGetBuildsInput, cb)
 	assert(BatchGetBuildsInput, "You must provide a BatchGetBuildsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.BatchGetBuilds",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.BatchGetBuilds",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", BatchGetBuildsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", BatchGetBuildsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1863,13 +1868,13 @@ end
 function M.CreateProjectAsync(CreateProjectInput, cb)
 	assert(CreateProjectInput, "You must provide a CreateProjectInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.CreateProject",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.CreateProject",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateProjectInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateProjectInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1895,13 +1900,13 @@ end
 function M.ListCuratedEnvironmentImagesAsync(ListCuratedEnvironmentImagesInput, cb)
 	assert(ListCuratedEnvironmentImagesInput, "You must provide a ListCuratedEnvironmentImagesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.ListCuratedEnvironmentImages",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.ListCuratedEnvironmentImages",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListCuratedEnvironmentImagesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListCuratedEnvironmentImagesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1927,13 +1932,13 @@ end
 function M.ListProjectsAsync(ListProjectsInput, cb)
 	assert(ListProjectsInput, "You must provide a ListProjectsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.ListProjects",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.ListProjects",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListProjectsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListProjectsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1959,13 +1964,13 @@ end
 function M.UpdateProjectAsync(UpdateProjectInput, cb)
 	assert(UpdateProjectInput, "You must provide a UpdateProjectInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.UpdateProject",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.UpdateProject",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateProjectInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateProjectInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1991,13 +1996,13 @@ end
 function M.StartBuildAsync(StartBuildInput, cb)
 	assert(StartBuildInput, "You must provide a StartBuildInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.StartBuild",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.StartBuild",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StartBuildInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StartBuildInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2023,13 +2028,13 @@ end
 function M.DeleteProjectAsync(DeleteProjectInput, cb)
 	assert(DeleteProjectInput, "You must provide a DeleteProjectInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.DeleteProject",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.DeleteProject",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteProjectInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteProjectInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2055,13 +2060,13 @@ end
 function M.BatchGetProjectsAsync(BatchGetProjectsInput, cb)
 	assert(BatchGetProjectsInput, "You must provide a BatchGetProjectsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.BatchGetProjects",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.BatchGetProjects",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", BatchGetProjectsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", BatchGetProjectsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end

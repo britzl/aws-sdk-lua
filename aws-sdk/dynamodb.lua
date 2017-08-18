@@ -3502,12 +3502,12 @@ function M.TagList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -3531,8 +3531,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -3545,13 +3550,13 @@ end
 function M.UpdateTimeToLiveAsync(UpdateTimeToLiveInput, cb)
 	assert(UpdateTimeToLiveInput, "You must provide a UpdateTimeToLiveInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.UpdateTimeToLive",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.UpdateTimeToLive",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateTimeToLiveInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateTimeToLiveInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3577,13 +3582,13 @@ end
 function M.UpdateTableAsync(UpdateTableInput, cb)
 	assert(UpdateTableInput, "You must provide a UpdateTableInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.UpdateTable",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.UpdateTable",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateTableInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateTableInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3609,13 +3614,13 @@ end
 function M.DeleteTableAsync(DeleteTableInput, cb)
 	assert(DeleteTableInput, "You must provide a DeleteTableInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.DeleteTable",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.DeleteTable",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteTableInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteTableInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3641,13 +3646,13 @@ end
 function M.DescribeLimitsAsync(DescribeLimitsInput, cb)
 	assert(DescribeLimitsInput, "You must provide a DescribeLimitsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.DescribeLimits",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.DescribeLimits",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeLimitsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeLimitsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3673,13 +3678,13 @@ end
 function M.UntagResourceAsync(UntagResourceInput, cb)
 	assert(UntagResourceInput, "You must provide a UntagResourceInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.UntagResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.UntagResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UntagResourceInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UntagResourceInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3705,13 +3710,13 @@ end
 function M.ScanAsync(ScanInput, cb)
 	assert(ScanInput, "You must provide a ScanInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.Scan",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.Scan",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ScanInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ScanInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3737,13 +3742,13 @@ end
 function M.ListTagsOfResourceAsync(ListTagsOfResourceInput, cb)
 	assert(ListTagsOfResourceInput, "You must provide a ListTagsOfResourceInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.ListTagsOfResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.ListTagsOfResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListTagsOfResourceInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListTagsOfResourceInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3769,13 +3774,13 @@ end
 function M.DescribeTimeToLiveAsync(DescribeTimeToLiveInput, cb)
 	assert(DescribeTimeToLiveInput, "You must provide a DescribeTimeToLiveInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.DescribeTimeToLive",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.DescribeTimeToLive",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeTimeToLiveInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeTimeToLiveInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3801,13 +3806,13 @@ end
 function M.DescribeTableAsync(DescribeTableInput, cb)
 	assert(DescribeTableInput, "You must provide a DescribeTableInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.DescribeTable",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.DescribeTable",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeTableInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeTableInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3833,13 +3838,13 @@ end
 function M.BatchWriteItemAsync(BatchWriteItemInput, cb)
 	assert(BatchWriteItemInput, "You must provide a BatchWriteItemInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.BatchWriteItem",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.BatchWriteItem",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", BatchWriteItemInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", BatchWriteItemInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3865,13 +3870,13 @@ end
 function M.CreateTableAsync(CreateTableInput, cb)
 	assert(CreateTableInput, "You must provide a CreateTableInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.CreateTable",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.CreateTable",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateTableInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateTableInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3897,13 +3902,13 @@ end
 function M.ListTablesAsync(ListTablesInput, cb)
 	assert(ListTablesInput, "You must provide a ListTablesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.ListTables",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.ListTables",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListTablesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListTablesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3929,13 +3934,13 @@ end
 function M.GetItemAsync(GetItemInput, cb)
 	assert(GetItemInput, "You must provide a GetItemInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.GetItem",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.GetItem",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetItemInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetItemInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3961,13 +3966,13 @@ end
 function M.QueryAsync(QueryInput, cb)
 	assert(QueryInput, "You must provide a QueryInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.Query",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.Query",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", QueryInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", QueryInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3993,13 +3998,13 @@ end
 function M.PutItemAsync(PutItemInput, cb)
 	assert(PutItemInput, "You must provide a PutItemInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.PutItem",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.PutItem",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutItemInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutItemInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4025,13 +4030,13 @@ end
 function M.UpdateItemAsync(UpdateItemInput, cb)
 	assert(UpdateItemInput, "You must provide a UpdateItemInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.UpdateItem",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.UpdateItem",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateItemInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateItemInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4057,13 +4062,13 @@ end
 function M.TagResourceAsync(TagResourceInput, cb)
 	assert(TagResourceInput, "You must provide a TagResourceInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.TagResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.TagResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", TagResourceInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", TagResourceInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4089,13 +4094,13 @@ end
 function M.DeleteItemAsync(DeleteItemInput, cb)
 	assert(DeleteItemInput, "You must provide a DeleteItemInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.DeleteItem",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.DeleteItem",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteItemInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteItemInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4121,13 +4126,13 @@ end
 function M.BatchGetItemAsync(BatchGetItemInput, cb)
 	assert(BatchGetItemInput, "You must provide a BatchGetItemInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.BatchGetItem",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.BatchGetItem",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", BatchGetItemInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", BatchGetItemInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end

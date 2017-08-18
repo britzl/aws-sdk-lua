@@ -9038,12 +9038,12 @@ function M.SAMLProviderListType(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -9067,8 +9067,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -9081,13 +9086,13 @@ end
 function M.GetUserPolicyAsync(GetUserPolicyRequest, cb)
 	assert(GetUserPolicyRequest, "You must provide a GetUserPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetUserPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetUserPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetUserPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetUserPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9113,13 +9118,13 @@ end
 function M.CreateServiceLinkedRoleAsync(CreateServiceLinkedRoleRequest, cb)
 	assert(CreateServiceLinkedRoleRequest, "You must provide a CreateServiceLinkedRoleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateServiceLinkedRole",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateServiceLinkedRole",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateServiceLinkedRoleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateServiceLinkedRoleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9145,13 +9150,13 @@ end
 function M.DeleteInstanceProfileAsync(DeleteInstanceProfileRequest, cb)
 	assert(DeleteInstanceProfileRequest, "You must provide a DeleteInstanceProfileRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteInstanceProfile",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteInstanceProfile",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteInstanceProfileRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteInstanceProfileRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9175,13 +9180,13 @@ end
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetAccountSummaryAsync(cb)
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetAccountSummary",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetAccountSummary",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", {}, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9206,13 +9211,13 @@ end
 function M.ListAttachedGroupPoliciesAsync(ListAttachedGroupPoliciesRequest, cb)
 	assert(ListAttachedGroupPoliciesRequest, "You must provide a ListAttachedGroupPoliciesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListAttachedGroupPolicies",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListAttachedGroupPolicies",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListAttachedGroupPoliciesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListAttachedGroupPoliciesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9238,13 +9243,13 @@ end
 function M.UpdateUserAsync(UpdateUserRequest, cb)
 	assert(UpdateUserRequest, "You must provide a UpdateUserRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateUser",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateUser",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateUserRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateUserRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9270,13 +9275,13 @@ end
 function M.ListAccountAliasesAsync(ListAccountAliasesRequest, cb)
 	assert(ListAccountAliasesRequest, "You must provide a ListAccountAliasesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListAccountAliases",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListAccountAliases",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListAccountAliasesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListAccountAliasesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9302,13 +9307,13 @@ end
 function M.GetUserAsync(GetUserRequest, cb)
 	assert(GetUserRequest, "You must provide a GetUserRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetUser",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetUser",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetUserRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetUserRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9334,13 +9339,13 @@ end
 function M.UploadSSHPublicKeyAsync(UploadSSHPublicKeyRequest, cb)
 	assert(UploadSSHPublicKeyRequest, "You must provide a UploadSSHPublicKeyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UploadSSHPublicKey",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UploadSSHPublicKey",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UploadSSHPublicKeyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UploadSSHPublicKeyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9366,13 +9371,13 @@ end
 function M.ListGroupPoliciesAsync(ListGroupPoliciesRequest, cb)
 	assert(ListGroupPoliciesRequest, "You must provide a ListGroupPoliciesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListGroupPolicies",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListGroupPolicies",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListGroupPoliciesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListGroupPoliciesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9398,13 +9403,13 @@ end
 function M.CreateAccessKeyAsync(CreateAccessKeyRequest, cb)
 	assert(CreateAccessKeyRequest, "You must provide a CreateAccessKeyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateAccessKey",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateAccessKey",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateAccessKeyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateAccessKeyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9430,13 +9435,13 @@ end
 function M.UpdateLoginProfileAsync(UpdateLoginProfileRequest, cb)
 	assert(UpdateLoginProfileRequest, "You must provide a UpdateLoginProfileRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateLoginProfile",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateLoginProfile",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateLoginProfileRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateLoginProfileRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9462,13 +9467,13 @@ end
 function M.ListGroupsAsync(ListGroupsRequest, cb)
 	assert(ListGroupsRequest, "You must provide a ListGroupsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListGroupsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListGroupsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9494,13 +9499,13 @@ end
 function M.UpdateRoleDescriptionAsync(UpdateRoleDescriptionRequest, cb)
 	assert(UpdateRoleDescriptionRequest, "You must provide a UpdateRoleDescriptionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateRoleDescription",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateRoleDescription",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateRoleDescriptionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateRoleDescriptionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9526,13 +9531,13 @@ end
 function M.UpdateSAMLProviderAsync(UpdateSAMLProviderRequest, cb)
 	assert(UpdateSAMLProviderRequest, "You must provide a UpdateSAMLProviderRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateSAMLProvider",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateSAMLProvider",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateSAMLProviderRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateSAMLProviderRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9558,13 +9563,13 @@ end
 function M.ResetServiceSpecificCredentialAsync(ResetServiceSpecificCredentialRequest, cb)
 	assert(ResetServiceSpecificCredentialRequest, "You must provide a ResetServiceSpecificCredentialRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ResetServiceSpecificCredential",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ResetServiceSpecificCredential",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ResetServiceSpecificCredentialRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ResetServiceSpecificCredentialRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9590,13 +9595,13 @@ end
 function M.DeleteSSHPublicKeyAsync(DeleteSSHPublicKeyRequest, cb)
 	assert(DeleteSSHPublicKeyRequest, "You must provide a DeleteSSHPublicKeyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteSSHPublicKey",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteSSHPublicKey",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteSSHPublicKeyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteSSHPublicKeyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9622,13 +9627,13 @@ end
 function M.RemoveUserFromGroupAsync(RemoveUserFromGroupRequest, cb)
 	assert(RemoveUserFromGroupRequest, "You must provide a RemoveUserFromGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RemoveUserFromGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RemoveUserFromGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RemoveUserFromGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RemoveUserFromGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9654,13 +9659,13 @@ end
 function M.ListSAMLProvidersAsync(ListSAMLProvidersRequest, cb)
 	assert(ListSAMLProvidersRequest, "You must provide a ListSAMLProvidersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListSAMLProviders",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListSAMLProviders",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListSAMLProvidersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListSAMLProvidersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9686,13 +9691,13 @@ end
 function M.DeleteRolePolicyAsync(DeleteRolePolicyRequest, cb)
 	assert(DeleteRolePolicyRequest, "You must provide a DeleteRolePolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteRolePolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteRolePolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteRolePolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteRolePolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9718,13 +9723,13 @@ end
 function M.UploadServerCertificateAsync(UploadServerCertificateRequest, cb)
 	assert(UploadServerCertificateRequest, "You must provide a UploadServerCertificateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UploadServerCertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UploadServerCertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UploadServerCertificateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UploadServerCertificateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9750,13 +9755,13 @@ end
 function M.GetContextKeysForPrincipalPolicyAsync(GetContextKeysForPrincipalPolicyRequest, cb)
 	assert(GetContextKeysForPrincipalPolicyRequest, "You must provide a GetContextKeysForPrincipalPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetContextKeysForPrincipalPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetContextKeysForPrincipalPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetContextKeysForPrincipalPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetContextKeysForPrincipalPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9782,13 +9787,13 @@ end
 function M.UpdateAccessKeyAsync(UpdateAccessKeyRequest, cb)
 	assert(UpdateAccessKeyRequest, "You must provide a UpdateAccessKeyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateAccessKey",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateAccessKey",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateAccessKeyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateAccessKeyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9814,13 +9819,13 @@ end
 function M.ListRolesAsync(ListRolesRequest, cb)
 	assert(ListRolesRequest, "You must provide a ListRolesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListRoles",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListRoles",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListRolesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListRolesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9846,13 +9851,13 @@ end
 function M.DeleteAccessKeyAsync(DeleteAccessKeyRequest, cb)
 	assert(DeleteAccessKeyRequest, "You must provide a DeleteAccessKeyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteAccessKey",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteAccessKey",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteAccessKeyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteAccessKeyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9878,13 +9883,13 @@ end
 function M.AddRoleToInstanceProfileAsync(AddRoleToInstanceProfileRequest, cb)
 	assert(AddRoleToInstanceProfileRequest, "You must provide a AddRoleToInstanceProfileRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AddRoleToInstanceProfile",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AddRoleToInstanceProfile",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddRoleToInstanceProfileRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddRoleToInstanceProfileRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9910,13 +9915,13 @@ end
 function M.GetContextKeysForCustomPolicyAsync(GetContextKeysForCustomPolicyRequest, cb)
 	assert(GetContextKeysForCustomPolicyRequest, "You must provide a GetContextKeysForCustomPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetContextKeysForCustomPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetContextKeysForCustomPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetContextKeysForCustomPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetContextKeysForCustomPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9942,13 +9947,13 @@ end
 function M.GetGroupPolicyAsync(GetGroupPolicyRequest, cb)
 	assert(GetGroupPolicyRequest, "You must provide a GetGroupPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetGroupPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetGroupPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetGroupPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetGroupPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9974,13 +9979,13 @@ end
 function M.CreateServiceSpecificCredentialAsync(CreateServiceSpecificCredentialRequest, cb)
 	assert(CreateServiceSpecificCredentialRequest, "You must provide a CreateServiceSpecificCredentialRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateServiceSpecificCredential",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateServiceSpecificCredential",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateServiceSpecificCredentialRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateServiceSpecificCredentialRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10006,13 +10011,13 @@ end
 function M.CreateLoginProfileAsync(CreateLoginProfileRequest, cb)
 	assert(CreateLoginProfileRequest, "You must provide a CreateLoginProfileRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateLoginProfile",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateLoginProfile",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateLoginProfileRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateLoginProfileRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10038,13 +10043,13 @@ end
 function M.SimulateCustomPolicyAsync(SimulateCustomPolicyRequest, cb)
 	assert(SimulateCustomPolicyRequest, "You must provide a SimulateCustomPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SimulateCustomPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SimulateCustomPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SimulateCustomPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SimulateCustomPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10070,13 +10075,13 @@ end
 function M.DeactivateMFADeviceAsync(DeactivateMFADeviceRequest, cb)
 	assert(DeactivateMFADeviceRequest, "You must provide a DeactivateMFADeviceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeactivateMFADevice",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeactivateMFADevice",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeactivateMFADeviceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeactivateMFADeviceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10102,13 +10107,13 @@ end
 function M.DetachRolePolicyAsync(DetachRolePolicyRequest, cb)
 	assert(DetachRolePolicyRequest, "You must provide a DetachRolePolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DetachRolePolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DetachRolePolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DetachRolePolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DetachRolePolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10134,13 +10139,13 @@ end
 function M.GetPolicyAsync(GetPolicyRequest, cb)
 	assert(GetPolicyRequest, "You must provide a GetPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10166,13 +10171,13 @@ end
 function M.CreateSAMLProviderAsync(CreateSAMLProviderRequest, cb)
 	assert(CreateSAMLProviderRequest, "You must provide a CreateSAMLProviderRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateSAMLProvider",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateSAMLProvider",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateSAMLProviderRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateSAMLProviderRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10198,13 +10203,13 @@ end
 function M.ListOpenIDConnectProvidersAsync(ListOpenIDConnectProvidersRequest, cb)
 	assert(ListOpenIDConnectProvidersRequest, "You must provide a ListOpenIDConnectProvidersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListOpenIDConnectProviders",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListOpenIDConnectProviders",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListOpenIDConnectProvidersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListOpenIDConnectProvidersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10230,13 +10235,13 @@ end
 function M.DeleteAccountAliasAsync(DeleteAccountAliasRequest, cb)
 	assert(DeleteAccountAliasRequest, "You must provide a DeleteAccountAliasRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteAccountAlias",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteAccountAlias",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteAccountAliasRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteAccountAliasRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10262,13 +10267,13 @@ end
 function M.ListSigningCertificatesAsync(ListSigningCertificatesRequest, cb)
 	assert(ListSigningCertificatesRequest, "You must provide a ListSigningCertificatesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListSigningCertificates",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListSigningCertificates",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListSigningCertificatesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListSigningCertificatesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10294,13 +10299,13 @@ end
 function M.DeleteRoleAsync(DeleteRoleRequest, cb)
 	assert(DeleteRoleRequest, "You must provide a DeleteRoleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteRole",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteRole",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteRoleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteRoleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10326,13 +10331,13 @@ end
 function M.UpdateGroupAsync(UpdateGroupRequest, cb)
 	assert(UpdateGroupRequest, "You must provide a UpdateGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10358,13 +10363,13 @@ end
 function M.GetGroupAsync(GetGroupRequest, cb)
 	assert(GetGroupRequest, "You must provide a GetGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10390,13 +10395,13 @@ end
 function M.GetRolePolicyAsync(GetRolePolicyRequest, cb)
 	assert(GetRolePolicyRequest, "You must provide a GetRolePolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetRolePolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetRolePolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetRolePolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetRolePolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10422,13 +10427,13 @@ end
 function M.CreateUserAsync(CreateUserRequest, cb)
 	assert(CreateUserRequest, "You must provide a CreateUserRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateUser",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateUser",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateUserRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateUserRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10454,13 +10459,13 @@ end
 function M.AddUserToGroupAsync(AddUserToGroupRequest, cb)
 	assert(AddUserToGroupRequest, "You must provide a AddUserToGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AddUserToGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AddUserToGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddUserToGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddUserToGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10486,13 +10491,13 @@ end
 function M.RemoveRoleFromInstanceProfileAsync(RemoveRoleFromInstanceProfileRequest, cb)
 	assert(RemoveRoleFromInstanceProfileRequest, "You must provide a RemoveRoleFromInstanceProfileRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RemoveRoleFromInstanceProfile",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RemoveRoleFromInstanceProfile",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RemoveRoleFromInstanceProfileRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RemoveRoleFromInstanceProfileRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10518,13 +10523,13 @@ end
 function M.ListInstanceProfilesAsync(ListInstanceProfilesRequest, cb)
 	assert(ListInstanceProfilesRequest, "You must provide a ListInstanceProfilesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListInstanceProfiles",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListInstanceProfiles",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListInstanceProfilesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListInstanceProfilesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10550,13 +10555,13 @@ end
 function M.UpdateServiceSpecificCredentialAsync(UpdateServiceSpecificCredentialRequest, cb)
 	assert(UpdateServiceSpecificCredentialRequest, "You must provide a UpdateServiceSpecificCredentialRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateServiceSpecificCredential",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateServiceSpecificCredential",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateServiceSpecificCredentialRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateServiceSpecificCredentialRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10582,13 +10587,13 @@ end
 function M.ListAttachedUserPoliciesAsync(ListAttachedUserPoliciesRequest, cb)
 	assert(ListAttachedUserPoliciesRequest, "You must provide a ListAttachedUserPoliciesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListAttachedUserPolicies",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListAttachedUserPolicies",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListAttachedUserPoliciesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListAttachedUserPoliciesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10614,13 +10619,13 @@ end
 function M.CreatePolicyVersionAsync(CreatePolicyVersionRequest, cb)
 	assert(CreatePolicyVersionRequest, "You must provide a CreatePolicyVersionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreatePolicyVersion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreatePolicyVersion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreatePolicyVersionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreatePolicyVersionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10646,13 +10651,13 @@ end
 function M.ListServiceSpecificCredentialsAsync(ListServiceSpecificCredentialsRequest, cb)
 	assert(ListServiceSpecificCredentialsRequest, "You must provide a ListServiceSpecificCredentialsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListServiceSpecificCredentials",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListServiceSpecificCredentials",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListServiceSpecificCredentialsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListServiceSpecificCredentialsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10678,13 +10683,13 @@ end
 function M.AttachUserPolicyAsync(AttachUserPolicyRequest, cb)
 	assert(AttachUserPolicyRequest, "You must provide a AttachUserPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AttachUserPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AttachUserPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AttachUserPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AttachUserPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10710,13 +10715,13 @@ end
 function M.ListVirtualMFADevicesAsync(ListVirtualMFADevicesRequest, cb)
 	assert(ListVirtualMFADevicesRequest, "You must provide a ListVirtualMFADevicesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListVirtualMFADevices",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListVirtualMFADevices",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListVirtualMFADevicesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListVirtualMFADevicesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10742,13 +10747,13 @@ end
 function M.UpdateAssumeRolePolicyAsync(UpdateAssumeRolePolicyRequest, cb)
 	assert(UpdateAssumeRolePolicyRequest, "You must provide a UpdateAssumeRolePolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateAssumeRolePolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateAssumeRolePolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateAssumeRolePolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateAssumeRolePolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10774,13 +10779,13 @@ end
 function M.ListServerCertificatesAsync(ListServerCertificatesRequest, cb)
 	assert(ListServerCertificatesRequest, "You must provide a ListServerCertificatesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListServerCertificates",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListServerCertificates",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListServerCertificatesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListServerCertificatesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10806,13 +10811,13 @@ end
 function M.DeleteGroupAsync(DeleteGroupRequest, cb)
 	assert(DeleteGroupRequest, "You must provide a DeleteGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10838,13 +10843,13 @@ end
 function M.UpdateOpenIDConnectProviderThumbprintAsync(UpdateOpenIDConnectProviderThumbprintRequest, cb)
 	assert(UpdateOpenIDConnectProviderThumbprintRequest, "You must provide a UpdateOpenIDConnectProviderThumbprintRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateOpenIDConnectProviderThumbprint",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateOpenIDConnectProviderThumbprint",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateOpenIDConnectProviderThumbprintRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateOpenIDConnectProviderThumbprintRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10870,13 +10875,13 @@ end
 function M.CreateGroupAsync(CreateGroupRequest, cb)
 	assert(CreateGroupRequest, "You must provide a CreateGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10902,13 +10907,13 @@ end
 function M.DeletePolicyAsync(DeletePolicyRequest, cb)
 	assert(DeletePolicyRequest, "You must provide a DeletePolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeletePolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeletePolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeletePolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeletePolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10934,13 +10939,13 @@ end
 function M.DeleteUserPolicyAsync(DeleteUserPolicyRequest, cb)
 	assert(DeleteUserPolicyRequest, "You must provide a DeleteUserPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteUserPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteUserPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteUserPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteUserPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10966,13 +10971,13 @@ end
 function M.UpdateServerCertificateAsync(UpdateServerCertificateRequest, cb)
 	assert(UpdateServerCertificateRequest, "You must provide a UpdateServerCertificateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateServerCertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateServerCertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateServerCertificateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateServerCertificateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10998,13 +11003,13 @@ end
 function M.AddClientIDToOpenIDConnectProviderAsync(AddClientIDToOpenIDConnectProviderRequest, cb)
 	assert(AddClientIDToOpenIDConnectProviderRequest, "You must provide a AddClientIDToOpenIDConnectProviderRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AddClientIDToOpenIDConnectProvider",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AddClientIDToOpenIDConnectProvider",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddClientIDToOpenIDConnectProviderRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddClientIDToOpenIDConnectProviderRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11030,13 +11035,13 @@ end
 function M.DeleteVirtualMFADeviceAsync(DeleteVirtualMFADeviceRequest, cb)
 	assert(DeleteVirtualMFADeviceRequest, "You must provide a DeleteVirtualMFADeviceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteVirtualMFADevice",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteVirtualMFADevice",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteVirtualMFADeviceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteVirtualMFADeviceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11062,13 +11067,13 @@ end
 function M.SimulatePrincipalPolicyAsync(SimulatePrincipalPolicyRequest, cb)
 	assert(SimulatePrincipalPolicyRequest, "You must provide a SimulatePrincipalPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SimulatePrincipalPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SimulatePrincipalPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SimulatePrincipalPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SimulatePrincipalPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11094,13 +11099,13 @@ end
 function M.ListAccessKeysAsync(ListAccessKeysRequest, cb)
 	assert(ListAccessKeysRequest, "You must provide a ListAccessKeysRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListAccessKeys",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListAccessKeys",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListAccessKeysRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListAccessKeysRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11126,13 +11131,13 @@ end
 function M.GetSSHPublicKeyAsync(GetSSHPublicKeyRequest, cb)
 	assert(GetSSHPublicKeyRequest, "You must provide a GetSSHPublicKeyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetSSHPublicKey",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetSSHPublicKey",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetSSHPublicKeyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetSSHPublicKeyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11158,13 +11163,13 @@ end
 function M.ListSSHPublicKeysAsync(ListSSHPublicKeysRequest, cb)
 	assert(ListSSHPublicKeysRequest, "You must provide a ListSSHPublicKeysRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListSSHPublicKeys",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListSSHPublicKeys",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListSSHPublicKeysRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListSSHPublicKeysRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11190,13 +11195,13 @@ end
 function M.DeleteSigningCertificateAsync(DeleteSigningCertificateRequest, cb)
 	assert(DeleteSigningCertificateRequest, "You must provide a DeleteSigningCertificateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteSigningCertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteSigningCertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteSigningCertificateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteSigningCertificateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11222,13 +11227,13 @@ end
 function M.GetPolicyVersionAsync(GetPolicyVersionRequest, cb)
 	assert(GetPolicyVersionRequest, "You must provide a GetPolicyVersionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetPolicyVersion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetPolicyVersion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetPolicyVersionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetPolicyVersionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11254,13 +11259,13 @@ end
 function M.PutRolePolicyAsync(PutRolePolicyRequest, cb)
 	assert(PutRolePolicyRequest, "You must provide a PutRolePolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutRolePolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutRolePolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutRolePolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutRolePolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11286,13 +11291,13 @@ end
 function M.SetDefaultPolicyVersionAsync(SetDefaultPolicyVersionRequest, cb)
 	assert(SetDefaultPolicyVersionRequest, "You must provide a SetDefaultPolicyVersionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SetDefaultPolicyVersion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetDefaultPolicyVersion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetDefaultPolicyVersionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetDefaultPolicyVersionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11318,13 +11323,13 @@ end
 function M.GetAccessKeyLastUsedAsync(GetAccessKeyLastUsedRequest, cb)
 	assert(GetAccessKeyLastUsedRequest, "You must provide a GetAccessKeyLastUsedRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetAccessKeyLastUsed",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetAccessKeyLastUsed",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetAccessKeyLastUsedRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetAccessKeyLastUsedRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11348,13 +11353,13 @@ end
 -- @param cb Callback function accepting two args: response, error_message
 function M.DeleteAccountPasswordPolicyAsync(cb)
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteAccountPasswordPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteAccountPasswordPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", {}, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11379,13 +11384,13 @@ end
 function M.ListMFADevicesAsync(ListMFADevicesRequest, cb)
 	assert(ListMFADevicesRequest, "You must provide a ListMFADevicesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListMFADevices",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListMFADevices",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListMFADevicesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListMFADevicesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11411,13 +11416,13 @@ end
 function M.UpdateSigningCertificateAsync(UpdateSigningCertificateRequest, cb)
 	assert(UpdateSigningCertificateRequest, "You must provide a UpdateSigningCertificateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateSigningCertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateSigningCertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateSigningCertificateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateSigningCertificateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11443,13 +11448,13 @@ end
 function M.DetachGroupPolicyAsync(DetachGroupPolicyRequest, cb)
 	assert(DetachGroupPolicyRequest, "You must provide a DetachGroupPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DetachGroupPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DetachGroupPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DetachGroupPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DetachGroupPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11475,13 +11480,13 @@ end
 function M.UpdateSSHPublicKeyAsync(UpdateSSHPublicKeyRequest, cb)
 	assert(UpdateSSHPublicKeyRequest, "You must provide a UpdateSSHPublicKeyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateSSHPublicKey",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateSSHPublicKey",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateSSHPublicKeyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateSSHPublicKeyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11507,13 +11512,13 @@ end
 function M.GetInstanceProfileAsync(GetInstanceProfileRequest, cb)
 	assert(GetInstanceProfileRequest, "You must provide a GetInstanceProfileRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetInstanceProfile",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetInstanceProfile",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetInstanceProfileRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetInstanceProfileRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11539,13 +11544,13 @@ end
 function M.DeleteUserAsync(DeleteUserRequest, cb)
 	assert(DeleteUserRequest, "You must provide a DeleteUserRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteUser",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteUser",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteUserRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteUserRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11571,13 +11576,13 @@ end
 function M.GetOpenIDConnectProviderAsync(GetOpenIDConnectProviderRequest, cb)
 	assert(GetOpenIDConnectProviderRequest, "You must provide a GetOpenIDConnectProviderRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetOpenIDConnectProvider",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetOpenIDConnectProvider",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetOpenIDConnectProviderRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetOpenIDConnectProviderRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11603,13 +11608,13 @@ end
 function M.ListUsersAsync(ListUsersRequest, cb)
 	assert(ListUsersRequest, "You must provide a ListUsersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListUsers",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListUsers",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListUsersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListUsersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11635,13 +11640,13 @@ end
 function M.DeleteLoginProfileAsync(DeleteLoginProfileRequest, cb)
 	assert(DeleteLoginProfileRequest, "You must provide a DeleteLoginProfileRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteLoginProfile",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteLoginProfile",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteLoginProfileRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteLoginProfileRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11667,13 +11672,13 @@ end
 function M.ListPolicyVersionsAsync(ListPolicyVersionsRequest, cb)
 	assert(ListPolicyVersionsRequest, "You must provide a ListPolicyVersionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListPolicyVersions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListPolicyVersions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListPolicyVersionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListPolicyVersionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11699,13 +11704,13 @@ end
 function M.AttachGroupPolicyAsync(AttachGroupPolicyRequest, cb)
 	assert(AttachGroupPolicyRequest, "You must provide a AttachGroupPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AttachGroupPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AttachGroupPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AttachGroupPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AttachGroupPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11731,13 +11736,13 @@ end
 function M.DeleteServiceSpecificCredentialAsync(DeleteServiceSpecificCredentialRequest, cb)
 	assert(DeleteServiceSpecificCredentialRequest, "You must provide a DeleteServiceSpecificCredentialRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteServiceSpecificCredential",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteServiceSpecificCredential",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteServiceSpecificCredentialRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteServiceSpecificCredentialRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11763,13 +11768,13 @@ end
 function M.CreatePolicyAsync(CreatePolicyRequest, cb)
 	assert(CreatePolicyRequest, "You must provide a CreatePolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreatePolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreatePolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreatePolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreatePolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11795,13 +11800,13 @@ end
 function M.CreateOpenIDConnectProviderAsync(CreateOpenIDConnectProviderRequest, cb)
 	assert(CreateOpenIDConnectProviderRequest, "You must provide a CreateOpenIDConnectProviderRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateOpenIDConnectProvider",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateOpenIDConnectProvider",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateOpenIDConnectProviderRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateOpenIDConnectProviderRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11827,13 +11832,13 @@ end
 function M.DetachUserPolicyAsync(DetachUserPolicyRequest, cb)
 	assert(DetachUserPolicyRequest, "You must provide a DetachUserPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DetachUserPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DetachUserPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DetachUserPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DetachUserPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11859,13 +11864,13 @@ end
 function M.ListGroupsForUserAsync(ListGroupsForUserRequest, cb)
 	assert(ListGroupsForUserRequest, "You must provide a ListGroupsForUserRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListGroupsForUser",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListGroupsForUser",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListGroupsForUserRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListGroupsForUserRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11889,13 +11894,13 @@ end
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetCredentialReportAsync(cb)
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetCredentialReport",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetCredentialReport",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", {}, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11920,13 +11925,13 @@ end
 function M.CreateAccountAliasAsync(CreateAccountAliasRequest, cb)
 	assert(CreateAccountAliasRequest, "You must provide a CreateAccountAliasRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateAccountAlias",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateAccountAlias",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateAccountAliasRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateAccountAliasRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11952,13 +11957,13 @@ end
 function M.GetAccountAuthorizationDetailsAsync(GetAccountAuthorizationDetailsRequest, cb)
 	assert(GetAccountAuthorizationDetailsRequest, "You must provide a GetAccountAuthorizationDetailsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetAccountAuthorizationDetails",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetAccountAuthorizationDetails",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetAccountAuthorizationDetailsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetAccountAuthorizationDetailsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11984,13 +11989,13 @@ end
 function M.GetSAMLProviderAsync(GetSAMLProviderRequest, cb)
 	assert(GetSAMLProviderRequest, "You must provide a GetSAMLProviderRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetSAMLProvider",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetSAMLProvider",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetSAMLProviderRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetSAMLProviderRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12016,13 +12021,13 @@ end
 function M.CreateRoleAsync(CreateRoleRequest, cb)
 	assert(CreateRoleRequest, "You must provide a CreateRoleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateRole",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateRole",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateRoleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateRoleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12048,13 +12053,13 @@ end
 function M.ListAttachedRolePoliciesAsync(ListAttachedRolePoliciesRequest, cb)
 	assert(ListAttachedRolePoliciesRequest, "You must provide a ListAttachedRolePoliciesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListAttachedRolePolicies",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListAttachedRolePolicies",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListAttachedRolePoliciesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListAttachedRolePoliciesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12080,13 +12085,13 @@ end
 function M.EnableMFADeviceAsync(EnableMFADeviceRequest, cb)
 	assert(EnableMFADeviceRequest, "You must provide a EnableMFADeviceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".EnableMFADevice",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".EnableMFADevice",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", EnableMFADeviceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", EnableMFADeviceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12112,13 +12117,13 @@ end
 function M.DeleteSAMLProviderAsync(DeleteSAMLProviderRequest, cb)
 	assert(DeleteSAMLProviderRequest, "You must provide a DeleteSAMLProviderRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteSAMLProvider",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteSAMLProvider",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteSAMLProviderRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteSAMLProviderRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12144,13 +12149,13 @@ end
 function M.ListUserPoliciesAsync(ListUserPoliciesRequest, cb)
 	assert(ListUserPoliciesRequest, "You must provide a ListUserPoliciesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListUserPolicies",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListUserPolicies",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListUserPoliciesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListUserPoliciesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12176,13 +12181,13 @@ end
 function M.ListRolePoliciesAsync(ListRolePoliciesRequest, cb)
 	assert(ListRolePoliciesRequest, "You must provide a ListRolePoliciesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListRolePolicies",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListRolePolicies",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListRolePoliciesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListRolePoliciesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12208,13 +12213,13 @@ end
 function M.PutGroupPolicyAsync(PutGroupPolicyRequest, cb)
 	assert(PutGroupPolicyRequest, "You must provide a PutGroupPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutGroupPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutGroupPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutGroupPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutGroupPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12240,13 +12245,13 @@ end
 function M.UploadSigningCertificateAsync(UploadSigningCertificateRequest, cb)
 	assert(UploadSigningCertificateRequest, "You must provide a UploadSigningCertificateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UploadSigningCertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UploadSigningCertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UploadSigningCertificateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UploadSigningCertificateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12272,13 +12277,13 @@ end
 function M.ListInstanceProfilesForRoleAsync(ListInstanceProfilesForRoleRequest, cb)
 	assert(ListInstanceProfilesForRoleRequest, "You must provide a ListInstanceProfilesForRoleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListInstanceProfilesForRole",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListInstanceProfilesForRole",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListInstanceProfilesForRoleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListInstanceProfilesForRoleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12302,13 +12307,13 @@ end
 -- @param cb Callback function accepting two args: response, error_message
 function M.GenerateCredentialReportAsync(cb)
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GenerateCredentialReport",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GenerateCredentialReport",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", {}, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12333,13 +12338,13 @@ end
 function M.ChangePasswordAsync(ChangePasswordRequest, cb)
 	assert(ChangePasswordRequest, "You must provide a ChangePasswordRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ChangePassword",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ChangePassword",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ChangePasswordRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ChangePasswordRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12365,13 +12370,13 @@ end
 function M.ListEntitiesForPolicyAsync(ListEntitiesForPolicyRequest, cb)
 	assert(ListEntitiesForPolicyRequest, "You must provide a ListEntitiesForPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListEntitiesForPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListEntitiesForPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListEntitiesForPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListEntitiesForPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12397,13 +12402,13 @@ end
 function M.GetLoginProfileAsync(GetLoginProfileRequest, cb)
 	assert(GetLoginProfileRequest, "You must provide a GetLoginProfileRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetLoginProfile",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetLoginProfile",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetLoginProfileRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetLoginProfileRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12429,13 +12434,13 @@ end
 function M.CreateVirtualMFADeviceAsync(CreateVirtualMFADeviceRequest, cb)
 	assert(CreateVirtualMFADeviceRequest, "You must provide a CreateVirtualMFADeviceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateVirtualMFADevice",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateVirtualMFADevice",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateVirtualMFADeviceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateVirtualMFADeviceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12461,13 +12466,13 @@ end
 function M.GetServerCertificateAsync(GetServerCertificateRequest, cb)
 	assert(GetServerCertificateRequest, "You must provide a GetServerCertificateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetServerCertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetServerCertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetServerCertificateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetServerCertificateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12493,13 +12498,13 @@ end
 function M.AttachRolePolicyAsync(AttachRolePolicyRequest, cb)
 	assert(AttachRolePolicyRequest, "You must provide a AttachRolePolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AttachRolePolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AttachRolePolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AttachRolePolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AttachRolePolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12525,13 +12530,13 @@ end
 function M.RemoveClientIDFromOpenIDConnectProviderAsync(RemoveClientIDFromOpenIDConnectProviderRequest, cb)
 	assert(RemoveClientIDFromOpenIDConnectProviderRequest, "You must provide a RemoveClientIDFromOpenIDConnectProviderRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RemoveClientIDFromOpenIDConnectProvider",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RemoveClientIDFromOpenIDConnectProvider",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RemoveClientIDFromOpenIDConnectProviderRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RemoveClientIDFromOpenIDConnectProviderRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12557,13 +12562,13 @@ end
 function M.UpdateAccountPasswordPolicyAsync(UpdateAccountPasswordPolicyRequest, cb)
 	assert(UpdateAccountPasswordPolicyRequest, "You must provide a UpdateAccountPasswordPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateAccountPasswordPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateAccountPasswordPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateAccountPasswordPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateAccountPasswordPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12589,13 +12594,13 @@ end
 function M.GetRoleAsync(GetRoleRequest, cb)
 	assert(GetRoleRequest, "You must provide a GetRoleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetRole",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetRole",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetRoleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetRoleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12621,13 +12626,13 @@ end
 function M.DeletePolicyVersionAsync(DeletePolicyVersionRequest, cb)
 	assert(DeletePolicyVersionRequest, "You must provide a DeletePolicyVersionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeletePolicyVersion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeletePolicyVersion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeletePolicyVersionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeletePolicyVersionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12653,13 +12658,13 @@ end
 function M.ListPoliciesAsync(ListPoliciesRequest, cb)
 	assert(ListPoliciesRequest, "You must provide a ListPoliciesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListPolicies",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListPolicies",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListPoliciesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListPoliciesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12685,13 +12690,13 @@ end
 function M.PutUserPolicyAsync(PutUserPolicyRequest, cb)
 	assert(PutUserPolicyRequest, "You must provide a PutUserPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutUserPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutUserPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutUserPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutUserPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12717,13 +12722,13 @@ end
 function M.ResyncMFADeviceAsync(ResyncMFADeviceRequest, cb)
 	assert(ResyncMFADeviceRequest, "You must provide a ResyncMFADeviceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ResyncMFADevice",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ResyncMFADevice",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ResyncMFADeviceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ResyncMFADeviceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12749,13 +12754,13 @@ end
 function M.DeleteServerCertificateAsync(DeleteServerCertificateRequest, cb)
 	assert(DeleteServerCertificateRequest, "You must provide a DeleteServerCertificateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteServerCertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteServerCertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteServerCertificateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteServerCertificateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12779,13 +12784,13 @@ end
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetAccountPasswordPolicyAsync(cb)
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetAccountPasswordPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetAccountPasswordPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", {}, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12810,13 +12815,13 @@ end
 function M.CreateInstanceProfileAsync(CreateInstanceProfileRequest, cb)
 	assert(CreateInstanceProfileRequest, "You must provide a CreateInstanceProfileRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateInstanceProfile",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateInstanceProfile",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateInstanceProfileRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateInstanceProfileRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12842,13 +12847,13 @@ end
 function M.DeleteOpenIDConnectProviderAsync(DeleteOpenIDConnectProviderRequest, cb)
 	assert(DeleteOpenIDConnectProviderRequest, "You must provide a DeleteOpenIDConnectProviderRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteOpenIDConnectProvider",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteOpenIDConnectProvider",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteOpenIDConnectProviderRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteOpenIDConnectProviderRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12874,13 +12879,13 @@ end
 function M.DeleteGroupPolicyAsync(DeleteGroupPolicyRequest, cb)
 	assert(DeleteGroupPolicyRequest, "You must provide a DeleteGroupPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteGroupPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteGroupPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteGroupPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteGroupPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

@@ -1221,12 +1221,12 @@ function M.AttributeNameList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -1250,8 +1250,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -1264,13 +1269,13 @@ end
 function M.DeleteAttributesAsync(DeleteAttributesRequest, cb)
 	assert(DeleteAttributesRequest, "You must provide a DeleteAttributesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteAttributesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteAttributesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1296,13 +1301,13 @@ end
 function M.BatchPutAttributesAsync(BatchPutAttributesRequest, cb)
 	assert(BatchPutAttributesRequest, "You must provide a BatchPutAttributesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".BatchPutAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".BatchPutAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", BatchPutAttributesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", BatchPutAttributesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1328,13 +1333,13 @@ end
 function M.PutAttributesAsync(PutAttributesRequest, cb)
 	assert(PutAttributesRequest, "You must provide a PutAttributesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutAttributesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutAttributesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1360,13 +1365,13 @@ end
 function M.ListDomainsAsync(ListDomainsRequest, cb)
 	assert(ListDomainsRequest, "You must provide a ListDomainsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListDomains",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListDomains",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListDomainsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListDomainsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1392,13 +1397,13 @@ end
 function M.DomainMetadataAsync(DomainMetadataRequest, cb)
 	assert(DomainMetadataRequest, "You must provide a DomainMetadataRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DomainMetadata",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DomainMetadata",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DomainMetadataRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DomainMetadataRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1424,13 +1429,13 @@ end
 function M.BatchDeleteAttributesAsync(BatchDeleteAttributesRequest, cb)
 	assert(BatchDeleteAttributesRequest, "You must provide a BatchDeleteAttributesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".BatchDeleteAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".BatchDeleteAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", BatchDeleteAttributesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", BatchDeleteAttributesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1456,13 +1461,13 @@ end
 function M.GetAttributesAsync(GetAttributesRequest, cb)
 	assert(GetAttributesRequest, "You must provide a GetAttributesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetAttributesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetAttributesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1488,13 +1493,13 @@ end
 function M.DeleteDomainAsync(DeleteDomainRequest, cb)
 	assert(DeleteDomainRequest, "You must provide a DeleteDomainRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteDomain",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDomain",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteDomainRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteDomainRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1520,13 +1525,13 @@ end
 function M.CreateDomainAsync(CreateDomainRequest, cb)
 	assert(CreateDomainRequest, "You must provide a CreateDomainRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateDomain",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateDomain",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateDomainRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateDomainRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1552,13 +1557,13 @@ end
 function M.SelectAsync(SelectRequest, cb)
 	assert(SelectRequest, "You must provide a SelectRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".Select",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".Select",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SelectRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SelectRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

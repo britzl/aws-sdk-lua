@@ -1798,12 +1798,12 @@ function M.TagList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -1827,8 +1827,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -1841,13 +1846,13 @@ end
 function M.GetRecordsAsync(GetRecordsInput, cb)
 	assert(GetRecordsInput, "You must provide a GetRecordsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.GetRecords",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.GetRecords",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetRecordsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetRecordsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1873,13 +1878,13 @@ end
 function M.IncreaseStreamRetentionPeriodAsync(IncreaseStreamRetentionPeriodInput, cb)
 	assert(IncreaseStreamRetentionPeriodInput, "You must provide a IncreaseStreamRetentionPeriodInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.IncreaseStreamRetentionPeriod",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.IncreaseStreamRetentionPeriod",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", IncreaseStreamRetentionPeriodInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", IncreaseStreamRetentionPeriodInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1905,13 +1910,13 @@ end
 function M.DescribeLimitsAsync(DescribeLimitsInput, cb)
 	assert(DescribeLimitsInput, "You must provide a DescribeLimitsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.DescribeLimits",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.DescribeLimits",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeLimitsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeLimitsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1937,13 +1942,13 @@ end
 function M.ListTagsForStreamAsync(ListTagsForStreamInput, cb)
 	assert(ListTagsForStreamInput, "You must provide a ListTagsForStreamInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.ListTagsForStream",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.ListTagsForStream",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListTagsForStreamInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListTagsForStreamInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1969,13 +1974,13 @@ end
 function M.PutRecordsAsync(PutRecordsInput, cb)
 	assert(PutRecordsInput, "You must provide a PutRecordsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.PutRecords",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.PutRecords",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutRecordsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutRecordsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2001,13 +2006,13 @@ end
 function M.GetShardIteratorAsync(GetShardIteratorInput, cb)
 	assert(GetShardIteratorInput, "You must provide a GetShardIteratorInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.GetShardIterator",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.GetShardIterator",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetShardIteratorInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetShardIteratorInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2033,13 +2038,13 @@ end
 function M.DeleteStreamAsync(DeleteStreamInput, cb)
 	assert(DeleteStreamInput, "You must provide a DeleteStreamInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.DeleteStream",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.DeleteStream",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteStreamInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteStreamInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2065,13 +2070,13 @@ end
 function M.AddTagsToStreamAsync(AddTagsToStreamInput, cb)
 	assert(AddTagsToStreamInput, "You must provide a AddTagsToStreamInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.AddTagsToStream",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.AddTagsToStream",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddTagsToStreamInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddTagsToStreamInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2097,13 +2102,13 @@ end
 function M.RemoveTagsFromStreamAsync(RemoveTagsFromStreamInput, cb)
 	assert(RemoveTagsFromStreamInput, "You must provide a RemoveTagsFromStreamInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.RemoveTagsFromStream",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.RemoveTagsFromStream",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RemoveTagsFromStreamInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RemoveTagsFromStreamInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2129,13 +2134,13 @@ end
 function M.DecreaseStreamRetentionPeriodAsync(DecreaseStreamRetentionPeriodInput, cb)
 	assert(DecreaseStreamRetentionPeriodInput, "You must provide a DecreaseStreamRetentionPeriodInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.DecreaseStreamRetentionPeriod",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.DecreaseStreamRetentionPeriod",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DecreaseStreamRetentionPeriodInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DecreaseStreamRetentionPeriodInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2161,13 +2166,13 @@ end
 function M.DisableEnhancedMonitoringAsync(DisableEnhancedMonitoringInput, cb)
 	assert(DisableEnhancedMonitoringInput, "You must provide a DisableEnhancedMonitoringInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.DisableEnhancedMonitoring",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.DisableEnhancedMonitoring",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisableEnhancedMonitoringInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisableEnhancedMonitoringInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2193,13 +2198,13 @@ end
 function M.SplitShardAsync(SplitShardInput, cb)
 	assert(SplitShardInput, "You must provide a SplitShardInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.SplitShard",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.SplitShard",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SplitShardInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SplitShardInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2225,13 +2230,13 @@ end
 function M.DescribeStreamAsync(DescribeStreamInput, cb)
 	assert(DescribeStreamInput, "You must provide a DescribeStreamInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.DescribeStream",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.DescribeStream",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeStreamInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeStreamInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2257,13 +2262,13 @@ end
 function M.CreateStreamAsync(CreateStreamInput, cb)
 	assert(CreateStreamInput, "You must provide a CreateStreamInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.CreateStream",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.CreateStream",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateStreamInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateStreamInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2289,13 +2294,13 @@ end
 function M.PutRecordAsync(PutRecordInput, cb)
 	assert(PutRecordInput, "You must provide a PutRecordInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.PutRecord",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.PutRecord",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutRecordInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutRecordInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2321,13 +2326,13 @@ end
 function M.ListStreamsAsync(ListStreamsInput, cb)
 	assert(ListStreamsInput, "You must provide a ListStreamsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.ListStreams",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.ListStreams",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListStreamsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListStreamsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2353,13 +2358,13 @@ end
 function M.MergeShardsAsync(MergeShardsInput, cb)
 	assert(MergeShardsInput, "You must provide a MergeShardsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.MergeShards",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.MergeShards",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", MergeShardsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", MergeShardsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2385,13 +2390,13 @@ end
 function M.UpdateShardCountAsync(UpdateShardCountInput, cb)
 	assert(UpdateShardCountInput, "You must provide a UpdateShardCountInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.UpdateShardCount",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.UpdateShardCount",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateShardCountInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateShardCountInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2417,13 +2422,13 @@ end
 function M.EnableEnhancedMonitoringAsync(EnableEnhancedMonitoringInput, cb)
 	assert(EnableEnhancedMonitoringInput, "You must provide a EnableEnhancedMonitoringInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.EnableEnhancedMonitoring",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.EnableEnhancedMonitoring",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", EnableEnhancedMonitoringInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", EnableEnhancedMonitoringInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end

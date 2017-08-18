@@ -3524,12 +3524,12 @@ function M.AccessControls(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -3553,8 +3553,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -3567,13 +3572,13 @@ end
 function M.ReadPresetAsync(ReadPresetRequest, cb)
 	assert(ReadPresetRequest, "You must provide a ReadPresetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ReadPreset",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ReadPreset",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2012-09-25/presets/{Id}", ReadPresetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2012-09-25/presets/{Id}", ReadPresetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3599,13 +3604,13 @@ end
 function M.CreateJobAsync(CreateJobRequest, cb)
 	assert(CreateJobRequest, "You must provide a CreateJobRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateJob",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateJob",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2012-09-25/jobs", CreateJobRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2012-09-25/jobs", CreateJobRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3631,13 +3636,13 @@ end
 function M.CreatePresetAsync(CreatePresetRequest, cb)
 	assert(CreatePresetRequest, "You must provide a CreatePresetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreatePreset",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreatePreset",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2012-09-25/presets", CreatePresetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2012-09-25/presets", CreatePresetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3663,13 +3668,13 @@ end
 function M.UpdatePipelineNotificationsAsync(UpdatePipelineNotificationsRequest, cb)
 	assert(UpdatePipelineNotificationsRequest, "You must provide a UpdatePipelineNotificationsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdatePipelineNotifications",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdatePipelineNotifications",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2012-09-25/pipelines/{Id}/notifications", UpdatePipelineNotificationsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2012-09-25/pipelines/{Id}/notifications", UpdatePipelineNotificationsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3695,13 +3700,13 @@ end
 function M.ListPipelinesAsync(ListPipelinesRequest, cb)
 	assert(ListPipelinesRequest, "You must provide a ListPipelinesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListPipelines",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListPipelines",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2012-09-25/pipelines", ListPipelinesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2012-09-25/pipelines", ListPipelinesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3727,13 +3732,13 @@ end
 function M.DeletePipelineAsync(DeletePipelineRequest, cb)
 	assert(DeletePipelineRequest, "You must provide a DeletePipelineRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeletePipeline",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeletePipeline",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/2012-09-25/pipelines/{Id}", DeletePipelineRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2012-09-25/pipelines/{Id}", DeletePipelineRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3759,13 +3764,13 @@ end
 function M.ReadJobAsync(ReadJobRequest, cb)
 	assert(ReadJobRequest, "You must provide a ReadJobRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ReadJob",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ReadJob",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2012-09-25/jobs/{Id}", ReadJobRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2012-09-25/jobs/{Id}", ReadJobRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3791,13 +3796,13 @@ end
 function M.UpdatePipelineAsync(UpdatePipelineRequest, cb)
 	assert(UpdatePipelineRequest, "You must provide a UpdatePipelineRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdatePipeline",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdatePipeline",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/2012-09-25/pipelines/{Id}", UpdatePipelineRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2012-09-25/pipelines/{Id}", UpdatePipelineRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3823,13 +3828,13 @@ end
 function M.ListPresetsAsync(ListPresetsRequest, cb)
 	assert(ListPresetsRequest, "You must provide a ListPresetsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListPresets",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListPresets",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2012-09-25/presets", ListPresetsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2012-09-25/presets", ListPresetsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3855,13 +3860,13 @@ end
 function M.DeletePresetAsync(DeletePresetRequest, cb)
 	assert(DeletePresetRequest, "You must provide a DeletePresetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeletePreset",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeletePreset",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/2012-09-25/presets/{Id}", DeletePresetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2012-09-25/presets/{Id}", DeletePresetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3887,13 +3892,13 @@ end
 function M.ListJobsByPipelineAsync(ListJobsByPipelineRequest, cb)
 	assert(ListJobsByPipelineRequest, "You must provide a ListJobsByPipelineRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListJobsByPipeline",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListJobsByPipeline",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2012-09-25/jobsByPipeline/{PipelineId}", ListJobsByPipelineRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2012-09-25/jobsByPipeline/{PipelineId}", ListJobsByPipelineRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3919,13 +3924,13 @@ end
 function M.CancelJobAsync(CancelJobRequest, cb)
 	assert(CancelJobRequest, "You must provide a CancelJobRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CancelJob",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CancelJob",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/2012-09-25/jobs/{Id}", CancelJobRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2012-09-25/jobs/{Id}", CancelJobRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3951,13 +3956,13 @@ end
 function M.UpdatePipelineStatusAsync(UpdatePipelineStatusRequest, cb)
 	assert(UpdatePipelineStatusRequest, "You must provide a UpdatePipelineStatusRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdatePipelineStatus",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdatePipelineStatus",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2012-09-25/pipelines/{Id}/status", UpdatePipelineStatusRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2012-09-25/pipelines/{Id}/status", UpdatePipelineStatusRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3983,13 +3988,13 @@ end
 function M.CreatePipelineAsync(CreatePipelineRequest, cb)
 	assert(CreatePipelineRequest, "You must provide a CreatePipelineRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreatePipeline",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreatePipeline",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2012-09-25/pipelines", CreatePipelineRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2012-09-25/pipelines", CreatePipelineRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4015,13 +4020,13 @@ end
 function M.ReadPipelineAsync(ReadPipelineRequest, cb)
 	assert(ReadPipelineRequest, "You must provide a ReadPipelineRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ReadPipeline",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ReadPipeline",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2012-09-25/pipelines/{Id}", ReadPipelineRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2012-09-25/pipelines/{Id}", ReadPipelineRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4047,13 +4052,13 @@ end
 function M.ListJobsByStatusAsync(ListJobsByStatusRequest, cb)
 	assert(ListJobsByStatusRequest, "You must provide a ListJobsByStatusRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListJobsByStatus",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListJobsByStatus",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2012-09-25/jobsByStatus/{Status}", ListJobsByStatusRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2012-09-25/jobsByStatus/{Status}", ListJobsByStatusRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

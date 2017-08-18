@@ -1196,12 +1196,12 @@ function M.dateType(timestamp)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -1225,8 +1225,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -1239,13 +1244,13 @@ end
 function M.GetFederationTokenAsync(GetFederationTokenRequest, cb)
 	assert(GetFederationTokenRequest, "You must provide a GetFederationTokenRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetFederationToken",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetFederationToken",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetFederationTokenRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetFederationTokenRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1271,13 +1276,13 @@ end
 function M.AssumeRoleAsync(AssumeRoleRequest, cb)
 	assert(AssumeRoleRequest, "You must provide a AssumeRoleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AssumeRole",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AssumeRole",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AssumeRoleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AssumeRoleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1303,13 +1308,13 @@ end
 function M.DecodeAuthorizationMessageAsync(DecodeAuthorizationMessageRequest, cb)
 	assert(DecodeAuthorizationMessageRequest, "You must provide a DecodeAuthorizationMessageRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DecodeAuthorizationMessage",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DecodeAuthorizationMessage",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DecodeAuthorizationMessageRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DecodeAuthorizationMessageRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1335,13 +1340,13 @@ end
 function M.AssumeRoleWithWebIdentityAsync(AssumeRoleWithWebIdentityRequest, cb)
 	assert(AssumeRoleWithWebIdentityRequest, "You must provide a AssumeRoleWithWebIdentityRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AssumeRoleWithWebIdentity",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AssumeRoleWithWebIdentity",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AssumeRoleWithWebIdentityRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AssumeRoleWithWebIdentityRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1367,13 +1372,13 @@ end
 function M.GetSessionTokenAsync(GetSessionTokenRequest, cb)
 	assert(GetSessionTokenRequest, "You must provide a GetSessionTokenRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetSessionToken",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetSessionToken",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetSessionTokenRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetSessionTokenRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1399,13 +1404,13 @@ end
 function M.GetCallerIdentityAsync(GetCallerIdentityRequest, cb)
 	assert(GetCallerIdentityRequest, "You must provide a GetCallerIdentityRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetCallerIdentity",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetCallerIdentity",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetCallerIdentityRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetCallerIdentityRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1431,13 +1436,13 @@ end
 function M.AssumeRoleWithSAMLAsync(AssumeRoleWithSAMLRequest, cb)
 	assert(AssumeRoleWithSAMLRequest, "You must provide a AssumeRoleWithSAMLRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AssumeRoleWithSAML",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AssumeRoleWithSAML",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AssumeRoleWithSAMLRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AssumeRoleWithSAMLRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

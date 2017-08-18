@@ -1705,12 +1705,12 @@ function M.ResourceList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -1734,8 +1734,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -1748,13 +1753,13 @@ end
 function M.ListMetricsAsync(ListMetricsInput, cb)
 	assert(ListMetricsInput, "You must provide a ListMetricsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListMetrics",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListMetrics",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListMetricsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListMetricsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1780,13 +1785,13 @@ end
 function M.EnableAlarmActionsAsync(EnableAlarmActionsInput, cb)
 	assert(EnableAlarmActionsInput, "You must provide a EnableAlarmActionsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".EnableAlarmActions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".EnableAlarmActions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", EnableAlarmActionsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", EnableAlarmActionsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1812,13 +1817,13 @@ end
 function M.DeleteAlarmsAsync(DeleteAlarmsInput, cb)
 	assert(DeleteAlarmsInput, "You must provide a DeleteAlarmsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteAlarms",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteAlarms",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteAlarmsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteAlarmsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1844,13 +1849,13 @@ end
 function M.PutMetricAlarmAsync(PutMetricAlarmInput, cb)
 	assert(PutMetricAlarmInput, "You must provide a PutMetricAlarmInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutMetricAlarm",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutMetricAlarm",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutMetricAlarmInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutMetricAlarmInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1876,13 +1881,13 @@ end
 function M.GetMetricStatisticsAsync(GetMetricStatisticsInput, cb)
 	assert(GetMetricStatisticsInput, "You must provide a GetMetricStatisticsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetMetricStatistics",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetMetricStatistics",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetMetricStatisticsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetMetricStatisticsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1908,13 +1913,13 @@ end
 function M.DisableAlarmActionsAsync(DisableAlarmActionsInput, cb)
 	assert(DisableAlarmActionsInput, "You must provide a DisableAlarmActionsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DisableAlarmActions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DisableAlarmActions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisableAlarmActionsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisableAlarmActionsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1940,13 +1945,13 @@ end
 function M.SetAlarmStateAsync(SetAlarmStateInput, cb)
 	assert(SetAlarmStateInput, "You must provide a SetAlarmStateInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SetAlarmState",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetAlarmState",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetAlarmStateInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetAlarmStateInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1972,13 +1977,13 @@ end
 function M.PutMetricDataAsync(PutMetricDataInput, cb)
 	assert(PutMetricDataInput, "You must provide a PutMetricDataInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutMetricData",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutMetricData",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutMetricDataInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutMetricDataInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2004,13 +2009,13 @@ end
 function M.DescribeAlarmsAsync(DescribeAlarmsInput, cb)
 	assert(DescribeAlarmsInput, "You must provide a DescribeAlarmsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeAlarms",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAlarms",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeAlarmsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeAlarmsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2036,13 +2041,13 @@ end
 function M.DescribeAlarmsForMetricAsync(DescribeAlarmsForMetricInput, cb)
 	assert(DescribeAlarmsForMetricInput, "You must provide a DescribeAlarmsForMetricInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeAlarmsForMetric",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAlarmsForMetric",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeAlarmsForMetricInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeAlarmsForMetricInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2068,13 +2073,13 @@ end
 function M.DescribeAlarmHistoryAsync(DescribeAlarmHistoryInput, cb)
 	assert(DescribeAlarmHistoryInput, "You must provide a DescribeAlarmHistoryInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeAlarmHistory",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAlarmHistory",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeAlarmHistoryInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeAlarmHistoryInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end

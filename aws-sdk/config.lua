@@ -3556,12 +3556,12 @@ function M.ConfigurationRecorderNameList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -3585,8 +3585,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -3599,13 +3604,13 @@ end
 function M.StopConfigurationRecorderAsync(StopConfigurationRecorderRequest, cb)
 	assert(StopConfigurationRecorderRequest, "You must provide a StopConfigurationRecorderRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StarlingDoveService.StopConfigurationRecorder",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.StopConfigurationRecorder",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StopConfigurationRecorderRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StopConfigurationRecorderRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3631,13 +3636,13 @@ end
 function M.GetComplianceDetailsByResourceAsync(GetComplianceDetailsByResourceRequest, cb)
 	assert(GetComplianceDetailsByResourceRequest, "You must provide a GetComplianceDetailsByResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StarlingDoveService.GetComplianceDetailsByResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.GetComplianceDetailsByResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetComplianceDetailsByResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetComplianceDetailsByResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3663,13 +3668,13 @@ end
 function M.ListDiscoveredResourcesAsync(ListDiscoveredResourcesRequest, cb)
 	assert(ListDiscoveredResourcesRequest, "You must provide a ListDiscoveredResourcesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StarlingDoveService.ListDiscoveredResources",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.ListDiscoveredResources",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListDiscoveredResourcesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListDiscoveredResourcesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3695,13 +3700,13 @@ end
 function M.DeleteDeliveryChannelAsync(DeleteDeliveryChannelRequest, cb)
 	assert(DeleteDeliveryChannelRequest, "You must provide a DeleteDeliveryChannelRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DeleteDeliveryChannel",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DeleteDeliveryChannel",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteDeliveryChannelRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteDeliveryChannelRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3727,13 +3732,13 @@ end
 function M.PutEvaluationsAsync(PutEvaluationsRequest, cb)
 	assert(PutEvaluationsRequest, "You must provide a PutEvaluationsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StarlingDoveService.PutEvaluations",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.PutEvaluations",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutEvaluationsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutEvaluationsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3759,13 +3764,13 @@ end
 function M.DeleteConfigRuleAsync(DeleteConfigRuleRequest, cb)
 	assert(DeleteConfigRuleRequest, "You must provide a DeleteConfigRuleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DeleteConfigRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DeleteConfigRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteConfigRuleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteConfigRuleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3791,13 +3796,13 @@ end
 function M.DescribeConfigurationRecordersAsync(DescribeConfigurationRecordersRequest, cb)
 	assert(DescribeConfigurationRecordersRequest, "You must provide a DescribeConfigurationRecordersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DescribeConfigurationRecorders",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DescribeConfigurationRecorders",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeConfigurationRecordersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeConfigurationRecordersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3823,13 +3828,13 @@ end
 function M.PutConfigurationRecorderAsync(PutConfigurationRecorderRequest, cb)
 	assert(PutConfigurationRecorderRequest, "You must provide a PutConfigurationRecorderRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StarlingDoveService.PutConfigurationRecorder",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.PutConfigurationRecorder",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutConfigurationRecorderRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutConfigurationRecorderRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3855,13 +3860,13 @@ end
 function M.DescribeConfigurationRecorderStatusAsync(DescribeConfigurationRecorderStatusRequest, cb)
 	assert(DescribeConfigurationRecorderStatusRequest, "You must provide a DescribeConfigurationRecorderStatusRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DescribeConfigurationRecorderStatus",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DescribeConfigurationRecorderStatus",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeConfigurationRecorderStatusRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeConfigurationRecorderStatusRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3887,13 +3892,13 @@ end
 function M.GetComplianceDetailsByConfigRuleAsync(GetComplianceDetailsByConfigRuleRequest, cb)
 	assert(GetComplianceDetailsByConfigRuleRequest, "You must provide a GetComplianceDetailsByConfigRuleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StarlingDoveService.GetComplianceDetailsByConfigRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.GetComplianceDetailsByConfigRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetComplianceDetailsByConfigRuleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetComplianceDetailsByConfigRuleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3919,13 +3924,13 @@ end
 function M.DescribeDeliveryChannelStatusAsync(DescribeDeliveryChannelStatusRequest, cb)
 	assert(DescribeDeliveryChannelStatusRequest, "You must provide a DescribeDeliveryChannelStatusRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DescribeDeliveryChannelStatus",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DescribeDeliveryChannelStatus",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeDeliveryChannelStatusRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeDeliveryChannelStatusRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3951,13 +3956,13 @@ end
 function M.DeliverConfigSnapshotAsync(DeliverConfigSnapshotRequest, cb)
 	assert(DeliverConfigSnapshotRequest, "You must provide a DeliverConfigSnapshotRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DeliverConfigSnapshot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DeliverConfigSnapshot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeliverConfigSnapshotRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeliverConfigSnapshotRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3983,13 +3988,13 @@ end
 function M.StartConfigRulesEvaluationAsync(StartConfigRulesEvaluationRequest, cb)
 	assert(StartConfigRulesEvaluationRequest, "You must provide a StartConfigRulesEvaluationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StarlingDoveService.StartConfigRulesEvaluation",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.StartConfigRulesEvaluation",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StartConfigRulesEvaluationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StartConfigRulesEvaluationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4013,13 +4018,13 @@ end
 -- @param cb Callback function accepting two args: response, error_message
 function M.GetComplianceSummaryByConfigRuleAsync(cb)
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StarlingDoveService.GetComplianceSummaryByConfigRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.GetComplianceSummaryByConfigRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", {}, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4044,13 +4049,13 @@ end
 function M.StartConfigurationRecorderAsync(StartConfigurationRecorderRequest, cb)
 	assert(StartConfigurationRecorderRequest, "You must provide a StartConfigurationRecorderRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StarlingDoveService.StartConfigurationRecorder",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.StartConfigurationRecorder",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StartConfigurationRecorderRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StartConfigurationRecorderRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4076,13 +4081,13 @@ end
 function M.DescribeComplianceByResourceAsync(DescribeComplianceByResourceRequest, cb)
 	assert(DescribeComplianceByResourceRequest, "You must provide a DescribeComplianceByResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DescribeComplianceByResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DescribeComplianceByResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeComplianceByResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeComplianceByResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4108,13 +4113,13 @@ end
 function M.GetResourceConfigHistoryAsync(GetResourceConfigHistoryRequest, cb)
 	assert(GetResourceConfigHistoryRequest, "You must provide a GetResourceConfigHistoryRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StarlingDoveService.GetResourceConfigHistory",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.GetResourceConfigHistory",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetResourceConfigHistoryRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetResourceConfigHistoryRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4140,13 +4145,13 @@ end
 function M.DescribeConfigRuleEvaluationStatusAsync(DescribeConfigRuleEvaluationStatusRequest, cb)
 	assert(DescribeConfigRuleEvaluationStatusRequest, "You must provide a DescribeConfigRuleEvaluationStatusRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DescribeConfigRuleEvaluationStatus",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DescribeConfigRuleEvaluationStatus",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeConfigRuleEvaluationStatusRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeConfigRuleEvaluationStatusRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4172,13 +4177,13 @@ end
 function M.DescribeDeliveryChannelsAsync(DescribeDeliveryChannelsRequest, cb)
 	assert(DescribeDeliveryChannelsRequest, "You must provide a DescribeDeliveryChannelsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DescribeDeliveryChannels",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DescribeDeliveryChannels",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeDeliveryChannelsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeDeliveryChannelsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4204,13 +4209,13 @@ end
 function M.GetComplianceSummaryByResourceTypeAsync(GetComplianceSummaryByResourceTypeRequest, cb)
 	assert(GetComplianceSummaryByResourceTypeRequest, "You must provide a GetComplianceSummaryByResourceTypeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StarlingDoveService.GetComplianceSummaryByResourceType",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.GetComplianceSummaryByResourceType",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetComplianceSummaryByResourceTypeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetComplianceSummaryByResourceTypeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4236,13 +4241,13 @@ end
 function M.DescribeConfigRulesAsync(DescribeConfigRulesRequest, cb)
 	assert(DescribeConfigRulesRequest, "You must provide a DescribeConfigRulesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DescribeConfigRules",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DescribeConfigRules",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeConfigRulesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeConfigRulesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4268,13 +4273,13 @@ end
 function M.PutConfigRuleAsync(PutConfigRuleRequest, cb)
 	assert(PutConfigRuleRequest, "You must provide a PutConfigRuleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StarlingDoveService.PutConfigRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.PutConfigRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutConfigRuleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutConfigRuleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4300,13 +4305,13 @@ end
 function M.DeleteEvaluationResultsAsync(DeleteEvaluationResultsRequest, cb)
 	assert(DeleteEvaluationResultsRequest, "You must provide a DeleteEvaluationResultsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DeleteEvaluationResults",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DeleteEvaluationResults",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteEvaluationResultsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteEvaluationResultsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4332,13 +4337,13 @@ end
 function M.DescribeComplianceByConfigRuleAsync(DescribeComplianceByConfigRuleRequest, cb)
 	assert(DescribeComplianceByConfigRuleRequest, "You must provide a DescribeComplianceByConfigRuleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DescribeComplianceByConfigRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DescribeComplianceByConfigRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeComplianceByConfigRuleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeComplianceByConfigRuleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4364,13 +4369,13 @@ end
 function M.PutDeliveryChannelAsync(PutDeliveryChannelRequest, cb)
 	assert(PutDeliveryChannelRequest, "You must provide a PutDeliveryChannelRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StarlingDoveService.PutDeliveryChannel",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.PutDeliveryChannel",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutDeliveryChannelRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutDeliveryChannelRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4396,13 +4401,13 @@ end
 function M.DeleteConfigurationRecorderAsync(DeleteConfigurationRecorderRequest, cb)
 	assert(DeleteConfigurationRecorderRequest, "You must provide a DeleteConfigurationRecorderRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DeleteConfigurationRecorder",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DeleteConfigurationRecorder",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteConfigurationRecorderRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteConfigurationRecorderRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

@@ -1270,12 +1270,12 @@ function M.AttackSummaries(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -1299,8 +1299,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -1313,13 +1318,13 @@ end
 function M.DeleteProtectionAsync(DeleteProtectionRequest, cb)
 	assert(DeleteProtectionRequest, "You must provide a DeleteProtectionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.DeleteProtection",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.DeleteProtection",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteProtectionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteProtectionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1345,13 +1350,13 @@ end
 function M.DescribeSubscriptionAsync(DescribeSubscriptionRequest, cb)
 	assert(DescribeSubscriptionRequest, "You must provide a DescribeSubscriptionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.DescribeSubscription",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.DescribeSubscription",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeSubscriptionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeSubscriptionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1377,13 +1382,13 @@ end
 function M.CreateSubscriptionAsync(CreateSubscriptionRequest, cb)
 	assert(CreateSubscriptionRequest, "You must provide a CreateSubscriptionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.CreateSubscription",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.CreateSubscription",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateSubscriptionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateSubscriptionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1409,13 +1414,13 @@ end
 function M.DescribeProtectionAsync(DescribeProtectionRequest, cb)
 	assert(DescribeProtectionRequest, "You must provide a DescribeProtectionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.DescribeProtection",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.DescribeProtection",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeProtectionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeProtectionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1441,13 +1446,13 @@ end
 function M.DescribeAttackAsync(DescribeAttackRequest, cb)
 	assert(DescribeAttackRequest, "You must provide a DescribeAttackRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.DescribeAttack",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.DescribeAttack",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeAttackRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeAttackRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1473,13 +1478,13 @@ end
 function M.DeleteSubscriptionAsync(DeleteSubscriptionRequest, cb)
 	assert(DeleteSubscriptionRequest, "You must provide a DeleteSubscriptionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.DeleteSubscription",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.DeleteSubscription",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteSubscriptionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteSubscriptionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1505,13 +1510,13 @@ end
 function M.ListProtectionsAsync(ListProtectionsRequest, cb)
 	assert(ListProtectionsRequest, "You must provide a ListProtectionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.ListProtections",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.ListProtections",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListProtectionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListProtectionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1537,13 +1542,13 @@ end
 function M.ListAttacksAsync(ListAttacksRequest, cb)
 	assert(ListAttacksRequest, "You must provide a ListAttacksRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.ListAttacks",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.ListAttacks",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListAttacksRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListAttacksRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1569,13 +1574,13 @@ end
 function M.CreateProtectionAsync(CreateProtectionRequest, cb)
 	assert(CreateProtectionRequest, "You must provide a CreateProtectionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.CreateProtection",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.CreateProtection",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateProtectionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateProtectionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

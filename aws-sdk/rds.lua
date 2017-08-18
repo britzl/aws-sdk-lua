@@ -10306,12 +10306,12 @@ function M.AvailabilityZoneList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -10335,8 +10335,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -10349,13 +10354,13 @@ end
 function M.DescribeCertificatesAsync(DescribeCertificatesMessage, cb)
 	assert(DescribeCertificatesMessage, "You must provide a DescribeCertificatesMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeCertificates",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeCertificates",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeCertificatesMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeCertificatesMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10381,13 +10386,13 @@ end
 function M.RestoreDBClusterToPointInTimeAsync(RestoreDBClusterToPointInTimeMessage, cb)
 	assert(RestoreDBClusterToPointInTimeMessage, "You must provide a RestoreDBClusterToPointInTimeMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RestoreDBClusterToPointInTime",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RestoreDBClusterToPointInTime",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RestoreDBClusterToPointInTimeMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RestoreDBClusterToPointInTimeMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10413,13 +10418,13 @@ end
 function M.DescribeEngineDefaultParametersAsync(DescribeEngineDefaultParametersMessage, cb)
 	assert(DescribeEngineDefaultParametersMessage, "You must provide a DescribeEngineDefaultParametersMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeEngineDefaultParameters",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEngineDefaultParameters",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeEngineDefaultParametersMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeEngineDefaultParametersMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10445,13 +10450,13 @@ end
 function M.DeleteDBClusterSnapshotAsync(DeleteDBClusterSnapshotMessage, cb)
 	assert(DeleteDBClusterSnapshotMessage, "You must provide a DeleteDBClusterSnapshotMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteDBClusterSnapshot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDBClusterSnapshot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteDBClusterSnapshotMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteDBClusterSnapshotMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10477,13 +10482,13 @@ end
 function M.CreateDBParameterGroupAsync(CreateDBParameterGroupMessage, cb)
 	assert(CreateDBParameterGroupMessage, "You must provide a CreateDBParameterGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateDBParameterGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateDBParameterGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateDBParameterGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateDBParameterGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10509,13 +10514,13 @@ end
 function M.AuthorizeDBSecurityGroupIngressAsync(AuthorizeDBSecurityGroupIngressMessage, cb)
 	assert(AuthorizeDBSecurityGroupIngressMessage, "You must provide a AuthorizeDBSecurityGroupIngressMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AuthorizeDBSecurityGroupIngress",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AuthorizeDBSecurityGroupIngress",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AuthorizeDBSecurityGroupIngressMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AuthorizeDBSecurityGroupIngressMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10541,13 +10546,13 @@ end
 function M.DescribeDBSubnetGroupsAsync(DescribeDBSubnetGroupsMessage, cb)
 	assert(DescribeDBSubnetGroupsMessage, "You must provide a DescribeDBSubnetGroupsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeDBSubnetGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDBSubnetGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeDBSubnetGroupsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeDBSubnetGroupsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10573,13 +10578,13 @@ end
 function M.DescribeDBEngineVersionsAsync(DescribeDBEngineVersionsMessage, cb)
 	assert(DescribeDBEngineVersionsMessage, "You must provide a DescribeDBEngineVersionsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeDBEngineVersions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDBEngineVersions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeDBEngineVersionsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeDBEngineVersionsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10605,13 +10610,13 @@ end
 function M.CopyDBSnapshotAsync(CopyDBSnapshotMessage, cb)
 	assert(CopyDBSnapshotMessage, "You must provide a CopyDBSnapshotMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CopyDBSnapshot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CopyDBSnapshot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CopyDBSnapshotMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CopyDBSnapshotMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10637,13 +10642,13 @@ end
 function M.StopDBInstanceAsync(StopDBInstanceMessage, cb)
 	assert(StopDBInstanceMessage, "You must provide a StopDBInstanceMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".StopDBInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".StopDBInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StopDBInstanceMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StopDBInstanceMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10669,13 +10674,13 @@ end
 function M.DeleteEventSubscriptionAsync(DeleteEventSubscriptionMessage, cb)
 	assert(DeleteEventSubscriptionMessage, "You must provide a DeleteEventSubscriptionMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteEventSubscription",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteEventSubscription",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteEventSubscriptionMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteEventSubscriptionMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10701,13 +10706,13 @@ end
 function M.CreateDBInstanceReadReplicaAsync(CreateDBInstanceReadReplicaMessage, cb)
 	assert(CreateDBInstanceReadReplicaMessage, "You must provide a CreateDBInstanceReadReplicaMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateDBInstanceReadReplica",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateDBInstanceReadReplica",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateDBInstanceReadReplicaMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateDBInstanceReadReplicaMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10733,13 +10738,13 @@ end
 function M.CreateDBClusterSnapshotAsync(CreateDBClusterSnapshotMessage, cb)
 	assert(CreateDBClusterSnapshotMessage, "You must provide a CreateDBClusterSnapshotMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateDBClusterSnapshot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateDBClusterSnapshot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateDBClusterSnapshotMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateDBClusterSnapshotMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10765,13 +10770,13 @@ end
 function M.DescribeReservedDBInstancesOfferingsAsync(DescribeReservedDBInstancesOfferingsMessage, cb)
 	assert(DescribeReservedDBInstancesOfferingsMessage, "You must provide a DescribeReservedDBInstancesOfferingsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeReservedDBInstancesOfferings",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeReservedDBInstancesOfferings",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeReservedDBInstancesOfferingsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeReservedDBInstancesOfferingsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10797,13 +10802,13 @@ end
 function M.DeleteDBClusterAsync(DeleteDBClusterMessage, cb)
 	assert(DeleteDBClusterMessage, "You must provide a DeleteDBClusterMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteDBCluster",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDBCluster",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteDBClusterMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteDBClusterMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10829,13 +10834,13 @@ end
 function M.ResetDBClusterParameterGroupAsync(ResetDBClusterParameterGroupMessage, cb)
 	assert(ResetDBClusterParameterGroupMessage, "You must provide a ResetDBClusterParameterGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ResetDBClusterParameterGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ResetDBClusterParameterGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ResetDBClusterParameterGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ResetDBClusterParameterGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10861,13 +10866,13 @@ end
 function M.ListTagsForResourceAsync(ListTagsForResourceMessage, cb)
 	assert(ListTagsForResourceMessage, "You must provide a ListTagsForResourceMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListTagsForResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListTagsForResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListTagsForResourceMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListTagsForResourceMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10893,13 +10898,13 @@ end
 function M.ModifyDBSnapshotAsync(ModifyDBSnapshotMessage, cb)
 	assert(ModifyDBSnapshotMessage, "You must provide a ModifyDBSnapshotMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyDBSnapshot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyDBSnapshot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyDBSnapshotMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyDBSnapshotMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10925,13 +10930,13 @@ end
 function M.DeleteDBSubnetGroupAsync(DeleteDBSubnetGroupMessage, cb)
 	assert(DeleteDBSubnetGroupMessage, "You must provide a DeleteDBSubnetGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteDBSubnetGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDBSubnetGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteDBSubnetGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteDBSubnetGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10957,13 +10962,13 @@ end
 function M.RestoreDBInstanceFromDBSnapshotAsync(RestoreDBInstanceFromDBSnapshotMessage, cb)
 	assert(RestoreDBInstanceFromDBSnapshotMessage, "You must provide a RestoreDBInstanceFromDBSnapshotMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RestoreDBInstanceFromDBSnapshot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RestoreDBInstanceFromDBSnapshot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RestoreDBInstanceFromDBSnapshotMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RestoreDBInstanceFromDBSnapshotMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -10989,13 +10994,13 @@ end
 function M.DescribeOptionGroupsAsync(DescribeOptionGroupsMessage, cb)
 	assert(DescribeOptionGroupsMessage, "You must provide a DescribeOptionGroupsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeOptionGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeOptionGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeOptionGroupsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeOptionGroupsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11021,13 +11026,13 @@ end
 function M.RestoreDBClusterFromS3Async(RestoreDBClusterFromS3Message, cb)
 	assert(RestoreDBClusterFromS3Message, "You must provide a RestoreDBClusterFromS3Message")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RestoreDBClusterFromS3",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RestoreDBClusterFromS3",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RestoreDBClusterFromS3Message, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RestoreDBClusterFromS3Message, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11053,13 +11058,13 @@ end
 function M.DeleteDBInstanceAsync(DeleteDBInstanceMessage, cb)
 	assert(DeleteDBInstanceMessage, "You must provide a DeleteDBInstanceMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteDBInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDBInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteDBInstanceMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteDBInstanceMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11085,13 +11090,13 @@ end
 function M.CreateDBClusterParameterGroupAsync(CreateDBClusterParameterGroupMessage, cb)
 	assert(CreateDBClusterParameterGroupMessage, "You must provide a CreateDBClusterParameterGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateDBClusterParameterGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateDBClusterParameterGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateDBClusterParameterGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateDBClusterParameterGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11117,13 +11122,13 @@ end
 function M.DeleteDBParameterGroupAsync(DeleteDBParameterGroupMessage, cb)
 	assert(DeleteDBParameterGroupMessage, "You must provide a DeleteDBParameterGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteDBParameterGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDBParameterGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteDBParameterGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteDBParameterGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11149,13 +11154,13 @@ end
 function M.DescribeEventCategoriesAsync(DescribeEventCategoriesMessage, cb)
 	assert(DescribeEventCategoriesMessage, "You must provide a DescribeEventCategoriesMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeEventCategories",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEventCategories",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeEventCategoriesMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeEventCategoriesMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11181,13 +11186,13 @@ end
 function M.AddTagsToResourceAsync(AddTagsToResourceMessage, cb)
 	assert(AddTagsToResourceMessage, "You must provide a AddTagsToResourceMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AddTagsToResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AddTagsToResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddTagsToResourceMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddTagsToResourceMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11213,13 +11218,13 @@ end
 function M.ModifyOptionGroupAsync(ModifyOptionGroupMessage, cb)
 	assert(ModifyOptionGroupMessage, "You must provide a ModifyOptionGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyOptionGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyOptionGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyOptionGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyOptionGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11245,13 +11250,13 @@ end
 function M.DescribeDBLogFilesAsync(DescribeDBLogFilesMessage, cb)
 	assert(DescribeDBLogFilesMessage, "You must provide a DescribeDBLogFilesMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeDBLogFiles",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDBLogFiles",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeDBLogFilesMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeDBLogFilesMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11277,13 +11282,13 @@ end
 function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceMessage, cb)
 	assert(RemoveTagsFromResourceMessage, "You must provide a RemoveTagsFromResourceMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RemoveTagsFromResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RemoveTagsFromResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RemoveTagsFromResourceMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RemoveTagsFromResourceMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11309,13 +11314,13 @@ end
 function M.DescribeReservedDBInstancesAsync(DescribeReservedDBInstancesMessage, cb)
 	assert(DescribeReservedDBInstancesMessage, "You must provide a DescribeReservedDBInstancesMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeReservedDBInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeReservedDBInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeReservedDBInstancesMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeReservedDBInstancesMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11341,13 +11346,13 @@ end
 function M.CopyOptionGroupAsync(CopyOptionGroupMessage, cb)
 	assert(CopyOptionGroupMessage, "You must provide a CopyOptionGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CopyOptionGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CopyOptionGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CopyOptionGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CopyOptionGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11373,13 +11378,13 @@ end
 function M.CreateDBInstanceAsync(CreateDBInstanceMessage, cb)
 	assert(CreateDBInstanceMessage, "You must provide a CreateDBInstanceMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateDBInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateDBInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateDBInstanceMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateDBInstanceMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11405,13 +11410,13 @@ end
 function M.ModifyEventSubscriptionAsync(ModifyEventSubscriptionMessage, cb)
 	assert(ModifyEventSubscriptionMessage, "You must provide a ModifyEventSubscriptionMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyEventSubscription",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyEventSubscription",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyEventSubscriptionMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyEventSubscriptionMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11437,13 +11442,13 @@ end
 function M.ModifyDBSubnetGroupAsync(ModifyDBSubnetGroupMessage, cb)
 	assert(ModifyDBSubnetGroupMessage, "You must provide a ModifyDBSubnetGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyDBSubnetGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyDBSubnetGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyDBSubnetGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyDBSubnetGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11469,13 +11474,13 @@ end
 function M.DeleteDBSecurityGroupAsync(DeleteDBSecurityGroupMessage, cb)
 	assert(DeleteDBSecurityGroupMessage, "You must provide a DeleteDBSecurityGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteDBSecurityGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDBSecurityGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteDBSecurityGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteDBSecurityGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11501,13 +11506,13 @@ end
 function M.RestoreDBInstanceToPointInTimeAsync(RestoreDBInstanceToPointInTimeMessage, cb)
 	assert(RestoreDBInstanceToPointInTimeMessage, "You must provide a RestoreDBInstanceToPointInTimeMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RestoreDBInstanceToPointInTime",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RestoreDBInstanceToPointInTime",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RestoreDBInstanceToPointInTimeMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RestoreDBInstanceToPointInTimeMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11533,13 +11538,13 @@ end
 function M.AddSourceIdentifierToSubscriptionAsync(AddSourceIdentifierToSubscriptionMessage, cb)
 	assert(AddSourceIdentifierToSubscriptionMessage, "You must provide a AddSourceIdentifierToSubscriptionMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AddSourceIdentifierToSubscription",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AddSourceIdentifierToSubscription",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddSourceIdentifierToSubscriptionMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddSourceIdentifierToSubscriptionMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11565,13 +11570,13 @@ end
 function M.CopyDBClusterParameterGroupAsync(CopyDBClusterParameterGroupMessage, cb)
 	assert(CopyDBClusterParameterGroupMessage, "You must provide a CopyDBClusterParameterGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CopyDBClusterParameterGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CopyDBClusterParameterGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CopyDBClusterParameterGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CopyDBClusterParameterGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11597,13 +11602,13 @@ end
 function M.StartDBInstanceAsync(StartDBInstanceMessage, cb)
 	assert(StartDBInstanceMessage, "You must provide a StartDBInstanceMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".StartDBInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".StartDBInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StartDBInstanceMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StartDBInstanceMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11629,13 +11634,13 @@ end
 function M.DescribeDBClusterSnapshotAttributesAsync(DescribeDBClusterSnapshotAttributesMessage, cb)
 	assert(DescribeDBClusterSnapshotAttributesMessage, "You must provide a DescribeDBClusterSnapshotAttributesMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeDBClusterSnapshotAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDBClusterSnapshotAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeDBClusterSnapshotAttributesMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeDBClusterSnapshotAttributesMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11661,13 +11666,13 @@ end
 function M.RestoreDBClusterFromSnapshotAsync(RestoreDBClusterFromSnapshotMessage, cb)
 	assert(RestoreDBClusterFromSnapshotMessage, "You must provide a RestoreDBClusterFromSnapshotMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RestoreDBClusterFromSnapshot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RestoreDBClusterFromSnapshot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RestoreDBClusterFromSnapshotMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RestoreDBClusterFromSnapshotMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11693,13 +11698,13 @@ end
 function M.DescribeDBParametersAsync(DescribeDBParametersMessage, cb)
 	assert(DescribeDBParametersMessage, "You must provide a DescribeDBParametersMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeDBParameters",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDBParameters",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeDBParametersMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeDBParametersMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11725,13 +11730,13 @@ end
 function M.PromoteReadReplicaDBClusterAsync(PromoteReadReplicaDBClusterMessage, cb)
 	assert(PromoteReadReplicaDBClusterMessage, "You must provide a PromoteReadReplicaDBClusterMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PromoteReadReplicaDBCluster",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PromoteReadReplicaDBCluster",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PromoteReadReplicaDBClusterMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PromoteReadReplicaDBClusterMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11757,13 +11762,13 @@ end
 function M.DescribeDBClusterParametersAsync(DescribeDBClusterParametersMessage, cb)
 	assert(DescribeDBClusterParametersMessage, "You must provide a DescribeDBClusterParametersMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeDBClusterParameters",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDBClusterParameters",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeDBClusterParametersMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeDBClusterParametersMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11789,13 +11794,13 @@ end
 function M.DeleteDBSnapshotAsync(DeleteDBSnapshotMessage, cb)
 	assert(DeleteDBSnapshotMessage, "You must provide a DeleteDBSnapshotMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteDBSnapshot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDBSnapshot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteDBSnapshotMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteDBSnapshotMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11821,13 +11826,13 @@ end
 function M.DescribeEventsAsync(DescribeEventsMessage, cb)
 	assert(DescribeEventsMessage, "You must provide a DescribeEventsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeEvents",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEvents",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeEventsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeEventsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11853,13 +11858,13 @@ end
 function M.DescribeEventSubscriptionsAsync(DescribeEventSubscriptionsMessage, cb)
 	assert(DescribeEventSubscriptionsMessage, "You must provide a DescribeEventSubscriptionsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeEventSubscriptions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEventSubscriptions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeEventSubscriptionsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeEventSubscriptionsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11885,13 +11890,13 @@ end
 function M.DeleteOptionGroupAsync(DeleteOptionGroupMessage, cb)
 	assert(DeleteOptionGroupMessage, "You must provide a DeleteOptionGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteOptionGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteOptionGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteOptionGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteOptionGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11917,13 +11922,13 @@ end
 function M.PromoteReadReplicaAsync(PromoteReadReplicaMessage, cb)
 	assert(PromoteReadReplicaMessage, "You must provide a PromoteReadReplicaMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PromoteReadReplica",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PromoteReadReplica",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PromoteReadReplicaMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PromoteReadReplicaMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11949,13 +11954,13 @@ end
 function M.AddRoleToDBClusterAsync(AddRoleToDBClusterMessage, cb)
 	assert(AddRoleToDBClusterMessage, "You must provide a AddRoleToDBClusterMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AddRoleToDBCluster",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AddRoleToDBCluster",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddRoleToDBClusterMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddRoleToDBClusterMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -11981,13 +11986,13 @@ end
 function M.ModifyDBSnapshotAttributeAsync(ModifyDBSnapshotAttributeMessage, cb)
 	assert(ModifyDBSnapshotAttributeMessage, "You must provide a ModifyDBSnapshotAttributeMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyDBSnapshotAttribute",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyDBSnapshotAttribute",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyDBSnapshotAttributeMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyDBSnapshotAttributeMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12013,13 +12018,13 @@ end
 function M.DescribeDBParameterGroupsAsync(DescribeDBParameterGroupsMessage, cb)
 	assert(DescribeDBParameterGroupsMessage, "You must provide a DescribeDBParameterGroupsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeDBParameterGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDBParameterGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeDBParameterGroupsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeDBParameterGroupsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12045,13 +12050,13 @@ end
 function M.ModifyDBClusterParameterGroupAsync(ModifyDBClusterParameterGroupMessage, cb)
 	assert(ModifyDBClusterParameterGroupMessage, "You must provide a ModifyDBClusterParameterGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyDBClusterParameterGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyDBClusterParameterGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyDBClusterParameterGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyDBClusterParameterGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12077,13 +12082,13 @@ end
 function M.FailoverDBClusterAsync(FailoverDBClusterMessage, cb)
 	assert(FailoverDBClusterMessage, "You must provide a FailoverDBClusterMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".FailoverDBCluster",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".FailoverDBCluster",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", FailoverDBClusterMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", FailoverDBClusterMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12109,13 +12114,13 @@ end
 function M.ApplyPendingMaintenanceActionAsync(ApplyPendingMaintenanceActionMessage, cb)
 	assert(ApplyPendingMaintenanceActionMessage, "You must provide a ApplyPendingMaintenanceActionMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ApplyPendingMaintenanceAction",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ApplyPendingMaintenanceAction",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ApplyPendingMaintenanceActionMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ApplyPendingMaintenanceActionMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12141,13 +12146,13 @@ end
 function M.DescribeDBInstancesAsync(DescribeDBInstancesMessage, cb)
 	assert(DescribeDBInstancesMessage, "You must provide a DescribeDBInstancesMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeDBInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDBInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeDBInstancesMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeDBInstancesMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12173,13 +12178,13 @@ end
 function M.PurchaseReservedDBInstancesOfferingAsync(PurchaseReservedDBInstancesOfferingMessage, cb)
 	assert(PurchaseReservedDBInstancesOfferingMessage, "You must provide a PurchaseReservedDBInstancesOfferingMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PurchaseReservedDBInstancesOffering",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PurchaseReservedDBInstancesOffering",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PurchaseReservedDBInstancesOfferingMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PurchaseReservedDBInstancesOfferingMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12205,13 +12210,13 @@ end
 function M.DescribeOrderableDBInstanceOptionsAsync(DescribeOrderableDBInstanceOptionsMessage, cb)
 	assert(DescribeOrderableDBInstanceOptionsMessage, "You must provide a DescribeOrderableDBInstanceOptionsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeOrderableDBInstanceOptions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeOrderableDBInstanceOptions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeOrderableDBInstanceOptionsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeOrderableDBInstanceOptionsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12237,13 +12242,13 @@ end
 function M.CreateOptionGroupAsync(CreateOptionGroupMessage, cb)
 	assert(CreateOptionGroupMessage, "You must provide a CreateOptionGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateOptionGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateOptionGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateOptionGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateOptionGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12269,13 +12274,13 @@ end
 function M.DescribeOptionGroupOptionsAsync(DescribeOptionGroupOptionsMessage, cb)
 	assert(DescribeOptionGroupOptionsMessage, "You must provide a DescribeOptionGroupOptionsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeOptionGroupOptions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeOptionGroupOptions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeOptionGroupOptionsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeOptionGroupOptionsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12301,13 +12306,13 @@ end
 function M.ResetDBParameterGroupAsync(ResetDBParameterGroupMessage, cb)
 	assert(ResetDBParameterGroupMessage, "You must provide a ResetDBParameterGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ResetDBParameterGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ResetDBParameterGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ResetDBParameterGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ResetDBParameterGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12333,13 +12338,13 @@ end
 function M.DescribeEngineDefaultClusterParametersAsync(DescribeEngineDefaultClusterParametersMessage, cb)
 	assert(DescribeEngineDefaultClusterParametersMessage, "You must provide a DescribeEngineDefaultClusterParametersMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeEngineDefaultClusterParameters",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEngineDefaultClusterParameters",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeEngineDefaultClusterParametersMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeEngineDefaultClusterParametersMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12365,13 +12370,13 @@ end
 function M.CreateDBSnapshotAsync(CreateDBSnapshotMessage, cb)
 	assert(CreateDBSnapshotMessage, "You must provide a CreateDBSnapshotMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateDBSnapshot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateDBSnapshot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateDBSnapshotMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateDBSnapshotMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12397,13 +12402,13 @@ end
 function M.CreateDBClusterAsync(CreateDBClusterMessage, cb)
 	assert(CreateDBClusterMessage, "You must provide a CreateDBClusterMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateDBCluster",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateDBCluster",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateDBClusterMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateDBClusterMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12429,13 +12434,13 @@ end
 function M.DescribeAccountAttributesAsync(DescribeAccountAttributesMessage, cb)
 	assert(DescribeAccountAttributesMessage, "You must provide a DescribeAccountAttributesMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeAccountAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAccountAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeAccountAttributesMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeAccountAttributesMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12461,13 +12466,13 @@ end
 function M.DescribeDBSnapshotsAsync(DescribeDBSnapshotsMessage, cb)
 	assert(DescribeDBSnapshotsMessage, "You must provide a DescribeDBSnapshotsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeDBSnapshots",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDBSnapshots",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeDBSnapshotsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeDBSnapshotsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12493,13 +12498,13 @@ end
 function M.ModifyDBClusterSnapshotAttributeAsync(ModifyDBClusterSnapshotAttributeMessage, cb)
 	assert(ModifyDBClusterSnapshotAttributeMessage, "You must provide a ModifyDBClusterSnapshotAttributeMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyDBClusterSnapshotAttribute",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyDBClusterSnapshotAttribute",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyDBClusterSnapshotAttributeMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyDBClusterSnapshotAttributeMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12525,13 +12530,13 @@ end
 function M.CreateDBSecurityGroupAsync(CreateDBSecurityGroupMessage, cb)
 	assert(CreateDBSecurityGroupMessage, "You must provide a CreateDBSecurityGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateDBSecurityGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateDBSecurityGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateDBSecurityGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateDBSecurityGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12557,13 +12562,13 @@ end
 function M.RemoveRoleFromDBClusterAsync(RemoveRoleFromDBClusterMessage, cb)
 	assert(RemoveRoleFromDBClusterMessage, "You must provide a RemoveRoleFromDBClusterMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RemoveRoleFromDBCluster",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RemoveRoleFromDBCluster",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RemoveRoleFromDBClusterMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RemoveRoleFromDBClusterMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12589,13 +12594,13 @@ end
 function M.RevokeDBSecurityGroupIngressAsync(RevokeDBSecurityGroupIngressMessage, cb)
 	assert(RevokeDBSecurityGroupIngressMessage, "You must provide a RevokeDBSecurityGroupIngressMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RevokeDBSecurityGroupIngress",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RevokeDBSecurityGroupIngress",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RevokeDBSecurityGroupIngressMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RevokeDBSecurityGroupIngressMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12621,13 +12626,13 @@ end
 function M.CreateEventSubscriptionAsync(CreateEventSubscriptionMessage, cb)
 	assert(CreateEventSubscriptionMessage, "You must provide a CreateEventSubscriptionMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateEventSubscription",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateEventSubscription",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateEventSubscriptionMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateEventSubscriptionMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12653,13 +12658,13 @@ end
 function M.CopyDBParameterGroupAsync(CopyDBParameterGroupMessage, cb)
 	assert(CopyDBParameterGroupMessage, "You must provide a CopyDBParameterGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CopyDBParameterGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CopyDBParameterGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CopyDBParameterGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CopyDBParameterGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12685,13 +12690,13 @@ end
 function M.RebootDBInstanceAsync(RebootDBInstanceMessage, cb)
 	assert(RebootDBInstanceMessage, "You must provide a RebootDBInstanceMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RebootDBInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RebootDBInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RebootDBInstanceMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RebootDBInstanceMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12717,13 +12722,13 @@ end
 function M.CreateDBSubnetGroupAsync(CreateDBSubnetGroupMessage, cb)
 	assert(CreateDBSubnetGroupMessage, "You must provide a CreateDBSubnetGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateDBSubnetGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateDBSubnetGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateDBSubnetGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateDBSubnetGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12749,13 +12754,13 @@ end
 function M.ModifyDBClusterAsync(ModifyDBClusterMessage, cb)
 	assert(ModifyDBClusterMessage, "You must provide a ModifyDBClusterMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyDBCluster",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyDBCluster",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyDBClusterMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyDBClusterMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12781,13 +12786,13 @@ end
 function M.DescribeDBSnapshotAttributesAsync(DescribeDBSnapshotAttributesMessage, cb)
 	assert(DescribeDBSnapshotAttributesMessage, "You must provide a DescribeDBSnapshotAttributesMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeDBSnapshotAttributes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDBSnapshotAttributes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeDBSnapshotAttributesMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeDBSnapshotAttributesMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12813,13 +12818,13 @@ end
 function M.DescribeSourceRegionsAsync(DescribeSourceRegionsMessage, cb)
 	assert(DescribeSourceRegionsMessage, "You must provide a DescribeSourceRegionsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeSourceRegions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSourceRegions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeSourceRegionsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeSourceRegionsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12845,13 +12850,13 @@ end
 function M.DownloadDBLogFilePortionAsync(DownloadDBLogFilePortionMessage, cb)
 	assert(DownloadDBLogFilePortionMessage, "You must provide a DownloadDBLogFilePortionMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DownloadDBLogFilePortion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DownloadDBLogFilePortion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DownloadDBLogFilePortionMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DownloadDBLogFilePortionMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12877,13 +12882,13 @@ end
 function M.DescribeDBClustersAsync(DescribeDBClustersMessage, cb)
 	assert(DescribeDBClustersMessage, "You must provide a DescribeDBClustersMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeDBClusters",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDBClusters",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeDBClustersMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeDBClustersMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12909,13 +12914,13 @@ end
 function M.DescribeDBClusterSnapshotsAsync(DescribeDBClusterSnapshotsMessage, cb)
 	assert(DescribeDBClusterSnapshotsMessage, "You must provide a DescribeDBClusterSnapshotsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeDBClusterSnapshots",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDBClusterSnapshots",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeDBClusterSnapshotsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeDBClusterSnapshotsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12941,13 +12946,13 @@ end
 function M.ModifyDBParameterGroupAsync(ModifyDBParameterGroupMessage, cb)
 	assert(ModifyDBParameterGroupMessage, "You must provide a ModifyDBParameterGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyDBParameterGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyDBParameterGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyDBParameterGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyDBParameterGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12973,13 +12978,13 @@ end
 function M.DescribeDBSecurityGroupsAsync(DescribeDBSecurityGroupsMessage, cb)
 	assert(DescribeDBSecurityGroupsMessage, "You must provide a DescribeDBSecurityGroupsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeDBSecurityGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDBSecurityGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeDBSecurityGroupsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeDBSecurityGroupsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13005,13 +13010,13 @@ end
 function M.DeleteDBClusterParameterGroupAsync(DeleteDBClusterParameterGroupMessage, cb)
 	assert(DeleteDBClusterParameterGroupMessage, "You must provide a DeleteDBClusterParameterGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteDBClusterParameterGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDBClusterParameterGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteDBClusterParameterGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteDBClusterParameterGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13037,13 +13042,13 @@ end
 function M.DescribePendingMaintenanceActionsAsync(DescribePendingMaintenanceActionsMessage, cb)
 	assert(DescribePendingMaintenanceActionsMessage, "You must provide a DescribePendingMaintenanceActionsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribePendingMaintenanceActions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribePendingMaintenanceActions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribePendingMaintenanceActionsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribePendingMaintenanceActionsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13069,13 +13074,13 @@ end
 function M.DescribeDBClusterParameterGroupsAsync(DescribeDBClusterParameterGroupsMessage, cb)
 	assert(DescribeDBClusterParameterGroupsMessage, "You must provide a DescribeDBClusterParameterGroupsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeDBClusterParameterGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDBClusterParameterGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeDBClusterParameterGroupsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeDBClusterParameterGroupsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13101,13 +13106,13 @@ end
 function M.CopyDBClusterSnapshotAsync(CopyDBClusterSnapshotMessage, cb)
 	assert(CopyDBClusterSnapshotMessage, "You must provide a CopyDBClusterSnapshotMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CopyDBClusterSnapshot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CopyDBClusterSnapshot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CopyDBClusterSnapshotMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CopyDBClusterSnapshotMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13133,13 +13138,13 @@ end
 function M.ModifyDBInstanceAsync(ModifyDBInstanceMessage, cb)
 	assert(ModifyDBInstanceMessage, "You must provide a ModifyDBInstanceMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyDBInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyDBInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyDBInstanceMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyDBInstanceMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13165,13 +13170,13 @@ end
 function M.RemoveSourceIdentifierFromSubscriptionAsync(RemoveSourceIdentifierFromSubscriptionMessage, cb)
 	assert(RemoveSourceIdentifierFromSubscriptionMessage, "You must provide a RemoveSourceIdentifierFromSubscriptionMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RemoveSourceIdentifierFromSubscription",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RemoveSourceIdentifierFromSubscription",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RemoveSourceIdentifierFromSubscriptionMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RemoveSourceIdentifierFromSubscriptionMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end

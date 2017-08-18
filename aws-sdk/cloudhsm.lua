@@ -1715,12 +1715,12 @@ function M.TagList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -1744,8 +1744,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -1758,13 +1763,13 @@ end
 function M.CreateHsmAsync(CreateHsmRequest, cb)
 	assert(CreateHsmRequest, "You must provide a CreateHsmRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.CreateHsm",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.CreateHsm",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateHsmRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateHsmRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1790,13 +1795,13 @@ end
 function M.ListHapgsAsync(ListHapgsRequest, cb)
 	assert(ListHapgsRequest, "You must provide a ListHapgsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.ListHapgs",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.ListHapgs",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListHapgsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListHapgsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1822,13 +1827,13 @@ end
 function M.ModifyHapgAsync(ModifyHapgRequest, cb)
 	assert(ModifyHapgRequest, "You must provide a ModifyHapgRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.ModifyHapg",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.ModifyHapg",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyHapgRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyHapgRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1854,13 +1859,13 @@ end
 function M.DescribeHapgAsync(DescribeHapgRequest, cb)
 	assert(DescribeHapgRequest, "You must provide a DescribeHapgRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.DescribeHapg",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.DescribeHapg",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeHapgRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeHapgRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1886,13 +1891,13 @@ end
 function M.DeleteHsmAsync(DeleteHsmRequest, cb)
 	assert(DeleteHsmRequest, "You must provide a DeleteHsmRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.DeleteHsm",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.DeleteHsm",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteHsmRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteHsmRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1918,13 +1923,13 @@ end
 function M.ListHsmsAsync(ListHsmsRequest, cb)
 	assert(ListHsmsRequest, "You must provide a ListHsmsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.ListHsms",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.ListHsms",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListHsmsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListHsmsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1950,13 +1955,13 @@ end
 function M.AddTagsToResourceAsync(AddTagsToResourceRequest, cb)
 	assert(AddTagsToResourceRequest, "You must provide a AddTagsToResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.AddTagsToResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.AddTagsToResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddTagsToResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddTagsToResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1982,13 +1987,13 @@ end
 function M.DeleteLunaClientAsync(DeleteLunaClientRequest, cb)
 	assert(DeleteLunaClientRequest, "You must provide a DeleteLunaClientRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.DeleteLunaClient",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.DeleteLunaClient",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteLunaClientRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteLunaClientRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2014,13 +2019,13 @@ end
 function M.CreateLunaClientAsync(CreateLunaClientRequest, cb)
 	assert(CreateLunaClientRequest, "You must provide a CreateLunaClientRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.CreateLunaClient",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.CreateLunaClient",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateLunaClientRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateLunaClientRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2046,13 +2051,13 @@ end
 function M.CreateHapgAsync(CreateHapgRequest, cb)
 	assert(CreateHapgRequest, "You must provide a CreateHapgRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.CreateHapg",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.CreateHapg",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateHapgRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateHapgRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2078,13 +2083,13 @@ end
 function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceRequest, cb)
 	assert(RemoveTagsFromResourceRequest, "You must provide a RemoveTagsFromResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.RemoveTagsFromResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.RemoveTagsFromResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RemoveTagsFromResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RemoveTagsFromResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2110,13 +2115,13 @@ end
 function M.DeleteHapgAsync(DeleteHapgRequest, cb)
 	assert(DeleteHapgRequest, "You must provide a DeleteHapgRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.DeleteHapg",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.DeleteHapg",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteHapgRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteHapgRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2142,13 +2147,13 @@ end
 function M.DescribeHsmAsync(DescribeHsmRequest, cb)
 	assert(DescribeHsmRequest, "You must provide a DescribeHsmRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.DescribeHsm",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.DescribeHsm",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeHsmRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeHsmRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2174,13 +2179,13 @@ end
 function M.GetConfigAsync(GetConfigRequest, cb)
 	assert(GetConfigRequest, "You must provide a GetConfigRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.GetConfig",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.GetConfig",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetConfigRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetConfigRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2206,13 +2211,13 @@ end
 function M.ListAvailableZonesAsync(ListAvailableZonesRequest, cb)
 	assert(ListAvailableZonesRequest, "You must provide a ListAvailableZonesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.ListAvailableZones",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.ListAvailableZones",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListAvailableZonesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListAvailableZonesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2238,13 +2243,13 @@ end
 function M.ModifyHsmAsync(ModifyHsmRequest, cb)
 	assert(ModifyHsmRequest, "You must provide a ModifyHsmRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.ModifyHsm",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.ModifyHsm",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyHsmRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyHsmRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2270,13 +2275,13 @@ end
 function M.ListTagsForResourceAsync(ListTagsForResourceRequest, cb)
 	assert(ListTagsForResourceRequest, "You must provide a ListTagsForResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.ListTagsForResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.ListTagsForResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListTagsForResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListTagsForResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2302,13 +2307,13 @@ end
 function M.ModifyLunaClientAsync(ModifyLunaClientRequest, cb)
 	assert(ModifyLunaClientRequest, "You must provide a ModifyLunaClientRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.ModifyLunaClient",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.ModifyLunaClient",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyLunaClientRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyLunaClientRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2334,13 +2339,13 @@ end
 function M.DescribeLunaClientAsync(DescribeLunaClientRequest, cb)
 	assert(DescribeLunaClientRequest, "You must provide a DescribeLunaClientRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.DescribeLunaClient",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.DescribeLunaClient",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeLunaClientRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeLunaClientRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2366,13 +2371,13 @@ end
 function M.ListLunaClientsAsync(ListLunaClientsRequest, cb)
 	assert(ListLunaClientsRequest, "You must provide a ListLunaClientsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.ListLunaClients",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.ListLunaClients",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListLunaClientsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListLunaClientsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

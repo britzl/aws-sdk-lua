@@ -6293,12 +6293,12 @@ function M.ListOfPatchOperation(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -6322,8 +6322,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -6336,13 +6341,13 @@ end
 function M.ImportDocumentationPartsAsync(ImportDocumentationPartsRequest, cb)
 	assert(ImportDocumentationPartsRequest, "You must provide a ImportDocumentationPartsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ImportDocumentationParts",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ImportDocumentationParts",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/documentation/parts", ImportDocumentationPartsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/parts", ImportDocumentationPartsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6368,13 +6373,13 @@ end
 function M.DeleteAuthorizerAsync(DeleteAuthorizerRequest, cb)
 	assert(DeleteAuthorizerRequest, "You must provide a DeleteAuthorizerRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteAuthorizer",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteAuthorizer",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/authorizers/{authorizer_id}", DeleteAuthorizerRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/authorizers/{authorizer_id}", DeleteAuthorizerRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6400,13 +6405,13 @@ end
 function M.UpdateModelAsync(UpdateModelRequest, cb)
 	assert(UpdateModelRequest, "You must provide a UpdateModelRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateModel",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateModel",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PATCH")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/models/{model_name}", UpdateModelRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/models/{model_name}", UpdateModelRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6432,13 +6437,13 @@ end
 function M.CreateDeploymentAsync(CreateDeploymentRequest, cb)
 	assert(CreateDeploymentRequest, "You must provide a CreateDeploymentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateDeployment",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateDeployment",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/deployments", CreateDeploymentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/deployments", CreateDeploymentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6464,13 +6469,13 @@ end
 function M.GetRestApiAsync(GetRestApiRequest, cb)
 	assert(GetRestApiRequest, "You must provide a GetRestApiRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetRestApi",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetRestApi",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}", GetRestApiRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}", GetRestApiRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6496,13 +6501,13 @@ end
 function M.UpdateRequestValidatorAsync(UpdateRequestValidatorRequest, cb)
 	assert(UpdateRequestValidatorRequest, "You must provide a UpdateRequestValidatorRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateRequestValidator",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateRequestValidator",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PATCH")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/requestvalidators/{requestvalidator_id}", UpdateRequestValidatorRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/requestvalidators/{requestvalidator_id}", UpdateRequestValidatorRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6528,13 +6533,13 @@ end
 function M.DeleteClientCertificateAsync(DeleteClientCertificateRequest, cb)
 	assert(DeleteClientCertificateRequest, "You must provide a DeleteClientCertificateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteClientCertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteClientCertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/clientcertificates/{clientcertificate_id}", DeleteClientCertificateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/clientcertificates/{clientcertificate_id}", DeleteClientCertificateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6560,13 +6565,13 @@ end
 function M.GetAuthorizerAsync(GetAuthorizerRequest, cb)
 	assert(GetAuthorizerRequest, "You must provide a GetAuthorizerRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetAuthorizer",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetAuthorizer",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/authorizers/{authorizer_id}", GetAuthorizerRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/authorizers/{authorizer_id}", GetAuthorizerRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6592,13 +6597,13 @@ end
 function M.GetModelsAsync(GetModelsRequest, cb)
 	assert(GetModelsRequest, "You must provide a GetModelsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetModels",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetModels",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/models", GetModelsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/models", GetModelsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6624,13 +6629,13 @@ end
 function M.GenerateClientCertificateAsync(GenerateClientCertificateRequest, cb)
 	assert(GenerateClientCertificateRequest, "You must provide a GenerateClientCertificateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GenerateClientCertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GenerateClientCertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/clientcertificates", GenerateClientCertificateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/clientcertificates", GenerateClientCertificateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6656,13 +6661,13 @@ end
 function M.DeleteRestApiAsync(DeleteRestApiRequest, cb)
 	assert(DeleteRestApiRequest, "You must provide a DeleteRestApiRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteRestApi",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteRestApi",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}", DeleteRestApiRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}", DeleteRestApiRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6688,13 +6693,13 @@ end
 function M.GetMethodAsync(GetMethodRequest, cb)
 	assert(GetMethodRequest, "You must provide a GetMethodRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetMethod",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetMethod",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}", GetMethodRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}", GetMethodRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6720,13 +6725,13 @@ end
 function M.GetSdkTypesAsync(GetSdkTypesRequest, cb)
 	assert(GetSdkTypesRequest, "You must provide a GetSdkTypesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetSdkTypes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetSdkTypes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/sdktypes", GetSdkTypesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/sdktypes", GetSdkTypesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6752,13 +6757,13 @@ end
 function M.UpdateDocumentationVersionAsync(UpdateDocumentationVersionRequest, cb)
 	assert(UpdateDocumentationVersionRequest, "You must provide a UpdateDocumentationVersionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateDocumentationVersion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateDocumentationVersion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PATCH")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/documentation/versions/{doc_version}", UpdateDocumentationVersionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/versions/{doc_version}", UpdateDocumentationVersionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6784,13 +6789,13 @@ end
 function M.CreateModelAsync(CreateModelRequest, cb)
 	assert(CreateModelRequest, "You must provide a CreateModelRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateModel",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateModel",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/models", CreateModelRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/models", CreateModelRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6816,13 +6821,13 @@ end
 function M.FlushStageCacheAsync(FlushStageCacheRequest, cb)
 	assert(FlushStageCacheRequest, "You must provide a FlushStageCacheRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".FlushStageCache",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".FlushStageCache",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/stages/{stage_name}/cache/data", FlushStageCacheRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/stages/{stage_name}/cache/data", FlushStageCacheRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6848,13 +6853,13 @@ end
 function M.CreateUsagePlanKeyAsync(CreateUsagePlanKeyRequest, cb)
 	assert(CreateUsagePlanKeyRequest, "You must provide a CreateUsagePlanKeyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateUsagePlanKey",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateUsagePlanKey",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/usageplans/{usageplanId}/keys", CreateUsagePlanKeyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/usageplans/{usageplanId}/keys", CreateUsagePlanKeyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6880,13 +6885,13 @@ end
 function M.GetUsagePlanKeyAsync(GetUsagePlanKeyRequest, cb)
 	assert(GetUsagePlanKeyRequest, "You must provide a GetUsagePlanKeyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetUsagePlanKey",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetUsagePlanKey",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/usageplans/{usageplanId}/keys/{keyId}", GetUsagePlanKeyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/usageplans/{usageplanId}/keys/{keyId}", GetUsagePlanKeyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6912,13 +6917,13 @@ end
 function M.DeleteIntegrationAsync(DeleteIntegrationRequest, cb)
 	assert(DeleteIntegrationRequest, "You must provide a DeleteIntegrationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteIntegration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteIntegration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration", DeleteIntegrationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration", DeleteIntegrationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6944,13 +6949,13 @@ end
 function M.GetMethodResponseAsync(GetMethodResponseRequest, cb)
 	assert(GetMethodResponseRequest, "You must provide a GetMethodResponseRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetMethodResponse",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetMethodResponse",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}", GetMethodResponseRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}", GetMethodResponseRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6976,13 +6981,13 @@ end
 function M.PutMethodResponseAsync(PutMethodResponseRequest, cb)
 	assert(PutMethodResponseRequest, "You must provide a PutMethodResponseRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutMethodResponse",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutMethodResponse",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}", PutMethodResponseRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}", PutMethodResponseRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7008,13 +7013,13 @@ end
 function M.DeleteModelAsync(DeleteModelRequest, cb)
 	assert(DeleteModelRequest, "You must provide a DeleteModelRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteModel",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteModel",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/models/{model_name}", DeleteModelRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/models/{model_name}", DeleteModelRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7040,13 +7045,13 @@ end
 function M.GetStageAsync(GetStageRequest, cb)
 	assert(GetStageRequest, "You must provide a GetStageRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetStage",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetStage",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/stages/{stage_name}", GetStageRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/stages/{stage_name}", GetStageRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7072,13 +7077,13 @@ end
 function M.GetStagesAsync(GetStagesRequest, cb)
 	assert(GetStagesRequest, "You must provide a GetStagesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetStages",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetStages",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/stages", GetStagesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/stages", GetStagesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7104,13 +7109,13 @@ end
 function M.DeleteDocumentationVersionAsync(DeleteDocumentationVersionRequest, cb)
 	assert(DeleteDocumentationVersionRequest, "You must provide a DeleteDocumentationVersionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteDocumentationVersion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDocumentationVersion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/documentation/versions/{doc_version}", DeleteDocumentationVersionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/versions/{doc_version}", DeleteDocumentationVersionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7136,13 +7141,13 @@ end
 function M.UpdateIntegrationAsync(UpdateIntegrationRequest, cb)
 	assert(UpdateIntegrationRequest, "You must provide a UpdateIntegrationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateIntegration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateIntegration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PATCH")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration", UpdateIntegrationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration", UpdateIntegrationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7168,13 +7173,13 @@ end
 function M.DeleteUsagePlanAsync(DeleteUsagePlanRequest, cb)
 	assert(DeleteUsagePlanRequest, "You must provide a DeleteUsagePlanRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteUsagePlan",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteUsagePlan",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/usageplans/{usageplanId}", DeleteUsagePlanRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/usageplans/{usageplanId}", DeleteUsagePlanRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7200,13 +7205,13 @@ end
 function M.GetDomainNamesAsync(GetDomainNamesRequest, cb)
 	assert(GetDomainNamesRequest, "You must provide a GetDomainNamesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetDomainNames",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetDomainNames",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/domainnames", GetDomainNamesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/domainnames", GetDomainNamesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7232,13 +7237,13 @@ end
 function M.UpdateDocumentationPartAsync(UpdateDocumentationPartRequest, cb)
 	assert(UpdateDocumentationPartRequest, "You must provide a UpdateDocumentationPartRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateDocumentationPart",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateDocumentationPart",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PATCH")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/documentation/parts/{part_id}", UpdateDocumentationPartRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/parts/{part_id}", UpdateDocumentationPartRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7264,13 +7269,13 @@ end
 function M.TestInvokeMethodAsync(TestInvokeMethodRequest, cb)
 	assert(TestInvokeMethodRequest, "You must provide a TestInvokeMethodRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".TestInvokeMethod",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".TestInvokeMethod",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}", TestInvokeMethodRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}", TestInvokeMethodRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7296,13 +7301,13 @@ end
 function M.UpdateStageAsync(UpdateStageRequest, cb)
 	assert(UpdateStageRequest, "You must provide a UpdateStageRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateStage",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateStage",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PATCH")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/stages/{stage_name}", UpdateStageRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/stages/{stage_name}", UpdateStageRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7328,13 +7333,13 @@ end
 function M.DeleteBasePathMappingAsync(DeleteBasePathMappingRequest, cb)
 	assert(DeleteBasePathMappingRequest, "You must provide a DeleteBasePathMappingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteBasePathMapping",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteBasePathMapping",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/domainnames/{domain_name}/basepathmappings/{base_path}", DeleteBasePathMappingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/domainnames/{domain_name}/basepathmappings/{base_path}", DeleteBasePathMappingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7360,13 +7365,13 @@ end
 function M.CreateRequestValidatorAsync(CreateRequestValidatorRequest, cb)
 	assert(CreateRequestValidatorRequest, "You must provide a CreateRequestValidatorRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateRequestValidator",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateRequestValidator",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/requestvalidators", CreateRequestValidatorRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/requestvalidators", CreateRequestValidatorRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7392,13 +7397,13 @@ end
 function M.TestInvokeAuthorizerAsync(TestInvokeAuthorizerRequest, cb)
 	assert(TestInvokeAuthorizerRequest, "You must provide a TestInvokeAuthorizerRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".TestInvokeAuthorizer",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".TestInvokeAuthorizer",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/authorizers/{authorizer_id}", TestInvokeAuthorizerRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/authorizers/{authorizer_id}", TestInvokeAuthorizerRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7424,13 +7429,13 @@ end
 function M.GetDocumentationVersionAsync(GetDocumentationVersionRequest, cb)
 	assert(GetDocumentationVersionRequest, "You must provide a GetDocumentationVersionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetDocumentationVersion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetDocumentationVersion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/documentation/versions/{doc_version}", GetDocumentationVersionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/versions/{doc_version}", GetDocumentationVersionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7456,13 +7461,13 @@ end
 function M.UpdateMethodAsync(UpdateMethodRequest, cb)
 	assert(UpdateMethodRequest, "You must provide a UpdateMethodRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateMethod",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateMethod",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PATCH")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}", UpdateMethodRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}", UpdateMethodRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7488,13 +7493,13 @@ end
 function M.GetApiKeyAsync(GetApiKeyRequest, cb)
 	assert(GetApiKeyRequest, "You must provide a GetApiKeyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetApiKey",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetApiKey",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/apikeys/{api_Key}", GetApiKeyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/apikeys/{api_Key}", GetApiKeyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7520,13 +7525,13 @@ end
 function M.GetSdkTypeAsync(GetSdkTypeRequest, cb)
 	assert(GetSdkTypeRequest, "You must provide a GetSdkTypeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetSdkType",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetSdkType",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/sdktypes/{sdktype_id}", GetSdkTypeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/sdktypes/{sdktype_id}", GetSdkTypeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7552,13 +7557,13 @@ end
 function M.GetIntegrationAsync(GetIntegrationRequest, cb)
 	assert(GetIntegrationRequest, "You must provide a GetIntegrationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetIntegration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetIntegration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration", GetIntegrationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration", GetIntegrationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7584,13 +7589,13 @@ end
 function M.DeleteDeploymentAsync(DeleteDeploymentRequest, cb)
 	assert(DeleteDeploymentRequest, "You must provide a DeleteDeploymentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteDeployment",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDeployment",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/deployments/{deployment_id}", DeleteDeploymentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/deployments/{deployment_id}", DeleteDeploymentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7616,13 +7621,13 @@ end
 function M.GetUsagePlanAsync(GetUsagePlanRequest, cb)
 	assert(GetUsagePlanRequest, "You must provide a GetUsagePlanRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetUsagePlan",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetUsagePlan",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/usageplans/{usageplanId}", GetUsagePlanRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/usageplans/{usageplanId}", GetUsagePlanRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7648,13 +7653,13 @@ end
 function M.UpdateUsagePlanAsync(UpdateUsagePlanRequest, cb)
 	assert(UpdateUsagePlanRequest, "You must provide a UpdateUsagePlanRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateUsagePlan",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateUsagePlan",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PATCH")
 	if request_handler then
-		request_handler(uri .. "/usageplans/{usageplanId}", UpdateUsagePlanRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/usageplans/{usageplanId}", UpdateUsagePlanRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7680,13 +7685,13 @@ end
 function M.CreateAuthorizerAsync(CreateAuthorizerRequest, cb)
 	assert(CreateAuthorizerRequest, "You must provide a CreateAuthorizerRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateAuthorizer",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateAuthorizer",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/authorizers", CreateAuthorizerRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/authorizers", CreateAuthorizerRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7712,13 +7717,13 @@ end
 function M.GetClientCertificateAsync(GetClientCertificateRequest, cb)
 	assert(GetClientCertificateRequest, "You must provide a GetClientCertificateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetClientCertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetClientCertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/clientcertificates/{clientcertificate_id}", GetClientCertificateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/clientcertificates/{clientcertificate_id}", GetClientCertificateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7744,13 +7749,13 @@ end
 function M.UpdateDeploymentAsync(UpdateDeploymentRequest, cb)
 	assert(UpdateDeploymentRequest, "You must provide a UpdateDeploymentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateDeployment",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateDeployment",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PATCH")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/deployments/{deployment_id}", UpdateDeploymentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/deployments/{deployment_id}", UpdateDeploymentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7776,13 +7781,13 @@ end
 function M.GetModelTemplateAsync(GetModelTemplateRequest, cb)
 	assert(GetModelTemplateRequest, "You must provide a GetModelTemplateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetModelTemplate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetModelTemplate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/models/{model_name}/default_template", GetModelTemplateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/models/{model_name}/default_template", GetModelTemplateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7808,13 +7813,13 @@ end
 function M.GetBasePathMappingsAsync(GetBasePathMappingsRequest, cb)
 	assert(GetBasePathMappingsRequest, "You must provide a GetBasePathMappingsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetBasePathMappings",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetBasePathMappings",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/domainnames/{domain_name}/basepathmappings", GetBasePathMappingsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/domainnames/{domain_name}/basepathmappings", GetBasePathMappingsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7840,13 +7845,13 @@ end
 function M.GetSdkAsync(GetSdkRequest, cb)
 	assert(GetSdkRequest, "You must provide a GetSdkRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetSdk",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetSdk",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/stages/{stage_name}/sdks/{sdk_type}", GetSdkRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/stages/{stage_name}/sdks/{sdk_type}", GetSdkRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7872,13 +7877,13 @@ end
 function M.GetRequestValidatorAsync(GetRequestValidatorRequest, cb)
 	assert(GetRequestValidatorRequest, "You must provide a GetRequestValidatorRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetRequestValidator",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetRequestValidator",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/requestvalidators/{requestvalidator_id}", GetRequestValidatorRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/requestvalidators/{requestvalidator_id}", GetRequestValidatorRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7904,13 +7909,13 @@ end
 function M.FlushStageAuthorizersCacheAsync(FlushStageAuthorizersCacheRequest, cb)
 	assert(FlushStageAuthorizersCacheRequest, "You must provide a FlushStageAuthorizersCacheRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".FlushStageAuthorizersCache",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".FlushStageAuthorizersCache",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/stages/{stage_name}/cache/authorizers", FlushStageAuthorizersCacheRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/stages/{stage_name}/cache/authorizers", FlushStageAuthorizersCacheRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7936,13 +7941,13 @@ end
 function M.GetIntegrationResponseAsync(GetIntegrationResponseRequest, cb)
 	assert(GetIntegrationResponseRequest, "You must provide a GetIntegrationResponseRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetIntegrationResponse",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetIntegrationResponse",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}", GetIntegrationResponseRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}", GetIntegrationResponseRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7968,13 +7973,13 @@ end
 function M.GetDeploymentsAsync(GetDeploymentsRequest, cb)
 	assert(GetDeploymentsRequest, "You must provide a GetDeploymentsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetDeployments",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetDeployments",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/deployments", GetDeploymentsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/deployments", GetDeploymentsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8000,13 +8005,13 @@ end
 function M.CreateResourceAsync(CreateResourceRequest, cb)
 	assert(CreateResourceRequest, "You must provide a CreateResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/resources/{parent_id}", CreateResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{parent_id}", CreateResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8032,13 +8037,13 @@ end
 function M.GetApiKeysAsync(GetApiKeysRequest, cb)
 	assert(GetApiKeysRequest, "You must provide a GetApiKeysRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetApiKeys",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetApiKeys",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/apikeys", GetApiKeysRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/apikeys", GetApiKeysRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8064,13 +8069,13 @@ end
 function M.DeleteApiKeyAsync(DeleteApiKeyRequest, cb)
 	assert(DeleteApiKeyRequest, "You must provide a DeleteApiKeyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteApiKey",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteApiKey",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/apikeys/{api_Key}", DeleteApiKeyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/apikeys/{api_Key}", DeleteApiKeyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8096,13 +8101,13 @@ end
 function M.CreateApiKeyAsync(CreateApiKeyRequest, cb)
 	assert(CreateApiKeyRequest, "You must provide a CreateApiKeyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateApiKey",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateApiKey",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/apikeys", CreateApiKeyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/apikeys", CreateApiKeyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8128,13 +8133,13 @@ end
 function M.UpdateAuthorizerAsync(UpdateAuthorizerRequest, cb)
 	assert(UpdateAuthorizerRequest, "You must provide a UpdateAuthorizerRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateAuthorizer",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateAuthorizer",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PATCH")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/authorizers/{authorizer_id}", UpdateAuthorizerRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/authorizers/{authorizer_id}", UpdateAuthorizerRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8160,13 +8165,13 @@ end
 function M.GetModelAsync(GetModelRequest, cb)
 	assert(GetModelRequest, "You must provide a GetModelRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetModel",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetModel",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/models/{model_name}", GetModelRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/models/{model_name}", GetModelRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8192,13 +8197,13 @@ end
 function M.GetUsagePlanKeysAsync(GetUsagePlanKeysRequest, cb)
 	assert(GetUsagePlanKeysRequest, "You must provide a GetUsagePlanKeysRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetUsagePlanKeys",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetUsagePlanKeys",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/usageplans/{usageplanId}/keys", GetUsagePlanKeysRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/usageplans/{usageplanId}/keys", GetUsagePlanKeysRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8224,13 +8229,13 @@ end
 function M.DeleteMethodResponseAsync(DeleteMethodResponseRequest, cb)
 	assert(DeleteMethodResponseRequest, "You must provide a DeleteMethodResponseRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteMethodResponse",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteMethodResponse",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}", DeleteMethodResponseRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}", DeleteMethodResponseRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8256,13 +8261,13 @@ end
 function M.GetResourcesAsync(GetResourcesRequest, cb)
 	assert(GetResourcesRequest, "You must provide a GetResourcesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetResources",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetResources",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/resources", GetResourcesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/resources", GetResourcesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8288,13 +8293,13 @@ end
 function M.GetRestApisAsync(GetRestApisRequest, cb)
 	assert(GetRestApisRequest, "You must provide a GetRestApisRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetRestApis",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetRestApis",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/restapis", GetRestApisRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis", GetRestApisRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8320,13 +8325,13 @@ end
 function M.GetResourceAsync(GetResourceRequest, cb)
 	assert(GetResourceRequest, "You must provide a GetResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/resources/{resource_id}", GetResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}", GetResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8352,13 +8357,13 @@ end
 function M.DeleteIntegrationResponseAsync(DeleteIntegrationResponseRequest, cb)
 	assert(DeleteIntegrationResponseRequest, "You must provide a DeleteIntegrationResponseRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteIntegrationResponse",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteIntegrationResponse",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}", DeleteIntegrationResponseRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}", DeleteIntegrationResponseRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8384,13 +8389,13 @@ end
 function M.GetUsagePlansAsync(GetUsagePlansRequest, cb)
 	assert(GetUsagePlansRequest, "You must provide a GetUsagePlansRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetUsagePlans",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetUsagePlans",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/usageplans", GetUsagePlansRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/usageplans", GetUsagePlansRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8416,13 +8421,13 @@ end
 function M.ImportApiKeysAsync(ImportApiKeysRequest, cb)
 	assert(ImportApiKeysRequest, "You must provide a ImportApiKeysRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ImportApiKeys",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ImportApiKeys",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/apikeys?mode=import", ImportApiKeysRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/apikeys?mode=import", ImportApiKeysRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8448,13 +8453,13 @@ end
 function M.GetBasePathMappingAsync(GetBasePathMappingRequest, cb)
 	assert(GetBasePathMappingRequest, "You must provide a GetBasePathMappingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetBasePathMapping",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetBasePathMapping",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/domainnames/{domain_name}/basepathmappings/{base_path}", GetBasePathMappingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/domainnames/{domain_name}/basepathmappings/{base_path}", GetBasePathMappingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8480,13 +8485,13 @@ end
 function M.GetExportAsync(GetExportRequest, cb)
 	assert(GetExportRequest, "You must provide a GetExportRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetExport",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetExport",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/stages/{stage_name}/exports/{export_type}", GetExportRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/stages/{stage_name}/exports/{export_type}", GetExportRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8512,13 +8517,13 @@ end
 function M.UpdateResourceAsync(UpdateResourceRequest, cb)
 	assert(UpdateResourceRequest, "You must provide a UpdateResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PATCH")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/resources/{resource_id}", UpdateResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}", UpdateResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8544,13 +8549,13 @@ end
 function M.GetDomainNameAsync(GetDomainNameRequest, cb)
 	assert(GetDomainNameRequest, "You must provide a GetDomainNameRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetDomainName",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetDomainName",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/domainnames/{domain_name}", GetDomainNameRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/domainnames/{domain_name}", GetDomainNameRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8576,13 +8581,13 @@ end
 function M.UpdateDomainNameAsync(UpdateDomainNameRequest, cb)
 	assert(UpdateDomainNameRequest, "You must provide a UpdateDomainNameRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateDomainName",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateDomainName",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PATCH")
 	if request_handler then
-		request_handler(uri .. "/domainnames/{domain_name}", UpdateDomainNameRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/domainnames/{domain_name}", UpdateDomainNameRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8608,13 +8613,13 @@ end
 function M.UpdateClientCertificateAsync(UpdateClientCertificateRequest, cb)
 	assert(UpdateClientCertificateRequest, "You must provide a UpdateClientCertificateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateClientCertificate",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateClientCertificate",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PATCH")
 	if request_handler then
-		request_handler(uri .. "/clientcertificates/{clientcertificate_id}", UpdateClientCertificateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/clientcertificates/{clientcertificate_id}", UpdateClientCertificateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8640,13 +8645,13 @@ end
 function M.CreateDomainNameAsync(CreateDomainNameRequest, cb)
 	assert(CreateDomainNameRequest, "You must provide a CreateDomainNameRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateDomainName",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateDomainName",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/domainnames", CreateDomainNameRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/domainnames", CreateDomainNameRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8672,13 +8677,13 @@ end
 function M.DeleteDomainNameAsync(DeleteDomainNameRequest, cb)
 	assert(DeleteDomainNameRequest, "You must provide a DeleteDomainNameRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteDomainName",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDomainName",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/domainnames/{domain_name}", DeleteDomainNameRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/domainnames/{domain_name}", DeleteDomainNameRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8704,13 +8709,13 @@ end
 function M.PutMethodAsync(PutMethodRequest, cb)
 	assert(PutMethodRequest, "You must provide a PutMethodRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutMethod",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutMethod",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}", PutMethodRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}", PutMethodRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8736,13 +8741,13 @@ end
 function M.DeleteStageAsync(DeleteStageRequest, cb)
 	assert(DeleteStageRequest, "You must provide a DeleteStageRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteStage",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteStage",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/stages/{stage_name}", DeleteStageRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/stages/{stage_name}", DeleteStageRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8768,13 +8773,13 @@ end
 function M.GetDocumentationPartAsync(GetDocumentationPartRequest, cb)
 	assert(GetDocumentationPartRequest, "You must provide a GetDocumentationPartRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetDocumentationPart",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetDocumentationPart",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/documentation/parts/{part_id}", GetDocumentationPartRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/parts/{part_id}", GetDocumentationPartRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8800,13 +8805,13 @@ end
 function M.UpdateAccountAsync(UpdateAccountRequest, cb)
 	assert(UpdateAccountRequest, "You must provide a UpdateAccountRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateAccount",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateAccount",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PATCH")
 	if request_handler then
-		request_handler(uri .. "/account", UpdateAccountRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/account", UpdateAccountRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8832,13 +8837,13 @@ end
 function M.PutRestApiAsync(PutRestApiRequest, cb)
 	assert(PutRestApiRequest, "You must provide a PutRestApiRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutRestApi",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutRestApi",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}", PutRestApiRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}", PutRestApiRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8864,13 +8869,13 @@ end
 function M.GetUsageAsync(GetUsageRequest, cb)
 	assert(GetUsageRequest, "You must provide a GetUsageRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetUsage",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetUsage",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/usageplans/{usageplanId}/usage", GetUsageRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/usageplans/{usageplanId}/usage", GetUsageRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8896,13 +8901,13 @@ end
 function M.GetDeploymentAsync(GetDeploymentRequest, cb)
 	assert(GetDeploymentRequest, "You must provide a GetDeploymentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetDeployment",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetDeployment",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/deployments/{deployment_id}", GetDeploymentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/deployments/{deployment_id}", GetDeploymentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8928,13 +8933,13 @@ end
 function M.CreateRestApiAsync(CreateRestApiRequest, cb)
 	assert(CreateRestApiRequest, "You must provide a CreateRestApiRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateRestApi",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateRestApi",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/restapis", CreateRestApiRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis", CreateRestApiRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8960,13 +8965,13 @@ end
 function M.GetAuthorizersAsync(GetAuthorizersRequest, cb)
 	assert(GetAuthorizersRequest, "You must provide a GetAuthorizersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetAuthorizers",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetAuthorizers",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/authorizers", GetAuthorizersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/authorizers", GetAuthorizersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -8992,13 +8997,13 @@ end
 function M.GetClientCertificatesAsync(GetClientCertificatesRequest, cb)
 	assert(GetClientCertificatesRequest, "You must provide a GetClientCertificatesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetClientCertificates",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetClientCertificates",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/clientcertificates", GetClientCertificatesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/clientcertificates", GetClientCertificatesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9024,13 +9029,13 @@ end
 function M.DeleteDocumentationPartAsync(DeleteDocumentationPartRequest, cb)
 	assert(DeleteDocumentationPartRequest, "You must provide a DeleteDocumentationPartRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteDocumentationPart",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDocumentationPart",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/documentation/parts/{part_id}", DeleteDocumentationPartRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/parts/{part_id}", DeleteDocumentationPartRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9056,13 +9061,13 @@ end
 function M.DeleteResourceAsync(DeleteResourceRequest, cb)
 	assert(DeleteResourceRequest, "You must provide a DeleteResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/resources/{resource_id}", DeleteResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}", DeleteResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9088,13 +9093,13 @@ end
 function M.CreateStageAsync(CreateStageRequest, cb)
 	assert(CreateStageRequest, "You must provide a CreateStageRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateStage",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateStage",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/stages", CreateStageRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/stages", CreateStageRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9120,13 +9125,13 @@ end
 function M.UpdateBasePathMappingAsync(UpdateBasePathMappingRequest, cb)
 	assert(UpdateBasePathMappingRequest, "You must provide a UpdateBasePathMappingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateBasePathMapping",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateBasePathMapping",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PATCH")
 	if request_handler then
-		request_handler(uri .. "/domainnames/{domain_name}/basepathmappings/{base_path}", UpdateBasePathMappingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/domainnames/{domain_name}/basepathmappings/{base_path}", UpdateBasePathMappingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9152,13 +9157,13 @@ end
 function M.UpdateMethodResponseAsync(UpdateMethodResponseRequest, cb)
 	assert(UpdateMethodResponseRequest, "You must provide a UpdateMethodResponseRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateMethodResponse",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateMethodResponse",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PATCH")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}", UpdateMethodResponseRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}", UpdateMethodResponseRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9184,13 +9189,13 @@ end
 function M.UpdateUsageAsync(UpdateUsageRequest, cb)
 	assert(UpdateUsageRequest, "You must provide a UpdateUsageRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateUsage",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateUsage",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PATCH")
 	if request_handler then
-		request_handler(uri .. "/usageplans/{usageplanId}/keys/{keyId}/usage", UpdateUsageRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/usageplans/{usageplanId}/keys/{keyId}/usage", UpdateUsageRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9216,13 +9221,13 @@ end
 function M.GetDocumentationPartsAsync(GetDocumentationPartsRequest, cb)
 	assert(GetDocumentationPartsRequest, "You must provide a GetDocumentationPartsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetDocumentationParts",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetDocumentationParts",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/documentation/parts", GetDocumentationPartsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/parts", GetDocumentationPartsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9248,13 +9253,13 @@ end
 function M.CreateDocumentationPartAsync(CreateDocumentationPartRequest, cb)
 	assert(CreateDocumentationPartRequest, "You must provide a CreateDocumentationPartRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateDocumentationPart",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateDocumentationPart",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/documentation/parts", CreateDocumentationPartRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/parts", CreateDocumentationPartRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9280,13 +9285,13 @@ end
 function M.CreateBasePathMappingAsync(CreateBasePathMappingRequest, cb)
 	assert(CreateBasePathMappingRequest, "You must provide a CreateBasePathMappingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateBasePathMapping",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateBasePathMapping",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/domainnames/{domain_name}/basepathmappings", CreateBasePathMappingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/domainnames/{domain_name}/basepathmappings", CreateBasePathMappingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9312,13 +9317,13 @@ end
 function M.CreateUsagePlanAsync(CreateUsagePlanRequest, cb)
 	assert(CreateUsagePlanRequest, "You must provide a CreateUsagePlanRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateUsagePlan",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateUsagePlan",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/usageplans", CreateUsagePlanRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/usageplans", CreateUsagePlanRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9344,13 +9349,13 @@ end
 function M.UpdateApiKeyAsync(UpdateApiKeyRequest, cb)
 	assert(UpdateApiKeyRequest, "You must provide a UpdateApiKeyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateApiKey",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateApiKey",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PATCH")
 	if request_handler then
-		request_handler(uri .. "/apikeys/{api_Key}", UpdateApiKeyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/apikeys/{api_Key}", UpdateApiKeyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9376,13 +9381,13 @@ end
 function M.ImportRestApiAsync(ImportRestApiRequest, cb)
 	assert(ImportRestApiRequest, "You must provide a ImportRestApiRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ImportRestApi",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ImportRestApi",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/restapis?mode=import", ImportRestApiRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis?mode=import", ImportRestApiRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9408,13 +9413,13 @@ end
 function M.UpdateRestApiAsync(UpdateRestApiRequest, cb)
 	assert(UpdateRestApiRequest, "You must provide a UpdateRestApiRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateRestApi",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateRestApi",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PATCH")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}", UpdateRestApiRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}", UpdateRestApiRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9440,13 +9445,13 @@ end
 function M.CreateDocumentationVersionAsync(CreateDocumentationVersionRequest, cb)
 	assert(CreateDocumentationVersionRequest, "You must provide a CreateDocumentationVersionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateDocumentationVersion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateDocumentationVersion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/documentation/versions", CreateDocumentationVersionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/versions", CreateDocumentationVersionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9472,13 +9477,13 @@ end
 function M.PutIntegrationResponseAsync(PutIntegrationResponseRequest, cb)
 	assert(PutIntegrationResponseRequest, "You must provide a PutIntegrationResponseRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutIntegrationResponse",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutIntegrationResponse",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}", PutIntegrationResponseRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}", PutIntegrationResponseRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9504,13 +9509,13 @@ end
 function M.GetDocumentationVersionsAsync(GetDocumentationVersionsRequest, cb)
 	assert(GetDocumentationVersionsRequest, "You must provide a GetDocumentationVersionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetDocumentationVersions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetDocumentationVersions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/documentation/versions", GetDocumentationVersionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/versions", GetDocumentationVersionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9536,13 +9541,13 @@ end
 function M.DeleteMethodAsync(DeleteMethodRequest, cb)
 	assert(DeleteMethodRequest, "You must provide a DeleteMethodRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteMethod",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteMethod",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}", DeleteMethodRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}", DeleteMethodRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9568,13 +9573,13 @@ end
 function M.GetRequestValidatorsAsync(GetRequestValidatorsRequest, cb)
 	assert(GetRequestValidatorsRequest, "You must provide a GetRequestValidatorsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetRequestValidators",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetRequestValidators",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/requestvalidators", GetRequestValidatorsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/requestvalidators", GetRequestValidatorsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9600,13 +9605,13 @@ end
 function M.GetAccountAsync(GetAccountRequest, cb)
 	assert(GetAccountRequest, "You must provide a GetAccountRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetAccount",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetAccount",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/account", GetAccountRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/account", GetAccountRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9632,13 +9637,13 @@ end
 function M.DeleteUsagePlanKeyAsync(DeleteUsagePlanKeyRequest, cb)
 	assert(DeleteUsagePlanKeyRequest, "You must provide a DeleteUsagePlanKeyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteUsagePlanKey",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteUsagePlanKey",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/usageplans/{usageplanId}/keys/{keyId}", DeleteUsagePlanKeyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/usageplans/{usageplanId}/keys/{keyId}", DeleteUsagePlanKeyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9664,13 +9669,13 @@ end
 function M.DeleteRequestValidatorAsync(DeleteRequestValidatorRequest, cb)
 	assert(DeleteRequestValidatorRequest, "You must provide a DeleteRequestValidatorRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteRequestValidator",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteRequestValidator",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/requestvalidators/{requestvalidator_id}", DeleteRequestValidatorRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/requestvalidators/{requestvalidator_id}", DeleteRequestValidatorRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9696,13 +9701,13 @@ end
 function M.PutIntegrationAsync(PutIntegrationRequest, cb)
 	assert(PutIntegrationRequest, "You must provide a PutIntegrationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutIntegration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutIntegration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration", PutIntegrationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration", PutIntegrationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -9728,13 +9733,13 @@ end
 function M.UpdateIntegrationResponseAsync(UpdateIntegrationResponseRequest, cb)
 	assert(UpdateIntegrationResponseRequest, "You must provide a UpdateIntegrationResponseRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateIntegrationResponse",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateIntegrationResponse",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PATCH")
 	if request_handler then
-		request_handler(uri .. "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}", UpdateIntegrationResponseRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}", UpdateIntegrationResponseRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

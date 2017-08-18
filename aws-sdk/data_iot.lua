@@ -512,12 +512,12 @@ function M.Payload(blob)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -541,8 +541,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -555,13 +560,13 @@ end
 function M.UpdateThingShadowAsync(UpdateThingShadowRequest, cb)
 	assert(UpdateThingShadowRequest, "You must provide a UpdateThingShadowRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateThingShadow",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateThingShadow",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/things/{thingName}/shadow", UpdateThingShadowRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/things/{thingName}/shadow", UpdateThingShadowRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -587,13 +592,13 @@ end
 function M.GetThingShadowAsync(GetThingShadowRequest, cb)
 	assert(GetThingShadowRequest, "You must provide a GetThingShadowRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetThingShadow",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetThingShadow",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/things/{thingName}/shadow", GetThingShadowRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/things/{thingName}/shadow", GetThingShadowRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -619,13 +624,13 @@ end
 function M.PublishAsync(PublishRequest, cb)
 	assert(PublishRequest, "You must provide a PublishRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".Publish",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".Publish",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/topics/{topic}", PublishRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/topics/{topic}", PublishRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -651,13 +656,13 @@ end
 function M.DeleteThingShadowAsync(DeleteThingShadowRequest, cb)
 	assert(DeleteThingShadowRequest, "You must provide a DeleteThingShadowRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteThingShadow",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteThingShadow",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/things/{thingName}/shadow", DeleteThingShadowRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/things/{thingName}/shadow", DeleteThingShadowRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

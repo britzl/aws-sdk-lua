@@ -1587,12 +1587,12 @@ function M.TargetList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -1616,8 +1616,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -1630,13 +1635,13 @@ end
 function M.PutEventsAsync(PutEventsRequest, cb)
 	assert(PutEventsRequest, "You must provide a PutEventsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSEvents.PutEvents",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSEvents.PutEvents",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutEventsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutEventsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1662,13 +1667,13 @@ end
 function M.DescribeRuleAsync(DescribeRuleRequest, cb)
 	assert(DescribeRuleRequest, "You must provide a DescribeRuleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSEvents.DescribeRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSEvents.DescribeRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeRuleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeRuleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1694,13 +1699,13 @@ end
 function M.ListTargetsByRuleAsync(ListTargetsByRuleRequest, cb)
 	assert(ListTargetsByRuleRequest, "You must provide a ListTargetsByRuleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSEvents.ListTargetsByRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSEvents.ListTargetsByRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListTargetsByRuleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListTargetsByRuleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1726,13 +1731,13 @@ end
 function M.PutTargetsAsync(PutTargetsRequest, cb)
 	assert(PutTargetsRequest, "You must provide a PutTargetsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSEvents.PutTargets",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSEvents.PutTargets",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutTargetsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutTargetsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1758,13 +1763,13 @@ end
 function M.DeleteRuleAsync(DeleteRuleRequest, cb)
 	assert(DeleteRuleRequest, "You must provide a DeleteRuleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSEvents.DeleteRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSEvents.DeleteRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteRuleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteRuleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1790,13 +1795,13 @@ end
 function M.ListRuleNamesByTargetAsync(ListRuleNamesByTargetRequest, cb)
 	assert(ListRuleNamesByTargetRequest, "You must provide a ListRuleNamesByTargetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSEvents.ListRuleNamesByTarget",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSEvents.ListRuleNamesByTarget",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListRuleNamesByTargetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListRuleNamesByTargetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1822,13 +1827,13 @@ end
 function M.EnableRuleAsync(EnableRuleRequest, cb)
 	assert(EnableRuleRequest, "You must provide a EnableRuleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSEvents.EnableRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSEvents.EnableRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", EnableRuleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", EnableRuleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1854,13 +1859,13 @@ end
 function M.TestEventPatternAsync(TestEventPatternRequest, cb)
 	assert(TestEventPatternRequest, "You must provide a TestEventPatternRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSEvents.TestEventPattern",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSEvents.TestEventPattern",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", TestEventPatternRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", TestEventPatternRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1886,13 +1891,13 @@ end
 function M.ListRulesAsync(ListRulesRequest, cb)
 	assert(ListRulesRequest, "You must provide a ListRulesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSEvents.ListRules",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSEvents.ListRules",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListRulesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListRulesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1918,13 +1923,13 @@ end
 function M.DisableRuleAsync(DisableRuleRequest, cb)
 	assert(DisableRuleRequest, "You must provide a DisableRuleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSEvents.DisableRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSEvents.DisableRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisableRuleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisableRuleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1950,13 +1955,13 @@ end
 function M.PutRuleAsync(PutRuleRequest, cb)
 	assert(PutRuleRequest, "You must provide a PutRuleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSEvents.PutRule",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSEvents.PutRule",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutRuleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutRuleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1982,13 +1987,13 @@ end
 function M.RemoveTargetsAsync(RemoveTargetsRequest, cb)
 	assert(RemoveTargetsRequest, "You must provide a RemoveTargetsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AWSEvents.RemoveTargets",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AWSEvents.RemoveTargets",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RemoveTargetsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RemoveTargetsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

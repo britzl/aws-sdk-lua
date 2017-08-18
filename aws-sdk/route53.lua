@@ -6297,12 +6297,12 @@ function M.TagList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -6326,8 +6326,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -6340,13 +6345,13 @@ end
 function M.ListTrafficPolicyInstancesByHostedZoneAsync(ListTrafficPolicyInstancesByHostedZoneRequest, cb)
 	assert(ListTrafficPolicyInstancesByHostedZoneRequest, "You must provide a ListTrafficPolicyInstancesByHostedZoneRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListTrafficPolicyInstancesByHostedZone",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListTrafficPolicyInstancesByHostedZone",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/trafficpolicyinstances/hostedzone", ListTrafficPolicyInstancesByHostedZoneRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/trafficpolicyinstances/hostedzone", ListTrafficPolicyInstancesByHostedZoneRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6372,13 +6377,13 @@ end
 function M.GetCheckerIpRangesAsync(GetCheckerIpRangesRequest, cb)
 	assert(GetCheckerIpRangesRequest, "You must provide a GetCheckerIpRangesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetCheckerIpRanges",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetCheckerIpRanges",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/checkeripranges", GetCheckerIpRangesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/checkeripranges", GetCheckerIpRangesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6404,13 +6409,13 @@ end
 function M.ListTrafficPolicyInstancesByPolicyAsync(ListTrafficPolicyInstancesByPolicyRequest, cb)
 	assert(ListTrafficPolicyInstancesByPolicyRequest, "You must provide a ListTrafficPolicyInstancesByPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListTrafficPolicyInstancesByPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListTrafficPolicyInstancesByPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/trafficpolicyinstances/trafficpolicy", ListTrafficPolicyInstancesByPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/trafficpolicyinstances/trafficpolicy", ListTrafficPolicyInstancesByPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6436,13 +6441,13 @@ end
 function M.ListTrafficPoliciesAsync(ListTrafficPoliciesRequest, cb)
 	assert(ListTrafficPoliciesRequest, "You must provide a ListTrafficPoliciesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListTrafficPolicies",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListTrafficPolicies",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/trafficpolicies", ListTrafficPoliciesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/trafficpolicies", ListTrafficPoliciesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6468,13 +6473,13 @@ end
 function M.UpdateHostedZoneCommentAsync(UpdateHostedZoneCommentRequest, cb)
 	assert(UpdateHostedZoneCommentRequest, "You must provide a UpdateHostedZoneCommentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateHostedZoneComment",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateHostedZoneComment",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/hostedzone/{Id}", UpdateHostedZoneCommentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/hostedzone/{Id}", UpdateHostedZoneCommentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6500,13 +6505,13 @@ end
 function M.ChangeTagsForResourceAsync(ChangeTagsForResourceRequest, cb)
 	assert(ChangeTagsForResourceRequest, "You must provide a ChangeTagsForResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ChangeTagsForResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ChangeTagsForResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/tags/{ResourceType}/{ResourceId}", ChangeTagsForResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/tags/{ResourceType}/{ResourceId}", ChangeTagsForResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6532,13 +6537,13 @@ end
 function M.GetHealthCheckAsync(GetHealthCheckRequest, cb)
 	assert(GetHealthCheckRequest, "You must provide a GetHealthCheckRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetHealthCheck",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetHealthCheck",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/healthcheck/{HealthCheckId}", GetHealthCheckRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/healthcheck/{HealthCheckId}", GetHealthCheckRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6564,13 +6569,13 @@ end
 function M.ListHostedZonesByNameAsync(ListHostedZonesByNameRequest, cb)
 	assert(ListHostedZonesByNameRequest, "You must provide a ListHostedZonesByNameRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListHostedZonesByName",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListHostedZonesByName",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/hostedzonesbyname", ListHostedZonesByNameRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/hostedzonesbyname", ListHostedZonesByNameRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6596,13 +6601,13 @@ end
 function M.GetHostedZoneAsync(GetHostedZoneRequest, cb)
 	assert(GetHostedZoneRequest, "You must provide a GetHostedZoneRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetHostedZone",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetHostedZone",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/hostedzone/{Id}", GetHostedZoneRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/hostedzone/{Id}", GetHostedZoneRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6628,13 +6633,13 @@ end
 function M.DeleteReusableDelegationSetAsync(DeleteReusableDelegationSetRequest, cb)
 	assert(DeleteReusableDelegationSetRequest, "You must provide a DeleteReusableDelegationSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteReusableDelegationSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteReusableDelegationSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/delegationset/{Id}", DeleteReusableDelegationSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/delegationset/{Id}", DeleteReusableDelegationSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6660,13 +6665,13 @@ end
 function M.DeleteTrafficPolicyInstanceAsync(DeleteTrafficPolicyInstanceRequest, cb)
 	assert(DeleteTrafficPolicyInstanceRequest, "You must provide a DeleteTrafficPolicyInstanceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteTrafficPolicyInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteTrafficPolicyInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/trafficpolicyinstance/{Id}", DeleteTrafficPolicyInstanceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/trafficpolicyinstance/{Id}", DeleteTrafficPolicyInstanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6692,13 +6697,13 @@ end
 function M.GetHostedZoneCountAsync(GetHostedZoneCountRequest, cb)
 	assert(GetHostedZoneCountRequest, "You must provide a GetHostedZoneCountRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetHostedZoneCount",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetHostedZoneCount",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/hostedzonecount", GetHostedZoneCountRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/hostedzonecount", GetHostedZoneCountRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6724,13 +6729,13 @@ end
 function M.GetTrafficPolicyInstanceCountAsync(GetTrafficPolicyInstanceCountRequest, cb)
 	assert(GetTrafficPolicyInstanceCountRequest, "You must provide a GetTrafficPolicyInstanceCountRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetTrafficPolicyInstanceCount",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetTrafficPolicyInstanceCount",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/trafficpolicyinstancecount", GetTrafficPolicyInstanceCountRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/trafficpolicyinstancecount", GetTrafficPolicyInstanceCountRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6756,13 +6761,13 @@ end
 function M.UpdateTrafficPolicyCommentAsync(UpdateTrafficPolicyCommentRequest, cb)
 	assert(UpdateTrafficPolicyCommentRequest, "You must provide a UpdateTrafficPolicyCommentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateTrafficPolicyComment",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateTrafficPolicyComment",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/trafficpolicy/{Id}/{Version}", UpdateTrafficPolicyCommentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/trafficpolicy/{Id}/{Version}", UpdateTrafficPolicyCommentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6788,13 +6793,13 @@ end
 function M.ChangeResourceRecordSetsAsync(ChangeResourceRecordSetsRequest, cb)
 	assert(ChangeResourceRecordSetsRequest, "You must provide a ChangeResourceRecordSetsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ChangeResourceRecordSets",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ChangeResourceRecordSets",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/hostedzone/{Id}/rrset/", ChangeResourceRecordSetsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/hostedzone/{Id}/rrset/", ChangeResourceRecordSetsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6820,13 +6825,13 @@ end
 function M.DeleteTrafficPolicyAsync(DeleteTrafficPolicyRequest, cb)
 	assert(DeleteTrafficPolicyRequest, "You must provide a DeleteTrafficPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteTrafficPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteTrafficPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/trafficpolicy/{Id}/{Version}", DeleteTrafficPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/trafficpolicy/{Id}/{Version}", DeleteTrafficPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6852,13 +6857,13 @@ end
 function M.CreateHostedZoneAsync(CreateHostedZoneRequest, cb)
 	assert(CreateHostedZoneRequest, "You must provide a CreateHostedZoneRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateHostedZone",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateHostedZone",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/hostedzone", CreateHostedZoneRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/hostedzone", CreateHostedZoneRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6884,13 +6889,13 @@ end
 function M.CreateVPCAssociationAuthorizationAsync(CreateVPCAssociationAuthorizationRequest, cb)
 	assert(CreateVPCAssociationAuthorizationRequest, "You must provide a CreateVPCAssociationAuthorizationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateVPCAssociationAuthorization",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateVPCAssociationAuthorization",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/hostedzone/{Id}/authorizevpcassociation", CreateVPCAssociationAuthorizationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/hostedzone/{Id}/authorizevpcassociation", CreateVPCAssociationAuthorizationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6916,13 +6921,13 @@ end
 function M.DeleteHostedZoneAsync(DeleteHostedZoneRequest, cb)
 	assert(DeleteHostedZoneRequest, "You must provide a DeleteHostedZoneRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteHostedZone",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteHostedZone",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/hostedzone/{Id}", DeleteHostedZoneRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/hostedzone/{Id}", DeleteHostedZoneRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6948,13 +6953,13 @@ end
 function M.GetHealthCheckStatusAsync(GetHealthCheckStatusRequest, cb)
 	assert(GetHealthCheckStatusRequest, "You must provide a GetHealthCheckStatusRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetHealthCheckStatus",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetHealthCheckStatus",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/healthcheck/{HealthCheckId}/status", GetHealthCheckStatusRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/healthcheck/{HealthCheckId}/status", GetHealthCheckStatusRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6980,13 +6985,13 @@ end
 function M.TestDNSAnswerAsync(TestDNSAnswerRequest, cb)
 	assert(TestDNSAnswerRequest, "You must provide a TestDNSAnswerRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".TestDNSAnswer",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".TestDNSAnswer",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/testdnsanswer", TestDNSAnswerRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/testdnsanswer", TestDNSAnswerRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7012,13 +7017,13 @@ end
 function M.ListReusableDelegationSetsAsync(ListReusableDelegationSetsRequest, cb)
 	assert(ListReusableDelegationSetsRequest, "You must provide a ListReusableDelegationSetsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListReusableDelegationSets",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListReusableDelegationSets",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/delegationset", ListReusableDelegationSetsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/delegationset", ListReusableDelegationSetsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7044,13 +7049,13 @@ end
 function M.GetTrafficPolicyAsync(GetTrafficPolicyRequest, cb)
 	assert(GetTrafficPolicyRequest, "You must provide a GetTrafficPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetTrafficPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetTrafficPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/trafficpolicy/{Id}/{Version}", GetTrafficPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/trafficpolicy/{Id}/{Version}", GetTrafficPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7076,13 +7081,13 @@ end
 function M.CreateTrafficPolicyInstanceAsync(CreateTrafficPolicyInstanceRequest, cb)
 	assert(CreateTrafficPolicyInstanceRequest, "You must provide a CreateTrafficPolicyInstanceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateTrafficPolicyInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateTrafficPolicyInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/trafficpolicyinstance", CreateTrafficPolicyInstanceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/trafficpolicyinstance", CreateTrafficPolicyInstanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7108,13 +7113,13 @@ end
 function M.GetGeoLocationAsync(GetGeoLocationRequest, cb)
 	assert(GetGeoLocationRequest, "You must provide a GetGeoLocationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetGeoLocation",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetGeoLocation",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/geolocation", GetGeoLocationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/geolocation", GetGeoLocationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7140,13 +7145,13 @@ end
 function M.GetReusableDelegationSetAsync(GetReusableDelegationSetRequest, cb)
 	assert(GetReusableDelegationSetRequest, "You must provide a GetReusableDelegationSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetReusableDelegationSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetReusableDelegationSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/delegationset/{Id}", GetReusableDelegationSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/delegationset/{Id}", GetReusableDelegationSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7172,13 +7177,13 @@ end
 function M.ListHostedZonesAsync(ListHostedZonesRequest, cb)
 	assert(ListHostedZonesRequest, "You must provide a ListHostedZonesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListHostedZones",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListHostedZones",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/hostedzone", ListHostedZonesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/hostedzone", ListHostedZonesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7204,13 +7209,13 @@ end
 function M.UpdateHealthCheckAsync(UpdateHealthCheckRequest, cb)
 	assert(UpdateHealthCheckRequest, "You must provide a UpdateHealthCheckRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateHealthCheck",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateHealthCheck",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/healthcheck/{HealthCheckId}", UpdateHealthCheckRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/healthcheck/{HealthCheckId}", UpdateHealthCheckRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7236,13 +7241,13 @@ end
 function M.GetHealthCheckCountAsync(GetHealthCheckCountRequest, cb)
 	assert(GetHealthCheckCountRequest, "You must provide a GetHealthCheckCountRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetHealthCheckCount",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetHealthCheckCount",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/healthcheckcount", GetHealthCheckCountRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/healthcheckcount", GetHealthCheckCountRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7268,13 +7273,13 @@ end
 function M.DisassociateVPCFromHostedZoneAsync(DisassociateVPCFromHostedZoneRequest, cb)
 	assert(DisassociateVPCFromHostedZoneRequest, "You must provide a DisassociateVPCFromHostedZoneRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DisassociateVPCFromHostedZone",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DisassociateVPCFromHostedZone",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/hostedzone/{Id}/disassociatevpc", DisassociateVPCFromHostedZoneRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/hostedzone/{Id}/disassociatevpc", DisassociateVPCFromHostedZoneRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7300,13 +7305,13 @@ end
 function M.DeleteVPCAssociationAuthorizationAsync(DeleteVPCAssociationAuthorizationRequest, cb)
 	assert(DeleteVPCAssociationAuthorizationRequest, "You must provide a DeleteVPCAssociationAuthorizationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteVPCAssociationAuthorization",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteVPCAssociationAuthorization",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/hostedzone/{Id}/deauthorizevpcassociation", DeleteVPCAssociationAuthorizationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/hostedzone/{Id}/deauthorizevpcassociation", DeleteVPCAssociationAuthorizationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7332,13 +7337,13 @@ end
 function M.GetTrafficPolicyInstanceAsync(GetTrafficPolicyInstanceRequest, cb)
 	assert(GetTrafficPolicyInstanceRequest, "You must provide a GetTrafficPolicyInstanceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetTrafficPolicyInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetTrafficPolicyInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/trafficpolicyinstance/{Id}", GetTrafficPolicyInstanceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/trafficpolicyinstance/{Id}", GetTrafficPolicyInstanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7364,13 +7369,13 @@ end
 function M.DeleteHealthCheckAsync(DeleteHealthCheckRequest, cb)
 	assert(DeleteHealthCheckRequest, "You must provide a DeleteHealthCheckRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteHealthCheck",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteHealthCheck",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/healthcheck/{HealthCheckId}", DeleteHealthCheckRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/healthcheck/{HealthCheckId}", DeleteHealthCheckRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7396,13 +7401,13 @@ end
 function M.CreateHealthCheckAsync(CreateHealthCheckRequest, cb)
 	assert(CreateHealthCheckRequest, "You must provide a CreateHealthCheckRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateHealthCheck",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateHealthCheck",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/healthcheck", CreateHealthCheckRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/healthcheck", CreateHealthCheckRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7428,13 +7433,13 @@ end
 function M.CreateTrafficPolicyVersionAsync(CreateTrafficPolicyVersionRequest, cb)
 	assert(CreateTrafficPolicyVersionRequest, "You must provide a CreateTrafficPolicyVersionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateTrafficPolicyVersion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateTrafficPolicyVersion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/trafficpolicy/{Id}", CreateTrafficPolicyVersionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/trafficpolicy/{Id}", CreateTrafficPolicyVersionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7460,13 +7465,13 @@ end
 function M.CreateTrafficPolicyAsync(CreateTrafficPolicyRequest, cb)
 	assert(CreateTrafficPolicyRequest, "You must provide a CreateTrafficPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateTrafficPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateTrafficPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/trafficpolicy", CreateTrafficPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/trafficpolicy", CreateTrafficPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7492,13 +7497,13 @@ end
 function M.ListTagsForResourcesAsync(ListTagsForResourcesRequest, cb)
 	assert(ListTagsForResourcesRequest, "You must provide a ListTagsForResourcesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListTagsForResources",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListTagsForResources",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/tags/{ResourceType}", ListTagsForResourcesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/tags/{ResourceType}", ListTagsForResourcesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7524,13 +7529,13 @@ end
 function M.ListGeoLocationsAsync(ListGeoLocationsRequest, cb)
 	assert(ListGeoLocationsRequest, "You must provide a ListGeoLocationsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListGeoLocations",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListGeoLocations",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/geolocations", ListGeoLocationsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/geolocations", ListGeoLocationsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7556,13 +7561,13 @@ end
 function M.AssociateVPCWithHostedZoneAsync(AssociateVPCWithHostedZoneRequest, cb)
 	assert(AssociateVPCWithHostedZoneRequest, "You must provide a AssociateVPCWithHostedZoneRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AssociateVPCWithHostedZone",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AssociateVPCWithHostedZone",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/hostedzone/{Id}/associatevpc", AssociateVPCWithHostedZoneRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/hostedzone/{Id}/associatevpc", AssociateVPCWithHostedZoneRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7588,13 +7593,13 @@ end
 function M.ListTrafficPolicyInstancesAsync(ListTrafficPolicyInstancesRequest, cb)
 	assert(ListTrafficPolicyInstancesRequest, "You must provide a ListTrafficPolicyInstancesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListTrafficPolicyInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListTrafficPolicyInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/trafficpolicyinstances", ListTrafficPolicyInstancesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/trafficpolicyinstances", ListTrafficPolicyInstancesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7620,13 +7625,13 @@ end
 function M.ListVPCAssociationAuthorizationsAsync(ListVPCAssociationAuthorizationsRequest, cb)
 	assert(ListVPCAssociationAuthorizationsRequest, "You must provide a ListVPCAssociationAuthorizationsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListVPCAssociationAuthorizations",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListVPCAssociationAuthorizations",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/hostedzone/{Id}/authorizevpcassociation", ListVPCAssociationAuthorizationsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/hostedzone/{Id}/authorizevpcassociation", ListVPCAssociationAuthorizationsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7652,13 +7657,13 @@ end
 function M.GetHealthCheckLastFailureReasonAsync(GetHealthCheckLastFailureReasonRequest, cb)
 	assert(GetHealthCheckLastFailureReasonRequest, "You must provide a GetHealthCheckLastFailureReasonRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetHealthCheckLastFailureReason",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetHealthCheckLastFailureReason",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/healthcheck/{HealthCheckId}/lastfailurereason", GetHealthCheckLastFailureReasonRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/healthcheck/{HealthCheckId}/lastfailurereason", GetHealthCheckLastFailureReasonRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7684,13 +7689,13 @@ end
 function M.GetChangeAsync(GetChangeRequest, cb)
 	assert(GetChangeRequest, "You must provide a GetChangeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetChange",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetChange",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/change/{Id}", GetChangeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/change/{Id}", GetChangeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7716,13 +7721,13 @@ end
 function M.UpdateTrafficPolicyInstanceAsync(UpdateTrafficPolicyInstanceRequest, cb)
 	assert(UpdateTrafficPolicyInstanceRequest, "You must provide a UpdateTrafficPolicyInstanceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateTrafficPolicyInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateTrafficPolicyInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/trafficpolicyinstance/{Id}", UpdateTrafficPolicyInstanceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/trafficpolicyinstance/{Id}", UpdateTrafficPolicyInstanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7748,13 +7753,13 @@ end
 function M.CreateReusableDelegationSetAsync(CreateReusableDelegationSetRequest, cb)
 	assert(CreateReusableDelegationSetRequest, "You must provide a CreateReusableDelegationSetRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateReusableDelegationSet",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateReusableDelegationSet",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/delegationset", CreateReusableDelegationSetRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/delegationset", CreateReusableDelegationSetRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7780,13 +7785,13 @@ end
 function M.ListResourceRecordSetsAsync(ListResourceRecordSetsRequest, cb)
 	assert(ListResourceRecordSetsRequest, "You must provide a ListResourceRecordSetsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListResourceRecordSets",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListResourceRecordSets",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/hostedzone/{Id}/rrset", ListResourceRecordSetsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/hostedzone/{Id}/rrset", ListResourceRecordSetsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7812,13 +7817,13 @@ end
 function M.ListTagsForResourceAsync(ListTagsForResourceRequest, cb)
 	assert(ListTagsForResourceRequest, "You must provide a ListTagsForResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListTagsForResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListTagsForResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/tags/{ResourceType}/{ResourceId}", ListTagsForResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/tags/{ResourceType}/{ResourceId}", ListTagsForResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7844,13 +7849,13 @@ end
 function M.ListHealthChecksAsync(ListHealthChecksRequest, cb)
 	assert(ListHealthChecksRequest, "You must provide a ListHealthChecksRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListHealthChecks",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListHealthChecks",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/healthcheck", ListHealthChecksRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/healthcheck", ListHealthChecksRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -7876,13 +7881,13 @@ end
 function M.ListTrafficPolicyVersionsAsync(ListTrafficPolicyVersionsRequest, cb)
 	assert(ListTrafficPolicyVersionsRequest, "You must provide a ListTrafficPolicyVersionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListTrafficPolicyVersions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListTrafficPolicyVersions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2013-04-01/trafficpolicies/{Id}/versions", ListTrafficPolicyVersionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2013-04-01/trafficpolicies/{Id}/versions", ListTrafficPolicyVersionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

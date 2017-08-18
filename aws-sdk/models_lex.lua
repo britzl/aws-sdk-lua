@@ -3624,12 +3624,12 @@ function M.IntentList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -3653,8 +3653,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -3667,13 +3672,13 @@ end
 function M.CreateBotVersionAsync(CreateBotVersionRequest, cb)
 	assert(CreateBotVersionRequest, "You must provide a CreateBotVersionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateBotVersion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateBotVersion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/bots/{name}/versions", CreateBotVersionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/bots/{name}/versions", CreateBotVersionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3699,13 +3704,13 @@ end
 function M.DeleteBotAliasAsync(DeleteBotAliasRequest, cb)
 	assert(DeleteBotAliasRequest, "You must provide a DeleteBotAliasRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteBotAlias",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteBotAlias",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/bots/{botName}/aliases/{name}", DeleteBotAliasRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/bots/{botName}/aliases/{name}", DeleteBotAliasRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3731,13 +3736,13 @@ end
 function M.GetIntentsAsync(GetIntentsRequest, cb)
 	assert(GetIntentsRequest, "You must provide a GetIntentsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetIntents",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetIntents",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/intents/", GetIntentsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/intents/", GetIntentsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3763,13 +3768,13 @@ end
 function M.GetSlotTypesAsync(GetSlotTypesRequest, cb)
 	assert(GetSlotTypesRequest, "You must provide a GetSlotTypesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetSlotTypes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetSlotTypes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/slottypes/", GetSlotTypesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/slottypes/", GetSlotTypesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3795,13 +3800,13 @@ end
 function M.DeleteSlotTypeVersionAsync(DeleteSlotTypeVersionRequest, cb)
 	assert(DeleteSlotTypeVersionRequest, "You must provide a DeleteSlotTypeVersionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteSlotTypeVersion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteSlotTypeVersion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/slottypes/{name}/version/{version}", DeleteSlotTypeVersionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/slottypes/{name}/version/{version}", DeleteSlotTypeVersionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3827,13 +3832,13 @@ end
 function M.CreateSlotTypeVersionAsync(CreateSlotTypeVersionRequest, cb)
 	assert(CreateSlotTypeVersionRequest, "You must provide a CreateSlotTypeVersionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateSlotTypeVersion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateSlotTypeVersion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/slottypes/{name}/versions", CreateSlotTypeVersionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/slottypes/{name}/versions", CreateSlotTypeVersionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3859,13 +3864,13 @@ end
 function M.GetIntentVersionsAsync(GetIntentVersionsRequest, cb)
 	assert(GetIntentVersionsRequest, "You must provide a GetIntentVersionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetIntentVersions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetIntentVersions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/intents/{name}/versions/", GetIntentVersionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/intents/{name}/versions/", GetIntentVersionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3891,13 +3896,13 @@ end
 function M.GetBuiltinSlotTypesAsync(GetBuiltinSlotTypesRequest, cb)
 	assert(GetBuiltinSlotTypesRequest, "You must provide a GetBuiltinSlotTypesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetBuiltinSlotTypes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetBuiltinSlotTypes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/builtins/slottypes/", GetBuiltinSlotTypesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/builtins/slottypes/", GetBuiltinSlotTypesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3923,13 +3928,13 @@ end
 function M.CreateIntentVersionAsync(CreateIntentVersionRequest, cb)
 	assert(CreateIntentVersionRequest, "You must provide a CreateIntentVersionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateIntentVersion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateIntentVersion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/intents/{name}/versions", CreateIntentVersionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/intents/{name}/versions", CreateIntentVersionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3955,13 +3960,13 @@ end
 function M.GetUtterancesViewAsync(GetUtterancesViewRequest, cb)
 	assert(GetUtterancesViewRequest, "You must provide a GetUtterancesViewRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetUtterancesView",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetUtterancesView",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/bots/{botname}/utterances?view=aggregation", GetUtterancesViewRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/bots/{botname}/utterances?view=aggregation", GetUtterancesViewRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3987,13 +3992,13 @@ end
 function M.GetBotAsync(GetBotRequest, cb)
 	assert(GetBotRequest, "You must provide a GetBotRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetBot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetBot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/bots/{name}/versions/{versionoralias}", GetBotRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/bots/{name}/versions/{versionoralias}", GetBotRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4019,13 +4024,13 @@ end
 function M.GetSlotTypeVersionsAsync(GetSlotTypeVersionsRequest, cb)
 	assert(GetSlotTypeVersionsRequest, "You must provide a GetSlotTypeVersionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetSlotTypeVersions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetSlotTypeVersions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/slottypes/{name}/versions/", GetSlotTypeVersionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/slottypes/{name}/versions/", GetSlotTypeVersionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4051,13 +4056,13 @@ end
 function M.DeleteIntentVersionAsync(DeleteIntentVersionRequest, cb)
 	assert(DeleteIntentVersionRequest, "You must provide a DeleteIntentVersionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteIntentVersion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteIntentVersion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/intents/{name}/versions/{version}", DeleteIntentVersionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/intents/{name}/versions/{version}", DeleteIntentVersionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4083,13 +4088,13 @@ end
 function M.DeleteUtterancesAsync(DeleteUtterancesRequest, cb)
 	assert(DeleteUtterancesRequest, "You must provide a DeleteUtterancesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteUtterances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteUtterances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/bots/{botName}/utterances/{userId}", DeleteUtterancesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/bots/{botName}/utterances/{userId}", DeleteUtterancesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4115,13 +4120,13 @@ end
 function M.GetBotAliasAsync(GetBotAliasRequest, cb)
 	assert(GetBotAliasRequest, "You must provide a GetBotAliasRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetBotAlias",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetBotAlias",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/bots/{botName}/aliases/{name}", GetBotAliasRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/bots/{botName}/aliases/{name}", GetBotAliasRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4147,13 +4152,13 @@ end
 function M.DeleteIntentAsync(DeleteIntentRequest, cb)
 	assert(DeleteIntentRequest, "You must provide a DeleteIntentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteIntent",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteIntent",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/intents/{name}", DeleteIntentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/intents/{name}", DeleteIntentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4179,13 +4184,13 @@ end
 function M.GetBotVersionsAsync(GetBotVersionsRequest, cb)
 	assert(GetBotVersionsRequest, "You must provide a GetBotVersionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetBotVersions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetBotVersions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/bots/{name}/versions/", GetBotVersionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/bots/{name}/versions/", GetBotVersionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4211,13 +4216,13 @@ end
 function M.PutBotAliasAsync(PutBotAliasRequest, cb)
 	assert(PutBotAliasRequest, "You must provide a PutBotAliasRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutBotAlias",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutBotAlias",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/bots/{botName}/aliases/{name}", PutBotAliasRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/bots/{botName}/aliases/{name}", PutBotAliasRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4243,13 +4248,13 @@ end
 function M.DeleteBotChannelAssociationAsync(DeleteBotChannelAssociationRequest, cb)
 	assert(DeleteBotChannelAssociationRequest, "You must provide a DeleteBotChannelAssociationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteBotChannelAssociation",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteBotChannelAssociation",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/bots/{botName}/aliases/{aliasName}/channels/{name}", DeleteBotChannelAssociationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/bots/{botName}/aliases/{aliasName}/channels/{name}", DeleteBotChannelAssociationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4275,13 +4280,13 @@ end
 function M.DeleteBotVersionAsync(DeleteBotVersionRequest, cb)
 	assert(DeleteBotVersionRequest, "You must provide a DeleteBotVersionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteBotVersion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteBotVersion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/bots/{name}/versions/{version}", DeleteBotVersionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/bots/{name}/versions/{version}", DeleteBotVersionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4307,13 +4312,13 @@ end
 function M.GetBotChannelAssociationsAsync(GetBotChannelAssociationsRequest, cb)
 	assert(GetBotChannelAssociationsRequest, "You must provide a GetBotChannelAssociationsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetBotChannelAssociations",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetBotChannelAssociations",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/bots/{botName}/aliases/{aliasName}/channels/", GetBotChannelAssociationsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/bots/{botName}/aliases/{aliasName}/channels/", GetBotChannelAssociationsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4339,13 +4344,13 @@ end
 function M.PutBotAsync(PutBotRequest, cb)
 	assert(PutBotRequest, "You must provide a PutBotRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutBot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutBot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/bots/{name}/versions/$LATEST", PutBotRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/bots/{name}/versions/$LATEST", PutBotRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4371,13 +4376,13 @@ end
 function M.GetBotChannelAssociationAsync(GetBotChannelAssociationRequest, cb)
 	assert(GetBotChannelAssociationRequest, "You must provide a GetBotChannelAssociationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetBotChannelAssociation",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetBotChannelAssociation",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/bots/{botName}/aliases/{aliasName}/channels/{name}", GetBotChannelAssociationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/bots/{botName}/aliases/{aliasName}/channels/{name}", GetBotChannelAssociationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4403,13 +4408,13 @@ end
 function M.GetBotAliasesAsync(GetBotAliasesRequest, cb)
 	assert(GetBotAliasesRequest, "You must provide a GetBotAliasesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetBotAliases",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetBotAliases",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/bots/{botName}/aliases/", GetBotAliasesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/bots/{botName}/aliases/", GetBotAliasesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4435,13 +4440,13 @@ end
 function M.DeleteBotAsync(DeleteBotRequest, cb)
 	assert(DeleteBotRequest, "You must provide a DeleteBotRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteBot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteBot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/bots/{name}", DeleteBotRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/bots/{name}", DeleteBotRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4467,13 +4472,13 @@ end
 function M.GetBuiltinIntentsAsync(GetBuiltinIntentsRequest, cb)
 	assert(GetBuiltinIntentsRequest, "You must provide a GetBuiltinIntentsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetBuiltinIntents",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetBuiltinIntents",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/builtins/intents/", GetBuiltinIntentsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/builtins/intents/", GetBuiltinIntentsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4499,13 +4504,13 @@ end
 function M.GetBotsAsync(GetBotsRequest, cb)
 	assert(GetBotsRequest, "You must provide a GetBotsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetBots",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetBots",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/bots/", GetBotsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/bots/", GetBotsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4531,13 +4536,13 @@ end
 function M.DeleteSlotTypeAsync(DeleteSlotTypeRequest, cb)
 	assert(DeleteSlotTypeRequest, "You must provide a DeleteSlotTypeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteSlotType",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteSlotType",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/slottypes/{name}", DeleteSlotTypeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/slottypes/{name}", DeleteSlotTypeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4563,13 +4568,13 @@ end
 function M.GetSlotTypeAsync(GetSlotTypeRequest, cb)
 	assert(GetSlotTypeRequest, "You must provide a GetSlotTypeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetSlotType",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetSlotType",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/slottypes/{name}/versions/{version}", GetSlotTypeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/slottypes/{name}/versions/{version}", GetSlotTypeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4595,13 +4600,13 @@ end
 function M.GetIntentAsync(GetIntentRequest, cb)
 	assert(GetIntentRequest, "You must provide a GetIntentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetIntent",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetIntent",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/intents/{name}/versions/{version}", GetIntentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/intents/{name}/versions/{version}", GetIntentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4627,13 +4632,13 @@ end
 function M.PutSlotTypeAsync(PutSlotTypeRequest, cb)
 	assert(PutSlotTypeRequest, "You must provide a PutSlotTypeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutSlotType",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutSlotType",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/slottypes/{name}/versions/$LATEST", PutSlotTypeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/slottypes/{name}/versions/$LATEST", PutSlotTypeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4659,13 +4664,13 @@ end
 function M.GetBuiltinIntentAsync(GetBuiltinIntentRequest, cb)
 	assert(GetBuiltinIntentRequest, "You must provide a GetBuiltinIntentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetBuiltinIntent",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetBuiltinIntent",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/builtins/intents/{signature}", GetBuiltinIntentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/builtins/intents/{signature}", GetBuiltinIntentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4691,13 +4696,13 @@ end
 function M.PutIntentAsync(PutIntentRequest, cb)
 	assert(PutIntentRequest, "You must provide a PutIntentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutIntent",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutIntent",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/intents/{name}/versions/$LATEST", PutIntentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/intents/{name}/versions/$LATEST", PutIntentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

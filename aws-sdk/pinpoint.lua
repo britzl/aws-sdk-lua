@@ -5263,12 +5263,12 @@ function M.ListOfTreatmentResource(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -5292,8 +5292,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -5306,13 +5311,13 @@ end
 function M.CreateSegmentAsync(CreateSegmentRequest, cb)
 	assert(CreateSegmentRequest, "You must provide a CreateSegmentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateSegment",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateSegment",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/segments", CreateSegmentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/segments", CreateSegmentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5338,13 +5343,13 @@ end
 function M.GetImportJobsAsync(GetImportJobsRequest, cb)
 	assert(GetImportJobsRequest, "You must provide a GetImportJobsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetImportJobs",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetImportJobs",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/jobs/import", GetImportJobsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/jobs/import", GetImportJobsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5370,13 +5375,13 @@ end
 function M.GetSegmentVersionAsync(GetSegmentVersionRequest, cb)
 	assert(GetSegmentVersionRequest, "You must provide a GetSegmentVersionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetSegmentVersion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetSegmentVersion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/segments/{segment-id}/versions/{version}", GetSegmentVersionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/segments/{segment-id}/versions/{version}", GetSegmentVersionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5402,13 +5407,13 @@ end
 function M.DeleteApnsSandboxChannelAsync(DeleteApnsSandboxChannelRequest, cb)
 	assert(DeleteApnsSandboxChannelRequest, "You must provide a DeleteApnsSandboxChannelRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteApnsSandboxChannel",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteApnsSandboxChannel",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/channels/apns_sandbox", DeleteApnsSandboxChannelRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/channels/apns_sandbox", DeleteApnsSandboxChannelRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5434,13 +5439,13 @@ end
 function M.DeleteGcmChannelAsync(DeleteGcmChannelRequest, cb)
 	assert(DeleteGcmChannelRequest, "You must provide a DeleteGcmChannelRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteGcmChannel",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteGcmChannel",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/channels/gcm", DeleteGcmChannelRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/channels/gcm", DeleteGcmChannelRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5466,13 +5471,13 @@ end
 function M.DeleteCampaignAsync(DeleteCampaignRequest, cb)
 	assert(DeleteCampaignRequest, "You must provide a DeleteCampaignRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteCampaign",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteCampaign",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/campaigns/{campaign-id}", DeleteCampaignRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/campaigns/{campaign-id}", DeleteCampaignRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5498,13 +5503,13 @@ end
 function M.GetImportJobAsync(GetImportJobRequest, cb)
 	assert(GetImportJobRequest, "You must provide a GetImportJobRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetImportJob",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetImportJob",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/jobs/import/{job-id}", GetImportJobRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/jobs/import/{job-id}", GetImportJobRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5530,13 +5535,13 @@ end
 function M.CreateCampaignAsync(CreateCampaignRequest, cb)
 	assert(CreateCampaignRequest, "You must provide a CreateCampaignRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateCampaign",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateCampaign",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/campaigns", CreateCampaignRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/campaigns", CreateCampaignRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5562,13 +5567,13 @@ end
 function M.CreateImportJobAsync(CreateImportJobRequest, cb)
 	assert(CreateImportJobRequest, "You must provide a CreateImportJobRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateImportJob",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateImportJob",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/jobs/import", CreateImportJobRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/jobs/import", CreateImportJobRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5594,13 +5599,13 @@ end
 function M.UpdateSmsChannelAsync(UpdateSmsChannelRequest, cb)
 	assert(UpdateSmsChannelRequest, "You must provide a UpdateSmsChannelRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateSmsChannel",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateSmsChannel",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/channels/sms", UpdateSmsChannelRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/channels/sms", UpdateSmsChannelRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5626,13 +5631,13 @@ end
 function M.GetCampaignVersionAsync(GetCampaignVersionRequest, cb)
 	assert(GetCampaignVersionRequest, "You must provide a GetCampaignVersionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetCampaignVersion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetCampaignVersion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/campaigns/{campaign-id}/versions/{version}", GetCampaignVersionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/campaigns/{campaign-id}/versions/{version}", GetCampaignVersionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5658,13 +5663,13 @@ end
 function M.GetGcmChannelAsync(GetGcmChannelRequest, cb)
 	assert(GetGcmChannelRequest, "You must provide a GetGcmChannelRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetGcmChannel",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetGcmChannel",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/channels/gcm", GetGcmChannelRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/channels/gcm", GetGcmChannelRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5690,13 +5695,13 @@ end
 function M.UpdateApnsChannelAsync(UpdateApnsChannelRequest, cb)
 	assert(UpdateApnsChannelRequest, "You must provide a UpdateApnsChannelRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateApnsChannel",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateApnsChannel",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/channels/apns", UpdateApnsChannelRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/channels/apns", UpdateApnsChannelRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5722,13 +5727,13 @@ end
 function M.UpdateGcmChannelAsync(UpdateGcmChannelRequest, cb)
 	assert(UpdateGcmChannelRequest, "You must provide a UpdateGcmChannelRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateGcmChannel",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateGcmChannel",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/channels/gcm", UpdateGcmChannelRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/channels/gcm", UpdateGcmChannelRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5754,13 +5759,13 @@ end
 function M.GetSegmentAsync(GetSegmentRequest, cb)
 	assert(GetSegmentRequest, "You must provide a GetSegmentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetSegment",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetSegment",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/segments/{segment-id}", GetSegmentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/segments/{segment-id}", GetSegmentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5786,13 +5791,13 @@ end
 function M.GetCampaignAsync(GetCampaignRequest, cb)
 	assert(GetCampaignRequest, "You must provide a GetCampaignRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetCampaign",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetCampaign",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/campaigns/{campaign-id}", GetCampaignRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/campaigns/{campaign-id}", GetCampaignRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5818,13 +5823,13 @@ end
 function M.GetEmailChannelAsync(GetEmailChannelRequest, cb)
 	assert(GetEmailChannelRequest, "You must provide a GetEmailChannelRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetEmailChannel",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetEmailChannel",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/channels/email", GetEmailChannelRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/channels/email", GetEmailChannelRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5850,13 +5855,13 @@ end
 function M.UpdateCampaignAsync(UpdateCampaignRequest, cb)
 	assert(UpdateCampaignRequest, "You must provide a UpdateCampaignRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateCampaign",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateCampaign",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/campaigns/{campaign-id}", UpdateCampaignRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/campaigns/{campaign-id}", UpdateCampaignRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5882,13 +5887,13 @@ end
 function M.UpdateApplicationSettingsAsync(UpdateApplicationSettingsRequest, cb)
 	assert(UpdateApplicationSettingsRequest, "You must provide a UpdateApplicationSettingsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateApplicationSettings",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateApplicationSettings",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/settings", UpdateApplicationSettingsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/settings", UpdateApplicationSettingsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5914,13 +5919,13 @@ end
 function M.UpdateApnsSandboxChannelAsync(UpdateApnsSandboxChannelRequest, cb)
 	assert(UpdateApnsSandboxChannelRequest, "You must provide a UpdateApnsSandboxChannelRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateApnsSandboxChannel",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateApnsSandboxChannel",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/channels/apns_sandbox", UpdateApnsSandboxChannelRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/channels/apns_sandbox", UpdateApnsSandboxChannelRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5946,13 +5951,13 @@ end
 function M.GetSegmentsAsync(GetSegmentsRequest, cb)
 	assert(GetSegmentsRequest, "You must provide a GetSegmentsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetSegments",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetSegments",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/segments", GetSegmentsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/segments", GetSegmentsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5978,13 +5983,13 @@ end
 function M.PutEventStreamAsync(PutEventStreamRequest, cb)
 	assert(PutEventStreamRequest, "You must provide a PutEventStreamRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutEventStream",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutEventStream",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/eventstream", PutEventStreamRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/eventstream", PutEventStreamRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6010,13 +6015,13 @@ end
 function M.DeleteSegmentAsync(DeleteSegmentRequest, cb)
 	assert(DeleteSegmentRequest, "You must provide a DeleteSegmentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteSegment",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteSegment",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/segments/{segment-id}", DeleteSegmentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/segments/{segment-id}", DeleteSegmentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6042,13 +6047,13 @@ end
 function M.GetCampaignVersionsAsync(GetCampaignVersionsRequest, cb)
 	assert(GetCampaignVersionsRequest, "You must provide a GetCampaignVersionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetCampaignVersions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetCampaignVersions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/campaigns/{campaign-id}/versions", GetCampaignVersionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/campaigns/{campaign-id}/versions", GetCampaignVersionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6074,13 +6079,13 @@ end
 function M.UpdateEndpointAsync(UpdateEndpointRequest, cb)
 	assert(UpdateEndpointRequest, "You must provide a UpdateEndpointRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateEndpoint",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateEndpoint",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/endpoints/{endpoint-id}", UpdateEndpointRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/endpoints/{endpoint-id}", UpdateEndpointRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6106,13 +6111,13 @@ end
 function M.GetApnsSandboxChannelAsync(GetApnsSandboxChannelRequest, cb)
 	assert(GetApnsSandboxChannelRequest, "You must provide a GetApnsSandboxChannelRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetApnsSandboxChannel",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetApnsSandboxChannel",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/channels/apns_sandbox", GetApnsSandboxChannelRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/channels/apns_sandbox", GetApnsSandboxChannelRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6138,13 +6143,13 @@ end
 function M.GetSegmentImportJobsAsync(GetSegmentImportJobsRequest, cb)
 	assert(GetSegmentImportJobsRequest, "You must provide a GetSegmentImportJobsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetSegmentImportJobs",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetSegmentImportJobs",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/segments/{segment-id}/jobs/import", GetSegmentImportJobsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/segments/{segment-id}/jobs/import", GetSegmentImportJobsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6170,13 +6175,13 @@ end
 function M.GetCampaignsAsync(GetCampaignsRequest, cb)
 	assert(GetCampaignsRequest, "You must provide a GetCampaignsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetCampaigns",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetCampaigns",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/campaigns", GetCampaignsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/campaigns", GetCampaignsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6202,13 +6207,13 @@ end
 function M.DeleteEmailChannelAsync(DeleteEmailChannelRequest, cb)
 	assert(DeleteEmailChannelRequest, "You must provide a DeleteEmailChannelRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteEmailChannel",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteEmailChannel",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/channels/email", DeleteEmailChannelRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/channels/email", DeleteEmailChannelRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6234,13 +6239,13 @@ end
 function M.GetCampaignActivitiesAsync(GetCampaignActivitiesRequest, cb)
 	assert(GetCampaignActivitiesRequest, "You must provide a GetCampaignActivitiesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetCampaignActivities",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetCampaignActivities",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/campaigns/{campaign-id}/activities", GetCampaignActivitiesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/campaigns/{campaign-id}/activities", GetCampaignActivitiesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6266,13 +6271,13 @@ end
 function M.GetApnsChannelAsync(GetApnsChannelRequest, cb)
 	assert(GetApnsChannelRequest, "You must provide a GetApnsChannelRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetApnsChannel",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetApnsChannel",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/channels/apns", GetApnsChannelRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/channels/apns", GetApnsChannelRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6298,13 +6303,13 @@ end
 function M.GetEndpointAsync(GetEndpointRequest, cb)
 	assert(GetEndpointRequest, "You must provide a GetEndpointRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetEndpoint",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetEndpoint",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/endpoints/{endpoint-id}", GetEndpointRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/endpoints/{endpoint-id}", GetEndpointRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6330,13 +6335,13 @@ end
 function M.GetEventStreamAsync(GetEventStreamRequest, cb)
 	assert(GetEventStreamRequest, "You must provide a GetEventStreamRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetEventStream",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetEventStream",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/eventstream", GetEventStreamRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/eventstream", GetEventStreamRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6362,13 +6367,13 @@ end
 function M.DeleteSmsChannelAsync(DeleteSmsChannelRequest, cb)
 	assert(DeleteSmsChannelRequest, "You must provide a DeleteSmsChannelRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteSmsChannel",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteSmsChannel",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/channels/sms", DeleteSmsChannelRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/channels/sms", DeleteSmsChannelRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6394,13 +6399,13 @@ end
 function M.SendMessagesAsync(SendMessagesRequest, cb)
 	assert(SendMessagesRequest, "You must provide a SendMessagesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SendMessages",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SendMessages",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/messages", SendMessagesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/messages", SendMessagesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6426,13 +6431,13 @@ end
 function M.DeleteApnsChannelAsync(DeleteApnsChannelRequest, cb)
 	assert(DeleteApnsChannelRequest, "You must provide a DeleteApnsChannelRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteApnsChannel",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteApnsChannel",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/channels/apns", DeleteApnsChannelRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/channels/apns", DeleteApnsChannelRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6458,13 +6463,13 @@ end
 function M.DeleteEventStreamAsync(DeleteEventStreamRequest, cb)
 	assert(DeleteEventStreamRequest, "You must provide a DeleteEventStreamRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteEventStream",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteEventStream",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/eventstream", DeleteEventStreamRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/eventstream", DeleteEventStreamRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6490,13 +6495,13 @@ end
 function M.GetApplicationSettingsAsync(GetApplicationSettingsRequest, cb)
 	assert(GetApplicationSettingsRequest, "You must provide a GetApplicationSettingsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetApplicationSettings",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetApplicationSettings",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/settings", GetApplicationSettingsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/settings", GetApplicationSettingsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6522,13 +6527,13 @@ end
 function M.UpdateEmailChannelAsync(UpdateEmailChannelRequest, cb)
 	assert(UpdateEmailChannelRequest, "You must provide a UpdateEmailChannelRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateEmailChannel",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateEmailChannel",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/channels/email", UpdateEmailChannelRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/channels/email", UpdateEmailChannelRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6554,13 +6559,13 @@ end
 function M.GetSmsChannelAsync(GetSmsChannelRequest, cb)
 	assert(GetSmsChannelRequest, "You must provide a GetSmsChannelRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetSmsChannel",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetSmsChannel",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/channels/sms", GetSmsChannelRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/channels/sms", GetSmsChannelRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6586,13 +6591,13 @@ end
 function M.UpdateSegmentAsync(UpdateSegmentRequest, cb)
 	assert(UpdateSegmentRequest, "You must provide a UpdateSegmentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateSegment",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateSegment",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/segments/{segment-id}", UpdateSegmentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/segments/{segment-id}", UpdateSegmentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6618,13 +6623,13 @@ end
 function M.GetSegmentVersionsAsync(GetSegmentVersionsRequest, cb)
 	assert(GetSegmentVersionsRequest, "You must provide a GetSegmentVersionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetSegmentVersions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetSegmentVersions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/segments/{segment-id}/versions", GetSegmentVersionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/segments/{segment-id}/versions", GetSegmentVersionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6650,13 +6655,13 @@ end
 function M.UpdateEndpointsBatchAsync(UpdateEndpointsBatchRequest, cb)
 	assert(UpdateEndpointsBatchRequest, "You must provide a UpdateEndpointsBatchRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateEndpointsBatch",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateEndpointsBatch",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/v1/apps/{application-id}/endpoints", UpdateEndpointsBatchRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/apps/{application-id}/endpoints", UpdateEndpointsBatchRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

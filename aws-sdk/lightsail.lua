@@ -4209,12 +4209,12 @@ function M.InstancePortInfoList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -4238,8 +4238,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -4252,13 +4257,13 @@ end
 function M.GetDomainAsync(GetDomainRequest, cb)
 	assert(GetDomainRequest, "You must provide a GetDomainRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetDomain",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetDomain",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetDomainRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetDomainRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4284,13 +4289,13 @@ end
 function M.GetKeyPairAsync(GetKeyPairRequest, cb)
 	assert(GetKeyPairRequest, "You must provide a GetKeyPairRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetKeyPair",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetKeyPair",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetKeyPairRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetKeyPairRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4316,13 +4321,13 @@ end
 function M.GetInstanceMetricDataAsync(GetInstanceMetricDataRequest, cb)
 	assert(GetInstanceMetricDataRequest, "You must provide a GetInstanceMetricDataRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetInstanceMetricData",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetInstanceMetricData",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetInstanceMetricDataRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetInstanceMetricDataRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4348,13 +4353,13 @@ end
 function M.GetStaticIpsAsync(GetStaticIpsRequest, cb)
 	assert(GetStaticIpsRequest, "You must provide a GetStaticIpsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetStaticIps",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetStaticIps",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetStaticIpsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetStaticIpsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4380,13 +4385,13 @@ end
 function M.GetOperationsForResourceAsync(GetOperationsForResourceRequest, cb)
 	assert(GetOperationsForResourceRequest, "You must provide a GetOperationsForResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetOperationsForResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetOperationsForResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetOperationsForResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetOperationsForResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4412,13 +4417,13 @@ end
 function M.CloseInstancePublicPortsAsync(CloseInstancePublicPortsRequest, cb)
 	assert(CloseInstancePublicPortsRequest, "You must provide a CloseInstancePublicPortsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.CloseInstancePublicPorts",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.CloseInstancePublicPorts",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CloseInstancePublicPortsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CloseInstancePublicPortsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4444,13 +4449,13 @@ end
 function M.GetActiveNamesAsync(GetActiveNamesRequest, cb)
 	assert(GetActiveNamesRequest, "You must provide a GetActiveNamesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetActiveNames",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetActiveNames",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetActiveNamesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetActiveNamesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4476,13 +4481,13 @@ end
 function M.GetInstancesAsync(GetInstancesRequest, cb)
 	assert(GetInstancesRequest, "You must provide a GetInstancesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetInstancesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetInstancesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4508,13 +4513,13 @@ end
 function M.PutInstancePublicPortsAsync(PutInstancePublicPortsRequest, cb)
 	assert(PutInstancePublicPortsRequest, "You must provide a PutInstancePublicPortsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.PutInstancePublicPorts",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.PutInstancePublicPorts",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutInstancePublicPortsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutInstancePublicPortsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4540,13 +4545,13 @@ end
 function M.DeleteInstanceAsync(DeleteInstanceRequest, cb)
 	assert(DeleteInstanceRequest, "You must provide a DeleteInstanceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.DeleteInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.DeleteInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteInstanceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteInstanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4572,13 +4577,13 @@ end
 function M.AttachStaticIpAsync(AttachStaticIpRequest, cb)
 	assert(AttachStaticIpRequest, "You must provide a AttachStaticIpRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.AttachStaticIp",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.AttachStaticIp",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AttachStaticIpRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AttachStaticIpRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4604,13 +4609,13 @@ end
 function M.GetStaticIpAsync(GetStaticIpRequest, cb)
 	assert(GetStaticIpRequest, "You must provide a GetStaticIpRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetStaticIp",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetStaticIp",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetStaticIpRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetStaticIpRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4636,13 +4641,13 @@ end
 function M.CreateKeyPairAsync(CreateKeyPairRequest, cb)
 	assert(CreateKeyPairRequest, "You must provide a CreateKeyPairRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.CreateKeyPair",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.CreateKeyPair",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateKeyPairRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateKeyPairRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4668,13 +4673,13 @@ end
 function M.CreateDomainEntryAsync(CreateDomainEntryRequest, cb)
 	assert(CreateDomainEntryRequest, "You must provide a CreateDomainEntryRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.CreateDomainEntry",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.CreateDomainEntry",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateDomainEntryRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateDomainEntryRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4700,13 +4705,13 @@ end
 function M.ImportKeyPairAsync(ImportKeyPairRequest, cb)
 	assert(ImportKeyPairRequest, "You must provide a ImportKeyPairRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.ImportKeyPair",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.ImportKeyPair",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ImportKeyPairRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ImportKeyPairRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4732,13 +4737,13 @@ end
 function M.CreateInstancesFromSnapshotAsync(CreateInstancesFromSnapshotRequest, cb)
 	assert(CreateInstancesFromSnapshotRequest, "You must provide a CreateInstancesFromSnapshotRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.CreateInstancesFromSnapshot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.CreateInstancesFromSnapshot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateInstancesFromSnapshotRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateInstancesFromSnapshotRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4764,13 +4769,13 @@ end
 function M.GetInstanceSnapshotAsync(GetInstanceSnapshotRequest, cb)
 	assert(GetInstanceSnapshotRequest, "You must provide a GetInstanceSnapshotRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetInstanceSnapshot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetInstanceSnapshot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetInstanceSnapshotRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetInstanceSnapshotRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4796,13 +4801,13 @@ end
 function M.GetOperationAsync(GetOperationRequest, cb)
 	assert(GetOperationRequest, "You must provide a GetOperationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetOperation",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetOperation",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetOperationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetOperationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4828,13 +4833,13 @@ end
 function M.DeleteInstanceSnapshotAsync(DeleteInstanceSnapshotRequest, cb)
 	assert(DeleteInstanceSnapshotRequest, "You must provide a DeleteInstanceSnapshotRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.DeleteInstanceSnapshot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.DeleteInstanceSnapshot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteInstanceSnapshotRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteInstanceSnapshotRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4860,13 +4865,13 @@ end
 function M.OpenInstancePublicPortsAsync(OpenInstancePublicPortsRequest, cb)
 	assert(OpenInstancePublicPortsRequest, "You must provide a OpenInstancePublicPortsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.OpenInstancePublicPorts",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.OpenInstancePublicPorts",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", OpenInstancePublicPortsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", OpenInstancePublicPortsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4892,13 +4897,13 @@ end
 function M.StartInstanceAsync(StartInstanceRequest, cb)
 	assert(StartInstanceRequest, "You must provide a StartInstanceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.StartInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.StartInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StartInstanceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StartInstanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4924,13 +4929,13 @@ end
 function M.UpdateDomainEntryAsync(UpdateDomainEntryRequest, cb)
 	assert(UpdateDomainEntryRequest, "You must provide a UpdateDomainEntryRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.UpdateDomainEntry",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.UpdateDomainEntry",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateDomainEntryRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateDomainEntryRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4956,13 +4961,13 @@ end
 function M.GetInstancePortStatesAsync(GetInstancePortStatesRequest, cb)
 	assert(GetInstancePortStatesRequest, "You must provide a GetInstancePortStatesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetInstancePortStates",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetInstancePortStates",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetInstancePortStatesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetInstancePortStatesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4988,13 +4993,13 @@ end
 function M.GetBlueprintsAsync(GetBlueprintsRequest, cb)
 	assert(GetBlueprintsRequest, "You must provide a GetBlueprintsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetBlueprints",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetBlueprints",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetBlueprintsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetBlueprintsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5020,13 +5025,13 @@ end
 function M.CreateDomainAsync(CreateDomainRequest, cb)
 	assert(CreateDomainRequest, "You must provide a CreateDomainRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.CreateDomain",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.CreateDomain",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateDomainRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateDomainRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5052,13 +5057,13 @@ end
 function M.DownloadDefaultKeyPairAsync(DownloadDefaultKeyPairRequest, cb)
 	assert(DownloadDefaultKeyPairRequest, "You must provide a DownloadDefaultKeyPairRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.DownloadDefaultKeyPair",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.DownloadDefaultKeyPair",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DownloadDefaultKeyPairRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DownloadDefaultKeyPairRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5084,13 +5089,13 @@ end
 function M.DeleteDomainEntryAsync(DeleteDomainEntryRequest, cb)
 	assert(DeleteDomainEntryRequest, "You must provide a DeleteDomainEntryRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.DeleteDomainEntry",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.DeleteDomainEntry",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteDomainEntryRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteDomainEntryRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5116,13 +5121,13 @@ end
 function M.GetOperationsAsync(GetOperationsRequest, cb)
 	assert(GetOperationsRequest, "You must provide a GetOperationsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetOperations",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetOperations",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetOperationsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetOperationsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5148,13 +5153,13 @@ end
 function M.GetBundlesAsync(GetBundlesRequest, cb)
 	assert(GetBundlesRequest, "You must provide a GetBundlesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetBundles",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetBundles",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetBundlesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetBundlesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5180,13 +5185,13 @@ end
 function M.GetInstanceAsync(GetInstanceRequest, cb)
 	assert(GetInstanceRequest, "You must provide a GetInstanceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetInstanceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetInstanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5212,13 +5217,13 @@ end
 function M.GetInstanceStateAsync(GetInstanceStateRequest, cb)
 	assert(GetInstanceStateRequest, "You must provide a GetInstanceStateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetInstanceState",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetInstanceState",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetInstanceStateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetInstanceStateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5244,13 +5249,13 @@ end
 function M.CreateInstanceSnapshotAsync(CreateInstanceSnapshotRequest, cb)
 	assert(CreateInstanceSnapshotRequest, "You must provide a CreateInstanceSnapshotRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.CreateInstanceSnapshot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.CreateInstanceSnapshot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateInstanceSnapshotRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateInstanceSnapshotRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5276,13 +5281,13 @@ end
 function M.AllocateStaticIpAsync(AllocateStaticIpRequest, cb)
 	assert(AllocateStaticIpRequest, "You must provide a AllocateStaticIpRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.AllocateStaticIp",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.AllocateStaticIp",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AllocateStaticIpRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AllocateStaticIpRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5308,13 +5313,13 @@ end
 function M.GetKeyPairsAsync(GetKeyPairsRequest, cb)
 	assert(GetKeyPairsRequest, "You must provide a GetKeyPairsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetKeyPairs",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetKeyPairs",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetKeyPairsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetKeyPairsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5340,13 +5345,13 @@ end
 function M.RebootInstanceAsync(RebootInstanceRequest, cb)
 	assert(RebootInstanceRequest, "You must provide a RebootInstanceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.RebootInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.RebootInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RebootInstanceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RebootInstanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5372,13 +5377,13 @@ end
 function M.GetRegionsAsync(GetRegionsRequest, cb)
 	assert(GetRegionsRequest, "You must provide a GetRegionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetRegions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetRegions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetRegionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetRegionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5404,13 +5409,13 @@ end
 function M.GetInstanceSnapshotsAsync(GetInstanceSnapshotsRequest, cb)
 	assert(GetInstanceSnapshotsRequest, "You must provide a GetInstanceSnapshotsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetInstanceSnapshots",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetInstanceSnapshots",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetInstanceSnapshotsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetInstanceSnapshotsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5436,13 +5441,13 @@ end
 function M.StopInstanceAsync(StopInstanceRequest, cb)
 	assert(StopInstanceRequest, "You must provide a StopInstanceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.StopInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.StopInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StopInstanceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StopInstanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5468,13 +5473,13 @@ end
 function M.GetInstanceAccessDetailsAsync(GetInstanceAccessDetailsRequest, cb)
 	assert(GetInstanceAccessDetailsRequest, "You must provide a GetInstanceAccessDetailsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetInstanceAccessDetails",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetInstanceAccessDetails",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetInstanceAccessDetailsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetInstanceAccessDetailsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5500,13 +5505,13 @@ end
 function M.GetDomainsAsync(GetDomainsRequest, cb)
 	assert(GetDomainsRequest, "You must provide a GetDomainsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetDomains",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetDomains",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetDomainsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetDomainsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5532,13 +5537,13 @@ end
 function M.PeerVpcAsync(PeerVpcRequest, cb)
 	assert(PeerVpcRequest, "You must provide a PeerVpcRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.PeerVpc",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.PeerVpc",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PeerVpcRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PeerVpcRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5564,13 +5569,13 @@ end
 function M.ReleaseStaticIpAsync(ReleaseStaticIpRequest, cb)
 	assert(ReleaseStaticIpRequest, "You must provide a ReleaseStaticIpRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.ReleaseStaticIp",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.ReleaseStaticIp",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ReleaseStaticIpRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ReleaseStaticIpRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5596,13 +5601,13 @@ end
 function M.IsVpcPeeredAsync(IsVpcPeeredRequest, cb)
 	assert(IsVpcPeeredRequest, "You must provide a IsVpcPeeredRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.IsVpcPeered",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.IsVpcPeered",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", IsVpcPeeredRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", IsVpcPeeredRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5628,13 +5633,13 @@ end
 function M.DetachStaticIpAsync(DetachStaticIpRequest, cb)
 	assert(DetachStaticIpRequest, "You must provide a DetachStaticIpRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.DetachStaticIp",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.DetachStaticIp",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DetachStaticIpRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DetachStaticIpRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5660,13 +5665,13 @@ end
 function M.CreateInstancesAsync(CreateInstancesRequest, cb)
 	assert(CreateInstancesRequest, "You must provide a CreateInstancesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.CreateInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.CreateInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateInstancesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateInstancesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5692,13 +5697,13 @@ end
 function M.UnpeerVpcAsync(UnpeerVpcRequest, cb)
 	assert(UnpeerVpcRequest, "You must provide a UnpeerVpcRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.UnpeerVpc",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.UnpeerVpc",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UnpeerVpcRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UnpeerVpcRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5724,13 +5729,13 @@ end
 function M.DeleteDomainAsync(DeleteDomainRequest, cb)
 	assert(DeleteDomainRequest, "You must provide a DeleteDomainRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.DeleteDomain",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.DeleteDomain",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteDomainRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteDomainRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5756,13 +5761,13 @@ end
 function M.DeleteKeyPairAsync(DeleteKeyPairRequest, cb)
 	assert(DeleteKeyPairRequest, "You must provide a DeleteKeyPairRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.DeleteKeyPair",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.DeleteKeyPair",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteKeyPairRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteKeyPairRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

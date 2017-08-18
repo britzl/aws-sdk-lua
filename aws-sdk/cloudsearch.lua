@@ -2940,12 +2940,12 @@ function M.SuggesterStatusList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -2969,8 +2969,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -2983,13 +2988,13 @@ end
 function M.DescribeServiceAccessPoliciesAsync(DescribeServiceAccessPoliciesRequest, cb)
 	assert(DescribeServiceAccessPoliciesRequest, "You must provide a DescribeServiceAccessPoliciesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeServiceAccessPolicies",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeServiceAccessPolicies",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeServiceAccessPoliciesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeServiceAccessPoliciesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3015,13 +3020,13 @@ end
 function M.UpdateScalingParametersAsync(UpdateScalingParametersRequest, cb)
 	assert(UpdateScalingParametersRequest, "You must provide a UpdateScalingParametersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateScalingParameters",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateScalingParameters",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateScalingParametersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateScalingParametersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3047,13 +3052,13 @@ end
 function M.DescribeDomainsAsync(DescribeDomainsRequest, cb)
 	assert(DescribeDomainsRequest, "You must provide a DescribeDomainsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeDomains",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDomains",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeDomainsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeDomainsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3079,13 +3084,13 @@ end
 function M.DescribeScalingParametersAsync(DescribeScalingParametersRequest, cb)
 	assert(DescribeScalingParametersRequest, "You must provide a DescribeScalingParametersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeScalingParameters",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeScalingParameters",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeScalingParametersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeScalingParametersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3111,13 +3116,13 @@ end
 function M.DescribeExpressionsAsync(DescribeExpressionsRequest, cb)
 	assert(DescribeExpressionsRequest, "You must provide a DescribeExpressionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeExpressions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeExpressions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeExpressionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeExpressionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3143,13 +3148,13 @@ end
 function M.DescribeIndexFieldsAsync(DescribeIndexFieldsRequest, cb)
 	assert(DescribeIndexFieldsRequest, "You must provide a DescribeIndexFieldsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeIndexFields",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeIndexFields",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeIndexFieldsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeIndexFieldsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3173,13 +3178,13 @@ end
 -- @param cb Callback function accepting two args: response, error_message
 function M.ListDomainNamesAsync(cb)
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListDomainNames",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListDomainNames",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", {}, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3204,13 +3209,13 @@ end
 function M.DescribeAvailabilityOptionsAsync(DescribeAvailabilityOptionsRequest, cb)
 	assert(DescribeAvailabilityOptionsRequest, "You must provide a DescribeAvailabilityOptionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeAvailabilityOptions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAvailabilityOptions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeAvailabilityOptionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeAvailabilityOptionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3236,13 +3241,13 @@ end
 function M.DefineIndexFieldAsync(DefineIndexFieldRequest, cb)
 	assert(DefineIndexFieldRequest, "You must provide a DefineIndexFieldRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DefineIndexField",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DefineIndexField",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DefineIndexFieldRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DefineIndexFieldRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3268,13 +3273,13 @@ end
 function M.DeleteAnalysisSchemeAsync(DeleteAnalysisSchemeRequest, cb)
 	assert(DeleteAnalysisSchemeRequest, "You must provide a DeleteAnalysisSchemeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteAnalysisScheme",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteAnalysisScheme",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteAnalysisSchemeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteAnalysisSchemeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3300,13 +3305,13 @@ end
 function M.UpdateAvailabilityOptionsAsync(UpdateAvailabilityOptionsRequest, cb)
 	assert(UpdateAvailabilityOptionsRequest, "You must provide a UpdateAvailabilityOptionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateAvailabilityOptions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateAvailabilityOptions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateAvailabilityOptionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateAvailabilityOptionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3332,13 +3337,13 @@ end
 function M.DeleteExpressionAsync(DeleteExpressionRequest, cb)
 	assert(DeleteExpressionRequest, "You must provide a DeleteExpressionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteExpression",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteExpression",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteExpressionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteExpressionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3364,13 +3369,13 @@ end
 function M.DescribeAnalysisSchemesAsync(DescribeAnalysisSchemesRequest, cb)
 	assert(DescribeAnalysisSchemesRequest, "You must provide a DescribeAnalysisSchemesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeAnalysisSchemes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAnalysisSchemes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeAnalysisSchemesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeAnalysisSchemesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3396,13 +3401,13 @@ end
 function M.DefineSuggesterAsync(DefineSuggesterRequest, cb)
 	assert(DefineSuggesterRequest, "You must provide a DefineSuggesterRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DefineSuggester",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DefineSuggester",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DefineSuggesterRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DefineSuggesterRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3428,13 +3433,13 @@ end
 function M.CreateDomainAsync(CreateDomainRequest, cb)
 	assert(CreateDomainRequest, "You must provide a CreateDomainRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateDomain",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateDomain",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateDomainRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateDomainRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3460,13 +3465,13 @@ end
 function M.IndexDocumentsAsync(IndexDocumentsRequest, cb)
 	assert(IndexDocumentsRequest, "You must provide a IndexDocumentsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".IndexDocuments",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".IndexDocuments",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", IndexDocumentsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", IndexDocumentsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3492,13 +3497,13 @@ end
 function M.DescribeSuggestersAsync(DescribeSuggestersRequest, cb)
 	assert(DescribeSuggestersRequest, "You must provide a DescribeSuggestersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeSuggesters",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSuggesters",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeSuggestersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeSuggestersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3524,13 +3529,13 @@ end
 function M.UpdateServiceAccessPoliciesAsync(UpdateServiceAccessPoliciesRequest, cb)
 	assert(UpdateServiceAccessPoliciesRequest, "You must provide a UpdateServiceAccessPoliciesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateServiceAccessPolicies",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateServiceAccessPolicies",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateServiceAccessPoliciesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateServiceAccessPoliciesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3556,13 +3561,13 @@ end
 function M.DeleteIndexFieldAsync(DeleteIndexFieldRequest, cb)
 	assert(DeleteIndexFieldRequest, "You must provide a DeleteIndexFieldRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteIndexField",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteIndexField",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteIndexFieldRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteIndexFieldRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3588,13 +3593,13 @@ end
 function M.DefineAnalysisSchemeAsync(DefineAnalysisSchemeRequest, cb)
 	assert(DefineAnalysisSchemeRequest, "You must provide a DefineAnalysisSchemeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DefineAnalysisScheme",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DefineAnalysisScheme",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DefineAnalysisSchemeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DefineAnalysisSchemeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3620,13 +3625,13 @@ end
 function M.DefineExpressionAsync(DefineExpressionRequest, cb)
 	assert(DefineExpressionRequest, "You must provide a DefineExpressionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DefineExpression",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DefineExpression",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DefineExpressionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DefineExpressionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3652,13 +3657,13 @@ end
 function M.BuildSuggestersAsync(BuildSuggestersRequest, cb)
 	assert(BuildSuggestersRequest, "You must provide a BuildSuggestersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".BuildSuggesters",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".BuildSuggesters",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", BuildSuggestersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", BuildSuggestersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3684,13 +3689,13 @@ end
 function M.DeleteDomainAsync(DeleteDomainRequest, cb)
 	assert(DeleteDomainRequest, "You must provide a DeleteDomainRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteDomain",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDomain",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteDomainRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteDomainRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3716,13 +3721,13 @@ end
 function M.DeleteSuggesterAsync(DeleteSuggesterRequest, cb)
 	assert(DeleteSuggesterRequest, "You must provide a DeleteSuggesterRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteSuggester",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteSuggester",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteSuggesterRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteSuggesterRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

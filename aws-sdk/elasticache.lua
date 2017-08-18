@@ -5037,12 +5037,12 @@ function M.TagList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -5066,8 +5066,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -5080,13 +5085,13 @@ end
 function M.DescribeCacheEngineVersionsAsync(DescribeCacheEngineVersionsMessage, cb)
 	assert(DescribeCacheEngineVersionsMessage, "You must provide a DescribeCacheEngineVersionsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeCacheEngineVersions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeCacheEngineVersions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeCacheEngineVersionsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeCacheEngineVersionsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5112,13 +5117,13 @@ end
 function M.DeleteCacheSubnetGroupAsync(DeleteCacheSubnetGroupMessage, cb)
 	assert(DeleteCacheSubnetGroupMessage, "You must provide a DeleteCacheSubnetGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteCacheSubnetGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteCacheSubnetGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteCacheSubnetGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteCacheSubnetGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5144,13 +5149,13 @@ end
 function M.ResetCacheParameterGroupAsync(ResetCacheParameterGroupMessage, cb)
 	assert(ResetCacheParameterGroupMessage, "You must provide a ResetCacheParameterGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ResetCacheParameterGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ResetCacheParameterGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ResetCacheParameterGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ResetCacheParameterGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5176,13 +5181,13 @@ end
 function M.DeleteCacheSecurityGroupAsync(DeleteCacheSecurityGroupMessage, cb)
 	assert(DeleteCacheSecurityGroupMessage, "You must provide a DeleteCacheSecurityGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteCacheSecurityGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteCacheSecurityGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteCacheSecurityGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteCacheSecurityGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5208,13 +5213,13 @@ end
 function M.DescribeEventsAsync(DescribeEventsMessage, cb)
 	assert(DescribeEventsMessage, "You must provide a DescribeEventsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeEvents",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEvents",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeEventsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeEventsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5240,13 +5245,13 @@ end
 function M.DescribeEngineDefaultParametersAsync(DescribeEngineDefaultParametersMessage, cb)
 	assert(DescribeEngineDefaultParametersMessage, "You must provide a DescribeEngineDefaultParametersMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeEngineDefaultParameters",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEngineDefaultParameters",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeEngineDefaultParametersMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeEngineDefaultParametersMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5272,13 +5277,13 @@ end
 function M.DescribeCacheSubnetGroupsAsync(DescribeCacheSubnetGroupsMessage, cb)
 	assert(DescribeCacheSubnetGroupsMessage, "You must provide a DescribeCacheSubnetGroupsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeCacheSubnetGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeCacheSubnetGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeCacheSubnetGroupsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeCacheSubnetGroupsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5304,13 +5309,13 @@ end
 function M.DescribeCacheSecurityGroupsAsync(DescribeCacheSecurityGroupsMessage, cb)
 	assert(DescribeCacheSecurityGroupsMessage, "You must provide a DescribeCacheSecurityGroupsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeCacheSecurityGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeCacheSecurityGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeCacheSecurityGroupsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeCacheSecurityGroupsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5336,13 +5341,13 @@ end
 function M.RebootCacheClusterAsync(RebootCacheClusterMessage, cb)
 	assert(RebootCacheClusterMessage, "You must provide a RebootCacheClusterMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RebootCacheCluster",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RebootCacheCluster",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RebootCacheClusterMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RebootCacheClusterMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5368,13 +5373,13 @@ end
 function M.ModifyCacheSubnetGroupAsync(ModifyCacheSubnetGroupMessage, cb)
 	assert(ModifyCacheSubnetGroupMessage, "You must provide a ModifyCacheSubnetGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyCacheSubnetGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyCacheSubnetGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyCacheSubnetGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyCacheSubnetGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5400,13 +5405,13 @@ end
 function M.DescribeCacheParameterGroupsAsync(DescribeCacheParameterGroupsMessage, cb)
 	assert(DescribeCacheParameterGroupsMessage, "You must provide a DescribeCacheParameterGroupsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeCacheParameterGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeCacheParameterGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeCacheParameterGroupsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeCacheParameterGroupsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5432,13 +5437,13 @@ end
 function M.DeleteCacheParameterGroupAsync(DeleteCacheParameterGroupMessage, cb)
 	assert(DeleteCacheParameterGroupMessage, "You must provide a DeleteCacheParameterGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteCacheParameterGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteCacheParameterGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteCacheParameterGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteCacheParameterGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5464,13 +5469,13 @@ end
 function M.AuthorizeCacheSecurityGroupIngressAsync(AuthorizeCacheSecurityGroupIngressMessage, cb)
 	assert(AuthorizeCacheSecurityGroupIngressMessage, "You must provide a AuthorizeCacheSecurityGroupIngressMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AuthorizeCacheSecurityGroupIngress",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AuthorizeCacheSecurityGroupIngress",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AuthorizeCacheSecurityGroupIngressMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AuthorizeCacheSecurityGroupIngressMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5496,13 +5501,13 @@ end
 function M.CopySnapshotAsync(CopySnapshotMessage, cb)
 	assert(CopySnapshotMessage, "You must provide a CopySnapshotMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CopySnapshot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CopySnapshot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CopySnapshotMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CopySnapshotMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5528,13 +5533,13 @@ end
 function M.AddTagsToResourceAsync(AddTagsToResourceMessage, cb)
 	assert(AddTagsToResourceMessage, "You must provide a AddTagsToResourceMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AddTagsToResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AddTagsToResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddTagsToResourceMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddTagsToResourceMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5560,13 +5565,13 @@ end
 function M.DescribeCacheClustersAsync(DescribeCacheClustersMessage, cb)
 	assert(DescribeCacheClustersMessage, "You must provide a DescribeCacheClustersMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeCacheClusters",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeCacheClusters",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeCacheClustersMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeCacheClustersMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5592,13 +5597,13 @@ end
 function M.ModifyCacheClusterAsync(ModifyCacheClusterMessage, cb)
 	assert(ModifyCacheClusterMessage, "You must provide a ModifyCacheClusterMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyCacheCluster",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyCacheCluster",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyCacheClusterMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyCacheClusterMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5624,13 +5629,13 @@ end
 function M.CreateReplicationGroupAsync(CreateReplicationGroupMessage, cb)
 	assert(CreateReplicationGroupMessage, "You must provide a CreateReplicationGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateReplicationGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateReplicationGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateReplicationGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateReplicationGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5656,13 +5661,13 @@ end
 function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceMessage, cb)
 	assert(RemoveTagsFromResourceMessage, "You must provide a RemoveTagsFromResourceMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RemoveTagsFromResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RemoveTagsFromResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RemoveTagsFromResourceMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RemoveTagsFromResourceMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5688,13 +5693,13 @@ end
 function M.DescribeCacheParametersAsync(DescribeCacheParametersMessage, cb)
 	assert(DescribeCacheParametersMessage, "You must provide a DescribeCacheParametersMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeCacheParameters",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeCacheParameters",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeCacheParametersMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeCacheParametersMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5720,13 +5725,13 @@ end
 function M.CreateCacheParameterGroupAsync(CreateCacheParameterGroupMessage, cb)
 	assert(CreateCacheParameterGroupMessage, "You must provide a CreateCacheParameterGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateCacheParameterGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateCacheParameterGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateCacheParameterGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateCacheParameterGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5752,13 +5757,13 @@ end
 function M.TestFailoverAsync(TestFailoverMessage, cb)
 	assert(TestFailoverMessage, "You must provide a TestFailoverMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".TestFailover",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".TestFailover",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", TestFailoverMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", TestFailoverMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5784,13 +5789,13 @@ end
 function M.DescribeReplicationGroupsAsync(DescribeReplicationGroupsMessage, cb)
 	assert(DescribeReplicationGroupsMessage, "You must provide a DescribeReplicationGroupsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeReplicationGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeReplicationGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeReplicationGroupsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeReplicationGroupsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5816,13 +5821,13 @@ end
 function M.DeleteReplicationGroupAsync(DeleteReplicationGroupMessage, cb)
 	assert(DeleteReplicationGroupMessage, "You must provide a DeleteReplicationGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteReplicationGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteReplicationGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteReplicationGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteReplicationGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5848,13 +5853,13 @@ end
 function M.DescribeReservedCacheNodesOfferingsAsync(DescribeReservedCacheNodesOfferingsMessage, cb)
 	assert(DescribeReservedCacheNodesOfferingsMessage, "You must provide a DescribeReservedCacheNodesOfferingsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeReservedCacheNodesOfferings",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeReservedCacheNodesOfferings",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeReservedCacheNodesOfferingsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeReservedCacheNodesOfferingsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5880,13 +5885,13 @@ end
 function M.CreateCacheClusterAsync(CreateCacheClusterMessage, cb)
 	assert(CreateCacheClusterMessage, "You must provide a CreateCacheClusterMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateCacheCluster",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateCacheCluster",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateCacheClusterMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateCacheClusterMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5912,13 +5917,13 @@ end
 function M.CreateCacheSubnetGroupAsync(CreateCacheSubnetGroupMessage, cb)
 	assert(CreateCacheSubnetGroupMessage, "You must provide a CreateCacheSubnetGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateCacheSubnetGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateCacheSubnetGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateCacheSubnetGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateCacheSubnetGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5944,13 +5949,13 @@ end
 function M.ModifyReplicationGroupAsync(ModifyReplicationGroupMessage, cb)
 	assert(ModifyReplicationGroupMessage, "You must provide a ModifyReplicationGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyReplicationGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyReplicationGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyReplicationGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyReplicationGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5976,13 +5981,13 @@ end
 function M.ModifyCacheParameterGroupAsync(ModifyCacheParameterGroupMessage, cb)
 	assert(ModifyCacheParameterGroupMessage, "You must provide a ModifyCacheParameterGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ModifyCacheParameterGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ModifyCacheParameterGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyCacheParameterGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyCacheParameterGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6008,13 +6013,13 @@ end
 function M.DescribeSnapshotsAsync(DescribeSnapshotsMessage, cb)
 	assert(DescribeSnapshotsMessage, "You must provide a DescribeSnapshotsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeSnapshots",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSnapshots",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeSnapshotsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeSnapshotsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6040,13 +6045,13 @@ end
 function M.DeleteCacheClusterAsync(DeleteCacheClusterMessage, cb)
 	assert(DeleteCacheClusterMessage, "You must provide a DeleteCacheClusterMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteCacheCluster",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteCacheCluster",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteCacheClusterMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteCacheClusterMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6072,13 +6077,13 @@ end
 function M.PurchaseReservedCacheNodesOfferingAsync(PurchaseReservedCacheNodesOfferingMessage, cb)
 	assert(PurchaseReservedCacheNodesOfferingMessage, "You must provide a PurchaseReservedCacheNodesOfferingMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PurchaseReservedCacheNodesOffering",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PurchaseReservedCacheNodesOffering",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PurchaseReservedCacheNodesOfferingMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PurchaseReservedCacheNodesOfferingMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6104,13 +6109,13 @@ end
 function M.DeleteSnapshotAsync(DeleteSnapshotMessage, cb)
 	assert(DeleteSnapshotMessage, "You must provide a DeleteSnapshotMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteSnapshot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteSnapshot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteSnapshotMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteSnapshotMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6136,13 +6141,13 @@ end
 function M.RevokeCacheSecurityGroupIngressAsync(RevokeCacheSecurityGroupIngressMessage, cb)
 	assert(RevokeCacheSecurityGroupIngressMessage, "You must provide a RevokeCacheSecurityGroupIngressMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RevokeCacheSecurityGroupIngress",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RevokeCacheSecurityGroupIngress",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RevokeCacheSecurityGroupIngressMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RevokeCacheSecurityGroupIngressMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6168,13 +6173,13 @@ end
 function M.ListAllowedNodeTypeModificationsAsync(ListAllowedNodeTypeModificationsMessage, cb)
 	assert(ListAllowedNodeTypeModificationsMessage, "You must provide a ListAllowedNodeTypeModificationsMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListAllowedNodeTypeModifications",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListAllowedNodeTypeModifications",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListAllowedNodeTypeModificationsMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListAllowedNodeTypeModificationsMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6200,13 +6205,13 @@ end
 function M.DescribeReservedCacheNodesAsync(DescribeReservedCacheNodesMessage, cb)
 	assert(DescribeReservedCacheNodesMessage, "You must provide a DescribeReservedCacheNodesMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeReservedCacheNodes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeReservedCacheNodes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeReservedCacheNodesMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeReservedCacheNodesMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6232,13 +6237,13 @@ end
 function M.CreateCacheSecurityGroupAsync(CreateCacheSecurityGroupMessage, cb)
 	assert(CreateCacheSecurityGroupMessage, "You must provide a CreateCacheSecurityGroupMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateCacheSecurityGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateCacheSecurityGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateCacheSecurityGroupMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateCacheSecurityGroupMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6264,13 +6269,13 @@ end
 function M.ListTagsForResourceAsync(ListTagsForResourceMessage, cb)
 	assert(ListTagsForResourceMessage, "You must provide a ListTagsForResourceMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListTagsForResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListTagsForResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListTagsForResourceMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListTagsForResourceMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6296,13 +6301,13 @@ end
 function M.CreateSnapshotAsync(CreateSnapshotMessage, cb)
 	assert(CreateSnapshotMessage, "You must provide a CreateSnapshotMessage")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateSnapshot",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateSnapshot",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateSnapshotMessage, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateSnapshotMessage, headers, settings, cb)
 	else
 		cb(false, err)
 	end

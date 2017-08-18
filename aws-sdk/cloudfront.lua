@@ -5286,12 +5286,12 @@ function M.TagList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -5315,8 +5315,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -5329,13 +5334,13 @@ end
 function M.UpdateStreamingDistribution2017_03_25Async(UpdateStreamingDistributionRequest, cb)
 	assert(UpdateStreamingDistributionRequest, "You must provide a UpdateStreamingDistributionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateStreamingDistribution2017_03_25",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateStreamingDistribution2017_03_25",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/2017-03-25/streaming-distribution/{Id}/config", UpdateStreamingDistributionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2017-03-25/streaming-distribution/{Id}/config", UpdateStreamingDistributionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5361,13 +5366,13 @@ end
 function M.ListDistributions2017_03_25Async(ListDistributionsRequest, cb)
 	assert(ListDistributionsRequest, "You must provide a ListDistributionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListDistributions2017_03_25",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListDistributions2017_03_25",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2017-03-25/distribution", ListDistributionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2017-03-25/distribution", ListDistributionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5393,13 +5398,13 @@ end
 function M.GetStreamingDistribution2017_03_25Async(GetStreamingDistributionRequest, cb)
 	assert(GetStreamingDistributionRequest, "You must provide a GetStreamingDistributionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetStreamingDistribution2017_03_25",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetStreamingDistribution2017_03_25",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2017-03-25/streaming-distribution/{Id}", GetStreamingDistributionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2017-03-25/streaming-distribution/{Id}", GetStreamingDistributionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5425,13 +5430,13 @@ end
 function M.CreateStreamingDistributionWithTags2017_03_25Async(CreateStreamingDistributionWithTagsRequest, cb)
 	assert(CreateStreamingDistributionWithTagsRequest, "You must provide a CreateStreamingDistributionWithTagsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateStreamingDistributionWithTags2017_03_25",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateStreamingDistributionWithTags2017_03_25",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2017-03-25/streaming-distribution?WithTags", CreateStreamingDistributionWithTagsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2017-03-25/streaming-distribution?WithTags", CreateStreamingDistributionWithTagsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5457,13 +5462,13 @@ end
 function M.CreateDistribution2017_03_25Async(CreateDistributionRequest, cb)
 	assert(CreateDistributionRequest, "You must provide a CreateDistributionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateDistribution2017_03_25",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateDistribution2017_03_25",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2017-03-25/distribution", CreateDistributionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2017-03-25/distribution", CreateDistributionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5489,13 +5494,13 @@ end
 function M.ListInvalidations2017_03_25Async(ListInvalidationsRequest, cb)
 	assert(ListInvalidationsRequest, "You must provide a ListInvalidationsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListInvalidations2017_03_25",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListInvalidations2017_03_25",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2017-03-25/distribution/{DistributionId}/invalidation", ListInvalidationsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2017-03-25/distribution/{DistributionId}/invalidation", ListInvalidationsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5521,13 +5526,13 @@ end
 function M.ListStreamingDistributions2017_03_25Async(ListStreamingDistributionsRequest, cb)
 	assert(ListStreamingDistributionsRequest, "You must provide a ListStreamingDistributionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListStreamingDistributions2017_03_25",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListStreamingDistributions2017_03_25",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2017-03-25/streaming-distribution", ListStreamingDistributionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2017-03-25/streaming-distribution", ListStreamingDistributionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5553,13 +5558,13 @@ end
 function M.UpdateDistribution2017_03_25Async(UpdateDistributionRequest, cb)
 	assert(UpdateDistributionRequest, "You must provide a UpdateDistributionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateDistribution2017_03_25",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateDistribution2017_03_25",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/2017-03-25/distribution/{Id}/config", UpdateDistributionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2017-03-25/distribution/{Id}/config", UpdateDistributionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5585,13 +5590,13 @@ end
 function M.CreateStreamingDistribution2017_03_25Async(CreateStreamingDistributionRequest, cb)
 	assert(CreateStreamingDistributionRequest, "You must provide a CreateStreamingDistributionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateStreamingDistribution2017_03_25",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateStreamingDistribution2017_03_25",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2017-03-25/streaming-distribution", CreateStreamingDistributionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2017-03-25/streaming-distribution", CreateStreamingDistributionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5617,13 +5622,13 @@ end
 function M.DeleteDistribution2017_03_25Async(DeleteDistributionRequest, cb)
 	assert(DeleteDistributionRequest, "You must provide a DeleteDistributionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteDistribution2017_03_25",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDistribution2017_03_25",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/2017-03-25/distribution/{Id}", DeleteDistributionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2017-03-25/distribution/{Id}", DeleteDistributionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5649,13 +5654,13 @@ end
 function M.TagResource2017_03_25Async(TagResourceRequest, cb)
 	assert(TagResourceRequest, "You must provide a TagResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".TagResource2017_03_25",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".TagResource2017_03_25",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2017-03-25/tagging?Operation=Tag", TagResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2017-03-25/tagging?Operation=Tag", TagResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5681,13 +5686,13 @@ end
 function M.GetInvalidation2017_03_25Async(GetInvalidationRequest, cb)
 	assert(GetInvalidationRequest, "You must provide a GetInvalidationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetInvalidation2017_03_25",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetInvalidation2017_03_25",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2017-03-25/distribution/{DistributionId}/invalidation/{Id}", GetInvalidationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2017-03-25/distribution/{DistributionId}/invalidation/{Id}", GetInvalidationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5713,13 +5718,13 @@ end
 function M.DeleteCloudFrontOriginAccessIdentity2017_03_25Async(DeleteCloudFrontOriginAccessIdentityRequest, cb)
 	assert(DeleteCloudFrontOriginAccessIdentityRequest, "You must provide a DeleteCloudFrontOriginAccessIdentityRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteCloudFrontOriginAccessIdentity2017_03_25",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteCloudFrontOriginAccessIdentity2017_03_25",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/2017-03-25/origin-access-identity/cloudfront/{Id}", DeleteCloudFrontOriginAccessIdentityRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2017-03-25/origin-access-identity/cloudfront/{Id}", DeleteCloudFrontOriginAccessIdentityRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5745,13 +5750,13 @@ end
 function M.ListCloudFrontOriginAccessIdentities2017_03_25Async(ListCloudFrontOriginAccessIdentitiesRequest, cb)
 	assert(ListCloudFrontOriginAccessIdentitiesRequest, "You must provide a ListCloudFrontOriginAccessIdentitiesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListCloudFrontOriginAccessIdentities2017_03_25",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListCloudFrontOriginAccessIdentities2017_03_25",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2017-03-25/origin-access-identity/cloudfront", ListCloudFrontOriginAccessIdentitiesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2017-03-25/origin-access-identity/cloudfront", ListCloudFrontOriginAccessIdentitiesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5777,13 +5782,13 @@ end
 function M.GetStreamingDistributionConfig2017_03_25Async(GetStreamingDistributionConfigRequest, cb)
 	assert(GetStreamingDistributionConfigRequest, "You must provide a GetStreamingDistributionConfigRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetStreamingDistributionConfig2017_03_25",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetStreamingDistributionConfig2017_03_25",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2017-03-25/streaming-distribution/{Id}/config", GetStreamingDistributionConfigRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2017-03-25/streaming-distribution/{Id}/config", GetStreamingDistributionConfigRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5809,13 +5814,13 @@ end
 function M.GetCloudFrontOriginAccessIdentity2017_03_25Async(GetCloudFrontOriginAccessIdentityRequest, cb)
 	assert(GetCloudFrontOriginAccessIdentityRequest, "You must provide a GetCloudFrontOriginAccessIdentityRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetCloudFrontOriginAccessIdentity2017_03_25",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetCloudFrontOriginAccessIdentity2017_03_25",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2017-03-25/origin-access-identity/cloudfront/{Id}", GetCloudFrontOriginAccessIdentityRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2017-03-25/origin-access-identity/cloudfront/{Id}", GetCloudFrontOriginAccessIdentityRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5841,13 +5846,13 @@ end
 function M.GetDistribution2017_03_25Async(GetDistributionRequest, cb)
 	assert(GetDistributionRequest, "You must provide a GetDistributionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetDistribution2017_03_25",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetDistribution2017_03_25",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2017-03-25/distribution/{Id}", GetDistributionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2017-03-25/distribution/{Id}", GetDistributionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5873,13 +5878,13 @@ end
 function M.GetCloudFrontOriginAccessIdentityConfig2017_03_25Async(GetCloudFrontOriginAccessIdentityConfigRequest, cb)
 	assert(GetCloudFrontOriginAccessIdentityConfigRequest, "You must provide a GetCloudFrontOriginAccessIdentityConfigRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetCloudFrontOriginAccessIdentityConfig2017_03_25",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetCloudFrontOriginAccessIdentityConfig2017_03_25",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2017-03-25/origin-access-identity/cloudfront/{Id}/config", GetCloudFrontOriginAccessIdentityConfigRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2017-03-25/origin-access-identity/cloudfront/{Id}/config", GetCloudFrontOriginAccessIdentityConfigRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5905,13 +5910,13 @@ end
 function M.GetDistributionConfig2017_03_25Async(GetDistributionConfigRequest, cb)
 	assert(GetDistributionConfigRequest, "You must provide a GetDistributionConfigRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetDistributionConfig2017_03_25",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetDistributionConfig2017_03_25",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2017-03-25/distribution/{Id}/config", GetDistributionConfigRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2017-03-25/distribution/{Id}/config", GetDistributionConfigRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5937,13 +5942,13 @@ end
 function M.CreateCloudFrontOriginAccessIdentity2017_03_25Async(CreateCloudFrontOriginAccessIdentityRequest, cb)
 	assert(CreateCloudFrontOriginAccessIdentityRequest, "You must provide a CreateCloudFrontOriginAccessIdentityRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateCloudFrontOriginAccessIdentity2017_03_25",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateCloudFrontOriginAccessIdentity2017_03_25",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2017-03-25/origin-access-identity/cloudfront", CreateCloudFrontOriginAccessIdentityRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2017-03-25/origin-access-identity/cloudfront", CreateCloudFrontOriginAccessIdentityRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5969,13 +5974,13 @@ end
 function M.DeleteStreamingDistribution2017_03_25Async(DeleteStreamingDistributionRequest, cb)
 	assert(DeleteStreamingDistributionRequest, "You must provide a DeleteStreamingDistributionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteStreamingDistribution2017_03_25",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteStreamingDistribution2017_03_25",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/2017-03-25/streaming-distribution/{Id}", DeleteStreamingDistributionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2017-03-25/streaming-distribution/{Id}", DeleteStreamingDistributionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6001,13 +6006,13 @@ end
 function M.CreateDistributionWithTags2017_03_25Async(CreateDistributionWithTagsRequest, cb)
 	assert(CreateDistributionWithTagsRequest, "You must provide a CreateDistributionWithTagsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateDistributionWithTags2017_03_25",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateDistributionWithTags2017_03_25",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2017-03-25/distribution?WithTags", CreateDistributionWithTagsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2017-03-25/distribution?WithTags", CreateDistributionWithTagsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6033,13 +6038,13 @@ end
 function M.UpdateCloudFrontOriginAccessIdentity2017_03_25Async(UpdateCloudFrontOriginAccessIdentityRequest, cb)
 	assert(UpdateCloudFrontOriginAccessIdentityRequest, "You must provide a UpdateCloudFrontOriginAccessIdentityRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateCloudFrontOriginAccessIdentity2017_03_25",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateCloudFrontOriginAccessIdentity2017_03_25",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/2017-03-25/origin-access-identity/cloudfront/{Id}/config", UpdateCloudFrontOriginAccessIdentityRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2017-03-25/origin-access-identity/cloudfront/{Id}/config", UpdateCloudFrontOriginAccessIdentityRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6065,13 +6070,13 @@ end
 function M.UntagResource2017_03_25Async(UntagResourceRequest, cb)
 	assert(UntagResourceRequest, "You must provide a UntagResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UntagResource2017_03_25",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UntagResource2017_03_25",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2017-03-25/tagging?Operation=Untag", UntagResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2017-03-25/tagging?Operation=Untag", UntagResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6097,13 +6102,13 @@ end
 function M.CreateInvalidation2017_03_25Async(CreateInvalidationRequest, cb)
 	assert(CreateInvalidationRequest, "You must provide a CreateInvalidationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateInvalidation2017_03_25",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateInvalidation2017_03_25",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2017-03-25/distribution/{DistributionId}/invalidation", CreateInvalidationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2017-03-25/distribution/{DistributionId}/invalidation", CreateInvalidationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6129,13 +6134,13 @@ end
 function M.ListDistributionsByWebACLId2017_03_25Async(ListDistributionsByWebACLIdRequest, cb)
 	assert(ListDistributionsByWebACLIdRequest, "You must provide a ListDistributionsByWebACLIdRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListDistributionsByWebACLId2017_03_25",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListDistributionsByWebACLId2017_03_25",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2017-03-25/distributionsByWebACLId/{WebACLId}", ListDistributionsByWebACLIdRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2017-03-25/distributionsByWebACLId/{WebACLId}", ListDistributionsByWebACLIdRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6161,13 +6166,13 @@ end
 function M.ListTagsForResource2017_03_25Async(ListTagsForResourceRequest, cb)
 	assert(ListTagsForResourceRequest, "You must provide a ListTagsForResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListTagsForResource2017_03_25",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListTagsForResource2017_03_25",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2017-03-25/tagging", ListTagsForResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2017-03-25/tagging", ListTagsForResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

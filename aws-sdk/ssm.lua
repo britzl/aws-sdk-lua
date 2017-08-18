@@ -12902,12 +12902,12 @@ function M.AssociationList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -12931,8 +12931,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -12945,13 +12950,13 @@ end
 function M.DeleteActivationAsync(DeleteActivationRequest, cb)
 	assert(DeleteActivationRequest, "You must provide a DeleteActivationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeleteActivation",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeleteActivation",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteActivationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteActivationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -12977,13 +12982,13 @@ end
 function M.UpdatePatchBaselineAsync(UpdatePatchBaselineRequest, cb)
 	assert(UpdatePatchBaselineRequest, "You must provide a UpdatePatchBaselineRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.UpdatePatchBaseline",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.UpdatePatchBaseline",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdatePatchBaselineRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdatePatchBaselineRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13009,13 +13014,13 @@ end
 function M.CreateMaintenanceWindowAsync(CreateMaintenanceWindowRequest, cb)
 	assert(CreateMaintenanceWindowRequest, "You must provide a CreateMaintenanceWindowRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.CreateMaintenanceWindow",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.CreateMaintenanceWindow",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateMaintenanceWindowRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateMaintenanceWindowRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13041,13 +13046,13 @@ end
 function M.DeregisterManagedInstanceAsync(DeregisterManagedInstanceRequest, cb)
 	assert(DeregisterManagedInstanceRequest, "You must provide a DeregisterManagedInstanceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeregisterManagedInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeregisterManagedInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeregisterManagedInstanceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeregisterManagedInstanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13073,13 +13078,13 @@ end
 function M.CreatePatchBaselineAsync(CreatePatchBaselineRequest, cb)
 	assert(CreatePatchBaselineRequest, "You must provide a CreatePatchBaselineRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.CreatePatchBaseline",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.CreatePatchBaseline",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreatePatchBaselineRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreatePatchBaselineRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13105,13 +13110,13 @@ end
 function M.GetDeployablePatchSnapshotForInstanceAsync(GetDeployablePatchSnapshotForInstanceRequest, cb)
 	assert(GetDeployablePatchSnapshotForInstanceRequest, "You must provide a GetDeployablePatchSnapshotForInstanceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetDeployablePatchSnapshotForInstance",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetDeployablePatchSnapshotForInstance",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetDeployablePatchSnapshotForInstanceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetDeployablePatchSnapshotForInstanceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13137,13 +13142,13 @@ end
 function M.DescribeDocumentPermissionAsync(DescribeDocumentPermissionRequest, cb)
 	assert(DescribeDocumentPermissionRequest, "You must provide a DescribeDocumentPermissionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeDocumentPermission",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeDocumentPermission",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeDocumentPermissionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeDocumentPermissionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13169,13 +13174,13 @@ end
 function M.DescribeEffectivePatchesForPatchBaselineAsync(DescribeEffectivePatchesForPatchBaselineRequest, cb)
 	assert(DescribeEffectivePatchesForPatchBaselineRequest, "You must provide a DescribeEffectivePatchesForPatchBaselineRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeEffectivePatchesForPatchBaseline",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeEffectivePatchesForPatchBaseline",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeEffectivePatchesForPatchBaselineRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeEffectivePatchesForPatchBaselineRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13201,13 +13206,13 @@ end
 function M.DescribeAvailablePatchesAsync(DescribeAvailablePatchesRequest, cb)
 	assert(DescribeAvailablePatchesRequest, "You must provide a DescribeAvailablePatchesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeAvailablePatches",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeAvailablePatches",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeAvailablePatchesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeAvailablePatchesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13233,13 +13238,13 @@ end
 function M.DescribeInstancePatchesAsync(DescribeInstancePatchesRequest, cb)
 	assert(DescribeInstancePatchesRequest, "You must provide a DescribeInstancePatchesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeInstancePatches",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeInstancePatches",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeInstancePatchesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeInstancePatchesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13265,13 +13270,13 @@ end
 function M.PutParameterAsync(PutParameterRequest, cb)
 	assert(PutParameterRequest, "You must provide a PutParameterRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.PutParameter",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.PutParameter",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutParameterRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutParameterRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13297,13 +13302,13 @@ end
 function M.RegisterDefaultPatchBaselineAsync(RegisterDefaultPatchBaselineRequest, cb)
 	assert(RegisterDefaultPatchBaselineRequest, "You must provide a RegisterDefaultPatchBaselineRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.RegisterDefaultPatchBaseline",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.RegisterDefaultPatchBaseline",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RegisterDefaultPatchBaselineRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RegisterDefaultPatchBaselineRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13329,13 +13334,13 @@ end
 function M.ListDocumentVersionsAsync(ListDocumentVersionsRequest, cb)
 	assert(ListDocumentVersionsRequest, "You must provide a ListDocumentVersionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.ListDocumentVersions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.ListDocumentVersions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListDocumentVersionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListDocumentVersionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13361,13 +13366,13 @@ end
 function M.GetPatchBaselineForPatchGroupAsync(GetPatchBaselineForPatchGroupRequest, cb)
 	assert(GetPatchBaselineForPatchGroupRequest, "You must provide a GetPatchBaselineForPatchGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetPatchBaselineForPatchGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetPatchBaselineForPatchGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetPatchBaselineForPatchGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetPatchBaselineForPatchGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13393,13 +13398,13 @@ end
 function M.GetAutomationExecutionAsync(GetAutomationExecutionRequest, cb)
 	assert(GetAutomationExecutionRequest, "You must provide a GetAutomationExecutionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetAutomationExecution",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetAutomationExecution",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetAutomationExecutionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetAutomationExecutionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13425,13 +13430,13 @@ end
 function M.ListAssociationsAsync(ListAssociationsRequest, cb)
 	assert(ListAssociationsRequest, "You must provide a ListAssociationsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.ListAssociations",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.ListAssociations",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListAssociationsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListAssociationsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13457,13 +13462,13 @@ end
 function M.DescribeInstancePatchStatesAsync(DescribeInstancePatchStatesRequest, cb)
 	assert(DescribeInstancePatchStatesRequest, "You must provide a DescribeInstancePatchStatesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeInstancePatchStates",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeInstancePatchStates",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeInstancePatchStatesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeInstancePatchStatesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13489,13 +13494,13 @@ end
 function M.DescribeAssociationAsync(DescribeAssociationRequest, cb)
 	assert(DescribeAssociationRequest, "You must provide a DescribeAssociationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeAssociation",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeAssociation",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeAssociationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeAssociationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13521,13 +13526,13 @@ end
 function M.PutInventoryAsync(PutInventoryRequest, cb)
 	assert(PutInventoryRequest, "You must provide a PutInventoryRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.PutInventory",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.PutInventory",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutInventoryRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutInventoryRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13553,13 +13558,13 @@ end
 function M.DescribeInstancePatchStatesForPatchGroupAsync(DescribeInstancePatchStatesForPatchGroupRequest, cb)
 	assert(DescribeInstancePatchStatesForPatchGroupRequest, "You must provide a DescribeInstancePatchStatesForPatchGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeInstancePatchStatesForPatchGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeInstancePatchStatesForPatchGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeInstancePatchStatesForPatchGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeInstancePatchStatesForPatchGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13585,13 +13590,13 @@ end
 function M.GetDefaultPatchBaselineAsync(GetDefaultPatchBaselineRequest, cb)
 	assert(GetDefaultPatchBaselineRequest, "You must provide a GetDefaultPatchBaselineRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetDefaultPatchBaseline",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetDefaultPatchBaseline",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetDefaultPatchBaselineRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetDefaultPatchBaselineRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13617,13 +13622,13 @@ end
 function M.DescribeAutomationExecutionsAsync(DescribeAutomationExecutionsRequest, cb)
 	assert(DescribeAutomationExecutionsRequest, "You must provide a DescribeAutomationExecutionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeAutomationExecutions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeAutomationExecutions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeAutomationExecutionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeAutomationExecutionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13649,13 +13654,13 @@ end
 function M.GetDocumentAsync(GetDocumentRequest, cb)
 	assert(GetDocumentRequest, "You must provide a GetDocumentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetDocument",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetDocument",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetDocumentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetDocumentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13681,13 +13686,13 @@ end
 function M.GetMaintenanceWindowAsync(GetMaintenanceWindowRequest, cb)
 	assert(GetMaintenanceWindowRequest, "You must provide a GetMaintenanceWindowRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetMaintenanceWindow",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetMaintenanceWindow",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetMaintenanceWindowRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetMaintenanceWindowRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13713,13 +13718,13 @@ end
 function M.GetParametersByPathAsync(GetParametersByPathRequest, cb)
 	assert(GetParametersByPathRequest, "You must provide a GetParametersByPathRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetParametersByPath",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetParametersByPath",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetParametersByPathRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetParametersByPathRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13745,13 +13750,13 @@ end
 function M.CreateDocumentAsync(CreateDocumentRequest, cb)
 	assert(CreateDocumentRequest, "You must provide a CreateDocumentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.CreateDocument",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.CreateDocument",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateDocumentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateDocumentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13777,13 +13782,13 @@ end
 function M.DeleteAssociationAsync(DeleteAssociationRequest, cb)
 	assert(DeleteAssociationRequest, "You must provide a DeleteAssociationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeleteAssociation",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeleteAssociation",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteAssociationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteAssociationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13809,13 +13814,13 @@ end
 function M.AddTagsToResourceAsync(AddTagsToResourceRequest, cb)
 	assert(AddTagsToResourceRequest, "You must provide a AddTagsToResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.AddTagsToResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.AddTagsToResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AddTagsToResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AddTagsToResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13841,13 +13846,13 @@ end
 function M.UpdateManagedInstanceRoleAsync(UpdateManagedInstanceRoleRequest, cb)
 	assert(UpdateManagedInstanceRoleRequest, "You must provide a UpdateManagedInstanceRoleRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.UpdateManagedInstanceRole",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.UpdateManagedInstanceRole",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateManagedInstanceRoleRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateManagedInstanceRoleRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13873,13 +13878,13 @@ end
 function M.DescribePatchBaselinesAsync(DescribePatchBaselinesRequest, cb)
 	assert(DescribePatchBaselinesRequest, "You must provide a DescribePatchBaselinesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribePatchBaselines",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribePatchBaselines",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribePatchBaselinesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribePatchBaselinesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13905,13 +13910,13 @@ end
 function M.UpdateMaintenanceWindowAsync(UpdateMaintenanceWindowRequest, cb)
 	assert(UpdateMaintenanceWindowRequest, "You must provide a UpdateMaintenanceWindowRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.UpdateMaintenanceWindow",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.UpdateMaintenanceWindow",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateMaintenanceWindowRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateMaintenanceWindowRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13937,13 +13942,13 @@ end
 function M.GetPatchBaselineAsync(GetPatchBaselineRequest, cb)
 	assert(GetPatchBaselineRequest, "You must provide a GetPatchBaselineRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetPatchBaseline",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetPatchBaseline",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetPatchBaselineRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetPatchBaselineRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -13969,13 +13974,13 @@ end
 function M.StopAutomationExecutionAsync(StopAutomationExecutionRequest, cb)
 	assert(StopAutomationExecutionRequest, "You must provide a StopAutomationExecutionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.StopAutomationExecution",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.StopAutomationExecution",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StopAutomationExecutionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StopAutomationExecutionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14001,13 +14006,13 @@ end
 function M.GetInventoryAsync(GetInventoryRequest, cb)
 	assert(GetInventoryRequest, "You must provide a GetInventoryRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetInventory",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetInventory",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetInventoryRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetInventoryRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14033,13 +14038,13 @@ end
 function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceRequest, cb)
 	assert(RemoveTagsFromResourceRequest, "You must provide a RemoveTagsFromResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.RemoveTagsFromResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.RemoveTagsFromResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RemoveTagsFromResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RemoveTagsFromResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14065,13 +14070,13 @@ end
 function M.DeregisterTargetFromMaintenanceWindowAsync(DeregisterTargetFromMaintenanceWindowRequest, cb)
 	assert(DeregisterTargetFromMaintenanceWindowRequest, "You must provide a DeregisterTargetFromMaintenanceWindowRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeregisterTargetFromMaintenanceWindow",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeregisterTargetFromMaintenanceWindow",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeregisterTargetFromMaintenanceWindowRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeregisterTargetFromMaintenanceWindowRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14097,13 +14102,13 @@ end
 function M.SendCommandAsync(SendCommandRequest, cb)
 	assert(SendCommandRequest, "You must provide a SendCommandRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.SendCommand",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.SendCommand",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SendCommandRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SendCommandRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14129,13 +14134,13 @@ end
 function M.DescribeInstanceAssociationsStatusAsync(DescribeInstanceAssociationsStatusRequest, cb)
 	assert(DescribeInstanceAssociationsStatusRequest, "You must provide a DescribeInstanceAssociationsStatusRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeInstanceAssociationsStatus",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeInstanceAssociationsStatus",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeInstanceAssociationsStatusRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeInstanceAssociationsStatusRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14161,13 +14166,13 @@ end
 function M.DescribePatchGroupsAsync(DescribePatchGroupsRequest, cb)
 	assert(DescribePatchGroupsRequest, "You must provide a DescribePatchGroupsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribePatchGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribePatchGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribePatchGroupsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribePatchGroupsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14193,13 +14198,13 @@ end
 function M.GetMaintenanceWindowExecutionTaskAsync(GetMaintenanceWindowExecutionTaskRequest, cb)
 	assert(GetMaintenanceWindowExecutionTaskRequest, "You must provide a GetMaintenanceWindowExecutionTaskRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetMaintenanceWindowExecutionTask",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetMaintenanceWindowExecutionTask",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetMaintenanceWindowExecutionTaskRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetMaintenanceWindowExecutionTaskRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14225,13 +14230,13 @@ end
 function M.GetInventorySchemaAsync(GetInventorySchemaRequest, cb)
 	assert(GetInventorySchemaRequest, "You must provide a GetInventorySchemaRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetInventorySchema",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetInventorySchema",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetInventorySchemaRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetInventorySchemaRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14257,13 +14262,13 @@ end
 function M.CancelCommandAsync(CancelCommandRequest, cb)
 	assert(CancelCommandRequest, "You must provide a CancelCommandRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.CancelCommand",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.CancelCommand",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CancelCommandRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CancelCommandRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14289,13 +14294,13 @@ end
 function M.GetCommandInvocationAsync(GetCommandInvocationRequest, cb)
 	assert(GetCommandInvocationRequest, "You must provide a GetCommandInvocationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetCommandInvocation",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetCommandInvocation",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetCommandInvocationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetCommandInvocationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14321,13 +14326,13 @@ end
 function M.UpdateAssociationStatusAsync(UpdateAssociationStatusRequest, cb)
 	assert(UpdateAssociationStatusRequest, "You must provide a UpdateAssociationStatusRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.UpdateAssociationStatus",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.UpdateAssociationStatus",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateAssociationStatusRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateAssociationStatusRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14353,13 +14358,13 @@ end
 function M.DescribePatchGroupStateAsync(DescribePatchGroupStateRequest, cb)
 	assert(DescribePatchGroupStateRequest, "You must provide a DescribePatchGroupStateRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribePatchGroupState",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribePatchGroupState",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribePatchGroupStateRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribePatchGroupStateRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14385,13 +14390,13 @@ end
 function M.CreateAssociationBatchAsync(CreateAssociationBatchRequest, cb)
 	assert(CreateAssociationBatchRequest, "You must provide a CreateAssociationBatchRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.CreateAssociationBatch",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.CreateAssociationBatch",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateAssociationBatchRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateAssociationBatchRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14417,13 +14422,13 @@ end
 function M.GetParameterAsync(GetParameterRequest, cb)
 	assert(GetParameterRequest, "You must provide a GetParameterRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetParameter",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetParameter",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetParameterRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetParameterRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14449,13 +14454,13 @@ end
 function M.DescribeMaintenanceWindowExecutionTasksAsync(DescribeMaintenanceWindowExecutionTasksRequest, cb)
 	assert(DescribeMaintenanceWindowExecutionTasksRequest, "You must provide a DescribeMaintenanceWindowExecutionTasksRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeMaintenanceWindowExecutionTasks",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeMaintenanceWindowExecutionTasks",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeMaintenanceWindowExecutionTasksRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeMaintenanceWindowExecutionTasksRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14481,13 +14486,13 @@ end
 function M.GetParameterHistoryAsync(GetParameterHistoryRequest, cb)
 	assert(GetParameterHistoryRequest, "You must provide a GetParameterHistoryRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetParameterHistory",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetParameterHistory",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetParameterHistoryRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetParameterHistoryRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14513,13 +14518,13 @@ end
 function M.DeregisterTaskFromMaintenanceWindowAsync(DeregisterTaskFromMaintenanceWindowRequest, cb)
 	assert(DeregisterTaskFromMaintenanceWindowRequest, "You must provide a DeregisterTaskFromMaintenanceWindowRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeregisterTaskFromMaintenanceWindow",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeregisterTaskFromMaintenanceWindow",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeregisterTaskFromMaintenanceWindowRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeregisterTaskFromMaintenanceWindowRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14545,13 +14550,13 @@ end
 function M.ListCommandInvocationsAsync(ListCommandInvocationsRequest, cb)
 	assert(ListCommandInvocationsRequest, "You must provide a ListCommandInvocationsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.ListCommandInvocations",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.ListCommandInvocations",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListCommandInvocationsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListCommandInvocationsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14577,13 +14582,13 @@ end
 function M.DescribeParametersAsync(DescribeParametersRequest, cb)
 	assert(DescribeParametersRequest, "You must provide a DescribeParametersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeParameters",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeParameters",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeParametersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeParametersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14609,13 +14614,13 @@ end
 function M.DescribeMaintenanceWindowTasksAsync(DescribeMaintenanceWindowTasksRequest, cb)
 	assert(DescribeMaintenanceWindowTasksRequest, "You must provide a DescribeMaintenanceWindowTasksRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeMaintenanceWindowTasks",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeMaintenanceWindowTasks",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeMaintenanceWindowTasksRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeMaintenanceWindowTasksRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14641,13 +14646,13 @@ end
 function M.DeleteParametersAsync(DeleteParametersRequest, cb)
 	assert(DeleteParametersRequest, "You must provide a DeleteParametersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeleteParameters",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeleteParameters",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteParametersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteParametersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14673,13 +14678,13 @@ end
 function M.DescribeMaintenanceWindowTargetsAsync(DescribeMaintenanceWindowTargetsRequest, cb)
 	assert(DescribeMaintenanceWindowTargetsRequest, "You must provide a DescribeMaintenanceWindowTargetsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeMaintenanceWindowTargets",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeMaintenanceWindowTargets",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeMaintenanceWindowTargetsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeMaintenanceWindowTargetsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14705,13 +14710,13 @@ end
 function M.DescribeInstanceInformationAsync(DescribeInstanceInformationRequest, cb)
 	assert(DescribeInstanceInformationRequest, "You must provide a DescribeInstanceInformationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeInstanceInformation",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeInstanceInformation",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeInstanceInformationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeInstanceInformationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14737,13 +14742,13 @@ end
 function M.CreateActivationAsync(CreateActivationRequest, cb)
 	assert(CreateActivationRequest, "You must provide a CreateActivationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.CreateActivation",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.CreateActivation",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateActivationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateActivationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14769,13 +14774,13 @@ end
 function M.RegisterPatchBaselineForPatchGroupAsync(RegisterPatchBaselineForPatchGroupRequest, cb)
 	assert(RegisterPatchBaselineForPatchGroupRequest, "You must provide a RegisterPatchBaselineForPatchGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.RegisterPatchBaselineForPatchGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.RegisterPatchBaselineForPatchGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RegisterPatchBaselineForPatchGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RegisterPatchBaselineForPatchGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14801,13 +14806,13 @@ end
 function M.UpdateDocumentAsync(UpdateDocumentRequest, cb)
 	assert(UpdateDocumentRequest, "You must provide a UpdateDocumentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.UpdateDocument",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.UpdateDocument",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateDocumentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateDocumentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14833,13 +14838,13 @@ end
 function M.DescribeActivationsAsync(DescribeActivationsRequest, cb)
 	assert(DescribeActivationsRequest, "You must provide a DescribeActivationsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeActivations",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeActivations",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeActivationsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeActivationsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14865,13 +14870,13 @@ end
 function M.CreateAssociationAsync(CreateAssociationRequest, cb)
 	assert(CreateAssociationRequest, "You must provide a CreateAssociationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.CreateAssociation",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.CreateAssociation",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateAssociationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateAssociationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14897,13 +14902,13 @@ end
 function M.GetMaintenanceWindowExecutionAsync(GetMaintenanceWindowExecutionRequest, cb)
 	assert(GetMaintenanceWindowExecutionRequest, "You must provide a GetMaintenanceWindowExecutionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetMaintenanceWindowExecution",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetMaintenanceWindowExecution",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetMaintenanceWindowExecutionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetMaintenanceWindowExecutionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14929,13 +14934,13 @@ end
 function M.DeleteMaintenanceWindowAsync(DeleteMaintenanceWindowRequest, cb)
 	assert(DeleteMaintenanceWindowRequest, "You must provide a DeleteMaintenanceWindowRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeleteMaintenanceWindow",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeleteMaintenanceWindow",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteMaintenanceWindowRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteMaintenanceWindowRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14961,13 +14966,13 @@ end
 function M.ListCommandsAsync(ListCommandsRequest, cb)
 	assert(ListCommandsRequest, "You must provide a ListCommandsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.ListCommands",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.ListCommands",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListCommandsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListCommandsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -14993,13 +14998,13 @@ end
 function M.UpdateAssociationAsync(UpdateAssociationRequest, cb)
 	assert(UpdateAssociationRequest, "You must provide a UpdateAssociationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.UpdateAssociation",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.UpdateAssociation",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateAssociationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateAssociationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -15025,13 +15030,13 @@ end
 function M.DeleteDocumentAsync(DeleteDocumentRequest, cb)
 	assert(DeleteDocumentRequest, "You must provide a DeleteDocumentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeleteDocument",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeleteDocument",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteDocumentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteDocumentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -15057,13 +15062,13 @@ end
 function M.DescribeEffectiveInstanceAssociationsAsync(DescribeEffectiveInstanceAssociationsRequest, cb)
 	assert(DescribeEffectiveInstanceAssociationsRequest, "You must provide a DescribeEffectiveInstanceAssociationsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeEffectiveInstanceAssociations",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeEffectiveInstanceAssociations",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeEffectiveInstanceAssociationsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeEffectiveInstanceAssociationsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -15089,13 +15094,13 @@ end
 function M.DescribeMaintenanceWindowsAsync(DescribeMaintenanceWindowsRequest, cb)
 	assert(DescribeMaintenanceWindowsRequest, "You must provide a DescribeMaintenanceWindowsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeMaintenanceWindows",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeMaintenanceWindows",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeMaintenanceWindowsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeMaintenanceWindowsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -15121,13 +15126,13 @@ end
 function M.DeleteParameterAsync(DeleteParameterRequest, cb)
 	assert(DeleteParameterRequest, "You must provide a DeleteParameterRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeleteParameter",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeleteParameter",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteParameterRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteParameterRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -15153,13 +15158,13 @@ end
 function M.DescribeMaintenanceWindowExecutionTaskInvocationsAsync(DescribeMaintenanceWindowExecutionTaskInvocationsRequest, cb)
 	assert(DescribeMaintenanceWindowExecutionTaskInvocationsRequest, "You must provide a DescribeMaintenanceWindowExecutionTaskInvocationsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeMaintenanceWindowExecutionTaskInvocations",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeMaintenanceWindowExecutionTaskInvocations",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeMaintenanceWindowExecutionTaskInvocationsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeMaintenanceWindowExecutionTaskInvocationsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -15185,13 +15190,13 @@ end
 function M.ModifyDocumentPermissionAsync(ModifyDocumentPermissionRequest, cb)
 	assert(ModifyDocumentPermissionRequest, "You must provide a ModifyDocumentPermissionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.ModifyDocumentPermission",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.ModifyDocumentPermission",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ModifyDocumentPermissionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ModifyDocumentPermissionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -15217,13 +15222,13 @@ end
 function M.DescribeMaintenanceWindowExecutionsAsync(DescribeMaintenanceWindowExecutionsRequest, cb)
 	assert(DescribeMaintenanceWindowExecutionsRequest, "You must provide a DescribeMaintenanceWindowExecutionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeMaintenanceWindowExecutions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeMaintenanceWindowExecutions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeMaintenanceWindowExecutionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeMaintenanceWindowExecutionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -15249,13 +15254,13 @@ end
 function M.StartAutomationExecutionAsync(StartAutomationExecutionRequest, cb)
 	assert(StartAutomationExecutionRequest, "You must provide a StartAutomationExecutionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.StartAutomationExecution",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.StartAutomationExecution",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", StartAutomationExecutionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", StartAutomationExecutionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -15281,13 +15286,13 @@ end
 function M.DescribeDocumentAsync(DescribeDocumentRequest, cb)
 	assert(DescribeDocumentRequest, "You must provide a DescribeDocumentRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeDocument",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeDocument",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeDocumentRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeDocumentRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -15313,13 +15318,13 @@ end
 function M.UpdateDocumentDefaultVersionAsync(UpdateDocumentDefaultVersionRequest, cb)
 	assert(UpdateDocumentDefaultVersionRequest, "You must provide a UpdateDocumentDefaultVersionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.UpdateDocumentDefaultVersion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.UpdateDocumentDefaultVersion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateDocumentDefaultVersionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateDocumentDefaultVersionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -15345,13 +15350,13 @@ end
 function M.RegisterTargetWithMaintenanceWindowAsync(RegisterTargetWithMaintenanceWindowRequest, cb)
 	assert(RegisterTargetWithMaintenanceWindowRequest, "You must provide a RegisterTargetWithMaintenanceWindowRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.RegisterTargetWithMaintenanceWindow",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.RegisterTargetWithMaintenanceWindow",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RegisterTargetWithMaintenanceWindowRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RegisterTargetWithMaintenanceWindowRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -15377,13 +15382,13 @@ end
 function M.DeletePatchBaselineAsync(DeletePatchBaselineRequest, cb)
 	assert(DeletePatchBaselineRequest, "You must provide a DeletePatchBaselineRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeletePatchBaseline",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeletePatchBaseline",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeletePatchBaselineRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeletePatchBaselineRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -15409,13 +15414,13 @@ end
 function M.ListInventoryEntriesAsync(ListInventoryEntriesRequest, cb)
 	assert(ListInventoryEntriesRequest, "You must provide a ListInventoryEntriesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.ListInventoryEntries",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.ListInventoryEntries",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListInventoryEntriesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListInventoryEntriesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -15441,13 +15446,13 @@ end
 function M.DeregisterPatchBaselineForPatchGroupAsync(DeregisterPatchBaselineForPatchGroupRequest, cb)
 	assert(DeregisterPatchBaselineForPatchGroupRequest, "You must provide a DeregisterPatchBaselineForPatchGroupRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeregisterPatchBaselineForPatchGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeregisterPatchBaselineForPatchGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeregisterPatchBaselineForPatchGroupRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeregisterPatchBaselineForPatchGroupRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -15473,13 +15478,13 @@ end
 function M.ListTagsForResourceAsync(ListTagsForResourceRequest, cb)
 	assert(ListTagsForResourceRequest, "You must provide a ListTagsForResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.ListTagsForResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.ListTagsForResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListTagsForResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListTagsForResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -15505,13 +15510,13 @@ end
 function M.RegisterTaskWithMaintenanceWindowAsync(RegisterTaskWithMaintenanceWindowRequest, cb)
 	assert(RegisterTaskWithMaintenanceWindowRequest, "You must provide a RegisterTaskWithMaintenanceWindowRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.RegisterTaskWithMaintenanceWindow",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.RegisterTaskWithMaintenanceWindow",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RegisterTaskWithMaintenanceWindowRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RegisterTaskWithMaintenanceWindowRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -15537,13 +15542,13 @@ end
 function M.GetParametersAsync(GetParametersRequest, cb)
 	assert(GetParametersRequest, "You must provide a GetParametersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetParameters",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetParameters",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetParametersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetParametersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -15569,13 +15574,13 @@ end
 function M.ListDocumentsAsync(ListDocumentsRequest, cb)
 	assert(ListDocumentsRequest, "You must provide a ListDocumentsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "AmazonSSM.ListDocuments",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.ListDocuments",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListDocumentsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListDocumentsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

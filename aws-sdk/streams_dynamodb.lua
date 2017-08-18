@@ -1082,12 +1082,12 @@ function M.KeySchema(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -1111,8 +1111,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -1125,13 +1130,13 @@ end
 function M.GetRecordsAsync(GetRecordsInput, cb)
 	assert(GetRecordsInput, "You must provide a GetRecordsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DynamoDBStreams_20120810.GetRecords",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDBStreams_20120810.GetRecords",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetRecordsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetRecordsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1157,13 +1162,13 @@ end
 function M.ListStreamsAsync(ListStreamsInput, cb)
 	assert(ListStreamsInput, "You must provide a ListStreamsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DynamoDBStreams_20120810.ListStreams",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDBStreams_20120810.ListStreams",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListStreamsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListStreamsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1189,13 +1194,13 @@ end
 function M.GetShardIteratorAsync(GetShardIteratorInput, cb)
 	assert(GetShardIteratorInput, "You must provide a GetShardIteratorInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DynamoDBStreams_20120810.GetShardIterator",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDBStreams_20120810.GetShardIterator",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetShardIteratorInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetShardIteratorInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1221,13 +1226,13 @@ end
 function M.DescribeStreamAsync(DescribeStreamInput, cb)
 	assert(DescribeStreamInput, "You must provide a DescribeStreamInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "DynamoDBStreams_20120810.DescribeStream",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "DynamoDBStreams_20120810.DescribeStream",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeStreamInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeStreamInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end

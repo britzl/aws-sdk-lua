@@ -2425,12 +2425,12 @@ function M.TagList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -2454,8 +2454,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -2468,13 +2473,13 @@ end
 function M.ResendContactReachabilityEmailAsync(ResendContactReachabilityEmailRequest, cb)
 	assert(ResendContactReachabilityEmailRequest, "You must provide a ResendContactReachabilityEmailRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.ResendContactReachabilityEmail",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.ResendContactReachabilityEmail",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ResendContactReachabilityEmailRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ResendContactReachabilityEmailRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2500,13 +2505,13 @@ end
 function M.ListDomainsAsync(ListDomainsRequest, cb)
 	assert(ListDomainsRequest, "You must provide a ListDomainsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.ListDomains",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.ListDomains",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListDomainsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListDomainsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2532,13 +2537,13 @@ end
 function M.DisableDomainTransferLockAsync(DisableDomainTransferLockRequest, cb)
 	assert(DisableDomainTransferLockRequest, "You must provide a DisableDomainTransferLockRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.DisableDomainTransferLock",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.DisableDomainTransferLock",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisableDomainTransferLockRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisableDomainTransferLockRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2564,13 +2569,13 @@ end
 function M.RetrieveDomainAuthCodeAsync(RetrieveDomainAuthCodeRequest, cb)
 	assert(RetrieveDomainAuthCodeRequest, "You must provide a RetrieveDomainAuthCodeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.RetrieveDomainAuthCode",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.RetrieveDomainAuthCode",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RetrieveDomainAuthCodeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RetrieveDomainAuthCodeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2596,13 +2601,13 @@ end
 function M.ViewBillingAsync(ViewBillingRequest, cb)
 	assert(ViewBillingRequest, "You must provide a ViewBillingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.ViewBilling",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.ViewBilling",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ViewBillingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ViewBillingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2628,13 +2633,13 @@ end
 function M.UpdateDomainNameserversAsync(UpdateDomainNameserversRequest, cb)
 	assert(UpdateDomainNameserversRequest, "You must provide a UpdateDomainNameserversRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.UpdateDomainNameservers",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.UpdateDomainNameservers",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateDomainNameserversRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateDomainNameserversRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2660,13 +2665,13 @@ end
 function M.UpdateTagsForDomainAsync(UpdateTagsForDomainRequest, cb)
 	assert(UpdateTagsForDomainRequest, "You must provide a UpdateTagsForDomainRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.UpdateTagsForDomain",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.UpdateTagsForDomain",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateTagsForDomainRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateTagsForDomainRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2692,13 +2697,13 @@ end
 function M.EnableDomainAutoRenewAsync(EnableDomainAutoRenewRequest, cb)
 	assert(EnableDomainAutoRenewRequest, "You must provide a EnableDomainAutoRenewRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.EnableDomainAutoRenew",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.EnableDomainAutoRenew",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", EnableDomainAutoRenewRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", EnableDomainAutoRenewRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2724,13 +2729,13 @@ end
 function M.GetDomainSuggestionsAsync(GetDomainSuggestionsRequest, cb)
 	assert(GetDomainSuggestionsRequest, "You must provide a GetDomainSuggestionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.GetDomainSuggestions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.GetDomainSuggestions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetDomainSuggestionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetDomainSuggestionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2756,13 +2761,13 @@ end
 function M.GetOperationDetailAsync(GetOperationDetailRequest, cb)
 	assert(GetOperationDetailRequest, "You must provide a GetOperationDetailRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.GetOperationDetail",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.GetOperationDetail",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetOperationDetailRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetOperationDetailRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2788,13 +2793,13 @@ end
 function M.RenewDomainAsync(RenewDomainRequest, cb)
 	assert(RenewDomainRequest, "You must provide a RenewDomainRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.RenewDomain",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.RenewDomain",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RenewDomainRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RenewDomainRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2820,13 +2825,13 @@ end
 function M.TransferDomainAsync(TransferDomainRequest, cb)
 	assert(TransferDomainRequest, "You must provide a TransferDomainRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.TransferDomain",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.TransferDomain",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", TransferDomainRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", TransferDomainRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2852,13 +2857,13 @@ end
 function M.DisableDomainAutoRenewAsync(DisableDomainAutoRenewRequest, cb)
 	assert(DisableDomainAutoRenewRequest, "You must provide a DisableDomainAutoRenewRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.DisableDomainAutoRenew",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.DisableDomainAutoRenew",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisableDomainAutoRenewRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisableDomainAutoRenewRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2884,13 +2889,13 @@ end
 function M.DeleteTagsForDomainAsync(DeleteTagsForDomainRequest, cb)
 	assert(DeleteTagsForDomainRequest, "You must provide a DeleteTagsForDomainRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.DeleteTagsForDomain",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.DeleteTagsForDomain",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteTagsForDomainRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteTagsForDomainRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2916,13 +2921,13 @@ end
 function M.RegisterDomainAsync(RegisterDomainRequest, cb)
 	assert(RegisterDomainRequest, "You must provide a RegisterDomainRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.RegisterDomain",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.RegisterDomain",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RegisterDomainRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RegisterDomainRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2948,13 +2953,13 @@ end
 function M.GetDomainDetailAsync(GetDomainDetailRequest, cb)
 	assert(GetDomainDetailRequest, "You must provide a GetDomainDetailRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.GetDomainDetail",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.GetDomainDetail",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetDomainDetailRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetDomainDetailRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2980,13 +2985,13 @@ end
 function M.CheckDomainAvailabilityAsync(CheckDomainAvailabilityRequest, cb)
 	assert(CheckDomainAvailabilityRequest, "You must provide a CheckDomainAvailabilityRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.CheckDomainAvailability",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.CheckDomainAvailability",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CheckDomainAvailabilityRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CheckDomainAvailabilityRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3012,13 +3017,13 @@ end
 function M.UpdateDomainContactPrivacyAsync(UpdateDomainContactPrivacyRequest, cb)
 	assert(UpdateDomainContactPrivacyRequest, "You must provide a UpdateDomainContactPrivacyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.UpdateDomainContactPrivacy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.UpdateDomainContactPrivacy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateDomainContactPrivacyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateDomainContactPrivacyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3044,13 +3049,13 @@ end
 function M.ListTagsForDomainAsync(ListTagsForDomainRequest, cb)
 	assert(ListTagsForDomainRequest, "You must provide a ListTagsForDomainRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.ListTagsForDomain",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.ListTagsForDomain",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListTagsForDomainRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListTagsForDomainRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3076,13 +3081,13 @@ end
 function M.GetContactReachabilityStatusAsync(GetContactReachabilityStatusRequest, cb)
 	assert(GetContactReachabilityStatusRequest, "You must provide a GetContactReachabilityStatusRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.GetContactReachabilityStatus",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.GetContactReachabilityStatus",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", GetContactReachabilityStatusRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", GetContactReachabilityStatusRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3108,13 +3113,13 @@ end
 function M.UpdateDomainContactAsync(UpdateDomainContactRequest, cb)
 	assert(UpdateDomainContactRequest, "You must provide a UpdateDomainContactRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.UpdateDomainContact",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.UpdateDomainContact",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateDomainContactRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateDomainContactRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3140,13 +3145,13 @@ end
 function M.ListOperationsAsync(ListOperationsRequest, cb)
 	assert(ListOperationsRequest, "You must provide a ListOperationsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.ListOperations",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.ListOperations",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListOperationsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListOperationsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3172,13 +3177,13 @@ end
 function M.EnableDomainTransferLockAsync(EnableDomainTransferLockRequest, cb)
 	assert(EnableDomainTransferLockRequest, "You must provide a EnableDomainTransferLockRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.EnableDomainTransferLock",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.EnableDomainTransferLock",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", EnableDomainTransferLockRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", EnableDomainTransferLockRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

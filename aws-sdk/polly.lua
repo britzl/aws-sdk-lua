@@ -1094,12 +1094,12 @@ function M.VoiceList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -1123,8 +1123,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -1137,13 +1142,13 @@ end
 function M.DescribeVoicesAsync(DescribeVoicesInput, cb)
 	assert(DescribeVoicesInput, "You must provide a DescribeVoicesInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeVoices",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeVoices",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/v1/voices", DescribeVoicesInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/voices", DescribeVoicesInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1169,13 +1174,13 @@ end
 function M.GetLexiconAsync(GetLexiconInput, cb)
 	assert(GetLexiconInput, "You must provide a GetLexiconInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetLexicon",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetLexicon",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/v1/lexicons/{LexiconName}", GetLexiconInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/lexicons/{LexiconName}", GetLexiconInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1201,13 +1206,13 @@ end
 function M.PutLexiconAsync(PutLexiconInput, cb)
 	assert(PutLexiconInput, "You must provide a PutLexiconInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutLexicon",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutLexicon",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/v1/lexicons/{LexiconName}", PutLexiconInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/lexicons/{LexiconName}", PutLexiconInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1233,13 +1238,13 @@ end
 function M.ListLexiconsAsync(ListLexiconsInput, cb)
 	assert(ListLexiconsInput, "You must provide a ListLexiconsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListLexicons",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListLexicons",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/v1/lexicons", ListLexiconsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/lexicons", ListLexiconsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1265,13 +1270,13 @@ end
 function M.SynthesizeSpeechAsync(SynthesizeSpeechInput, cb)
 	assert(SynthesizeSpeechInput, "You must provide a SynthesizeSpeechInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SynthesizeSpeech",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SynthesizeSpeech",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/v1/speech", SynthesizeSpeechInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/speech", SynthesizeSpeechInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -1297,13 +1302,13 @@ end
 function M.DeleteLexiconAsync(DeleteLexiconInput, cb)
 	assert(DeleteLexiconInput, "You must provide a DeleteLexiconInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteLexicon",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteLexicon",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/v1/lexicons/{LexiconName}", DeleteLexiconInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/v1/lexicons/{LexiconName}", DeleteLexiconInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end

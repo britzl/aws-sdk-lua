@@ -2261,12 +2261,12 @@ function M.DestinationDescriptionList(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -2290,8 +2290,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -2304,13 +2309,13 @@ end
 function M.CreateDeliveryStreamAsync(CreateDeliveryStreamInput, cb)
 	assert(CreateDeliveryStreamInput, "You must provide a CreateDeliveryStreamInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Firehose_20150804.CreateDeliveryStream",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Firehose_20150804.CreateDeliveryStream",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateDeliveryStreamInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateDeliveryStreamInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2336,13 +2341,13 @@ end
 function M.DescribeDeliveryStreamAsync(DescribeDeliveryStreamInput, cb)
 	assert(DescribeDeliveryStreamInput, "You must provide a DescribeDeliveryStreamInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Firehose_20150804.DescribeDeliveryStream",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Firehose_20150804.DescribeDeliveryStream",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeDeliveryStreamInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeDeliveryStreamInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2368,13 +2373,13 @@ end
 function M.UpdateDestinationAsync(UpdateDestinationInput, cb)
 	assert(UpdateDestinationInput, "You must provide a UpdateDestinationInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Firehose_20150804.UpdateDestination",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Firehose_20150804.UpdateDestination",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateDestinationInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateDestinationInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2400,13 +2405,13 @@ end
 function M.DeleteDeliveryStreamAsync(DeleteDeliveryStreamInput, cb)
 	assert(DeleteDeliveryStreamInput, "You must provide a DeleteDeliveryStreamInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Firehose_20150804.DeleteDeliveryStream",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Firehose_20150804.DeleteDeliveryStream",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteDeliveryStreamInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteDeliveryStreamInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2432,13 +2437,13 @@ end
 function M.ListDeliveryStreamsAsync(ListDeliveryStreamsInput, cb)
 	assert(ListDeliveryStreamsInput, "You must provide a ListDeliveryStreamsInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Firehose_20150804.ListDeliveryStreams",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Firehose_20150804.ListDeliveryStreams",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ListDeliveryStreamsInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ListDeliveryStreamsInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2464,13 +2469,13 @@ end
 function M.PutRecordBatchAsync(PutRecordBatchInput, cb)
 	assert(PutRecordBatchInput, "You must provide a PutRecordBatchInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Firehose_20150804.PutRecordBatch",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Firehose_20150804.PutRecordBatch",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutRecordBatchInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutRecordBatchInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -2496,13 +2501,13 @@ end
 function M.PutRecordAsync(PutRecordInput, cb)
 	assert(PutRecordInput, "You must provide a PutRecordInput")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = "Firehose_20150804.PutRecord",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = "Firehose_20150804.PutRecord",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutRecordInput, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutRecordInput, headers, settings, cb)
 	else
 		cb(false, err)
 	end

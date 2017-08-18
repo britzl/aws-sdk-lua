@@ -2996,12 +2996,12 @@ function M.SecurityGroupIds(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -3025,8 +3025,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -3039,13 +3044,13 @@ end
 function M.ListEventSourceMappingsAsync(ListEventSourceMappingsRequest, cb)
 	assert(ListEventSourceMappingsRequest, "You must provide a ListEventSourceMappingsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListEventSourceMappings",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListEventSourceMappings",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2015-03-31/event-source-mappings/", ListEventSourceMappingsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-03-31/event-source-mappings/", ListEventSourceMappingsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3071,13 +3076,13 @@ end
 function M.DeleteFunctionAsync(DeleteFunctionRequest, cb)
 	assert(DeleteFunctionRequest, "You must provide a DeleteFunctionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteFunction",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteFunction",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/2015-03-31/functions/{FunctionName}", DeleteFunctionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}", DeleteFunctionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3103,13 +3108,13 @@ end
 function M.UpdateEventSourceMappingAsync(UpdateEventSourceMappingRequest, cb)
 	assert(UpdateEventSourceMappingRequest, "You must provide a UpdateEventSourceMappingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateEventSourceMapping",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateEventSourceMapping",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/2015-03-31/event-source-mappings/{UUID}", UpdateEventSourceMappingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-03-31/event-source-mappings/{UUID}", UpdateEventSourceMappingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3135,13 +3140,13 @@ end
 function M.UpdateAliasAsync(UpdateAliasRequest, cb)
 	assert(UpdateAliasRequest, "You must provide a UpdateAliasRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateAlias",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateAlias",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/2015-03-31/functions/{FunctionName}/aliases/{Name}", UpdateAliasRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/aliases/{Name}", UpdateAliasRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3167,13 +3172,13 @@ end
 function M.ListFunctionsAsync(ListFunctionsRequest, cb)
 	assert(ListFunctionsRequest, "You must provide a ListFunctionsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListFunctions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListFunctions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2015-03-31/functions/", ListFunctionsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-03-31/functions/", ListFunctionsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3199,13 +3204,13 @@ end
 function M.CreateEventSourceMappingAsync(CreateEventSourceMappingRequest, cb)
 	assert(CreateEventSourceMappingRequest, "You must provide a CreateEventSourceMappingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateEventSourceMapping",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateEventSourceMapping",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2015-03-31/event-source-mappings/", CreateEventSourceMappingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-03-31/event-source-mappings/", CreateEventSourceMappingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3231,13 +3236,13 @@ end
 function M.GetFunctionConfigurationAsync(GetFunctionConfigurationRequest, cb)
 	assert(GetFunctionConfigurationRequest, "You must provide a GetFunctionConfigurationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetFunctionConfiguration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetFunctionConfiguration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2015-03-31/functions/{FunctionName}/configuration", GetFunctionConfigurationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/configuration", GetFunctionConfigurationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3263,13 +3268,13 @@ end
 function M.ListAliasesAsync(ListAliasesRequest, cb)
 	assert(ListAliasesRequest, "You must provide a ListAliasesRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListAliases",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListAliases",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2015-03-31/functions/{FunctionName}/aliases", ListAliasesRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/aliases", ListAliasesRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3295,13 +3300,13 @@ end
 function M.GetPolicyAsync(GetPolicyRequest, cb)
 	assert(GetPolicyRequest, "You must provide a GetPolicyRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2015-03-31/functions/{FunctionName}/policy", GetPolicyRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/policy", GetPolicyRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3327,13 +3332,13 @@ end
 function M.InvokeAsync(InvocationRequest, cb)
 	assert(InvocationRequest, "You must provide a InvocationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".Invoke",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".Invoke",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2015-03-31/functions/{FunctionName}/invocations", InvocationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/invocations", InvocationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3359,13 +3364,13 @@ end
 function M.PublishVersionAsync(PublishVersionRequest, cb)
 	assert(PublishVersionRequest, "You must provide a PublishVersionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PublishVersion",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PublishVersion",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2015-03-31/functions/{FunctionName}/versions", PublishVersionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/versions", PublishVersionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3391,13 +3396,13 @@ end
 function M.GetFunctionAsync(GetFunctionRequest, cb)
 	assert(GetFunctionRequest, "You must provide a GetFunctionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetFunction",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetFunction",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2015-03-31/functions/{FunctionName}", GetFunctionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}", GetFunctionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3423,13 +3428,13 @@ end
 function M.DeleteAliasAsync(DeleteAliasRequest, cb)
 	assert(DeleteAliasRequest, "You must provide a DeleteAliasRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteAlias",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteAlias",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/2015-03-31/functions/{FunctionName}/aliases/{Name}", DeleteAliasRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/aliases/{Name}", DeleteAliasRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3455,13 +3460,13 @@ end
 function M.AddPermissionAsync(AddPermissionRequest, cb)
 	assert(AddPermissionRequest, "You must provide a AddPermissionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AddPermission",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AddPermission",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2015-03-31/functions/{FunctionName}/policy", AddPermissionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/policy", AddPermissionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3487,13 +3492,13 @@ end
 function M.ListVersionsByFunctionAsync(ListVersionsByFunctionRequest, cb)
 	assert(ListVersionsByFunctionRequest, "You must provide a ListVersionsByFunctionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListVersionsByFunction",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListVersionsByFunction",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2015-03-31/functions/{FunctionName}/versions", ListVersionsByFunctionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/versions", ListVersionsByFunctionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3519,13 +3524,13 @@ end
 function M.RemovePermissionAsync(RemovePermissionRequest, cb)
 	assert(RemovePermissionRequest, "You must provide a RemovePermissionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RemovePermission",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RemovePermission",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/2015-03-31/functions/{FunctionName}/policy/{StatementId}", RemovePermissionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/policy/{StatementId}", RemovePermissionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3551,13 +3556,13 @@ end
 function M.CreateAliasAsync(CreateAliasRequest, cb)
 	assert(CreateAliasRequest, "You must provide a CreateAliasRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateAlias",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateAlias",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2015-03-31/functions/{FunctionName}/aliases", CreateAliasRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/aliases", CreateAliasRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3583,13 +3588,13 @@ end
 function M.ListTagsAsync(ListTagsRequest, cb)
 	assert(ListTagsRequest, "You must provide a ListTagsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ListTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ListTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2017-03-31/tags/{ARN}", ListTagsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2017-03-31/tags/{ARN}", ListTagsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3615,13 +3620,13 @@ end
 function M.TagResourceAsync(TagResourceRequest, cb)
 	assert(TagResourceRequest, "You must provide a TagResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".TagResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".TagResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2017-03-31/tags/{ARN}", TagResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2017-03-31/tags/{ARN}", TagResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3647,13 +3652,13 @@ end
 function M.DeleteEventSourceMappingAsync(DeleteEventSourceMappingRequest, cb)
 	assert(DeleteEventSourceMappingRequest, "You must provide a DeleteEventSourceMappingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteEventSourceMapping",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteEventSourceMapping",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/2015-03-31/event-source-mappings/{UUID}", DeleteEventSourceMappingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-03-31/event-source-mappings/{UUID}", DeleteEventSourceMappingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3679,13 +3684,13 @@ end
 function M.UpdateFunctionConfigurationAsync(UpdateFunctionConfigurationRequest, cb)
 	assert(UpdateFunctionConfigurationRequest, "You must provide a UpdateFunctionConfigurationRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateFunctionConfiguration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateFunctionConfiguration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/2015-03-31/functions/{FunctionName}/configuration", UpdateFunctionConfigurationRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/configuration", UpdateFunctionConfigurationRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3711,13 +3716,13 @@ end
 function M.GetEventSourceMappingAsync(GetEventSourceMappingRequest, cb)
 	assert(GetEventSourceMappingRequest, "You must provide a GetEventSourceMappingRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetEventSourceMapping",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetEventSourceMapping",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2015-03-31/event-source-mappings/{UUID}", GetEventSourceMappingRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-03-31/event-source-mappings/{UUID}", GetEventSourceMappingRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3743,13 +3748,13 @@ end
 function M.UntagResourceAsync(UntagResourceRequest, cb)
 	assert(UntagResourceRequest, "You must provide a UntagResourceRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UntagResource",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UntagResource",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("DELETE")
 	if request_handler then
-		request_handler(uri .. "/2017-03-31/tags/{ARN}", UntagResourceRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2017-03-31/tags/{ARN}", UntagResourceRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3775,13 +3780,13 @@ end
 function M.GetAliasAsync(GetAliasRequest, cb)
 	assert(GetAliasRequest, "You must provide a GetAliasRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetAlias",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetAlias",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2015-03-31/functions/{FunctionName}/aliases/{Name}", GetAliasRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/aliases/{Name}", GetAliasRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3807,13 +3812,13 @@ end
 function M.GetAccountSettingsAsync(GetAccountSettingsRequest, cb)
 	assert(GetAccountSettingsRequest, "You must provide a GetAccountSettingsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".GetAccountSettings",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".GetAccountSettings",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("GET")
 	if request_handler then
-		request_handler(uri .. "/2016-08-19/account-settings/", GetAccountSettingsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2016-08-19/account-settings/", GetAccountSettingsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3839,13 +3844,13 @@ end
 function M.CreateFunctionAsync(CreateFunctionRequest, cb)
 	assert(CreateFunctionRequest, "You must provide a CreateFunctionRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateFunction",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateFunction",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/2015-03-31/functions", CreateFunctionRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-03-31/functions", CreateFunctionRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -3871,13 +3876,13 @@ end
 function M.UpdateFunctionCodeAsync(UpdateFunctionCodeRequest, cb)
 	assert(UpdateFunctionCodeRequest, "You must provide a UpdateFunctionCodeRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateFunctionCode",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateFunctionCode",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("PUT")
 	if request_handler then
-		request_handler(uri .. "/2015-03-31/functions/{FunctionName}/code", UpdateFunctionCodeRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/code", UpdateFunctionCodeRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end

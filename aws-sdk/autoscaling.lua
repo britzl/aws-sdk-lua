@@ -4700,12 +4700,12 @@ function M.AvailabilityZones(list)
 end
 
 
-local headers = require "aws-sdk.core.headers"
 local content_type = require "aws-sdk.core.content_type"
 local scheme_mapper = require "aws-sdk.core.scheme_mapper"
+local request_headers = require "aws-sdk.core.request_headers"
 local request_handlers = require "aws-sdk.core.request_handlers"
 
-local uri = ""
+local settings = {}
 
 
 local function endpoint_for_region(region, use_dualstack)
@@ -4729,8 +4729,13 @@ end
 
 function M.init(config)
 	assert(config, "You must provide a config table")
-	uri = scheme_mapper.from_string(config.scheme) .. "://"
-	uri = uri .. config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	assert(config.region, "You must provide a region in the config table")
+
+	settings.service = M.metadata.endpoint_prefix
+	settings.protocol = M.metadata.protocol
+	settings.region = config.region
+	settings.endpoint = config.endpoint_override or endpoint_for_region(config.region, config.use_dualstack)
+	settings.uri = scheme_mapper.from_string(config.scheme) .. "://" .. settings.endpoint
 end
 
 
@@ -4743,13 +4748,13 @@ end
 function M.DeleteTagsAsync(DeleteTagsType, cb)
 	assert(DeleteTagsType, "You must provide a DeleteTagsType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteTagsType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteTagsType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4775,13 +4780,13 @@ end
 function M.DescribeScalingActivitiesAsync(DescribeScalingActivitiesType, cb)
 	assert(DescribeScalingActivitiesType, "You must provide a DescribeScalingActivitiesType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeScalingActivities",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeScalingActivities",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeScalingActivitiesType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeScalingActivitiesType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4807,13 +4812,13 @@ end
 function M.CreateAutoScalingGroupAsync(CreateAutoScalingGroupType, cb)
 	assert(CreateAutoScalingGroupType, "You must provide a CreateAutoScalingGroupType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateAutoScalingGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateAutoScalingGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateAutoScalingGroupType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateAutoScalingGroupType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4839,13 +4844,13 @@ end
 function M.ExecutePolicyAsync(ExecutePolicyType, cb)
 	assert(ExecutePolicyType, "You must provide a ExecutePolicyType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ExecutePolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ExecutePolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ExecutePolicyType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ExecutePolicyType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4871,13 +4876,13 @@ end
 function M.SetInstanceProtectionAsync(SetInstanceProtectionQuery, cb)
 	assert(SetInstanceProtectionQuery, "You must provide a SetInstanceProtectionQuery")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SetInstanceProtection",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetInstanceProtection",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetInstanceProtectionQuery, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetInstanceProtectionQuery, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4903,13 +4908,13 @@ end
 function M.DetachLoadBalancerTargetGroupsAsync(DetachLoadBalancerTargetGroupsType, cb)
 	assert(DetachLoadBalancerTargetGroupsType, "You must provide a DetachLoadBalancerTargetGroupsType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DetachLoadBalancerTargetGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DetachLoadBalancerTargetGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DetachLoadBalancerTargetGroupsType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DetachLoadBalancerTargetGroupsType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4935,13 +4940,13 @@ end
 function M.DescribeNotificationConfigurationsAsync(DescribeNotificationConfigurationsType, cb)
 	assert(DescribeNotificationConfigurationsType, "You must provide a DescribeNotificationConfigurationsType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeNotificationConfigurations",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeNotificationConfigurations",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeNotificationConfigurationsType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeNotificationConfigurationsType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4967,13 +4972,13 @@ end
 function M.DeleteAutoScalingGroupAsync(DeleteAutoScalingGroupType, cb)
 	assert(DeleteAutoScalingGroupType, "You must provide a DeleteAutoScalingGroupType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteAutoScalingGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteAutoScalingGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteAutoScalingGroupType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteAutoScalingGroupType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -4999,13 +5004,13 @@ end
 function M.DeletePolicyAsync(DeletePolicyType, cb)
 	assert(DeletePolicyType, "You must provide a DeletePolicyType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeletePolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeletePolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeletePolicyType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeletePolicyType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5031,13 +5036,13 @@ end
 function M.ExitStandbyAsync(ExitStandbyQuery, cb)
 	assert(ExitStandbyQuery, "You must provide a ExitStandbyQuery")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ExitStandby",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ExitStandby",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ExitStandbyQuery, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ExitStandbyQuery, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5063,13 +5068,13 @@ end
 function M.SetInstanceHealthAsync(SetInstanceHealthQuery, cb)
 	assert(SetInstanceHealthQuery, "You must provide a SetInstanceHealthQuery")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SetInstanceHealth",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetInstanceHealth",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetInstanceHealthQuery, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetInstanceHealthQuery, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5095,13 +5100,13 @@ end
 function M.CreateOrUpdateTagsAsync(CreateOrUpdateTagsType, cb)
 	assert(CreateOrUpdateTagsType, "You must provide a CreateOrUpdateTagsType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateOrUpdateTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateOrUpdateTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateOrUpdateTagsType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateOrUpdateTagsType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5125,13 +5130,13 @@ end
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeScalingProcessTypesAsync(cb)
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeScalingProcessTypes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeScalingProcessTypes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", {}, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5156,13 +5161,13 @@ end
 function M.PutLifecycleHookAsync(PutLifecycleHookType, cb)
 	assert(PutLifecycleHookType, "You must provide a PutLifecycleHookType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutLifecycleHook",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutLifecycleHook",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutLifecycleHookType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutLifecycleHookType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5188,13 +5193,13 @@ end
 function M.DetachLoadBalancersAsync(DetachLoadBalancersType, cb)
 	assert(DetachLoadBalancersType, "You must provide a DetachLoadBalancersType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DetachLoadBalancers",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DetachLoadBalancers",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DetachLoadBalancersType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DetachLoadBalancersType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5220,13 +5225,13 @@ end
 function M.AttachInstancesAsync(AttachInstancesQuery, cb)
 	assert(AttachInstancesQuery, "You must provide a AttachInstancesQuery")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AttachInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AttachInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AttachInstancesQuery, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AttachInstancesQuery, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5252,13 +5257,13 @@ end
 function M.PutScheduledUpdateGroupActionAsync(PutScheduledUpdateGroupActionType, cb)
 	assert(PutScheduledUpdateGroupActionType, "You must provide a PutScheduledUpdateGroupActionType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutScheduledUpdateGroupAction",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutScheduledUpdateGroupAction",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutScheduledUpdateGroupActionType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutScheduledUpdateGroupActionType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5284,13 +5289,13 @@ end
 function M.PutScalingPolicyAsync(PutScalingPolicyType, cb)
 	assert(PutScalingPolicyType, "You must provide a PutScalingPolicyType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutScalingPolicy",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutScalingPolicy",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutScalingPolicyType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutScalingPolicyType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5316,13 +5321,13 @@ end
 function M.DeleteScheduledActionAsync(DeleteScheduledActionType, cb)
 	assert(DeleteScheduledActionType, "You must provide a DeleteScheduledActionType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteScheduledAction",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteScheduledAction",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteScheduledActionType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteScheduledActionType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5348,13 +5353,13 @@ end
 function M.AttachLoadBalancersAsync(AttachLoadBalancersType, cb)
 	assert(AttachLoadBalancersType, "You must provide a AttachLoadBalancersType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AttachLoadBalancers",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AttachLoadBalancers",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AttachLoadBalancersType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AttachLoadBalancersType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5380,13 +5385,13 @@ end
 function M.DetachInstancesAsync(DetachInstancesQuery, cb)
 	assert(DetachInstancesQuery, "You must provide a DetachInstancesQuery")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DetachInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DetachInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DetachInstancesQuery, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DetachInstancesQuery, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5410,13 +5415,13 @@ end
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeAdjustmentTypesAsync(cb)
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeAdjustmentTypes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAdjustmentTypes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", {}, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5441,13 +5446,13 @@ end
 function M.TerminateInstanceInAutoScalingGroupAsync(TerminateInstanceInAutoScalingGroupType, cb)
 	assert(TerminateInstanceInAutoScalingGroupType, "You must provide a TerminateInstanceInAutoScalingGroupType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".TerminateInstanceInAutoScalingGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".TerminateInstanceInAutoScalingGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", TerminateInstanceInAutoScalingGroupType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", TerminateInstanceInAutoScalingGroupType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5473,13 +5478,13 @@ end
 function M.AttachLoadBalancerTargetGroupsAsync(AttachLoadBalancerTargetGroupsType, cb)
 	assert(AttachLoadBalancerTargetGroupsType, "You must provide a AttachLoadBalancerTargetGroupsType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".AttachLoadBalancerTargetGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".AttachLoadBalancerTargetGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AttachLoadBalancerTargetGroupsType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AttachLoadBalancerTargetGroupsType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5505,13 +5510,13 @@ end
 function M.DescribeLoadBalancersAsync(DescribeLoadBalancersRequest, cb)
 	assert(DescribeLoadBalancersRequest, "You must provide a DescribeLoadBalancersRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeLoadBalancers",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeLoadBalancers",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeLoadBalancersRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeLoadBalancersRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5537,13 +5542,13 @@ end
 function M.CompleteLifecycleActionAsync(CompleteLifecycleActionType, cb)
 	assert(CompleteLifecycleActionType, "You must provide a CompleteLifecycleActionType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CompleteLifecycleAction",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CompleteLifecycleAction",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CompleteLifecycleActionType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CompleteLifecycleActionType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5567,13 +5572,13 @@ end
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeMetricCollectionTypesAsync(cb)
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeMetricCollectionTypes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeMetricCollectionTypes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", {}, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5598,13 +5603,13 @@ end
 function M.UpdateAutoScalingGroupAsync(UpdateAutoScalingGroupType, cb)
 	assert(UpdateAutoScalingGroupType, "You must provide a UpdateAutoScalingGroupType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".UpdateAutoScalingGroup",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".UpdateAutoScalingGroup",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", UpdateAutoScalingGroupType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", UpdateAutoScalingGroupType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5630,13 +5635,13 @@ end
 function M.RecordLifecycleActionHeartbeatAsync(RecordLifecycleActionHeartbeatType, cb)
 	assert(RecordLifecycleActionHeartbeatType, "You must provide a RecordLifecycleActionHeartbeatType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".RecordLifecycleActionHeartbeat",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".RecordLifecycleActionHeartbeat",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", RecordLifecycleActionHeartbeatType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", RecordLifecycleActionHeartbeatType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5662,13 +5667,13 @@ end
 function M.PutNotificationConfigurationAsync(PutNotificationConfigurationType, cb)
 	assert(PutNotificationConfigurationType, "You must provide a PutNotificationConfigurationType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".PutNotificationConfiguration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".PutNotificationConfiguration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", PutNotificationConfigurationType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", PutNotificationConfigurationType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5694,13 +5699,13 @@ end
 function M.ResumeProcessesAsync(ScalingProcessQuery, cb)
 	assert(ScalingProcessQuery, "You must provide a ScalingProcessQuery")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".ResumeProcesses",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".ResumeProcesses",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ScalingProcessQuery, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ScalingProcessQuery, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5726,13 +5731,13 @@ end
 function M.CreateLaunchConfigurationAsync(CreateLaunchConfigurationType, cb)
 	assert(CreateLaunchConfigurationType, "You must provide a CreateLaunchConfigurationType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".CreateLaunchConfiguration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".CreateLaunchConfiguration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", CreateLaunchConfigurationType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", CreateLaunchConfigurationType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5756,13 +5761,13 @@ end
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeLifecycleHookTypesAsync(cb)
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeLifecycleHookTypes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeLifecycleHookTypes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", {}, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5787,13 +5792,13 @@ end
 function M.DescribeAutoScalingInstancesAsync(DescribeAutoScalingInstancesType, cb)
 	assert(DescribeAutoScalingInstancesType, "You must provide a DescribeAutoScalingInstancesType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeAutoScalingInstances",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAutoScalingInstances",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeAutoScalingInstancesType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeAutoScalingInstancesType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5819,13 +5824,13 @@ end
 function M.DescribeTagsAsync(DescribeTagsType, cb)
 	assert(DescribeTagsType, "You must provide a DescribeTagsType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeTags",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeTags",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeTagsType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeTagsType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5849,13 +5854,13 @@ end
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeTerminationPolicyTypesAsync(cb)
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeTerminationPolicyTypes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeTerminationPolicyTypes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", {}, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5880,13 +5885,13 @@ end
 function M.DisableMetricsCollectionAsync(DisableMetricsCollectionQuery, cb)
 	assert(DisableMetricsCollectionQuery, "You must provide a DisableMetricsCollectionQuery")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DisableMetricsCollection",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DisableMetricsCollection",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DisableMetricsCollectionQuery, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DisableMetricsCollectionQuery, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5912,13 +5917,13 @@ end
 function M.SetDesiredCapacityAsync(SetDesiredCapacityType, cb)
 	assert(SetDesiredCapacityType, "You must provide a SetDesiredCapacityType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SetDesiredCapacity",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SetDesiredCapacity",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", SetDesiredCapacityType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", SetDesiredCapacityType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5944,13 +5949,13 @@ end
 function M.DescribeLaunchConfigurationsAsync(LaunchConfigurationNamesType, cb)
 	assert(LaunchConfigurationNamesType, "You must provide a LaunchConfigurationNamesType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeLaunchConfigurations",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeLaunchConfigurations",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", LaunchConfigurationNamesType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", LaunchConfigurationNamesType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -5976,13 +5981,13 @@ end
 function M.EnterStandbyAsync(EnterStandbyQuery, cb)
 	assert(EnterStandbyQuery, "You must provide a EnterStandbyQuery")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".EnterStandby",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".EnterStandby",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", EnterStandbyQuery, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", EnterStandbyQuery, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6008,13 +6013,13 @@ end
 function M.DescribeLoadBalancerTargetGroupsAsync(DescribeLoadBalancerTargetGroupsRequest, cb)
 	assert(DescribeLoadBalancerTargetGroupsRequest, "You must provide a DescribeLoadBalancerTargetGroupsRequest")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeLoadBalancerTargetGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeLoadBalancerTargetGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeLoadBalancerTargetGroupsRequest, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeLoadBalancerTargetGroupsRequest, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6040,13 +6045,13 @@ end
 function M.DeleteLaunchConfigurationAsync(LaunchConfigurationNameType, cb)
 	assert(LaunchConfigurationNameType, "You must provide a LaunchConfigurationNameType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteLaunchConfiguration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteLaunchConfiguration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", LaunchConfigurationNameType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", LaunchConfigurationNameType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6072,13 +6077,13 @@ end
 function M.DeleteLifecycleHookAsync(DeleteLifecycleHookType, cb)
 	assert(DeleteLifecycleHookType, "You must provide a DeleteLifecycleHookType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteLifecycleHook",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteLifecycleHook",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteLifecycleHookType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteLifecycleHookType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6104,13 +6109,13 @@ end
 function M.DescribePoliciesAsync(DescribePoliciesType, cb)
 	assert(DescribePoliciesType, "You must provide a DescribePoliciesType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribePolicies",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribePolicies",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribePoliciesType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribePoliciesType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6136,13 +6141,13 @@ end
 function M.DescribeLifecycleHooksAsync(DescribeLifecycleHooksType, cb)
 	assert(DescribeLifecycleHooksType, "You must provide a DescribeLifecycleHooksType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeLifecycleHooks",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeLifecycleHooks",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeLifecycleHooksType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeLifecycleHooksType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6168,13 +6173,13 @@ end
 function M.DescribeScheduledActionsAsync(DescribeScheduledActionsType, cb)
 	assert(DescribeScheduledActionsType, "You must provide a DescribeScheduledActionsType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeScheduledActions",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeScheduledActions",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DescribeScheduledActionsType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DescribeScheduledActionsType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6200,13 +6205,13 @@ end
 function M.DescribeAutoScalingGroupsAsync(AutoScalingGroupNamesType, cb)
 	assert(AutoScalingGroupNamesType, "You must provide a AutoScalingGroupNamesType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeAutoScalingGroups",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAutoScalingGroups",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", AutoScalingGroupNamesType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", AutoScalingGroupNamesType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6232,13 +6237,13 @@ end
 function M.EnableMetricsCollectionAsync(EnableMetricsCollectionQuery, cb)
 	assert(EnableMetricsCollectionQuery, "You must provide a EnableMetricsCollectionQuery")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".EnableMetricsCollection",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".EnableMetricsCollection",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", EnableMetricsCollectionQuery, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", EnableMetricsCollectionQuery, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6264,13 +6269,13 @@ end
 function M.DeleteNotificationConfigurationAsync(DeleteNotificationConfigurationType, cb)
 	assert(DeleteNotificationConfigurationType, "You must provide a DeleteNotificationConfigurationType")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DeleteNotificationConfiguration",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DeleteNotificationConfiguration",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", DeleteNotificationConfigurationType, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", DeleteNotificationConfigurationType, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6294,13 +6299,13 @@ end
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeAutoScalingNotificationTypesAsync(cb)
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeAutoScalingNotificationTypes",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAutoScalingNotificationTypes",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", {}, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6325,13 +6330,13 @@ end
 function M.SuspendProcessesAsync(ScalingProcessQuery, cb)
 	assert(ScalingProcessQuery, "You must provide a ScalingProcessQuery")
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".SuspendProcesses",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".SuspendProcesses",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", ScalingProcessQuery, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", ScalingProcessQuery, headers, settings, cb)
 	else
 		cb(false, err)
 	end
@@ -6355,13 +6360,13 @@ end
 -- @param cb Callback function accepting two args: response, error_message
 function M.DescribeAccountLimitsAsync(cb)
 	local headers = {
-		[headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
-		[headers.AMZ_TARGET_HEADER] = ".DescribeAccountLimits",
+		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
+		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAccountLimits",
 	}
 
 	local request_handler, err = request_handlers.from_http_method("POST")
 	if request_handler then
-		request_handler(uri .. "/", {}, headers, M.metadata, cb)
+		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
 		cb(false, err)
 	end
