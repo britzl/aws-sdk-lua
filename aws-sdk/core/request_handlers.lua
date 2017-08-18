@@ -15,7 +15,7 @@ function M.post(base_uri, request_uri, input, headers, settings, cb)
 	headers[request_headers.AUTHORIZATION_HEADER] = authorization
 	headers[request_headers.HOST_HEADER] = nil
 
-	config.http_request(base_uri .. request_uri, "POST", headers, post_data, function(self, _, response)
+	config.http_request(base_uri .. request_uri, "POST", headers, post_data, function(response)
 		if response.status >= 200 and response.status < 300 then
 			cb(json.decode(response.response))
 		else
