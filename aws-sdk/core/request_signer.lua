@@ -49,7 +49,7 @@ function M.sign_v4(request_uri, request_parameters, headers, settings)
 
 
 	-- Read AWS access key from game.project
-	local access_key = sys.get_config("aws.access_key_id")
+	local access_key = sys.get_config("aws.access_key")
 	local secret_key = sys.get_config("aws.secret_access_key")
 	assert(access_key and secret_key, "No access key or secret key defined in game.project")
 
