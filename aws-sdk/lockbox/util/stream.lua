@@ -1,4 +1,4 @@
-local Queue = require("lockbox.util.queue");
+local Queue = require("aws-sdk.lockbox.util.queue");
 local String = string;
 
 local Stream = {};

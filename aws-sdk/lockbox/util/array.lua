@@ -1,7 +1,7 @@
 
 local String = string;
-local Bit = require("lockbox.util.bit");
-local Queue = require("lockbox.util.queue");
+local Bit = require("aws-sdk.lockbox.util.bit");
+local Queue = require("aws-sdk.lockbox.util.queue");
 
 local XOR = Bit.bxor;
 

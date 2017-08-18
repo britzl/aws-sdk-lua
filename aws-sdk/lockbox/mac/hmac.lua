@@ -1,6 +1,6 @@
-local Bit = require("lockbox.util.bit");
-local Stream = require("lockbox.util.stream");
-local Array = require("lockbox.util.array");
+local Bit = require("aws-sdk.lockbox.util.bit");
+local Stream = require("aws-sdk.lockbox.util.stream");
+local Array = require("aws-sdk.lockbox.util.array");
 
 local XOR = Bit.bxor;
 

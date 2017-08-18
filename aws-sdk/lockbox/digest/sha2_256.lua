@@ -1,7 +1,7 @@
-local Bit = require("lockbox.util.bit");
+local Bit = require("aws-sdk.lockbox.util.bit");
 local String = string;
 local Math = math;
-local Queue = require("lockbox.util.queue");
+local Queue = require("aws-sdk.lockbox.util.queue");
 
 local CONSTANTS = {
    0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
