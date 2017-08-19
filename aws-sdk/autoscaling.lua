@@ -5086,10 +5086,10 @@ end
 -- @param DeleteTagsType
 -- @return response
 -- @return error_message
-function M.DeleteTagsSync(...)
+function M.DeleteTagsSync(DeleteTagsType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteTagsAsync(..., function(response, error_message)
+	M.DeleteTagsAsync(DeleteTagsType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5118,10 +5118,10 @@ end
 -- @param DescribeScalingActivitiesType
 -- @return response
 -- @return error_message
-function M.DescribeScalingActivitiesSync(...)
+function M.DescribeScalingActivitiesSync(DescribeScalingActivitiesType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeScalingActivitiesAsync(..., function(response, error_message)
+	M.DescribeScalingActivitiesAsync(DescribeScalingActivitiesType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5150,10 +5150,10 @@ end
 -- @param CreateAutoScalingGroupType
 -- @return response
 -- @return error_message
-function M.CreateAutoScalingGroupSync(...)
+function M.CreateAutoScalingGroupSync(CreateAutoScalingGroupType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateAutoScalingGroupAsync(..., function(response, error_message)
+	M.CreateAutoScalingGroupAsync(CreateAutoScalingGroupType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5182,10 +5182,10 @@ end
 -- @param ExecutePolicyType
 -- @return response
 -- @return error_message
-function M.ExecutePolicySync(...)
+function M.ExecutePolicySync(ExecutePolicyType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ExecutePolicyAsync(..., function(response, error_message)
+	M.ExecutePolicyAsync(ExecutePolicyType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5214,10 +5214,10 @@ end
 -- @param SetInstanceProtectionQuery
 -- @return response
 -- @return error_message
-function M.SetInstanceProtectionSync(...)
+function M.SetInstanceProtectionSync(SetInstanceProtectionQuery, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetInstanceProtectionAsync(..., function(response, error_message)
+	M.SetInstanceProtectionAsync(SetInstanceProtectionQuery, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5246,10 +5246,10 @@ end
 -- @param DetachLoadBalancerTargetGroupsType
 -- @return response
 -- @return error_message
-function M.DetachLoadBalancerTargetGroupsSync(...)
+function M.DetachLoadBalancerTargetGroupsSync(DetachLoadBalancerTargetGroupsType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DetachLoadBalancerTargetGroupsAsync(..., function(response, error_message)
+	M.DetachLoadBalancerTargetGroupsAsync(DetachLoadBalancerTargetGroupsType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5278,10 +5278,10 @@ end
 -- @param DescribeNotificationConfigurationsType
 -- @return response
 -- @return error_message
-function M.DescribeNotificationConfigurationsSync(...)
+function M.DescribeNotificationConfigurationsSync(DescribeNotificationConfigurationsType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeNotificationConfigurationsAsync(..., function(response, error_message)
+	M.DescribeNotificationConfigurationsAsync(DescribeNotificationConfigurationsType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5310,10 +5310,10 @@ end
 -- @param DeleteAutoScalingGroupType
 -- @return response
 -- @return error_message
-function M.DeleteAutoScalingGroupSync(...)
+function M.DeleteAutoScalingGroupSync(DeleteAutoScalingGroupType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteAutoScalingGroupAsync(..., function(response, error_message)
+	M.DeleteAutoScalingGroupAsync(DeleteAutoScalingGroupType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5342,10 +5342,10 @@ end
 -- @param DeletePolicyType
 -- @return response
 -- @return error_message
-function M.DeletePolicySync(...)
+function M.DeletePolicySync(DeletePolicyType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeletePolicyAsync(..., function(response, error_message)
+	M.DeletePolicyAsync(DeletePolicyType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5374,10 +5374,10 @@ end
 -- @param ExitStandbyQuery
 -- @return response
 -- @return error_message
-function M.ExitStandbySync(...)
+function M.ExitStandbySync(ExitStandbyQuery, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ExitStandbyAsync(..., function(response, error_message)
+	M.ExitStandbyAsync(ExitStandbyQuery, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5406,10 +5406,10 @@ end
 -- @param SetInstanceHealthQuery
 -- @return response
 -- @return error_message
-function M.SetInstanceHealthSync(...)
+function M.SetInstanceHealthSync(SetInstanceHealthQuery, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetInstanceHealthAsync(..., function(response, error_message)
+	M.SetInstanceHealthAsync(SetInstanceHealthQuery, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5438,10 +5438,10 @@ end
 -- @param CreateOrUpdateTagsType
 -- @return response
 -- @return error_message
-function M.CreateOrUpdateTagsSync(...)
+function M.CreateOrUpdateTagsSync(CreateOrUpdateTagsType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateOrUpdateTagsAsync(..., function(response, error_message)
+	M.CreateOrUpdateTagsAsync(CreateOrUpdateTagsType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5470,7 +5470,7 @@ end
 function M.DescribeScalingProcessTypesSync(...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeScalingProcessTypesAsync(..., function(response, error_message)
+	M.DescribeScalingProcessTypesAsync(function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5499,10 +5499,10 @@ end
 -- @param PutLifecycleHookType
 -- @return response
 -- @return error_message
-function M.PutLifecycleHookSync(...)
+function M.PutLifecycleHookSync(PutLifecycleHookType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutLifecycleHookAsync(..., function(response, error_message)
+	M.PutLifecycleHookAsync(PutLifecycleHookType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5531,10 +5531,10 @@ end
 -- @param DetachLoadBalancersType
 -- @return response
 -- @return error_message
-function M.DetachLoadBalancersSync(...)
+function M.DetachLoadBalancersSync(DetachLoadBalancersType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DetachLoadBalancersAsync(..., function(response, error_message)
+	M.DetachLoadBalancersAsync(DetachLoadBalancersType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5563,10 +5563,10 @@ end
 -- @param AttachInstancesQuery
 -- @return response
 -- @return error_message
-function M.AttachInstancesSync(...)
+function M.AttachInstancesSync(AttachInstancesQuery, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AttachInstancesAsync(..., function(response, error_message)
+	M.AttachInstancesAsync(AttachInstancesQuery, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5595,10 +5595,10 @@ end
 -- @param PutScheduledUpdateGroupActionType
 -- @return response
 -- @return error_message
-function M.PutScheduledUpdateGroupActionSync(...)
+function M.PutScheduledUpdateGroupActionSync(PutScheduledUpdateGroupActionType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutScheduledUpdateGroupActionAsync(..., function(response, error_message)
+	M.PutScheduledUpdateGroupActionAsync(PutScheduledUpdateGroupActionType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5627,10 +5627,10 @@ end
 -- @param PutScalingPolicyType
 -- @return response
 -- @return error_message
-function M.PutScalingPolicySync(...)
+function M.PutScalingPolicySync(PutScalingPolicyType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutScalingPolicyAsync(..., function(response, error_message)
+	M.PutScalingPolicyAsync(PutScalingPolicyType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5659,10 +5659,10 @@ end
 -- @param DeleteScheduledActionType
 -- @return response
 -- @return error_message
-function M.DeleteScheduledActionSync(...)
+function M.DeleteScheduledActionSync(DeleteScheduledActionType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteScheduledActionAsync(..., function(response, error_message)
+	M.DeleteScheduledActionAsync(DeleteScheduledActionType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5691,10 +5691,10 @@ end
 -- @param AttachLoadBalancersType
 -- @return response
 -- @return error_message
-function M.AttachLoadBalancersSync(...)
+function M.AttachLoadBalancersSync(AttachLoadBalancersType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AttachLoadBalancersAsync(..., function(response, error_message)
+	M.AttachLoadBalancersAsync(AttachLoadBalancersType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5723,10 +5723,10 @@ end
 -- @param DetachInstancesQuery
 -- @return response
 -- @return error_message
-function M.DetachInstancesSync(...)
+function M.DetachInstancesSync(DetachInstancesQuery, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DetachInstancesAsync(..., function(response, error_message)
+	M.DetachInstancesAsync(DetachInstancesQuery, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5755,7 +5755,7 @@ end
 function M.DescribeAdjustmentTypesSync(...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAdjustmentTypesAsync(..., function(response, error_message)
+	M.DescribeAdjustmentTypesAsync(function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5784,10 +5784,10 @@ end
 -- @param TerminateInstanceInAutoScalingGroupType
 -- @return response
 -- @return error_message
-function M.TerminateInstanceInAutoScalingGroupSync(...)
+function M.TerminateInstanceInAutoScalingGroupSync(TerminateInstanceInAutoScalingGroupType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.TerminateInstanceInAutoScalingGroupAsync(..., function(response, error_message)
+	M.TerminateInstanceInAutoScalingGroupAsync(TerminateInstanceInAutoScalingGroupType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5816,10 +5816,10 @@ end
 -- @param AttachLoadBalancerTargetGroupsType
 -- @return response
 -- @return error_message
-function M.AttachLoadBalancerTargetGroupsSync(...)
+function M.AttachLoadBalancerTargetGroupsSync(AttachLoadBalancerTargetGroupsType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AttachLoadBalancerTargetGroupsAsync(..., function(response, error_message)
+	M.AttachLoadBalancerTargetGroupsAsync(AttachLoadBalancerTargetGroupsType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5848,10 +5848,10 @@ end
 -- @param DescribeLoadBalancersRequest
 -- @return response
 -- @return error_message
-function M.DescribeLoadBalancersSync(...)
+function M.DescribeLoadBalancersSync(DescribeLoadBalancersRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeLoadBalancersAsync(..., function(response, error_message)
+	M.DescribeLoadBalancersAsync(DescribeLoadBalancersRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5880,10 +5880,10 @@ end
 -- @param CompleteLifecycleActionType
 -- @return response
 -- @return error_message
-function M.CompleteLifecycleActionSync(...)
+function M.CompleteLifecycleActionSync(CompleteLifecycleActionType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CompleteLifecycleActionAsync(..., function(response, error_message)
+	M.CompleteLifecycleActionAsync(CompleteLifecycleActionType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5912,7 +5912,7 @@ end
 function M.DescribeMetricCollectionTypesSync(...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeMetricCollectionTypesAsync(..., function(response, error_message)
+	M.DescribeMetricCollectionTypesAsync(function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5941,10 +5941,10 @@ end
 -- @param UpdateAutoScalingGroupType
 -- @return response
 -- @return error_message
-function M.UpdateAutoScalingGroupSync(...)
+function M.UpdateAutoScalingGroupSync(UpdateAutoScalingGroupType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateAutoScalingGroupAsync(..., function(response, error_message)
+	M.UpdateAutoScalingGroupAsync(UpdateAutoScalingGroupType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5973,10 +5973,10 @@ end
 -- @param RecordLifecycleActionHeartbeatType
 -- @return response
 -- @return error_message
-function M.RecordLifecycleActionHeartbeatSync(...)
+function M.RecordLifecycleActionHeartbeatSync(RecordLifecycleActionHeartbeatType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RecordLifecycleActionHeartbeatAsync(..., function(response, error_message)
+	M.RecordLifecycleActionHeartbeatAsync(RecordLifecycleActionHeartbeatType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6005,10 +6005,10 @@ end
 -- @param PutNotificationConfigurationType
 -- @return response
 -- @return error_message
-function M.PutNotificationConfigurationSync(...)
+function M.PutNotificationConfigurationSync(PutNotificationConfigurationType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutNotificationConfigurationAsync(..., function(response, error_message)
+	M.PutNotificationConfigurationAsync(PutNotificationConfigurationType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6037,10 +6037,10 @@ end
 -- @param ScalingProcessQuery
 -- @return response
 -- @return error_message
-function M.ResumeProcessesSync(...)
+function M.ResumeProcessesSync(ScalingProcessQuery, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ResumeProcessesAsync(..., function(response, error_message)
+	M.ResumeProcessesAsync(ScalingProcessQuery, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6069,10 +6069,10 @@ end
 -- @param CreateLaunchConfigurationType
 -- @return response
 -- @return error_message
-function M.CreateLaunchConfigurationSync(...)
+function M.CreateLaunchConfigurationSync(CreateLaunchConfigurationType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateLaunchConfigurationAsync(..., function(response, error_message)
+	M.CreateLaunchConfigurationAsync(CreateLaunchConfigurationType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6101,7 +6101,7 @@ end
 function M.DescribeLifecycleHookTypesSync(...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeLifecycleHookTypesAsync(..., function(response, error_message)
+	M.DescribeLifecycleHookTypesAsync(function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6130,10 +6130,10 @@ end
 -- @param DescribeAutoScalingInstancesType
 -- @return response
 -- @return error_message
-function M.DescribeAutoScalingInstancesSync(...)
+function M.DescribeAutoScalingInstancesSync(DescribeAutoScalingInstancesType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAutoScalingInstancesAsync(..., function(response, error_message)
+	M.DescribeAutoScalingInstancesAsync(DescribeAutoScalingInstancesType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6162,10 +6162,10 @@ end
 -- @param DescribeTagsType
 -- @return response
 -- @return error_message
-function M.DescribeTagsSync(...)
+function M.DescribeTagsSync(DescribeTagsType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTagsAsync(..., function(response, error_message)
+	M.DescribeTagsAsync(DescribeTagsType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6194,7 +6194,7 @@ end
 function M.DescribeTerminationPolicyTypesSync(...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTerminationPolicyTypesAsync(..., function(response, error_message)
+	M.DescribeTerminationPolicyTypesAsync(function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6223,10 +6223,10 @@ end
 -- @param DisableMetricsCollectionQuery
 -- @return response
 -- @return error_message
-function M.DisableMetricsCollectionSync(...)
+function M.DisableMetricsCollectionSync(DisableMetricsCollectionQuery, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisableMetricsCollectionAsync(..., function(response, error_message)
+	M.DisableMetricsCollectionAsync(DisableMetricsCollectionQuery, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6255,10 +6255,10 @@ end
 -- @param SetDesiredCapacityType
 -- @return response
 -- @return error_message
-function M.SetDesiredCapacitySync(...)
+function M.SetDesiredCapacitySync(SetDesiredCapacityType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetDesiredCapacityAsync(..., function(response, error_message)
+	M.SetDesiredCapacityAsync(SetDesiredCapacityType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6287,10 +6287,10 @@ end
 -- @param LaunchConfigurationNamesType
 -- @return response
 -- @return error_message
-function M.DescribeLaunchConfigurationsSync(...)
+function M.DescribeLaunchConfigurationsSync(LaunchConfigurationNamesType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeLaunchConfigurationsAsync(..., function(response, error_message)
+	M.DescribeLaunchConfigurationsAsync(LaunchConfigurationNamesType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6319,10 +6319,10 @@ end
 -- @param EnterStandbyQuery
 -- @return response
 -- @return error_message
-function M.EnterStandbySync(...)
+function M.EnterStandbySync(EnterStandbyQuery, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.EnterStandbyAsync(..., function(response, error_message)
+	M.EnterStandbyAsync(EnterStandbyQuery, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6351,10 +6351,10 @@ end
 -- @param DescribeLoadBalancerTargetGroupsRequest
 -- @return response
 -- @return error_message
-function M.DescribeLoadBalancerTargetGroupsSync(...)
+function M.DescribeLoadBalancerTargetGroupsSync(DescribeLoadBalancerTargetGroupsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeLoadBalancerTargetGroupsAsync(..., function(response, error_message)
+	M.DescribeLoadBalancerTargetGroupsAsync(DescribeLoadBalancerTargetGroupsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6383,10 +6383,10 @@ end
 -- @param LaunchConfigurationNameType
 -- @return response
 -- @return error_message
-function M.DeleteLaunchConfigurationSync(...)
+function M.DeleteLaunchConfigurationSync(LaunchConfigurationNameType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteLaunchConfigurationAsync(..., function(response, error_message)
+	M.DeleteLaunchConfigurationAsync(LaunchConfigurationNameType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6415,10 +6415,10 @@ end
 -- @param DeleteLifecycleHookType
 -- @return response
 -- @return error_message
-function M.DeleteLifecycleHookSync(...)
+function M.DeleteLifecycleHookSync(DeleteLifecycleHookType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteLifecycleHookAsync(..., function(response, error_message)
+	M.DeleteLifecycleHookAsync(DeleteLifecycleHookType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6447,10 +6447,10 @@ end
 -- @param DescribePoliciesType
 -- @return response
 -- @return error_message
-function M.DescribePoliciesSync(...)
+function M.DescribePoliciesSync(DescribePoliciesType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribePoliciesAsync(..., function(response, error_message)
+	M.DescribePoliciesAsync(DescribePoliciesType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6479,10 +6479,10 @@ end
 -- @param DescribeLifecycleHooksType
 -- @return response
 -- @return error_message
-function M.DescribeLifecycleHooksSync(...)
+function M.DescribeLifecycleHooksSync(DescribeLifecycleHooksType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeLifecycleHooksAsync(..., function(response, error_message)
+	M.DescribeLifecycleHooksAsync(DescribeLifecycleHooksType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6511,10 +6511,10 @@ end
 -- @param DescribeScheduledActionsType
 -- @return response
 -- @return error_message
-function M.DescribeScheduledActionsSync(...)
+function M.DescribeScheduledActionsSync(DescribeScheduledActionsType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeScheduledActionsAsync(..., function(response, error_message)
+	M.DescribeScheduledActionsAsync(DescribeScheduledActionsType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6543,10 +6543,10 @@ end
 -- @param AutoScalingGroupNamesType
 -- @return response
 -- @return error_message
-function M.DescribeAutoScalingGroupsSync(...)
+function M.DescribeAutoScalingGroupsSync(AutoScalingGroupNamesType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAutoScalingGroupsAsync(..., function(response, error_message)
+	M.DescribeAutoScalingGroupsAsync(AutoScalingGroupNamesType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6575,10 +6575,10 @@ end
 -- @param EnableMetricsCollectionQuery
 -- @return response
 -- @return error_message
-function M.EnableMetricsCollectionSync(...)
+function M.EnableMetricsCollectionSync(EnableMetricsCollectionQuery, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.EnableMetricsCollectionAsync(..., function(response, error_message)
+	M.EnableMetricsCollectionAsync(EnableMetricsCollectionQuery, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6607,10 +6607,10 @@ end
 -- @param DeleteNotificationConfigurationType
 -- @return response
 -- @return error_message
-function M.DeleteNotificationConfigurationSync(...)
+function M.DeleteNotificationConfigurationSync(DeleteNotificationConfigurationType, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteNotificationConfigurationAsync(..., function(response, error_message)
+	M.DeleteNotificationConfigurationAsync(DeleteNotificationConfigurationType, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6639,7 +6639,7 @@ end
 function M.DescribeAutoScalingNotificationTypesSync(...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAutoScalingNotificationTypesAsync(..., function(response, error_message)
+	M.DescribeAutoScalingNotificationTypesAsync(function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6668,10 +6668,10 @@ end
 -- @param ScalingProcessQuery
 -- @return response
 -- @return error_message
-function M.SuspendProcessesSync(...)
+function M.SuspendProcessesSync(ScalingProcessQuery, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SuspendProcessesAsync(..., function(response, error_message)
+	M.SuspendProcessesAsync(ScalingProcessQuery, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6700,7 +6700,7 @@ end
 function M.DescribeAccountLimitsSync(...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAccountLimitsAsync(..., function(response, error_message)
+	M.DescribeAccountLimitsAsync(function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

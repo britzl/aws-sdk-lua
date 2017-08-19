@@ -1446,10 +1446,10 @@ end
 -- @param DeleteProtectionRequest
 -- @return response
 -- @return error_message
-function M.DeleteProtectionSync(...)
+function M.DeleteProtectionSync(DeleteProtectionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteProtectionAsync(..., function(response, error_message)
+	M.DeleteProtectionAsync(DeleteProtectionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1478,10 +1478,10 @@ end
 -- @param DescribeSubscriptionRequest
 -- @return response
 -- @return error_message
-function M.DescribeSubscriptionSync(...)
+function M.DescribeSubscriptionSync(DescribeSubscriptionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeSubscriptionAsync(..., function(response, error_message)
+	M.DescribeSubscriptionAsync(DescribeSubscriptionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1510,10 +1510,10 @@ end
 -- @param CreateSubscriptionRequest
 -- @return response
 -- @return error_message
-function M.CreateSubscriptionSync(...)
+function M.CreateSubscriptionSync(CreateSubscriptionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateSubscriptionAsync(..., function(response, error_message)
+	M.CreateSubscriptionAsync(CreateSubscriptionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1542,10 +1542,10 @@ end
 -- @param DescribeProtectionRequest
 -- @return response
 -- @return error_message
-function M.DescribeProtectionSync(...)
+function M.DescribeProtectionSync(DescribeProtectionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeProtectionAsync(..., function(response, error_message)
+	M.DescribeProtectionAsync(DescribeProtectionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1574,10 +1574,10 @@ end
 -- @param DescribeAttackRequest
 -- @return response
 -- @return error_message
-function M.DescribeAttackSync(...)
+function M.DescribeAttackSync(DescribeAttackRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAttackAsync(..., function(response, error_message)
+	M.DescribeAttackAsync(DescribeAttackRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1606,10 +1606,10 @@ end
 -- @param DeleteSubscriptionRequest
 -- @return response
 -- @return error_message
-function M.DeleteSubscriptionSync(...)
+function M.DeleteSubscriptionSync(DeleteSubscriptionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteSubscriptionAsync(..., function(response, error_message)
+	M.DeleteSubscriptionAsync(DeleteSubscriptionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1638,10 +1638,10 @@ end
 -- @param ListProtectionsRequest
 -- @return response
 -- @return error_message
-function M.ListProtectionsSync(...)
+function M.ListProtectionsSync(ListProtectionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListProtectionsAsync(..., function(response, error_message)
+	M.ListProtectionsAsync(ListProtectionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1670,10 +1670,10 @@ end
 -- @param ListAttacksRequest
 -- @return response
 -- @return error_message
-function M.ListAttacksSync(...)
+function M.ListAttacksSync(ListAttacksRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListAttacksAsync(..., function(response, error_message)
+	M.ListAttacksAsync(ListAttacksRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1702,10 +1702,10 @@ end
 -- @param CreateProtectionRequest
 -- @return response
 -- @return error_message
-function M.CreateProtectionSync(...)
+function M.CreateProtectionSync(CreateProtectionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateProtectionAsync(..., function(response, error_message)
+	M.CreateProtectionAsync(CreateProtectionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

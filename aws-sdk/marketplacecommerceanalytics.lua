@@ -428,10 +428,10 @@ end
 -- @param GenerateDataSetRequest
 -- @return response
 -- @return error_message
-function M.GenerateDataSetSync(...)
+function M.GenerateDataSetSync(GenerateDataSetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GenerateDataSetAsync(..., function(response, error_message)
+	M.GenerateDataSetAsync(GenerateDataSetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -460,10 +460,10 @@ end
 -- @param StartSupportDataExportRequest
 -- @return response
 -- @return error_message
-function M.StartSupportDataExportSync(...)
+function M.StartSupportDataExportSync(StartSupportDataExportRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartSupportDataExportAsync(..., function(response, error_message)
+	M.StartSupportDataExportAsync(StartSupportDataExportRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

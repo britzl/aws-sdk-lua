@@ -2549,10 +2549,10 @@ end
 -- @param DescribeRepositoriesRequest
 -- @return response
 -- @return error_message
-function M.DescribeRepositoriesSync(...)
+function M.DescribeRepositoriesSync(DescribeRepositoriesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeRepositoriesAsync(..., function(response, error_message)
+	M.DescribeRepositoriesAsync(DescribeRepositoriesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2581,10 +2581,10 @@ end
 -- @param DeleteRepositoryRequest
 -- @return response
 -- @return error_message
-function M.DeleteRepositorySync(...)
+function M.DeleteRepositorySync(DeleteRepositoryRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteRepositoryAsync(..., function(response, error_message)
+	M.DeleteRepositoryAsync(DeleteRepositoryRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2613,10 +2613,10 @@ end
 -- @param BatchDeleteImageRequest
 -- @return response
 -- @return error_message
-function M.BatchDeleteImageSync(...)
+function M.BatchDeleteImageSync(BatchDeleteImageRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchDeleteImageAsync(..., function(response, error_message)
+	M.BatchDeleteImageAsync(BatchDeleteImageRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2645,10 +2645,10 @@ end
 -- @param GetDownloadUrlForLayerRequest
 -- @return response
 -- @return error_message
-function M.GetDownloadUrlForLayerSync(...)
+function M.GetDownloadUrlForLayerSync(GetDownloadUrlForLayerRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetDownloadUrlForLayerAsync(..., function(response, error_message)
+	M.GetDownloadUrlForLayerAsync(GetDownloadUrlForLayerRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2677,10 +2677,10 @@ end
 -- @param PutImageRequest
 -- @return response
 -- @return error_message
-function M.PutImageSync(...)
+function M.PutImageSync(PutImageRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutImageAsync(..., function(response, error_message)
+	M.PutImageAsync(PutImageRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2709,10 +2709,10 @@ end
 -- @param GetAuthorizationTokenRequest
 -- @return response
 -- @return error_message
-function M.GetAuthorizationTokenSync(...)
+function M.GetAuthorizationTokenSync(GetAuthorizationTokenRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetAuthorizationTokenAsync(..., function(response, error_message)
+	M.GetAuthorizationTokenAsync(GetAuthorizationTokenRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2741,10 +2741,10 @@ end
 -- @param ListImagesRequest
 -- @return response
 -- @return error_message
-function M.ListImagesSync(...)
+function M.ListImagesSync(ListImagesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListImagesAsync(..., function(response, error_message)
+	M.ListImagesAsync(ListImagesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2773,10 +2773,10 @@ end
 -- @param GetRepositoryPolicyRequest
 -- @return response
 -- @return error_message
-function M.GetRepositoryPolicySync(...)
+function M.GetRepositoryPolicySync(GetRepositoryPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetRepositoryPolicyAsync(..., function(response, error_message)
+	M.GetRepositoryPolicyAsync(GetRepositoryPolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2805,10 +2805,10 @@ end
 -- @param CompleteLayerUploadRequest
 -- @return response
 -- @return error_message
-function M.CompleteLayerUploadSync(...)
+function M.CompleteLayerUploadSync(CompleteLayerUploadRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CompleteLayerUploadAsync(..., function(response, error_message)
+	M.CompleteLayerUploadAsync(CompleteLayerUploadRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2837,10 +2837,10 @@ end
 -- @param DescribeImagesRequest
 -- @return response
 -- @return error_message
-function M.DescribeImagesSync(...)
+function M.DescribeImagesSync(DescribeImagesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeImagesAsync(..., function(response, error_message)
+	M.DescribeImagesAsync(DescribeImagesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2869,10 +2869,10 @@ end
 -- @param InitiateLayerUploadRequest
 -- @return response
 -- @return error_message
-function M.InitiateLayerUploadSync(...)
+function M.InitiateLayerUploadSync(InitiateLayerUploadRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.InitiateLayerUploadAsync(..., function(response, error_message)
+	M.InitiateLayerUploadAsync(InitiateLayerUploadRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2901,10 +2901,10 @@ end
 -- @param BatchGetImageRequest
 -- @return response
 -- @return error_message
-function M.BatchGetImageSync(...)
+function M.BatchGetImageSync(BatchGetImageRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchGetImageAsync(..., function(response, error_message)
+	M.BatchGetImageAsync(BatchGetImageRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2933,10 +2933,10 @@ end
 -- @param SetRepositoryPolicyRequest
 -- @return response
 -- @return error_message
-function M.SetRepositoryPolicySync(...)
+function M.SetRepositoryPolicySync(SetRepositoryPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetRepositoryPolicyAsync(..., function(response, error_message)
+	M.SetRepositoryPolicyAsync(SetRepositoryPolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2965,10 +2965,10 @@ end
 -- @param CreateRepositoryRequest
 -- @return response
 -- @return error_message
-function M.CreateRepositorySync(...)
+function M.CreateRepositorySync(CreateRepositoryRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateRepositoryAsync(..., function(response, error_message)
+	M.CreateRepositoryAsync(CreateRepositoryRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2997,10 +2997,10 @@ end
 -- @param BatchCheckLayerAvailabilityRequest
 -- @return response
 -- @return error_message
-function M.BatchCheckLayerAvailabilitySync(...)
+function M.BatchCheckLayerAvailabilitySync(BatchCheckLayerAvailabilityRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchCheckLayerAvailabilityAsync(..., function(response, error_message)
+	M.BatchCheckLayerAvailabilityAsync(BatchCheckLayerAvailabilityRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3029,10 +3029,10 @@ end
 -- @param UploadLayerPartRequest
 -- @return response
 -- @return error_message
-function M.UploadLayerPartSync(...)
+function M.UploadLayerPartSync(UploadLayerPartRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UploadLayerPartAsync(..., function(response, error_message)
+	M.UploadLayerPartAsync(UploadLayerPartRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3061,10 +3061,10 @@ end
 -- @param DeleteRepositoryPolicyRequest
 -- @return response
 -- @return error_message
-function M.DeleteRepositoryPolicySync(...)
+function M.DeleteRepositoryPolicySync(DeleteRepositoryPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteRepositoryPolicyAsync(..., function(response, error_message)
+	M.DeleteRepositoryPolicyAsync(DeleteRepositoryPolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

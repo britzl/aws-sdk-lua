@@ -353,10 +353,10 @@ end
 -- @param PutEventsInput
 -- @return response
 -- @return error_message
-function M.PutEventsSync(...)
+function M.PutEventsSync(PutEventsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutEventsAsync(..., function(response, error_message)
+	M.PutEventsAsync(PutEventsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

@@ -2884,10 +2884,10 @@ end
 -- @param TestRepositoryTriggersInput
 -- @return response
 -- @return error_message
-function M.TestRepositoryTriggersSync(...)
+function M.TestRepositoryTriggersSync(TestRepositoryTriggersInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.TestRepositoryTriggersAsync(..., function(response, error_message)
+	M.TestRepositoryTriggersAsync(TestRepositoryTriggersInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2916,10 +2916,10 @@ end
 -- @param GetRepositoryTriggersInput
 -- @return response
 -- @return error_message
-function M.GetRepositoryTriggersSync(...)
+function M.GetRepositoryTriggersSync(GetRepositoryTriggersInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetRepositoryTriggersAsync(..., function(response, error_message)
+	M.GetRepositoryTriggersAsync(GetRepositoryTriggersInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2948,10 +2948,10 @@ end
 -- @param DeleteRepositoryInput
 -- @return response
 -- @return error_message
-function M.DeleteRepositorySync(...)
+function M.DeleteRepositorySync(DeleteRepositoryInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteRepositoryAsync(..., function(response, error_message)
+	M.DeleteRepositoryAsync(DeleteRepositoryInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2980,10 +2980,10 @@ end
 -- @param UpdateRepositoryNameInput
 -- @return response
 -- @return error_message
-function M.UpdateRepositoryNameSync(...)
+function M.UpdateRepositoryNameSync(UpdateRepositoryNameInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateRepositoryNameAsync(..., function(response, error_message)
+	M.UpdateRepositoryNameAsync(UpdateRepositoryNameInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3012,10 +3012,10 @@ end
 -- @param PutRepositoryTriggersInput
 -- @return response
 -- @return error_message
-function M.PutRepositoryTriggersSync(...)
+function M.PutRepositoryTriggersSync(PutRepositoryTriggersInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutRepositoryTriggersAsync(..., function(response, error_message)
+	M.PutRepositoryTriggersAsync(PutRepositoryTriggersInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3044,10 +3044,10 @@ end
 -- @param CreateBranchInput
 -- @return response
 -- @return error_message
-function M.CreateBranchSync(...)
+function M.CreateBranchSync(CreateBranchInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateBranchAsync(..., function(response, error_message)
+	M.CreateBranchAsync(CreateBranchInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3076,10 +3076,10 @@ end
 -- @param ListRepositoriesInput
 -- @return response
 -- @return error_message
-function M.ListRepositoriesSync(...)
+function M.ListRepositoriesSync(ListRepositoriesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListRepositoriesAsync(..., function(response, error_message)
+	M.ListRepositoriesAsync(ListRepositoriesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3108,10 +3108,10 @@ end
 -- @param UpdateRepositoryDescriptionInput
 -- @return response
 -- @return error_message
-function M.UpdateRepositoryDescriptionSync(...)
+function M.UpdateRepositoryDescriptionSync(UpdateRepositoryDescriptionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateRepositoryDescriptionAsync(..., function(response, error_message)
+	M.UpdateRepositoryDescriptionAsync(UpdateRepositoryDescriptionInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3140,10 +3140,10 @@ end
 -- @param GetRepositoryInput
 -- @return response
 -- @return error_message
-function M.GetRepositorySync(...)
+function M.GetRepositorySync(GetRepositoryInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetRepositoryAsync(..., function(response, error_message)
+	M.GetRepositoryAsync(GetRepositoryInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3172,10 +3172,10 @@ end
 -- @param UpdateDefaultBranchInput
 -- @return response
 -- @return error_message
-function M.UpdateDefaultBranchSync(...)
+function M.UpdateDefaultBranchSync(UpdateDefaultBranchInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateDefaultBranchAsync(..., function(response, error_message)
+	M.UpdateDefaultBranchAsync(UpdateDefaultBranchInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3204,10 +3204,10 @@ end
 -- @param BatchGetRepositoriesInput
 -- @return response
 -- @return error_message
-function M.BatchGetRepositoriesSync(...)
+function M.BatchGetRepositoriesSync(BatchGetRepositoriesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchGetRepositoriesAsync(..., function(response, error_message)
+	M.BatchGetRepositoriesAsync(BatchGetRepositoriesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3236,10 +3236,10 @@ end
 -- @param ListBranchesInput
 -- @return response
 -- @return error_message
-function M.ListBranchesSync(...)
+function M.ListBranchesSync(ListBranchesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListBranchesAsync(..., function(response, error_message)
+	M.ListBranchesAsync(ListBranchesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3268,10 +3268,10 @@ end
 -- @param GetBlobInput
 -- @return response
 -- @return error_message
-function M.GetBlobSync(...)
+function M.GetBlobSync(GetBlobInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetBlobAsync(..., function(response, error_message)
+	M.GetBlobAsync(GetBlobInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3300,10 +3300,10 @@ end
 -- @param GetBranchInput
 -- @return response
 -- @return error_message
-function M.GetBranchSync(...)
+function M.GetBranchSync(GetBranchInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetBranchAsync(..., function(response, error_message)
+	M.GetBranchAsync(GetBranchInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3332,10 +3332,10 @@ end
 -- @param CreateRepositoryInput
 -- @return response
 -- @return error_message
-function M.CreateRepositorySync(...)
+function M.CreateRepositorySync(CreateRepositoryInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateRepositoryAsync(..., function(response, error_message)
+	M.CreateRepositoryAsync(CreateRepositoryInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3364,10 +3364,10 @@ end
 -- @param GetCommitInput
 -- @return response
 -- @return error_message
-function M.GetCommitSync(...)
+function M.GetCommitSync(GetCommitInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetCommitAsync(..., function(response, error_message)
+	M.GetCommitAsync(GetCommitInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3396,10 +3396,10 @@ end
 -- @param GetDifferencesInput
 -- @return response
 -- @return error_message
-function M.GetDifferencesSync(...)
+function M.GetDifferencesSync(GetDifferencesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetDifferencesAsync(..., function(response, error_message)
+	M.GetDifferencesAsync(GetDifferencesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

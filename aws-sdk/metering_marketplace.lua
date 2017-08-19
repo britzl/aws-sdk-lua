@@ -761,10 +761,10 @@ end
 -- @param BatchMeterUsageRequest
 -- @return response
 -- @return error_message
-function M.BatchMeterUsageSync(...)
+function M.BatchMeterUsageSync(BatchMeterUsageRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchMeterUsageAsync(..., function(response, error_message)
+	M.BatchMeterUsageAsync(BatchMeterUsageRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -793,10 +793,10 @@ end
 -- @param MeterUsageRequest
 -- @return response
 -- @return error_message
-function M.MeterUsageSync(...)
+function M.MeterUsageSync(MeterUsageRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.MeterUsageAsync(..., function(response, error_message)
+	M.MeterUsageAsync(MeterUsageRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -825,10 +825,10 @@ end
 -- @param ResolveCustomerRequest
 -- @return response
 -- @return error_message
-function M.ResolveCustomerSync(...)
+function M.ResolveCustomerSync(ResolveCustomerRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ResolveCustomerAsync(..., function(response, error_message)
+	M.ResolveCustomerAsync(ResolveCustomerRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

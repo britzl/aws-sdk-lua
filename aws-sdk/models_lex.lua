@@ -3941,10 +3941,10 @@ end
 -- @param CreateBotVersionRequest
 -- @return response
 -- @return error_message
-function M.CreateBotVersionSync(...)
+function M.CreateBotVersionSync(CreateBotVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateBotVersionAsync(..., function(response, error_message)
+	M.CreateBotVersionAsync(CreateBotVersionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3973,10 +3973,10 @@ end
 -- @param DeleteBotAliasRequest
 -- @return response
 -- @return error_message
-function M.DeleteBotAliasSync(...)
+function M.DeleteBotAliasSync(DeleteBotAliasRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteBotAliasAsync(..., function(response, error_message)
+	M.DeleteBotAliasAsync(DeleteBotAliasRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4005,10 +4005,10 @@ end
 -- @param GetIntentsRequest
 -- @return response
 -- @return error_message
-function M.GetIntentsSync(...)
+function M.GetIntentsSync(GetIntentsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetIntentsAsync(..., function(response, error_message)
+	M.GetIntentsAsync(GetIntentsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4037,10 +4037,10 @@ end
 -- @param GetSlotTypesRequest
 -- @return response
 -- @return error_message
-function M.GetSlotTypesSync(...)
+function M.GetSlotTypesSync(GetSlotTypesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetSlotTypesAsync(..., function(response, error_message)
+	M.GetSlotTypesAsync(GetSlotTypesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4069,10 +4069,10 @@ end
 -- @param DeleteSlotTypeVersionRequest
 -- @return response
 -- @return error_message
-function M.DeleteSlotTypeVersionSync(...)
+function M.DeleteSlotTypeVersionSync(DeleteSlotTypeVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteSlotTypeVersionAsync(..., function(response, error_message)
+	M.DeleteSlotTypeVersionAsync(DeleteSlotTypeVersionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4101,10 +4101,10 @@ end
 -- @param CreateSlotTypeVersionRequest
 -- @return response
 -- @return error_message
-function M.CreateSlotTypeVersionSync(...)
+function M.CreateSlotTypeVersionSync(CreateSlotTypeVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateSlotTypeVersionAsync(..., function(response, error_message)
+	M.CreateSlotTypeVersionAsync(CreateSlotTypeVersionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4133,10 +4133,10 @@ end
 -- @param GetIntentVersionsRequest
 -- @return response
 -- @return error_message
-function M.GetIntentVersionsSync(...)
+function M.GetIntentVersionsSync(GetIntentVersionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetIntentVersionsAsync(..., function(response, error_message)
+	M.GetIntentVersionsAsync(GetIntentVersionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4165,10 +4165,10 @@ end
 -- @param GetBuiltinSlotTypesRequest
 -- @return response
 -- @return error_message
-function M.GetBuiltinSlotTypesSync(...)
+function M.GetBuiltinSlotTypesSync(GetBuiltinSlotTypesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetBuiltinSlotTypesAsync(..., function(response, error_message)
+	M.GetBuiltinSlotTypesAsync(GetBuiltinSlotTypesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4197,10 +4197,10 @@ end
 -- @param CreateIntentVersionRequest
 -- @return response
 -- @return error_message
-function M.CreateIntentVersionSync(...)
+function M.CreateIntentVersionSync(CreateIntentVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateIntentVersionAsync(..., function(response, error_message)
+	M.CreateIntentVersionAsync(CreateIntentVersionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4229,10 +4229,10 @@ end
 -- @param GetUtterancesViewRequest
 -- @return response
 -- @return error_message
-function M.GetUtterancesViewSync(...)
+function M.GetUtterancesViewSync(GetUtterancesViewRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetUtterancesViewAsync(..., function(response, error_message)
+	M.GetUtterancesViewAsync(GetUtterancesViewRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4261,10 +4261,10 @@ end
 -- @param GetBotRequest
 -- @return response
 -- @return error_message
-function M.GetBotSync(...)
+function M.GetBotSync(GetBotRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetBotAsync(..., function(response, error_message)
+	M.GetBotAsync(GetBotRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4293,10 +4293,10 @@ end
 -- @param GetSlotTypeVersionsRequest
 -- @return response
 -- @return error_message
-function M.GetSlotTypeVersionsSync(...)
+function M.GetSlotTypeVersionsSync(GetSlotTypeVersionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetSlotTypeVersionsAsync(..., function(response, error_message)
+	M.GetSlotTypeVersionsAsync(GetSlotTypeVersionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4325,10 +4325,10 @@ end
 -- @param DeleteIntentVersionRequest
 -- @return response
 -- @return error_message
-function M.DeleteIntentVersionSync(...)
+function M.DeleteIntentVersionSync(DeleteIntentVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteIntentVersionAsync(..., function(response, error_message)
+	M.DeleteIntentVersionAsync(DeleteIntentVersionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4357,10 +4357,10 @@ end
 -- @param DeleteUtterancesRequest
 -- @return response
 -- @return error_message
-function M.DeleteUtterancesSync(...)
+function M.DeleteUtterancesSync(DeleteUtterancesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteUtterancesAsync(..., function(response, error_message)
+	M.DeleteUtterancesAsync(DeleteUtterancesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4389,10 +4389,10 @@ end
 -- @param GetBotAliasRequest
 -- @return response
 -- @return error_message
-function M.GetBotAliasSync(...)
+function M.GetBotAliasSync(GetBotAliasRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetBotAliasAsync(..., function(response, error_message)
+	M.GetBotAliasAsync(GetBotAliasRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4421,10 +4421,10 @@ end
 -- @param DeleteIntentRequest
 -- @return response
 -- @return error_message
-function M.DeleteIntentSync(...)
+function M.DeleteIntentSync(DeleteIntentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteIntentAsync(..., function(response, error_message)
+	M.DeleteIntentAsync(DeleteIntentRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4453,10 +4453,10 @@ end
 -- @param GetBotVersionsRequest
 -- @return response
 -- @return error_message
-function M.GetBotVersionsSync(...)
+function M.GetBotVersionsSync(GetBotVersionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetBotVersionsAsync(..., function(response, error_message)
+	M.GetBotVersionsAsync(GetBotVersionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4485,10 +4485,10 @@ end
 -- @param PutBotAliasRequest
 -- @return response
 -- @return error_message
-function M.PutBotAliasSync(...)
+function M.PutBotAliasSync(PutBotAliasRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutBotAliasAsync(..., function(response, error_message)
+	M.PutBotAliasAsync(PutBotAliasRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4517,10 +4517,10 @@ end
 -- @param DeleteBotChannelAssociationRequest
 -- @return response
 -- @return error_message
-function M.DeleteBotChannelAssociationSync(...)
+function M.DeleteBotChannelAssociationSync(DeleteBotChannelAssociationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteBotChannelAssociationAsync(..., function(response, error_message)
+	M.DeleteBotChannelAssociationAsync(DeleteBotChannelAssociationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4549,10 +4549,10 @@ end
 -- @param DeleteBotVersionRequest
 -- @return response
 -- @return error_message
-function M.DeleteBotVersionSync(...)
+function M.DeleteBotVersionSync(DeleteBotVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteBotVersionAsync(..., function(response, error_message)
+	M.DeleteBotVersionAsync(DeleteBotVersionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4581,10 +4581,10 @@ end
 -- @param GetBotChannelAssociationsRequest
 -- @return response
 -- @return error_message
-function M.GetBotChannelAssociationsSync(...)
+function M.GetBotChannelAssociationsSync(GetBotChannelAssociationsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetBotChannelAssociationsAsync(..., function(response, error_message)
+	M.GetBotChannelAssociationsAsync(GetBotChannelAssociationsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4613,10 +4613,10 @@ end
 -- @param PutBotRequest
 -- @return response
 -- @return error_message
-function M.PutBotSync(...)
+function M.PutBotSync(PutBotRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutBotAsync(..., function(response, error_message)
+	M.PutBotAsync(PutBotRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4645,10 +4645,10 @@ end
 -- @param GetBotChannelAssociationRequest
 -- @return response
 -- @return error_message
-function M.GetBotChannelAssociationSync(...)
+function M.GetBotChannelAssociationSync(GetBotChannelAssociationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetBotChannelAssociationAsync(..., function(response, error_message)
+	M.GetBotChannelAssociationAsync(GetBotChannelAssociationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4677,10 +4677,10 @@ end
 -- @param GetBotAliasesRequest
 -- @return response
 -- @return error_message
-function M.GetBotAliasesSync(...)
+function M.GetBotAliasesSync(GetBotAliasesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetBotAliasesAsync(..., function(response, error_message)
+	M.GetBotAliasesAsync(GetBotAliasesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4709,10 +4709,10 @@ end
 -- @param DeleteBotRequest
 -- @return response
 -- @return error_message
-function M.DeleteBotSync(...)
+function M.DeleteBotSync(DeleteBotRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteBotAsync(..., function(response, error_message)
+	M.DeleteBotAsync(DeleteBotRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4741,10 +4741,10 @@ end
 -- @param GetBuiltinIntentsRequest
 -- @return response
 -- @return error_message
-function M.GetBuiltinIntentsSync(...)
+function M.GetBuiltinIntentsSync(GetBuiltinIntentsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetBuiltinIntentsAsync(..., function(response, error_message)
+	M.GetBuiltinIntentsAsync(GetBuiltinIntentsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4773,10 +4773,10 @@ end
 -- @param GetBotsRequest
 -- @return response
 -- @return error_message
-function M.GetBotsSync(...)
+function M.GetBotsSync(GetBotsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetBotsAsync(..., function(response, error_message)
+	M.GetBotsAsync(GetBotsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4805,10 +4805,10 @@ end
 -- @param DeleteSlotTypeRequest
 -- @return response
 -- @return error_message
-function M.DeleteSlotTypeSync(...)
+function M.DeleteSlotTypeSync(DeleteSlotTypeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteSlotTypeAsync(..., function(response, error_message)
+	M.DeleteSlotTypeAsync(DeleteSlotTypeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4837,10 +4837,10 @@ end
 -- @param GetSlotTypeRequest
 -- @return response
 -- @return error_message
-function M.GetSlotTypeSync(...)
+function M.GetSlotTypeSync(GetSlotTypeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetSlotTypeAsync(..., function(response, error_message)
+	M.GetSlotTypeAsync(GetSlotTypeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4869,10 +4869,10 @@ end
 -- @param GetIntentRequest
 -- @return response
 -- @return error_message
-function M.GetIntentSync(...)
+function M.GetIntentSync(GetIntentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetIntentAsync(..., function(response, error_message)
+	M.GetIntentAsync(GetIntentRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4901,10 +4901,10 @@ end
 -- @param PutSlotTypeRequest
 -- @return response
 -- @return error_message
-function M.PutSlotTypeSync(...)
+function M.PutSlotTypeSync(PutSlotTypeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutSlotTypeAsync(..., function(response, error_message)
+	M.PutSlotTypeAsync(PutSlotTypeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4933,10 +4933,10 @@ end
 -- @param GetBuiltinIntentRequest
 -- @return response
 -- @return error_message
-function M.GetBuiltinIntentSync(...)
+function M.GetBuiltinIntentSync(GetBuiltinIntentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetBuiltinIntentAsync(..., function(response, error_message)
+	M.GetBuiltinIntentAsync(GetBuiltinIntentRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4965,10 +4965,10 @@ end
 -- @param PutIntentRequest
 -- @return response
 -- @return error_message
-function M.PutIntentSync(...)
+function M.PutIntentSync(PutIntentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutIntentAsync(..., function(response, error_message)
+	M.PutIntentAsync(PutIntentRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

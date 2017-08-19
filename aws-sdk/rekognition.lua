@@ -2564,10 +2564,10 @@ end
 -- @param DeleteCollectionRequest
 -- @return response
 -- @return error_message
-function M.DeleteCollectionSync(...)
+function M.DeleteCollectionSync(DeleteCollectionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteCollectionAsync(..., function(response, error_message)
+	M.DeleteCollectionAsync(DeleteCollectionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2596,10 +2596,10 @@ end
 -- @param ListFacesRequest
 -- @return response
 -- @return error_message
-function M.ListFacesSync(...)
+function M.ListFacesSync(ListFacesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListFacesAsync(..., function(response, error_message)
+	M.ListFacesAsync(ListFacesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2628,10 +2628,10 @@ end
 -- @param IndexFacesRequest
 -- @return response
 -- @return error_message
-function M.IndexFacesSync(...)
+function M.IndexFacesSync(IndexFacesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.IndexFacesAsync(..., function(response, error_message)
+	M.IndexFacesAsync(IndexFacesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2660,10 +2660,10 @@ end
 -- @param SearchFacesRequest
 -- @return response
 -- @return error_message
-function M.SearchFacesSync(...)
+function M.SearchFacesSync(SearchFacesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SearchFacesAsync(..., function(response, error_message)
+	M.SearchFacesAsync(SearchFacesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2692,10 +2692,10 @@ end
 -- @param GetCelebrityInfoRequest
 -- @return response
 -- @return error_message
-function M.GetCelebrityInfoSync(...)
+function M.GetCelebrityInfoSync(GetCelebrityInfoRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetCelebrityInfoAsync(..., function(response, error_message)
+	M.GetCelebrityInfoAsync(GetCelebrityInfoRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2724,10 +2724,10 @@ end
 -- @param DetectLabelsRequest
 -- @return response
 -- @return error_message
-function M.DetectLabelsSync(...)
+function M.DetectLabelsSync(DetectLabelsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DetectLabelsAsync(..., function(response, error_message)
+	M.DetectLabelsAsync(DetectLabelsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2756,10 +2756,10 @@ end
 -- @param DetectModerationLabelsRequest
 -- @return response
 -- @return error_message
-function M.DetectModerationLabelsSync(...)
+function M.DetectModerationLabelsSync(DetectModerationLabelsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DetectModerationLabelsAsync(..., function(response, error_message)
+	M.DetectModerationLabelsAsync(DetectModerationLabelsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2788,10 +2788,10 @@ end
 -- @param ListCollectionsRequest
 -- @return response
 -- @return error_message
-function M.ListCollectionsSync(...)
+function M.ListCollectionsSync(ListCollectionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListCollectionsAsync(..., function(response, error_message)
+	M.ListCollectionsAsync(ListCollectionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2820,10 +2820,10 @@ end
 -- @param CreateCollectionRequest
 -- @return response
 -- @return error_message
-function M.CreateCollectionSync(...)
+function M.CreateCollectionSync(CreateCollectionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateCollectionAsync(..., function(response, error_message)
+	M.CreateCollectionAsync(CreateCollectionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2852,10 +2852,10 @@ end
 -- @param CompareFacesRequest
 -- @return response
 -- @return error_message
-function M.CompareFacesSync(...)
+function M.CompareFacesSync(CompareFacesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CompareFacesAsync(..., function(response, error_message)
+	M.CompareFacesAsync(CompareFacesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2884,10 +2884,10 @@ end
 -- @param DeleteFacesRequest
 -- @return response
 -- @return error_message
-function M.DeleteFacesSync(...)
+function M.DeleteFacesSync(DeleteFacesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteFacesAsync(..., function(response, error_message)
+	M.DeleteFacesAsync(DeleteFacesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2916,10 +2916,10 @@ end
 -- @param SearchFacesByImageRequest
 -- @return response
 -- @return error_message
-function M.SearchFacesByImageSync(...)
+function M.SearchFacesByImageSync(SearchFacesByImageRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SearchFacesByImageAsync(..., function(response, error_message)
+	M.SearchFacesByImageAsync(SearchFacesByImageRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2948,10 +2948,10 @@ end
 -- @param DetectFacesRequest
 -- @return response
 -- @return error_message
-function M.DetectFacesSync(...)
+function M.DetectFacesSync(DetectFacesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DetectFacesAsync(..., function(response, error_message)
+	M.DetectFacesAsync(DetectFacesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2980,10 +2980,10 @@ end
 -- @param RecognizeCelebritiesRequest
 -- @return response
 -- @return error_message
-function M.RecognizeCelebritiesSync(...)
+function M.RecognizeCelebritiesSync(RecognizeCelebritiesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RecognizeCelebritiesAsync(..., function(response, error_message)
+	M.RecognizeCelebritiesAsync(RecognizeCelebritiesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

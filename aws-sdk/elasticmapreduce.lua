@@ -5596,10 +5596,10 @@ end
 -- @param CancelStepsInput
 -- @return response
 -- @return error_message
-function M.CancelStepsSync(...)
+function M.CancelStepsSync(CancelStepsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CancelStepsAsync(..., function(response, error_message)
+	M.CancelStepsAsync(CancelStepsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5628,10 +5628,10 @@ end
 -- @param RemoveAutoScalingPolicyInput
 -- @return response
 -- @return error_message
-function M.RemoveAutoScalingPolicySync(...)
+function M.RemoveAutoScalingPolicySync(RemoveAutoScalingPolicyInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RemoveAutoScalingPolicyAsync(..., function(response, error_message)
+	M.RemoveAutoScalingPolicyAsync(RemoveAutoScalingPolicyInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5660,10 +5660,10 @@ end
 -- @param CreateSecurityConfigurationInput
 -- @return response
 -- @return error_message
-function M.CreateSecurityConfigurationSync(...)
+function M.CreateSecurityConfigurationSync(CreateSecurityConfigurationInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateSecurityConfigurationAsync(..., function(response, error_message)
+	M.CreateSecurityConfigurationAsync(CreateSecurityConfigurationInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5692,10 +5692,10 @@ end
 -- @param RunJobFlowInput
 -- @return response
 -- @return error_message
-function M.RunJobFlowSync(...)
+function M.RunJobFlowSync(RunJobFlowInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RunJobFlowAsync(..., function(response, error_message)
+	M.RunJobFlowAsync(RunJobFlowInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5724,10 +5724,10 @@ end
 -- @param DescribeSecurityConfigurationInput
 -- @return response
 -- @return error_message
-function M.DescribeSecurityConfigurationSync(...)
+function M.DescribeSecurityConfigurationSync(DescribeSecurityConfigurationInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeSecurityConfigurationAsync(..., function(response, error_message)
+	M.DescribeSecurityConfigurationAsync(DescribeSecurityConfigurationInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5756,10 +5756,10 @@ end
 -- @param ListSecurityConfigurationsInput
 -- @return response
 -- @return error_message
-function M.ListSecurityConfigurationsSync(...)
+function M.ListSecurityConfigurationsSync(ListSecurityConfigurationsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListSecurityConfigurationsAsync(..., function(response, error_message)
+	M.ListSecurityConfigurationsAsync(ListSecurityConfigurationsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5788,10 +5788,10 @@ end
 -- @param SetTerminationProtectionInput
 -- @return response
 -- @return error_message
-function M.SetTerminationProtectionSync(...)
+function M.SetTerminationProtectionSync(SetTerminationProtectionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetTerminationProtectionAsync(..., function(response, error_message)
+	M.SetTerminationProtectionAsync(SetTerminationProtectionInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5820,10 +5820,10 @@ end
 -- @param DeleteSecurityConfigurationInput
 -- @return response
 -- @return error_message
-function M.DeleteSecurityConfigurationSync(...)
+function M.DeleteSecurityConfigurationSync(DeleteSecurityConfigurationInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteSecurityConfigurationAsync(..., function(response, error_message)
+	M.DeleteSecurityConfigurationAsync(DeleteSecurityConfigurationInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5852,10 +5852,10 @@ end
 -- @param AddInstanceGroupsInput
 -- @return response
 -- @return error_message
-function M.AddInstanceGroupsSync(...)
+function M.AddInstanceGroupsSync(AddInstanceGroupsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddInstanceGroupsAsync(..., function(response, error_message)
+	M.AddInstanceGroupsAsync(AddInstanceGroupsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5884,10 +5884,10 @@ end
 -- @param ListBootstrapActionsInput
 -- @return response
 -- @return error_message
-function M.ListBootstrapActionsSync(...)
+function M.ListBootstrapActionsSync(ListBootstrapActionsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListBootstrapActionsAsync(..., function(response, error_message)
+	M.ListBootstrapActionsAsync(ListBootstrapActionsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5916,10 +5916,10 @@ end
 -- @param ListClustersInput
 -- @return response
 -- @return error_message
-function M.ListClustersSync(...)
+function M.ListClustersSync(ListClustersInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListClustersAsync(..., function(response, error_message)
+	M.ListClustersAsync(ListClustersInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5948,10 +5948,10 @@ end
 -- @param ListInstancesInput
 -- @return response
 -- @return error_message
-function M.ListInstancesSync(...)
+function M.ListInstancesSync(ListInstancesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListInstancesAsync(..., function(response, error_message)
+	M.ListInstancesAsync(ListInstancesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5980,10 +5980,10 @@ end
 -- @param DescribeClusterInput
 -- @return response
 -- @return error_message
-function M.DescribeClusterSync(...)
+function M.DescribeClusterSync(DescribeClusterInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeClusterAsync(..., function(response, error_message)
+	M.DescribeClusterAsync(DescribeClusterInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6012,10 +6012,10 @@ end
 -- @param ListStepsInput
 -- @return response
 -- @return error_message
-function M.ListStepsSync(...)
+function M.ListStepsSync(ListStepsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListStepsAsync(..., function(response, error_message)
+	M.ListStepsAsync(ListStepsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6044,10 +6044,10 @@ end
 -- @param RemoveTagsInput
 -- @return response
 -- @return error_message
-function M.RemoveTagsSync(...)
+function M.RemoveTagsSync(RemoveTagsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RemoveTagsAsync(..., function(response, error_message)
+	M.RemoveTagsAsync(RemoveTagsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6076,10 +6076,10 @@ end
 -- @param ModifyInstanceGroupsInput
 -- @return response
 -- @return error_message
-function M.ModifyInstanceGroupsSync(...)
+function M.ModifyInstanceGroupsSync(ModifyInstanceGroupsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ModifyInstanceGroupsAsync(..., function(response, error_message)
+	M.ModifyInstanceGroupsAsync(ModifyInstanceGroupsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6108,10 +6108,10 @@ end
 -- @param PutAutoScalingPolicyInput
 -- @return response
 -- @return error_message
-function M.PutAutoScalingPolicySync(...)
+function M.PutAutoScalingPolicySync(PutAutoScalingPolicyInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutAutoScalingPolicyAsync(..., function(response, error_message)
+	M.PutAutoScalingPolicyAsync(PutAutoScalingPolicyInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6140,10 +6140,10 @@ end
 -- @param AddInstanceFleetInput
 -- @return response
 -- @return error_message
-function M.AddInstanceFleetSync(...)
+function M.AddInstanceFleetSync(AddInstanceFleetInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddInstanceFleetAsync(..., function(response, error_message)
+	M.AddInstanceFleetAsync(AddInstanceFleetInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6172,10 +6172,10 @@ end
 -- @param SetVisibleToAllUsersInput
 -- @return response
 -- @return error_message
-function M.SetVisibleToAllUsersSync(...)
+function M.SetVisibleToAllUsersSync(SetVisibleToAllUsersInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetVisibleToAllUsersAsync(..., function(response, error_message)
+	M.SetVisibleToAllUsersAsync(SetVisibleToAllUsersInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6204,10 +6204,10 @@ end
 -- @param ListInstanceFleetsInput
 -- @return response
 -- @return error_message
-function M.ListInstanceFleetsSync(...)
+function M.ListInstanceFleetsSync(ListInstanceFleetsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListInstanceFleetsAsync(..., function(response, error_message)
+	M.ListInstanceFleetsAsync(ListInstanceFleetsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6236,10 +6236,10 @@ end
 -- @param TerminateJobFlowsInput
 -- @return response
 -- @return error_message
-function M.TerminateJobFlowsSync(...)
+function M.TerminateJobFlowsSync(TerminateJobFlowsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.TerminateJobFlowsAsync(..., function(response, error_message)
+	M.TerminateJobFlowsAsync(TerminateJobFlowsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6268,10 +6268,10 @@ end
 -- @param AddTagsInput
 -- @return response
 -- @return error_message
-function M.AddTagsSync(...)
+function M.AddTagsSync(AddTagsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddTagsAsync(..., function(response, error_message)
+	M.AddTagsAsync(AddTagsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6300,10 +6300,10 @@ end
 -- @param ModifyInstanceFleetInput
 -- @return response
 -- @return error_message
-function M.ModifyInstanceFleetSync(...)
+function M.ModifyInstanceFleetSync(ModifyInstanceFleetInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ModifyInstanceFleetAsync(..., function(response, error_message)
+	M.ModifyInstanceFleetAsync(ModifyInstanceFleetInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6332,10 +6332,10 @@ end
 -- @param AddJobFlowStepsInput
 -- @return response
 -- @return error_message
-function M.AddJobFlowStepsSync(...)
+function M.AddJobFlowStepsSync(AddJobFlowStepsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddJobFlowStepsAsync(..., function(response, error_message)
+	M.AddJobFlowStepsAsync(AddJobFlowStepsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6364,10 +6364,10 @@ end
 -- @param ListInstanceGroupsInput
 -- @return response
 -- @return error_message
-function M.ListInstanceGroupsSync(...)
+function M.ListInstanceGroupsSync(ListInstanceGroupsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListInstanceGroupsAsync(..., function(response, error_message)
+	M.ListInstanceGroupsAsync(ListInstanceGroupsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6396,10 +6396,10 @@ end
 -- @param DescribeStepInput
 -- @return response
 -- @return error_message
-function M.DescribeStepSync(...)
+function M.DescribeStepSync(DescribeStepInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeStepAsync(..., function(response, error_message)
+	M.DescribeStepAsync(DescribeStepInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

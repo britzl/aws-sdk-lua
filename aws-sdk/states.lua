@@ -2680,10 +2680,10 @@ end
 -- @param StartExecutionInput
 -- @return response
 -- @return error_message
-function M.StartExecutionSync(...)
+function M.StartExecutionSync(StartExecutionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartExecutionAsync(..., function(response, error_message)
+	M.StartExecutionAsync(StartExecutionInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2712,10 +2712,10 @@ end
 -- @param ListExecutionsInput
 -- @return response
 -- @return error_message
-function M.ListExecutionsSync(...)
+function M.ListExecutionsSync(ListExecutionsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListExecutionsAsync(..., function(response, error_message)
+	M.ListExecutionsAsync(ListExecutionsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2744,10 +2744,10 @@ end
 -- @param StopExecutionInput
 -- @return response
 -- @return error_message
-function M.StopExecutionSync(...)
+function M.StopExecutionSync(StopExecutionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StopExecutionAsync(..., function(response, error_message)
+	M.StopExecutionAsync(StopExecutionInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2776,10 +2776,10 @@ end
 -- @param DeleteActivityInput
 -- @return response
 -- @return error_message
-function M.DeleteActivitySync(...)
+function M.DeleteActivitySync(DeleteActivityInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteActivityAsync(..., function(response, error_message)
+	M.DeleteActivityAsync(DeleteActivityInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2808,10 +2808,10 @@ end
 -- @param SendTaskHeartbeatInput
 -- @return response
 -- @return error_message
-function M.SendTaskHeartbeatSync(...)
+function M.SendTaskHeartbeatSync(SendTaskHeartbeatInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SendTaskHeartbeatAsync(..., function(response, error_message)
+	M.SendTaskHeartbeatAsync(SendTaskHeartbeatInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2840,10 +2840,10 @@ end
 -- @param DescribeExecutionInput
 -- @return response
 -- @return error_message
-function M.DescribeExecutionSync(...)
+function M.DescribeExecutionSync(DescribeExecutionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeExecutionAsync(..., function(response, error_message)
+	M.DescribeExecutionAsync(DescribeExecutionInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2872,10 +2872,10 @@ end
 -- @param ListStateMachinesInput
 -- @return response
 -- @return error_message
-function M.ListStateMachinesSync(...)
+function M.ListStateMachinesSync(ListStateMachinesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListStateMachinesAsync(..., function(response, error_message)
+	M.ListStateMachinesAsync(ListStateMachinesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2904,10 +2904,10 @@ end
 -- @param GetExecutionHistoryInput
 -- @return response
 -- @return error_message
-function M.GetExecutionHistorySync(...)
+function M.GetExecutionHistorySync(GetExecutionHistoryInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetExecutionHistoryAsync(..., function(response, error_message)
+	M.GetExecutionHistoryAsync(GetExecutionHistoryInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2936,10 +2936,10 @@ end
 -- @param GetActivityTaskInput
 -- @return response
 -- @return error_message
-function M.GetActivityTaskSync(...)
+function M.GetActivityTaskSync(GetActivityTaskInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetActivityTaskAsync(..., function(response, error_message)
+	M.GetActivityTaskAsync(GetActivityTaskInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2968,10 +2968,10 @@ end
 -- @param ListActivitiesInput
 -- @return response
 -- @return error_message
-function M.ListActivitiesSync(...)
+function M.ListActivitiesSync(ListActivitiesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListActivitiesAsync(..., function(response, error_message)
+	M.ListActivitiesAsync(ListActivitiesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3000,10 +3000,10 @@ end
 -- @param CreateStateMachineInput
 -- @return response
 -- @return error_message
-function M.CreateStateMachineSync(...)
+function M.CreateStateMachineSync(CreateStateMachineInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateStateMachineAsync(..., function(response, error_message)
+	M.CreateStateMachineAsync(CreateStateMachineInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3032,10 +3032,10 @@ end
 -- @param DescribeStateMachineInput
 -- @return response
 -- @return error_message
-function M.DescribeStateMachineSync(...)
+function M.DescribeStateMachineSync(DescribeStateMachineInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeStateMachineAsync(..., function(response, error_message)
+	M.DescribeStateMachineAsync(DescribeStateMachineInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3064,10 +3064,10 @@ end
 -- @param DescribeActivityInput
 -- @return response
 -- @return error_message
-function M.DescribeActivitySync(...)
+function M.DescribeActivitySync(DescribeActivityInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeActivityAsync(..., function(response, error_message)
+	M.DescribeActivityAsync(DescribeActivityInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3096,10 +3096,10 @@ end
 -- @param DeleteStateMachineInput
 -- @return response
 -- @return error_message
-function M.DeleteStateMachineSync(...)
+function M.DeleteStateMachineSync(DeleteStateMachineInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteStateMachineAsync(..., function(response, error_message)
+	M.DeleteStateMachineAsync(DeleteStateMachineInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3128,10 +3128,10 @@ end
 -- @param CreateActivityInput
 -- @return response
 -- @return error_message
-function M.CreateActivitySync(...)
+function M.CreateActivitySync(CreateActivityInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateActivityAsync(..., function(response, error_message)
+	M.CreateActivityAsync(CreateActivityInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3160,10 +3160,10 @@ end
 -- @param SendTaskFailureInput
 -- @return response
 -- @return error_message
-function M.SendTaskFailureSync(...)
+function M.SendTaskFailureSync(SendTaskFailureInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SendTaskFailureAsync(..., function(response, error_message)
+	M.SendTaskFailureAsync(SendTaskFailureInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3192,10 +3192,10 @@ end
 -- @param SendTaskSuccessInput
 -- @return response
 -- @return error_message
-function M.SendTaskSuccessSync(...)
+function M.SendTaskSuccessSync(SendTaskSuccessInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SendTaskSuccessAsync(..., function(response, error_message)
+	M.SendTaskSuccessAsync(SendTaskSuccessInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

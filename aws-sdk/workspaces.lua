@@ -2436,10 +2436,10 @@ end
 -- @param DeleteTagsRequest
 -- @return response
 -- @return error_message
-function M.DeleteTagsSync(...)
+function M.DeleteTagsSync(DeleteTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteTagsAsync(..., function(response, error_message)
+	M.DeleteTagsAsync(DeleteTagsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2468,10 +2468,10 @@ end
 -- @param DescribeWorkspacesRequest
 -- @return response
 -- @return error_message
-function M.DescribeWorkspacesSync(...)
+function M.DescribeWorkspacesSync(DescribeWorkspacesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeWorkspacesAsync(..., function(response, error_message)
+	M.DescribeWorkspacesAsync(DescribeWorkspacesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2500,10 +2500,10 @@ end
 -- @param TerminateWorkspacesRequest
 -- @return response
 -- @return error_message
-function M.TerminateWorkspacesSync(...)
+function M.TerminateWorkspacesSync(TerminateWorkspacesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.TerminateWorkspacesAsync(..., function(response, error_message)
+	M.TerminateWorkspacesAsync(TerminateWorkspacesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2532,10 +2532,10 @@ end
 -- @param CreateTagsRequest
 -- @return response
 -- @return error_message
-function M.CreateTagsSync(...)
+function M.CreateTagsSync(CreateTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateTagsAsync(..., function(response, error_message)
+	M.CreateTagsAsync(CreateTagsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2564,10 +2564,10 @@ end
 -- @param DescribeWorkspaceBundlesRequest
 -- @return response
 -- @return error_message
-function M.DescribeWorkspaceBundlesSync(...)
+function M.DescribeWorkspaceBundlesSync(DescribeWorkspaceBundlesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeWorkspaceBundlesAsync(..., function(response, error_message)
+	M.DescribeWorkspaceBundlesAsync(DescribeWorkspaceBundlesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2596,10 +2596,10 @@ end
 -- @param DescribeWorkspaceDirectoriesRequest
 -- @return response
 -- @return error_message
-function M.DescribeWorkspaceDirectoriesSync(...)
+function M.DescribeWorkspaceDirectoriesSync(DescribeWorkspaceDirectoriesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeWorkspaceDirectoriesAsync(..., function(response, error_message)
+	M.DescribeWorkspaceDirectoriesAsync(DescribeWorkspaceDirectoriesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2628,10 +2628,10 @@ end
 -- @param DescribeWorkspacesConnectionStatusRequest
 -- @return response
 -- @return error_message
-function M.DescribeWorkspacesConnectionStatusSync(...)
+function M.DescribeWorkspacesConnectionStatusSync(DescribeWorkspacesConnectionStatusRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeWorkspacesConnectionStatusAsync(..., function(response, error_message)
+	M.DescribeWorkspacesConnectionStatusAsync(DescribeWorkspacesConnectionStatusRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2660,10 +2660,10 @@ end
 -- @param RebuildWorkspacesRequest
 -- @return response
 -- @return error_message
-function M.RebuildWorkspacesSync(...)
+function M.RebuildWorkspacesSync(RebuildWorkspacesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RebuildWorkspacesAsync(..., function(response, error_message)
+	M.RebuildWorkspacesAsync(RebuildWorkspacesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2692,10 +2692,10 @@ end
 -- @param DescribeTagsRequest
 -- @return response
 -- @return error_message
-function M.DescribeTagsSync(...)
+function M.DescribeTagsSync(DescribeTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTagsAsync(..., function(response, error_message)
+	M.DescribeTagsAsync(DescribeTagsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2724,10 +2724,10 @@ end
 -- @param RebootWorkspacesRequest
 -- @return response
 -- @return error_message
-function M.RebootWorkspacesSync(...)
+function M.RebootWorkspacesSync(RebootWorkspacesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RebootWorkspacesAsync(..., function(response, error_message)
+	M.RebootWorkspacesAsync(RebootWorkspacesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2756,10 +2756,10 @@ end
 -- @param CreateWorkspacesRequest
 -- @return response
 -- @return error_message
-function M.CreateWorkspacesSync(...)
+function M.CreateWorkspacesSync(CreateWorkspacesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateWorkspacesAsync(..., function(response, error_message)
+	M.CreateWorkspacesAsync(CreateWorkspacesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2788,10 +2788,10 @@ end
 -- @param StopWorkspacesRequest
 -- @return response
 -- @return error_message
-function M.StopWorkspacesSync(...)
+function M.StopWorkspacesSync(StopWorkspacesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StopWorkspacesAsync(..., function(response, error_message)
+	M.StopWorkspacesAsync(StopWorkspacesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2820,10 +2820,10 @@ end
 -- @param ModifyWorkspacePropertiesRequest
 -- @return response
 -- @return error_message
-function M.ModifyWorkspacePropertiesSync(...)
+function M.ModifyWorkspacePropertiesSync(ModifyWorkspacePropertiesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ModifyWorkspacePropertiesAsync(..., function(response, error_message)
+	M.ModifyWorkspacePropertiesAsync(ModifyWorkspacePropertiesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2852,10 +2852,10 @@ end
 -- @param StartWorkspacesRequest
 -- @return response
 -- @return error_message
-function M.StartWorkspacesSync(...)
+function M.StartWorkspacesSync(StartWorkspacesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartWorkspacesAsync(..., function(response, error_message)
+	M.StartWorkspacesAsync(StartWorkspacesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

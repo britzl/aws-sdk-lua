@@ -1092,10 +1092,10 @@ end
 -- @param SuggestRequest
 -- @return response
 -- @return error_message
-function M.SuggestSync(...)
+function M.SuggestSync(SuggestRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SuggestAsync(..., function(response, error_message)
+	M.SuggestAsync(SuggestRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1124,10 +1124,10 @@ end
 -- @param SearchRequest
 -- @return response
 -- @return error_message
-function M.SearchSync(...)
+function M.SearchSync(SearchRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SearchAsync(..., function(response, error_message)
+	M.SearchAsync(SearchRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1156,10 +1156,10 @@ end
 -- @param UploadDocumentsRequest
 -- @return response
 -- @return error_message
-function M.UploadDocumentsSync(...)
+function M.UploadDocumentsSync(UploadDocumentsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UploadDocumentsAsync(..., function(response, error_message)
+	M.UploadDocumentsAsync(UploadDocumentsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

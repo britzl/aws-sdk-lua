@@ -5384,10 +5384,10 @@ end
 -- @param CreateReceiptRuleRequest
 -- @return response
 -- @return error_message
-function M.CreateReceiptRuleSync(...)
+function M.CreateReceiptRuleSync(CreateReceiptRuleRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateReceiptRuleAsync(..., function(response, error_message)
+	M.CreateReceiptRuleAsync(CreateReceiptRuleRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5416,7 +5416,7 @@ end
 function M.GetSendStatisticsSync(...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetSendStatisticsAsync(..., function(response, error_message)
+	M.GetSendStatisticsAsync(function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5445,10 +5445,10 @@ end
 -- @param ReorderReceiptRuleSetRequest
 -- @return response
 -- @return error_message
-function M.ReorderReceiptRuleSetSync(...)
+function M.ReorderReceiptRuleSetSync(ReorderReceiptRuleSetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ReorderReceiptRuleSetAsync(..., function(response, error_message)
+	M.ReorderReceiptRuleSetAsync(ReorderReceiptRuleSetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5477,10 +5477,10 @@ end
 -- @param GetIdentityPoliciesRequest
 -- @return response
 -- @return error_message
-function M.GetIdentityPoliciesSync(...)
+function M.GetIdentityPoliciesSync(GetIdentityPoliciesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetIdentityPoliciesAsync(..., function(response, error_message)
+	M.GetIdentityPoliciesAsync(GetIdentityPoliciesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5509,10 +5509,10 @@ end
 -- @param VerifyEmailAddressRequest
 -- @return response
 -- @return error_message
-function M.VerifyEmailAddressSync(...)
+function M.VerifyEmailAddressSync(VerifyEmailAddressRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.VerifyEmailAddressAsync(..., function(response, error_message)
+	M.VerifyEmailAddressAsync(VerifyEmailAddressRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5541,10 +5541,10 @@ end
 -- @param SetIdentityMailFromDomainRequest
 -- @return response
 -- @return error_message
-function M.SetIdentityMailFromDomainSync(...)
+function M.SetIdentityMailFromDomainSync(SetIdentityMailFromDomainRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetIdentityMailFromDomainAsync(..., function(response, error_message)
+	M.SetIdentityMailFromDomainAsync(SetIdentityMailFromDomainRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5573,10 +5573,10 @@ end
 -- @param ListReceiptFiltersRequest
 -- @return response
 -- @return error_message
-function M.ListReceiptFiltersSync(...)
+function M.ListReceiptFiltersSync(ListReceiptFiltersRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListReceiptFiltersAsync(..., function(response, error_message)
+	M.ListReceiptFiltersAsync(ListReceiptFiltersRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5605,10 +5605,10 @@ end
 -- @param DescribeReceiptRuleSetRequest
 -- @return response
 -- @return error_message
-function M.DescribeReceiptRuleSetSync(...)
+function M.DescribeReceiptRuleSetSync(DescribeReceiptRuleSetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeReceiptRuleSetAsync(..., function(response, error_message)
+	M.DescribeReceiptRuleSetAsync(DescribeReceiptRuleSetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5637,10 +5637,10 @@ end
 -- @param DeleteReceiptFilterRequest
 -- @return response
 -- @return error_message
-function M.DeleteReceiptFilterSync(...)
+function M.DeleteReceiptFilterSync(DeleteReceiptFilterRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteReceiptFilterAsync(..., function(response, error_message)
+	M.DeleteReceiptFilterAsync(DeleteReceiptFilterRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5669,10 +5669,10 @@ end
 -- @param UpdateConfigurationSetEventDestinationRequest
 -- @return response
 -- @return error_message
-function M.UpdateConfigurationSetEventDestinationSync(...)
+function M.UpdateConfigurationSetEventDestinationSync(UpdateConfigurationSetEventDestinationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateConfigurationSetEventDestinationAsync(..., function(response, error_message)
+	M.UpdateConfigurationSetEventDestinationAsync(UpdateConfigurationSetEventDestinationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5701,10 +5701,10 @@ end
 -- @param SetIdentityFeedbackForwardingEnabledRequest
 -- @return response
 -- @return error_message
-function M.SetIdentityFeedbackForwardingEnabledSync(...)
+function M.SetIdentityFeedbackForwardingEnabledSync(SetIdentityFeedbackForwardingEnabledRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetIdentityFeedbackForwardingEnabledAsync(..., function(response, error_message)
+	M.SetIdentityFeedbackForwardingEnabledAsync(SetIdentityFeedbackForwardingEnabledRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5733,10 +5733,10 @@ end
 -- @param UpdateReceiptRuleRequest
 -- @return response
 -- @return error_message
-function M.UpdateReceiptRuleSync(...)
+function M.UpdateReceiptRuleSync(UpdateReceiptRuleRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateReceiptRuleAsync(..., function(response, error_message)
+	M.UpdateReceiptRuleAsync(UpdateReceiptRuleRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5765,10 +5765,10 @@ end
 -- @param SendBounceRequest
 -- @return response
 -- @return error_message
-function M.SendBounceSync(...)
+function M.SendBounceSync(SendBounceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SendBounceAsync(..., function(response, error_message)
+	M.SendBounceAsync(SendBounceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5797,10 +5797,10 @@ end
 -- @param CreateConfigurationSetEventDestinationRequest
 -- @return response
 -- @return error_message
-function M.CreateConfigurationSetEventDestinationSync(...)
+function M.CreateConfigurationSetEventDestinationSync(CreateConfigurationSetEventDestinationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateConfigurationSetEventDestinationAsync(..., function(response, error_message)
+	M.CreateConfigurationSetEventDestinationAsync(CreateConfigurationSetEventDestinationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5829,10 +5829,10 @@ end
 -- @param GetIdentityDkimAttributesRequest
 -- @return response
 -- @return error_message
-function M.GetIdentityDkimAttributesSync(...)
+function M.GetIdentityDkimAttributesSync(GetIdentityDkimAttributesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetIdentityDkimAttributesAsync(..., function(response, error_message)
+	M.GetIdentityDkimAttributesAsync(GetIdentityDkimAttributesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5861,10 +5861,10 @@ end
 -- @param SetReceiptRulePositionRequest
 -- @return response
 -- @return error_message
-function M.SetReceiptRulePositionSync(...)
+function M.SetReceiptRulePositionSync(SetReceiptRulePositionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetReceiptRulePositionAsync(..., function(response, error_message)
+	M.SetReceiptRulePositionAsync(SetReceiptRulePositionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5893,10 +5893,10 @@ end
 -- @param DeleteReceiptRuleRequest
 -- @return response
 -- @return error_message
-function M.DeleteReceiptRuleSync(...)
+function M.DeleteReceiptRuleSync(DeleteReceiptRuleRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteReceiptRuleAsync(..., function(response, error_message)
+	M.DeleteReceiptRuleAsync(DeleteReceiptRuleRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5925,10 +5925,10 @@ end
 -- @param DescribeConfigurationSetRequest
 -- @return response
 -- @return error_message
-function M.DescribeConfigurationSetSync(...)
+function M.DescribeConfigurationSetSync(DescribeConfigurationSetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeConfigurationSetAsync(..., function(response, error_message)
+	M.DescribeConfigurationSetAsync(DescribeConfigurationSetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5957,7 +5957,7 @@ end
 function M.ListVerifiedEmailAddressesSync(...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListVerifiedEmailAddressesAsync(..., function(response, error_message)
+	M.ListVerifiedEmailAddressesAsync(function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5986,10 +5986,10 @@ end
 -- @param DeleteConfigurationSetRequest
 -- @return response
 -- @return error_message
-function M.DeleteConfigurationSetSync(...)
+function M.DeleteConfigurationSetSync(DeleteConfigurationSetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteConfigurationSetAsync(..., function(response, error_message)
+	M.DeleteConfigurationSetAsync(DeleteConfigurationSetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6018,10 +6018,10 @@ end
 -- @param CloneReceiptRuleSetRequest
 -- @return response
 -- @return error_message
-function M.CloneReceiptRuleSetSync(...)
+function M.CloneReceiptRuleSetSync(CloneReceiptRuleSetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CloneReceiptRuleSetAsync(..., function(response, error_message)
+	M.CloneReceiptRuleSetAsync(CloneReceiptRuleSetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6050,10 +6050,10 @@ end
 -- @param VerifyDomainIdentityRequest
 -- @return response
 -- @return error_message
-function M.VerifyDomainIdentitySync(...)
+function M.VerifyDomainIdentitySync(VerifyDomainIdentityRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.VerifyDomainIdentityAsync(..., function(response, error_message)
+	M.VerifyDomainIdentityAsync(VerifyDomainIdentityRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6082,10 +6082,10 @@ end
 -- @param DescribeActiveReceiptRuleSetRequest
 -- @return response
 -- @return error_message
-function M.DescribeActiveReceiptRuleSetSync(...)
+function M.DescribeActiveReceiptRuleSetSync(DescribeActiveReceiptRuleSetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeActiveReceiptRuleSetAsync(..., function(response, error_message)
+	M.DescribeActiveReceiptRuleSetAsync(DescribeActiveReceiptRuleSetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6114,10 +6114,10 @@ end
 -- @param DeleteIdentityPolicyRequest
 -- @return response
 -- @return error_message
-function M.DeleteIdentityPolicySync(...)
+function M.DeleteIdentityPolicySync(DeleteIdentityPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteIdentityPolicyAsync(..., function(response, error_message)
+	M.DeleteIdentityPolicyAsync(DeleteIdentityPolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6146,10 +6146,10 @@ end
 -- @param SetActiveReceiptRuleSetRequest
 -- @return response
 -- @return error_message
-function M.SetActiveReceiptRuleSetSync(...)
+function M.SetActiveReceiptRuleSetSync(SetActiveReceiptRuleSetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetActiveReceiptRuleSetAsync(..., function(response, error_message)
+	M.SetActiveReceiptRuleSetAsync(SetActiveReceiptRuleSetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6178,10 +6178,10 @@ end
 -- @param DeleteReceiptRuleSetRequest
 -- @return response
 -- @return error_message
-function M.DeleteReceiptRuleSetSync(...)
+function M.DeleteReceiptRuleSetSync(DeleteReceiptRuleSetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteReceiptRuleSetAsync(..., function(response, error_message)
+	M.DeleteReceiptRuleSetAsync(DeleteReceiptRuleSetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6210,10 +6210,10 @@ end
 -- @param SetIdentityDkimEnabledRequest
 -- @return response
 -- @return error_message
-function M.SetIdentityDkimEnabledSync(...)
+function M.SetIdentityDkimEnabledSync(SetIdentityDkimEnabledRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetIdentityDkimEnabledAsync(..., function(response, error_message)
+	M.SetIdentityDkimEnabledAsync(SetIdentityDkimEnabledRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6242,7 +6242,7 @@ end
 function M.GetSendQuotaSync(...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetSendQuotaAsync(..., function(response, error_message)
+	M.GetSendQuotaAsync(function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6271,10 +6271,10 @@ end
 -- @param SetIdentityNotificationTopicRequest
 -- @return response
 -- @return error_message
-function M.SetIdentityNotificationTopicSync(...)
+function M.SetIdentityNotificationTopicSync(SetIdentityNotificationTopicRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetIdentityNotificationTopicAsync(..., function(response, error_message)
+	M.SetIdentityNotificationTopicAsync(SetIdentityNotificationTopicRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6303,10 +6303,10 @@ end
 -- @param CreateConfigurationSetRequest
 -- @return response
 -- @return error_message
-function M.CreateConfigurationSetSync(...)
+function M.CreateConfigurationSetSync(CreateConfigurationSetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateConfigurationSetAsync(..., function(response, error_message)
+	M.CreateConfigurationSetAsync(CreateConfigurationSetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6335,10 +6335,10 @@ end
 -- @param DeleteVerifiedEmailAddressRequest
 -- @return response
 -- @return error_message
-function M.DeleteVerifiedEmailAddressSync(...)
+function M.DeleteVerifiedEmailAddressSync(DeleteVerifiedEmailAddressRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteVerifiedEmailAddressAsync(..., function(response, error_message)
+	M.DeleteVerifiedEmailAddressAsync(DeleteVerifiedEmailAddressRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6367,10 +6367,10 @@ end
 -- @param ListConfigurationSetsRequest
 -- @return response
 -- @return error_message
-function M.ListConfigurationSetsSync(...)
+function M.ListConfigurationSetsSync(ListConfigurationSetsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListConfigurationSetsAsync(..., function(response, error_message)
+	M.ListConfigurationSetsAsync(ListConfigurationSetsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6399,10 +6399,10 @@ end
 -- @param CreateReceiptFilterRequest
 -- @return response
 -- @return error_message
-function M.CreateReceiptFilterSync(...)
+function M.CreateReceiptFilterSync(CreateReceiptFilterRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateReceiptFilterAsync(..., function(response, error_message)
+	M.CreateReceiptFilterAsync(CreateReceiptFilterRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6431,10 +6431,10 @@ end
 -- @param DescribeReceiptRuleRequest
 -- @return response
 -- @return error_message
-function M.DescribeReceiptRuleSync(...)
+function M.DescribeReceiptRuleSync(DescribeReceiptRuleRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeReceiptRuleAsync(..., function(response, error_message)
+	M.DescribeReceiptRuleAsync(DescribeReceiptRuleRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6463,10 +6463,10 @@ end
 -- @param ListReceiptRuleSetsRequest
 -- @return response
 -- @return error_message
-function M.ListReceiptRuleSetsSync(...)
+function M.ListReceiptRuleSetsSync(ListReceiptRuleSetsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListReceiptRuleSetsAsync(..., function(response, error_message)
+	M.ListReceiptRuleSetsAsync(ListReceiptRuleSetsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6495,10 +6495,10 @@ end
 -- @param GetIdentityNotificationAttributesRequest
 -- @return response
 -- @return error_message
-function M.GetIdentityNotificationAttributesSync(...)
+function M.GetIdentityNotificationAttributesSync(GetIdentityNotificationAttributesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetIdentityNotificationAttributesAsync(..., function(response, error_message)
+	M.GetIdentityNotificationAttributesAsync(GetIdentityNotificationAttributesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6527,10 +6527,10 @@ end
 -- @param SetIdentityHeadersInNotificationsEnabledRequest
 -- @return response
 -- @return error_message
-function M.SetIdentityHeadersInNotificationsEnabledSync(...)
+function M.SetIdentityHeadersInNotificationsEnabledSync(SetIdentityHeadersInNotificationsEnabledRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetIdentityHeadersInNotificationsEnabledAsync(..., function(response, error_message)
+	M.SetIdentityHeadersInNotificationsEnabledAsync(SetIdentityHeadersInNotificationsEnabledRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6559,10 +6559,10 @@ end
 -- @param SendEmailRequest
 -- @return response
 -- @return error_message
-function M.SendEmailSync(...)
+function M.SendEmailSync(SendEmailRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SendEmailAsync(..., function(response, error_message)
+	M.SendEmailAsync(SendEmailRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6591,10 +6591,10 @@ end
 -- @param DeleteIdentityRequest
 -- @return response
 -- @return error_message
-function M.DeleteIdentitySync(...)
+function M.DeleteIdentitySync(DeleteIdentityRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteIdentityAsync(..., function(response, error_message)
+	M.DeleteIdentityAsync(DeleteIdentityRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6623,10 +6623,10 @@ end
 -- @param VerifyDomainDkimRequest
 -- @return response
 -- @return error_message
-function M.VerifyDomainDkimSync(...)
+function M.VerifyDomainDkimSync(VerifyDomainDkimRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.VerifyDomainDkimAsync(..., function(response, error_message)
+	M.VerifyDomainDkimAsync(VerifyDomainDkimRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6655,10 +6655,10 @@ end
 -- @param GetIdentityMailFromDomainAttributesRequest
 -- @return response
 -- @return error_message
-function M.GetIdentityMailFromDomainAttributesSync(...)
+function M.GetIdentityMailFromDomainAttributesSync(GetIdentityMailFromDomainAttributesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetIdentityMailFromDomainAttributesAsync(..., function(response, error_message)
+	M.GetIdentityMailFromDomainAttributesAsync(GetIdentityMailFromDomainAttributesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6687,10 +6687,10 @@ end
 -- @param ListIdentityPoliciesRequest
 -- @return response
 -- @return error_message
-function M.ListIdentityPoliciesSync(...)
+function M.ListIdentityPoliciesSync(ListIdentityPoliciesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListIdentityPoliciesAsync(..., function(response, error_message)
+	M.ListIdentityPoliciesAsync(ListIdentityPoliciesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6719,10 +6719,10 @@ end
 -- @param DeleteConfigurationSetEventDestinationRequest
 -- @return response
 -- @return error_message
-function M.DeleteConfigurationSetEventDestinationSync(...)
+function M.DeleteConfigurationSetEventDestinationSync(DeleteConfigurationSetEventDestinationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteConfigurationSetEventDestinationAsync(..., function(response, error_message)
+	M.DeleteConfigurationSetEventDestinationAsync(DeleteConfigurationSetEventDestinationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6751,10 +6751,10 @@ end
 -- @param ListIdentitiesRequest
 -- @return response
 -- @return error_message
-function M.ListIdentitiesSync(...)
+function M.ListIdentitiesSync(ListIdentitiesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListIdentitiesAsync(..., function(response, error_message)
+	M.ListIdentitiesAsync(ListIdentitiesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6783,10 +6783,10 @@ end
 -- @param GetIdentityVerificationAttributesRequest
 -- @return response
 -- @return error_message
-function M.GetIdentityVerificationAttributesSync(...)
+function M.GetIdentityVerificationAttributesSync(GetIdentityVerificationAttributesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetIdentityVerificationAttributesAsync(..., function(response, error_message)
+	M.GetIdentityVerificationAttributesAsync(GetIdentityVerificationAttributesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6815,10 +6815,10 @@ end
 -- @param VerifyEmailIdentityRequest
 -- @return response
 -- @return error_message
-function M.VerifyEmailIdentitySync(...)
+function M.VerifyEmailIdentitySync(VerifyEmailIdentityRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.VerifyEmailIdentityAsync(..., function(response, error_message)
+	M.VerifyEmailIdentityAsync(VerifyEmailIdentityRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6847,10 +6847,10 @@ end
 -- @param PutIdentityPolicyRequest
 -- @return response
 -- @return error_message
-function M.PutIdentityPolicySync(...)
+function M.PutIdentityPolicySync(PutIdentityPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutIdentityPolicyAsync(..., function(response, error_message)
+	M.PutIdentityPolicyAsync(PutIdentityPolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6879,10 +6879,10 @@ end
 -- @param SendRawEmailRequest
 -- @return response
 -- @return error_message
-function M.SendRawEmailSync(...)
+function M.SendRawEmailSync(SendRawEmailRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SendRawEmailAsync(..., function(response, error_message)
+	M.SendRawEmailAsync(SendRawEmailRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6911,10 +6911,10 @@ end
 -- @param CreateReceiptRuleSetRequest
 -- @return response
 -- @return error_message
-function M.CreateReceiptRuleSetSync(...)
+function M.CreateReceiptRuleSetSync(CreateReceiptRuleSetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateReceiptRuleSetAsync(..., function(response, error_message)
+	M.CreateReceiptRuleSetAsync(CreateReceiptRuleSetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

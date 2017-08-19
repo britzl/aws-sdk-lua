@@ -3859,10 +3859,10 @@ end
 -- @param DescribeStackResourceInput
 -- @return response
 -- @return error_message
-function M.DescribeStackResourceSync(...)
+function M.DescribeStackResourceSync(DescribeStackResourceInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeStackResourceAsync(..., function(response, error_message)
+	M.DescribeStackResourceAsync(DescribeStackResourceInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3891,10 +3891,10 @@ end
 -- @param ListStackResourcesInput
 -- @return response
 -- @return error_message
-function M.ListStackResourcesSync(...)
+function M.ListStackResourcesSync(ListStackResourcesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListStackResourcesAsync(..., function(response, error_message)
+	M.ListStackResourcesAsync(ListStackResourcesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3923,10 +3923,10 @@ end
 -- @param ValidateTemplateInput
 -- @return response
 -- @return error_message
-function M.ValidateTemplateSync(...)
+function M.ValidateTemplateSync(ValidateTemplateInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ValidateTemplateAsync(..., function(response, error_message)
+	M.ValidateTemplateAsync(ValidateTemplateInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3955,10 +3955,10 @@ end
 -- @param DescribeStackResourcesInput
 -- @return response
 -- @return error_message
-function M.DescribeStackResourcesSync(...)
+function M.DescribeStackResourcesSync(DescribeStackResourcesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeStackResourcesAsync(..., function(response, error_message)
+	M.DescribeStackResourcesAsync(DescribeStackResourcesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3987,10 +3987,10 @@ end
 -- @param ListImportsInput
 -- @return response
 -- @return error_message
-function M.ListImportsSync(...)
+function M.ListImportsSync(ListImportsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListImportsAsync(..., function(response, error_message)
+	M.ListImportsAsync(ListImportsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4019,10 +4019,10 @@ end
 -- @param CreateStackInput
 -- @return response
 -- @return error_message
-function M.CreateStackSync(...)
+function M.CreateStackSync(CreateStackInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateStackAsync(..., function(response, error_message)
+	M.CreateStackAsync(CreateStackInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4051,10 +4051,10 @@ end
 -- @param GetTemplateSummaryInput
 -- @return response
 -- @return error_message
-function M.GetTemplateSummarySync(...)
+function M.GetTemplateSummarySync(GetTemplateSummaryInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetTemplateSummaryAsync(..., function(response, error_message)
+	M.GetTemplateSummaryAsync(GetTemplateSummaryInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4083,10 +4083,10 @@ end
 -- @param CancelUpdateStackInput
 -- @return response
 -- @return error_message
-function M.CancelUpdateStackSync(...)
+function M.CancelUpdateStackSync(CancelUpdateStackInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CancelUpdateStackAsync(..., function(response, error_message)
+	M.CancelUpdateStackAsync(CancelUpdateStackInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4115,10 +4115,10 @@ end
 -- @param ContinueUpdateRollbackInput
 -- @return response
 -- @return error_message
-function M.ContinueUpdateRollbackSync(...)
+function M.ContinueUpdateRollbackSync(ContinueUpdateRollbackInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ContinueUpdateRollbackAsync(..., function(response, error_message)
+	M.ContinueUpdateRollbackAsync(ContinueUpdateRollbackInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4147,10 +4147,10 @@ end
 -- @param ListChangeSetsInput
 -- @return response
 -- @return error_message
-function M.ListChangeSetsSync(...)
+function M.ListChangeSetsSync(ListChangeSetsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListChangeSetsAsync(..., function(response, error_message)
+	M.ListChangeSetsAsync(ListChangeSetsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4179,10 +4179,10 @@ end
 -- @param GetStackPolicyInput
 -- @return response
 -- @return error_message
-function M.GetStackPolicySync(...)
+function M.GetStackPolicySync(GetStackPolicyInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetStackPolicyAsync(..., function(response, error_message)
+	M.GetStackPolicyAsync(GetStackPolicyInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4211,10 +4211,10 @@ end
 -- @param ListExportsInput
 -- @return response
 -- @return error_message
-function M.ListExportsSync(...)
+function M.ListExportsSync(ListExportsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListExportsAsync(..., function(response, error_message)
+	M.ListExportsAsync(ListExportsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4243,10 +4243,10 @@ end
 -- @param DescribeStackEventsInput
 -- @return response
 -- @return error_message
-function M.DescribeStackEventsSync(...)
+function M.DescribeStackEventsSync(DescribeStackEventsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeStackEventsAsync(..., function(response, error_message)
+	M.DescribeStackEventsAsync(DescribeStackEventsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4275,10 +4275,10 @@ end
 -- @param SignalResourceInput
 -- @return response
 -- @return error_message
-function M.SignalResourceSync(...)
+function M.SignalResourceSync(SignalResourceInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SignalResourceAsync(..., function(response, error_message)
+	M.SignalResourceAsync(SignalResourceInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4307,10 +4307,10 @@ end
 -- @param GetTemplateInput
 -- @return response
 -- @return error_message
-function M.GetTemplateSync(...)
+function M.GetTemplateSync(GetTemplateInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetTemplateAsync(..., function(response, error_message)
+	M.GetTemplateAsync(GetTemplateInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4339,10 +4339,10 @@ end
 -- @param DescribeChangeSetInput
 -- @return response
 -- @return error_message
-function M.DescribeChangeSetSync(...)
+function M.DescribeChangeSetSync(DescribeChangeSetInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeChangeSetAsync(..., function(response, error_message)
+	M.DescribeChangeSetAsync(DescribeChangeSetInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4371,10 +4371,10 @@ end
 -- @param DeleteChangeSetInput
 -- @return response
 -- @return error_message
-function M.DeleteChangeSetSync(...)
+function M.DeleteChangeSetSync(DeleteChangeSetInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteChangeSetAsync(..., function(response, error_message)
+	M.DeleteChangeSetAsync(DeleteChangeSetInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4403,10 +4403,10 @@ end
 -- @param CreateChangeSetInput
 -- @return response
 -- @return error_message
-function M.CreateChangeSetSync(...)
+function M.CreateChangeSetSync(CreateChangeSetInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateChangeSetAsync(..., function(response, error_message)
+	M.CreateChangeSetAsync(CreateChangeSetInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4435,10 +4435,10 @@ end
 -- @param DescribeStacksInput
 -- @return response
 -- @return error_message
-function M.DescribeStacksSync(...)
+function M.DescribeStacksSync(DescribeStacksInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeStacksAsync(..., function(response, error_message)
+	M.DescribeStacksAsync(DescribeStacksInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4467,10 +4467,10 @@ end
 -- @param UpdateStackInput
 -- @return response
 -- @return error_message
-function M.UpdateStackSync(...)
+function M.UpdateStackSync(UpdateStackInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateStackAsync(..., function(response, error_message)
+	M.UpdateStackAsync(UpdateStackInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4499,10 +4499,10 @@ end
 -- @param ExecuteChangeSetInput
 -- @return response
 -- @return error_message
-function M.ExecuteChangeSetSync(...)
+function M.ExecuteChangeSetSync(ExecuteChangeSetInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ExecuteChangeSetAsync(..., function(response, error_message)
+	M.ExecuteChangeSetAsync(ExecuteChangeSetInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4531,10 +4531,10 @@ end
 -- @param DeleteStackInput
 -- @return response
 -- @return error_message
-function M.DeleteStackSync(...)
+function M.DeleteStackSync(DeleteStackInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteStackAsync(..., function(response, error_message)
+	M.DeleteStackAsync(DeleteStackInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4563,10 +4563,10 @@ end
 -- @param SetStackPolicyInput
 -- @return response
 -- @return error_message
-function M.SetStackPolicySync(...)
+function M.SetStackPolicySync(SetStackPolicyInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetStackPolicyAsync(..., function(response, error_message)
+	M.SetStackPolicyAsync(SetStackPolicyInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4595,10 +4595,10 @@ end
 -- @param ListStacksInput
 -- @return response
 -- @return error_message
-function M.ListStacksSync(...)
+function M.ListStacksSync(ListStacksInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListStacksAsync(..., function(response, error_message)
+	M.ListStacksAsync(ListStacksInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4627,10 +4627,10 @@ end
 -- @param EstimateTemplateCostInput
 -- @return response
 -- @return error_message
-function M.EstimateTemplateCostSync(...)
+function M.EstimateTemplateCostSync(EstimateTemplateCostInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.EstimateTemplateCostAsync(..., function(response, error_message)
+	M.EstimateTemplateCostAsync(EstimateTemplateCostInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4659,10 +4659,10 @@ end
 -- @param DescribeAccountLimitsInput
 -- @return response
 -- @return error_message
-function M.DescribeAccountLimitsSync(...)
+function M.DescribeAccountLimitsSync(DescribeAccountLimitsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAccountLimitsAsync(..., function(response, error_message)
+	M.DescribeAccountLimitsAsync(DescribeAccountLimitsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

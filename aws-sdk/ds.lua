@@ -4686,10 +4686,10 @@ end
 -- @param RemoveTagsFromResourceRequest
 -- @return response
 -- @return error_message
-function M.RemoveTagsFromResourceSync(...)
+function M.RemoveTagsFromResourceSync(RemoveTagsFromResourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RemoveTagsFromResourceAsync(..., function(response, error_message)
+	M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4718,10 +4718,10 @@ end
 -- @param CreateComputerRequest
 -- @return response
 -- @return error_message
-function M.CreateComputerSync(...)
+function M.CreateComputerSync(CreateComputerRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateComputerAsync(..., function(response, error_message)
+	M.CreateComputerAsync(CreateComputerRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4750,10 +4750,10 @@ end
 -- @param EnableRadiusRequest
 -- @return response
 -- @return error_message
-function M.EnableRadiusSync(...)
+function M.EnableRadiusSync(EnableRadiusRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.EnableRadiusAsync(..., function(response, error_message)
+	M.EnableRadiusAsync(EnableRadiusRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4782,10 +4782,10 @@ end
 -- @param DeleteConditionalForwarderRequest
 -- @return response
 -- @return error_message
-function M.DeleteConditionalForwarderSync(...)
+function M.DeleteConditionalForwarderSync(DeleteConditionalForwarderRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteConditionalForwarderAsync(..., function(response, error_message)
+	M.DeleteConditionalForwarderAsync(DeleteConditionalForwarderRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4814,10 +4814,10 @@ end
 -- @param CreateDirectoryRequest
 -- @return response
 -- @return error_message
-function M.CreateDirectorySync(...)
+function M.CreateDirectorySync(CreateDirectoryRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDirectoryAsync(..., function(response, error_message)
+	M.CreateDirectoryAsync(CreateDirectoryRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4846,10 +4846,10 @@ end
 -- @param DescribeSnapshotsRequest
 -- @return response
 -- @return error_message
-function M.DescribeSnapshotsSync(...)
+function M.DescribeSnapshotsSync(DescribeSnapshotsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeSnapshotsAsync(..., function(response, error_message)
+	M.DescribeSnapshotsAsync(DescribeSnapshotsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4878,10 +4878,10 @@ end
 -- @param VerifyTrustRequest
 -- @return response
 -- @return error_message
-function M.VerifyTrustSync(...)
+function M.VerifyTrustSync(VerifyTrustRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.VerifyTrustAsync(..., function(response, error_message)
+	M.VerifyTrustAsync(VerifyTrustRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4910,10 +4910,10 @@ end
 -- @param DeleteSnapshotRequest
 -- @return response
 -- @return error_message
-function M.DeleteSnapshotSync(...)
+function M.DeleteSnapshotSync(DeleteSnapshotRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteSnapshotAsync(..., function(response, error_message)
+	M.DeleteSnapshotAsync(DeleteSnapshotRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4942,10 +4942,10 @@ end
 -- @param UpdateRadiusRequest
 -- @return response
 -- @return error_message
-function M.UpdateRadiusSync(...)
+function M.UpdateRadiusSync(UpdateRadiusRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateRadiusAsync(..., function(response, error_message)
+	M.UpdateRadiusAsync(UpdateRadiusRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4974,10 +4974,10 @@ end
 -- @param DisableRadiusRequest
 -- @return response
 -- @return error_message
-function M.DisableRadiusSync(...)
+function M.DisableRadiusSync(DisableRadiusRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisableRadiusAsync(..., function(response, error_message)
+	M.DisableRadiusAsync(DisableRadiusRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5006,10 +5006,10 @@ end
 -- @param AddTagsToResourceRequest
 -- @return response
 -- @return error_message
-function M.AddTagsToResourceSync(...)
+function M.AddTagsToResourceSync(AddTagsToResourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddTagsToResourceAsync(..., function(response, error_message)
+	M.AddTagsToResourceAsync(AddTagsToResourceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5038,10 +5038,10 @@ end
 -- @param DescribeConditionalForwardersRequest
 -- @return response
 -- @return error_message
-function M.DescribeConditionalForwardersSync(...)
+function M.DescribeConditionalForwardersSync(DescribeConditionalForwardersRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeConditionalForwardersAsync(..., function(response, error_message)
+	M.DescribeConditionalForwardersAsync(DescribeConditionalForwardersRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5070,10 +5070,10 @@ end
 -- @param DescribeEventTopicsRequest
 -- @return response
 -- @return error_message
-function M.DescribeEventTopicsSync(...)
+function M.DescribeEventTopicsSync(DescribeEventTopicsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEventTopicsAsync(..., function(response, error_message)
+	M.DescribeEventTopicsAsync(DescribeEventTopicsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5102,10 +5102,10 @@ end
 -- @param EnableSsoRequest
 -- @return response
 -- @return error_message
-function M.EnableSsoSync(...)
+function M.EnableSsoSync(EnableSsoRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.EnableSsoAsync(..., function(response, error_message)
+	M.EnableSsoAsync(EnableSsoRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5134,10 +5134,10 @@ end
 -- @param ListIpRoutesRequest
 -- @return response
 -- @return error_message
-function M.ListIpRoutesSync(...)
+function M.ListIpRoutesSync(ListIpRoutesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListIpRoutesAsync(..., function(response, error_message)
+	M.ListIpRoutesAsync(ListIpRoutesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5166,10 +5166,10 @@ end
 -- @param RemoveIpRoutesRequest
 -- @return response
 -- @return error_message
-function M.RemoveIpRoutesSync(...)
+function M.RemoveIpRoutesSync(RemoveIpRoutesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RemoveIpRoutesAsync(..., function(response, error_message)
+	M.RemoveIpRoutesAsync(RemoveIpRoutesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5198,10 +5198,10 @@ end
 -- @param CreateAliasRequest
 -- @return response
 -- @return error_message
-function M.CreateAliasSync(...)
+function M.CreateAliasSync(CreateAliasRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateAliasAsync(..., function(response, error_message)
+	M.CreateAliasAsync(CreateAliasRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5230,10 +5230,10 @@ end
 -- @param ConnectDirectoryRequest
 -- @return response
 -- @return error_message
-function M.ConnectDirectorySync(...)
+function M.ConnectDirectorySync(ConnectDirectoryRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ConnectDirectoryAsync(..., function(response, error_message)
+	M.ConnectDirectoryAsync(ConnectDirectoryRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5262,10 +5262,10 @@ end
 -- @param DeleteDirectoryRequest
 -- @return response
 -- @return error_message
-function M.DeleteDirectorySync(...)
+function M.DeleteDirectorySync(DeleteDirectoryRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteDirectoryAsync(..., function(response, error_message)
+	M.DeleteDirectoryAsync(DeleteDirectoryRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5294,10 +5294,10 @@ end
 -- @param AddIpRoutesRequest
 -- @return response
 -- @return error_message
-function M.AddIpRoutesSync(...)
+function M.AddIpRoutesSync(AddIpRoutesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddIpRoutesAsync(..., function(response, error_message)
+	M.AddIpRoutesAsync(AddIpRoutesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5326,10 +5326,10 @@ end
 -- @param CancelSchemaExtensionRequest
 -- @return response
 -- @return error_message
-function M.CancelSchemaExtensionSync(...)
+function M.CancelSchemaExtensionSync(CancelSchemaExtensionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CancelSchemaExtensionAsync(..., function(response, error_message)
+	M.CancelSchemaExtensionAsync(CancelSchemaExtensionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5358,10 +5358,10 @@ end
 -- @param CreateConditionalForwarderRequest
 -- @return response
 -- @return error_message
-function M.CreateConditionalForwarderSync(...)
+function M.CreateConditionalForwarderSync(CreateConditionalForwarderRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateConditionalForwarderAsync(..., function(response, error_message)
+	M.CreateConditionalForwarderAsync(CreateConditionalForwarderRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5390,10 +5390,10 @@ end
 -- @param RestoreFromSnapshotRequest
 -- @return response
 -- @return error_message
-function M.RestoreFromSnapshotSync(...)
+function M.RestoreFromSnapshotSync(RestoreFromSnapshotRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RestoreFromSnapshotAsync(..., function(response, error_message)
+	M.RestoreFromSnapshotAsync(RestoreFromSnapshotRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5422,10 +5422,10 @@ end
 -- @param ListSchemaExtensionsRequest
 -- @return response
 -- @return error_message
-function M.ListSchemaExtensionsSync(...)
+function M.ListSchemaExtensionsSync(ListSchemaExtensionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListSchemaExtensionsAsync(..., function(response, error_message)
+	M.ListSchemaExtensionsAsync(ListSchemaExtensionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5454,10 +5454,10 @@ end
 -- @param DescribeTrustsRequest
 -- @return response
 -- @return error_message
-function M.DescribeTrustsSync(...)
+function M.DescribeTrustsSync(DescribeTrustsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTrustsAsync(..., function(response, error_message)
+	M.DescribeTrustsAsync(DescribeTrustsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5486,10 +5486,10 @@ end
 -- @param DeregisterEventTopicRequest
 -- @return response
 -- @return error_message
-function M.DeregisterEventTopicSync(...)
+function M.DeregisterEventTopicSync(DeregisterEventTopicRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeregisterEventTopicAsync(..., function(response, error_message)
+	M.DeregisterEventTopicAsync(DeregisterEventTopicRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5518,10 +5518,10 @@ end
 -- @param UpdateConditionalForwarderRequest
 -- @return response
 -- @return error_message
-function M.UpdateConditionalForwarderSync(...)
+function M.UpdateConditionalForwarderSync(UpdateConditionalForwarderRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateConditionalForwarderAsync(..., function(response, error_message)
+	M.UpdateConditionalForwarderAsync(UpdateConditionalForwarderRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5550,10 +5550,10 @@ end
 -- @param CreateTrustRequest
 -- @return response
 -- @return error_message
-function M.CreateTrustSync(...)
+function M.CreateTrustSync(CreateTrustRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateTrustAsync(..., function(response, error_message)
+	M.CreateTrustAsync(CreateTrustRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5582,10 +5582,10 @@ end
 -- @param GetDirectoryLimitsRequest
 -- @return response
 -- @return error_message
-function M.GetDirectoryLimitsSync(...)
+function M.GetDirectoryLimitsSync(GetDirectoryLimitsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetDirectoryLimitsAsync(..., function(response, error_message)
+	M.GetDirectoryLimitsAsync(GetDirectoryLimitsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5614,10 +5614,10 @@ end
 -- @param CreateMicrosoftADRequest
 -- @return response
 -- @return error_message
-function M.CreateMicrosoftADSync(...)
+function M.CreateMicrosoftADSync(CreateMicrosoftADRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateMicrosoftADAsync(..., function(response, error_message)
+	M.CreateMicrosoftADAsync(CreateMicrosoftADRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5646,10 +5646,10 @@ end
 -- @param RegisterEventTopicRequest
 -- @return response
 -- @return error_message
-function M.RegisterEventTopicSync(...)
+function M.RegisterEventTopicSync(RegisterEventTopicRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RegisterEventTopicAsync(..., function(response, error_message)
+	M.RegisterEventTopicAsync(RegisterEventTopicRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5678,10 +5678,10 @@ end
 -- @param GetSnapshotLimitsRequest
 -- @return response
 -- @return error_message
-function M.GetSnapshotLimitsSync(...)
+function M.GetSnapshotLimitsSync(GetSnapshotLimitsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetSnapshotLimitsAsync(..., function(response, error_message)
+	M.GetSnapshotLimitsAsync(GetSnapshotLimitsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5710,10 +5710,10 @@ end
 -- @param DeleteTrustRequest
 -- @return response
 -- @return error_message
-function M.DeleteTrustSync(...)
+function M.DeleteTrustSync(DeleteTrustRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteTrustAsync(..., function(response, error_message)
+	M.DeleteTrustAsync(DeleteTrustRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5742,10 +5742,10 @@ end
 -- @param DescribeDirectoriesRequest
 -- @return response
 -- @return error_message
-function M.DescribeDirectoriesSync(...)
+function M.DescribeDirectoriesSync(DescribeDirectoriesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeDirectoriesAsync(..., function(response, error_message)
+	M.DescribeDirectoriesAsync(DescribeDirectoriesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5774,10 +5774,10 @@ end
 -- @param StartSchemaExtensionRequest
 -- @return response
 -- @return error_message
-function M.StartSchemaExtensionSync(...)
+function M.StartSchemaExtensionSync(StartSchemaExtensionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartSchemaExtensionAsync(..., function(response, error_message)
+	M.StartSchemaExtensionAsync(StartSchemaExtensionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5806,10 +5806,10 @@ end
 -- @param ListTagsForResourceRequest
 -- @return response
 -- @return error_message
-function M.ListTagsForResourceSync(...)
+function M.ListTagsForResourceSync(ListTagsForResourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTagsForResourceAsync(..., function(response, error_message)
+	M.ListTagsForResourceAsync(ListTagsForResourceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5838,10 +5838,10 @@ end
 -- @param CreateSnapshotRequest
 -- @return response
 -- @return error_message
-function M.CreateSnapshotSync(...)
+function M.CreateSnapshotSync(CreateSnapshotRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateSnapshotAsync(..., function(response, error_message)
+	M.CreateSnapshotAsync(CreateSnapshotRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5870,10 +5870,10 @@ end
 -- @param DisableSsoRequest
 -- @return response
 -- @return error_message
-function M.DisableSsoSync(...)
+function M.DisableSsoSync(DisableSsoRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisableSsoAsync(..., function(response, error_message)
+	M.DisableSsoAsync(DisableSsoRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

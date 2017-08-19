@@ -2156,10 +2156,10 @@ end
 -- @param MergeDeveloperIdentitiesInput
 -- @return response
 -- @return error_message
-function M.MergeDeveloperIdentitiesSync(...)
+function M.MergeDeveloperIdentitiesSync(MergeDeveloperIdentitiesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.MergeDeveloperIdentitiesAsync(..., function(response, error_message)
+	M.MergeDeveloperIdentitiesAsync(MergeDeveloperIdentitiesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2188,10 +2188,10 @@ end
 -- @param GetIdentityPoolRolesInput
 -- @return response
 -- @return error_message
-function M.GetIdentityPoolRolesSync(...)
+function M.GetIdentityPoolRolesSync(GetIdentityPoolRolesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetIdentityPoolRolesAsync(..., function(response, error_message)
+	M.GetIdentityPoolRolesAsync(GetIdentityPoolRolesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2220,10 +2220,10 @@ end
 -- @param DeleteIdentitiesInput
 -- @return response
 -- @return error_message
-function M.DeleteIdentitiesSync(...)
+function M.DeleteIdentitiesSync(DeleteIdentitiesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteIdentitiesAsync(..., function(response, error_message)
+	M.DeleteIdentitiesAsync(DeleteIdentitiesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2252,10 +2252,10 @@ end
 -- @param GetOpenIdTokenForDeveloperIdentityInput
 -- @return response
 -- @return error_message
-function M.GetOpenIdTokenForDeveloperIdentitySync(...)
+function M.GetOpenIdTokenForDeveloperIdentitySync(GetOpenIdTokenForDeveloperIdentityInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetOpenIdTokenForDeveloperIdentityAsync(..., function(response, error_message)
+	M.GetOpenIdTokenForDeveloperIdentityAsync(GetOpenIdTokenForDeveloperIdentityInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2284,10 +2284,10 @@ end
 -- @param LookupDeveloperIdentityInput
 -- @return response
 -- @return error_message
-function M.LookupDeveloperIdentitySync(...)
+function M.LookupDeveloperIdentitySync(LookupDeveloperIdentityInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.LookupDeveloperIdentityAsync(..., function(response, error_message)
+	M.LookupDeveloperIdentityAsync(LookupDeveloperIdentityInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2316,10 +2316,10 @@ end
 -- @param ListIdentityPoolsInput
 -- @return response
 -- @return error_message
-function M.ListIdentityPoolsSync(...)
+function M.ListIdentityPoolsSync(ListIdentityPoolsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListIdentityPoolsAsync(..., function(response, error_message)
+	M.ListIdentityPoolsAsync(ListIdentityPoolsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2348,10 +2348,10 @@ end
 -- @param DescribeIdentityInput
 -- @return response
 -- @return error_message
-function M.DescribeIdentitySync(...)
+function M.DescribeIdentitySync(DescribeIdentityInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeIdentityAsync(..., function(response, error_message)
+	M.DescribeIdentityAsync(DescribeIdentityInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2380,10 +2380,10 @@ end
 -- @param GetIdInput
 -- @return response
 -- @return error_message
-function M.GetIdSync(...)
+function M.GetIdSync(GetIdInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetIdAsync(..., function(response, error_message)
+	M.GetIdAsync(GetIdInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2412,10 +2412,10 @@ end
 -- @param UnlinkIdentityInput
 -- @return response
 -- @return error_message
-function M.UnlinkIdentitySync(...)
+function M.UnlinkIdentitySync(UnlinkIdentityInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UnlinkIdentityAsync(..., function(response, error_message)
+	M.UnlinkIdentityAsync(UnlinkIdentityInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2444,10 +2444,10 @@ end
 -- @param ListIdentitiesInput
 -- @return response
 -- @return error_message
-function M.ListIdentitiesSync(...)
+function M.ListIdentitiesSync(ListIdentitiesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListIdentitiesAsync(..., function(response, error_message)
+	M.ListIdentitiesAsync(ListIdentitiesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2476,10 +2476,10 @@ end
 -- @param DeleteIdentityPoolInput
 -- @return response
 -- @return error_message
-function M.DeleteIdentityPoolSync(...)
+function M.DeleteIdentityPoolSync(DeleteIdentityPoolInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteIdentityPoolAsync(..., function(response, error_message)
+	M.DeleteIdentityPoolAsync(DeleteIdentityPoolInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2508,10 +2508,10 @@ end
 -- @param GetCredentialsForIdentityInput
 -- @return response
 -- @return error_message
-function M.GetCredentialsForIdentitySync(...)
+function M.GetCredentialsForIdentitySync(GetCredentialsForIdentityInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetCredentialsForIdentityAsync(..., function(response, error_message)
+	M.GetCredentialsForIdentityAsync(GetCredentialsForIdentityInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2540,10 +2540,10 @@ end
 -- @param IdentityPool
 -- @return response
 -- @return error_message
-function M.UpdateIdentityPoolSync(...)
+function M.UpdateIdentityPoolSync(IdentityPool, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateIdentityPoolAsync(..., function(response, error_message)
+	M.UpdateIdentityPoolAsync(IdentityPool, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2572,10 +2572,10 @@ end
 -- @param SetIdentityPoolRolesInput
 -- @return response
 -- @return error_message
-function M.SetIdentityPoolRolesSync(...)
+function M.SetIdentityPoolRolesSync(SetIdentityPoolRolesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetIdentityPoolRolesAsync(..., function(response, error_message)
+	M.SetIdentityPoolRolesAsync(SetIdentityPoolRolesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2604,10 +2604,10 @@ end
 -- @param UnlinkDeveloperIdentityInput
 -- @return response
 -- @return error_message
-function M.UnlinkDeveloperIdentitySync(...)
+function M.UnlinkDeveloperIdentitySync(UnlinkDeveloperIdentityInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UnlinkDeveloperIdentityAsync(..., function(response, error_message)
+	M.UnlinkDeveloperIdentityAsync(UnlinkDeveloperIdentityInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2636,10 +2636,10 @@ end
 -- @param DescribeIdentityPoolInput
 -- @return response
 -- @return error_message
-function M.DescribeIdentityPoolSync(...)
+function M.DescribeIdentityPoolSync(DescribeIdentityPoolInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeIdentityPoolAsync(..., function(response, error_message)
+	M.DescribeIdentityPoolAsync(DescribeIdentityPoolInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2668,10 +2668,10 @@ end
 -- @param GetOpenIdTokenInput
 -- @return response
 -- @return error_message
-function M.GetOpenIdTokenSync(...)
+function M.GetOpenIdTokenSync(GetOpenIdTokenInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetOpenIdTokenAsync(..., function(response, error_message)
+	M.GetOpenIdTokenAsync(GetOpenIdTokenInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2700,10 +2700,10 @@ end
 -- @param CreateIdentityPoolInput
 -- @return response
 -- @return error_message
-function M.CreateIdentityPoolSync(...)
+function M.CreateIdentityPoolSync(CreateIdentityPoolInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateIdentityPoolAsync(..., function(response, error_message)
+	M.CreateIdentityPoolAsync(CreateIdentityPoolInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

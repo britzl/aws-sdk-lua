@@ -1866,10 +1866,10 @@ end
 -- @param ListMetricsInput
 -- @return response
 -- @return error_message
-function M.ListMetricsSync(...)
+function M.ListMetricsSync(ListMetricsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListMetricsAsync(..., function(response, error_message)
+	M.ListMetricsAsync(ListMetricsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1898,10 +1898,10 @@ end
 -- @param EnableAlarmActionsInput
 -- @return response
 -- @return error_message
-function M.EnableAlarmActionsSync(...)
+function M.EnableAlarmActionsSync(EnableAlarmActionsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.EnableAlarmActionsAsync(..., function(response, error_message)
+	M.EnableAlarmActionsAsync(EnableAlarmActionsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1930,10 +1930,10 @@ end
 -- @param DeleteAlarmsInput
 -- @return response
 -- @return error_message
-function M.DeleteAlarmsSync(...)
+function M.DeleteAlarmsSync(DeleteAlarmsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteAlarmsAsync(..., function(response, error_message)
+	M.DeleteAlarmsAsync(DeleteAlarmsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1962,10 +1962,10 @@ end
 -- @param PutMetricAlarmInput
 -- @return response
 -- @return error_message
-function M.PutMetricAlarmSync(...)
+function M.PutMetricAlarmSync(PutMetricAlarmInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutMetricAlarmAsync(..., function(response, error_message)
+	M.PutMetricAlarmAsync(PutMetricAlarmInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1994,10 +1994,10 @@ end
 -- @param GetMetricStatisticsInput
 -- @return response
 -- @return error_message
-function M.GetMetricStatisticsSync(...)
+function M.GetMetricStatisticsSync(GetMetricStatisticsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetMetricStatisticsAsync(..., function(response, error_message)
+	M.GetMetricStatisticsAsync(GetMetricStatisticsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2026,10 +2026,10 @@ end
 -- @param DisableAlarmActionsInput
 -- @return response
 -- @return error_message
-function M.DisableAlarmActionsSync(...)
+function M.DisableAlarmActionsSync(DisableAlarmActionsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisableAlarmActionsAsync(..., function(response, error_message)
+	M.DisableAlarmActionsAsync(DisableAlarmActionsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2058,10 +2058,10 @@ end
 -- @param SetAlarmStateInput
 -- @return response
 -- @return error_message
-function M.SetAlarmStateSync(...)
+function M.SetAlarmStateSync(SetAlarmStateInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetAlarmStateAsync(..., function(response, error_message)
+	M.SetAlarmStateAsync(SetAlarmStateInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2090,10 +2090,10 @@ end
 -- @param PutMetricDataInput
 -- @return response
 -- @return error_message
-function M.PutMetricDataSync(...)
+function M.PutMetricDataSync(PutMetricDataInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutMetricDataAsync(..., function(response, error_message)
+	M.PutMetricDataAsync(PutMetricDataInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2122,10 +2122,10 @@ end
 -- @param DescribeAlarmsInput
 -- @return response
 -- @return error_message
-function M.DescribeAlarmsSync(...)
+function M.DescribeAlarmsSync(DescribeAlarmsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAlarmsAsync(..., function(response, error_message)
+	M.DescribeAlarmsAsync(DescribeAlarmsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2154,10 +2154,10 @@ end
 -- @param DescribeAlarmsForMetricInput
 -- @return response
 -- @return error_message
-function M.DescribeAlarmsForMetricSync(...)
+function M.DescribeAlarmsForMetricSync(DescribeAlarmsForMetricInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAlarmsForMetricAsync(..., function(response, error_message)
+	M.DescribeAlarmsForMetricAsync(DescribeAlarmsForMetricInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2186,10 +2186,10 @@ end
 -- @param DescribeAlarmHistoryInput
 -- @return response
 -- @return error_message
-function M.DescribeAlarmHistorySync(...)
+function M.DescribeAlarmHistorySync(DescribeAlarmHistoryInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAlarmHistoryAsync(..., function(response, error_message)
+	M.DescribeAlarmHistoryAsync(DescribeAlarmHistoryInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

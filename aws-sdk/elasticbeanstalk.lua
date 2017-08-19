@@ -6282,10 +6282,10 @@ end
 -- @param DescribeApplicationVersionsMessage
 -- @return response
 -- @return error_message
-function M.DescribeApplicationVersionsSync(...)
+function M.DescribeApplicationVersionsSync(DescribeApplicationVersionsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeApplicationVersionsAsync(..., function(response, error_message)
+	M.DescribeApplicationVersionsAsync(DescribeApplicationVersionsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6314,10 +6314,10 @@ end
 -- @param RequestEnvironmentInfoMessage
 -- @return response
 -- @return error_message
-function M.RequestEnvironmentInfoSync(...)
+function M.RequestEnvironmentInfoSync(RequestEnvironmentInfoMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RequestEnvironmentInfoAsync(..., function(response, error_message)
+	M.RequestEnvironmentInfoAsync(RequestEnvironmentInfoMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6346,10 +6346,10 @@ end
 -- @param DescribeEnvironmentResourcesMessage
 -- @return response
 -- @return error_message
-function M.DescribeEnvironmentResourcesSync(...)
+function M.DescribeEnvironmentResourcesSync(DescribeEnvironmentResourcesMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEnvironmentResourcesAsync(..., function(response, error_message)
+	M.DescribeEnvironmentResourcesAsync(DescribeEnvironmentResourcesMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6378,10 +6378,10 @@ end
 -- @param DescribeEventsMessage
 -- @return response
 -- @return error_message
-function M.DescribeEventsSync(...)
+function M.DescribeEventsSync(DescribeEventsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEventsAsync(..., function(response, error_message)
+	M.DescribeEventsAsync(DescribeEventsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6410,10 +6410,10 @@ end
 -- @param DescribeEnvironmentHealthRequest
 -- @return response
 -- @return error_message
-function M.DescribeEnvironmentHealthSync(...)
+function M.DescribeEnvironmentHealthSync(DescribeEnvironmentHealthRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEnvironmentHealthAsync(..., function(response, error_message)
+	M.DescribeEnvironmentHealthAsync(DescribeEnvironmentHealthRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6442,10 +6442,10 @@ end
 -- @param UpdateApplicationResourceLifecycleMessage
 -- @return response
 -- @return error_message
-function M.UpdateApplicationResourceLifecycleSync(...)
+function M.UpdateApplicationResourceLifecycleSync(UpdateApplicationResourceLifecycleMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateApplicationResourceLifecycleAsync(..., function(response, error_message)
+	M.UpdateApplicationResourceLifecycleAsync(UpdateApplicationResourceLifecycleMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6474,10 +6474,10 @@ end
 -- @param UpdateApplicationVersionMessage
 -- @return response
 -- @return error_message
-function M.UpdateApplicationVersionSync(...)
+function M.UpdateApplicationVersionSync(UpdateApplicationVersionMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateApplicationVersionAsync(..., function(response, error_message)
+	M.UpdateApplicationVersionAsync(UpdateApplicationVersionMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6506,10 +6506,10 @@ end
 -- @param DeleteApplicationMessage
 -- @return response
 -- @return error_message
-function M.DeleteApplicationSync(...)
+function M.DeleteApplicationSync(DeleteApplicationMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteApplicationAsync(..., function(response, error_message)
+	M.DeleteApplicationAsync(DeleteApplicationMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6538,10 +6538,10 @@ end
 -- @param ApplyEnvironmentManagedActionRequest
 -- @return response
 -- @return error_message
-function M.ApplyEnvironmentManagedActionSync(...)
+function M.ApplyEnvironmentManagedActionSync(ApplyEnvironmentManagedActionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ApplyEnvironmentManagedActionAsync(..., function(response, error_message)
+	M.ApplyEnvironmentManagedActionAsync(ApplyEnvironmentManagedActionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6570,10 +6570,10 @@ end
 -- @param DescribeConfigurationOptionsMessage
 -- @return response
 -- @return error_message
-function M.DescribeConfigurationOptionsSync(...)
+function M.DescribeConfigurationOptionsSync(DescribeConfigurationOptionsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeConfigurationOptionsAsync(..., function(response, error_message)
+	M.DescribeConfigurationOptionsAsync(DescribeConfigurationOptionsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6602,10 +6602,10 @@ end
 -- @param DescribeEnvironmentManagedActionHistoryRequest
 -- @return response
 -- @return error_message
-function M.DescribeEnvironmentManagedActionHistorySync(...)
+function M.DescribeEnvironmentManagedActionHistorySync(DescribeEnvironmentManagedActionHistoryRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEnvironmentManagedActionHistoryAsync(..., function(response, error_message)
+	M.DescribeEnvironmentManagedActionHistoryAsync(DescribeEnvironmentManagedActionHistoryRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6634,10 +6634,10 @@ end
 -- @param DeleteConfigurationTemplateMessage
 -- @return response
 -- @return error_message
-function M.DeleteConfigurationTemplateSync(...)
+function M.DeleteConfigurationTemplateSync(DeleteConfigurationTemplateMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteConfigurationTemplateAsync(..., function(response, error_message)
+	M.DeleteConfigurationTemplateAsync(DeleteConfigurationTemplateMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6666,10 +6666,10 @@ end
 -- @param ValidateConfigurationSettingsMessage
 -- @return response
 -- @return error_message
-function M.ValidateConfigurationSettingsSync(...)
+function M.ValidateConfigurationSettingsSync(ValidateConfigurationSettingsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ValidateConfigurationSettingsAsync(..., function(response, error_message)
+	M.ValidateConfigurationSettingsAsync(ValidateConfigurationSettingsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6698,7 +6698,7 @@ end
 function M.ListAvailableSolutionStacksSync(...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListAvailableSolutionStacksAsync(..., function(response, error_message)
+	M.ListAvailableSolutionStacksAsync(function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6727,10 +6727,10 @@ end
 -- @param ComposeEnvironmentsMessage
 -- @return response
 -- @return error_message
-function M.ComposeEnvironmentsSync(...)
+function M.ComposeEnvironmentsSync(ComposeEnvironmentsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ComposeEnvironmentsAsync(..., function(response, error_message)
+	M.ComposeEnvironmentsAsync(ComposeEnvironmentsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6759,10 +6759,10 @@ end
 -- @param DescribeConfigurationSettingsMessage
 -- @return response
 -- @return error_message
-function M.DescribeConfigurationSettingsSync(...)
+function M.DescribeConfigurationSettingsSync(DescribeConfigurationSettingsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeConfigurationSettingsAsync(..., function(response, error_message)
+	M.DescribeConfigurationSettingsAsync(DescribeConfigurationSettingsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6791,10 +6791,10 @@ end
 -- @param CreateApplicationMessage
 -- @return response
 -- @return error_message
-function M.CreateApplicationSync(...)
+function M.CreateApplicationSync(CreateApplicationMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateApplicationAsync(..., function(response, error_message)
+	M.CreateApplicationAsync(CreateApplicationMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6823,10 +6823,10 @@ end
 -- @param UpdateConfigurationTemplateMessage
 -- @return response
 -- @return error_message
-function M.UpdateConfigurationTemplateSync(...)
+function M.UpdateConfigurationTemplateSync(UpdateConfigurationTemplateMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateConfigurationTemplateAsync(..., function(response, error_message)
+	M.UpdateConfigurationTemplateAsync(UpdateConfigurationTemplateMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6855,10 +6855,10 @@ end
 -- @param DeleteApplicationVersionMessage
 -- @return response
 -- @return error_message
-function M.DeleteApplicationVersionSync(...)
+function M.DeleteApplicationVersionSync(DeleteApplicationVersionMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteApplicationVersionAsync(..., function(response, error_message)
+	M.DeleteApplicationVersionAsync(DeleteApplicationVersionMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6887,10 +6887,10 @@ end
 -- @param RetrieveEnvironmentInfoMessage
 -- @return response
 -- @return error_message
-function M.RetrieveEnvironmentInfoSync(...)
+function M.RetrieveEnvironmentInfoSync(RetrieveEnvironmentInfoMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RetrieveEnvironmentInfoAsync(..., function(response, error_message)
+	M.RetrieveEnvironmentInfoAsync(RetrieveEnvironmentInfoMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6919,10 +6919,10 @@ end
 -- @param UpdateApplicationMessage
 -- @return response
 -- @return error_message
-function M.UpdateApplicationSync(...)
+function M.UpdateApplicationSync(UpdateApplicationMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateApplicationAsync(..., function(response, error_message)
+	M.UpdateApplicationAsync(UpdateApplicationMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6951,10 +6951,10 @@ end
 -- @param UpdateEnvironmentMessage
 -- @return response
 -- @return error_message
-function M.UpdateEnvironmentSync(...)
+function M.UpdateEnvironmentSync(UpdateEnvironmentMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateEnvironmentAsync(..., function(response, error_message)
+	M.UpdateEnvironmentAsync(UpdateEnvironmentMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6983,10 +6983,10 @@ end
 -- @param DescribeEnvironmentsMessage
 -- @return response
 -- @return error_message
-function M.DescribeEnvironmentsSync(...)
+function M.DescribeEnvironmentsSync(DescribeEnvironmentsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEnvironmentsAsync(..., function(response, error_message)
+	M.DescribeEnvironmentsAsync(DescribeEnvironmentsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7015,10 +7015,10 @@ end
 -- @param ListPlatformVersionsRequest
 -- @return response
 -- @return error_message
-function M.ListPlatformVersionsSync(...)
+function M.ListPlatformVersionsSync(ListPlatformVersionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListPlatformVersionsAsync(..., function(response, error_message)
+	M.ListPlatformVersionsAsync(ListPlatformVersionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7047,10 +7047,10 @@ end
 -- @param DescribeEnvironmentManagedActionsRequest
 -- @return response
 -- @return error_message
-function M.DescribeEnvironmentManagedActionsSync(...)
+function M.DescribeEnvironmentManagedActionsSync(DescribeEnvironmentManagedActionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEnvironmentManagedActionsAsync(..., function(response, error_message)
+	M.DescribeEnvironmentManagedActionsAsync(DescribeEnvironmentManagedActionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7079,10 +7079,10 @@ end
 -- @param AbortEnvironmentUpdateMessage
 -- @return response
 -- @return error_message
-function M.AbortEnvironmentUpdateSync(...)
+function M.AbortEnvironmentUpdateSync(AbortEnvironmentUpdateMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AbortEnvironmentUpdateAsync(..., function(response, error_message)
+	M.AbortEnvironmentUpdateAsync(AbortEnvironmentUpdateMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7111,10 +7111,10 @@ end
 -- @param TerminateEnvironmentMessage
 -- @return response
 -- @return error_message
-function M.TerminateEnvironmentSync(...)
+function M.TerminateEnvironmentSync(TerminateEnvironmentMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.TerminateEnvironmentAsync(..., function(response, error_message)
+	M.TerminateEnvironmentAsync(TerminateEnvironmentMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7143,10 +7143,10 @@ end
 -- @param DeleteEnvironmentConfigurationMessage
 -- @return response
 -- @return error_message
-function M.DeleteEnvironmentConfigurationSync(...)
+function M.DeleteEnvironmentConfigurationSync(DeleteEnvironmentConfigurationMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteEnvironmentConfigurationAsync(..., function(response, error_message)
+	M.DeleteEnvironmentConfigurationAsync(DeleteEnvironmentConfigurationMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7175,10 +7175,10 @@ end
 -- @param CreateEnvironmentMessage
 -- @return response
 -- @return error_message
-function M.CreateEnvironmentSync(...)
+function M.CreateEnvironmentSync(CreateEnvironmentMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateEnvironmentAsync(..., function(response, error_message)
+	M.CreateEnvironmentAsync(CreateEnvironmentMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7207,10 +7207,10 @@ end
 -- @param SwapEnvironmentCNAMEsMessage
 -- @return response
 -- @return error_message
-function M.SwapEnvironmentCNAMEsSync(...)
+function M.SwapEnvironmentCNAMEsSync(SwapEnvironmentCNAMEsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SwapEnvironmentCNAMEsAsync(..., function(response, error_message)
+	M.SwapEnvironmentCNAMEsAsync(SwapEnvironmentCNAMEsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7239,10 +7239,10 @@ end
 -- @param DeletePlatformVersionRequest
 -- @return response
 -- @return error_message
-function M.DeletePlatformVersionSync(...)
+function M.DeletePlatformVersionSync(DeletePlatformVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeletePlatformVersionAsync(..., function(response, error_message)
+	M.DeletePlatformVersionAsync(DeletePlatformVersionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7271,7 +7271,7 @@ end
 function M.CreateStorageLocationSync(...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateStorageLocationAsync(..., function(response, error_message)
+	M.CreateStorageLocationAsync(function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7300,10 +7300,10 @@ end
 -- @param RebuildEnvironmentMessage
 -- @return response
 -- @return error_message
-function M.RebuildEnvironmentSync(...)
+function M.RebuildEnvironmentSync(RebuildEnvironmentMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RebuildEnvironmentAsync(..., function(response, error_message)
+	M.RebuildEnvironmentAsync(RebuildEnvironmentMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7332,10 +7332,10 @@ end
 -- @param RestartAppServerMessage
 -- @return response
 -- @return error_message
-function M.RestartAppServerSync(...)
+function M.RestartAppServerSync(RestartAppServerMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RestartAppServerAsync(..., function(response, error_message)
+	M.RestartAppServerAsync(RestartAppServerMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7364,10 +7364,10 @@ end
 -- @param DescribeApplicationsMessage
 -- @return response
 -- @return error_message
-function M.DescribeApplicationsSync(...)
+function M.DescribeApplicationsSync(DescribeApplicationsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeApplicationsAsync(..., function(response, error_message)
+	M.DescribeApplicationsAsync(DescribeApplicationsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7396,10 +7396,10 @@ end
 -- @param CreatePlatformVersionRequest
 -- @return response
 -- @return error_message
-function M.CreatePlatformVersionSync(...)
+function M.CreatePlatformVersionSync(CreatePlatformVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreatePlatformVersionAsync(..., function(response, error_message)
+	M.CreatePlatformVersionAsync(CreatePlatformVersionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7428,10 +7428,10 @@ end
 -- @param DescribePlatformVersionRequest
 -- @return response
 -- @return error_message
-function M.DescribePlatformVersionSync(...)
+function M.DescribePlatformVersionSync(DescribePlatformVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribePlatformVersionAsync(..., function(response, error_message)
+	M.DescribePlatformVersionAsync(DescribePlatformVersionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7460,10 +7460,10 @@ end
 -- @param DescribeInstancesHealthRequest
 -- @return response
 -- @return error_message
-function M.DescribeInstancesHealthSync(...)
+function M.DescribeInstancesHealthSync(DescribeInstancesHealthRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeInstancesHealthAsync(..., function(response, error_message)
+	M.DescribeInstancesHealthAsync(DescribeInstancesHealthRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7492,10 +7492,10 @@ end
 -- @param CreateApplicationVersionMessage
 -- @return response
 -- @return error_message
-function M.CreateApplicationVersionSync(...)
+function M.CreateApplicationVersionSync(CreateApplicationVersionMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateApplicationVersionAsync(..., function(response, error_message)
+	M.CreateApplicationVersionAsync(CreateApplicationVersionMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7524,10 +7524,10 @@ end
 -- @param CreateConfigurationTemplateMessage
 -- @return response
 -- @return error_message
-function M.CreateConfigurationTemplateSync(...)
+function M.CreateConfigurationTemplateSync(CreateConfigurationTemplateMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateConfigurationTemplateAsync(..., function(response, error_message)
+	M.CreateConfigurationTemplateAsync(CreateConfigurationTemplateMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7556,10 +7556,10 @@ end
 -- @param CheckDNSAvailabilityMessage
 -- @return response
 -- @return error_message
-function M.CheckDNSAvailabilitySync(...)
+function M.CheckDNSAvailabilitySync(CheckDNSAvailabilityMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CheckDNSAvailabilityAsync(..., function(response, error_message)
+	M.CheckDNSAvailabilityAsync(CheckDNSAvailabilityMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

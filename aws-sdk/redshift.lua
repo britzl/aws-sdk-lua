@@ -8262,10 +8262,10 @@ end
 -- @param DeleteTagsMessage
 -- @return response
 -- @return error_message
-function M.DeleteTagsSync(...)
+function M.DeleteTagsSync(DeleteTagsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteTagsAsync(..., function(response, error_message)
+	M.DeleteTagsAsync(DeleteTagsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8294,10 +8294,10 @@ end
 -- @param DescribeDefaultClusterParametersMessage
 -- @return response
 -- @return error_message
-function M.DescribeDefaultClusterParametersSync(...)
+function M.DescribeDefaultClusterParametersSync(DescribeDefaultClusterParametersMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeDefaultClusterParametersAsync(..., function(response, error_message)
+	M.DescribeDefaultClusterParametersAsync(DescribeDefaultClusterParametersMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8326,10 +8326,10 @@ end
 -- @param DescribeClusterParameterGroupsMessage
 -- @return response
 -- @return error_message
-function M.DescribeClusterParameterGroupsSync(...)
+function M.DescribeClusterParameterGroupsSync(DescribeClusterParameterGroupsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeClusterParameterGroupsAsync(..., function(response, error_message)
+	M.DescribeClusterParameterGroupsAsync(DescribeClusterParameterGroupsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8358,10 +8358,10 @@ end
 -- @param RestoreFromClusterSnapshotMessage
 -- @return response
 -- @return error_message
-function M.RestoreFromClusterSnapshotSync(...)
+function M.RestoreFromClusterSnapshotSync(RestoreFromClusterSnapshotMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RestoreFromClusterSnapshotAsync(..., function(response, error_message)
+	M.RestoreFromClusterSnapshotAsync(RestoreFromClusterSnapshotMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8390,10 +8390,10 @@ end
 -- @param CreateClusterMessage
 -- @return response
 -- @return error_message
-function M.CreateClusterSync(...)
+function M.CreateClusterSync(CreateClusterMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateClusterAsync(..., function(response, error_message)
+	M.CreateClusterAsync(CreateClusterMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8422,10 +8422,10 @@ end
 -- @param CopyClusterSnapshotMessage
 -- @return response
 -- @return error_message
-function M.CopyClusterSnapshotSync(...)
+function M.CopyClusterSnapshotSync(CopyClusterSnapshotMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CopyClusterSnapshotAsync(..., function(response, error_message)
+	M.CopyClusterSnapshotAsync(CopyClusterSnapshotMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8454,10 +8454,10 @@ end
 -- @param CreateClusterParameterGroupMessage
 -- @return response
 -- @return error_message
-function M.CreateClusterParameterGroupSync(...)
+function M.CreateClusterParameterGroupSync(CreateClusterParameterGroupMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateClusterParameterGroupAsync(..., function(response, error_message)
+	M.CreateClusterParameterGroupAsync(CreateClusterParameterGroupMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8486,10 +8486,10 @@ end
 -- @param DescribeEventsMessage
 -- @return response
 -- @return error_message
-function M.DescribeEventsSync(...)
+function M.DescribeEventsSync(DescribeEventsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEventsAsync(..., function(response, error_message)
+	M.DescribeEventsAsync(DescribeEventsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8518,10 +8518,10 @@ end
 -- @param DescribeEventSubscriptionsMessage
 -- @return response
 -- @return error_message
-function M.DescribeEventSubscriptionsSync(...)
+function M.DescribeEventSubscriptionsSync(DescribeEventSubscriptionsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEventSubscriptionsAsync(..., function(response, error_message)
+	M.DescribeEventSubscriptionsAsync(DescribeEventSubscriptionsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8550,10 +8550,10 @@ end
 -- @param CreateEventSubscriptionMessage
 -- @return response
 -- @return error_message
-function M.CreateEventSubscriptionSync(...)
+function M.CreateEventSubscriptionSync(CreateEventSubscriptionMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateEventSubscriptionAsync(..., function(response, error_message)
+	M.CreateEventSubscriptionAsync(CreateEventSubscriptionMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8582,10 +8582,10 @@ end
 -- @param DescribeHsmClientCertificatesMessage
 -- @return response
 -- @return error_message
-function M.DescribeHsmClientCertificatesSync(...)
+function M.DescribeHsmClientCertificatesSync(DescribeHsmClientCertificatesMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeHsmClientCertificatesAsync(..., function(response, error_message)
+	M.DescribeHsmClientCertificatesAsync(DescribeHsmClientCertificatesMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8614,10 +8614,10 @@ end
 -- @param DeleteClusterMessage
 -- @return response
 -- @return error_message
-function M.DeleteClusterSync(...)
+function M.DeleteClusterSync(DeleteClusterMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteClusterAsync(..., function(response, error_message)
+	M.DeleteClusterAsync(DeleteClusterMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8646,10 +8646,10 @@ end
 -- @param CreateSnapshotCopyGrantMessage
 -- @return response
 -- @return error_message
-function M.CreateSnapshotCopyGrantSync(...)
+function M.CreateSnapshotCopyGrantSync(CreateSnapshotCopyGrantMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateSnapshotCopyGrantAsync(..., function(response, error_message)
+	M.CreateSnapshotCopyGrantAsync(CreateSnapshotCopyGrantMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8678,10 +8678,10 @@ end
 -- @param DescribeEventCategoriesMessage
 -- @return response
 -- @return error_message
-function M.DescribeEventCategoriesSync(...)
+function M.DescribeEventCategoriesSync(DescribeEventCategoriesMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEventCategoriesAsync(..., function(response, error_message)
+	M.DescribeEventCategoriesAsync(DescribeEventCategoriesMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8710,10 +8710,10 @@ end
 -- @param ModifySnapshotCopyRetentionPeriodMessage
 -- @return response
 -- @return error_message
-function M.ModifySnapshotCopyRetentionPeriodSync(...)
+function M.ModifySnapshotCopyRetentionPeriodSync(ModifySnapshotCopyRetentionPeriodMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ModifySnapshotCopyRetentionPeriodAsync(..., function(response, error_message)
+	M.ModifySnapshotCopyRetentionPeriodAsync(ModifySnapshotCopyRetentionPeriodMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8742,10 +8742,10 @@ end
 -- @param GetClusterCredentialsMessage
 -- @return response
 -- @return error_message
-function M.GetClusterCredentialsSync(...)
+function M.GetClusterCredentialsSync(GetClusterCredentialsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetClusterCredentialsAsync(..., function(response, error_message)
+	M.GetClusterCredentialsAsync(GetClusterCredentialsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8774,10 +8774,10 @@ end
 -- @param DeleteSnapshotCopyGrantMessage
 -- @return response
 -- @return error_message
-function M.DeleteSnapshotCopyGrantSync(...)
+function M.DeleteSnapshotCopyGrantSync(DeleteSnapshotCopyGrantMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteSnapshotCopyGrantAsync(..., function(response, error_message)
+	M.DeleteSnapshotCopyGrantAsync(DeleteSnapshotCopyGrantMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8806,10 +8806,10 @@ end
 -- @param DescribeReservedNodesMessage
 -- @return response
 -- @return error_message
-function M.DescribeReservedNodesSync(...)
+function M.DescribeReservedNodesSync(DescribeReservedNodesMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeReservedNodesAsync(..., function(response, error_message)
+	M.DescribeReservedNodesAsync(DescribeReservedNodesMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8838,10 +8838,10 @@ end
 -- @param AuthorizeSnapshotAccessMessage
 -- @return response
 -- @return error_message
-function M.AuthorizeSnapshotAccessSync(...)
+function M.AuthorizeSnapshotAccessSync(AuthorizeSnapshotAccessMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AuthorizeSnapshotAccessAsync(..., function(response, error_message)
+	M.AuthorizeSnapshotAccessAsync(AuthorizeSnapshotAccessMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8870,10 +8870,10 @@ end
 -- @param EnableLoggingMessage
 -- @return response
 -- @return error_message
-function M.EnableLoggingSync(...)
+function M.EnableLoggingSync(EnableLoggingMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.EnableLoggingAsync(..., function(response, error_message)
+	M.EnableLoggingAsync(EnableLoggingMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8902,10 +8902,10 @@ end
 -- @param DisableSnapshotCopyMessage
 -- @return response
 -- @return error_message
-function M.DisableSnapshotCopySync(...)
+function M.DisableSnapshotCopySync(DisableSnapshotCopyMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisableSnapshotCopyAsync(..., function(response, error_message)
+	M.DisableSnapshotCopyAsync(DisableSnapshotCopyMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8934,10 +8934,10 @@ end
 -- @param DeleteHsmClientCertificateMessage
 -- @return response
 -- @return error_message
-function M.DeleteHsmClientCertificateSync(...)
+function M.DeleteHsmClientCertificateSync(DeleteHsmClientCertificateMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteHsmClientCertificateAsync(..., function(response, error_message)
+	M.DeleteHsmClientCertificateAsync(DeleteHsmClientCertificateMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8966,10 +8966,10 @@ end
 -- @param RebootClusterMessage
 -- @return response
 -- @return error_message
-function M.RebootClusterSync(...)
+function M.RebootClusterSync(RebootClusterMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RebootClusterAsync(..., function(response, error_message)
+	M.RebootClusterAsync(RebootClusterMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8998,10 +8998,10 @@ end
 -- @param CreateHsmConfigurationMessage
 -- @return response
 -- @return error_message
-function M.CreateHsmConfigurationSync(...)
+function M.CreateHsmConfigurationSync(CreateHsmConfigurationMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateHsmConfigurationAsync(..., function(response, error_message)
+	M.CreateHsmConfigurationAsync(CreateHsmConfigurationMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9030,10 +9030,10 @@ end
 -- @param RevokeSnapshotAccessMessage
 -- @return response
 -- @return error_message
-function M.RevokeSnapshotAccessSync(...)
+function M.RevokeSnapshotAccessSync(RevokeSnapshotAccessMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RevokeSnapshotAccessAsync(..., function(response, error_message)
+	M.RevokeSnapshotAccessAsync(RevokeSnapshotAccessMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9062,10 +9062,10 @@ end
 -- @param DescribeClustersMessage
 -- @return response
 -- @return error_message
-function M.DescribeClustersSync(...)
+function M.DescribeClustersSync(DescribeClustersMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeClustersAsync(..., function(response, error_message)
+	M.DescribeClustersAsync(DescribeClustersMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9094,10 +9094,10 @@ end
 -- @param ModifyClusterIamRolesMessage
 -- @return response
 -- @return error_message
-function M.ModifyClusterIamRolesSync(...)
+function M.ModifyClusterIamRolesSync(ModifyClusterIamRolesMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ModifyClusterIamRolesAsync(..., function(response, error_message)
+	M.ModifyClusterIamRolesAsync(ModifyClusterIamRolesMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9126,10 +9126,10 @@ end
 -- @param ResetClusterParameterGroupMessage
 -- @return response
 -- @return error_message
-function M.ResetClusterParameterGroupSync(...)
+function M.ResetClusterParameterGroupSync(ResetClusterParameterGroupMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ResetClusterParameterGroupAsync(..., function(response, error_message)
+	M.ResetClusterParameterGroupAsync(ResetClusterParameterGroupMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9158,10 +9158,10 @@ end
 -- @param DescribeTableRestoreStatusMessage
 -- @return response
 -- @return error_message
-function M.DescribeTableRestoreStatusSync(...)
+function M.DescribeTableRestoreStatusSync(DescribeTableRestoreStatusMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTableRestoreStatusAsync(..., function(response, error_message)
+	M.DescribeTableRestoreStatusAsync(DescribeTableRestoreStatusMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9190,10 +9190,10 @@ end
 -- @param DeleteClusterSecurityGroupMessage
 -- @return response
 -- @return error_message
-function M.DeleteClusterSecurityGroupSync(...)
+function M.DeleteClusterSecurityGroupSync(DeleteClusterSecurityGroupMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteClusterSecurityGroupAsync(..., function(response, error_message)
+	M.DeleteClusterSecurityGroupAsync(DeleteClusterSecurityGroupMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9222,10 +9222,10 @@ end
 -- @param ModifyClusterParameterGroupMessage
 -- @return response
 -- @return error_message
-function M.ModifyClusterParameterGroupSync(...)
+function M.ModifyClusterParameterGroupSync(ModifyClusterParameterGroupMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ModifyClusterParameterGroupAsync(..., function(response, error_message)
+	M.ModifyClusterParameterGroupAsync(ModifyClusterParameterGroupMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9254,10 +9254,10 @@ end
 -- @param DescribeClusterSnapshotsMessage
 -- @return response
 -- @return error_message
-function M.DescribeClusterSnapshotsSync(...)
+function M.DescribeClusterSnapshotsSync(DescribeClusterSnapshotsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeClusterSnapshotsAsync(..., function(response, error_message)
+	M.DescribeClusterSnapshotsAsync(DescribeClusterSnapshotsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9286,10 +9286,10 @@ end
 -- @param CreateClusterSecurityGroupMessage
 -- @return response
 -- @return error_message
-function M.CreateClusterSecurityGroupSync(...)
+function M.CreateClusterSecurityGroupSync(CreateClusterSecurityGroupMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateClusterSecurityGroupAsync(..., function(response, error_message)
+	M.CreateClusterSecurityGroupAsync(CreateClusterSecurityGroupMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9318,10 +9318,10 @@ end
 -- @param DisableLoggingMessage
 -- @return response
 -- @return error_message
-function M.DisableLoggingSync(...)
+function M.DisableLoggingSync(DisableLoggingMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisableLoggingAsync(..., function(response, error_message)
+	M.DisableLoggingAsync(DisableLoggingMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9350,10 +9350,10 @@ end
 -- @param DescribeClusterVersionsMessage
 -- @return response
 -- @return error_message
-function M.DescribeClusterVersionsSync(...)
+function M.DescribeClusterVersionsSync(DescribeClusterVersionsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeClusterVersionsAsync(..., function(response, error_message)
+	M.DescribeClusterVersionsAsync(DescribeClusterVersionsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9382,10 +9382,10 @@ end
 -- @param DescribeResizeMessage
 -- @return response
 -- @return error_message
-function M.DescribeResizeSync(...)
+function M.DescribeResizeSync(DescribeResizeMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeResizeAsync(..., function(response, error_message)
+	M.DescribeResizeAsync(DescribeResizeMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9414,10 +9414,10 @@ end
 -- @param DescribeClusterSubnetGroupsMessage
 -- @return response
 -- @return error_message
-function M.DescribeClusterSubnetGroupsSync(...)
+function M.DescribeClusterSubnetGroupsSync(DescribeClusterSubnetGroupsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeClusterSubnetGroupsAsync(..., function(response, error_message)
+	M.DescribeClusterSubnetGroupsAsync(DescribeClusterSubnetGroupsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9446,10 +9446,10 @@ end
 -- @param AuthorizeClusterSecurityGroupIngressMessage
 -- @return response
 -- @return error_message
-function M.AuthorizeClusterSecurityGroupIngressSync(...)
+function M.AuthorizeClusterSecurityGroupIngressSync(AuthorizeClusterSecurityGroupIngressMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AuthorizeClusterSecurityGroupIngressAsync(..., function(response, error_message)
+	M.AuthorizeClusterSecurityGroupIngressAsync(AuthorizeClusterSecurityGroupIngressMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9478,10 +9478,10 @@ end
 -- @param DescribeHsmConfigurationsMessage
 -- @return response
 -- @return error_message
-function M.DescribeHsmConfigurationsSync(...)
+function M.DescribeHsmConfigurationsSync(DescribeHsmConfigurationsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeHsmConfigurationsAsync(..., function(response, error_message)
+	M.DescribeHsmConfigurationsAsync(DescribeHsmConfigurationsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9510,10 +9510,10 @@ end
 -- @param DeleteEventSubscriptionMessage
 -- @return response
 -- @return error_message
-function M.DeleteEventSubscriptionSync(...)
+function M.DeleteEventSubscriptionSync(DeleteEventSubscriptionMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteEventSubscriptionAsync(..., function(response, error_message)
+	M.DeleteEventSubscriptionAsync(DeleteEventSubscriptionMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9542,10 +9542,10 @@ end
 -- @param DescribeTagsMessage
 -- @return response
 -- @return error_message
-function M.DescribeTagsSync(...)
+function M.DescribeTagsSync(DescribeTagsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTagsAsync(..., function(response, error_message)
+	M.DescribeTagsAsync(DescribeTagsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9574,10 +9574,10 @@ end
 -- @param DeleteHsmConfigurationMessage
 -- @return response
 -- @return error_message
-function M.DeleteHsmConfigurationSync(...)
+function M.DeleteHsmConfigurationSync(DeleteHsmConfigurationMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteHsmConfigurationAsync(..., function(response, error_message)
+	M.DeleteHsmConfigurationAsync(DeleteHsmConfigurationMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9606,10 +9606,10 @@ end
 -- @param CreateClusterSubnetGroupMessage
 -- @return response
 -- @return error_message
-function M.CreateClusterSubnetGroupSync(...)
+function M.CreateClusterSubnetGroupSync(CreateClusterSubnetGroupMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateClusterSubnetGroupAsync(..., function(response, error_message)
+	M.CreateClusterSubnetGroupAsync(CreateClusterSubnetGroupMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9638,10 +9638,10 @@ end
 -- @param DescribeClusterParametersMessage
 -- @return response
 -- @return error_message
-function M.DescribeClusterParametersSync(...)
+function M.DescribeClusterParametersSync(DescribeClusterParametersMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeClusterParametersAsync(..., function(response, error_message)
+	M.DescribeClusterParametersAsync(DescribeClusterParametersMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9670,10 +9670,10 @@ end
 -- @param CreateHsmClientCertificateMessage
 -- @return response
 -- @return error_message
-function M.CreateHsmClientCertificateSync(...)
+function M.CreateHsmClientCertificateSync(CreateHsmClientCertificateMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateHsmClientCertificateAsync(..., function(response, error_message)
+	M.CreateHsmClientCertificateAsync(CreateHsmClientCertificateMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9702,10 +9702,10 @@ end
 -- @param ModifyClusterSubnetGroupMessage
 -- @return response
 -- @return error_message
-function M.ModifyClusterSubnetGroupSync(...)
+function M.ModifyClusterSubnetGroupSync(ModifyClusterSubnetGroupMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ModifyClusterSubnetGroupAsync(..., function(response, error_message)
+	M.ModifyClusterSubnetGroupAsync(ModifyClusterSubnetGroupMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9734,10 +9734,10 @@ end
 -- @param DescribeSnapshotCopyGrantsMessage
 -- @return response
 -- @return error_message
-function M.DescribeSnapshotCopyGrantsSync(...)
+function M.DescribeSnapshotCopyGrantsSync(DescribeSnapshotCopyGrantsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeSnapshotCopyGrantsAsync(..., function(response, error_message)
+	M.DescribeSnapshotCopyGrantsAsync(DescribeSnapshotCopyGrantsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9766,10 +9766,10 @@ end
 -- @param DescribeOrderableClusterOptionsMessage
 -- @return response
 -- @return error_message
-function M.DescribeOrderableClusterOptionsSync(...)
+function M.DescribeOrderableClusterOptionsSync(DescribeOrderableClusterOptionsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeOrderableClusterOptionsAsync(..., function(response, error_message)
+	M.DescribeOrderableClusterOptionsAsync(DescribeOrderableClusterOptionsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9798,10 +9798,10 @@ end
 -- @param ModifyClusterMessage
 -- @return response
 -- @return error_message
-function M.ModifyClusterSync(...)
+function M.ModifyClusterSync(ModifyClusterMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ModifyClusterAsync(..., function(response, error_message)
+	M.ModifyClusterAsync(ModifyClusterMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9830,10 +9830,10 @@ end
 -- @param RotateEncryptionKeyMessage
 -- @return response
 -- @return error_message
-function M.RotateEncryptionKeySync(...)
+function M.RotateEncryptionKeySync(RotateEncryptionKeyMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RotateEncryptionKeyAsync(..., function(response, error_message)
+	M.RotateEncryptionKeyAsync(RotateEncryptionKeyMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9862,10 +9862,10 @@ end
 -- @param EnableSnapshotCopyMessage
 -- @return response
 -- @return error_message
-function M.EnableSnapshotCopySync(...)
+function M.EnableSnapshotCopySync(EnableSnapshotCopyMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.EnableSnapshotCopyAsync(..., function(response, error_message)
+	M.EnableSnapshotCopyAsync(EnableSnapshotCopyMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9894,10 +9894,10 @@ end
 -- @param CreateClusterSnapshotMessage
 -- @return response
 -- @return error_message
-function M.CreateClusterSnapshotSync(...)
+function M.CreateClusterSnapshotSync(CreateClusterSnapshotMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateClusterSnapshotAsync(..., function(response, error_message)
+	M.CreateClusterSnapshotAsync(CreateClusterSnapshotMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9926,10 +9926,10 @@ end
 -- @param DeleteClusterSnapshotMessage
 -- @return response
 -- @return error_message
-function M.DeleteClusterSnapshotSync(...)
+function M.DeleteClusterSnapshotSync(DeleteClusterSnapshotMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteClusterSnapshotAsync(..., function(response, error_message)
+	M.DeleteClusterSnapshotAsync(DeleteClusterSnapshotMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9958,10 +9958,10 @@ end
 -- @param CreateTagsMessage
 -- @return response
 -- @return error_message
-function M.CreateTagsSync(...)
+function M.CreateTagsSync(CreateTagsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateTagsAsync(..., function(response, error_message)
+	M.CreateTagsAsync(CreateTagsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9990,10 +9990,10 @@ end
 -- @param DescribeReservedNodeOfferingsMessage
 -- @return response
 -- @return error_message
-function M.DescribeReservedNodeOfferingsSync(...)
+function M.DescribeReservedNodeOfferingsSync(DescribeReservedNodeOfferingsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeReservedNodeOfferingsAsync(..., function(response, error_message)
+	M.DescribeReservedNodeOfferingsAsync(DescribeReservedNodeOfferingsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10022,10 +10022,10 @@ end
 -- @param DescribeLoggingStatusMessage
 -- @return response
 -- @return error_message
-function M.DescribeLoggingStatusSync(...)
+function M.DescribeLoggingStatusSync(DescribeLoggingStatusMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeLoggingStatusAsync(..., function(response, error_message)
+	M.DescribeLoggingStatusAsync(DescribeLoggingStatusMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10054,10 +10054,10 @@ end
 -- @param ModifyEventSubscriptionMessage
 -- @return response
 -- @return error_message
-function M.ModifyEventSubscriptionSync(...)
+function M.ModifyEventSubscriptionSync(ModifyEventSubscriptionMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ModifyEventSubscriptionAsync(..., function(response, error_message)
+	M.ModifyEventSubscriptionAsync(ModifyEventSubscriptionMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10086,10 +10086,10 @@ end
 -- @param RestoreTableFromClusterSnapshotMessage
 -- @return response
 -- @return error_message
-function M.RestoreTableFromClusterSnapshotSync(...)
+function M.RestoreTableFromClusterSnapshotSync(RestoreTableFromClusterSnapshotMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RestoreTableFromClusterSnapshotAsync(..., function(response, error_message)
+	M.RestoreTableFromClusterSnapshotAsync(RestoreTableFromClusterSnapshotMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10118,10 +10118,10 @@ end
 -- @param DescribeClusterSecurityGroupsMessage
 -- @return response
 -- @return error_message
-function M.DescribeClusterSecurityGroupsSync(...)
+function M.DescribeClusterSecurityGroupsSync(DescribeClusterSecurityGroupsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeClusterSecurityGroupsAsync(..., function(response, error_message)
+	M.DescribeClusterSecurityGroupsAsync(DescribeClusterSecurityGroupsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10150,10 +10150,10 @@ end
 -- @param RevokeClusterSecurityGroupIngressMessage
 -- @return response
 -- @return error_message
-function M.RevokeClusterSecurityGroupIngressSync(...)
+function M.RevokeClusterSecurityGroupIngressSync(RevokeClusterSecurityGroupIngressMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RevokeClusterSecurityGroupIngressAsync(..., function(response, error_message)
+	M.RevokeClusterSecurityGroupIngressAsync(RevokeClusterSecurityGroupIngressMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10182,10 +10182,10 @@ end
 -- @param DeleteClusterParameterGroupMessage
 -- @return response
 -- @return error_message
-function M.DeleteClusterParameterGroupSync(...)
+function M.DeleteClusterParameterGroupSync(DeleteClusterParameterGroupMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteClusterParameterGroupAsync(..., function(response, error_message)
+	M.DeleteClusterParameterGroupAsync(DeleteClusterParameterGroupMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10214,10 +10214,10 @@ end
 -- @param DeleteClusterSubnetGroupMessage
 -- @return response
 -- @return error_message
-function M.DeleteClusterSubnetGroupSync(...)
+function M.DeleteClusterSubnetGroupSync(DeleteClusterSubnetGroupMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteClusterSubnetGroupAsync(..., function(response, error_message)
+	M.DeleteClusterSubnetGroupAsync(DeleteClusterSubnetGroupMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10246,10 +10246,10 @@ end
 -- @param PurchaseReservedNodeOfferingMessage
 -- @return response
 -- @return error_message
-function M.PurchaseReservedNodeOfferingSync(...)
+function M.PurchaseReservedNodeOfferingSync(PurchaseReservedNodeOfferingMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PurchaseReservedNodeOfferingAsync(..., function(response, error_message)
+	M.PurchaseReservedNodeOfferingAsync(PurchaseReservedNodeOfferingMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

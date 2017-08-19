@@ -9700,10 +9700,10 @@ end
 -- @param ListObjectVersionsRequest
 -- @return response
 -- @return error_message
-function M.ListObjectVersionsSync(...)
+function M.ListObjectVersionsSync(ListObjectVersionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListObjectVersionsAsync(..., function(response, error_message)
+	M.ListObjectVersionsAsync(ListObjectVersionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9732,10 +9732,10 @@ end
 -- @param PutBucketPolicyRequest
 -- @return response
 -- @return error_message
-function M.PutBucketPolicySync(...)
+function M.PutBucketPolicySync(PutBucketPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutBucketPolicyAsync(..., function(response, error_message)
+	M.PutBucketPolicyAsync(PutBucketPolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9764,10 +9764,10 @@ end
 -- @param ListBucketInventoryConfigurationsRequest
 -- @return response
 -- @return error_message
-function M.ListBucketInventoryConfigurationsSync(...)
+function M.ListBucketInventoryConfigurationsSync(ListBucketInventoryConfigurationsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListBucketInventoryConfigurationsAsync(..., function(response, error_message)
+	M.ListBucketInventoryConfigurationsAsync(ListBucketInventoryConfigurationsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9796,10 +9796,10 @@ end
 -- @param DeleteBucketPolicyRequest
 -- @return response
 -- @return error_message
-function M.DeleteBucketPolicySync(...)
+function M.DeleteBucketPolicySync(DeleteBucketPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteBucketPolicyAsync(..., function(response, error_message)
+	M.DeleteBucketPolicyAsync(DeleteBucketPolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9828,10 +9828,10 @@ end
 -- @param PutBucketLifecycleConfigurationRequest
 -- @return response
 -- @return error_message
-function M.PutBucketLifecycleConfigurationSync(...)
+function M.PutBucketLifecycleConfigurationSync(PutBucketLifecycleConfigurationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutBucketLifecycleConfigurationAsync(..., function(response, error_message)
+	M.PutBucketLifecycleConfigurationAsync(PutBucketLifecycleConfigurationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9860,10 +9860,10 @@ end
 -- @param PutBucketRequestPaymentRequest
 -- @return response
 -- @return error_message
-function M.PutBucketRequestPaymentSync(...)
+function M.PutBucketRequestPaymentSync(PutBucketRequestPaymentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutBucketRequestPaymentAsync(..., function(response, error_message)
+	M.PutBucketRequestPaymentAsync(PutBucketRequestPaymentRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9892,10 +9892,10 @@ end
 -- @param ListObjectsRequest
 -- @return response
 -- @return error_message
-function M.ListObjectsSync(...)
+function M.ListObjectsSync(ListObjectsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListObjectsAsync(..., function(response, error_message)
+	M.ListObjectsAsync(ListObjectsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9924,10 +9924,10 @@ end
 -- @param GetBucketMetricsConfigurationRequest
 -- @return response
 -- @return error_message
-function M.GetBucketMetricsConfigurationSync(...)
+function M.GetBucketMetricsConfigurationSync(GetBucketMetricsConfigurationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetBucketMetricsConfigurationAsync(..., function(response, error_message)
+	M.GetBucketMetricsConfigurationAsync(GetBucketMetricsConfigurationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9956,10 +9956,10 @@ end
 -- @param PutBucketInventoryConfigurationRequest
 -- @return response
 -- @return error_message
-function M.PutBucketInventoryConfigurationSync(...)
+function M.PutBucketInventoryConfigurationSync(PutBucketInventoryConfigurationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutBucketInventoryConfigurationAsync(..., function(response, error_message)
+	M.PutBucketInventoryConfigurationAsync(PutBucketInventoryConfigurationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9988,10 +9988,10 @@ end
 -- @param PutBucketLoggingRequest
 -- @return response
 -- @return error_message
-function M.PutBucketLoggingSync(...)
+function M.PutBucketLoggingSync(PutBucketLoggingRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutBucketLoggingAsync(..., function(response, error_message)
+	M.PutBucketLoggingAsync(PutBucketLoggingRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10020,10 +10020,10 @@ end
 -- @param PutBucketReplicationRequest
 -- @return response
 -- @return error_message
-function M.PutBucketReplicationSync(...)
+function M.PutBucketReplicationSync(PutBucketReplicationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutBucketReplicationAsync(..., function(response, error_message)
+	M.PutBucketReplicationAsync(PutBucketReplicationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10052,10 +10052,10 @@ end
 -- @param PutBucketAccelerateConfigurationRequest
 -- @return response
 -- @return error_message
-function M.PutBucketAccelerateConfigurationSync(...)
+function M.PutBucketAccelerateConfigurationSync(PutBucketAccelerateConfigurationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutBucketAccelerateConfigurationAsync(..., function(response, error_message)
+	M.PutBucketAccelerateConfigurationAsync(PutBucketAccelerateConfigurationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10084,10 +10084,10 @@ end
 -- @param PutBucketAclRequest
 -- @return response
 -- @return error_message
-function M.PutBucketAclSync(...)
+function M.PutBucketAclSync(PutBucketAclRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutBucketAclAsync(..., function(response, error_message)
+	M.PutBucketAclAsync(PutBucketAclRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10116,10 +10116,10 @@ end
 -- @param UploadPartRequest
 -- @return response
 -- @return error_message
-function M.UploadPartSync(...)
+function M.UploadPartSync(UploadPartRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UploadPartAsync(..., function(response, error_message)
+	M.UploadPartAsync(UploadPartRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10148,10 +10148,10 @@ end
 -- @param PutObjectRequest
 -- @return response
 -- @return error_message
-function M.PutObjectSync(...)
+function M.PutObjectSync(PutObjectRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutObjectAsync(..., function(response, error_message)
+	M.PutObjectAsync(PutObjectRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10180,10 +10180,10 @@ end
 -- @param DeleteBucketCorsRequest
 -- @return response
 -- @return error_message
-function M.DeleteBucketCorsSync(...)
+function M.DeleteBucketCorsSync(DeleteBucketCorsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteBucketCorsAsync(..., function(response, error_message)
+	M.DeleteBucketCorsAsync(DeleteBucketCorsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10212,10 +10212,10 @@ end
 -- @param PutBucketVersioningRequest
 -- @return response
 -- @return error_message
-function M.PutBucketVersioningSync(...)
+function M.PutBucketVersioningSync(PutBucketVersioningRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutBucketVersioningAsync(..., function(response, error_message)
+	M.PutBucketVersioningAsync(PutBucketVersioningRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10244,10 +10244,10 @@ end
 -- @param GetBucketCorsRequest
 -- @return response
 -- @return error_message
-function M.GetBucketCorsSync(...)
+function M.GetBucketCorsSync(GetBucketCorsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetBucketCorsAsync(..., function(response, error_message)
+	M.GetBucketCorsAsync(GetBucketCorsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10276,10 +10276,10 @@ end
 -- @param GetBucketAclRequest
 -- @return response
 -- @return error_message
-function M.GetBucketAclSync(...)
+function M.GetBucketAclSync(GetBucketAclRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetBucketAclAsync(..., function(response, error_message)
+	M.GetBucketAclAsync(GetBucketAclRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10308,10 +10308,10 @@ end
 -- @param DeleteBucketMetricsConfigurationRequest
 -- @return response
 -- @return error_message
-function M.DeleteBucketMetricsConfigurationSync(...)
+function M.DeleteBucketMetricsConfigurationSync(DeleteBucketMetricsConfigurationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteBucketMetricsConfigurationAsync(..., function(response, error_message)
+	M.DeleteBucketMetricsConfigurationAsync(DeleteBucketMetricsConfigurationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10340,10 +10340,10 @@ end
 -- @param GetBucketLoggingRequest
 -- @return response
 -- @return error_message
-function M.GetBucketLoggingSync(...)
+function M.GetBucketLoggingSync(GetBucketLoggingRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetBucketLoggingAsync(..., function(response, error_message)
+	M.GetBucketLoggingAsync(GetBucketLoggingRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10372,10 +10372,10 @@ end
 -- @param GetObjectTaggingRequest
 -- @return response
 -- @return error_message
-function M.GetObjectTaggingSync(...)
+function M.GetObjectTaggingSync(GetObjectTaggingRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetObjectTaggingAsync(..., function(response, error_message)
+	M.GetObjectTaggingAsync(GetObjectTaggingRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10404,10 +10404,10 @@ end
 -- @param HeadBucketRequest
 -- @return response
 -- @return error_message
-function M.HeadBucketSync(...)
+function M.HeadBucketSync(HeadBucketRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.HeadBucketAsync(..., function(response, error_message)
+	M.HeadBucketAsync(HeadBucketRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10436,10 +10436,10 @@ end
 -- @param ListBucketMetricsConfigurationsRequest
 -- @return response
 -- @return error_message
-function M.ListBucketMetricsConfigurationsSync(...)
+function M.ListBucketMetricsConfigurationsSync(ListBucketMetricsConfigurationsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListBucketMetricsConfigurationsAsync(..., function(response, error_message)
+	M.ListBucketMetricsConfigurationsAsync(ListBucketMetricsConfigurationsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10468,7 +10468,7 @@ end
 function M.ListBucketsSync(...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListBucketsAsync(..., function(response, error_message)
+	M.ListBucketsAsync(function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10497,10 +10497,10 @@ end
 -- @param DeleteBucketWebsiteRequest
 -- @return response
 -- @return error_message
-function M.DeleteBucketWebsiteSync(...)
+function M.DeleteBucketWebsiteSync(DeleteBucketWebsiteRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteBucketWebsiteAsync(..., function(response, error_message)
+	M.DeleteBucketWebsiteAsync(DeleteBucketWebsiteRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10529,10 +10529,10 @@ end
 -- @param DeleteBucketInventoryConfigurationRequest
 -- @return response
 -- @return error_message
-function M.DeleteBucketInventoryConfigurationSync(...)
+function M.DeleteBucketInventoryConfigurationSync(DeleteBucketInventoryConfigurationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteBucketInventoryConfigurationAsync(..., function(response, error_message)
+	M.DeleteBucketInventoryConfigurationAsync(DeleteBucketInventoryConfigurationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10561,10 +10561,10 @@ end
 -- @param GetBucketNotificationConfigurationRequest
 -- @return response
 -- @return error_message
-function M.GetBucketNotificationConfigurationSync(...)
+function M.GetBucketNotificationConfigurationSync(GetBucketNotificationConfigurationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetBucketNotificationConfigurationAsync(..., function(response, error_message)
+	M.GetBucketNotificationConfigurationAsync(GetBucketNotificationConfigurationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10593,10 +10593,10 @@ end
 -- @param DeleteObjectsRequest
 -- @return response
 -- @return error_message
-function M.DeleteObjectsSync(...)
+function M.DeleteObjectsSync(DeleteObjectsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteObjectsAsync(..., function(response, error_message)
+	M.DeleteObjectsAsync(DeleteObjectsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10625,10 +10625,10 @@ end
 -- @param DeleteBucketReplicationRequest
 -- @return response
 -- @return error_message
-function M.DeleteBucketReplicationSync(...)
+function M.DeleteBucketReplicationSync(DeleteBucketReplicationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteBucketReplicationAsync(..., function(response, error_message)
+	M.DeleteBucketReplicationAsync(DeleteBucketReplicationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10657,10 +10657,10 @@ end
 -- @param PutBucketWebsiteRequest
 -- @return response
 -- @return error_message
-function M.PutBucketWebsiteSync(...)
+function M.PutBucketWebsiteSync(PutBucketWebsiteRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutBucketWebsiteAsync(..., function(response, error_message)
+	M.PutBucketWebsiteAsync(PutBucketWebsiteRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10689,10 +10689,10 @@ end
 -- @param CopyObjectRequest
 -- @return response
 -- @return error_message
-function M.CopyObjectSync(...)
+function M.CopyObjectSync(CopyObjectRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CopyObjectAsync(..., function(response, error_message)
+	M.CopyObjectAsync(CopyObjectRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10721,10 +10721,10 @@ end
 -- @param GetBucketReplicationRequest
 -- @return response
 -- @return error_message
-function M.GetBucketReplicationSync(...)
+function M.GetBucketReplicationSync(GetBucketReplicationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetBucketReplicationAsync(..., function(response, error_message)
+	M.GetBucketReplicationAsync(GetBucketReplicationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10753,10 +10753,10 @@ end
 -- @param GetBucketAnalyticsConfigurationRequest
 -- @return response
 -- @return error_message
-function M.GetBucketAnalyticsConfigurationSync(...)
+function M.GetBucketAnalyticsConfigurationSync(GetBucketAnalyticsConfigurationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetBucketAnalyticsConfigurationAsync(..., function(response, error_message)
+	M.GetBucketAnalyticsConfigurationAsync(GetBucketAnalyticsConfigurationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10785,10 +10785,10 @@ end
 -- @param PutBucketNotificationConfigurationRequest
 -- @return response
 -- @return error_message
-function M.PutBucketNotificationConfigurationSync(...)
+function M.PutBucketNotificationConfigurationSync(PutBucketNotificationConfigurationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutBucketNotificationConfigurationAsync(..., function(response, error_message)
+	M.PutBucketNotificationConfigurationAsync(PutBucketNotificationConfigurationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10817,10 +10817,10 @@ end
 -- @param GetBucketAccelerateConfigurationRequest
 -- @return response
 -- @return error_message
-function M.GetBucketAccelerateConfigurationSync(...)
+function M.GetBucketAccelerateConfigurationSync(GetBucketAccelerateConfigurationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetBucketAccelerateConfigurationAsync(..., function(response, error_message)
+	M.GetBucketAccelerateConfigurationAsync(GetBucketAccelerateConfigurationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10849,10 +10849,10 @@ end
 -- @param DeleteObjectTaggingRequest
 -- @return response
 -- @return error_message
-function M.DeleteObjectTaggingSync(...)
+function M.DeleteObjectTaggingSync(DeleteObjectTaggingRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteObjectTaggingAsync(..., function(response, error_message)
+	M.DeleteObjectTaggingAsync(DeleteObjectTaggingRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10881,10 +10881,10 @@ end
 -- @param DeleteBucketTaggingRequest
 -- @return response
 -- @return error_message
-function M.DeleteBucketTaggingSync(...)
+function M.DeleteBucketTaggingSync(DeleteBucketTaggingRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteBucketTaggingAsync(..., function(response, error_message)
+	M.DeleteBucketTaggingAsync(DeleteBucketTaggingRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10913,10 +10913,10 @@ end
 -- @param GetObjectTorrentRequest
 -- @return response
 -- @return error_message
-function M.GetObjectTorrentSync(...)
+function M.GetObjectTorrentSync(GetObjectTorrentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetObjectTorrentAsync(..., function(response, error_message)
+	M.GetObjectTorrentAsync(GetObjectTorrentRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10945,10 +10945,10 @@ end
 -- @param CreateBucketRequest
 -- @return response
 -- @return error_message
-function M.CreateBucketSync(...)
+function M.CreateBucketSync(CreateBucketRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateBucketAsync(..., function(response, error_message)
+	M.CreateBucketAsync(CreateBucketRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10977,10 +10977,10 @@ end
 -- @param CompleteMultipartUploadRequest
 -- @return response
 -- @return error_message
-function M.CompleteMultipartUploadSync(...)
+function M.CompleteMultipartUploadSync(CompleteMultipartUploadRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CompleteMultipartUploadAsync(..., function(response, error_message)
+	M.CompleteMultipartUploadAsync(CompleteMultipartUploadRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11009,10 +11009,10 @@ end
 -- @param GetBucketWebsiteRequest
 -- @return response
 -- @return error_message
-function M.GetBucketWebsiteSync(...)
+function M.GetBucketWebsiteSync(GetBucketWebsiteRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetBucketWebsiteAsync(..., function(response, error_message)
+	M.GetBucketWebsiteAsync(GetBucketWebsiteRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11041,10 +11041,10 @@ end
 -- @param CreateMultipartUploadRequest
 -- @return response
 -- @return error_message
-function M.CreateMultipartUploadSync(...)
+function M.CreateMultipartUploadSync(CreateMultipartUploadRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateMultipartUploadAsync(..., function(response, error_message)
+	M.CreateMultipartUploadAsync(CreateMultipartUploadRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11073,10 +11073,10 @@ end
 -- @param DeleteBucketRequest
 -- @return response
 -- @return error_message
-function M.DeleteBucketSync(...)
+function M.DeleteBucketSync(DeleteBucketRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteBucketAsync(..., function(response, error_message)
+	M.DeleteBucketAsync(DeleteBucketRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11105,10 +11105,10 @@ end
 -- @param GetObjectRequest
 -- @return response
 -- @return error_message
-function M.GetObjectSync(...)
+function M.GetObjectSync(GetObjectRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetObjectAsync(..., function(response, error_message)
+	M.GetObjectAsync(GetObjectRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11137,10 +11137,10 @@ end
 -- @param PutObjectTaggingRequest
 -- @return response
 -- @return error_message
-function M.PutObjectTaggingSync(...)
+function M.PutObjectTaggingSync(PutObjectTaggingRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutObjectTaggingAsync(..., function(response, error_message)
+	M.PutObjectTaggingAsync(PutObjectTaggingRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11169,10 +11169,10 @@ end
 -- @param GetBucketPolicyRequest
 -- @return response
 -- @return error_message
-function M.GetBucketPolicySync(...)
+function M.GetBucketPolicySync(GetBucketPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetBucketPolicyAsync(..., function(response, error_message)
+	M.GetBucketPolicyAsync(GetBucketPolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11201,10 +11201,10 @@ end
 -- @param GetBucketVersioningRequest
 -- @return response
 -- @return error_message
-function M.GetBucketVersioningSync(...)
+function M.GetBucketVersioningSync(GetBucketVersioningRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetBucketVersioningAsync(..., function(response, error_message)
+	M.GetBucketVersioningAsync(GetBucketVersioningRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11233,10 +11233,10 @@ end
 -- @param HeadObjectRequest
 -- @return response
 -- @return error_message
-function M.HeadObjectSync(...)
+function M.HeadObjectSync(HeadObjectRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.HeadObjectAsync(..., function(response, error_message)
+	M.HeadObjectAsync(HeadObjectRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11265,10 +11265,10 @@ end
 -- @param ListMultipartUploadsRequest
 -- @return response
 -- @return error_message
-function M.ListMultipartUploadsSync(...)
+function M.ListMultipartUploadsSync(ListMultipartUploadsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListMultipartUploadsAsync(..., function(response, error_message)
+	M.ListMultipartUploadsAsync(ListMultipartUploadsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11297,10 +11297,10 @@ end
 -- @param GetBucketLifecycleConfigurationRequest
 -- @return response
 -- @return error_message
-function M.GetBucketLifecycleConfigurationSync(...)
+function M.GetBucketLifecycleConfigurationSync(GetBucketLifecycleConfigurationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetBucketLifecycleConfigurationAsync(..., function(response, error_message)
+	M.GetBucketLifecycleConfigurationAsync(GetBucketLifecycleConfigurationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11329,10 +11329,10 @@ end
 -- @param GetBucketRequestPaymentRequest
 -- @return response
 -- @return error_message
-function M.GetBucketRequestPaymentSync(...)
+function M.GetBucketRequestPaymentSync(GetBucketRequestPaymentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetBucketRequestPaymentAsync(..., function(response, error_message)
+	M.GetBucketRequestPaymentAsync(GetBucketRequestPaymentRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11361,10 +11361,10 @@ end
 -- @param PutBucketCorsRequest
 -- @return response
 -- @return error_message
-function M.PutBucketCorsSync(...)
+function M.PutBucketCorsSync(PutBucketCorsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutBucketCorsAsync(..., function(response, error_message)
+	M.PutBucketCorsAsync(PutBucketCorsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11393,10 +11393,10 @@ end
 -- @param PutBucketTaggingRequest
 -- @return response
 -- @return error_message
-function M.PutBucketTaggingSync(...)
+function M.PutBucketTaggingSync(PutBucketTaggingRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutBucketTaggingAsync(..., function(response, error_message)
+	M.PutBucketTaggingAsync(PutBucketTaggingRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11425,10 +11425,10 @@ end
 -- @param GetBucketTaggingRequest
 -- @return response
 -- @return error_message
-function M.GetBucketTaggingSync(...)
+function M.GetBucketTaggingSync(GetBucketTaggingRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetBucketTaggingAsync(..., function(response, error_message)
+	M.GetBucketTaggingAsync(GetBucketTaggingRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11457,10 +11457,10 @@ end
 -- @param AbortMultipartUploadRequest
 -- @return response
 -- @return error_message
-function M.AbortMultipartUploadSync(...)
+function M.AbortMultipartUploadSync(AbortMultipartUploadRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AbortMultipartUploadAsync(..., function(response, error_message)
+	M.AbortMultipartUploadAsync(AbortMultipartUploadRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11489,10 +11489,10 @@ end
 -- @param PutObjectAclRequest
 -- @return response
 -- @return error_message
-function M.PutObjectAclSync(...)
+function M.PutObjectAclSync(PutObjectAclRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutObjectAclAsync(..., function(response, error_message)
+	M.PutObjectAclAsync(PutObjectAclRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11521,10 +11521,10 @@ end
 -- @param ListObjectsV2Request
 -- @return response
 -- @return error_message
-function M.ListObjectsV2Sync(...)
+function M.ListObjectsV2Sync(ListObjectsV2Request, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListObjectsV2Async(..., function(response, error_message)
+	M.ListObjectsV2Async(ListObjectsV2Request, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11553,10 +11553,10 @@ end
 -- @param GetBucketLocationRequest
 -- @return response
 -- @return error_message
-function M.GetBucketLocationSync(...)
+function M.GetBucketLocationSync(GetBucketLocationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetBucketLocationAsync(..., function(response, error_message)
+	M.GetBucketLocationAsync(GetBucketLocationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11585,10 +11585,10 @@ end
 -- @param GetBucketInventoryConfigurationRequest
 -- @return response
 -- @return error_message
-function M.GetBucketInventoryConfigurationSync(...)
+function M.GetBucketInventoryConfigurationSync(GetBucketInventoryConfigurationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetBucketInventoryConfigurationAsync(..., function(response, error_message)
+	M.GetBucketInventoryConfigurationAsync(GetBucketInventoryConfigurationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11617,10 +11617,10 @@ end
 -- @param DeleteBucketLifecycleRequest
 -- @return response
 -- @return error_message
-function M.DeleteBucketLifecycleSync(...)
+function M.DeleteBucketLifecycleSync(DeleteBucketLifecycleRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteBucketLifecycleAsync(..., function(response, error_message)
+	M.DeleteBucketLifecycleAsync(DeleteBucketLifecycleRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11649,10 +11649,10 @@ end
 -- @param PutBucketAnalyticsConfigurationRequest
 -- @return response
 -- @return error_message
-function M.PutBucketAnalyticsConfigurationSync(...)
+function M.PutBucketAnalyticsConfigurationSync(PutBucketAnalyticsConfigurationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutBucketAnalyticsConfigurationAsync(..., function(response, error_message)
+	M.PutBucketAnalyticsConfigurationAsync(PutBucketAnalyticsConfigurationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11681,10 +11681,10 @@ end
 -- @param ListPartsRequest
 -- @return response
 -- @return error_message
-function M.ListPartsSync(...)
+function M.ListPartsSync(ListPartsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListPartsAsync(..., function(response, error_message)
+	M.ListPartsAsync(ListPartsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11713,10 +11713,10 @@ end
 -- @param ListBucketAnalyticsConfigurationsRequest
 -- @return response
 -- @return error_message
-function M.ListBucketAnalyticsConfigurationsSync(...)
+function M.ListBucketAnalyticsConfigurationsSync(ListBucketAnalyticsConfigurationsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListBucketAnalyticsConfigurationsAsync(..., function(response, error_message)
+	M.ListBucketAnalyticsConfigurationsAsync(ListBucketAnalyticsConfigurationsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11745,10 +11745,10 @@ end
 -- @param GetObjectAclRequest
 -- @return response
 -- @return error_message
-function M.GetObjectAclSync(...)
+function M.GetObjectAclSync(GetObjectAclRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetObjectAclAsync(..., function(response, error_message)
+	M.GetObjectAclAsync(GetObjectAclRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11777,10 +11777,10 @@ end
 -- @param UploadPartCopyRequest
 -- @return response
 -- @return error_message
-function M.UploadPartCopySync(...)
+function M.UploadPartCopySync(UploadPartCopyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UploadPartCopyAsync(..., function(response, error_message)
+	M.UploadPartCopyAsync(UploadPartCopyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11809,10 +11809,10 @@ end
 -- @param PutBucketMetricsConfigurationRequest
 -- @return response
 -- @return error_message
-function M.PutBucketMetricsConfigurationSync(...)
+function M.PutBucketMetricsConfigurationSync(PutBucketMetricsConfigurationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutBucketMetricsConfigurationAsync(..., function(response, error_message)
+	M.PutBucketMetricsConfigurationAsync(PutBucketMetricsConfigurationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11841,10 +11841,10 @@ end
 -- @param DeleteObjectRequest
 -- @return response
 -- @return error_message
-function M.DeleteObjectSync(...)
+function M.DeleteObjectSync(DeleteObjectRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteObjectAsync(..., function(response, error_message)
+	M.DeleteObjectAsync(DeleteObjectRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11873,10 +11873,10 @@ end
 -- @param RestoreObjectRequest
 -- @return response
 -- @return error_message
-function M.RestoreObjectSync(...)
+function M.RestoreObjectSync(RestoreObjectRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RestoreObjectAsync(..., function(response, error_message)
+	M.RestoreObjectAsync(RestoreObjectRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11905,10 +11905,10 @@ end
 -- @param DeleteBucketAnalyticsConfigurationRequest
 -- @return response
 -- @return error_message
-function M.DeleteBucketAnalyticsConfigurationSync(...)
+function M.DeleteBucketAnalyticsConfigurationSync(DeleteBucketAnalyticsConfigurationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteBucketAnalyticsConfigurationAsync(..., function(response, error_message)
+	M.DeleteBucketAnalyticsConfigurationAsync(DeleteBucketAnalyticsConfigurationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

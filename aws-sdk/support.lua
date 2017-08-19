@@ -2390,10 +2390,10 @@ end
 -- @param CreateCaseRequest
 -- @return response
 -- @return error_message
-function M.CreateCaseSync(...)
+function M.CreateCaseSync(CreateCaseRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateCaseAsync(..., function(response, error_message)
+	M.CreateCaseAsync(CreateCaseRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2422,10 +2422,10 @@ end
 -- @param AddAttachmentsToSetRequest
 -- @return response
 -- @return error_message
-function M.AddAttachmentsToSetSync(...)
+function M.AddAttachmentsToSetSync(AddAttachmentsToSetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddAttachmentsToSetAsync(..., function(response, error_message)
+	M.AddAttachmentsToSetAsync(AddAttachmentsToSetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2454,10 +2454,10 @@ end
 -- @param AddCommunicationToCaseRequest
 -- @return response
 -- @return error_message
-function M.AddCommunicationToCaseSync(...)
+function M.AddCommunicationToCaseSync(AddCommunicationToCaseRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddCommunicationToCaseAsync(..., function(response, error_message)
+	M.AddCommunicationToCaseAsync(AddCommunicationToCaseRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2486,10 +2486,10 @@ end
 -- @param DescribeTrustedAdvisorCheckRefreshStatusesRequest
 -- @return response
 -- @return error_message
-function M.DescribeTrustedAdvisorCheckRefreshStatusesSync(...)
+function M.DescribeTrustedAdvisorCheckRefreshStatusesSync(DescribeTrustedAdvisorCheckRefreshStatusesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTrustedAdvisorCheckRefreshStatusesAsync(..., function(response, error_message)
+	M.DescribeTrustedAdvisorCheckRefreshStatusesAsync(DescribeTrustedAdvisorCheckRefreshStatusesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2518,10 +2518,10 @@ end
 -- @param DescribeTrustedAdvisorCheckResultRequest
 -- @return response
 -- @return error_message
-function M.DescribeTrustedAdvisorCheckResultSync(...)
+function M.DescribeTrustedAdvisorCheckResultSync(DescribeTrustedAdvisorCheckResultRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTrustedAdvisorCheckResultAsync(..., function(response, error_message)
+	M.DescribeTrustedAdvisorCheckResultAsync(DescribeTrustedAdvisorCheckResultRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2550,10 +2550,10 @@ end
 -- @param ResolveCaseRequest
 -- @return response
 -- @return error_message
-function M.ResolveCaseSync(...)
+function M.ResolveCaseSync(ResolveCaseRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ResolveCaseAsync(..., function(response, error_message)
+	M.ResolveCaseAsync(ResolveCaseRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2582,10 +2582,10 @@ end
 -- @param DescribeSeverityLevelsRequest
 -- @return response
 -- @return error_message
-function M.DescribeSeverityLevelsSync(...)
+function M.DescribeSeverityLevelsSync(DescribeSeverityLevelsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeSeverityLevelsAsync(..., function(response, error_message)
+	M.DescribeSeverityLevelsAsync(DescribeSeverityLevelsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2614,10 +2614,10 @@ end
 -- @param DescribeCasesRequest
 -- @return response
 -- @return error_message
-function M.DescribeCasesSync(...)
+function M.DescribeCasesSync(DescribeCasesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeCasesAsync(..., function(response, error_message)
+	M.DescribeCasesAsync(DescribeCasesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2646,10 +2646,10 @@ end
 -- @param RefreshTrustedAdvisorCheckRequest
 -- @return response
 -- @return error_message
-function M.RefreshTrustedAdvisorCheckSync(...)
+function M.RefreshTrustedAdvisorCheckSync(RefreshTrustedAdvisorCheckRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RefreshTrustedAdvisorCheckAsync(..., function(response, error_message)
+	M.RefreshTrustedAdvisorCheckAsync(RefreshTrustedAdvisorCheckRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2678,10 +2678,10 @@ end
 -- @param DescribeAttachmentRequest
 -- @return response
 -- @return error_message
-function M.DescribeAttachmentSync(...)
+function M.DescribeAttachmentSync(DescribeAttachmentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAttachmentAsync(..., function(response, error_message)
+	M.DescribeAttachmentAsync(DescribeAttachmentRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2710,10 +2710,10 @@ end
 -- @param DescribeTrustedAdvisorChecksRequest
 -- @return response
 -- @return error_message
-function M.DescribeTrustedAdvisorChecksSync(...)
+function M.DescribeTrustedAdvisorChecksSync(DescribeTrustedAdvisorChecksRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTrustedAdvisorChecksAsync(..., function(response, error_message)
+	M.DescribeTrustedAdvisorChecksAsync(DescribeTrustedAdvisorChecksRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2742,10 +2742,10 @@ end
 -- @param DescribeTrustedAdvisorCheckSummariesRequest
 -- @return response
 -- @return error_message
-function M.DescribeTrustedAdvisorCheckSummariesSync(...)
+function M.DescribeTrustedAdvisorCheckSummariesSync(DescribeTrustedAdvisorCheckSummariesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTrustedAdvisorCheckSummariesAsync(..., function(response, error_message)
+	M.DescribeTrustedAdvisorCheckSummariesAsync(DescribeTrustedAdvisorCheckSummariesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2774,10 +2774,10 @@ end
 -- @param DescribeCommunicationsRequest
 -- @return response
 -- @return error_message
-function M.DescribeCommunicationsSync(...)
+function M.DescribeCommunicationsSync(DescribeCommunicationsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeCommunicationsAsync(..., function(response, error_message)
+	M.DescribeCommunicationsAsync(DescribeCommunicationsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2806,10 +2806,10 @@ end
 -- @param DescribeServicesRequest
 -- @return response
 -- @return error_message
-function M.DescribeServicesSync(...)
+function M.DescribeServicesSync(DescribeServicesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeServicesAsync(..., function(response, error_message)
+	M.DescribeServicesAsync(DescribeServicesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

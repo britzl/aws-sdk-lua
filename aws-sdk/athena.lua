@@ -1679,10 +1679,10 @@ end
 -- @param BatchGetQueryExecutionInput
 -- @return response
 -- @return error_message
-function M.BatchGetQueryExecutionSync(...)
+function M.BatchGetQueryExecutionSync(BatchGetQueryExecutionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchGetQueryExecutionAsync(..., function(response, error_message)
+	M.BatchGetQueryExecutionAsync(BatchGetQueryExecutionInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1711,10 +1711,10 @@ end
 -- @param DeleteNamedQueryInput
 -- @return response
 -- @return error_message
-function M.DeleteNamedQuerySync(...)
+function M.DeleteNamedQuerySync(DeleteNamedQueryInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteNamedQueryAsync(..., function(response, error_message)
+	M.DeleteNamedQueryAsync(DeleteNamedQueryInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1743,10 +1743,10 @@ end
 -- @param ListNamedQueriesInput
 -- @return response
 -- @return error_message
-function M.ListNamedQueriesSync(...)
+function M.ListNamedQueriesSync(ListNamedQueriesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListNamedQueriesAsync(..., function(response, error_message)
+	M.ListNamedQueriesAsync(ListNamedQueriesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1775,10 +1775,10 @@ end
 -- @param StopQueryExecutionInput
 -- @return response
 -- @return error_message
-function M.StopQueryExecutionSync(...)
+function M.StopQueryExecutionSync(StopQueryExecutionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StopQueryExecutionAsync(..., function(response, error_message)
+	M.StopQueryExecutionAsync(StopQueryExecutionInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1807,10 +1807,10 @@ end
 -- @param BatchGetNamedQueryInput
 -- @return response
 -- @return error_message
-function M.BatchGetNamedQuerySync(...)
+function M.BatchGetNamedQuerySync(BatchGetNamedQueryInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchGetNamedQueryAsync(..., function(response, error_message)
+	M.BatchGetNamedQueryAsync(BatchGetNamedQueryInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1839,10 +1839,10 @@ end
 -- @param StartQueryExecutionInput
 -- @return response
 -- @return error_message
-function M.StartQueryExecutionSync(...)
+function M.StartQueryExecutionSync(StartQueryExecutionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartQueryExecutionAsync(..., function(response, error_message)
+	M.StartQueryExecutionAsync(StartQueryExecutionInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1871,10 +1871,10 @@ end
 -- @param GetNamedQueryInput
 -- @return response
 -- @return error_message
-function M.GetNamedQuerySync(...)
+function M.GetNamedQuerySync(GetNamedQueryInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetNamedQueryAsync(..., function(response, error_message)
+	M.GetNamedQueryAsync(GetNamedQueryInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1903,10 +1903,10 @@ end
 -- @param ListQueryExecutionsInput
 -- @return response
 -- @return error_message
-function M.ListQueryExecutionsSync(...)
+function M.ListQueryExecutionsSync(ListQueryExecutionsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListQueryExecutionsAsync(..., function(response, error_message)
+	M.ListQueryExecutionsAsync(ListQueryExecutionsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1935,10 +1935,10 @@ end
 -- @param GetQueryExecutionInput
 -- @return response
 -- @return error_message
-function M.GetQueryExecutionSync(...)
+function M.GetQueryExecutionSync(GetQueryExecutionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetQueryExecutionAsync(..., function(response, error_message)
+	M.GetQueryExecutionAsync(GetQueryExecutionInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1967,10 +1967,10 @@ end
 -- @param GetQueryResultsInput
 -- @return response
 -- @return error_message
-function M.GetQueryResultsSync(...)
+function M.GetQueryResultsSync(GetQueryResultsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetQueryResultsAsync(..., function(response, error_message)
+	M.GetQueryResultsAsync(GetQueryResultsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1999,10 +1999,10 @@ end
 -- @param CreateNamedQueryInput
 -- @return response
 -- @return error_message
-function M.CreateNamedQuerySync(...)
+function M.CreateNamedQuerySync(CreateNamedQueryInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateNamedQueryAsync(..., function(response, error_message)
+	M.CreateNamedQueryAsync(CreateNamedQueryInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

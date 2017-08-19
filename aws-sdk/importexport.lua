@@ -1613,10 +1613,10 @@ end
 -- @param ListJobsInput
 -- @return response
 -- @return error_message
-function M.ListJobsSync(...)
+function M.ListJobsSync(ListJobsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListJobsAsync(..., function(response, error_message)
+	M.ListJobsAsync(ListJobsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1645,10 +1645,10 @@ end
 -- @param UpdateJobInput
 -- @return response
 -- @return error_message
-function M.UpdateJobSync(...)
+function M.UpdateJobSync(UpdateJobInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateJobAsync(..., function(response, error_message)
+	M.UpdateJobAsync(UpdateJobInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1677,10 +1677,10 @@ end
 -- @param CreateJobInput
 -- @return response
 -- @return error_message
-function M.CreateJobSync(...)
+function M.CreateJobSync(CreateJobInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateJobAsync(..., function(response, error_message)
+	M.CreateJobAsync(CreateJobInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1709,10 +1709,10 @@ end
 -- @param GetStatusInput
 -- @return response
 -- @return error_message
-function M.GetStatusSync(...)
+function M.GetStatusSync(GetStatusInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetStatusAsync(..., function(response, error_message)
+	M.GetStatusAsync(GetStatusInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1741,10 +1741,10 @@ end
 -- @param CancelJobInput
 -- @return response
 -- @return error_message
-function M.CancelJobSync(...)
+function M.CancelJobSync(CancelJobInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CancelJobAsync(..., function(response, error_message)
+	M.CancelJobAsync(CancelJobInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1773,10 +1773,10 @@ end
 -- @param GetShippingLabelInput
 -- @return response
 -- @return error_message
-function M.GetShippingLabelSync(...)
+function M.GetShippingLabelSync(GetShippingLabelInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetShippingLabelAsync(..., function(response, error_message)
+	M.GetShippingLabelAsync(GetShippingLabelInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

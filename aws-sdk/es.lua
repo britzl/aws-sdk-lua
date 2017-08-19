@@ -2147,10 +2147,10 @@ end
 -- @param RemoveTagsRequest
 -- @return response
 -- @return error_message
-function M.RemoveTagsSync(...)
+function M.RemoveTagsSync(RemoveTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RemoveTagsAsync(..., function(response, error_message)
+	M.RemoveTagsAsync(RemoveTagsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2179,10 +2179,10 @@ end
 -- @param DeleteElasticsearchDomainRequest
 -- @return response
 -- @return error_message
-function M.DeleteElasticsearchDomainSync(...)
+function M.DeleteElasticsearchDomainSync(DeleteElasticsearchDomainRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteElasticsearchDomainAsync(..., function(response, error_message)
+	M.DeleteElasticsearchDomainAsync(DeleteElasticsearchDomainRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2211,10 +2211,10 @@ end
 -- @param AddTagsRequest
 -- @return response
 -- @return error_message
-function M.AddTagsSync(...)
+function M.AddTagsSync(AddTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddTagsAsync(..., function(response, error_message)
+	M.AddTagsAsync(AddTagsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2243,10 +2243,10 @@ end
 -- @param DescribeElasticsearchInstanceTypeLimitsRequest
 -- @return response
 -- @return error_message
-function M.DescribeElasticsearchInstanceTypeLimitsSync(...)
+function M.DescribeElasticsearchInstanceTypeLimitsSync(DescribeElasticsearchInstanceTypeLimitsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeElasticsearchInstanceTypeLimitsAsync(..., function(response, error_message)
+	M.DescribeElasticsearchInstanceTypeLimitsAsync(DescribeElasticsearchInstanceTypeLimitsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2275,10 +2275,10 @@ end
 -- @param UpdateElasticsearchDomainConfigRequest
 -- @return response
 -- @return error_message
-function M.UpdateElasticsearchDomainConfigSync(...)
+function M.UpdateElasticsearchDomainConfigSync(UpdateElasticsearchDomainConfigRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateElasticsearchDomainConfigAsync(..., function(response, error_message)
+	M.UpdateElasticsearchDomainConfigAsync(UpdateElasticsearchDomainConfigRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2307,10 +2307,10 @@ end
 -- @param DescribeElasticsearchDomainConfigRequest
 -- @return response
 -- @return error_message
-function M.DescribeElasticsearchDomainConfigSync(...)
+function M.DescribeElasticsearchDomainConfigSync(DescribeElasticsearchDomainConfigRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeElasticsearchDomainConfigAsync(..., function(response, error_message)
+	M.DescribeElasticsearchDomainConfigAsync(DescribeElasticsearchDomainConfigRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2339,10 +2339,10 @@ end
 -- @param CreateElasticsearchDomainRequest
 -- @return response
 -- @return error_message
-function M.CreateElasticsearchDomainSync(...)
+function M.CreateElasticsearchDomainSync(CreateElasticsearchDomainRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateElasticsearchDomainAsync(..., function(response, error_message)
+	M.CreateElasticsearchDomainAsync(CreateElasticsearchDomainRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2371,10 +2371,10 @@ end
 -- @param DescribeElasticsearchDomainsRequest
 -- @return response
 -- @return error_message
-function M.DescribeElasticsearchDomainsSync(...)
+function M.DescribeElasticsearchDomainsSync(DescribeElasticsearchDomainsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeElasticsearchDomainsAsync(..., function(response, error_message)
+	M.DescribeElasticsearchDomainsAsync(DescribeElasticsearchDomainsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2403,10 +2403,10 @@ end
 -- @param ListElasticsearchInstanceTypesRequest
 -- @return response
 -- @return error_message
-function M.ListElasticsearchInstanceTypesSync(...)
+function M.ListElasticsearchInstanceTypesSync(ListElasticsearchInstanceTypesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListElasticsearchInstanceTypesAsync(..., function(response, error_message)
+	M.ListElasticsearchInstanceTypesAsync(ListElasticsearchInstanceTypesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2435,10 +2435,10 @@ end
 -- @param ListElasticsearchVersionsRequest
 -- @return response
 -- @return error_message
-function M.ListElasticsearchVersionsSync(...)
+function M.ListElasticsearchVersionsSync(ListElasticsearchVersionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListElasticsearchVersionsAsync(..., function(response, error_message)
+	M.ListElasticsearchVersionsAsync(ListElasticsearchVersionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2467,7 +2467,7 @@ end
 function M.ListDomainNamesSync(...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListDomainNamesAsync(..., function(response, error_message)
+	M.ListDomainNamesAsync(function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2496,10 +2496,10 @@ end
 -- @param ListTagsRequest
 -- @return response
 -- @return error_message
-function M.ListTagsSync(...)
+function M.ListTagsSync(ListTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTagsAsync(..., function(response, error_message)
+	M.ListTagsAsync(ListTagsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2528,10 +2528,10 @@ end
 -- @param DescribeElasticsearchDomainRequest
 -- @return response
 -- @return error_message
-function M.DescribeElasticsearchDomainSync(...)
+function M.DescribeElasticsearchDomainSync(DescribeElasticsearchDomainRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeElasticsearchDomainAsync(..., function(response, error_message)
+	M.DescribeElasticsearchDomainAsync(DescribeElasticsearchDomainRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

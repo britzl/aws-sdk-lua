@@ -3783,10 +3783,10 @@ end
 -- @param UpdateTimeToLiveInput
 -- @return response
 -- @return error_message
-function M.UpdateTimeToLiveSync(...)
+function M.UpdateTimeToLiveSync(UpdateTimeToLiveInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateTimeToLiveAsync(..., function(response, error_message)
+	M.UpdateTimeToLiveAsync(UpdateTimeToLiveInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3815,10 +3815,10 @@ end
 -- @param UpdateTableInput
 -- @return response
 -- @return error_message
-function M.UpdateTableSync(...)
+function M.UpdateTableSync(UpdateTableInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateTableAsync(..., function(response, error_message)
+	M.UpdateTableAsync(UpdateTableInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3847,10 +3847,10 @@ end
 -- @param DeleteTableInput
 -- @return response
 -- @return error_message
-function M.DeleteTableSync(...)
+function M.DeleteTableSync(DeleteTableInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteTableAsync(..., function(response, error_message)
+	M.DeleteTableAsync(DeleteTableInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3879,10 +3879,10 @@ end
 -- @param DescribeLimitsInput
 -- @return response
 -- @return error_message
-function M.DescribeLimitsSync(...)
+function M.DescribeLimitsSync(DescribeLimitsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeLimitsAsync(..., function(response, error_message)
+	M.DescribeLimitsAsync(DescribeLimitsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3911,10 +3911,10 @@ end
 -- @param UntagResourceInput
 -- @return response
 -- @return error_message
-function M.UntagResourceSync(...)
+function M.UntagResourceSync(UntagResourceInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UntagResourceAsync(..., function(response, error_message)
+	M.UntagResourceAsync(UntagResourceInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3943,10 +3943,10 @@ end
 -- @param ScanInput
 -- @return response
 -- @return error_message
-function M.ScanSync(...)
+function M.ScanSync(ScanInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ScanAsync(..., function(response, error_message)
+	M.ScanAsync(ScanInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3975,10 +3975,10 @@ end
 -- @param ListTagsOfResourceInput
 -- @return response
 -- @return error_message
-function M.ListTagsOfResourceSync(...)
+function M.ListTagsOfResourceSync(ListTagsOfResourceInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTagsOfResourceAsync(..., function(response, error_message)
+	M.ListTagsOfResourceAsync(ListTagsOfResourceInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4007,10 +4007,10 @@ end
 -- @param DescribeTimeToLiveInput
 -- @return response
 -- @return error_message
-function M.DescribeTimeToLiveSync(...)
+function M.DescribeTimeToLiveSync(DescribeTimeToLiveInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTimeToLiveAsync(..., function(response, error_message)
+	M.DescribeTimeToLiveAsync(DescribeTimeToLiveInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4039,10 +4039,10 @@ end
 -- @param DescribeTableInput
 -- @return response
 -- @return error_message
-function M.DescribeTableSync(...)
+function M.DescribeTableSync(DescribeTableInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTableAsync(..., function(response, error_message)
+	M.DescribeTableAsync(DescribeTableInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4071,10 +4071,10 @@ end
 -- @param BatchWriteItemInput
 -- @return response
 -- @return error_message
-function M.BatchWriteItemSync(...)
+function M.BatchWriteItemSync(BatchWriteItemInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchWriteItemAsync(..., function(response, error_message)
+	M.BatchWriteItemAsync(BatchWriteItemInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4103,10 +4103,10 @@ end
 -- @param CreateTableInput
 -- @return response
 -- @return error_message
-function M.CreateTableSync(...)
+function M.CreateTableSync(CreateTableInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateTableAsync(..., function(response, error_message)
+	M.CreateTableAsync(CreateTableInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4135,10 +4135,10 @@ end
 -- @param ListTablesInput
 -- @return response
 -- @return error_message
-function M.ListTablesSync(...)
+function M.ListTablesSync(ListTablesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTablesAsync(..., function(response, error_message)
+	M.ListTablesAsync(ListTablesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4167,10 +4167,10 @@ end
 -- @param GetItemInput
 -- @return response
 -- @return error_message
-function M.GetItemSync(...)
+function M.GetItemSync(GetItemInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetItemAsync(..., function(response, error_message)
+	M.GetItemAsync(GetItemInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4199,10 +4199,10 @@ end
 -- @param QueryInput
 -- @return response
 -- @return error_message
-function M.QuerySync(...)
+function M.QuerySync(QueryInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.QueryAsync(..., function(response, error_message)
+	M.QueryAsync(QueryInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4231,10 +4231,10 @@ end
 -- @param PutItemInput
 -- @return response
 -- @return error_message
-function M.PutItemSync(...)
+function M.PutItemSync(PutItemInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutItemAsync(..., function(response, error_message)
+	M.PutItemAsync(PutItemInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4263,10 +4263,10 @@ end
 -- @param UpdateItemInput
 -- @return response
 -- @return error_message
-function M.UpdateItemSync(...)
+function M.UpdateItemSync(UpdateItemInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateItemAsync(..., function(response, error_message)
+	M.UpdateItemAsync(UpdateItemInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4295,10 +4295,10 @@ end
 -- @param TagResourceInput
 -- @return response
 -- @return error_message
-function M.TagResourceSync(...)
+function M.TagResourceSync(TagResourceInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.TagResourceAsync(..., function(response, error_message)
+	M.TagResourceAsync(TagResourceInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4327,10 +4327,10 @@ end
 -- @param DeleteItemInput
 -- @return response
 -- @return error_message
-function M.DeleteItemSync(...)
+function M.DeleteItemSync(DeleteItemInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteItemAsync(..., function(response, error_message)
+	M.DeleteItemAsync(DeleteItemInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4359,10 +4359,10 @@ end
 -- @param BatchGetItemInput
 -- @return response
 -- @return error_message
-function M.BatchGetItemSync(...)
+function M.BatchGetItemSync(BatchGetItemInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchGetItemAsync(..., function(response, error_message)
+	M.BatchGetItemAsync(BatchGetItemInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

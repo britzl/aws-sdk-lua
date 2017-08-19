@@ -1880,10 +1880,10 @@ end
 -- @param ListBuildsInput
 -- @return response
 -- @return error_message
-function M.ListBuildsSync(...)
+function M.ListBuildsSync(ListBuildsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListBuildsAsync(..., function(response, error_message)
+	M.ListBuildsAsync(ListBuildsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1912,10 +1912,10 @@ end
 -- @param StopBuildInput
 -- @return response
 -- @return error_message
-function M.StopBuildSync(...)
+function M.StopBuildSync(StopBuildInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StopBuildAsync(..., function(response, error_message)
+	M.StopBuildAsync(StopBuildInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1944,10 +1944,10 @@ end
 -- @param ListBuildsForProjectInput
 -- @return response
 -- @return error_message
-function M.ListBuildsForProjectSync(...)
+function M.ListBuildsForProjectSync(ListBuildsForProjectInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListBuildsForProjectAsync(..., function(response, error_message)
+	M.ListBuildsForProjectAsync(ListBuildsForProjectInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1976,10 +1976,10 @@ end
 -- @param BatchGetBuildsInput
 -- @return response
 -- @return error_message
-function M.BatchGetBuildsSync(...)
+function M.BatchGetBuildsSync(BatchGetBuildsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchGetBuildsAsync(..., function(response, error_message)
+	M.BatchGetBuildsAsync(BatchGetBuildsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2008,10 +2008,10 @@ end
 -- @param CreateProjectInput
 -- @return response
 -- @return error_message
-function M.CreateProjectSync(...)
+function M.CreateProjectSync(CreateProjectInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateProjectAsync(..., function(response, error_message)
+	M.CreateProjectAsync(CreateProjectInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2040,10 +2040,10 @@ end
 -- @param ListCuratedEnvironmentImagesInput
 -- @return response
 -- @return error_message
-function M.ListCuratedEnvironmentImagesSync(...)
+function M.ListCuratedEnvironmentImagesSync(ListCuratedEnvironmentImagesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListCuratedEnvironmentImagesAsync(..., function(response, error_message)
+	M.ListCuratedEnvironmentImagesAsync(ListCuratedEnvironmentImagesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2072,10 +2072,10 @@ end
 -- @param ListProjectsInput
 -- @return response
 -- @return error_message
-function M.ListProjectsSync(...)
+function M.ListProjectsSync(ListProjectsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListProjectsAsync(..., function(response, error_message)
+	M.ListProjectsAsync(ListProjectsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2104,10 +2104,10 @@ end
 -- @param UpdateProjectInput
 -- @return response
 -- @return error_message
-function M.UpdateProjectSync(...)
+function M.UpdateProjectSync(UpdateProjectInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateProjectAsync(..., function(response, error_message)
+	M.UpdateProjectAsync(UpdateProjectInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2136,10 +2136,10 @@ end
 -- @param StartBuildInput
 -- @return response
 -- @return error_message
-function M.StartBuildSync(...)
+function M.StartBuildSync(StartBuildInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartBuildAsync(..., function(response, error_message)
+	M.StartBuildAsync(StartBuildInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2168,10 +2168,10 @@ end
 -- @param DeleteProjectInput
 -- @return response
 -- @return error_message
-function M.DeleteProjectSync(...)
+function M.DeleteProjectSync(DeleteProjectInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteProjectAsync(..., function(response, error_message)
+	M.DeleteProjectAsync(DeleteProjectInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2200,10 +2200,10 @@ end
 -- @param BatchGetProjectsInput
 -- @return response
 -- @return error_message
-function M.BatchGetProjectsSync(...)
+function M.BatchGetProjectsSync(BatchGetProjectsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchGetProjectsAsync(..., function(response, error_message)
+	M.BatchGetProjectsAsync(BatchGetProjectsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

@@ -1400,10 +1400,10 @@ end
 -- @param DeleteAttributesRequest
 -- @return response
 -- @return error_message
-function M.DeleteAttributesSync(...)
+function M.DeleteAttributesSync(DeleteAttributesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteAttributesAsync(..., function(response, error_message)
+	M.DeleteAttributesAsync(DeleteAttributesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1432,10 +1432,10 @@ end
 -- @param BatchPutAttributesRequest
 -- @return response
 -- @return error_message
-function M.BatchPutAttributesSync(...)
+function M.BatchPutAttributesSync(BatchPutAttributesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchPutAttributesAsync(..., function(response, error_message)
+	M.BatchPutAttributesAsync(BatchPutAttributesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1464,10 +1464,10 @@ end
 -- @param PutAttributesRequest
 -- @return response
 -- @return error_message
-function M.PutAttributesSync(...)
+function M.PutAttributesSync(PutAttributesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutAttributesAsync(..., function(response, error_message)
+	M.PutAttributesAsync(PutAttributesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1496,10 +1496,10 @@ end
 -- @param ListDomainsRequest
 -- @return response
 -- @return error_message
-function M.ListDomainsSync(...)
+function M.ListDomainsSync(ListDomainsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListDomainsAsync(..., function(response, error_message)
+	M.ListDomainsAsync(ListDomainsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1528,10 +1528,10 @@ end
 -- @param DomainMetadataRequest
 -- @return response
 -- @return error_message
-function M.DomainMetadataSync(...)
+function M.DomainMetadataSync(DomainMetadataRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DomainMetadataAsync(..., function(response, error_message)
+	M.DomainMetadataAsync(DomainMetadataRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1560,10 +1560,10 @@ end
 -- @param BatchDeleteAttributesRequest
 -- @return response
 -- @return error_message
-function M.BatchDeleteAttributesSync(...)
+function M.BatchDeleteAttributesSync(BatchDeleteAttributesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchDeleteAttributesAsync(..., function(response, error_message)
+	M.BatchDeleteAttributesAsync(BatchDeleteAttributesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1592,10 +1592,10 @@ end
 -- @param GetAttributesRequest
 -- @return response
 -- @return error_message
-function M.GetAttributesSync(...)
+function M.GetAttributesSync(GetAttributesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetAttributesAsync(..., function(response, error_message)
+	M.GetAttributesAsync(GetAttributesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1624,10 +1624,10 @@ end
 -- @param DeleteDomainRequest
 -- @return response
 -- @return error_message
-function M.DeleteDomainSync(...)
+function M.DeleteDomainSync(DeleteDomainRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteDomainAsync(..., function(response, error_message)
+	M.DeleteDomainAsync(DeleteDomainRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1656,10 +1656,10 @@ end
 -- @param CreateDomainRequest
 -- @return response
 -- @return error_message
-function M.CreateDomainSync(...)
+function M.CreateDomainSync(CreateDomainRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDomainAsync(..., function(response, error_message)
+	M.CreateDomainAsync(CreateDomainRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1688,10 +1688,10 @@ end
 -- @param SelectRequest
 -- @return response
 -- @return error_message
-function M.SelectSync(...)
+function M.SelectSync(SelectRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SelectAsync(..., function(response, error_message)
+	M.SelectAsync(SelectRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

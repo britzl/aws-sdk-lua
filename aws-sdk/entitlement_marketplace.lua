@@ -458,10 +458,10 @@ end
 -- @param GetEntitlementsRequest
 -- @return response
 -- @return error_message
-function M.GetEntitlementsSync(...)
+function M.GetEntitlementsSync(GetEntitlementsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetEntitlementsAsync(..., function(response, error_message)
+	M.GetEntitlementsAsync(GetEntitlementsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

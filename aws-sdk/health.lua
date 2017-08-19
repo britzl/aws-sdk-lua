@@ -1631,10 +1631,10 @@ end
 -- @param DescribeAffectedEntitiesRequest
 -- @return response
 -- @return error_message
-function M.DescribeAffectedEntitiesSync(...)
+function M.DescribeAffectedEntitiesSync(DescribeAffectedEntitiesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAffectedEntitiesAsync(..., function(response, error_message)
+	M.DescribeAffectedEntitiesAsync(DescribeAffectedEntitiesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1663,10 +1663,10 @@ end
 -- @param DescribeEventDetailsRequest
 -- @return response
 -- @return error_message
-function M.DescribeEventDetailsSync(...)
+function M.DescribeEventDetailsSync(DescribeEventDetailsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEventDetailsAsync(..., function(response, error_message)
+	M.DescribeEventDetailsAsync(DescribeEventDetailsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1695,10 +1695,10 @@ end
 -- @param DescribeEventTypesRequest
 -- @return response
 -- @return error_message
-function M.DescribeEventTypesSync(...)
+function M.DescribeEventTypesSync(DescribeEventTypesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEventTypesAsync(..., function(response, error_message)
+	M.DescribeEventTypesAsync(DescribeEventTypesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1727,10 +1727,10 @@ end
 -- @param DescribeEventsRequest
 -- @return response
 -- @return error_message
-function M.DescribeEventsSync(...)
+function M.DescribeEventsSync(DescribeEventsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEventsAsync(..., function(response, error_message)
+	M.DescribeEventsAsync(DescribeEventsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1759,10 +1759,10 @@ end
 -- @param DescribeEntityAggregatesRequest
 -- @return response
 -- @return error_message
-function M.DescribeEntityAggregatesSync(...)
+function M.DescribeEntityAggregatesSync(DescribeEntityAggregatesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEntityAggregatesAsync(..., function(response, error_message)
+	M.DescribeEntityAggregatesAsync(DescribeEntityAggregatesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1791,10 +1791,10 @@ end
 -- @param DescribeEventAggregatesRequest
 -- @return response
 -- @return error_message
-function M.DescribeEventAggregatesSync(...)
+function M.DescribeEventAggregatesSync(DescribeEventAggregatesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEventAggregatesAsync(..., function(response, error_message)
+	M.DescribeEventAggregatesAsync(DescribeEventAggregatesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

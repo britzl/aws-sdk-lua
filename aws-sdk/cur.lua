@@ -611,10 +611,10 @@ end
 -- @param DescribeReportDefinitionsRequest
 -- @return response
 -- @return error_message
-function M.DescribeReportDefinitionsSync(...)
+function M.DescribeReportDefinitionsSync(DescribeReportDefinitionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeReportDefinitionsAsync(..., function(response, error_message)
+	M.DescribeReportDefinitionsAsync(DescribeReportDefinitionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -643,10 +643,10 @@ end
 -- @param PutReportDefinitionRequest
 -- @return response
 -- @return error_message
-function M.PutReportDefinitionSync(...)
+function M.PutReportDefinitionSync(PutReportDefinitionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutReportDefinitionAsync(..., function(response, error_message)
+	M.PutReportDefinitionAsync(PutReportDefinitionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -675,10 +675,10 @@ end
 -- @param DeleteReportDefinitionRequest
 -- @return response
 -- @return error_message
-function M.DeleteReportDefinitionSync(...)
+function M.DeleteReportDefinitionSync(DeleteReportDefinitionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteReportDefinitionAsync(..., function(response, error_message)
+	M.DeleteReportDefinitionAsync(DeleteReportDefinitionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

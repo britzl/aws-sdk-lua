@@ -7955,10 +7955,10 @@ end
 -- @param GetIdentityProviderByIdentifierRequest
 -- @return response
 -- @return error_message
-function M.GetIdentityProviderByIdentifierSync(...)
+function M.GetIdentityProviderByIdentifierSync(GetIdentityProviderByIdentifierRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetIdentityProviderByIdentifierAsync(..., function(response, error_message)
+	M.GetIdentityProviderByIdentifierAsync(GetIdentityProviderByIdentifierRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7987,10 +7987,10 @@ end
 -- @param ConfirmSignUpRequest
 -- @return response
 -- @return error_message
-function M.ConfirmSignUpSync(...)
+function M.ConfirmSignUpSync(ConfirmSignUpRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ConfirmSignUpAsync(..., function(response, error_message)
+	M.ConfirmSignUpAsync(ConfirmSignUpRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8019,10 +8019,10 @@ end
 -- @param AdminDisableUserRequest
 -- @return response
 -- @return error_message
-function M.AdminDisableUserSync(...)
+function M.AdminDisableUserSync(AdminDisableUserRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AdminDisableUserAsync(..., function(response, error_message)
+	M.AdminDisableUserAsync(AdminDisableUserRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8051,10 +8051,10 @@ end
 -- @param AdminListDevicesRequest
 -- @return response
 -- @return error_message
-function M.AdminListDevicesSync(...)
+function M.AdminListDevicesSync(AdminListDevicesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AdminListDevicesAsync(..., function(response, error_message)
+	M.AdminListDevicesAsync(AdminListDevicesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8083,10 +8083,10 @@ end
 -- @param AdminRemoveUserFromGroupRequest
 -- @return response
 -- @return error_message
-function M.AdminRemoveUserFromGroupSync(...)
+function M.AdminRemoveUserFromGroupSync(AdminRemoveUserFromGroupRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AdminRemoveUserFromGroupAsync(..., function(response, error_message)
+	M.AdminRemoveUserFromGroupAsync(AdminRemoveUserFromGroupRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8115,10 +8115,10 @@ end
 -- @param ForgotPasswordRequest
 -- @return response
 -- @return error_message
-function M.ForgotPasswordSync(...)
+function M.ForgotPasswordSync(ForgotPasswordRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ForgotPasswordAsync(..., function(response, error_message)
+	M.ForgotPasswordAsync(ForgotPasswordRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8147,10 +8147,10 @@ end
 -- @param AdminUpdateUserAttributesRequest
 -- @return response
 -- @return error_message
-function M.AdminUpdateUserAttributesSync(...)
+function M.AdminUpdateUserAttributesSync(AdminUpdateUserAttributesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AdminUpdateUserAttributesAsync(..., function(response, error_message)
+	M.AdminUpdateUserAttributesAsync(AdminUpdateUserAttributesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8179,10 +8179,10 @@ end
 -- @param SignUpRequest
 -- @return response
 -- @return error_message
-function M.SignUpSync(...)
+function M.SignUpSync(SignUpRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SignUpAsync(..., function(response, error_message)
+	M.SignUpAsync(SignUpRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8211,10 +8211,10 @@ end
 -- @param AdminCreateUserRequest
 -- @return response
 -- @return error_message
-function M.AdminCreateUserSync(...)
+function M.AdminCreateUserSync(AdminCreateUserRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AdminCreateUserAsync(..., function(response, error_message)
+	M.AdminCreateUserAsync(AdminCreateUserRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8243,10 +8243,10 @@ end
 -- @param UpdateUserAttributesRequest
 -- @return response
 -- @return error_message
-function M.UpdateUserAttributesSync(...)
+function M.UpdateUserAttributesSync(UpdateUserAttributesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateUserAttributesAsync(..., function(response, error_message)
+	M.UpdateUserAttributesAsync(UpdateUserAttributesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8275,10 +8275,10 @@ end
 -- @param DescribeUserPoolDomainRequest
 -- @return response
 -- @return error_message
-function M.DescribeUserPoolDomainSync(...)
+function M.DescribeUserPoolDomainSync(DescribeUserPoolDomainRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeUserPoolDomainAsync(..., function(response, error_message)
+	M.DescribeUserPoolDomainAsync(DescribeUserPoolDomainRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8307,10 +8307,10 @@ end
 -- @param ForgetDeviceRequest
 -- @return response
 -- @return error_message
-function M.ForgetDeviceSync(...)
+function M.ForgetDeviceSync(ForgetDeviceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ForgetDeviceAsync(..., function(response, error_message)
+	M.ForgetDeviceAsync(ForgetDeviceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8339,10 +8339,10 @@ end
 -- @param DeleteIdentityProviderRequest
 -- @return response
 -- @return error_message
-function M.DeleteIdentityProviderSync(...)
+function M.DeleteIdentityProviderSync(DeleteIdentityProviderRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteIdentityProviderAsync(..., function(response, error_message)
+	M.DeleteIdentityProviderAsync(DeleteIdentityProviderRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8371,10 +8371,10 @@ end
 -- @param ConfirmForgotPasswordRequest
 -- @return response
 -- @return error_message
-function M.ConfirmForgotPasswordSync(...)
+function M.ConfirmForgotPasswordSync(ConfirmForgotPasswordRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ConfirmForgotPasswordAsync(..., function(response, error_message)
+	M.ConfirmForgotPasswordAsync(ConfirmForgotPasswordRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8403,10 +8403,10 @@ end
 -- @param CreateGroupRequest
 -- @return response
 -- @return error_message
-function M.CreateGroupSync(...)
+function M.CreateGroupSync(CreateGroupRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateGroupAsync(..., function(response, error_message)
+	M.CreateGroupAsync(CreateGroupRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8435,10 +8435,10 @@ end
 -- @param VerifyUserAttributeRequest
 -- @return response
 -- @return error_message
-function M.VerifyUserAttributeSync(...)
+function M.VerifyUserAttributeSync(VerifyUserAttributeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.VerifyUserAttributeAsync(..., function(response, error_message)
+	M.VerifyUserAttributeAsync(VerifyUserAttributeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8467,10 +8467,10 @@ end
 -- @param AdminResetUserPasswordRequest
 -- @return response
 -- @return error_message
-function M.AdminResetUserPasswordSync(...)
+function M.AdminResetUserPasswordSync(AdminResetUserPasswordRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AdminResetUserPasswordAsync(..., function(response, error_message)
+	M.AdminResetUserPasswordAsync(AdminResetUserPasswordRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8499,10 +8499,10 @@ end
 -- @param DeleteUserPoolRequest
 -- @return response
 -- @return error_message
-function M.DeleteUserPoolSync(...)
+function M.DeleteUserPoolSync(DeleteUserPoolRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteUserPoolAsync(..., function(response, error_message)
+	M.DeleteUserPoolAsync(DeleteUserPoolRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8531,10 +8531,10 @@ end
 -- @param AdminConfirmSignUpRequest
 -- @return response
 -- @return error_message
-function M.AdminConfirmSignUpSync(...)
+function M.AdminConfirmSignUpSync(AdminConfirmSignUpRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AdminConfirmSignUpAsync(..., function(response, error_message)
+	M.AdminConfirmSignUpAsync(AdminConfirmSignUpRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8563,10 +8563,10 @@ end
 -- @param UpdateUserPoolRequest
 -- @return response
 -- @return error_message
-function M.UpdateUserPoolSync(...)
+function M.UpdateUserPoolSync(UpdateUserPoolRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateUserPoolAsync(..., function(response, error_message)
+	M.UpdateUserPoolAsync(UpdateUserPoolRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8595,10 +8595,10 @@ end
 -- @param ListUserPoolClientsRequest
 -- @return response
 -- @return error_message
-function M.ListUserPoolClientsSync(...)
+function M.ListUserPoolClientsSync(ListUserPoolClientsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListUserPoolClientsAsync(..., function(response, error_message)
+	M.ListUserPoolClientsAsync(ListUserPoolClientsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8627,10 +8627,10 @@ end
 -- @param DescribeUserPoolRequest
 -- @return response
 -- @return error_message
-function M.DescribeUserPoolSync(...)
+function M.DescribeUserPoolSync(DescribeUserPoolRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeUserPoolAsync(..., function(response, error_message)
+	M.DescribeUserPoolAsync(DescribeUserPoolRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8659,10 +8659,10 @@ end
 -- @param StopUserImportJobRequest
 -- @return response
 -- @return error_message
-function M.StopUserImportJobSync(...)
+function M.StopUserImportJobSync(StopUserImportJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StopUserImportJobAsync(..., function(response, error_message)
+	M.StopUserImportJobAsync(StopUserImportJobRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8691,10 +8691,10 @@ end
 -- @param ListUserPoolsRequest
 -- @return response
 -- @return error_message
-function M.ListUserPoolsSync(...)
+function M.ListUserPoolsSync(ListUserPoolsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListUserPoolsAsync(..., function(response, error_message)
+	M.ListUserPoolsAsync(ListUserPoolsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8723,10 +8723,10 @@ end
 -- @param AdminUserGlobalSignOutRequest
 -- @return response
 -- @return error_message
-function M.AdminUserGlobalSignOutSync(...)
+function M.AdminUserGlobalSignOutSync(AdminUserGlobalSignOutRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AdminUserGlobalSignOutAsync(..., function(response, error_message)
+	M.AdminUserGlobalSignOutAsync(AdminUserGlobalSignOutRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8755,10 +8755,10 @@ end
 -- @param DeleteUserPoolDomainRequest
 -- @return response
 -- @return error_message
-function M.DeleteUserPoolDomainSync(...)
+function M.DeleteUserPoolDomainSync(DeleteUserPoolDomainRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteUserPoolDomainAsync(..., function(response, error_message)
+	M.DeleteUserPoolDomainAsync(DeleteUserPoolDomainRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8787,10 +8787,10 @@ end
 -- @param AdminGetDeviceRequest
 -- @return response
 -- @return error_message
-function M.AdminGetDeviceSync(...)
+function M.AdminGetDeviceSync(AdminGetDeviceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AdminGetDeviceAsync(..., function(response, error_message)
+	M.AdminGetDeviceAsync(AdminGetDeviceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8819,10 +8819,10 @@ end
 -- @param DeleteGroupRequest
 -- @return response
 -- @return error_message
-function M.DeleteGroupSync(...)
+function M.DeleteGroupSync(DeleteGroupRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteGroupAsync(..., function(response, error_message)
+	M.DeleteGroupAsync(DeleteGroupRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8851,10 +8851,10 @@ end
 -- @param ResendConfirmationCodeRequest
 -- @return response
 -- @return error_message
-function M.ResendConfirmationCodeSync(...)
+function M.ResendConfirmationCodeSync(ResendConfirmationCodeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ResendConfirmationCodeAsync(..., function(response, error_message)
+	M.ResendConfirmationCodeAsync(ResendConfirmationCodeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8883,10 +8883,10 @@ end
 -- @param GetUserAttributeVerificationCodeRequest
 -- @return response
 -- @return error_message
-function M.GetUserAttributeVerificationCodeSync(...)
+function M.GetUserAttributeVerificationCodeSync(GetUserAttributeVerificationCodeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetUserAttributeVerificationCodeAsync(..., function(response, error_message)
+	M.GetUserAttributeVerificationCodeAsync(GetUserAttributeVerificationCodeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8915,10 +8915,10 @@ end
 -- @param GetUserRequest
 -- @return response
 -- @return error_message
-function M.GetUserSync(...)
+function M.GetUserSync(GetUserRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetUserAsync(..., function(response, error_message)
+	M.GetUserAsync(GetUserRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8947,10 +8947,10 @@ end
 -- @param ConfirmDeviceRequest
 -- @return response
 -- @return error_message
-function M.ConfirmDeviceSync(...)
+function M.ConfirmDeviceSync(ConfirmDeviceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ConfirmDeviceAsync(..., function(response, error_message)
+	M.ConfirmDeviceAsync(ConfirmDeviceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8979,10 +8979,10 @@ end
 -- @param ChangePasswordRequest
 -- @return response
 -- @return error_message
-function M.ChangePasswordSync(...)
+function M.ChangePasswordSync(ChangePasswordRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ChangePasswordAsync(..., function(response, error_message)
+	M.ChangePasswordAsync(ChangePasswordRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9011,10 +9011,10 @@ end
 -- @param GetCSVHeaderRequest
 -- @return response
 -- @return error_message
-function M.GetCSVHeaderSync(...)
+function M.GetCSVHeaderSync(GetCSVHeaderRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetCSVHeaderAsync(..., function(response, error_message)
+	M.GetCSVHeaderAsync(GetCSVHeaderRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9043,10 +9043,10 @@ end
 -- @param ListUsersRequest
 -- @return response
 -- @return error_message
-function M.ListUsersSync(...)
+function M.ListUsersSync(ListUsersRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListUsersAsync(..., function(response, error_message)
+	M.ListUsersAsync(ListUsersRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9075,10 +9075,10 @@ end
 -- @param AdminUpdateDeviceStatusRequest
 -- @return response
 -- @return error_message
-function M.AdminUpdateDeviceStatusSync(...)
+function M.AdminUpdateDeviceStatusSync(AdminUpdateDeviceStatusRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AdminUpdateDeviceStatusAsync(..., function(response, error_message)
+	M.AdminUpdateDeviceStatusAsync(AdminUpdateDeviceStatusRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9107,10 +9107,10 @@ end
 -- @param DescribeIdentityProviderRequest
 -- @return response
 -- @return error_message
-function M.DescribeIdentityProviderSync(...)
+function M.DescribeIdentityProviderSync(DescribeIdentityProviderRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeIdentityProviderAsync(..., function(response, error_message)
+	M.DescribeIdentityProviderAsync(DescribeIdentityProviderRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9139,10 +9139,10 @@ end
 -- @param DeleteUserAttributesRequest
 -- @return response
 -- @return error_message
-function M.DeleteUserAttributesSync(...)
+function M.DeleteUserAttributesSync(DeleteUserAttributesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteUserAttributesAsync(..., function(response, error_message)
+	M.DeleteUserAttributesAsync(DeleteUserAttributesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9171,10 +9171,10 @@ end
 -- @param UpdateIdentityProviderRequest
 -- @return response
 -- @return error_message
-function M.UpdateIdentityProviderSync(...)
+function M.UpdateIdentityProviderSync(UpdateIdentityProviderRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateIdentityProviderAsync(..., function(response, error_message)
+	M.UpdateIdentityProviderAsync(UpdateIdentityProviderRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9203,10 +9203,10 @@ end
 -- @param GetGroupRequest
 -- @return response
 -- @return error_message
-function M.GetGroupSync(...)
+function M.GetGroupSync(GetGroupRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetGroupAsync(..., function(response, error_message)
+	M.GetGroupAsync(GetGroupRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9235,10 +9235,10 @@ end
 -- @param AdminEnableUserRequest
 -- @return response
 -- @return error_message
-function M.AdminEnableUserSync(...)
+function M.AdminEnableUserSync(AdminEnableUserRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AdminEnableUserAsync(..., function(response, error_message)
+	M.AdminEnableUserAsync(AdminEnableUserRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9267,10 +9267,10 @@ end
 -- @param UpdateUserPoolClientRequest
 -- @return response
 -- @return error_message
-function M.UpdateUserPoolClientSync(...)
+function M.UpdateUserPoolClientSync(UpdateUserPoolClientRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateUserPoolClientAsync(..., function(response, error_message)
+	M.UpdateUserPoolClientAsync(UpdateUserPoolClientRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9299,10 +9299,10 @@ end
 -- @param AddCustomAttributesRequest
 -- @return response
 -- @return error_message
-function M.AddCustomAttributesSync(...)
+function M.AddCustomAttributesSync(AddCustomAttributesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddCustomAttributesAsync(..., function(response, error_message)
+	M.AddCustomAttributesAsync(AddCustomAttributesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9331,10 +9331,10 @@ end
 -- @param AdminForgetDeviceRequest
 -- @return response
 -- @return error_message
-function M.AdminForgetDeviceSync(...)
+function M.AdminForgetDeviceSync(AdminForgetDeviceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AdminForgetDeviceAsync(..., function(response, error_message)
+	M.AdminForgetDeviceAsync(AdminForgetDeviceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9363,10 +9363,10 @@ end
 -- @param CreateUserPoolClientRequest
 -- @return response
 -- @return error_message
-function M.CreateUserPoolClientSync(...)
+function M.CreateUserPoolClientSync(CreateUserPoolClientRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateUserPoolClientAsync(..., function(response, error_message)
+	M.CreateUserPoolClientAsync(CreateUserPoolClientRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9395,10 +9395,10 @@ end
 -- @param AdminListGroupsForUserRequest
 -- @return response
 -- @return error_message
-function M.AdminListGroupsForUserSync(...)
+function M.AdminListGroupsForUserSync(AdminListGroupsForUserRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AdminListGroupsForUserAsync(..., function(response, error_message)
+	M.AdminListGroupsForUserAsync(AdminListGroupsForUserRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9427,10 +9427,10 @@ end
 -- @param ListGroupsRequest
 -- @return response
 -- @return error_message
-function M.ListGroupsSync(...)
+function M.ListGroupsSync(ListGroupsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListGroupsAsync(..., function(response, error_message)
+	M.ListGroupsAsync(ListGroupsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9459,10 +9459,10 @@ end
 -- @param DescribeUserPoolClientRequest
 -- @return response
 -- @return error_message
-function M.DescribeUserPoolClientSync(...)
+function M.DescribeUserPoolClientSync(DescribeUserPoolClientRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeUserPoolClientAsync(..., function(response, error_message)
+	M.DescribeUserPoolClientAsync(DescribeUserPoolClientRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9491,10 +9491,10 @@ end
 -- @param AdminDeleteUserRequest
 -- @return response
 -- @return error_message
-function M.AdminDeleteUserSync(...)
+function M.AdminDeleteUserSync(AdminDeleteUserRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AdminDeleteUserAsync(..., function(response, error_message)
+	M.AdminDeleteUserAsync(AdminDeleteUserRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9523,10 +9523,10 @@ end
 -- @param AdminInitiateAuthRequest
 -- @return response
 -- @return error_message
-function M.AdminInitiateAuthSync(...)
+function M.AdminInitiateAuthSync(AdminInitiateAuthRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AdminInitiateAuthAsync(..., function(response, error_message)
+	M.AdminInitiateAuthAsync(AdminInitiateAuthRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9555,10 +9555,10 @@ end
 -- @param AdminGetUserRequest
 -- @return response
 -- @return error_message
-function M.AdminGetUserSync(...)
+function M.AdminGetUserSync(AdminGetUserRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AdminGetUserAsync(..., function(response, error_message)
+	M.AdminGetUserAsync(AdminGetUserRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9587,10 +9587,10 @@ end
 -- @param UpdateDeviceStatusRequest
 -- @return response
 -- @return error_message
-function M.UpdateDeviceStatusSync(...)
+function M.UpdateDeviceStatusSync(UpdateDeviceStatusRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateDeviceStatusAsync(..., function(response, error_message)
+	M.UpdateDeviceStatusAsync(UpdateDeviceStatusRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9619,10 +9619,10 @@ end
 -- @param ListUserImportJobsRequest
 -- @return response
 -- @return error_message
-function M.ListUserImportJobsSync(...)
+function M.ListUserImportJobsSync(ListUserImportJobsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListUserImportJobsAsync(..., function(response, error_message)
+	M.ListUserImportJobsAsync(ListUserImportJobsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9651,10 +9651,10 @@ end
 -- @param ListDevicesRequest
 -- @return response
 -- @return error_message
-function M.ListDevicesSync(...)
+function M.ListDevicesSync(ListDevicesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListDevicesAsync(..., function(response, error_message)
+	M.ListDevicesAsync(ListDevicesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9683,10 +9683,10 @@ end
 -- @param GetDeviceRequest
 -- @return response
 -- @return error_message
-function M.GetDeviceSync(...)
+function M.GetDeviceSync(GetDeviceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetDeviceAsync(..., function(response, error_message)
+	M.GetDeviceAsync(GetDeviceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9715,10 +9715,10 @@ end
 -- @param ListUsersInGroupRequest
 -- @return response
 -- @return error_message
-function M.ListUsersInGroupSync(...)
+function M.ListUsersInGroupSync(ListUsersInGroupRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListUsersInGroupAsync(..., function(response, error_message)
+	M.ListUsersInGroupAsync(ListUsersInGroupRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9747,10 +9747,10 @@ end
 -- @param GlobalSignOutRequest
 -- @return response
 -- @return error_message
-function M.GlobalSignOutSync(...)
+function M.GlobalSignOutSync(GlobalSignOutRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GlobalSignOutAsync(..., function(response, error_message)
+	M.GlobalSignOutAsync(GlobalSignOutRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9779,10 +9779,10 @@ end
 -- @param CreateUserImportJobRequest
 -- @return response
 -- @return error_message
-function M.CreateUserImportJobSync(...)
+function M.CreateUserImportJobSync(CreateUserImportJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateUserImportJobAsync(..., function(response, error_message)
+	M.CreateUserImportJobAsync(CreateUserImportJobRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9811,10 +9811,10 @@ end
 -- @param AdminSetUserSettingsRequest
 -- @return response
 -- @return error_message
-function M.AdminSetUserSettingsSync(...)
+function M.AdminSetUserSettingsSync(AdminSetUserSettingsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AdminSetUserSettingsAsync(..., function(response, error_message)
+	M.AdminSetUserSettingsAsync(AdminSetUserSettingsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9843,10 +9843,10 @@ end
 -- @param DeleteUserRequest
 -- @return response
 -- @return error_message
-function M.DeleteUserSync(...)
+function M.DeleteUserSync(DeleteUserRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteUserAsync(..., function(response, error_message)
+	M.DeleteUserAsync(DeleteUserRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9875,10 +9875,10 @@ end
 -- @param InitiateAuthRequest
 -- @return response
 -- @return error_message
-function M.InitiateAuthSync(...)
+function M.InitiateAuthSync(InitiateAuthRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.InitiateAuthAsync(..., function(response, error_message)
+	M.InitiateAuthAsync(InitiateAuthRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9907,10 +9907,10 @@ end
 -- @param ListIdentityProvidersRequest
 -- @return response
 -- @return error_message
-function M.ListIdentityProvidersSync(...)
+function M.ListIdentityProvidersSync(ListIdentityProvidersRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListIdentityProvidersAsync(..., function(response, error_message)
+	M.ListIdentityProvidersAsync(ListIdentityProvidersRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9939,10 +9939,10 @@ end
 -- @param SetUserSettingsRequest
 -- @return response
 -- @return error_message
-function M.SetUserSettingsSync(...)
+function M.SetUserSettingsSync(SetUserSettingsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetUserSettingsAsync(..., function(response, error_message)
+	M.SetUserSettingsAsync(SetUserSettingsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9971,10 +9971,10 @@ end
 -- @param CreateUserPoolDomainRequest
 -- @return response
 -- @return error_message
-function M.CreateUserPoolDomainSync(...)
+function M.CreateUserPoolDomainSync(CreateUserPoolDomainRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateUserPoolDomainAsync(..., function(response, error_message)
+	M.CreateUserPoolDomainAsync(CreateUserPoolDomainRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10003,10 +10003,10 @@ end
 -- @param RespondToAuthChallengeRequest
 -- @return response
 -- @return error_message
-function M.RespondToAuthChallengeSync(...)
+function M.RespondToAuthChallengeSync(RespondToAuthChallengeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RespondToAuthChallengeAsync(..., function(response, error_message)
+	M.RespondToAuthChallengeAsync(RespondToAuthChallengeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10035,10 +10035,10 @@ end
 -- @param StartUserImportJobRequest
 -- @return response
 -- @return error_message
-function M.StartUserImportJobSync(...)
+function M.StartUserImportJobSync(StartUserImportJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartUserImportJobAsync(..., function(response, error_message)
+	M.StartUserImportJobAsync(StartUserImportJobRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10067,10 +10067,10 @@ end
 -- @param DescribeUserImportJobRequest
 -- @return response
 -- @return error_message
-function M.DescribeUserImportJobSync(...)
+function M.DescribeUserImportJobSync(DescribeUserImportJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeUserImportJobAsync(..., function(response, error_message)
+	M.DescribeUserImportJobAsync(DescribeUserImportJobRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10099,10 +10099,10 @@ end
 -- @param UpdateGroupRequest
 -- @return response
 -- @return error_message
-function M.UpdateGroupSync(...)
+function M.UpdateGroupSync(UpdateGroupRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateGroupAsync(..., function(response, error_message)
+	M.UpdateGroupAsync(UpdateGroupRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10131,10 +10131,10 @@ end
 -- @param AdminAddUserToGroupRequest
 -- @return response
 -- @return error_message
-function M.AdminAddUserToGroupSync(...)
+function M.AdminAddUserToGroupSync(AdminAddUserToGroupRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AdminAddUserToGroupAsync(..., function(response, error_message)
+	M.AdminAddUserToGroupAsync(AdminAddUserToGroupRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10163,10 +10163,10 @@ end
 -- @param CreateUserPoolRequest
 -- @return response
 -- @return error_message
-function M.CreateUserPoolSync(...)
+function M.CreateUserPoolSync(CreateUserPoolRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateUserPoolAsync(..., function(response, error_message)
+	M.CreateUserPoolAsync(CreateUserPoolRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10195,10 +10195,10 @@ end
 -- @param AdminDeleteUserAttributesRequest
 -- @return response
 -- @return error_message
-function M.AdminDeleteUserAttributesSync(...)
+function M.AdminDeleteUserAttributesSync(AdminDeleteUserAttributesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AdminDeleteUserAttributesAsync(..., function(response, error_message)
+	M.AdminDeleteUserAttributesAsync(AdminDeleteUserAttributesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10227,10 +10227,10 @@ end
 -- @param DeleteUserPoolClientRequest
 -- @return response
 -- @return error_message
-function M.DeleteUserPoolClientSync(...)
+function M.DeleteUserPoolClientSync(DeleteUserPoolClientRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteUserPoolClientAsync(..., function(response, error_message)
+	M.DeleteUserPoolClientAsync(DeleteUserPoolClientRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10259,10 +10259,10 @@ end
 -- @param AdminRespondToAuthChallengeRequest
 -- @return response
 -- @return error_message
-function M.AdminRespondToAuthChallengeSync(...)
+function M.AdminRespondToAuthChallengeSync(AdminRespondToAuthChallengeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AdminRespondToAuthChallengeAsync(..., function(response, error_message)
+	M.AdminRespondToAuthChallengeAsync(AdminRespondToAuthChallengeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -10291,10 +10291,10 @@ end
 -- @param CreateIdentityProviderRequest
 -- @return response
 -- @return error_message
-function M.CreateIdentityProviderSync(...)
+function M.CreateIdentityProviderSync(CreateIdentityProviderRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateIdentityProviderAsync(..., function(response, error_message)
+	M.CreateIdentityProviderAsync(CreateIdentityProviderRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

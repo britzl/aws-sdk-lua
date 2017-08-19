@@ -628,10 +628,10 @@ end
 -- @param UpdateThingShadowRequest
 -- @return response
 -- @return error_message
-function M.UpdateThingShadowSync(...)
+function M.UpdateThingShadowSync(UpdateThingShadowRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateThingShadowAsync(..., function(response, error_message)
+	M.UpdateThingShadowAsync(UpdateThingShadowRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -660,10 +660,10 @@ end
 -- @param GetThingShadowRequest
 -- @return response
 -- @return error_message
-function M.GetThingShadowSync(...)
+function M.GetThingShadowSync(GetThingShadowRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetThingShadowAsync(..., function(response, error_message)
+	M.GetThingShadowAsync(GetThingShadowRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -692,10 +692,10 @@ end
 -- @param PublishRequest
 -- @return response
 -- @return error_message
-function M.PublishSync(...)
+function M.PublishSync(PublishRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PublishAsync(..., function(response, error_message)
+	M.PublishAsync(PublishRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -724,10 +724,10 @@ end
 -- @param DeleteThingShadowRequest
 -- @return response
 -- @return error_message
-function M.DeleteThingShadowSync(...)
+function M.DeleteThingShadowSync(DeleteThingShadowRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteThingShadowAsync(..., function(response, error_message)
+	M.DeleteThingShadowAsync(DeleteThingShadowRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

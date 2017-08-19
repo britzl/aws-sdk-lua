@@ -6164,10 +6164,10 @@ end
 -- @param DescribeSnapshotScheduleInput
 -- @return response
 -- @return error_message
-function M.DescribeSnapshotScheduleSync(...)
+function M.DescribeSnapshotScheduleSync(DescribeSnapshotScheduleInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeSnapshotScheduleAsync(..., function(response, error_message)
+	M.DescribeSnapshotScheduleAsync(DescribeSnapshotScheduleInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6196,10 +6196,10 @@ end
 -- @param UpdateNFSFileShareInput
 -- @return response
 -- @return error_message
-function M.UpdateNFSFileShareSync(...)
+function M.UpdateNFSFileShareSync(UpdateNFSFileShareInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateNFSFileShareAsync(..., function(response, error_message)
+	M.UpdateNFSFileShareAsync(UpdateNFSFileShareInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6228,10 +6228,10 @@ end
 -- @param DescribeTapeArchivesInput
 -- @return response
 -- @return error_message
-function M.DescribeTapeArchivesSync(...)
+function M.DescribeTapeArchivesSync(DescribeTapeArchivesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTapeArchivesAsync(..., function(response, error_message)
+	M.DescribeTapeArchivesAsync(DescribeTapeArchivesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6260,10 +6260,10 @@ end
 -- @param DeleteFileShareInput
 -- @return response
 -- @return error_message
-function M.DeleteFileShareSync(...)
+function M.DeleteFileShareSync(DeleteFileShareInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteFileShareAsync(..., function(response, error_message)
+	M.DeleteFileShareAsync(DeleteFileShareInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6292,10 +6292,10 @@ end
 -- @param RefreshCacheInput
 -- @return response
 -- @return error_message
-function M.RefreshCacheSync(...)
+function M.RefreshCacheSync(RefreshCacheInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RefreshCacheAsync(..., function(response, error_message)
+	M.RefreshCacheAsync(RefreshCacheInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6324,10 +6324,10 @@ end
 -- @param DescribeMaintenanceStartTimeInput
 -- @return response
 -- @return error_message
-function M.DescribeMaintenanceStartTimeSync(...)
+function M.DescribeMaintenanceStartTimeSync(DescribeMaintenanceStartTimeInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeMaintenanceStartTimeAsync(..., function(response, error_message)
+	M.DescribeMaintenanceStartTimeAsync(DescribeMaintenanceStartTimeInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6356,10 +6356,10 @@ end
 -- @param DescribeGatewayInformationInput
 -- @return response
 -- @return error_message
-function M.DescribeGatewayInformationSync(...)
+function M.DescribeGatewayInformationSync(DescribeGatewayInformationInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeGatewayInformationAsync(..., function(response, error_message)
+	M.DescribeGatewayInformationAsync(DescribeGatewayInformationInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6388,10 +6388,10 @@ end
 -- @param UpdateGatewayInformationInput
 -- @return response
 -- @return error_message
-function M.UpdateGatewayInformationSync(...)
+function M.UpdateGatewayInformationSync(UpdateGatewayInformationInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateGatewayInformationAsync(..., function(response, error_message)
+	M.UpdateGatewayInformationAsync(UpdateGatewayInformationInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6420,10 +6420,10 @@ end
 -- @param DisableGatewayInput
 -- @return response
 -- @return error_message
-function M.DisableGatewaySync(...)
+function M.DisableGatewaySync(DisableGatewayInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisableGatewayAsync(..., function(response, error_message)
+	M.DisableGatewayAsync(DisableGatewayInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6452,10 +6452,10 @@ end
 -- @param ListFileSharesInput
 -- @return response
 -- @return error_message
-function M.ListFileSharesSync(...)
+function M.ListFileSharesSync(ListFileSharesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListFileSharesAsync(..., function(response, error_message)
+	M.ListFileSharesAsync(ListFileSharesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6484,10 +6484,10 @@ end
 -- @param UpdateMaintenanceStartTimeInput
 -- @return response
 -- @return error_message
-function M.UpdateMaintenanceStartTimeSync(...)
+function M.UpdateMaintenanceStartTimeSync(UpdateMaintenanceStartTimeInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateMaintenanceStartTimeAsync(..., function(response, error_message)
+	M.UpdateMaintenanceStartTimeAsync(UpdateMaintenanceStartTimeInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6516,10 +6516,10 @@ end
 -- @param CreateTapesInput
 -- @return response
 -- @return error_message
-function M.CreateTapesSync(...)
+function M.CreateTapesSync(CreateTapesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateTapesAsync(..., function(response, error_message)
+	M.CreateTapesAsync(CreateTapesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6548,10 +6548,10 @@ end
 -- @param UpdateBandwidthRateLimitInput
 -- @return response
 -- @return error_message
-function M.UpdateBandwidthRateLimitSync(...)
+function M.UpdateBandwidthRateLimitSync(UpdateBandwidthRateLimitInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateBandwidthRateLimitAsync(..., function(response, error_message)
+	M.UpdateBandwidthRateLimitAsync(UpdateBandwidthRateLimitInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6580,10 +6580,10 @@ end
 -- @param CreateCachediSCSIVolumeInput
 -- @return response
 -- @return error_message
-function M.CreateCachediSCSIVolumeSync(...)
+function M.CreateCachediSCSIVolumeSync(CreateCachediSCSIVolumeInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateCachediSCSIVolumeAsync(..., function(response, error_message)
+	M.CreateCachediSCSIVolumeAsync(CreateCachediSCSIVolumeInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6612,10 +6612,10 @@ end
 -- @param CreateTapeWithBarcodeInput
 -- @return response
 -- @return error_message
-function M.CreateTapeWithBarcodeSync(...)
+function M.CreateTapeWithBarcodeSync(CreateTapeWithBarcodeInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateTapeWithBarcodeAsync(..., function(response, error_message)
+	M.CreateTapeWithBarcodeAsync(CreateTapeWithBarcodeInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6644,10 +6644,10 @@ end
 -- @param DescribeChapCredentialsInput
 -- @return response
 -- @return error_message
-function M.DescribeChapCredentialsSync(...)
+function M.DescribeChapCredentialsSync(DescribeChapCredentialsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeChapCredentialsAsync(..., function(response, error_message)
+	M.DescribeChapCredentialsAsync(DescribeChapCredentialsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6676,10 +6676,10 @@ end
 -- @param ListLocalDisksInput
 -- @return response
 -- @return error_message
-function M.ListLocalDisksSync(...)
+function M.ListLocalDisksSync(ListLocalDisksInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListLocalDisksAsync(..., function(response, error_message)
+	M.ListLocalDisksAsync(ListLocalDisksInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6708,10 +6708,10 @@ end
 -- @param UpdateGatewaySoftwareNowInput
 -- @return response
 -- @return error_message
-function M.UpdateGatewaySoftwareNowSync(...)
+function M.UpdateGatewaySoftwareNowSync(UpdateGatewaySoftwareNowInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateGatewaySoftwareNowAsync(..., function(response, error_message)
+	M.UpdateGatewaySoftwareNowAsync(UpdateGatewaySoftwareNowInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6740,10 +6740,10 @@ end
 -- @param ResetCacheInput
 -- @return response
 -- @return error_message
-function M.ResetCacheSync(...)
+function M.ResetCacheSync(ResetCacheInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ResetCacheAsync(..., function(response, error_message)
+	M.ResetCacheAsync(ResetCacheInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6772,10 +6772,10 @@ end
 -- @param AddTagsToResourceInput
 -- @return response
 -- @return error_message
-function M.AddTagsToResourceSync(...)
+function M.AddTagsToResourceSync(AddTagsToResourceInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddTagsToResourceAsync(..., function(response, error_message)
+	M.AddTagsToResourceAsync(AddTagsToResourceInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6804,10 +6804,10 @@ end
 -- @param RetrieveTapeArchiveInput
 -- @return response
 -- @return error_message
-function M.RetrieveTapeArchiveSync(...)
+function M.RetrieveTapeArchiveSync(RetrieveTapeArchiveInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RetrieveTapeArchiveAsync(..., function(response, error_message)
+	M.RetrieveTapeArchiveAsync(RetrieveTapeArchiveInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6836,10 +6836,10 @@ end
 -- @param SetLocalConsolePasswordInput
 -- @return response
 -- @return error_message
-function M.SetLocalConsolePasswordSync(...)
+function M.SetLocalConsolePasswordSync(SetLocalConsolePasswordInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetLocalConsolePasswordAsync(..., function(response, error_message)
+	M.SetLocalConsolePasswordAsync(SetLocalConsolePasswordInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6868,10 +6868,10 @@ end
 -- @param UpdateSnapshotScheduleInput
 -- @return response
 -- @return error_message
-function M.UpdateSnapshotScheduleSync(...)
+function M.UpdateSnapshotScheduleSync(UpdateSnapshotScheduleInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateSnapshotScheduleAsync(..., function(response, error_message)
+	M.UpdateSnapshotScheduleAsync(UpdateSnapshotScheduleInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6900,10 +6900,10 @@ end
 -- @param ListVolumeInitiatorsInput
 -- @return response
 -- @return error_message
-function M.ListVolumeInitiatorsSync(...)
+function M.ListVolumeInitiatorsSync(ListVolumeInitiatorsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListVolumeInitiatorsAsync(..., function(response, error_message)
+	M.ListVolumeInitiatorsAsync(ListVolumeInitiatorsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6932,10 +6932,10 @@ end
 -- @param RemoveTagsFromResourceInput
 -- @return response
 -- @return error_message
-function M.RemoveTagsFromResourceSync(...)
+function M.RemoveTagsFromResourceSync(RemoveTagsFromResourceInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RemoveTagsFromResourceAsync(..., function(response, error_message)
+	M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6964,10 +6964,10 @@ end
 -- @param CreateSnapshotFromVolumeRecoveryPointInput
 -- @return response
 -- @return error_message
-function M.CreateSnapshotFromVolumeRecoveryPointSync(...)
+function M.CreateSnapshotFromVolumeRecoveryPointSync(CreateSnapshotFromVolumeRecoveryPointInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateSnapshotFromVolumeRecoveryPointAsync(..., function(response, error_message)
+	M.CreateSnapshotFromVolumeRecoveryPointAsync(CreateSnapshotFromVolumeRecoveryPointInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6996,10 +6996,10 @@ end
 -- @param ListGatewaysInput
 -- @return response
 -- @return error_message
-function M.ListGatewaysSync(...)
+function M.ListGatewaysSync(ListGatewaysInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListGatewaysAsync(..., function(response, error_message)
+	M.ListGatewaysAsync(ListGatewaysInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7028,10 +7028,10 @@ end
 -- @param DeleteChapCredentialsInput
 -- @return response
 -- @return error_message
-function M.DeleteChapCredentialsSync(...)
+function M.DeleteChapCredentialsSync(DeleteChapCredentialsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteChapCredentialsAsync(..., function(response, error_message)
+	M.DeleteChapCredentialsAsync(DeleteChapCredentialsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7060,10 +7060,10 @@ end
 -- @param DeleteVolumeInput
 -- @return response
 -- @return error_message
-function M.DeleteVolumeSync(...)
+function M.DeleteVolumeSync(DeleteVolumeInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteVolumeAsync(..., function(response, error_message)
+	M.DeleteVolumeAsync(DeleteVolumeInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7092,10 +7092,10 @@ end
 -- @param DescribeTapeRecoveryPointsInput
 -- @return response
 -- @return error_message
-function M.DescribeTapeRecoveryPointsSync(...)
+function M.DescribeTapeRecoveryPointsSync(DescribeTapeRecoveryPointsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTapeRecoveryPointsAsync(..., function(response, error_message)
+	M.DescribeTapeRecoveryPointsAsync(DescribeTapeRecoveryPointsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7124,10 +7124,10 @@ end
 -- @param ActivateGatewayInput
 -- @return response
 -- @return error_message
-function M.ActivateGatewaySync(...)
+function M.ActivateGatewaySync(ActivateGatewayInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ActivateGatewayAsync(..., function(response, error_message)
+	M.ActivateGatewayAsync(ActivateGatewayInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7156,10 +7156,10 @@ end
 -- @param DeleteTapeArchiveInput
 -- @return response
 -- @return error_message
-function M.DeleteTapeArchiveSync(...)
+function M.DeleteTapeArchiveSync(DeleteTapeArchiveInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteTapeArchiveAsync(..., function(response, error_message)
+	M.DeleteTapeArchiveAsync(DeleteTapeArchiveInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7188,10 +7188,10 @@ end
 -- @param DescribeVTLDevicesInput
 -- @return response
 -- @return error_message
-function M.DescribeVTLDevicesSync(...)
+function M.DescribeVTLDevicesSync(DescribeVTLDevicesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeVTLDevicesAsync(..., function(response, error_message)
+	M.DescribeVTLDevicesAsync(DescribeVTLDevicesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7220,10 +7220,10 @@ end
 -- @param AddCacheInput
 -- @return response
 -- @return error_message
-function M.AddCacheSync(...)
+function M.AddCacheSync(AddCacheInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddCacheAsync(..., function(response, error_message)
+	M.AddCacheAsync(AddCacheInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7252,10 +7252,10 @@ end
 -- @param ListVolumesInput
 -- @return response
 -- @return error_message
-function M.ListVolumesSync(...)
+function M.ListVolumesSync(ListVolumesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListVolumesAsync(..., function(response, error_message)
+	M.ListVolumesAsync(ListVolumesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7284,10 +7284,10 @@ end
 -- @param DescribeCachediSCSIVolumesInput
 -- @return response
 -- @return error_message
-function M.DescribeCachediSCSIVolumesSync(...)
+function M.DescribeCachediSCSIVolumesSync(DescribeCachediSCSIVolumesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeCachediSCSIVolumesAsync(..., function(response, error_message)
+	M.DescribeCachediSCSIVolumesAsync(DescribeCachediSCSIVolumesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7316,10 +7316,10 @@ end
 -- @param RetrieveTapeRecoveryPointInput
 -- @return response
 -- @return error_message
-function M.RetrieveTapeRecoveryPointSync(...)
+function M.RetrieveTapeRecoveryPointSync(RetrieveTapeRecoveryPointInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RetrieveTapeRecoveryPointAsync(..., function(response, error_message)
+	M.RetrieveTapeRecoveryPointAsync(RetrieveTapeRecoveryPointInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7348,10 +7348,10 @@ end
 -- @param CancelRetrievalInput
 -- @return response
 -- @return error_message
-function M.CancelRetrievalSync(...)
+function M.CancelRetrievalSync(CancelRetrievalInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CancelRetrievalAsync(..., function(response, error_message)
+	M.CancelRetrievalAsync(CancelRetrievalInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7380,10 +7380,10 @@ end
 -- @param DescribeBandwidthRateLimitInput
 -- @return response
 -- @return error_message
-function M.DescribeBandwidthRateLimitSync(...)
+function M.DescribeBandwidthRateLimitSync(DescribeBandwidthRateLimitInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeBandwidthRateLimitAsync(..., function(response, error_message)
+	M.DescribeBandwidthRateLimitAsync(DescribeBandwidthRateLimitInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7412,10 +7412,10 @@ end
 -- @param DescribeStorediSCSIVolumesInput
 -- @return response
 -- @return error_message
-function M.DescribeStorediSCSIVolumesSync(...)
+function M.DescribeStorediSCSIVolumesSync(DescribeStorediSCSIVolumesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeStorediSCSIVolumesAsync(..., function(response, error_message)
+	M.DescribeStorediSCSIVolumesAsync(DescribeStorediSCSIVolumesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7444,10 +7444,10 @@ end
 -- @param ListVolumeRecoveryPointsInput
 -- @return response
 -- @return error_message
-function M.ListVolumeRecoveryPointsSync(...)
+function M.ListVolumeRecoveryPointsSync(ListVolumeRecoveryPointsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListVolumeRecoveryPointsAsync(..., function(response, error_message)
+	M.ListVolumeRecoveryPointsAsync(ListVolumeRecoveryPointsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7476,10 +7476,10 @@ end
 -- @param UpdateChapCredentialsInput
 -- @return response
 -- @return error_message
-function M.UpdateChapCredentialsSync(...)
+function M.UpdateChapCredentialsSync(UpdateChapCredentialsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateChapCredentialsAsync(..., function(response, error_message)
+	M.UpdateChapCredentialsAsync(UpdateChapCredentialsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7508,10 +7508,10 @@ end
 -- @param StartGatewayInput
 -- @return response
 -- @return error_message
-function M.StartGatewaySync(...)
+function M.StartGatewaySync(StartGatewayInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartGatewayAsync(..., function(response, error_message)
+	M.StartGatewayAsync(StartGatewayInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7540,10 +7540,10 @@ end
 -- @param DescribeCacheInput
 -- @return response
 -- @return error_message
-function M.DescribeCacheSync(...)
+function M.DescribeCacheSync(DescribeCacheInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeCacheAsync(..., function(response, error_message)
+	M.DescribeCacheAsync(DescribeCacheInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7572,10 +7572,10 @@ end
 -- @param AddUploadBufferInput
 -- @return response
 -- @return error_message
-function M.AddUploadBufferSync(...)
+function M.AddUploadBufferSync(AddUploadBufferInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddUploadBufferAsync(..., function(response, error_message)
+	M.AddUploadBufferAsync(AddUploadBufferInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7604,10 +7604,10 @@ end
 -- @param DeleteSnapshotScheduleInput
 -- @return response
 -- @return error_message
-function M.DeleteSnapshotScheduleSync(...)
+function M.DeleteSnapshotScheduleSync(DeleteSnapshotScheduleInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteSnapshotScheduleAsync(..., function(response, error_message)
+	M.DeleteSnapshotScheduleAsync(DeleteSnapshotScheduleInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7636,10 +7636,10 @@ end
 -- @param UpdateVTLDeviceTypeInput
 -- @return response
 -- @return error_message
-function M.UpdateVTLDeviceTypeSync(...)
+function M.UpdateVTLDeviceTypeSync(UpdateVTLDeviceTypeInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateVTLDeviceTypeAsync(..., function(response, error_message)
+	M.UpdateVTLDeviceTypeAsync(UpdateVTLDeviceTypeInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7668,10 +7668,10 @@ end
 -- @param DeleteTapeInput
 -- @return response
 -- @return error_message
-function M.DeleteTapeSync(...)
+function M.DeleteTapeSync(DeleteTapeInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteTapeAsync(..., function(response, error_message)
+	M.DeleteTapeAsync(DeleteTapeInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7700,10 +7700,10 @@ end
 -- @param DeleteBandwidthRateLimitInput
 -- @return response
 -- @return error_message
-function M.DeleteBandwidthRateLimitSync(...)
+function M.DeleteBandwidthRateLimitSync(DeleteBandwidthRateLimitInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteBandwidthRateLimitAsync(..., function(response, error_message)
+	M.DeleteBandwidthRateLimitAsync(DeleteBandwidthRateLimitInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7732,10 +7732,10 @@ end
 -- @param ShutdownGatewayInput
 -- @return response
 -- @return error_message
-function M.ShutdownGatewaySync(...)
+function M.ShutdownGatewaySync(ShutdownGatewayInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ShutdownGatewayAsync(..., function(response, error_message)
+	M.ShutdownGatewayAsync(ShutdownGatewayInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7764,10 +7764,10 @@ end
 -- @param DescribeTapesInput
 -- @return response
 -- @return error_message
-function M.DescribeTapesSync(...)
+function M.DescribeTapesSync(DescribeTapesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTapesAsync(..., function(response, error_message)
+	M.DescribeTapesAsync(DescribeTapesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7796,10 +7796,10 @@ end
 -- @param CreateNFSFileShareInput
 -- @return response
 -- @return error_message
-function M.CreateNFSFileShareSync(...)
+function M.CreateNFSFileShareSync(CreateNFSFileShareInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateNFSFileShareAsync(..., function(response, error_message)
+	M.CreateNFSFileShareAsync(CreateNFSFileShareInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7828,10 +7828,10 @@ end
 -- @param CreateStorediSCSIVolumeInput
 -- @return response
 -- @return error_message
-function M.CreateStorediSCSIVolumeSync(...)
+function M.CreateStorediSCSIVolumeSync(CreateStorediSCSIVolumeInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateStorediSCSIVolumeAsync(..., function(response, error_message)
+	M.CreateStorediSCSIVolumeAsync(CreateStorediSCSIVolumeInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7860,10 +7860,10 @@ end
 -- @param CancelArchivalInput
 -- @return response
 -- @return error_message
-function M.CancelArchivalSync(...)
+function M.CancelArchivalSync(CancelArchivalInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CancelArchivalAsync(..., function(response, error_message)
+	M.CancelArchivalAsync(CancelArchivalInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7892,10 +7892,10 @@ end
 -- @param ListTapesInput
 -- @return response
 -- @return error_message
-function M.ListTapesSync(...)
+function M.ListTapesSync(ListTapesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTapesAsync(..., function(response, error_message)
+	M.ListTapesAsync(ListTapesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7924,10 +7924,10 @@ end
 -- @param DeleteGatewayInput
 -- @return response
 -- @return error_message
-function M.DeleteGatewaySync(...)
+function M.DeleteGatewaySync(DeleteGatewayInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteGatewayAsync(..., function(response, error_message)
+	M.DeleteGatewayAsync(DeleteGatewayInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7956,10 +7956,10 @@ end
 -- @param DescribeNFSFileSharesInput
 -- @return response
 -- @return error_message
-function M.DescribeNFSFileSharesSync(...)
+function M.DescribeNFSFileSharesSync(DescribeNFSFileSharesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeNFSFileSharesAsync(..., function(response, error_message)
+	M.DescribeNFSFileSharesAsync(DescribeNFSFileSharesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7988,10 +7988,10 @@ end
 -- @param DescribeWorkingStorageInput
 -- @return response
 -- @return error_message
-function M.DescribeWorkingStorageSync(...)
+function M.DescribeWorkingStorageSync(DescribeWorkingStorageInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeWorkingStorageAsync(..., function(response, error_message)
+	M.DescribeWorkingStorageAsync(DescribeWorkingStorageInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8020,10 +8020,10 @@ end
 -- @param DescribeUploadBufferInput
 -- @return response
 -- @return error_message
-function M.DescribeUploadBufferSync(...)
+function M.DescribeUploadBufferSync(DescribeUploadBufferInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeUploadBufferAsync(..., function(response, error_message)
+	M.DescribeUploadBufferAsync(DescribeUploadBufferInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8052,10 +8052,10 @@ end
 -- @param ListTagsForResourceInput
 -- @return response
 -- @return error_message
-function M.ListTagsForResourceSync(...)
+function M.ListTagsForResourceSync(ListTagsForResourceInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTagsForResourceAsync(..., function(response, error_message)
+	M.ListTagsForResourceAsync(ListTagsForResourceInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8084,10 +8084,10 @@ end
 -- @param AddWorkingStorageInput
 -- @return response
 -- @return error_message
-function M.AddWorkingStorageSync(...)
+function M.AddWorkingStorageSync(AddWorkingStorageInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddWorkingStorageAsync(..., function(response, error_message)
+	M.AddWorkingStorageAsync(AddWorkingStorageInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8116,10 +8116,10 @@ end
 -- @param CreateSnapshotInput
 -- @return response
 -- @return error_message
-function M.CreateSnapshotSync(...)
+function M.CreateSnapshotSync(CreateSnapshotInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateSnapshotAsync(..., function(response, error_message)
+	M.CreateSnapshotAsync(CreateSnapshotInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

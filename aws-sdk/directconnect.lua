@@ -3151,7 +3151,7 @@ end
 function M.DescribeVirtualGatewaysSync(...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeVirtualGatewaysAsync(..., function(response, error_message)
+	M.DescribeVirtualGatewaysAsync(function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3180,10 +3180,10 @@ end
 -- @param CreateBGPPeerRequest
 -- @return response
 -- @return error_message
-function M.CreateBGPPeerSync(...)
+function M.CreateBGPPeerSync(CreateBGPPeerRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateBGPPeerAsync(..., function(response, error_message)
+	M.CreateBGPPeerAsync(CreateBGPPeerRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3212,10 +3212,10 @@ end
 -- @param AllocateHostedConnectionRequest
 -- @return response
 -- @return error_message
-function M.AllocateHostedConnectionSync(...)
+function M.AllocateHostedConnectionSync(AllocateHostedConnectionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AllocateHostedConnectionAsync(..., function(response, error_message)
+	M.AllocateHostedConnectionAsync(AllocateHostedConnectionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3244,10 +3244,10 @@ end
 -- @param AssociateHostedConnectionRequest
 -- @return response
 -- @return error_message
-function M.AssociateHostedConnectionSync(...)
+function M.AssociateHostedConnectionSync(AssociateHostedConnectionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AssociateHostedConnectionAsync(..., function(response, error_message)
+	M.AssociateHostedConnectionAsync(AssociateHostedConnectionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3276,10 +3276,10 @@ end
 -- @param AllocatePublicVirtualInterfaceRequest
 -- @return response
 -- @return error_message
-function M.AllocatePublicVirtualInterfaceSync(...)
+function M.AllocatePublicVirtualInterfaceSync(AllocatePublicVirtualInterfaceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AllocatePublicVirtualInterfaceAsync(..., function(response, error_message)
+	M.AllocatePublicVirtualInterfaceAsync(AllocatePublicVirtualInterfaceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3308,10 +3308,10 @@ end
 -- @param DeleteVirtualInterfaceRequest
 -- @return response
 -- @return error_message
-function M.DeleteVirtualInterfaceSync(...)
+function M.DeleteVirtualInterfaceSync(DeleteVirtualInterfaceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteVirtualInterfaceAsync(..., function(response, error_message)
+	M.DeleteVirtualInterfaceAsync(DeleteVirtualInterfaceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3340,10 +3340,10 @@ end
 -- @param CreateInterconnectRequest
 -- @return response
 -- @return error_message
-function M.CreateInterconnectSync(...)
+function M.CreateInterconnectSync(CreateInterconnectRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateInterconnectAsync(..., function(response, error_message)
+	M.CreateInterconnectAsync(CreateInterconnectRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3372,10 +3372,10 @@ end
 -- @param DescribeLagsRequest
 -- @return response
 -- @return error_message
-function M.DescribeLagsSync(...)
+function M.DescribeLagsSync(DescribeLagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeLagsAsync(..., function(response, error_message)
+	M.DescribeLagsAsync(DescribeLagsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3404,10 +3404,10 @@ end
 -- @param DeleteBGPPeerRequest
 -- @return response
 -- @return error_message
-function M.DeleteBGPPeerSync(...)
+function M.DeleteBGPPeerSync(DeleteBGPPeerRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteBGPPeerAsync(..., function(response, error_message)
+	M.DeleteBGPPeerAsync(DeleteBGPPeerRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3436,10 +3436,10 @@ end
 -- @param AllocatePrivateVirtualInterfaceRequest
 -- @return response
 -- @return error_message
-function M.AllocatePrivateVirtualInterfaceSync(...)
+function M.AllocatePrivateVirtualInterfaceSync(AllocatePrivateVirtualInterfaceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AllocatePrivateVirtualInterfaceAsync(..., function(response, error_message)
+	M.AllocatePrivateVirtualInterfaceAsync(AllocatePrivateVirtualInterfaceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3468,10 +3468,10 @@ end
 -- @param AssociateConnectionWithLagRequest
 -- @return response
 -- @return error_message
-function M.AssociateConnectionWithLagSync(...)
+function M.AssociateConnectionWithLagSync(AssociateConnectionWithLagRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AssociateConnectionWithLagAsync(..., function(response, error_message)
+	M.AssociateConnectionWithLagAsync(AssociateConnectionWithLagRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3500,10 +3500,10 @@ end
 -- @param CreateLagRequest
 -- @return response
 -- @return error_message
-function M.CreateLagSync(...)
+function M.CreateLagSync(CreateLagRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateLagAsync(..., function(response, error_message)
+	M.CreateLagAsync(CreateLagRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3532,10 +3532,10 @@ end
 -- @param ConfirmPublicVirtualInterfaceRequest
 -- @return response
 -- @return error_message
-function M.ConfirmPublicVirtualInterfaceSync(...)
+function M.ConfirmPublicVirtualInterfaceSync(ConfirmPublicVirtualInterfaceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ConfirmPublicVirtualInterfaceAsync(..., function(response, error_message)
+	M.ConfirmPublicVirtualInterfaceAsync(ConfirmPublicVirtualInterfaceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3564,10 +3564,10 @@ end
 -- @param DescribeLoaRequest
 -- @return response
 -- @return error_message
-function M.DescribeLoaSync(...)
+function M.DescribeLoaSync(DescribeLoaRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeLoaAsync(..., function(response, error_message)
+	M.DescribeLoaAsync(DescribeLoaRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3596,10 +3596,10 @@ end
 -- @param DescribeHostedConnectionsRequest
 -- @return response
 -- @return error_message
-function M.DescribeHostedConnectionsSync(...)
+function M.DescribeHostedConnectionsSync(DescribeHostedConnectionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeHostedConnectionsAsync(..., function(response, error_message)
+	M.DescribeHostedConnectionsAsync(DescribeHostedConnectionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3628,10 +3628,10 @@ end
 -- @param DeleteInterconnectRequest
 -- @return response
 -- @return error_message
-function M.DeleteInterconnectSync(...)
+function M.DeleteInterconnectSync(DeleteInterconnectRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteInterconnectAsync(..., function(response, error_message)
+	M.DeleteInterconnectAsync(DeleteInterconnectRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3660,10 +3660,10 @@ end
 -- @param DescribeVirtualInterfacesRequest
 -- @return response
 -- @return error_message
-function M.DescribeVirtualInterfacesSync(...)
+function M.DescribeVirtualInterfacesSync(DescribeVirtualInterfacesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeVirtualInterfacesAsync(..., function(response, error_message)
+	M.DescribeVirtualInterfacesAsync(DescribeVirtualInterfacesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3692,10 +3692,10 @@ end
 -- @param UpdateLagRequest
 -- @return response
 -- @return error_message
-function M.UpdateLagSync(...)
+function M.UpdateLagSync(UpdateLagRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateLagAsync(..., function(response, error_message)
+	M.UpdateLagAsync(UpdateLagRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3724,10 +3724,10 @@ end
 -- @param ConfirmPrivateVirtualInterfaceRequest
 -- @return response
 -- @return error_message
-function M.ConfirmPrivateVirtualInterfaceSync(...)
+function M.ConfirmPrivateVirtualInterfaceSync(ConfirmPrivateVirtualInterfaceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ConfirmPrivateVirtualInterfaceAsync(..., function(response, error_message)
+	M.ConfirmPrivateVirtualInterfaceAsync(ConfirmPrivateVirtualInterfaceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3756,10 +3756,10 @@ end
 -- @param DisassociateConnectionFromLagRequest
 -- @return response
 -- @return error_message
-function M.DisassociateConnectionFromLagSync(...)
+function M.DisassociateConnectionFromLagSync(DisassociateConnectionFromLagRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisassociateConnectionFromLagAsync(..., function(response, error_message)
+	M.DisassociateConnectionFromLagAsync(DisassociateConnectionFromLagRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3788,10 +3788,10 @@ end
 -- @param ConfirmConnectionRequest
 -- @return response
 -- @return error_message
-function M.ConfirmConnectionSync(...)
+function M.ConfirmConnectionSync(ConfirmConnectionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ConfirmConnectionAsync(..., function(response, error_message)
+	M.ConfirmConnectionAsync(ConfirmConnectionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3820,10 +3820,10 @@ end
 -- @param DescribeInterconnectsRequest
 -- @return response
 -- @return error_message
-function M.DescribeInterconnectsSync(...)
+function M.DescribeInterconnectsSync(DescribeInterconnectsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeInterconnectsAsync(..., function(response, error_message)
+	M.DescribeInterconnectsAsync(DescribeInterconnectsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3852,10 +3852,10 @@ end
 -- @param DescribeTagsRequest
 -- @return response
 -- @return error_message
-function M.DescribeTagsSync(...)
+function M.DescribeTagsSync(DescribeTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTagsAsync(..., function(response, error_message)
+	M.DescribeTagsAsync(DescribeTagsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3884,10 +3884,10 @@ end
 -- @param DescribeConnectionsRequest
 -- @return response
 -- @return error_message
-function M.DescribeConnectionsSync(...)
+function M.DescribeConnectionsSync(DescribeConnectionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeConnectionsAsync(..., function(response, error_message)
+	M.DescribeConnectionsAsync(DescribeConnectionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3916,10 +3916,10 @@ end
 -- @param CreatePublicVirtualInterfaceRequest
 -- @return response
 -- @return error_message
-function M.CreatePublicVirtualInterfaceSync(...)
+function M.CreatePublicVirtualInterfaceSync(CreatePublicVirtualInterfaceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreatePublicVirtualInterfaceAsync(..., function(response, error_message)
+	M.CreatePublicVirtualInterfaceAsync(CreatePublicVirtualInterfaceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3948,10 +3948,10 @@ end
 -- @param CreateConnectionRequest
 -- @return response
 -- @return error_message
-function M.CreateConnectionSync(...)
+function M.CreateConnectionSync(CreateConnectionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateConnectionAsync(..., function(response, error_message)
+	M.CreateConnectionAsync(CreateConnectionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3980,10 +3980,10 @@ end
 -- @param TagResourceRequest
 -- @return response
 -- @return error_message
-function M.TagResourceSync(...)
+function M.TagResourceSync(TagResourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.TagResourceAsync(..., function(response, error_message)
+	M.TagResourceAsync(TagResourceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4012,7 +4012,7 @@ end
 function M.DescribeLocationsSync(...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeLocationsAsync(..., function(response, error_message)
+	M.DescribeLocationsAsync(function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4041,10 +4041,10 @@ end
 -- @param UntagResourceRequest
 -- @return response
 -- @return error_message
-function M.UntagResourceSync(...)
+function M.UntagResourceSync(UntagResourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UntagResourceAsync(..., function(response, error_message)
+	M.UntagResourceAsync(UntagResourceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4073,10 +4073,10 @@ end
 -- @param CreatePrivateVirtualInterfaceRequest
 -- @return response
 -- @return error_message
-function M.CreatePrivateVirtualInterfaceSync(...)
+function M.CreatePrivateVirtualInterfaceSync(CreatePrivateVirtualInterfaceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreatePrivateVirtualInterfaceAsync(..., function(response, error_message)
+	M.CreatePrivateVirtualInterfaceAsync(CreatePrivateVirtualInterfaceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4105,10 +4105,10 @@ end
 -- @param DeleteConnectionRequest
 -- @return response
 -- @return error_message
-function M.DeleteConnectionSync(...)
+function M.DeleteConnectionSync(DeleteConnectionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteConnectionAsync(..., function(response, error_message)
+	M.DeleteConnectionAsync(DeleteConnectionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4137,10 +4137,10 @@ end
 -- @param DeleteLagRequest
 -- @return response
 -- @return error_message
-function M.DeleteLagSync(...)
+function M.DeleteLagSync(DeleteLagRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteLagAsync(..., function(response, error_message)
+	M.DeleteLagAsync(DeleteLagRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4169,10 +4169,10 @@ end
 -- @param AssociateVirtualInterfaceRequest
 -- @return response
 -- @return error_message
-function M.AssociateVirtualInterfaceSync(...)
+function M.AssociateVirtualInterfaceSync(AssociateVirtualInterfaceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AssociateVirtualInterfaceAsync(..., function(response, error_message)
+	M.AssociateVirtualInterfaceAsync(AssociateVirtualInterfaceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

@@ -1645,10 +1645,10 @@ end
 -- @param DescribeBudgetRequest
 -- @return response
 -- @return error_message
-function M.DescribeBudgetSync(...)
+function M.DescribeBudgetSync(DescribeBudgetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeBudgetAsync(..., function(response, error_message)
+	M.DescribeBudgetAsync(DescribeBudgetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1677,10 +1677,10 @@ end
 -- @param DescribeNotificationsForBudgetRequest
 -- @return response
 -- @return error_message
-function M.DescribeNotificationsForBudgetSync(...)
+function M.DescribeNotificationsForBudgetSync(DescribeNotificationsForBudgetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeNotificationsForBudgetAsync(..., function(response, error_message)
+	M.DescribeNotificationsForBudgetAsync(DescribeNotificationsForBudgetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1709,10 +1709,10 @@ end
 -- @param CreateSubscriberRequest
 -- @return response
 -- @return error_message
-function M.CreateSubscriberSync(...)
+function M.CreateSubscriberSync(CreateSubscriberRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateSubscriberAsync(..., function(response, error_message)
+	M.CreateSubscriberAsync(CreateSubscriberRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1741,10 +1741,10 @@ end
 -- @param CreateNotificationRequest
 -- @return response
 -- @return error_message
-function M.CreateNotificationSync(...)
+function M.CreateNotificationSync(CreateNotificationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateNotificationAsync(..., function(response, error_message)
+	M.CreateNotificationAsync(CreateNotificationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1773,10 +1773,10 @@ end
 -- @param UpdateNotificationRequest
 -- @return response
 -- @return error_message
-function M.UpdateNotificationSync(...)
+function M.UpdateNotificationSync(UpdateNotificationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateNotificationAsync(..., function(response, error_message)
+	M.UpdateNotificationAsync(UpdateNotificationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1805,10 +1805,10 @@ end
 -- @param UpdateBudgetRequest
 -- @return response
 -- @return error_message
-function M.UpdateBudgetSync(...)
+function M.UpdateBudgetSync(UpdateBudgetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateBudgetAsync(..., function(response, error_message)
+	M.UpdateBudgetAsync(UpdateBudgetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1837,10 +1837,10 @@ end
 -- @param CreateBudgetRequest
 -- @return response
 -- @return error_message
-function M.CreateBudgetSync(...)
+function M.CreateBudgetSync(CreateBudgetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateBudgetAsync(..., function(response, error_message)
+	M.CreateBudgetAsync(CreateBudgetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1869,10 +1869,10 @@ end
 -- @param DeleteNotificationRequest
 -- @return response
 -- @return error_message
-function M.DeleteNotificationSync(...)
+function M.DeleteNotificationSync(DeleteNotificationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteNotificationAsync(..., function(response, error_message)
+	M.DeleteNotificationAsync(DeleteNotificationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1901,10 +1901,10 @@ end
 -- @param DescribeSubscribersForNotificationRequest
 -- @return response
 -- @return error_message
-function M.DescribeSubscribersForNotificationSync(...)
+function M.DescribeSubscribersForNotificationSync(DescribeSubscribersForNotificationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeSubscribersForNotificationAsync(..., function(response, error_message)
+	M.DescribeSubscribersForNotificationAsync(DescribeSubscribersForNotificationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1933,10 +1933,10 @@ end
 -- @param DeleteSubscriberRequest
 -- @return response
 -- @return error_message
-function M.DeleteSubscriberSync(...)
+function M.DeleteSubscriberSync(DeleteSubscriberRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteSubscriberAsync(..., function(response, error_message)
+	M.DeleteSubscriberAsync(DeleteSubscriberRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1965,10 +1965,10 @@ end
 -- @param DescribeBudgetsRequest
 -- @return response
 -- @return error_message
-function M.DescribeBudgetsSync(...)
+function M.DescribeBudgetsSync(DescribeBudgetsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeBudgetsAsync(..., function(response, error_message)
+	M.DescribeBudgetsAsync(DescribeBudgetsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1997,10 +1997,10 @@ end
 -- @param DeleteBudgetRequest
 -- @return response
 -- @return error_message
-function M.DeleteBudgetSync(...)
+function M.DeleteBudgetSync(DeleteBudgetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteBudgetAsync(..., function(response, error_message)
+	M.DeleteBudgetAsync(DeleteBudgetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2029,10 +2029,10 @@ end
 -- @param UpdateSubscriberRequest
 -- @return response
 -- @return error_message
-function M.UpdateSubscriberSync(...)
+function M.UpdateSubscriberSync(UpdateSubscriberRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateSubscriberAsync(..., function(response, error_message)
+	M.UpdateSubscriberAsync(UpdateSubscriberRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

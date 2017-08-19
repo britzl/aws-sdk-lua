@@ -6863,10 +6863,10 @@ end
 -- @param ListTrafficPolicyInstancesByHostedZoneRequest
 -- @return response
 -- @return error_message
-function M.ListTrafficPolicyInstancesByHostedZoneSync(...)
+function M.ListTrafficPolicyInstancesByHostedZoneSync(ListTrafficPolicyInstancesByHostedZoneRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTrafficPolicyInstancesByHostedZoneAsync(..., function(response, error_message)
+	M.ListTrafficPolicyInstancesByHostedZoneAsync(ListTrafficPolicyInstancesByHostedZoneRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6895,10 +6895,10 @@ end
 -- @param GetCheckerIpRangesRequest
 -- @return response
 -- @return error_message
-function M.GetCheckerIpRangesSync(...)
+function M.GetCheckerIpRangesSync(GetCheckerIpRangesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetCheckerIpRangesAsync(..., function(response, error_message)
+	M.GetCheckerIpRangesAsync(GetCheckerIpRangesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6927,10 +6927,10 @@ end
 -- @param ListTrafficPolicyInstancesByPolicyRequest
 -- @return response
 -- @return error_message
-function M.ListTrafficPolicyInstancesByPolicySync(...)
+function M.ListTrafficPolicyInstancesByPolicySync(ListTrafficPolicyInstancesByPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTrafficPolicyInstancesByPolicyAsync(..., function(response, error_message)
+	M.ListTrafficPolicyInstancesByPolicyAsync(ListTrafficPolicyInstancesByPolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6959,10 +6959,10 @@ end
 -- @param ListTrafficPoliciesRequest
 -- @return response
 -- @return error_message
-function M.ListTrafficPoliciesSync(...)
+function M.ListTrafficPoliciesSync(ListTrafficPoliciesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTrafficPoliciesAsync(..., function(response, error_message)
+	M.ListTrafficPoliciesAsync(ListTrafficPoliciesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6991,10 +6991,10 @@ end
 -- @param UpdateHostedZoneCommentRequest
 -- @return response
 -- @return error_message
-function M.UpdateHostedZoneCommentSync(...)
+function M.UpdateHostedZoneCommentSync(UpdateHostedZoneCommentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateHostedZoneCommentAsync(..., function(response, error_message)
+	M.UpdateHostedZoneCommentAsync(UpdateHostedZoneCommentRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7023,10 +7023,10 @@ end
 -- @param ChangeTagsForResourceRequest
 -- @return response
 -- @return error_message
-function M.ChangeTagsForResourceSync(...)
+function M.ChangeTagsForResourceSync(ChangeTagsForResourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ChangeTagsForResourceAsync(..., function(response, error_message)
+	M.ChangeTagsForResourceAsync(ChangeTagsForResourceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7055,10 +7055,10 @@ end
 -- @param GetHealthCheckRequest
 -- @return response
 -- @return error_message
-function M.GetHealthCheckSync(...)
+function M.GetHealthCheckSync(GetHealthCheckRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetHealthCheckAsync(..., function(response, error_message)
+	M.GetHealthCheckAsync(GetHealthCheckRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7087,10 +7087,10 @@ end
 -- @param ListHostedZonesByNameRequest
 -- @return response
 -- @return error_message
-function M.ListHostedZonesByNameSync(...)
+function M.ListHostedZonesByNameSync(ListHostedZonesByNameRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListHostedZonesByNameAsync(..., function(response, error_message)
+	M.ListHostedZonesByNameAsync(ListHostedZonesByNameRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7119,10 +7119,10 @@ end
 -- @param GetHostedZoneRequest
 -- @return response
 -- @return error_message
-function M.GetHostedZoneSync(...)
+function M.GetHostedZoneSync(GetHostedZoneRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetHostedZoneAsync(..., function(response, error_message)
+	M.GetHostedZoneAsync(GetHostedZoneRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7151,10 +7151,10 @@ end
 -- @param DeleteReusableDelegationSetRequest
 -- @return response
 -- @return error_message
-function M.DeleteReusableDelegationSetSync(...)
+function M.DeleteReusableDelegationSetSync(DeleteReusableDelegationSetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteReusableDelegationSetAsync(..., function(response, error_message)
+	M.DeleteReusableDelegationSetAsync(DeleteReusableDelegationSetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7183,10 +7183,10 @@ end
 -- @param DeleteTrafficPolicyInstanceRequest
 -- @return response
 -- @return error_message
-function M.DeleteTrafficPolicyInstanceSync(...)
+function M.DeleteTrafficPolicyInstanceSync(DeleteTrafficPolicyInstanceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteTrafficPolicyInstanceAsync(..., function(response, error_message)
+	M.DeleteTrafficPolicyInstanceAsync(DeleteTrafficPolicyInstanceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7215,10 +7215,10 @@ end
 -- @param GetHostedZoneCountRequest
 -- @return response
 -- @return error_message
-function M.GetHostedZoneCountSync(...)
+function M.GetHostedZoneCountSync(GetHostedZoneCountRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetHostedZoneCountAsync(..., function(response, error_message)
+	M.GetHostedZoneCountAsync(GetHostedZoneCountRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7247,10 +7247,10 @@ end
 -- @param GetTrafficPolicyInstanceCountRequest
 -- @return response
 -- @return error_message
-function M.GetTrafficPolicyInstanceCountSync(...)
+function M.GetTrafficPolicyInstanceCountSync(GetTrafficPolicyInstanceCountRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetTrafficPolicyInstanceCountAsync(..., function(response, error_message)
+	M.GetTrafficPolicyInstanceCountAsync(GetTrafficPolicyInstanceCountRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7279,10 +7279,10 @@ end
 -- @param UpdateTrafficPolicyCommentRequest
 -- @return response
 -- @return error_message
-function M.UpdateTrafficPolicyCommentSync(...)
+function M.UpdateTrafficPolicyCommentSync(UpdateTrafficPolicyCommentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateTrafficPolicyCommentAsync(..., function(response, error_message)
+	M.UpdateTrafficPolicyCommentAsync(UpdateTrafficPolicyCommentRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7311,10 +7311,10 @@ end
 -- @param ChangeResourceRecordSetsRequest
 -- @return response
 -- @return error_message
-function M.ChangeResourceRecordSetsSync(...)
+function M.ChangeResourceRecordSetsSync(ChangeResourceRecordSetsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ChangeResourceRecordSetsAsync(..., function(response, error_message)
+	M.ChangeResourceRecordSetsAsync(ChangeResourceRecordSetsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7343,10 +7343,10 @@ end
 -- @param DeleteTrafficPolicyRequest
 -- @return response
 -- @return error_message
-function M.DeleteTrafficPolicySync(...)
+function M.DeleteTrafficPolicySync(DeleteTrafficPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteTrafficPolicyAsync(..., function(response, error_message)
+	M.DeleteTrafficPolicyAsync(DeleteTrafficPolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7375,10 +7375,10 @@ end
 -- @param CreateHostedZoneRequest
 -- @return response
 -- @return error_message
-function M.CreateHostedZoneSync(...)
+function M.CreateHostedZoneSync(CreateHostedZoneRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateHostedZoneAsync(..., function(response, error_message)
+	M.CreateHostedZoneAsync(CreateHostedZoneRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7407,10 +7407,10 @@ end
 -- @param CreateVPCAssociationAuthorizationRequest
 -- @return response
 -- @return error_message
-function M.CreateVPCAssociationAuthorizationSync(...)
+function M.CreateVPCAssociationAuthorizationSync(CreateVPCAssociationAuthorizationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateVPCAssociationAuthorizationAsync(..., function(response, error_message)
+	M.CreateVPCAssociationAuthorizationAsync(CreateVPCAssociationAuthorizationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7439,10 +7439,10 @@ end
 -- @param DeleteHostedZoneRequest
 -- @return response
 -- @return error_message
-function M.DeleteHostedZoneSync(...)
+function M.DeleteHostedZoneSync(DeleteHostedZoneRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteHostedZoneAsync(..., function(response, error_message)
+	M.DeleteHostedZoneAsync(DeleteHostedZoneRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7471,10 +7471,10 @@ end
 -- @param GetHealthCheckStatusRequest
 -- @return response
 -- @return error_message
-function M.GetHealthCheckStatusSync(...)
+function M.GetHealthCheckStatusSync(GetHealthCheckStatusRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetHealthCheckStatusAsync(..., function(response, error_message)
+	M.GetHealthCheckStatusAsync(GetHealthCheckStatusRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7503,10 +7503,10 @@ end
 -- @param TestDNSAnswerRequest
 -- @return response
 -- @return error_message
-function M.TestDNSAnswerSync(...)
+function M.TestDNSAnswerSync(TestDNSAnswerRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.TestDNSAnswerAsync(..., function(response, error_message)
+	M.TestDNSAnswerAsync(TestDNSAnswerRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7535,10 +7535,10 @@ end
 -- @param ListReusableDelegationSetsRequest
 -- @return response
 -- @return error_message
-function M.ListReusableDelegationSetsSync(...)
+function M.ListReusableDelegationSetsSync(ListReusableDelegationSetsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListReusableDelegationSetsAsync(..., function(response, error_message)
+	M.ListReusableDelegationSetsAsync(ListReusableDelegationSetsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7567,10 +7567,10 @@ end
 -- @param GetTrafficPolicyRequest
 -- @return response
 -- @return error_message
-function M.GetTrafficPolicySync(...)
+function M.GetTrafficPolicySync(GetTrafficPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetTrafficPolicyAsync(..., function(response, error_message)
+	M.GetTrafficPolicyAsync(GetTrafficPolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7599,10 +7599,10 @@ end
 -- @param CreateTrafficPolicyInstanceRequest
 -- @return response
 -- @return error_message
-function M.CreateTrafficPolicyInstanceSync(...)
+function M.CreateTrafficPolicyInstanceSync(CreateTrafficPolicyInstanceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateTrafficPolicyInstanceAsync(..., function(response, error_message)
+	M.CreateTrafficPolicyInstanceAsync(CreateTrafficPolicyInstanceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7631,10 +7631,10 @@ end
 -- @param GetGeoLocationRequest
 -- @return response
 -- @return error_message
-function M.GetGeoLocationSync(...)
+function M.GetGeoLocationSync(GetGeoLocationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetGeoLocationAsync(..., function(response, error_message)
+	M.GetGeoLocationAsync(GetGeoLocationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7663,10 +7663,10 @@ end
 -- @param GetReusableDelegationSetRequest
 -- @return response
 -- @return error_message
-function M.GetReusableDelegationSetSync(...)
+function M.GetReusableDelegationSetSync(GetReusableDelegationSetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetReusableDelegationSetAsync(..., function(response, error_message)
+	M.GetReusableDelegationSetAsync(GetReusableDelegationSetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7695,10 +7695,10 @@ end
 -- @param ListHostedZonesRequest
 -- @return response
 -- @return error_message
-function M.ListHostedZonesSync(...)
+function M.ListHostedZonesSync(ListHostedZonesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListHostedZonesAsync(..., function(response, error_message)
+	M.ListHostedZonesAsync(ListHostedZonesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7727,10 +7727,10 @@ end
 -- @param UpdateHealthCheckRequest
 -- @return response
 -- @return error_message
-function M.UpdateHealthCheckSync(...)
+function M.UpdateHealthCheckSync(UpdateHealthCheckRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateHealthCheckAsync(..., function(response, error_message)
+	M.UpdateHealthCheckAsync(UpdateHealthCheckRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7759,10 +7759,10 @@ end
 -- @param GetHealthCheckCountRequest
 -- @return response
 -- @return error_message
-function M.GetHealthCheckCountSync(...)
+function M.GetHealthCheckCountSync(GetHealthCheckCountRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetHealthCheckCountAsync(..., function(response, error_message)
+	M.GetHealthCheckCountAsync(GetHealthCheckCountRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7791,10 +7791,10 @@ end
 -- @param DisassociateVPCFromHostedZoneRequest
 -- @return response
 -- @return error_message
-function M.DisassociateVPCFromHostedZoneSync(...)
+function M.DisassociateVPCFromHostedZoneSync(DisassociateVPCFromHostedZoneRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisassociateVPCFromHostedZoneAsync(..., function(response, error_message)
+	M.DisassociateVPCFromHostedZoneAsync(DisassociateVPCFromHostedZoneRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7823,10 +7823,10 @@ end
 -- @param DeleteVPCAssociationAuthorizationRequest
 -- @return response
 -- @return error_message
-function M.DeleteVPCAssociationAuthorizationSync(...)
+function M.DeleteVPCAssociationAuthorizationSync(DeleteVPCAssociationAuthorizationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteVPCAssociationAuthorizationAsync(..., function(response, error_message)
+	M.DeleteVPCAssociationAuthorizationAsync(DeleteVPCAssociationAuthorizationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7855,10 +7855,10 @@ end
 -- @param GetTrafficPolicyInstanceRequest
 -- @return response
 -- @return error_message
-function M.GetTrafficPolicyInstanceSync(...)
+function M.GetTrafficPolicyInstanceSync(GetTrafficPolicyInstanceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetTrafficPolicyInstanceAsync(..., function(response, error_message)
+	M.GetTrafficPolicyInstanceAsync(GetTrafficPolicyInstanceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7887,10 +7887,10 @@ end
 -- @param DeleteHealthCheckRequest
 -- @return response
 -- @return error_message
-function M.DeleteHealthCheckSync(...)
+function M.DeleteHealthCheckSync(DeleteHealthCheckRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteHealthCheckAsync(..., function(response, error_message)
+	M.DeleteHealthCheckAsync(DeleteHealthCheckRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7919,10 +7919,10 @@ end
 -- @param CreateHealthCheckRequest
 -- @return response
 -- @return error_message
-function M.CreateHealthCheckSync(...)
+function M.CreateHealthCheckSync(CreateHealthCheckRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateHealthCheckAsync(..., function(response, error_message)
+	M.CreateHealthCheckAsync(CreateHealthCheckRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7951,10 +7951,10 @@ end
 -- @param CreateTrafficPolicyVersionRequest
 -- @return response
 -- @return error_message
-function M.CreateTrafficPolicyVersionSync(...)
+function M.CreateTrafficPolicyVersionSync(CreateTrafficPolicyVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateTrafficPolicyVersionAsync(..., function(response, error_message)
+	M.CreateTrafficPolicyVersionAsync(CreateTrafficPolicyVersionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7983,10 +7983,10 @@ end
 -- @param CreateTrafficPolicyRequest
 -- @return response
 -- @return error_message
-function M.CreateTrafficPolicySync(...)
+function M.CreateTrafficPolicySync(CreateTrafficPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateTrafficPolicyAsync(..., function(response, error_message)
+	M.CreateTrafficPolicyAsync(CreateTrafficPolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8015,10 +8015,10 @@ end
 -- @param ListTagsForResourcesRequest
 -- @return response
 -- @return error_message
-function M.ListTagsForResourcesSync(...)
+function M.ListTagsForResourcesSync(ListTagsForResourcesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTagsForResourcesAsync(..., function(response, error_message)
+	M.ListTagsForResourcesAsync(ListTagsForResourcesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8047,10 +8047,10 @@ end
 -- @param ListGeoLocationsRequest
 -- @return response
 -- @return error_message
-function M.ListGeoLocationsSync(...)
+function M.ListGeoLocationsSync(ListGeoLocationsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListGeoLocationsAsync(..., function(response, error_message)
+	M.ListGeoLocationsAsync(ListGeoLocationsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8079,10 +8079,10 @@ end
 -- @param AssociateVPCWithHostedZoneRequest
 -- @return response
 -- @return error_message
-function M.AssociateVPCWithHostedZoneSync(...)
+function M.AssociateVPCWithHostedZoneSync(AssociateVPCWithHostedZoneRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AssociateVPCWithHostedZoneAsync(..., function(response, error_message)
+	M.AssociateVPCWithHostedZoneAsync(AssociateVPCWithHostedZoneRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8111,10 +8111,10 @@ end
 -- @param ListTrafficPolicyInstancesRequest
 -- @return response
 -- @return error_message
-function M.ListTrafficPolicyInstancesSync(...)
+function M.ListTrafficPolicyInstancesSync(ListTrafficPolicyInstancesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTrafficPolicyInstancesAsync(..., function(response, error_message)
+	M.ListTrafficPolicyInstancesAsync(ListTrafficPolicyInstancesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8143,10 +8143,10 @@ end
 -- @param ListVPCAssociationAuthorizationsRequest
 -- @return response
 -- @return error_message
-function M.ListVPCAssociationAuthorizationsSync(...)
+function M.ListVPCAssociationAuthorizationsSync(ListVPCAssociationAuthorizationsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListVPCAssociationAuthorizationsAsync(..., function(response, error_message)
+	M.ListVPCAssociationAuthorizationsAsync(ListVPCAssociationAuthorizationsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8175,10 +8175,10 @@ end
 -- @param GetHealthCheckLastFailureReasonRequest
 -- @return response
 -- @return error_message
-function M.GetHealthCheckLastFailureReasonSync(...)
+function M.GetHealthCheckLastFailureReasonSync(GetHealthCheckLastFailureReasonRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetHealthCheckLastFailureReasonAsync(..., function(response, error_message)
+	M.GetHealthCheckLastFailureReasonAsync(GetHealthCheckLastFailureReasonRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8207,10 +8207,10 @@ end
 -- @param GetChangeRequest
 -- @return response
 -- @return error_message
-function M.GetChangeSync(...)
+function M.GetChangeSync(GetChangeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetChangeAsync(..., function(response, error_message)
+	M.GetChangeAsync(GetChangeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8239,10 +8239,10 @@ end
 -- @param UpdateTrafficPolicyInstanceRequest
 -- @return response
 -- @return error_message
-function M.UpdateTrafficPolicyInstanceSync(...)
+function M.UpdateTrafficPolicyInstanceSync(UpdateTrafficPolicyInstanceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateTrafficPolicyInstanceAsync(..., function(response, error_message)
+	M.UpdateTrafficPolicyInstanceAsync(UpdateTrafficPolicyInstanceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8271,10 +8271,10 @@ end
 -- @param CreateReusableDelegationSetRequest
 -- @return response
 -- @return error_message
-function M.CreateReusableDelegationSetSync(...)
+function M.CreateReusableDelegationSetSync(CreateReusableDelegationSetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateReusableDelegationSetAsync(..., function(response, error_message)
+	M.CreateReusableDelegationSetAsync(CreateReusableDelegationSetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8303,10 +8303,10 @@ end
 -- @param ListResourceRecordSetsRequest
 -- @return response
 -- @return error_message
-function M.ListResourceRecordSetsSync(...)
+function M.ListResourceRecordSetsSync(ListResourceRecordSetsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListResourceRecordSetsAsync(..., function(response, error_message)
+	M.ListResourceRecordSetsAsync(ListResourceRecordSetsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8335,10 +8335,10 @@ end
 -- @param ListTagsForResourceRequest
 -- @return response
 -- @return error_message
-function M.ListTagsForResourceSync(...)
+function M.ListTagsForResourceSync(ListTagsForResourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTagsForResourceAsync(..., function(response, error_message)
+	M.ListTagsForResourceAsync(ListTagsForResourceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8367,10 +8367,10 @@ end
 -- @param ListHealthChecksRequest
 -- @return response
 -- @return error_message
-function M.ListHealthChecksSync(...)
+function M.ListHealthChecksSync(ListHealthChecksRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListHealthChecksAsync(..., function(response, error_message)
+	M.ListHealthChecksAsync(ListHealthChecksRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8399,10 +8399,10 @@ end
 -- @param ListTrafficPolicyVersionsRequest
 -- @return response
 -- @return error_message
-function M.ListTrafficPolicyVersionsSync(...)
+function M.ListTrafficPolicyVersionsSync(ListTrafficPolicyVersionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTrafficPolicyVersionsAsync(..., function(response, error_message)
+	M.ListTrafficPolicyVersionsAsync(ListTrafficPolicyVersionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

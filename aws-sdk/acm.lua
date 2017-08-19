@@ -1434,10 +1434,10 @@ end
 -- @param ResendValidationEmailRequest
 -- @return response
 -- @return error_message
-function M.ResendValidationEmailSync(...)
+function M.ResendValidationEmailSync(ResendValidationEmailRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ResendValidationEmailAsync(..., function(response, error_message)
+	M.ResendValidationEmailAsync(ResendValidationEmailRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1466,10 +1466,10 @@ end
 -- @param AddTagsToCertificateRequest
 -- @return response
 -- @return error_message
-function M.AddTagsToCertificateSync(...)
+function M.AddTagsToCertificateSync(AddTagsToCertificateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddTagsToCertificateAsync(..., function(response, error_message)
+	M.AddTagsToCertificateAsync(AddTagsToCertificateRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1498,10 +1498,10 @@ end
 -- @param ListCertificatesRequest
 -- @return response
 -- @return error_message
-function M.ListCertificatesSync(...)
+function M.ListCertificatesSync(ListCertificatesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListCertificatesAsync(..., function(response, error_message)
+	M.ListCertificatesAsync(ListCertificatesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1530,10 +1530,10 @@ end
 -- @param GetCertificateRequest
 -- @return response
 -- @return error_message
-function M.GetCertificateSync(...)
+function M.GetCertificateSync(GetCertificateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetCertificateAsync(..., function(response, error_message)
+	M.GetCertificateAsync(GetCertificateRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1562,10 +1562,10 @@ end
 -- @param ListTagsForCertificateRequest
 -- @return response
 -- @return error_message
-function M.ListTagsForCertificateSync(...)
+function M.ListTagsForCertificateSync(ListTagsForCertificateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTagsForCertificateAsync(..., function(response, error_message)
+	M.ListTagsForCertificateAsync(ListTagsForCertificateRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1594,10 +1594,10 @@ end
 -- @param RemoveTagsFromCertificateRequest
 -- @return response
 -- @return error_message
-function M.RemoveTagsFromCertificateSync(...)
+function M.RemoveTagsFromCertificateSync(RemoveTagsFromCertificateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RemoveTagsFromCertificateAsync(..., function(response, error_message)
+	M.RemoveTagsFromCertificateAsync(RemoveTagsFromCertificateRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1626,10 +1626,10 @@ end
 -- @param RequestCertificateRequest
 -- @return response
 -- @return error_message
-function M.RequestCertificateSync(...)
+function M.RequestCertificateSync(RequestCertificateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RequestCertificateAsync(..., function(response, error_message)
+	M.RequestCertificateAsync(RequestCertificateRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1658,10 +1658,10 @@ end
 -- @param ImportCertificateRequest
 -- @return response
 -- @return error_message
-function M.ImportCertificateSync(...)
+function M.ImportCertificateSync(ImportCertificateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ImportCertificateAsync(..., function(response, error_message)
+	M.ImportCertificateAsync(ImportCertificateRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1690,10 +1690,10 @@ end
 -- @param DeleteCertificateRequest
 -- @return response
 -- @return error_message
-function M.DeleteCertificateSync(...)
+function M.DeleteCertificateSync(DeleteCertificateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteCertificateAsync(..., function(response, error_message)
+	M.DeleteCertificateAsync(DeleteCertificateRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1722,10 +1722,10 @@ end
 -- @param DescribeCertificateRequest
 -- @return response
 -- @return error_message
-function M.DescribeCertificateSync(...)
+function M.DescribeCertificateSync(DescribeCertificateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeCertificateAsync(..., function(response, error_message)
+	M.DescribeCertificateAsync(DescribeCertificateRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

@@ -6115,10 +6115,10 @@ end
 -- @param CreateConstraintInput
 -- @return response
 -- @return error_message
-function M.CreateConstraintSync(...)
+function M.CreateConstraintSync(CreateConstraintInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateConstraintAsync(..., function(response, error_message)
+	M.CreateConstraintAsync(CreateConstraintInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6147,10 +6147,10 @@ end
 -- @param DescribeProductAsAdminInput
 -- @return response
 -- @return error_message
-function M.DescribeProductAsAdminSync(...)
+function M.DescribeProductAsAdminSync(DescribeProductAsAdminInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeProductAsAdminAsync(..., function(response, error_message)
+	M.DescribeProductAsAdminAsync(DescribeProductAsAdminInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6179,10 +6179,10 @@ end
 -- @param AssociateProductWithPortfolioInput
 -- @return response
 -- @return error_message
-function M.AssociateProductWithPortfolioSync(...)
+function M.AssociateProductWithPortfolioSync(AssociateProductWithPortfolioInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AssociateProductWithPortfolioAsync(..., function(response, error_message)
+	M.AssociateProductWithPortfolioAsync(AssociateProductWithPortfolioInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6211,10 +6211,10 @@ end
 -- @param ListPrincipalsForPortfolioInput
 -- @return response
 -- @return error_message
-function M.ListPrincipalsForPortfolioSync(...)
+function M.ListPrincipalsForPortfolioSync(ListPrincipalsForPortfolioInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListPrincipalsForPortfolioAsync(..., function(response, error_message)
+	M.ListPrincipalsForPortfolioAsync(ListPrincipalsForPortfolioInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6243,10 +6243,10 @@ end
 -- @param UpdateTagOptionInput
 -- @return response
 -- @return error_message
-function M.UpdateTagOptionSync(...)
+function M.UpdateTagOptionSync(UpdateTagOptionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateTagOptionAsync(..., function(response, error_message)
+	M.UpdateTagOptionAsync(UpdateTagOptionInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6275,10 +6275,10 @@ end
 -- @param DisassociatePrincipalFromPortfolioInput
 -- @return response
 -- @return error_message
-function M.DisassociatePrincipalFromPortfolioSync(...)
+function M.DisassociatePrincipalFromPortfolioSync(DisassociatePrincipalFromPortfolioInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisassociatePrincipalFromPortfolioAsync(..., function(response, error_message)
+	M.DisassociatePrincipalFromPortfolioAsync(DisassociatePrincipalFromPortfolioInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6307,10 +6307,10 @@ end
 -- @param AssociatePrincipalWithPortfolioInput
 -- @return response
 -- @return error_message
-function M.AssociatePrincipalWithPortfolioSync(...)
+function M.AssociatePrincipalWithPortfolioSync(AssociatePrincipalWithPortfolioInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AssociatePrincipalWithPortfolioAsync(..., function(response, error_message)
+	M.AssociatePrincipalWithPortfolioAsync(AssociatePrincipalWithPortfolioInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6339,10 +6339,10 @@ end
 -- @param ListRecordHistoryInput
 -- @return response
 -- @return error_message
-function M.ListRecordHistorySync(...)
+function M.ListRecordHistorySync(ListRecordHistoryInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListRecordHistoryAsync(..., function(response, error_message)
+	M.ListRecordHistoryAsync(ListRecordHistoryInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6371,10 +6371,10 @@ end
 -- @param SearchProductsAsAdminInput
 -- @return response
 -- @return error_message
-function M.SearchProductsAsAdminSync(...)
+function M.SearchProductsAsAdminSync(SearchProductsAsAdminInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SearchProductsAsAdminAsync(..., function(response, error_message)
+	M.SearchProductsAsAdminAsync(SearchProductsAsAdminInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6403,10 +6403,10 @@ end
 -- @param ListResourcesForTagOptionInput
 -- @return response
 -- @return error_message
-function M.ListResourcesForTagOptionSync(...)
+function M.ListResourcesForTagOptionSync(ListResourcesForTagOptionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListResourcesForTagOptionAsync(..., function(response, error_message)
+	M.ListResourcesForTagOptionAsync(ListResourcesForTagOptionInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6435,10 +6435,10 @@ end
 -- @param CreateProvisioningArtifactInput
 -- @return response
 -- @return error_message
-function M.CreateProvisioningArtifactSync(...)
+function M.CreateProvisioningArtifactSync(CreateProvisioningArtifactInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateProvisioningArtifactAsync(..., function(response, error_message)
+	M.CreateProvisioningArtifactAsync(CreateProvisioningArtifactInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6467,10 +6467,10 @@ end
 -- @param ListPortfoliosInput
 -- @return response
 -- @return error_message
-function M.ListPortfoliosSync(...)
+function M.ListPortfoliosSync(ListPortfoliosInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListPortfoliosAsync(..., function(response, error_message)
+	M.ListPortfoliosAsync(ListPortfoliosInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6499,10 +6499,10 @@ end
 -- @param DescribeProductInput
 -- @return response
 -- @return error_message
-function M.DescribeProductSync(...)
+function M.DescribeProductSync(DescribeProductInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeProductAsync(..., function(response, error_message)
+	M.DescribeProductAsync(DescribeProductInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6531,10 +6531,10 @@ end
 -- @param CreatePortfolioShareInput
 -- @return response
 -- @return error_message
-function M.CreatePortfolioShareSync(...)
+function M.CreatePortfolioShareSync(CreatePortfolioShareInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreatePortfolioShareAsync(..., function(response, error_message)
+	M.CreatePortfolioShareAsync(CreatePortfolioShareInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6563,10 +6563,10 @@ end
 -- @param ListTagOptionsInput
 -- @return response
 -- @return error_message
-function M.ListTagOptionsSync(...)
+function M.ListTagOptionsSync(ListTagOptionsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTagOptionsAsync(..., function(response, error_message)
+	M.ListTagOptionsAsync(ListTagOptionsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6595,10 +6595,10 @@ end
 -- @param ListLaunchPathsInput
 -- @return response
 -- @return error_message
-function M.ListLaunchPathsSync(...)
+function M.ListLaunchPathsSync(ListLaunchPathsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListLaunchPathsAsync(..., function(response, error_message)
+	M.ListLaunchPathsAsync(ListLaunchPathsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6627,10 +6627,10 @@ end
 -- @param CreateProductInput
 -- @return response
 -- @return error_message
-function M.CreateProductSync(...)
+function M.CreateProductSync(CreateProductInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateProductAsync(..., function(response, error_message)
+	M.CreateProductAsync(CreateProductInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6659,10 +6659,10 @@ end
 -- @param ListAcceptedPortfolioSharesInput
 -- @return response
 -- @return error_message
-function M.ListAcceptedPortfolioSharesSync(...)
+function M.ListAcceptedPortfolioSharesSync(ListAcceptedPortfolioSharesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListAcceptedPortfolioSharesAsync(..., function(response, error_message)
+	M.ListAcceptedPortfolioSharesAsync(ListAcceptedPortfolioSharesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6691,10 +6691,10 @@ end
 -- @param ListPortfoliosForProductInput
 -- @return response
 -- @return error_message
-function M.ListPortfoliosForProductSync(...)
+function M.ListPortfoliosForProductSync(ListPortfoliosForProductInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListPortfoliosForProductAsync(..., function(response, error_message)
+	M.ListPortfoliosForProductAsync(ListPortfoliosForProductInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6723,10 +6723,10 @@ end
 -- @param ListProvisioningArtifactsInput
 -- @return response
 -- @return error_message
-function M.ListProvisioningArtifactsSync(...)
+function M.ListProvisioningArtifactsSync(ListProvisioningArtifactsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListProvisioningArtifactsAsync(..., function(response, error_message)
+	M.ListProvisioningArtifactsAsync(ListProvisioningArtifactsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6755,10 +6755,10 @@ end
 -- @param RejectPortfolioShareInput
 -- @return response
 -- @return error_message
-function M.RejectPortfolioShareSync(...)
+function M.RejectPortfolioShareSync(RejectPortfolioShareInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RejectPortfolioShareAsync(..., function(response, error_message)
+	M.RejectPortfolioShareAsync(RejectPortfolioShareInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6787,10 +6787,10 @@ end
 -- @param DisassociateProductFromPortfolioInput
 -- @return response
 -- @return error_message
-function M.DisassociateProductFromPortfolioSync(...)
+function M.DisassociateProductFromPortfolioSync(DisassociateProductFromPortfolioInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisassociateProductFromPortfolioAsync(..., function(response, error_message)
+	M.DisassociateProductFromPortfolioAsync(DisassociateProductFromPortfolioInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6819,10 +6819,10 @@ end
 -- @param AcceptPortfolioShareInput
 -- @return response
 -- @return error_message
-function M.AcceptPortfolioShareSync(...)
+function M.AcceptPortfolioShareSync(AcceptPortfolioShareInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AcceptPortfolioShareAsync(..., function(response, error_message)
+	M.AcceptPortfolioShareAsync(AcceptPortfolioShareInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6851,10 +6851,10 @@ end
 -- @param DescribeProvisionedProductInput
 -- @return response
 -- @return error_message
-function M.DescribeProvisionedProductSync(...)
+function M.DescribeProvisionedProductSync(DescribeProvisionedProductInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeProvisionedProductAsync(..., function(response, error_message)
+	M.DescribeProvisionedProductAsync(DescribeProvisionedProductInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6883,10 +6883,10 @@ end
 -- @param ListPortfolioAccessInput
 -- @return response
 -- @return error_message
-function M.ListPortfolioAccessSync(...)
+function M.ListPortfolioAccessSync(ListPortfolioAccessInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListPortfolioAccessAsync(..., function(response, error_message)
+	M.ListPortfolioAccessAsync(ListPortfolioAccessInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6915,10 +6915,10 @@ end
 -- @param DeleteProvisioningArtifactInput
 -- @return response
 -- @return error_message
-function M.DeleteProvisioningArtifactSync(...)
+function M.DeleteProvisioningArtifactSync(DeleteProvisioningArtifactInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteProvisioningArtifactAsync(..., function(response, error_message)
+	M.DeleteProvisioningArtifactAsync(DeleteProvisioningArtifactInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6947,10 +6947,10 @@ end
 -- @param UpdateProvisioningArtifactInput
 -- @return response
 -- @return error_message
-function M.UpdateProvisioningArtifactSync(...)
+function M.UpdateProvisioningArtifactSync(UpdateProvisioningArtifactInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateProvisioningArtifactAsync(..., function(response, error_message)
+	M.UpdateProvisioningArtifactAsync(UpdateProvisioningArtifactInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6979,10 +6979,10 @@ end
 -- @param DescribeConstraintInput
 -- @return response
 -- @return error_message
-function M.DescribeConstraintSync(...)
+function M.DescribeConstraintSync(DescribeConstraintInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeConstraintAsync(..., function(response, error_message)
+	M.DescribeConstraintAsync(DescribeConstraintInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7011,10 +7011,10 @@ end
 -- @param UpdatePortfolioInput
 -- @return response
 -- @return error_message
-function M.UpdatePortfolioSync(...)
+function M.UpdatePortfolioSync(UpdatePortfolioInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdatePortfolioAsync(..., function(response, error_message)
+	M.UpdatePortfolioAsync(UpdatePortfolioInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7043,10 +7043,10 @@ end
 -- @param DeletePortfolioInput
 -- @return response
 -- @return error_message
-function M.DeletePortfolioSync(...)
+function M.DeletePortfolioSync(DeletePortfolioInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeletePortfolioAsync(..., function(response, error_message)
+	M.DeletePortfolioAsync(DeletePortfolioInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7075,10 +7075,10 @@ end
 -- @param DescribeRecordInput
 -- @return response
 -- @return error_message
-function M.DescribeRecordSync(...)
+function M.DescribeRecordSync(DescribeRecordInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeRecordAsync(..., function(response, error_message)
+	M.DescribeRecordAsync(DescribeRecordInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7107,10 +7107,10 @@ end
 -- @param AssociateTagOptionWithResourceInput
 -- @return response
 -- @return error_message
-function M.AssociateTagOptionWithResourceSync(...)
+function M.AssociateTagOptionWithResourceSync(AssociateTagOptionWithResourceInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AssociateTagOptionWithResourceAsync(..., function(response, error_message)
+	M.AssociateTagOptionWithResourceAsync(AssociateTagOptionWithResourceInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7139,10 +7139,10 @@ end
 -- @param UpdateConstraintInput
 -- @return response
 -- @return error_message
-function M.UpdateConstraintSync(...)
+function M.UpdateConstraintSync(UpdateConstraintInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateConstraintAsync(..., function(response, error_message)
+	M.UpdateConstraintAsync(UpdateConstraintInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7171,10 +7171,10 @@ end
 -- @param DeleteProductInput
 -- @return response
 -- @return error_message
-function M.DeleteProductSync(...)
+function M.DeleteProductSync(DeleteProductInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteProductAsync(..., function(response, error_message)
+	M.DeleteProductAsync(DeleteProductInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7203,10 +7203,10 @@ end
 -- @param DescribeProductViewInput
 -- @return response
 -- @return error_message
-function M.DescribeProductViewSync(...)
+function M.DescribeProductViewSync(DescribeProductViewInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeProductViewAsync(..., function(response, error_message)
+	M.DescribeProductViewAsync(DescribeProductViewInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7235,10 +7235,10 @@ end
 -- @param TerminateProvisionedProductInput
 -- @return response
 -- @return error_message
-function M.TerminateProvisionedProductSync(...)
+function M.TerminateProvisionedProductSync(TerminateProvisionedProductInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.TerminateProvisionedProductAsync(..., function(response, error_message)
+	M.TerminateProvisionedProductAsync(TerminateProvisionedProductInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7267,10 +7267,10 @@ end
 -- @param DescribePortfolioInput
 -- @return response
 -- @return error_message
-function M.DescribePortfolioSync(...)
+function M.DescribePortfolioSync(DescribePortfolioInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribePortfolioAsync(..., function(response, error_message)
+	M.DescribePortfolioAsync(DescribePortfolioInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7299,10 +7299,10 @@ end
 -- @param DeletePortfolioShareInput
 -- @return response
 -- @return error_message
-function M.DeletePortfolioShareSync(...)
+function M.DeletePortfolioShareSync(DeletePortfolioShareInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeletePortfolioShareAsync(..., function(response, error_message)
+	M.DeletePortfolioShareAsync(DeletePortfolioShareInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7331,10 +7331,10 @@ end
 -- @param ScanProvisionedProductsInput
 -- @return response
 -- @return error_message
-function M.ScanProvisionedProductsSync(...)
+function M.ScanProvisionedProductsSync(ScanProvisionedProductsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ScanProvisionedProductsAsync(..., function(response, error_message)
+	M.ScanProvisionedProductsAsync(ScanProvisionedProductsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7363,10 +7363,10 @@ end
 -- @param CreateTagOptionInput
 -- @return response
 -- @return error_message
-function M.CreateTagOptionSync(...)
+function M.CreateTagOptionSync(CreateTagOptionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateTagOptionAsync(..., function(response, error_message)
+	M.CreateTagOptionAsync(CreateTagOptionInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7395,10 +7395,10 @@ end
 -- @param UpdateProvisionedProductInput
 -- @return response
 -- @return error_message
-function M.UpdateProvisionedProductSync(...)
+function M.UpdateProvisionedProductSync(UpdateProvisionedProductInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateProvisionedProductAsync(..., function(response, error_message)
+	M.UpdateProvisionedProductAsync(UpdateProvisionedProductInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7427,10 +7427,10 @@ end
 -- @param UpdateProductInput
 -- @return response
 -- @return error_message
-function M.UpdateProductSync(...)
+function M.UpdateProductSync(UpdateProductInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateProductAsync(..., function(response, error_message)
+	M.UpdateProductAsync(UpdateProductInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7459,10 +7459,10 @@ end
 -- @param DescribeProvisioningArtifactInput
 -- @return response
 -- @return error_message
-function M.DescribeProvisioningArtifactSync(...)
+function M.DescribeProvisioningArtifactSync(DescribeProvisioningArtifactInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeProvisioningArtifactAsync(..., function(response, error_message)
+	M.DescribeProvisioningArtifactAsync(DescribeProvisioningArtifactInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7491,10 +7491,10 @@ end
 -- @param ListConstraintsForPortfolioInput
 -- @return response
 -- @return error_message
-function M.ListConstraintsForPortfolioSync(...)
+function M.ListConstraintsForPortfolioSync(ListConstraintsForPortfolioInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListConstraintsForPortfolioAsync(..., function(response, error_message)
+	M.ListConstraintsForPortfolioAsync(ListConstraintsForPortfolioInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7523,10 +7523,10 @@ end
 -- @param DisassociateTagOptionFromResourceInput
 -- @return response
 -- @return error_message
-function M.DisassociateTagOptionFromResourceSync(...)
+function M.DisassociateTagOptionFromResourceSync(DisassociateTagOptionFromResourceInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisassociateTagOptionFromResourceAsync(..., function(response, error_message)
+	M.DisassociateTagOptionFromResourceAsync(DisassociateTagOptionFromResourceInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7555,10 +7555,10 @@ end
 -- @param SearchProductsInput
 -- @return response
 -- @return error_message
-function M.SearchProductsSync(...)
+function M.SearchProductsSync(SearchProductsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SearchProductsAsync(..., function(response, error_message)
+	M.SearchProductsAsync(SearchProductsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7587,10 +7587,10 @@ end
 -- @param DeleteConstraintInput
 -- @return response
 -- @return error_message
-function M.DeleteConstraintSync(...)
+function M.DeleteConstraintSync(DeleteConstraintInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteConstraintAsync(..., function(response, error_message)
+	M.DeleteConstraintAsync(DeleteConstraintInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7619,10 +7619,10 @@ end
 -- @param ProvisionProductInput
 -- @return response
 -- @return error_message
-function M.ProvisionProductSync(...)
+function M.ProvisionProductSync(ProvisionProductInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ProvisionProductAsync(..., function(response, error_message)
+	M.ProvisionProductAsync(ProvisionProductInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7651,10 +7651,10 @@ end
 -- @param CreatePortfolioInput
 -- @return response
 -- @return error_message
-function M.CreatePortfolioSync(...)
+function M.CreatePortfolioSync(CreatePortfolioInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreatePortfolioAsync(..., function(response, error_message)
+	M.CreatePortfolioAsync(CreatePortfolioInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7683,10 +7683,10 @@ end
 -- @param DescribeProvisioningParametersInput
 -- @return response
 -- @return error_message
-function M.DescribeProvisioningParametersSync(...)
+function M.DescribeProvisioningParametersSync(DescribeProvisioningParametersInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeProvisioningParametersAsync(..., function(response, error_message)
+	M.DescribeProvisioningParametersAsync(DescribeProvisioningParametersInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7715,10 +7715,10 @@ end
 -- @param DescribeTagOptionInput
 -- @return response
 -- @return error_message
-function M.DescribeTagOptionSync(...)
+function M.DescribeTagOptionSync(DescribeTagOptionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTagOptionAsync(..., function(response, error_message)
+	M.DescribeTagOptionAsync(DescribeTagOptionInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

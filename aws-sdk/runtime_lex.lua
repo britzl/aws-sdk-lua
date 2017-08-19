@@ -906,10 +906,10 @@ end
 -- @param PostContentRequest
 -- @return response
 -- @return error_message
-function M.PostContentSync(...)
+function M.PostContentSync(PostContentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PostContentAsync(..., function(response, error_message)
+	M.PostContentAsync(PostContentRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -938,10 +938,10 @@ end
 -- @param PostTextRequest
 -- @return response
 -- @return error_message
-function M.PostTextSync(...)
+function M.PostTextSync(PostTextRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PostTextAsync(..., function(response, error_message)
+	M.PostTextAsync(PostTextRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

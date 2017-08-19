@@ -11265,10 +11265,10 @@ end
 -- @param DescribeCertificatesMessage
 -- @return response
 -- @return error_message
-function M.DescribeCertificatesSync(...)
+function M.DescribeCertificatesSync(DescribeCertificatesMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeCertificatesAsync(..., function(response, error_message)
+	M.DescribeCertificatesAsync(DescribeCertificatesMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11297,10 +11297,10 @@ end
 -- @param RestoreDBClusterToPointInTimeMessage
 -- @return response
 -- @return error_message
-function M.RestoreDBClusterToPointInTimeSync(...)
+function M.RestoreDBClusterToPointInTimeSync(RestoreDBClusterToPointInTimeMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RestoreDBClusterToPointInTimeAsync(..., function(response, error_message)
+	M.RestoreDBClusterToPointInTimeAsync(RestoreDBClusterToPointInTimeMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11329,10 +11329,10 @@ end
 -- @param DescribeEngineDefaultParametersMessage
 -- @return response
 -- @return error_message
-function M.DescribeEngineDefaultParametersSync(...)
+function M.DescribeEngineDefaultParametersSync(DescribeEngineDefaultParametersMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEngineDefaultParametersAsync(..., function(response, error_message)
+	M.DescribeEngineDefaultParametersAsync(DescribeEngineDefaultParametersMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11361,10 +11361,10 @@ end
 -- @param DeleteDBClusterSnapshotMessage
 -- @return response
 -- @return error_message
-function M.DeleteDBClusterSnapshotSync(...)
+function M.DeleteDBClusterSnapshotSync(DeleteDBClusterSnapshotMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteDBClusterSnapshotAsync(..., function(response, error_message)
+	M.DeleteDBClusterSnapshotAsync(DeleteDBClusterSnapshotMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11393,10 +11393,10 @@ end
 -- @param CreateDBParameterGroupMessage
 -- @return response
 -- @return error_message
-function M.CreateDBParameterGroupSync(...)
+function M.CreateDBParameterGroupSync(CreateDBParameterGroupMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDBParameterGroupAsync(..., function(response, error_message)
+	M.CreateDBParameterGroupAsync(CreateDBParameterGroupMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11425,10 +11425,10 @@ end
 -- @param AuthorizeDBSecurityGroupIngressMessage
 -- @return response
 -- @return error_message
-function M.AuthorizeDBSecurityGroupIngressSync(...)
+function M.AuthorizeDBSecurityGroupIngressSync(AuthorizeDBSecurityGroupIngressMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AuthorizeDBSecurityGroupIngressAsync(..., function(response, error_message)
+	M.AuthorizeDBSecurityGroupIngressAsync(AuthorizeDBSecurityGroupIngressMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11457,10 +11457,10 @@ end
 -- @param DescribeDBSubnetGroupsMessage
 -- @return response
 -- @return error_message
-function M.DescribeDBSubnetGroupsSync(...)
+function M.DescribeDBSubnetGroupsSync(DescribeDBSubnetGroupsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeDBSubnetGroupsAsync(..., function(response, error_message)
+	M.DescribeDBSubnetGroupsAsync(DescribeDBSubnetGroupsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11489,10 +11489,10 @@ end
 -- @param DescribeDBEngineVersionsMessage
 -- @return response
 -- @return error_message
-function M.DescribeDBEngineVersionsSync(...)
+function M.DescribeDBEngineVersionsSync(DescribeDBEngineVersionsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeDBEngineVersionsAsync(..., function(response, error_message)
+	M.DescribeDBEngineVersionsAsync(DescribeDBEngineVersionsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11521,10 +11521,10 @@ end
 -- @param CopyDBSnapshotMessage
 -- @return response
 -- @return error_message
-function M.CopyDBSnapshotSync(...)
+function M.CopyDBSnapshotSync(CopyDBSnapshotMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CopyDBSnapshotAsync(..., function(response, error_message)
+	M.CopyDBSnapshotAsync(CopyDBSnapshotMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11553,10 +11553,10 @@ end
 -- @param StopDBInstanceMessage
 -- @return response
 -- @return error_message
-function M.StopDBInstanceSync(...)
+function M.StopDBInstanceSync(StopDBInstanceMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StopDBInstanceAsync(..., function(response, error_message)
+	M.StopDBInstanceAsync(StopDBInstanceMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11585,10 +11585,10 @@ end
 -- @param DeleteEventSubscriptionMessage
 -- @return response
 -- @return error_message
-function M.DeleteEventSubscriptionSync(...)
+function M.DeleteEventSubscriptionSync(DeleteEventSubscriptionMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteEventSubscriptionAsync(..., function(response, error_message)
+	M.DeleteEventSubscriptionAsync(DeleteEventSubscriptionMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11617,10 +11617,10 @@ end
 -- @param CreateDBInstanceReadReplicaMessage
 -- @return response
 -- @return error_message
-function M.CreateDBInstanceReadReplicaSync(...)
+function M.CreateDBInstanceReadReplicaSync(CreateDBInstanceReadReplicaMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDBInstanceReadReplicaAsync(..., function(response, error_message)
+	M.CreateDBInstanceReadReplicaAsync(CreateDBInstanceReadReplicaMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11649,10 +11649,10 @@ end
 -- @param CreateDBClusterSnapshotMessage
 -- @return response
 -- @return error_message
-function M.CreateDBClusterSnapshotSync(...)
+function M.CreateDBClusterSnapshotSync(CreateDBClusterSnapshotMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDBClusterSnapshotAsync(..., function(response, error_message)
+	M.CreateDBClusterSnapshotAsync(CreateDBClusterSnapshotMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11681,10 +11681,10 @@ end
 -- @param DescribeReservedDBInstancesOfferingsMessage
 -- @return response
 -- @return error_message
-function M.DescribeReservedDBInstancesOfferingsSync(...)
+function M.DescribeReservedDBInstancesOfferingsSync(DescribeReservedDBInstancesOfferingsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeReservedDBInstancesOfferingsAsync(..., function(response, error_message)
+	M.DescribeReservedDBInstancesOfferingsAsync(DescribeReservedDBInstancesOfferingsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11713,10 +11713,10 @@ end
 -- @param DeleteDBClusterMessage
 -- @return response
 -- @return error_message
-function M.DeleteDBClusterSync(...)
+function M.DeleteDBClusterSync(DeleteDBClusterMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteDBClusterAsync(..., function(response, error_message)
+	M.DeleteDBClusterAsync(DeleteDBClusterMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11745,10 +11745,10 @@ end
 -- @param ResetDBClusterParameterGroupMessage
 -- @return response
 -- @return error_message
-function M.ResetDBClusterParameterGroupSync(...)
+function M.ResetDBClusterParameterGroupSync(ResetDBClusterParameterGroupMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ResetDBClusterParameterGroupAsync(..., function(response, error_message)
+	M.ResetDBClusterParameterGroupAsync(ResetDBClusterParameterGroupMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11777,10 +11777,10 @@ end
 -- @param ListTagsForResourceMessage
 -- @return response
 -- @return error_message
-function M.ListTagsForResourceSync(...)
+function M.ListTagsForResourceSync(ListTagsForResourceMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTagsForResourceAsync(..., function(response, error_message)
+	M.ListTagsForResourceAsync(ListTagsForResourceMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11809,10 +11809,10 @@ end
 -- @param ModifyDBSnapshotMessage
 -- @return response
 -- @return error_message
-function M.ModifyDBSnapshotSync(...)
+function M.ModifyDBSnapshotSync(ModifyDBSnapshotMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ModifyDBSnapshotAsync(..., function(response, error_message)
+	M.ModifyDBSnapshotAsync(ModifyDBSnapshotMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11841,10 +11841,10 @@ end
 -- @param DeleteDBSubnetGroupMessage
 -- @return response
 -- @return error_message
-function M.DeleteDBSubnetGroupSync(...)
+function M.DeleteDBSubnetGroupSync(DeleteDBSubnetGroupMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteDBSubnetGroupAsync(..., function(response, error_message)
+	M.DeleteDBSubnetGroupAsync(DeleteDBSubnetGroupMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11873,10 +11873,10 @@ end
 -- @param RestoreDBInstanceFromDBSnapshotMessage
 -- @return response
 -- @return error_message
-function M.RestoreDBInstanceFromDBSnapshotSync(...)
+function M.RestoreDBInstanceFromDBSnapshotSync(RestoreDBInstanceFromDBSnapshotMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RestoreDBInstanceFromDBSnapshotAsync(..., function(response, error_message)
+	M.RestoreDBInstanceFromDBSnapshotAsync(RestoreDBInstanceFromDBSnapshotMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11905,10 +11905,10 @@ end
 -- @param DescribeOptionGroupsMessage
 -- @return response
 -- @return error_message
-function M.DescribeOptionGroupsSync(...)
+function M.DescribeOptionGroupsSync(DescribeOptionGroupsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeOptionGroupsAsync(..., function(response, error_message)
+	M.DescribeOptionGroupsAsync(DescribeOptionGroupsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11937,10 +11937,10 @@ end
 -- @param RestoreDBClusterFromS3Message
 -- @return response
 -- @return error_message
-function M.RestoreDBClusterFromS3Sync(...)
+function M.RestoreDBClusterFromS3Sync(RestoreDBClusterFromS3Message, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RestoreDBClusterFromS3Async(..., function(response, error_message)
+	M.RestoreDBClusterFromS3Async(RestoreDBClusterFromS3Message, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -11969,10 +11969,10 @@ end
 -- @param DeleteDBInstanceMessage
 -- @return response
 -- @return error_message
-function M.DeleteDBInstanceSync(...)
+function M.DeleteDBInstanceSync(DeleteDBInstanceMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteDBInstanceAsync(..., function(response, error_message)
+	M.DeleteDBInstanceAsync(DeleteDBInstanceMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12001,10 +12001,10 @@ end
 -- @param CreateDBClusterParameterGroupMessage
 -- @return response
 -- @return error_message
-function M.CreateDBClusterParameterGroupSync(...)
+function M.CreateDBClusterParameterGroupSync(CreateDBClusterParameterGroupMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDBClusterParameterGroupAsync(..., function(response, error_message)
+	M.CreateDBClusterParameterGroupAsync(CreateDBClusterParameterGroupMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12033,10 +12033,10 @@ end
 -- @param DeleteDBParameterGroupMessage
 -- @return response
 -- @return error_message
-function M.DeleteDBParameterGroupSync(...)
+function M.DeleteDBParameterGroupSync(DeleteDBParameterGroupMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteDBParameterGroupAsync(..., function(response, error_message)
+	M.DeleteDBParameterGroupAsync(DeleteDBParameterGroupMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12065,10 +12065,10 @@ end
 -- @param DescribeEventCategoriesMessage
 -- @return response
 -- @return error_message
-function M.DescribeEventCategoriesSync(...)
+function M.DescribeEventCategoriesSync(DescribeEventCategoriesMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEventCategoriesAsync(..., function(response, error_message)
+	M.DescribeEventCategoriesAsync(DescribeEventCategoriesMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12097,10 +12097,10 @@ end
 -- @param AddTagsToResourceMessage
 -- @return response
 -- @return error_message
-function M.AddTagsToResourceSync(...)
+function M.AddTagsToResourceSync(AddTagsToResourceMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddTagsToResourceAsync(..., function(response, error_message)
+	M.AddTagsToResourceAsync(AddTagsToResourceMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12129,10 +12129,10 @@ end
 -- @param ModifyOptionGroupMessage
 -- @return response
 -- @return error_message
-function M.ModifyOptionGroupSync(...)
+function M.ModifyOptionGroupSync(ModifyOptionGroupMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ModifyOptionGroupAsync(..., function(response, error_message)
+	M.ModifyOptionGroupAsync(ModifyOptionGroupMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12161,10 +12161,10 @@ end
 -- @param DescribeDBLogFilesMessage
 -- @return response
 -- @return error_message
-function M.DescribeDBLogFilesSync(...)
+function M.DescribeDBLogFilesSync(DescribeDBLogFilesMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeDBLogFilesAsync(..., function(response, error_message)
+	M.DescribeDBLogFilesAsync(DescribeDBLogFilesMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12193,10 +12193,10 @@ end
 -- @param RemoveTagsFromResourceMessage
 -- @return response
 -- @return error_message
-function M.RemoveTagsFromResourceSync(...)
+function M.RemoveTagsFromResourceSync(RemoveTagsFromResourceMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RemoveTagsFromResourceAsync(..., function(response, error_message)
+	M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12225,10 +12225,10 @@ end
 -- @param DescribeReservedDBInstancesMessage
 -- @return response
 -- @return error_message
-function M.DescribeReservedDBInstancesSync(...)
+function M.DescribeReservedDBInstancesSync(DescribeReservedDBInstancesMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeReservedDBInstancesAsync(..., function(response, error_message)
+	M.DescribeReservedDBInstancesAsync(DescribeReservedDBInstancesMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12257,10 +12257,10 @@ end
 -- @param CopyOptionGroupMessage
 -- @return response
 -- @return error_message
-function M.CopyOptionGroupSync(...)
+function M.CopyOptionGroupSync(CopyOptionGroupMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CopyOptionGroupAsync(..., function(response, error_message)
+	M.CopyOptionGroupAsync(CopyOptionGroupMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12289,10 +12289,10 @@ end
 -- @param CreateDBInstanceMessage
 -- @return response
 -- @return error_message
-function M.CreateDBInstanceSync(...)
+function M.CreateDBInstanceSync(CreateDBInstanceMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDBInstanceAsync(..., function(response, error_message)
+	M.CreateDBInstanceAsync(CreateDBInstanceMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12321,10 +12321,10 @@ end
 -- @param ModifyEventSubscriptionMessage
 -- @return response
 -- @return error_message
-function M.ModifyEventSubscriptionSync(...)
+function M.ModifyEventSubscriptionSync(ModifyEventSubscriptionMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ModifyEventSubscriptionAsync(..., function(response, error_message)
+	M.ModifyEventSubscriptionAsync(ModifyEventSubscriptionMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12353,10 +12353,10 @@ end
 -- @param ModifyDBSubnetGroupMessage
 -- @return response
 -- @return error_message
-function M.ModifyDBSubnetGroupSync(...)
+function M.ModifyDBSubnetGroupSync(ModifyDBSubnetGroupMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ModifyDBSubnetGroupAsync(..., function(response, error_message)
+	M.ModifyDBSubnetGroupAsync(ModifyDBSubnetGroupMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12385,10 +12385,10 @@ end
 -- @param DeleteDBSecurityGroupMessage
 -- @return response
 -- @return error_message
-function M.DeleteDBSecurityGroupSync(...)
+function M.DeleteDBSecurityGroupSync(DeleteDBSecurityGroupMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteDBSecurityGroupAsync(..., function(response, error_message)
+	M.DeleteDBSecurityGroupAsync(DeleteDBSecurityGroupMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12417,10 +12417,10 @@ end
 -- @param RestoreDBInstanceToPointInTimeMessage
 -- @return response
 -- @return error_message
-function M.RestoreDBInstanceToPointInTimeSync(...)
+function M.RestoreDBInstanceToPointInTimeSync(RestoreDBInstanceToPointInTimeMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RestoreDBInstanceToPointInTimeAsync(..., function(response, error_message)
+	M.RestoreDBInstanceToPointInTimeAsync(RestoreDBInstanceToPointInTimeMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12449,10 +12449,10 @@ end
 -- @param AddSourceIdentifierToSubscriptionMessage
 -- @return response
 -- @return error_message
-function M.AddSourceIdentifierToSubscriptionSync(...)
+function M.AddSourceIdentifierToSubscriptionSync(AddSourceIdentifierToSubscriptionMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddSourceIdentifierToSubscriptionAsync(..., function(response, error_message)
+	M.AddSourceIdentifierToSubscriptionAsync(AddSourceIdentifierToSubscriptionMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12481,10 +12481,10 @@ end
 -- @param CopyDBClusterParameterGroupMessage
 -- @return response
 -- @return error_message
-function M.CopyDBClusterParameterGroupSync(...)
+function M.CopyDBClusterParameterGroupSync(CopyDBClusterParameterGroupMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CopyDBClusterParameterGroupAsync(..., function(response, error_message)
+	M.CopyDBClusterParameterGroupAsync(CopyDBClusterParameterGroupMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12513,10 +12513,10 @@ end
 -- @param StartDBInstanceMessage
 -- @return response
 -- @return error_message
-function M.StartDBInstanceSync(...)
+function M.StartDBInstanceSync(StartDBInstanceMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartDBInstanceAsync(..., function(response, error_message)
+	M.StartDBInstanceAsync(StartDBInstanceMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12545,10 +12545,10 @@ end
 -- @param DescribeDBClusterSnapshotAttributesMessage
 -- @return response
 -- @return error_message
-function M.DescribeDBClusterSnapshotAttributesSync(...)
+function M.DescribeDBClusterSnapshotAttributesSync(DescribeDBClusterSnapshotAttributesMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeDBClusterSnapshotAttributesAsync(..., function(response, error_message)
+	M.DescribeDBClusterSnapshotAttributesAsync(DescribeDBClusterSnapshotAttributesMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12577,10 +12577,10 @@ end
 -- @param RestoreDBClusterFromSnapshotMessage
 -- @return response
 -- @return error_message
-function M.RestoreDBClusterFromSnapshotSync(...)
+function M.RestoreDBClusterFromSnapshotSync(RestoreDBClusterFromSnapshotMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RestoreDBClusterFromSnapshotAsync(..., function(response, error_message)
+	M.RestoreDBClusterFromSnapshotAsync(RestoreDBClusterFromSnapshotMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12609,10 +12609,10 @@ end
 -- @param DescribeDBParametersMessage
 -- @return response
 -- @return error_message
-function M.DescribeDBParametersSync(...)
+function M.DescribeDBParametersSync(DescribeDBParametersMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeDBParametersAsync(..., function(response, error_message)
+	M.DescribeDBParametersAsync(DescribeDBParametersMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12641,10 +12641,10 @@ end
 -- @param PromoteReadReplicaDBClusterMessage
 -- @return response
 -- @return error_message
-function M.PromoteReadReplicaDBClusterSync(...)
+function M.PromoteReadReplicaDBClusterSync(PromoteReadReplicaDBClusterMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PromoteReadReplicaDBClusterAsync(..., function(response, error_message)
+	M.PromoteReadReplicaDBClusterAsync(PromoteReadReplicaDBClusterMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12673,10 +12673,10 @@ end
 -- @param DescribeDBClusterParametersMessage
 -- @return response
 -- @return error_message
-function M.DescribeDBClusterParametersSync(...)
+function M.DescribeDBClusterParametersSync(DescribeDBClusterParametersMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeDBClusterParametersAsync(..., function(response, error_message)
+	M.DescribeDBClusterParametersAsync(DescribeDBClusterParametersMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12705,10 +12705,10 @@ end
 -- @param DeleteDBSnapshotMessage
 -- @return response
 -- @return error_message
-function M.DeleteDBSnapshotSync(...)
+function M.DeleteDBSnapshotSync(DeleteDBSnapshotMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteDBSnapshotAsync(..., function(response, error_message)
+	M.DeleteDBSnapshotAsync(DeleteDBSnapshotMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12737,10 +12737,10 @@ end
 -- @param DescribeEventsMessage
 -- @return response
 -- @return error_message
-function M.DescribeEventsSync(...)
+function M.DescribeEventsSync(DescribeEventsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEventsAsync(..., function(response, error_message)
+	M.DescribeEventsAsync(DescribeEventsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12769,10 +12769,10 @@ end
 -- @param DescribeEventSubscriptionsMessage
 -- @return response
 -- @return error_message
-function M.DescribeEventSubscriptionsSync(...)
+function M.DescribeEventSubscriptionsSync(DescribeEventSubscriptionsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEventSubscriptionsAsync(..., function(response, error_message)
+	M.DescribeEventSubscriptionsAsync(DescribeEventSubscriptionsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12801,10 +12801,10 @@ end
 -- @param DeleteOptionGroupMessage
 -- @return response
 -- @return error_message
-function M.DeleteOptionGroupSync(...)
+function M.DeleteOptionGroupSync(DeleteOptionGroupMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteOptionGroupAsync(..., function(response, error_message)
+	M.DeleteOptionGroupAsync(DeleteOptionGroupMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12833,10 +12833,10 @@ end
 -- @param PromoteReadReplicaMessage
 -- @return response
 -- @return error_message
-function M.PromoteReadReplicaSync(...)
+function M.PromoteReadReplicaSync(PromoteReadReplicaMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PromoteReadReplicaAsync(..., function(response, error_message)
+	M.PromoteReadReplicaAsync(PromoteReadReplicaMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12865,10 +12865,10 @@ end
 -- @param AddRoleToDBClusterMessage
 -- @return response
 -- @return error_message
-function M.AddRoleToDBClusterSync(...)
+function M.AddRoleToDBClusterSync(AddRoleToDBClusterMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddRoleToDBClusterAsync(..., function(response, error_message)
+	M.AddRoleToDBClusterAsync(AddRoleToDBClusterMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12897,10 +12897,10 @@ end
 -- @param ModifyDBSnapshotAttributeMessage
 -- @return response
 -- @return error_message
-function M.ModifyDBSnapshotAttributeSync(...)
+function M.ModifyDBSnapshotAttributeSync(ModifyDBSnapshotAttributeMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ModifyDBSnapshotAttributeAsync(..., function(response, error_message)
+	M.ModifyDBSnapshotAttributeAsync(ModifyDBSnapshotAttributeMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12929,10 +12929,10 @@ end
 -- @param DescribeDBParameterGroupsMessage
 -- @return response
 -- @return error_message
-function M.DescribeDBParameterGroupsSync(...)
+function M.DescribeDBParameterGroupsSync(DescribeDBParameterGroupsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeDBParameterGroupsAsync(..., function(response, error_message)
+	M.DescribeDBParameterGroupsAsync(DescribeDBParameterGroupsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12961,10 +12961,10 @@ end
 -- @param ModifyDBClusterParameterGroupMessage
 -- @return response
 -- @return error_message
-function M.ModifyDBClusterParameterGroupSync(...)
+function M.ModifyDBClusterParameterGroupSync(ModifyDBClusterParameterGroupMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ModifyDBClusterParameterGroupAsync(..., function(response, error_message)
+	M.ModifyDBClusterParameterGroupAsync(ModifyDBClusterParameterGroupMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -12993,10 +12993,10 @@ end
 -- @param FailoverDBClusterMessage
 -- @return response
 -- @return error_message
-function M.FailoverDBClusterSync(...)
+function M.FailoverDBClusterSync(FailoverDBClusterMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.FailoverDBClusterAsync(..., function(response, error_message)
+	M.FailoverDBClusterAsync(FailoverDBClusterMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13025,10 +13025,10 @@ end
 -- @param ApplyPendingMaintenanceActionMessage
 -- @return response
 -- @return error_message
-function M.ApplyPendingMaintenanceActionSync(...)
+function M.ApplyPendingMaintenanceActionSync(ApplyPendingMaintenanceActionMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ApplyPendingMaintenanceActionAsync(..., function(response, error_message)
+	M.ApplyPendingMaintenanceActionAsync(ApplyPendingMaintenanceActionMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13057,10 +13057,10 @@ end
 -- @param DescribeDBInstancesMessage
 -- @return response
 -- @return error_message
-function M.DescribeDBInstancesSync(...)
+function M.DescribeDBInstancesSync(DescribeDBInstancesMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeDBInstancesAsync(..., function(response, error_message)
+	M.DescribeDBInstancesAsync(DescribeDBInstancesMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13089,10 +13089,10 @@ end
 -- @param PurchaseReservedDBInstancesOfferingMessage
 -- @return response
 -- @return error_message
-function M.PurchaseReservedDBInstancesOfferingSync(...)
+function M.PurchaseReservedDBInstancesOfferingSync(PurchaseReservedDBInstancesOfferingMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PurchaseReservedDBInstancesOfferingAsync(..., function(response, error_message)
+	M.PurchaseReservedDBInstancesOfferingAsync(PurchaseReservedDBInstancesOfferingMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13121,10 +13121,10 @@ end
 -- @param DescribeOrderableDBInstanceOptionsMessage
 -- @return response
 -- @return error_message
-function M.DescribeOrderableDBInstanceOptionsSync(...)
+function M.DescribeOrderableDBInstanceOptionsSync(DescribeOrderableDBInstanceOptionsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeOrderableDBInstanceOptionsAsync(..., function(response, error_message)
+	M.DescribeOrderableDBInstanceOptionsAsync(DescribeOrderableDBInstanceOptionsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13153,10 +13153,10 @@ end
 -- @param CreateOptionGroupMessage
 -- @return response
 -- @return error_message
-function M.CreateOptionGroupSync(...)
+function M.CreateOptionGroupSync(CreateOptionGroupMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateOptionGroupAsync(..., function(response, error_message)
+	M.CreateOptionGroupAsync(CreateOptionGroupMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13185,10 +13185,10 @@ end
 -- @param DescribeOptionGroupOptionsMessage
 -- @return response
 -- @return error_message
-function M.DescribeOptionGroupOptionsSync(...)
+function M.DescribeOptionGroupOptionsSync(DescribeOptionGroupOptionsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeOptionGroupOptionsAsync(..., function(response, error_message)
+	M.DescribeOptionGroupOptionsAsync(DescribeOptionGroupOptionsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13217,10 +13217,10 @@ end
 -- @param ResetDBParameterGroupMessage
 -- @return response
 -- @return error_message
-function M.ResetDBParameterGroupSync(...)
+function M.ResetDBParameterGroupSync(ResetDBParameterGroupMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ResetDBParameterGroupAsync(..., function(response, error_message)
+	M.ResetDBParameterGroupAsync(ResetDBParameterGroupMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13249,10 +13249,10 @@ end
 -- @param DescribeEngineDefaultClusterParametersMessage
 -- @return response
 -- @return error_message
-function M.DescribeEngineDefaultClusterParametersSync(...)
+function M.DescribeEngineDefaultClusterParametersSync(DescribeEngineDefaultClusterParametersMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEngineDefaultClusterParametersAsync(..., function(response, error_message)
+	M.DescribeEngineDefaultClusterParametersAsync(DescribeEngineDefaultClusterParametersMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13281,10 +13281,10 @@ end
 -- @param CreateDBSnapshotMessage
 -- @return response
 -- @return error_message
-function M.CreateDBSnapshotSync(...)
+function M.CreateDBSnapshotSync(CreateDBSnapshotMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDBSnapshotAsync(..., function(response, error_message)
+	M.CreateDBSnapshotAsync(CreateDBSnapshotMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13313,10 +13313,10 @@ end
 -- @param CreateDBClusterMessage
 -- @return response
 -- @return error_message
-function M.CreateDBClusterSync(...)
+function M.CreateDBClusterSync(CreateDBClusterMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDBClusterAsync(..., function(response, error_message)
+	M.CreateDBClusterAsync(CreateDBClusterMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13345,10 +13345,10 @@ end
 -- @param DescribeAccountAttributesMessage
 -- @return response
 -- @return error_message
-function M.DescribeAccountAttributesSync(...)
+function M.DescribeAccountAttributesSync(DescribeAccountAttributesMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAccountAttributesAsync(..., function(response, error_message)
+	M.DescribeAccountAttributesAsync(DescribeAccountAttributesMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13377,10 +13377,10 @@ end
 -- @param DescribeDBSnapshotsMessage
 -- @return response
 -- @return error_message
-function M.DescribeDBSnapshotsSync(...)
+function M.DescribeDBSnapshotsSync(DescribeDBSnapshotsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeDBSnapshotsAsync(..., function(response, error_message)
+	M.DescribeDBSnapshotsAsync(DescribeDBSnapshotsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13409,10 +13409,10 @@ end
 -- @param ModifyDBClusterSnapshotAttributeMessage
 -- @return response
 -- @return error_message
-function M.ModifyDBClusterSnapshotAttributeSync(...)
+function M.ModifyDBClusterSnapshotAttributeSync(ModifyDBClusterSnapshotAttributeMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ModifyDBClusterSnapshotAttributeAsync(..., function(response, error_message)
+	M.ModifyDBClusterSnapshotAttributeAsync(ModifyDBClusterSnapshotAttributeMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13441,10 +13441,10 @@ end
 -- @param CreateDBSecurityGroupMessage
 -- @return response
 -- @return error_message
-function M.CreateDBSecurityGroupSync(...)
+function M.CreateDBSecurityGroupSync(CreateDBSecurityGroupMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDBSecurityGroupAsync(..., function(response, error_message)
+	M.CreateDBSecurityGroupAsync(CreateDBSecurityGroupMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13473,10 +13473,10 @@ end
 -- @param RemoveRoleFromDBClusterMessage
 -- @return response
 -- @return error_message
-function M.RemoveRoleFromDBClusterSync(...)
+function M.RemoveRoleFromDBClusterSync(RemoveRoleFromDBClusterMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RemoveRoleFromDBClusterAsync(..., function(response, error_message)
+	M.RemoveRoleFromDBClusterAsync(RemoveRoleFromDBClusterMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13505,10 +13505,10 @@ end
 -- @param RevokeDBSecurityGroupIngressMessage
 -- @return response
 -- @return error_message
-function M.RevokeDBSecurityGroupIngressSync(...)
+function M.RevokeDBSecurityGroupIngressSync(RevokeDBSecurityGroupIngressMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RevokeDBSecurityGroupIngressAsync(..., function(response, error_message)
+	M.RevokeDBSecurityGroupIngressAsync(RevokeDBSecurityGroupIngressMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13537,10 +13537,10 @@ end
 -- @param CreateEventSubscriptionMessage
 -- @return response
 -- @return error_message
-function M.CreateEventSubscriptionSync(...)
+function M.CreateEventSubscriptionSync(CreateEventSubscriptionMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateEventSubscriptionAsync(..., function(response, error_message)
+	M.CreateEventSubscriptionAsync(CreateEventSubscriptionMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13569,10 +13569,10 @@ end
 -- @param CopyDBParameterGroupMessage
 -- @return response
 -- @return error_message
-function M.CopyDBParameterGroupSync(...)
+function M.CopyDBParameterGroupSync(CopyDBParameterGroupMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CopyDBParameterGroupAsync(..., function(response, error_message)
+	M.CopyDBParameterGroupAsync(CopyDBParameterGroupMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13601,10 +13601,10 @@ end
 -- @param RebootDBInstanceMessage
 -- @return response
 -- @return error_message
-function M.RebootDBInstanceSync(...)
+function M.RebootDBInstanceSync(RebootDBInstanceMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RebootDBInstanceAsync(..., function(response, error_message)
+	M.RebootDBInstanceAsync(RebootDBInstanceMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13633,10 +13633,10 @@ end
 -- @param CreateDBSubnetGroupMessage
 -- @return response
 -- @return error_message
-function M.CreateDBSubnetGroupSync(...)
+function M.CreateDBSubnetGroupSync(CreateDBSubnetGroupMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDBSubnetGroupAsync(..., function(response, error_message)
+	M.CreateDBSubnetGroupAsync(CreateDBSubnetGroupMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13665,10 +13665,10 @@ end
 -- @param ModifyDBClusterMessage
 -- @return response
 -- @return error_message
-function M.ModifyDBClusterSync(...)
+function M.ModifyDBClusterSync(ModifyDBClusterMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ModifyDBClusterAsync(..., function(response, error_message)
+	M.ModifyDBClusterAsync(ModifyDBClusterMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13697,10 +13697,10 @@ end
 -- @param DescribeDBSnapshotAttributesMessage
 -- @return response
 -- @return error_message
-function M.DescribeDBSnapshotAttributesSync(...)
+function M.DescribeDBSnapshotAttributesSync(DescribeDBSnapshotAttributesMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeDBSnapshotAttributesAsync(..., function(response, error_message)
+	M.DescribeDBSnapshotAttributesAsync(DescribeDBSnapshotAttributesMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13729,10 +13729,10 @@ end
 -- @param DescribeSourceRegionsMessage
 -- @return response
 -- @return error_message
-function M.DescribeSourceRegionsSync(...)
+function M.DescribeSourceRegionsSync(DescribeSourceRegionsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeSourceRegionsAsync(..., function(response, error_message)
+	M.DescribeSourceRegionsAsync(DescribeSourceRegionsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13761,10 +13761,10 @@ end
 -- @param DownloadDBLogFilePortionMessage
 -- @return response
 -- @return error_message
-function M.DownloadDBLogFilePortionSync(...)
+function M.DownloadDBLogFilePortionSync(DownloadDBLogFilePortionMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DownloadDBLogFilePortionAsync(..., function(response, error_message)
+	M.DownloadDBLogFilePortionAsync(DownloadDBLogFilePortionMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13793,10 +13793,10 @@ end
 -- @param DescribeDBClustersMessage
 -- @return response
 -- @return error_message
-function M.DescribeDBClustersSync(...)
+function M.DescribeDBClustersSync(DescribeDBClustersMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeDBClustersAsync(..., function(response, error_message)
+	M.DescribeDBClustersAsync(DescribeDBClustersMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13825,10 +13825,10 @@ end
 -- @param DescribeDBClusterSnapshotsMessage
 -- @return response
 -- @return error_message
-function M.DescribeDBClusterSnapshotsSync(...)
+function M.DescribeDBClusterSnapshotsSync(DescribeDBClusterSnapshotsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeDBClusterSnapshotsAsync(..., function(response, error_message)
+	M.DescribeDBClusterSnapshotsAsync(DescribeDBClusterSnapshotsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13857,10 +13857,10 @@ end
 -- @param ModifyDBParameterGroupMessage
 -- @return response
 -- @return error_message
-function M.ModifyDBParameterGroupSync(...)
+function M.ModifyDBParameterGroupSync(ModifyDBParameterGroupMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ModifyDBParameterGroupAsync(..., function(response, error_message)
+	M.ModifyDBParameterGroupAsync(ModifyDBParameterGroupMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13889,10 +13889,10 @@ end
 -- @param DescribeDBSecurityGroupsMessage
 -- @return response
 -- @return error_message
-function M.DescribeDBSecurityGroupsSync(...)
+function M.DescribeDBSecurityGroupsSync(DescribeDBSecurityGroupsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeDBSecurityGroupsAsync(..., function(response, error_message)
+	M.DescribeDBSecurityGroupsAsync(DescribeDBSecurityGroupsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13921,10 +13921,10 @@ end
 -- @param DeleteDBClusterParameterGroupMessage
 -- @return response
 -- @return error_message
-function M.DeleteDBClusterParameterGroupSync(...)
+function M.DeleteDBClusterParameterGroupSync(DeleteDBClusterParameterGroupMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteDBClusterParameterGroupAsync(..., function(response, error_message)
+	M.DeleteDBClusterParameterGroupAsync(DeleteDBClusterParameterGroupMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13953,10 +13953,10 @@ end
 -- @param DescribePendingMaintenanceActionsMessage
 -- @return response
 -- @return error_message
-function M.DescribePendingMaintenanceActionsSync(...)
+function M.DescribePendingMaintenanceActionsSync(DescribePendingMaintenanceActionsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribePendingMaintenanceActionsAsync(..., function(response, error_message)
+	M.DescribePendingMaintenanceActionsAsync(DescribePendingMaintenanceActionsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -13985,10 +13985,10 @@ end
 -- @param DescribeDBClusterParameterGroupsMessage
 -- @return response
 -- @return error_message
-function M.DescribeDBClusterParameterGroupsSync(...)
+function M.DescribeDBClusterParameterGroupsSync(DescribeDBClusterParameterGroupsMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeDBClusterParameterGroupsAsync(..., function(response, error_message)
+	M.DescribeDBClusterParameterGroupsAsync(DescribeDBClusterParameterGroupsMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -14017,10 +14017,10 @@ end
 -- @param CopyDBClusterSnapshotMessage
 -- @return response
 -- @return error_message
-function M.CopyDBClusterSnapshotSync(...)
+function M.CopyDBClusterSnapshotSync(CopyDBClusterSnapshotMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CopyDBClusterSnapshotAsync(..., function(response, error_message)
+	M.CopyDBClusterSnapshotAsync(CopyDBClusterSnapshotMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -14049,10 +14049,10 @@ end
 -- @param ModifyDBInstanceMessage
 -- @return response
 -- @return error_message
-function M.ModifyDBInstanceSync(...)
+function M.ModifyDBInstanceSync(ModifyDBInstanceMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ModifyDBInstanceAsync(..., function(response, error_message)
+	M.ModifyDBInstanceAsync(ModifyDBInstanceMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -14081,10 +14081,10 @@ end
 -- @param RemoveSourceIdentifierFromSubscriptionMessage
 -- @return response
 -- @return error_message
-function M.RemoveSourceIdentifierFromSubscriptionSync(...)
+function M.RemoveSourceIdentifierFromSubscriptionSync(RemoveSourceIdentifierFromSubscriptionMessage, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RemoveSourceIdentifierFromSubscriptionAsync(..., function(response, error_message)
+	M.RemoveSourceIdentifierFromSubscriptionAsync(RemoveSourceIdentifierFromSubscriptionMessage, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

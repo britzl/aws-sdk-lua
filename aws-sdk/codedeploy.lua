@@ -6348,10 +6348,10 @@ end
 -- @param GetDeploymentConfigInput
 -- @return response
 -- @return error_message
-function M.GetDeploymentConfigSync(...)
+function M.GetDeploymentConfigSync(GetDeploymentConfigInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetDeploymentConfigAsync(..., function(response, error_message)
+	M.GetDeploymentConfigAsync(GetDeploymentConfigInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6380,10 +6380,10 @@ end
 -- @param UpdateDeploymentGroupInput
 -- @return response
 -- @return error_message
-function M.UpdateDeploymentGroupSync(...)
+function M.UpdateDeploymentGroupSync(UpdateDeploymentGroupInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateDeploymentGroupAsync(..., function(response, error_message)
+	M.UpdateDeploymentGroupAsync(UpdateDeploymentGroupInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6412,10 +6412,10 @@ end
 -- @param BatchGetDeploymentsInput
 -- @return response
 -- @return error_message
-function M.BatchGetDeploymentsSync(...)
+function M.BatchGetDeploymentsSync(BatchGetDeploymentsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchGetDeploymentsAsync(..., function(response, error_message)
+	M.BatchGetDeploymentsAsync(BatchGetDeploymentsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6444,10 +6444,10 @@ end
 -- @param ContinueDeploymentInput
 -- @return response
 -- @return error_message
-function M.ContinueDeploymentSync(...)
+function M.ContinueDeploymentSync(ContinueDeploymentInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ContinueDeploymentAsync(..., function(response, error_message)
+	M.ContinueDeploymentAsync(ContinueDeploymentInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6476,10 +6476,10 @@ end
 -- @param GetDeploymentGroupInput
 -- @return response
 -- @return error_message
-function M.GetDeploymentGroupSync(...)
+function M.GetDeploymentGroupSync(GetDeploymentGroupInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetDeploymentGroupAsync(..., function(response, error_message)
+	M.GetDeploymentGroupAsync(GetDeploymentGroupInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6508,10 +6508,10 @@ end
 -- @param ListDeploymentGroupsInput
 -- @return response
 -- @return error_message
-function M.ListDeploymentGroupsSync(...)
+function M.ListDeploymentGroupsSync(ListDeploymentGroupsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListDeploymentGroupsAsync(..., function(response, error_message)
+	M.ListDeploymentGroupsAsync(ListDeploymentGroupsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6540,10 +6540,10 @@ end
 -- @param DeleteApplicationInput
 -- @return response
 -- @return error_message
-function M.DeleteApplicationSync(...)
+function M.DeleteApplicationSync(DeleteApplicationInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteApplicationAsync(..., function(response, error_message)
+	M.DeleteApplicationAsync(DeleteApplicationInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6572,10 +6572,10 @@ end
 -- @param CreateDeploymentInput
 -- @return response
 -- @return error_message
-function M.CreateDeploymentSync(...)
+function M.CreateDeploymentSync(CreateDeploymentInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDeploymentAsync(..., function(response, error_message)
+	M.CreateDeploymentAsync(CreateDeploymentInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6604,10 +6604,10 @@ end
 -- @param StopDeploymentInput
 -- @return response
 -- @return error_message
-function M.StopDeploymentSync(...)
+function M.StopDeploymentSync(StopDeploymentInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StopDeploymentAsync(..., function(response, error_message)
+	M.StopDeploymentAsync(StopDeploymentInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6636,10 +6636,10 @@ end
 -- @param DeleteDeploymentConfigInput
 -- @return response
 -- @return error_message
-function M.DeleteDeploymentConfigSync(...)
+function M.DeleteDeploymentConfigSync(DeleteDeploymentConfigInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteDeploymentConfigAsync(..., function(response, error_message)
+	M.DeleteDeploymentConfigAsync(DeleteDeploymentConfigInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6668,10 +6668,10 @@ end
 -- @param RemoveTagsFromOnPremisesInstancesInput
 -- @return response
 -- @return error_message
-function M.RemoveTagsFromOnPremisesInstancesSync(...)
+function M.RemoveTagsFromOnPremisesInstancesSync(RemoveTagsFromOnPremisesInstancesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RemoveTagsFromOnPremisesInstancesAsync(..., function(response, error_message)
+	M.RemoveTagsFromOnPremisesInstancesAsync(RemoveTagsFromOnPremisesInstancesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6700,10 +6700,10 @@ end
 -- @param RegisterOnPremisesInstanceInput
 -- @return response
 -- @return error_message
-function M.RegisterOnPremisesInstanceSync(...)
+function M.RegisterOnPremisesInstanceSync(RegisterOnPremisesInstanceInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RegisterOnPremisesInstanceAsync(..., function(response, error_message)
+	M.RegisterOnPremisesInstanceAsync(RegisterOnPremisesInstanceInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6732,10 +6732,10 @@ end
 -- @param ListOnPremisesInstancesInput
 -- @return response
 -- @return error_message
-function M.ListOnPremisesInstancesSync(...)
+function M.ListOnPremisesInstancesSync(ListOnPremisesInstancesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListOnPremisesInstancesAsync(..., function(response, error_message)
+	M.ListOnPremisesInstancesAsync(ListOnPremisesInstancesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6764,10 +6764,10 @@ end
 -- @param ListDeploymentConfigsInput
 -- @return response
 -- @return error_message
-function M.ListDeploymentConfigsSync(...)
+function M.ListDeploymentConfigsSync(ListDeploymentConfigsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListDeploymentConfigsAsync(..., function(response, error_message)
+	M.ListDeploymentConfigsAsync(ListDeploymentConfigsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6796,10 +6796,10 @@ end
 -- @param GetApplicationInput
 -- @return response
 -- @return error_message
-function M.GetApplicationSync(...)
+function M.GetApplicationSync(GetApplicationInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetApplicationAsync(..., function(response, error_message)
+	M.GetApplicationAsync(GetApplicationInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6828,10 +6828,10 @@ end
 -- @param GetDeploymentInstanceInput
 -- @return response
 -- @return error_message
-function M.GetDeploymentInstanceSync(...)
+function M.GetDeploymentInstanceSync(GetDeploymentInstanceInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetDeploymentInstanceAsync(..., function(response, error_message)
+	M.GetDeploymentInstanceAsync(GetDeploymentInstanceInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6860,10 +6860,10 @@ end
 -- @param SkipWaitTimeForInstanceTerminationInput
 -- @return response
 -- @return error_message
-function M.SkipWaitTimeForInstanceTerminationSync(...)
+function M.SkipWaitTimeForInstanceTerminationSync(SkipWaitTimeForInstanceTerminationInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SkipWaitTimeForInstanceTerminationAsync(..., function(response, error_message)
+	M.SkipWaitTimeForInstanceTerminationAsync(SkipWaitTimeForInstanceTerminationInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6892,10 +6892,10 @@ end
 -- @param BatchGetDeploymentGroupsInput
 -- @return response
 -- @return error_message
-function M.BatchGetDeploymentGroupsSync(...)
+function M.BatchGetDeploymentGroupsSync(BatchGetDeploymentGroupsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchGetDeploymentGroupsAsync(..., function(response, error_message)
+	M.BatchGetDeploymentGroupsAsync(BatchGetDeploymentGroupsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6924,10 +6924,10 @@ end
 -- @param BatchGetOnPremisesInstancesInput
 -- @return response
 -- @return error_message
-function M.BatchGetOnPremisesInstancesSync(...)
+function M.BatchGetOnPremisesInstancesSync(BatchGetOnPremisesInstancesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchGetOnPremisesInstancesAsync(..., function(response, error_message)
+	M.BatchGetOnPremisesInstancesAsync(BatchGetOnPremisesInstancesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6956,10 +6956,10 @@ end
 -- @param GetApplicationRevisionInput
 -- @return response
 -- @return error_message
-function M.GetApplicationRevisionSync(...)
+function M.GetApplicationRevisionSync(GetApplicationRevisionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetApplicationRevisionAsync(..., function(response, error_message)
+	M.GetApplicationRevisionAsync(GetApplicationRevisionInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6988,10 +6988,10 @@ end
 -- @param BatchGetDeploymentInstancesInput
 -- @return response
 -- @return error_message
-function M.BatchGetDeploymentInstancesSync(...)
+function M.BatchGetDeploymentInstancesSync(BatchGetDeploymentInstancesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchGetDeploymentInstancesAsync(..., function(response, error_message)
+	M.BatchGetDeploymentInstancesAsync(BatchGetDeploymentInstancesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7020,10 +7020,10 @@ end
 -- @param UpdateApplicationInput
 -- @return response
 -- @return error_message
-function M.UpdateApplicationSync(...)
+function M.UpdateApplicationSync(UpdateApplicationInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateApplicationAsync(..., function(response, error_message)
+	M.UpdateApplicationAsync(UpdateApplicationInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7052,10 +7052,10 @@ end
 -- @param CreateDeploymentGroupInput
 -- @return response
 -- @return error_message
-function M.CreateDeploymentGroupSync(...)
+function M.CreateDeploymentGroupSync(CreateDeploymentGroupInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDeploymentGroupAsync(..., function(response, error_message)
+	M.CreateDeploymentGroupAsync(CreateDeploymentGroupInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7084,10 +7084,10 @@ end
 -- @param ListApplicationRevisionsInput
 -- @return response
 -- @return error_message
-function M.ListApplicationRevisionsSync(...)
+function M.ListApplicationRevisionsSync(ListApplicationRevisionsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListApplicationRevisionsAsync(..., function(response, error_message)
+	M.ListApplicationRevisionsAsync(ListApplicationRevisionsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7116,10 +7116,10 @@ end
 -- @param ListDeploymentInstancesInput
 -- @return response
 -- @return error_message
-function M.ListDeploymentInstancesSync(...)
+function M.ListDeploymentInstancesSync(ListDeploymentInstancesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListDeploymentInstancesAsync(..., function(response, error_message)
+	M.ListDeploymentInstancesAsync(ListDeploymentInstancesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7148,10 +7148,10 @@ end
 -- @param BatchGetApplicationRevisionsInput
 -- @return response
 -- @return error_message
-function M.BatchGetApplicationRevisionsSync(...)
+function M.BatchGetApplicationRevisionsSync(BatchGetApplicationRevisionsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchGetApplicationRevisionsAsync(..., function(response, error_message)
+	M.BatchGetApplicationRevisionsAsync(BatchGetApplicationRevisionsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7180,10 +7180,10 @@ end
 -- @param DeregisterOnPremisesInstanceInput
 -- @return response
 -- @return error_message
-function M.DeregisterOnPremisesInstanceSync(...)
+function M.DeregisterOnPremisesInstanceSync(DeregisterOnPremisesInstanceInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeregisterOnPremisesInstanceAsync(..., function(response, error_message)
+	M.DeregisterOnPremisesInstanceAsync(DeregisterOnPremisesInstanceInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7212,10 +7212,10 @@ end
 -- @param CreateDeploymentConfigInput
 -- @return response
 -- @return error_message
-function M.CreateDeploymentConfigSync(...)
+function M.CreateDeploymentConfigSync(CreateDeploymentConfigInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDeploymentConfigAsync(..., function(response, error_message)
+	M.CreateDeploymentConfigAsync(CreateDeploymentConfigInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7244,10 +7244,10 @@ end
 -- @param GetOnPremisesInstanceInput
 -- @return response
 -- @return error_message
-function M.GetOnPremisesInstanceSync(...)
+function M.GetOnPremisesInstanceSync(GetOnPremisesInstanceInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetOnPremisesInstanceAsync(..., function(response, error_message)
+	M.GetOnPremisesInstanceAsync(GetOnPremisesInstanceInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7276,10 +7276,10 @@ end
 -- @param AddTagsToOnPremisesInstancesInput
 -- @return response
 -- @return error_message
-function M.AddTagsToOnPremisesInstancesSync(...)
+function M.AddTagsToOnPremisesInstancesSync(AddTagsToOnPremisesInstancesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddTagsToOnPremisesInstancesAsync(..., function(response, error_message)
+	M.AddTagsToOnPremisesInstancesAsync(AddTagsToOnPremisesInstancesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7308,10 +7308,10 @@ end
 -- @param CreateApplicationInput
 -- @return response
 -- @return error_message
-function M.CreateApplicationSync(...)
+function M.CreateApplicationSync(CreateApplicationInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateApplicationAsync(..., function(response, error_message)
+	M.CreateApplicationAsync(CreateApplicationInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7340,10 +7340,10 @@ end
 -- @param ListDeploymentsInput
 -- @return response
 -- @return error_message
-function M.ListDeploymentsSync(...)
+function M.ListDeploymentsSync(ListDeploymentsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListDeploymentsAsync(..., function(response, error_message)
+	M.ListDeploymentsAsync(ListDeploymentsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7372,10 +7372,10 @@ end
 -- @param ListApplicationsInput
 -- @return response
 -- @return error_message
-function M.ListApplicationsSync(...)
+function M.ListApplicationsSync(ListApplicationsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListApplicationsAsync(..., function(response, error_message)
+	M.ListApplicationsAsync(ListApplicationsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7404,10 +7404,10 @@ end
 -- @param DeleteDeploymentGroupInput
 -- @return response
 -- @return error_message
-function M.DeleteDeploymentGroupSync(...)
+function M.DeleteDeploymentGroupSync(DeleteDeploymentGroupInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteDeploymentGroupAsync(..., function(response, error_message)
+	M.DeleteDeploymentGroupAsync(DeleteDeploymentGroupInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7436,10 +7436,10 @@ end
 -- @param ListGitHubAccountTokenNamesInput
 -- @return response
 -- @return error_message
-function M.ListGitHubAccountTokenNamesSync(...)
+function M.ListGitHubAccountTokenNamesSync(ListGitHubAccountTokenNamesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListGitHubAccountTokenNamesAsync(..., function(response, error_message)
+	M.ListGitHubAccountTokenNamesAsync(ListGitHubAccountTokenNamesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7468,10 +7468,10 @@ end
 -- @param RegisterApplicationRevisionInput
 -- @return response
 -- @return error_message
-function M.RegisterApplicationRevisionSync(...)
+function M.RegisterApplicationRevisionSync(RegisterApplicationRevisionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RegisterApplicationRevisionAsync(..., function(response, error_message)
+	M.RegisterApplicationRevisionAsync(RegisterApplicationRevisionInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7500,10 +7500,10 @@ end
 -- @param GetDeploymentInput
 -- @return response
 -- @return error_message
-function M.GetDeploymentSync(...)
+function M.GetDeploymentSync(GetDeploymentInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetDeploymentAsync(..., function(response, error_message)
+	M.GetDeploymentAsync(GetDeploymentInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7532,10 +7532,10 @@ end
 -- @param BatchGetApplicationsInput
 -- @return response
 -- @return error_message
-function M.BatchGetApplicationsSync(...)
+function M.BatchGetApplicationsSync(BatchGetApplicationsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchGetApplicationsAsync(..., function(response, error_message)
+	M.BatchGetApplicationsAsync(BatchGetApplicationsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

@@ -4370,10 +4370,10 @@ end
 -- @param DeclineHandshakeRequest
 -- @return response
 -- @return error_message
-function M.DeclineHandshakeSync(...)
+function M.DeclineHandshakeSync(DeclineHandshakeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeclineHandshakeAsync(..., function(response, error_message)
+	M.DeclineHandshakeAsync(DeclineHandshakeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4402,10 +4402,10 @@ end
 -- @param DisablePolicyTypeRequest
 -- @return response
 -- @return error_message
-function M.DisablePolicyTypeSync(...)
+function M.DisablePolicyTypeSync(DisablePolicyTypeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisablePolicyTypeAsync(..., function(response, error_message)
+	M.DisablePolicyTypeAsync(DisablePolicyTypeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4434,10 +4434,10 @@ end
 -- @param DescribeCreateAccountStatusRequest
 -- @return response
 -- @return error_message
-function M.DescribeCreateAccountStatusSync(...)
+function M.DescribeCreateAccountStatusSync(DescribeCreateAccountStatusRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeCreateAccountStatusAsync(..., function(response, error_message)
+	M.DescribeCreateAccountStatusAsync(DescribeCreateAccountStatusRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4466,10 +4466,10 @@ end
 -- @param ListOrganizationalUnitsForParentRequest
 -- @return response
 -- @return error_message
-function M.ListOrganizationalUnitsForParentSync(...)
+function M.ListOrganizationalUnitsForParentSync(ListOrganizationalUnitsForParentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListOrganizationalUnitsForParentAsync(..., function(response, error_message)
+	M.ListOrganizationalUnitsForParentAsync(ListOrganizationalUnitsForParentRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4498,10 +4498,10 @@ end
 -- @param DescribeOrganizationalUnitRequest
 -- @return response
 -- @return error_message
-function M.DescribeOrganizationalUnitSync(...)
+function M.DescribeOrganizationalUnitSync(DescribeOrganizationalUnitRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeOrganizationalUnitAsync(..., function(response, error_message)
+	M.DescribeOrganizationalUnitAsync(DescribeOrganizationalUnitRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4530,10 +4530,10 @@ end
 -- @param AcceptHandshakeRequest
 -- @return response
 -- @return error_message
-function M.AcceptHandshakeSync(...)
+function M.AcceptHandshakeSync(AcceptHandshakeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AcceptHandshakeAsync(..., function(response, error_message)
+	M.AcceptHandshakeAsync(AcceptHandshakeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4562,10 +4562,10 @@ end
 -- @param DeleteOrganizationalUnitRequest
 -- @return response
 -- @return error_message
-function M.DeleteOrganizationalUnitSync(...)
+function M.DeleteOrganizationalUnitSync(DeleteOrganizationalUnitRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteOrganizationalUnitAsync(..., function(response, error_message)
+	M.DeleteOrganizationalUnitAsync(DeleteOrganizationalUnitRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4594,10 +4594,10 @@ end
 -- @param DeletePolicyRequest
 -- @return response
 -- @return error_message
-function M.DeletePolicySync(...)
+function M.DeletePolicySync(DeletePolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeletePolicyAsync(..., function(response, error_message)
+	M.DeletePolicyAsync(DeletePolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4626,10 +4626,10 @@ end
 -- @param DetachPolicyRequest
 -- @return response
 -- @return error_message
-function M.DetachPolicySync(...)
+function M.DetachPolicySync(DetachPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DetachPolicyAsync(..., function(response, error_message)
+	M.DetachPolicyAsync(DetachPolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4658,10 +4658,10 @@ end
 -- @param ListHandshakesForAccountRequest
 -- @return response
 -- @return error_message
-function M.ListHandshakesForAccountSync(...)
+function M.ListHandshakesForAccountSync(ListHandshakesForAccountRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListHandshakesForAccountAsync(..., function(response, error_message)
+	M.ListHandshakesForAccountAsync(ListHandshakesForAccountRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4690,10 +4690,10 @@ end
 -- @param RemoveAccountFromOrganizationRequest
 -- @return response
 -- @return error_message
-function M.RemoveAccountFromOrganizationSync(...)
+function M.RemoveAccountFromOrganizationSync(RemoveAccountFromOrganizationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RemoveAccountFromOrganizationAsync(..., function(response, error_message)
+	M.RemoveAccountFromOrganizationAsync(RemoveAccountFromOrganizationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4722,10 +4722,10 @@ end
 -- @param EnableAllFeaturesRequest
 -- @return response
 -- @return error_message
-function M.EnableAllFeaturesSync(...)
+function M.EnableAllFeaturesSync(EnableAllFeaturesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.EnableAllFeaturesAsync(..., function(response, error_message)
+	M.EnableAllFeaturesAsync(EnableAllFeaturesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4754,7 +4754,7 @@ end
 function M.DeleteOrganizationSync(...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteOrganizationAsync(..., function(response, error_message)
+	M.DeleteOrganizationAsync(function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4783,10 +4783,10 @@ end
 -- @param ListPoliciesForTargetRequest
 -- @return response
 -- @return error_message
-function M.ListPoliciesForTargetSync(...)
+function M.ListPoliciesForTargetSync(ListPoliciesForTargetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListPoliciesForTargetAsync(..., function(response, error_message)
+	M.ListPoliciesForTargetAsync(ListPoliciesForTargetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4815,10 +4815,10 @@ end
 -- @param DescribePolicyRequest
 -- @return response
 -- @return error_message
-function M.DescribePolicySync(...)
+function M.DescribePolicySync(DescribePolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribePolicyAsync(..., function(response, error_message)
+	M.DescribePolicyAsync(DescribePolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4847,10 +4847,10 @@ end
 -- @param ListCreateAccountStatusRequest
 -- @return response
 -- @return error_message
-function M.ListCreateAccountStatusSync(...)
+function M.ListCreateAccountStatusSync(ListCreateAccountStatusRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListCreateAccountStatusAsync(..., function(response, error_message)
+	M.ListCreateAccountStatusAsync(ListCreateAccountStatusRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4879,10 +4879,10 @@ end
 -- @param CreateAccountRequest
 -- @return response
 -- @return error_message
-function M.CreateAccountSync(...)
+function M.CreateAccountSync(CreateAccountRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateAccountAsync(..., function(response, error_message)
+	M.CreateAccountAsync(CreateAccountRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4911,10 +4911,10 @@ end
 -- @param CancelHandshakeRequest
 -- @return response
 -- @return error_message
-function M.CancelHandshakeSync(...)
+function M.CancelHandshakeSync(CancelHandshakeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CancelHandshakeAsync(..., function(response, error_message)
+	M.CancelHandshakeAsync(CancelHandshakeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4943,10 +4943,10 @@ end
 -- @param ListAccountsRequest
 -- @return response
 -- @return error_message
-function M.ListAccountsSync(...)
+function M.ListAccountsSync(ListAccountsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListAccountsAsync(..., function(response, error_message)
+	M.ListAccountsAsync(ListAccountsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4975,10 +4975,10 @@ end
 -- @param AttachPolicyRequest
 -- @return response
 -- @return error_message
-function M.AttachPolicySync(...)
+function M.AttachPolicySync(AttachPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AttachPolicyAsync(..., function(response, error_message)
+	M.AttachPolicyAsync(AttachPolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5007,10 +5007,10 @@ end
 -- @param MoveAccountRequest
 -- @return response
 -- @return error_message
-function M.MoveAccountSync(...)
+function M.MoveAccountSync(MoveAccountRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.MoveAccountAsync(..., function(response, error_message)
+	M.MoveAccountAsync(MoveAccountRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5039,7 +5039,7 @@ end
 function M.DescribeOrganizationSync(...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeOrganizationAsync(..., function(response, error_message)
+	M.DescribeOrganizationAsync(function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5068,10 +5068,10 @@ end
 -- @param ListChildrenRequest
 -- @return response
 -- @return error_message
-function M.ListChildrenSync(...)
+function M.ListChildrenSync(ListChildrenRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListChildrenAsync(..., function(response, error_message)
+	M.ListChildrenAsync(ListChildrenRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5100,10 +5100,10 @@ end
 -- @param CreateOrganizationRequest
 -- @return response
 -- @return error_message
-function M.CreateOrganizationSync(...)
+function M.CreateOrganizationSync(CreateOrganizationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateOrganizationAsync(..., function(response, error_message)
+	M.CreateOrganizationAsync(CreateOrganizationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5132,10 +5132,10 @@ end
 -- @param UpdatePolicyRequest
 -- @return response
 -- @return error_message
-function M.UpdatePolicySync(...)
+function M.UpdatePolicySync(UpdatePolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdatePolicyAsync(..., function(response, error_message)
+	M.UpdatePolicyAsync(UpdatePolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5164,7 +5164,7 @@ end
 function M.LeaveOrganizationSync(...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.LeaveOrganizationAsync(..., function(response, error_message)
+	M.LeaveOrganizationAsync(function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5193,10 +5193,10 @@ end
 -- @param CreateOrganizationalUnitRequest
 -- @return response
 -- @return error_message
-function M.CreateOrganizationalUnitSync(...)
+function M.CreateOrganizationalUnitSync(CreateOrganizationalUnitRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateOrganizationalUnitAsync(..., function(response, error_message)
+	M.CreateOrganizationalUnitAsync(CreateOrganizationalUnitRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5225,10 +5225,10 @@ end
 -- @param EnablePolicyTypeRequest
 -- @return response
 -- @return error_message
-function M.EnablePolicyTypeSync(...)
+function M.EnablePolicyTypeSync(EnablePolicyTypeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.EnablePolicyTypeAsync(..., function(response, error_message)
+	M.EnablePolicyTypeAsync(EnablePolicyTypeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5257,10 +5257,10 @@ end
 -- @param DescribeAccountRequest
 -- @return response
 -- @return error_message
-function M.DescribeAccountSync(...)
+function M.DescribeAccountSync(DescribeAccountRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAccountAsync(..., function(response, error_message)
+	M.DescribeAccountAsync(DescribeAccountRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5289,10 +5289,10 @@ end
 -- @param InviteAccountToOrganizationRequest
 -- @return response
 -- @return error_message
-function M.InviteAccountToOrganizationSync(...)
+function M.InviteAccountToOrganizationSync(InviteAccountToOrganizationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.InviteAccountToOrganizationAsync(..., function(response, error_message)
+	M.InviteAccountToOrganizationAsync(InviteAccountToOrganizationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5321,10 +5321,10 @@ end
 -- @param ListPoliciesRequest
 -- @return response
 -- @return error_message
-function M.ListPoliciesSync(...)
+function M.ListPoliciesSync(ListPoliciesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListPoliciesAsync(..., function(response, error_message)
+	M.ListPoliciesAsync(ListPoliciesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5353,10 +5353,10 @@ end
 -- @param ListAccountsForParentRequest
 -- @return response
 -- @return error_message
-function M.ListAccountsForParentSync(...)
+function M.ListAccountsForParentSync(ListAccountsForParentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListAccountsForParentAsync(..., function(response, error_message)
+	M.ListAccountsForParentAsync(ListAccountsForParentRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5385,10 +5385,10 @@ end
 -- @param DescribeHandshakeRequest
 -- @return response
 -- @return error_message
-function M.DescribeHandshakeSync(...)
+function M.DescribeHandshakeSync(DescribeHandshakeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeHandshakeAsync(..., function(response, error_message)
+	M.DescribeHandshakeAsync(DescribeHandshakeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5417,10 +5417,10 @@ end
 -- @param ListParentsRequest
 -- @return response
 -- @return error_message
-function M.ListParentsSync(...)
+function M.ListParentsSync(ListParentsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListParentsAsync(..., function(response, error_message)
+	M.ListParentsAsync(ListParentsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5449,10 +5449,10 @@ end
 -- @param UpdateOrganizationalUnitRequest
 -- @return response
 -- @return error_message
-function M.UpdateOrganizationalUnitSync(...)
+function M.UpdateOrganizationalUnitSync(UpdateOrganizationalUnitRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateOrganizationalUnitAsync(..., function(response, error_message)
+	M.UpdateOrganizationalUnitAsync(UpdateOrganizationalUnitRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5481,10 +5481,10 @@ end
 -- @param ListHandshakesForOrganizationRequest
 -- @return response
 -- @return error_message
-function M.ListHandshakesForOrganizationSync(...)
+function M.ListHandshakesForOrganizationSync(ListHandshakesForOrganizationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListHandshakesForOrganizationAsync(..., function(response, error_message)
+	M.ListHandshakesForOrganizationAsync(ListHandshakesForOrganizationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5513,10 +5513,10 @@ end
 -- @param CreatePolicyRequest
 -- @return response
 -- @return error_message
-function M.CreatePolicySync(...)
+function M.CreatePolicySync(CreatePolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreatePolicyAsync(..., function(response, error_message)
+	M.CreatePolicyAsync(CreatePolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5545,10 +5545,10 @@ end
 -- @param ListTargetsForPolicyRequest
 -- @return response
 -- @return error_message
-function M.ListTargetsForPolicySync(...)
+function M.ListTargetsForPolicySync(ListTargetsForPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTargetsForPolicyAsync(..., function(response, error_message)
+	M.ListTargetsForPolicyAsync(ListTargetsForPolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5577,10 +5577,10 @@ end
 -- @param ListRootsRequest
 -- @return response
 -- @return error_message
-function M.ListRootsSync(...)
+function M.ListRootsSync(ListRootsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListRootsAsync(..., function(response, error_message)
+	M.ListRootsAsync(ListRootsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

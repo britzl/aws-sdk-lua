@@ -1213,10 +1213,10 @@ end
 -- @param GetRecordsInput
 -- @return response
 -- @return error_message
-function M.GetRecordsSync(...)
+function M.GetRecordsSync(GetRecordsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetRecordsAsync(..., function(response, error_message)
+	M.GetRecordsAsync(GetRecordsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1245,10 +1245,10 @@ end
 -- @param ListStreamsInput
 -- @return response
 -- @return error_message
-function M.ListStreamsSync(...)
+function M.ListStreamsSync(ListStreamsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListStreamsAsync(..., function(response, error_message)
+	M.ListStreamsAsync(ListStreamsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1277,10 +1277,10 @@ end
 -- @param GetShardIteratorInput
 -- @return response
 -- @return error_message
-function M.GetShardIteratorSync(...)
+function M.GetShardIteratorSync(GetShardIteratorInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetShardIteratorAsync(..., function(response, error_message)
+	M.GetShardIteratorAsync(GetShardIteratorInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1309,10 +1309,10 @@ end
 -- @param DescribeStreamInput
 -- @return response
 -- @return error_message
-function M.DescribeStreamSync(...)
+function M.DescribeStreamSync(DescribeStreamInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeStreamAsync(..., function(response, error_message)
+	M.DescribeStreamAsync(DescribeStreamInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

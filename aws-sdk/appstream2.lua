@@ -2411,10 +2411,10 @@ end
 -- @param UpdateStackRequest
 -- @return response
 -- @return error_message
-function M.UpdateStackSync(...)
+function M.UpdateStackSync(UpdateStackRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateStackAsync(..., function(response, error_message)
+	M.UpdateStackAsync(UpdateStackRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2443,10 +2443,10 @@ end
 -- @param CreateFleetRequest
 -- @return response
 -- @return error_message
-function M.CreateFleetSync(...)
+function M.CreateFleetSync(CreateFleetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateFleetAsync(..., function(response, error_message)
+	M.CreateFleetAsync(CreateFleetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2475,10 +2475,10 @@ end
 -- @param DeleteFleetRequest
 -- @return response
 -- @return error_message
-function M.DeleteFleetSync(...)
+function M.DeleteFleetSync(DeleteFleetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteFleetAsync(..., function(response, error_message)
+	M.DeleteFleetAsync(DeleteFleetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2507,10 +2507,10 @@ end
 -- @param CreateStreamingURLRequest
 -- @return response
 -- @return error_message
-function M.CreateStreamingURLSync(...)
+function M.CreateStreamingURLSync(CreateStreamingURLRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateStreamingURLAsync(..., function(response, error_message)
+	M.CreateStreamingURLAsync(CreateStreamingURLRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2539,10 +2539,10 @@ end
 -- @param DescribeSessionsRequest
 -- @return response
 -- @return error_message
-function M.DescribeSessionsSync(...)
+function M.DescribeSessionsSync(DescribeSessionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeSessionsAsync(..., function(response, error_message)
+	M.DescribeSessionsAsync(DescribeSessionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2571,10 +2571,10 @@ end
 -- @param AssociateFleetRequest
 -- @return response
 -- @return error_message
-function M.AssociateFleetSync(...)
+function M.AssociateFleetSync(AssociateFleetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AssociateFleetAsync(..., function(response, error_message)
+	M.AssociateFleetAsync(AssociateFleetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2603,10 +2603,10 @@ end
 -- @param StopFleetRequest
 -- @return response
 -- @return error_message
-function M.StopFleetSync(...)
+function M.StopFleetSync(StopFleetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StopFleetAsync(..., function(response, error_message)
+	M.StopFleetAsync(StopFleetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2635,10 +2635,10 @@ end
 -- @param DescribeFleetsRequest
 -- @return response
 -- @return error_message
-function M.DescribeFleetsSync(...)
+function M.DescribeFleetsSync(DescribeFleetsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeFleetsAsync(..., function(response, error_message)
+	M.DescribeFleetsAsync(DescribeFleetsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2667,10 +2667,10 @@ end
 -- @param UpdateFleetRequest
 -- @return response
 -- @return error_message
-function M.UpdateFleetSync(...)
+function M.UpdateFleetSync(UpdateFleetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateFleetAsync(..., function(response, error_message)
+	M.UpdateFleetAsync(UpdateFleetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2699,10 +2699,10 @@ end
 -- @param DescribeImagesRequest
 -- @return response
 -- @return error_message
-function M.DescribeImagesSync(...)
+function M.DescribeImagesSync(DescribeImagesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeImagesAsync(..., function(response, error_message)
+	M.DescribeImagesAsync(DescribeImagesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2731,10 +2731,10 @@ end
 -- @param DeleteStackRequest
 -- @return response
 -- @return error_message
-function M.DeleteStackSync(...)
+function M.DeleteStackSync(DeleteStackRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteStackAsync(..., function(response, error_message)
+	M.DeleteStackAsync(DeleteStackRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2763,10 +2763,10 @@ end
 -- @param ExpireSessionRequest
 -- @return response
 -- @return error_message
-function M.ExpireSessionSync(...)
+function M.ExpireSessionSync(ExpireSessionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ExpireSessionAsync(..., function(response, error_message)
+	M.ExpireSessionAsync(ExpireSessionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2795,10 +2795,10 @@ end
 -- @param ListAssociatedStacksRequest
 -- @return response
 -- @return error_message
-function M.ListAssociatedStacksSync(...)
+function M.ListAssociatedStacksSync(ListAssociatedStacksRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListAssociatedStacksAsync(..., function(response, error_message)
+	M.ListAssociatedStacksAsync(ListAssociatedStacksRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2827,10 +2827,10 @@ end
 -- @param ListAssociatedFleetsRequest
 -- @return response
 -- @return error_message
-function M.ListAssociatedFleetsSync(...)
+function M.ListAssociatedFleetsSync(ListAssociatedFleetsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListAssociatedFleetsAsync(..., function(response, error_message)
+	M.ListAssociatedFleetsAsync(ListAssociatedFleetsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2859,10 +2859,10 @@ end
 -- @param StartFleetRequest
 -- @return response
 -- @return error_message
-function M.StartFleetSync(...)
+function M.StartFleetSync(StartFleetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartFleetAsync(..., function(response, error_message)
+	M.StartFleetAsync(StartFleetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2891,10 +2891,10 @@ end
 -- @param DisassociateFleetRequest
 -- @return response
 -- @return error_message
-function M.DisassociateFleetSync(...)
+function M.DisassociateFleetSync(DisassociateFleetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisassociateFleetAsync(..., function(response, error_message)
+	M.DisassociateFleetAsync(DisassociateFleetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2923,10 +2923,10 @@ end
 -- @param DescribeStacksRequest
 -- @return response
 -- @return error_message
-function M.DescribeStacksSync(...)
+function M.DescribeStacksSync(DescribeStacksRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeStacksAsync(..., function(response, error_message)
+	M.DescribeStacksAsync(DescribeStacksRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2955,10 +2955,10 @@ end
 -- @param CreateStackRequest
 -- @return response
 -- @return error_message
-function M.CreateStackSync(...)
+function M.CreateStackSync(CreateStackRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateStackAsync(..., function(response, error_message)
+	M.CreateStackAsync(CreateStackRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

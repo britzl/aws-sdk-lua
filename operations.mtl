@@ -260,10 +260,10 @@ end
 -- @param {{shape}}{{/input}}
 -- @return response
 -- @return error_message
-function M.{{name}}Sync(...)
+function M.{{name}}Sync({{#input}}{{shape}}, {{/input}}...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.{{name}}Async(..., function(response, error_message)
+	M.{{name}}Async({{#input}}{{shape}}, {{/input}}function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

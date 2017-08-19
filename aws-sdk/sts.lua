@@ -1336,10 +1336,10 @@ end
 -- @param GetFederationTokenRequest
 -- @return response
 -- @return error_message
-function M.GetFederationTokenSync(...)
+function M.GetFederationTokenSync(GetFederationTokenRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetFederationTokenAsync(..., function(response, error_message)
+	M.GetFederationTokenAsync(GetFederationTokenRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1368,10 +1368,10 @@ end
 -- @param AssumeRoleRequest
 -- @return response
 -- @return error_message
-function M.AssumeRoleSync(...)
+function M.AssumeRoleSync(AssumeRoleRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AssumeRoleAsync(..., function(response, error_message)
+	M.AssumeRoleAsync(AssumeRoleRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1400,10 +1400,10 @@ end
 -- @param DecodeAuthorizationMessageRequest
 -- @return response
 -- @return error_message
-function M.DecodeAuthorizationMessageSync(...)
+function M.DecodeAuthorizationMessageSync(DecodeAuthorizationMessageRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DecodeAuthorizationMessageAsync(..., function(response, error_message)
+	M.DecodeAuthorizationMessageAsync(DecodeAuthorizationMessageRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1432,10 +1432,10 @@ end
 -- @param AssumeRoleWithWebIdentityRequest
 -- @return response
 -- @return error_message
-function M.AssumeRoleWithWebIdentitySync(...)
+function M.AssumeRoleWithWebIdentitySync(AssumeRoleWithWebIdentityRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AssumeRoleWithWebIdentityAsync(..., function(response, error_message)
+	M.AssumeRoleWithWebIdentityAsync(AssumeRoleWithWebIdentityRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1464,10 +1464,10 @@ end
 -- @param GetSessionTokenRequest
 -- @return response
 -- @return error_message
-function M.GetSessionTokenSync(...)
+function M.GetSessionTokenSync(GetSessionTokenRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetSessionTokenAsync(..., function(response, error_message)
+	M.GetSessionTokenAsync(GetSessionTokenRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1496,10 +1496,10 @@ end
 -- @param GetCallerIdentityRequest
 -- @return response
 -- @return error_message
-function M.GetCallerIdentitySync(...)
+function M.GetCallerIdentitySync(GetCallerIdentityRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetCallerIdentityAsync(..., function(response, error_message)
+	M.GetCallerIdentityAsync(GetCallerIdentityRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1528,10 +1528,10 @@ end
 -- @param AssumeRoleWithSAMLRequest
 -- @return response
 -- @return error_message
-function M.AssumeRoleWithSAMLSync(...)
+function M.AssumeRoleWithSAMLSync(AssumeRoleWithSAMLRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AssumeRoleWithSAMLAsync(..., function(response, error_message)
+	M.AssumeRoleWithSAMLAsync(AssumeRoleWithSAMLRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

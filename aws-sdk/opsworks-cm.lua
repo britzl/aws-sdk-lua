@@ -1818,10 +1818,10 @@ end
 -- @param DescribeServersRequest
 -- @return response
 -- @return error_message
-function M.DescribeServersSync(...)
+function M.DescribeServersSync(DescribeServersRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeServersAsync(..., function(response, error_message)
+	M.DescribeServersAsync(DescribeServersRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1850,10 +1850,10 @@ end
 -- @param DescribeNodeAssociationStatusRequest
 -- @return response
 -- @return error_message
-function M.DescribeNodeAssociationStatusSync(...)
+function M.DescribeNodeAssociationStatusSync(DescribeNodeAssociationStatusRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeNodeAssociationStatusAsync(..., function(response, error_message)
+	M.DescribeNodeAssociationStatusAsync(DescribeNodeAssociationStatusRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1882,10 +1882,10 @@ end
 -- @param DeleteServerRequest
 -- @return response
 -- @return error_message
-function M.DeleteServerSync(...)
+function M.DeleteServerSync(DeleteServerRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteServerAsync(..., function(response, error_message)
+	M.DeleteServerAsync(DeleteServerRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1914,10 +1914,10 @@ end
 -- @param DescribeBackupsRequest
 -- @return response
 -- @return error_message
-function M.DescribeBackupsSync(...)
+function M.DescribeBackupsSync(DescribeBackupsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeBackupsAsync(..., function(response, error_message)
+	M.DescribeBackupsAsync(DescribeBackupsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1946,10 +1946,10 @@ end
 -- @param RestoreServerRequest
 -- @return response
 -- @return error_message
-function M.RestoreServerSync(...)
+function M.RestoreServerSync(RestoreServerRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RestoreServerAsync(..., function(response, error_message)
+	M.RestoreServerAsync(RestoreServerRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1978,10 +1978,10 @@ end
 -- @param UpdateServerEngineAttributesRequest
 -- @return response
 -- @return error_message
-function M.UpdateServerEngineAttributesSync(...)
+function M.UpdateServerEngineAttributesSync(UpdateServerEngineAttributesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateServerEngineAttributesAsync(..., function(response, error_message)
+	M.UpdateServerEngineAttributesAsync(UpdateServerEngineAttributesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2010,10 +2010,10 @@ end
 -- @param DescribeAccountAttributesRequest
 -- @return response
 -- @return error_message
-function M.DescribeAccountAttributesSync(...)
+function M.DescribeAccountAttributesSync(DescribeAccountAttributesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAccountAttributesAsync(..., function(response, error_message)
+	M.DescribeAccountAttributesAsync(DescribeAccountAttributesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2042,10 +2042,10 @@ end
 -- @param DescribeEventsRequest
 -- @return response
 -- @return error_message
-function M.DescribeEventsSync(...)
+function M.DescribeEventsSync(DescribeEventsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEventsAsync(..., function(response, error_message)
+	M.DescribeEventsAsync(DescribeEventsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2074,10 +2074,10 @@ end
 -- @param DeleteBackupRequest
 -- @return response
 -- @return error_message
-function M.DeleteBackupSync(...)
+function M.DeleteBackupSync(DeleteBackupRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteBackupAsync(..., function(response, error_message)
+	M.DeleteBackupAsync(DeleteBackupRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2106,10 +2106,10 @@ end
 -- @param CreateServerRequest
 -- @return response
 -- @return error_message
-function M.CreateServerSync(...)
+function M.CreateServerSync(CreateServerRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateServerAsync(..., function(response, error_message)
+	M.CreateServerAsync(CreateServerRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2138,10 +2138,10 @@ end
 -- @param CreateBackupRequest
 -- @return response
 -- @return error_message
-function M.CreateBackupSync(...)
+function M.CreateBackupSync(CreateBackupRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateBackupAsync(..., function(response, error_message)
+	M.CreateBackupAsync(CreateBackupRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2170,10 +2170,10 @@ end
 -- @param StartMaintenanceRequest
 -- @return response
 -- @return error_message
-function M.StartMaintenanceSync(...)
+function M.StartMaintenanceSync(StartMaintenanceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartMaintenanceAsync(..., function(response, error_message)
+	M.StartMaintenanceAsync(StartMaintenanceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2202,10 +2202,10 @@ end
 -- @param UpdateServerRequest
 -- @return response
 -- @return error_message
-function M.UpdateServerSync(...)
+function M.UpdateServerSync(UpdateServerRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateServerAsync(..., function(response, error_message)
+	M.UpdateServerAsync(UpdateServerRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2234,10 +2234,10 @@ end
 -- @param AssociateNodeRequest
 -- @return response
 -- @return error_message
-function M.AssociateNodeSync(...)
+function M.AssociateNodeSync(AssociateNodeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AssociateNodeAsync(..., function(response, error_message)
+	M.AssociateNodeAsync(AssociateNodeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2266,10 +2266,10 @@ end
 -- @param DisassociateNodeRequest
 -- @return response
 -- @return error_message
-function M.DisassociateNodeSync(...)
+function M.DisassociateNodeSync(DisassociateNodeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisassociateNodeAsync(..., function(response, error_message)
+	M.DisassociateNodeAsync(DisassociateNodeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

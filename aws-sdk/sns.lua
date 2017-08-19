@@ -2399,10 +2399,10 @@ end
 -- @param ListPlatformApplicationsInput
 -- @return response
 -- @return error_message
-function M.ListPlatformApplicationsSync(...)
+function M.ListPlatformApplicationsSync(ListPlatformApplicationsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListPlatformApplicationsAsync(..., function(response, error_message)
+	M.ListPlatformApplicationsAsync(ListPlatformApplicationsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2431,10 +2431,10 @@ end
 -- @param SetPlatformApplicationAttributesInput
 -- @return response
 -- @return error_message
-function M.SetPlatformApplicationAttributesSync(...)
+function M.SetPlatformApplicationAttributesSync(SetPlatformApplicationAttributesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetPlatformApplicationAttributesAsync(..., function(response, error_message)
+	M.SetPlatformApplicationAttributesAsync(SetPlatformApplicationAttributesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2463,10 +2463,10 @@ end
 -- @param ListSubscriptionsByTopicInput
 -- @return response
 -- @return error_message
-function M.ListSubscriptionsByTopicSync(...)
+function M.ListSubscriptionsByTopicSync(ListSubscriptionsByTopicInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListSubscriptionsByTopicAsync(..., function(response, error_message)
+	M.ListSubscriptionsByTopicAsync(ListSubscriptionsByTopicInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2495,10 +2495,10 @@ end
 -- @param ListSubscriptionsInput
 -- @return response
 -- @return error_message
-function M.ListSubscriptionsSync(...)
+function M.ListSubscriptionsSync(ListSubscriptionsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListSubscriptionsAsync(..., function(response, error_message)
+	M.ListSubscriptionsAsync(ListSubscriptionsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2527,10 +2527,10 @@ end
 -- @param ListPhoneNumbersOptedOutInput
 -- @return response
 -- @return error_message
-function M.ListPhoneNumbersOptedOutSync(...)
+function M.ListPhoneNumbersOptedOutSync(ListPhoneNumbersOptedOutInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListPhoneNumbersOptedOutAsync(..., function(response, error_message)
+	M.ListPhoneNumbersOptedOutAsync(ListPhoneNumbersOptedOutInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2559,10 +2559,10 @@ end
 -- @param ConfirmSubscriptionInput
 -- @return response
 -- @return error_message
-function M.ConfirmSubscriptionSync(...)
+function M.ConfirmSubscriptionSync(ConfirmSubscriptionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ConfirmSubscriptionAsync(..., function(response, error_message)
+	M.ConfirmSubscriptionAsync(ConfirmSubscriptionInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2591,10 +2591,10 @@ end
 -- @param SetTopicAttributesInput
 -- @return response
 -- @return error_message
-function M.SetTopicAttributesSync(...)
+function M.SetTopicAttributesSync(SetTopicAttributesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetTopicAttributesAsync(..., function(response, error_message)
+	M.SetTopicAttributesAsync(SetTopicAttributesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2623,10 +2623,10 @@ end
 -- @param SetEndpointAttributesInput
 -- @return response
 -- @return error_message
-function M.SetEndpointAttributesSync(...)
+function M.SetEndpointAttributesSync(SetEndpointAttributesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetEndpointAttributesAsync(..., function(response, error_message)
+	M.SetEndpointAttributesAsync(SetEndpointAttributesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2655,10 +2655,10 @@ end
 -- @param CheckIfPhoneNumberIsOptedOutInput
 -- @return response
 -- @return error_message
-function M.CheckIfPhoneNumberIsOptedOutSync(...)
+function M.CheckIfPhoneNumberIsOptedOutSync(CheckIfPhoneNumberIsOptedOutInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CheckIfPhoneNumberIsOptedOutAsync(..., function(response, error_message)
+	M.CheckIfPhoneNumberIsOptedOutAsync(CheckIfPhoneNumberIsOptedOutInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2687,10 +2687,10 @@ end
 -- @param AddPermissionInput
 -- @return response
 -- @return error_message
-function M.AddPermissionSync(...)
+function M.AddPermissionSync(AddPermissionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddPermissionAsync(..., function(response, error_message)
+	M.AddPermissionAsync(AddPermissionInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2719,10 +2719,10 @@ end
 -- @param UnsubscribeInput
 -- @return response
 -- @return error_message
-function M.UnsubscribeSync(...)
+function M.UnsubscribeSync(UnsubscribeInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UnsubscribeAsync(..., function(response, error_message)
+	M.UnsubscribeAsync(UnsubscribeInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2751,10 +2751,10 @@ end
 -- @param GetSubscriptionAttributesInput
 -- @return response
 -- @return error_message
-function M.GetSubscriptionAttributesSync(...)
+function M.GetSubscriptionAttributesSync(GetSubscriptionAttributesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetSubscriptionAttributesAsync(..., function(response, error_message)
+	M.GetSubscriptionAttributesAsync(GetSubscriptionAttributesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2783,10 +2783,10 @@ end
 -- @param CreatePlatformEndpointInput
 -- @return response
 -- @return error_message
-function M.CreatePlatformEndpointSync(...)
+function M.CreatePlatformEndpointSync(CreatePlatformEndpointInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreatePlatformEndpointAsync(..., function(response, error_message)
+	M.CreatePlatformEndpointAsync(CreatePlatformEndpointInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2815,10 +2815,10 @@ end
 -- @param RemovePermissionInput
 -- @return response
 -- @return error_message
-function M.RemovePermissionSync(...)
+function M.RemovePermissionSync(RemovePermissionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RemovePermissionAsync(..., function(response, error_message)
+	M.RemovePermissionAsync(RemovePermissionInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2847,10 +2847,10 @@ end
 -- @param CreateTopicInput
 -- @return response
 -- @return error_message
-function M.CreateTopicSync(...)
+function M.CreateTopicSync(CreateTopicInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateTopicAsync(..., function(response, error_message)
+	M.CreateTopicAsync(CreateTopicInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2879,10 +2879,10 @@ end
 -- @param SetSubscriptionAttributesInput
 -- @return response
 -- @return error_message
-function M.SetSubscriptionAttributesSync(...)
+function M.SetSubscriptionAttributesSync(SetSubscriptionAttributesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetSubscriptionAttributesAsync(..., function(response, error_message)
+	M.SetSubscriptionAttributesAsync(SetSubscriptionAttributesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2911,10 +2911,10 @@ end
 -- @param CreatePlatformApplicationInput
 -- @return response
 -- @return error_message
-function M.CreatePlatformApplicationSync(...)
+function M.CreatePlatformApplicationSync(CreatePlatformApplicationInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreatePlatformApplicationAsync(..., function(response, error_message)
+	M.CreatePlatformApplicationAsync(CreatePlatformApplicationInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2943,10 +2943,10 @@ end
 -- @param GetPlatformApplicationAttributesInput
 -- @return response
 -- @return error_message
-function M.GetPlatformApplicationAttributesSync(...)
+function M.GetPlatformApplicationAttributesSync(GetPlatformApplicationAttributesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetPlatformApplicationAttributesAsync(..., function(response, error_message)
+	M.GetPlatformApplicationAttributesAsync(GetPlatformApplicationAttributesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2975,10 +2975,10 @@ end
 -- @param GetSMSAttributesInput
 -- @return response
 -- @return error_message
-function M.GetSMSAttributesSync(...)
+function M.GetSMSAttributesSync(GetSMSAttributesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetSMSAttributesAsync(..., function(response, error_message)
+	M.GetSMSAttributesAsync(GetSMSAttributesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3007,10 +3007,10 @@ end
 -- @param PublishInput
 -- @return response
 -- @return error_message
-function M.PublishSync(...)
+function M.PublishSync(PublishInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PublishAsync(..., function(response, error_message)
+	M.PublishAsync(PublishInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3039,10 +3039,10 @@ end
 -- @param SetSMSAttributesInput
 -- @return response
 -- @return error_message
-function M.SetSMSAttributesSync(...)
+function M.SetSMSAttributesSync(SetSMSAttributesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetSMSAttributesAsync(..., function(response, error_message)
+	M.SetSMSAttributesAsync(SetSMSAttributesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3071,10 +3071,10 @@ end
 -- @param ListEndpointsByPlatformApplicationInput
 -- @return response
 -- @return error_message
-function M.ListEndpointsByPlatformApplicationSync(...)
+function M.ListEndpointsByPlatformApplicationSync(ListEndpointsByPlatformApplicationInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListEndpointsByPlatformApplicationAsync(..., function(response, error_message)
+	M.ListEndpointsByPlatformApplicationAsync(ListEndpointsByPlatformApplicationInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3103,10 +3103,10 @@ end
 -- @param GetEndpointAttributesInput
 -- @return response
 -- @return error_message
-function M.GetEndpointAttributesSync(...)
+function M.GetEndpointAttributesSync(GetEndpointAttributesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetEndpointAttributesAsync(..., function(response, error_message)
+	M.GetEndpointAttributesAsync(GetEndpointAttributesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3135,10 +3135,10 @@ end
 -- @param DeleteEndpointInput
 -- @return response
 -- @return error_message
-function M.DeleteEndpointSync(...)
+function M.DeleteEndpointSync(DeleteEndpointInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteEndpointAsync(..., function(response, error_message)
+	M.DeleteEndpointAsync(DeleteEndpointInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3167,10 +3167,10 @@ end
 -- @param DeletePlatformApplicationInput
 -- @return response
 -- @return error_message
-function M.DeletePlatformApplicationSync(...)
+function M.DeletePlatformApplicationSync(DeletePlatformApplicationInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeletePlatformApplicationAsync(..., function(response, error_message)
+	M.DeletePlatformApplicationAsync(DeletePlatformApplicationInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3199,10 +3199,10 @@ end
 -- @param GetTopicAttributesInput
 -- @return response
 -- @return error_message
-function M.GetTopicAttributesSync(...)
+function M.GetTopicAttributesSync(GetTopicAttributesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetTopicAttributesAsync(..., function(response, error_message)
+	M.GetTopicAttributesAsync(GetTopicAttributesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3231,10 +3231,10 @@ end
 -- @param SubscribeInput
 -- @return response
 -- @return error_message
-function M.SubscribeSync(...)
+function M.SubscribeSync(SubscribeInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SubscribeAsync(..., function(response, error_message)
+	M.SubscribeAsync(SubscribeInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3263,10 +3263,10 @@ end
 -- @param DeleteTopicInput
 -- @return response
 -- @return error_message
-function M.DeleteTopicSync(...)
+function M.DeleteTopicSync(DeleteTopicInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteTopicAsync(..., function(response, error_message)
+	M.DeleteTopicAsync(DeleteTopicInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3295,10 +3295,10 @@ end
 -- @param OptInPhoneNumberInput
 -- @return response
 -- @return error_message
-function M.OptInPhoneNumberSync(...)
+function M.OptInPhoneNumberSync(OptInPhoneNumberInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.OptInPhoneNumberAsync(..., function(response, error_message)
+	M.OptInPhoneNumberAsync(OptInPhoneNumberInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3327,10 +3327,10 @@ end
 -- @param ListTopicsInput
 -- @return response
 -- @return error_message
-function M.ListTopicsSync(...)
+function M.ListTopicsSync(ListTopicsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTopicsAsync(..., function(response, error_message)
+	M.ListTopicsAsync(ListTopicsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

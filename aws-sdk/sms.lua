@@ -1681,10 +1681,10 @@ end
 -- @param ImportServerCatalogRequest
 -- @return response
 -- @return error_message
-function M.ImportServerCatalogSync(...)
+function M.ImportServerCatalogSync(ImportServerCatalogRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ImportServerCatalogAsync(..., function(response, error_message)
+	M.ImportServerCatalogAsync(ImportServerCatalogRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1713,10 +1713,10 @@ end
 -- @param GetConnectorsRequest
 -- @return response
 -- @return error_message
-function M.GetConnectorsSync(...)
+function M.GetConnectorsSync(GetConnectorsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetConnectorsAsync(..., function(response, error_message)
+	M.GetConnectorsAsync(GetConnectorsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1745,10 +1745,10 @@ end
 -- @param DeleteReplicationJobRequest
 -- @return response
 -- @return error_message
-function M.DeleteReplicationJobSync(...)
+function M.DeleteReplicationJobSync(DeleteReplicationJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteReplicationJobAsync(..., function(response, error_message)
+	M.DeleteReplicationJobAsync(DeleteReplicationJobRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1777,10 +1777,10 @@ end
 -- @param StartOnDemandReplicationRunRequest
 -- @return response
 -- @return error_message
-function M.StartOnDemandReplicationRunSync(...)
+function M.StartOnDemandReplicationRunSync(StartOnDemandReplicationRunRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartOnDemandReplicationRunAsync(..., function(response, error_message)
+	M.StartOnDemandReplicationRunAsync(StartOnDemandReplicationRunRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1809,10 +1809,10 @@ end
 -- @param GetServersRequest
 -- @return response
 -- @return error_message
-function M.GetServersSync(...)
+function M.GetServersSync(GetServersRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetServersAsync(..., function(response, error_message)
+	M.GetServersAsync(GetServersRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1841,10 +1841,10 @@ end
 -- @param GetReplicationRunsRequest
 -- @return response
 -- @return error_message
-function M.GetReplicationRunsSync(...)
+function M.GetReplicationRunsSync(GetReplicationRunsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetReplicationRunsAsync(..., function(response, error_message)
+	M.GetReplicationRunsAsync(GetReplicationRunsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1873,10 +1873,10 @@ end
 -- @param GetReplicationJobsRequest
 -- @return response
 -- @return error_message
-function M.GetReplicationJobsSync(...)
+function M.GetReplicationJobsSync(GetReplicationJobsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetReplicationJobsAsync(..., function(response, error_message)
+	M.GetReplicationJobsAsync(GetReplicationJobsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1905,10 +1905,10 @@ end
 -- @param DisassociateConnectorRequest
 -- @return response
 -- @return error_message
-function M.DisassociateConnectorSync(...)
+function M.DisassociateConnectorSync(DisassociateConnectorRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisassociateConnectorAsync(..., function(response, error_message)
+	M.DisassociateConnectorAsync(DisassociateConnectorRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1937,10 +1937,10 @@ end
 -- @param CreateReplicationJobRequest
 -- @return response
 -- @return error_message
-function M.CreateReplicationJobSync(...)
+function M.CreateReplicationJobSync(CreateReplicationJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateReplicationJobAsync(..., function(response, error_message)
+	M.CreateReplicationJobAsync(CreateReplicationJobRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1969,10 +1969,10 @@ end
 -- @param UpdateReplicationJobRequest
 -- @return response
 -- @return error_message
-function M.UpdateReplicationJobSync(...)
+function M.UpdateReplicationJobSync(UpdateReplicationJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateReplicationJobAsync(..., function(response, error_message)
+	M.UpdateReplicationJobAsync(UpdateReplicationJobRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2001,10 +2001,10 @@ end
 -- @param DeleteServerCatalogRequest
 -- @return response
 -- @return error_message
-function M.DeleteServerCatalogSync(...)
+function M.DeleteServerCatalogSync(DeleteServerCatalogRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteServerCatalogAsync(..., function(response, error_message)
+	M.DeleteServerCatalogAsync(DeleteServerCatalogRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

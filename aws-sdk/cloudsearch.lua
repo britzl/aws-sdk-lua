@@ -3251,10 +3251,10 @@ end
 -- @param DescribeServiceAccessPoliciesRequest
 -- @return response
 -- @return error_message
-function M.DescribeServiceAccessPoliciesSync(...)
+function M.DescribeServiceAccessPoliciesSync(DescribeServiceAccessPoliciesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeServiceAccessPoliciesAsync(..., function(response, error_message)
+	M.DescribeServiceAccessPoliciesAsync(DescribeServiceAccessPoliciesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3283,10 +3283,10 @@ end
 -- @param UpdateScalingParametersRequest
 -- @return response
 -- @return error_message
-function M.UpdateScalingParametersSync(...)
+function M.UpdateScalingParametersSync(UpdateScalingParametersRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateScalingParametersAsync(..., function(response, error_message)
+	M.UpdateScalingParametersAsync(UpdateScalingParametersRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3315,10 +3315,10 @@ end
 -- @param DescribeDomainsRequest
 -- @return response
 -- @return error_message
-function M.DescribeDomainsSync(...)
+function M.DescribeDomainsSync(DescribeDomainsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeDomainsAsync(..., function(response, error_message)
+	M.DescribeDomainsAsync(DescribeDomainsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3347,10 +3347,10 @@ end
 -- @param DescribeScalingParametersRequest
 -- @return response
 -- @return error_message
-function M.DescribeScalingParametersSync(...)
+function M.DescribeScalingParametersSync(DescribeScalingParametersRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeScalingParametersAsync(..., function(response, error_message)
+	M.DescribeScalingParametersAsync(DescribeScalingParametersRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3379,10 +3379,10 @@ end
 -- @param DescribeExpressionsRequest
 -- @return response
 -- @return error_message
-function M.DescribeExpressionsSync(...)
+function M.DescribeExpressionsSync(DescribeExpressionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeExpressionsAsync(..., function(response, error_message)
+	M.DescribeExpressionsAsync(DescribeExpressionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3411,10 +3411,10 @@ end
 -- @param DescribeIndexFieldsRequest
 -- @return response
 -- @return error_message
-function M.DescribeIndexFieldsSync(...)
+function M.DescribeIndexFieldsSync(DescribeIndexFieldsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeIndexFieldsAsync(..., function(response, error_message)
+	M.DescribeIndexFieldsAsync(DescribeIndexFieldsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3443,7 +3443,7 @@ end
 function M.ListDomainNamesSync(...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListDomainNamesAsync(..., function(response, error_message)
+	M.ListDomainNamesAsync(function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3472,10 +3472,10 @@ end
 -- @param DescribeAvailabilityOptionsRequest
 -- @return response
 -- @return error_message
-function M.DescribeAvailabilityOptionsSync(...)
+function M.DescribeAvailabilityOptionsSync(DescribeAvailabilityOptionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAvailabilityOptionsAsync(..., function(response, error_message)
+	M.DescribeAvailabilityOptionsAsync(DescribeAvailabilityOptionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3504,10 +3504,10 @@ end
 -- @param DefineIndexFieldRequest
 -- @return response
 -- @return error_message
-function M.DefineIndexFieldSync(...)
+function M.DefineIndexFieldSync(DefineIndexFieldRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DefineIndexFieldAsync(..., function(response, error_message)
+	M.DefineIndexFieldAsync(DefineIndexFieldRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3536,10 +3536,10 @@ end
 -- @param DeleteAnalysisSchemeRequest
 -- @return response
 -- @return error_message
-function M.DeleteAnalysisSchemeSync(...)
+function M.DeleteAnalysisSchemeSync(DeleteAnalysisSchemeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteAnalysisSchemeAsync(..., function(response, error_message)
+	M.DeleteAnalysisSchemeAsync(DeleteAnalysisSchemeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3568,10 +3568,10 @@ end
 -- @param UpdateAvailabilityOptionsRequest
 -- @return response
 -- @return error_message
-function M.UpdateAvailabilityOptionsSync(...)
+function M.UpdateAvailabilityOptionsSync(UpdateAvailabilityOptionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateAvailabilityOptionsAsync(..., function(response, error_message)
+	M.UpdateAvailabilityOptionsAsync(UpdateAvailabilityOptionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3600,10 +3600,10 @@ end
 -- @param DeleteExpressionRequest
 -- @return response
 -- @return error_message
-function M.DeleteExpressionSync(...)
+function M.DeleteExpressionSync(DeleteExpressionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteExpressionAsync(..., function(response, error_message)
+	M.DeleteExpressionAsync(DeleteExpressionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3632,10 +3632,10 @@ end
 -- @param DescribeAnalysisSchemesRequest
 -- @return response
 -- @return error_message
-function M.DescribeAnalysisSchemesSync(...)
+function M.DescribeAnalysisSchemesSync(DescribeAnalysisSchemesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAnalysisSchemesAsync(..., function(response, error_message)
+	M.DescribeAnalysisSchemesAsync(DescribeAnalysisSchemesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3664,10 +3664,10 @@ end
 -- @param DefineSuggesterRequest
 -- @return response
 -- @return error_message
-function M.DefineSuggesterSync(...)
+function M.DefineSuggesterSync(DefineSuggesterRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DefineSuggesterAsync(..., function(response, error_message)
+	M.DefineSuggesterAsync(DefineSuggesterRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3696,10 +3696,10 @@ end
 -- @param CreateDomainRequest
 -- @return response
 -- @return error_message
-function M.CreateDomainSync(...)
+function M.CreateDomainSync(CreateDomainRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDomainAsync(..., function(response, error_message)
+	M.CreateDomainAsync(CreateDomainRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3728,10 +3728,10 @@ end
 -- @param IndexDocumentsRequest
 -- @return response
 -- @return error_message
-function M.IndexDocumentsSync(...)
+function M.IndexDocumentsSync(IndexDocumentsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.IndexDocumentsAsync(..., function(response, error_message)
+	M.IndexDocumentsAsync(IndexDocumentsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3760,10 +3760,10 @@ end
 -- @param DescribeSuggestersRequest
 -- @return response
 -- @return error_message
-function M.DescribeSuggestersSync(...)
+function M.DescribeSuggestersSync(DescribeSuggestersRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeSuggestersAsync(..., function(response, error_message)
+	M.DescribeSuggestersAsync(DescribeSuggestersRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3792,10 +3792,10 @@ end
 -- @param UpdateServiceAccessPoliciesRequest
 -- @return response
 -- @return error_message
-function M.UpdateServiceAccessPoliciesSync(...)
+function M.UpdateServiceAccessPoliciesSync(UpdateServiceAccessPoliciesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateServiceAccessPoliciesAsync(..., function(response, error_message)
+	M.UpdateServiceAccessPoliciesAsync(UpdateServiceAccessPoliciesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3824,10 +3824,10 @@ end
 -- @param DeleteIndexFieldRequest
 -- @return response
 -- @return error_message
-function M.DeleteIndexFieldSync(...)
+function M.DeleteIndexFieldSync(DeleteIndexFieldRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteIndexFieldAsync(..., function(response, error_message)
+	M.DeleteIndexFieldAsync(DeleteIndexFieldRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3856,10 +3856,10 @@ end
 -- @param DefineAnalysisSchemeRequest
 -- @return response
 -- @return error_message
-function M.DefineAnalysisSchemeSync(...)
+function M.DefineAnalysisSchemeSync(DefineAnalysisSchemeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DefineAnalysisSchemeAsync(..., function(response, error_message)
+	M.DefineAnalysisSchemeAsync(DefineAnalysisSchemeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3888,10 +3888,10 @@ end
 -- @param DefineExpressionRequest
 -- @return response
 -- @return error_message
-function M.DefineExpressionSync(...)
+function M.DefineExpressionSync(DefineExpressionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DefineExpressionAsync(..., function(response, error_message)
+	M.DefineExpressionAsync(DefineExpressionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3920,10 +3920,10 @@ end
 -- @param BuildSuggestersRequest
 -- @return response
 -- @return error_message
-function M.BuildSuggestersSync(...)
+function M.BuildSuggestersSync(BuildSuggestersRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BuildSuggestersAsync(..., function(response, error_message)
+	M.BuildSuggestersAsync(BuildSuggestersRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3952,10 +3952,10 @@ end
 -- @param DeleteDomainRequest
 -- @return response
 -- @return error_message
-function M.DeleteDomainSync(...)
+function M.DeleteDomainSync(DeleteDomainRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteDomainAsync(..., function(response, error_message)
+	M.DeleteDomainAsync(DeleteDomainRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3984,10 +3984,10 @@ end
 -- @param DeleteSuggesterRequest
 -- @return response
 -- @return error_message
-function M.DeleteSuggesterSync(...)
+function M.DeleteSuggesterSync(DeleteSuggesterRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteSuggesterAsync(..., function(response, error_message)
+	M.DeleteSuggesterAsync(DeleteSuggesterRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

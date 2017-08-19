@@ -4542,10 +4542,10 @@ end
 -- @param DeleteAssessmentTargetRequest
 -- @return response
 -- @return error_message
-function M.DeleteAssessmentTargetSync(...)
+function M.DeleteAssessmentTargetSync(DeleteAssessmentTargetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteAssessmentTargetAsync(..., function(response, error_message)
+	M.DeleteAssessmentTargetAsync(DeleteAssessmentTargetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4574,10 +4574,10 @@ end
 -- @param UpdateAssessmentTargetRequest
 -- @return response
 -- @return error_message
-function M.UpdateAssessmentTargetSync(...)
+function M.UpdateAssessmentTargetSync(UpdateAssessmentTargetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateAssessmentTargetAsync(..., function(response, error_message)
+	M.UpdateAssessmentTargetAsync(UpdateAssessmentTargetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4606,10 +4606,10 @@ end
 -- @param RemoveAttributesFromFindingsRequest
 -- @return response
 -- @return error_message
-function M.RemoveAttributesFromFindingsSync(...)
+function M.RemoveAttributesFromFindingsSync(RemoveAttributesFromFindingsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RemoveAttributesFromFindingsAsync(..., function(response, error_message)
+	M.RemoveAttributesFromFindingsAsync(RemoveAttributesFromFindingsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4638,10 +4638,10 @@ end
 -- @param GetTelemetryMetadataRequest
 -- @return response
 -- @return error_message
-function M.GetTelemetryMetadataSync(...)
+function M.GetTelemetryMetadataSync(GetTelemetryMetadataRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetTelemetryMetadataAsync(..., function(response, error_message)
+	M.GetTelemetryMetadataAsync(GetTelemetryMetadataRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4670,10 +4670,10 @@ end
 -- @param DescribeAssessmentRunsRequest
 -- @return response
 -- @return error_message
-function M.DescribeAssessmentRunsSync(...)
+function M.DescribeAssessmentRunsSync(DescribeAssessmentRunsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAssessmentRunsAsync(..., function(response, error_message)
+	M.DescribeAssessmentRunsAsync(DescribeAssessmentRunsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4702,10 +4702,10 @@ end
 -- @param StartAssessmentRunRequest
 -- @return response
 -- @return error_message
-function M.StartAssessmentRunSync(...)
+function M.StartAssessmentRunSync(StartAssessmentRunRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartAssessmentRunAsync(..., function(response, error_message)
+	M.StartAssessmentRunAsync(StartAssessmentRunRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4734,7 +4734,7 @@ end
 function M.DescribeCrossAccountAccessRoleSync(...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeCrossAccountAccessRoleAsync(..., function(response, error_message)
+	M.DescribeCrossAccountAccessRoleAsync(function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4763,10 +4763,10 @@ end
 -- @param DescribeAssessmentTargetsRequest
 -- @return response
 -- @return error_message
-function M.DescribeAssessmentTargetsSync(...)
+function M.DescribeAssessmentTargetsSync(DescribeAssessmentTargetsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAssessmentTargetsAsync(..., function(response, error_message)
+	M.DescribeAssessmentTargetsAsync(DescribeAssessmentTargetsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4795,10 +4795,10 @@ end
 -- @param ListRulesPackagesRequest
 -- @return response
 -- @return error_message
-function M.ListRulesPackagesSync(...)
+function M.ListRulesPackagesSync(ListRulesPackagesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListRulesPackagesAsync(..., function(response, error_message)
+	M.ListRulesPackagesAsync(ListRulesPackagesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4827,10 +4827,10 @@ end
 -- @param StopAssessmentRunRequest
 -- @return response
 -- @return error_message
-function M.StopAssessmentRunSync(...)
+function M.StopAssessmentRunSync(StopAssessmentRunRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StopAssessmentRunAsync(..., function(response, error_message)
+	M.StopAssessmentRunAsync(StopAssessmentRunRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4859,10 +4859,10 @@ end
 -- @param ListAssessmentTemplatesRequest
 -- @return response
 -- @return error_message
-function M.ListAssessmentTemplatesSync(...)
+function M.ListAssessmentTemplatesSync(ListAssessmentTemplatesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListAssessmentTemplatesAsync(..., function(response, error_message)
+	M.ListAssessmentTemplatesAsync(ListAssessmentTemplatesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4891,10 +4891,10 @@ end
 -- @param DescribeFindingsRequest
 -- @return response
 -- @return error_message
-function M.DescribeFindingsSync(...)
+function M.DescribeFindingsSync(DescribeFindingsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeFindingsAsync(..., function(response, error_message)
+	M.DescribeFindingsAsync(DescribeFindingsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4923,10 +4923,10 @@ end
 -- @param DeleteAssessmentTemplateRequest
 -- @return response
 -- @return error_message
-function M.DeleteAssessmentTemplateSync(...)
+function M.DeleteAssessmentTemplateSync(DeleteAssessmentTemplateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteAssessmentTemplateAsync(..., function(response, error_message)
+	M.DeleteAssessmentTemplateAsync(DeleteAssessmentTemplateRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4955,10 +4955,10 @@ end
 -- @param DescribeResourceGroupsRequest
 -- @return response
 -- @return error_message
-function M.DescribeResourceGroupsSync(...)
+function M.DescribeResourceGroupsSync(DescribeResourceGroupsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeResourceGroupsAsync(..., function(response, error_message)
+	M.DescribeResourceGroupsAsync(DescribeResourceGroupsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4987,10 +4987,10 @@ end
 -- @param ListFindingsRequest
 -- @return response
 -- @return error_message
-function M.ListFindingsSync(...)
+function M.ListFindingsSync(ListFindingsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListFindingsAsync(..., function(response, error_message)
+	M.ListFindingsAsync(ListFindingsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5019,10 +5019,10 @@ end
 -- @param ListEventSubscriptionsRequest
 -- @return response
 -- @return error_message
-function M.ListEventSubscriptionsSync(...)
+function M.ListEventSubscriptionsSync(ListEventSubscriptionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListEventSubscriptionsAsync(..., function(response, error_message)
+	M.ListEventSubscriptionsAsync(ListEventSubscriptionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5051,10 +5051,10 @@ end
 -- @param ListAssessmentTargetsRequest
 -- @return response
 -- @return error_message
-function M.ListAssessmentTargetsSync(...)
+function M.ListAssessmentTargetsSync(ListAssessmentTargetsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListAssessmentTargetsAsync(..., function(response, error_message)
+	M.ListAssessmentTargetsAsync(ListAssessmentTargetsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5083,10 +5083,10 @@ end
 -- @param SetTagsForResourceRequest
 -- @return response
 -- @return error_message
-function M.SetTagsForResourceSync(...)
+function M.SetTagsForResourceSync(SetTagsForResourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetTagsForResourceAsync(..., function(response, error_message)
+	M.SetTagsForResourceAsync(SetTagsForResourceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5115,10 +5115,10 @@ end
 -- @param DeleteAssessmentRunRequest
 -- @return response
 -- @return error_message
-function M.DeleteAssessmentRunSync(...)
+function M.DeleteAssessmentRunSync(DeleteAssessmentRunRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteAssessmentRunAsync(..., function(response, error_message)
+	M.DeleteAssessmentRunAsync(DeleteAssessmentRunRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5147,10 +5147,10 @@ end
 -- @param CreateAssessmentTargetRequest
 -- @return response
 -- @return error_message
-function M.CreateAssessmentTargetSync(...)
+function M.CreateAssessmentTargetSync(CreateAssessmentTargetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateAssessmentTargetAsync(..., function(response, error_message)
+	M.CreateAssessmentTargetAsync(CreateAssessmentTargetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5179,10 +5179,10 @@ end
 -- @param UnsubscribeFromEventRequest
 -- @return response
 -- @return error_message
-function M.UnsubscribeFromEventSync(...)
+function M.UnsubscribeFromEventSync(UnsubscribeFromEventRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UnsubscribeFromEventAsync(..., function(response, error_message)
+	M.UnsubscribeFromEventAsync(UnsubscribeFromEventRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5211,10 +5211,10 @@ end
 -- @param ListAssessmentRunsRequest
 -- @return response
 -- @return error_message
-function M.ListAssessmentRunsSync(...)
+function M.ListAssessmentRunsSync(ListAssessmentRunsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListAssessmentRunsAsync(..., function(response, error_message)
+	M.ListAssessmentRunsAsync(ListAssessmentRunsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5243,10 +5243,10 @@ end
 -- @param RegisterCrossAccountAccessRoleRequest
 -- @return response
 -- @return error_message
-function M.RegisterCrossAccountAccessRoleSync(...)
+function M.RegisterCrossAccountAccessRoleSync(RegisterCrossAccountAccessRoleRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RegisterCrossAccountAccessRoleAsync(..., function(response, error_message)
+	M.RegisterCrossAccountAccessRoleAsync(RegisterCrossAccountAccessRoleRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5275,10 +5275,10 @@ end
 -- @param AddAttributesToFindingsRequest
 -- @return response
 -- @return error_message
-function M.AddAttributesToFindingsSync(...)
+function M.AddAttributesToFindingsSync(AddAttributesToFindingsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddAttributesToFindingsAsync(..., function(response, error_message)
+	M.AddAttributesToFindingsAsync(AddAttributesToFindingsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5307,10 +5307,10 @@ end
 -- @param CreateResourceGroupRequest
 -- @return response
 -- @return error_message
-function M.CreateResourceGroupSync(...)
+function M.CreateResourceGroupSync(CreateResourceGroupRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateResourceGroupAsync(..., function(response, error_message)
+	M.CreateResourceGroupAsync(CreateResourceGroupRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5339,10 +5339,10 @@ end
 -- @param DescribeAssessmentTemplatesRequest
 -- @return response
 -- @return error_message
-function M.DescribeAssessmentTemplatesSync(...)
+function M.DescribeAssessmentTemplatesSync(DescribeAssessmentTemplatesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAssessmentTemplatesAsync(..., function(response, error_message)
+	M.DescribeAssessmentTemplatesAsync(DescribeAssessmentTemplatesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5371,10 +5371,10 @@ end
 -- @param PreviewAgentsRequest
 -- @return response
 -- @return error_message
-function M.PreviewAgentsSync(...)
+function M.PreviewAgentsSync(PreviewAgentsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PreviewAgentsAsync(..., function(response, error_message)
+	M.PreviewAgentsAsync(PreviewAgentsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5403,10 +5403,10 @@ end
 -- @param CreateAssessmentTemplateRequest
 -- @return response
 -- @return error_message
-function M.CreateAssessmentTemplateSync(...)
+function M.CreateAssessmentTemplateSync(CreateAssessmentTemplateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateAssessmentTemplateAsync(..., function(response, error_message)
+	M.CreateAssessmentTemplateAsync(CreateAssessmentTemplateRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5435,10 +5435,10 @@ end
 -- @param SubscribeToEventRequest
 -- @return response
 -- @return error_message
-function M.SubscribeToEventSync(...)
+function M.SubscribeToEventSync(SubscribeToEventRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SubscribeToEventAsync(..., function(response, error_message)
+	M.SubscribeToEventAsync(SubscribeToEventRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5467,10 +5467,10 @@ end
 -- @param DescribeRulesPackagesRequest
 -- @return response
 -- @return error_message
-function M.DescribeRulesPackagesSync(...)
+function M.DescribeRulesPackagesSync(DescribeRulesPackagesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeRulesPackagesAsync(..., function(response, error_message)
+	M.DescribeRulesPackagesAsync(DescribeRulesPackagesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5499,10 +5499,10 @@ end
 -- @param ListTagsForResourceRequest
 -- @return response
 -- @return error_message
-function M.ListTagsForResourceSync(...)
+function M.ListTagsForResourceSync(ListTagsForResourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTagsForResourceAsync(..., function(response, error_message)
+	M.ListTagsForResourceAsync(ListTagsForResourceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5531,10 +5531,10 @@ end
 -- @param ListAssessmentRunAgentsRequest
 -- @return response
 -- @return error_message
-function M.ListAssessmentRunAgentsSync(...)
+function M.ListAssessmentRunAgentsSync(ListAssessmentRunAgentsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListAssessmentRunAgentsAsync(..., function(response, error_message)
+	M.ListAssessmentRunAgentsAsync(ListAssessmentRunAgentsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5563,10 +5563,10 @@ end
 -- @param GetAssessmentReportRequest
 -- @return response
 -- @return error_message
-function M.GetAssessmentReportSync(...)
+function M.GetAssessmentReportSync(GetAssessmentReportRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetAssessmentReportAsync(..., function(response, error_message)
+	M.GetAssessmentReportAsync(GetAssessmentReportRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

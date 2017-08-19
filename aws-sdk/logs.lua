@@ -2986,10 +2986,10 @@ end
 -- @param PutDestinationRequest
 -- @return response
 -- @return error_message
-function M.PutDestinationSync(...)
+function M.PutDestinationSync(PutDestinationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutDestinationAsync(..., function(response, error_message)
+	M.PutDestinationAsync(PutDestinationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3018,10 +3018,10 @@ end
 -- @param DeleteDestinationRequest
 -- @return response
 -- @return error_message
-function M.DeleteDestinationSync(...)
+function M.DeleteDestinationSync(DeleteDestinationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteDestinationAsync(..., function(response, error_message)
+	M.DeleteDestinationAsync(DeleteDestinationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3050,10 +3050,10 @@ end
 -- @param ListTagsLogGroupRequest
 -- @return response
 -- @return error_message
-function M.ListTagsLogGroupSync(...)
+function M.ListTagsLogGroupSync(ListTagsLogGroupRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTagsLogGroupAsync(..., function(response, error_message)
+	M.ListTagsLogGroupAsync(ListTagsLogGroupRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3082,10 +3082,10 @@ end
 -- @param DescribeLogStreamsRequest
 -- @return response
 -- @return error_message
-function M.DescribeLogStreamsSync(...)
+function M.DescribeLogStreamsSync(DescribeLogStreamsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeLogStreamsAsync(..., function(response, error_message)
+	M.DescribeLogStreamsAsync(DescribeLogStreamsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3114,10 +3114,10 @@ end
 -- @param CreateExportTaskRequest
 -- @return response
 -- @return error_message
-function M.CreateExportTaskSync(...)
+function M.CreateExportTaskSync(CreateExportTaskRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateExportTaskAsync(..., function(response, error_message)
+	M.CreateExportTaskAsync(CreateExportTaskRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3146,10 +3146,10 @@ end
 -- @param TestMetricFilterRequest
 -- @return response
 -- @return error_message
-function M.TestMetricFilterSync(...)
+function M.TestMetricFilterSync(TestMetricFilterRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.TestMetricFilterAsync(..., function(response, error_message)
+	M.TestMetricFilterAsync(TestMetricFilterRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3178,10 +3178,10 @@ end
 -- @param DeleteLogGroupRequest
 -- @return response
 -- @return error_message
-function M.DeleteLogGroupSync(...)
+function M.DeleteLogGroupSync(DeleteLogGroupRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteLogGroupAsync(..., function(response, error_message)
+	M.DeleteLogGroupAsync(DeleteLogGroupRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3210,10 +3210,10 @@ end
 -- @param DescribeMetricFiltersRequest
 -- @return response
 -- @return error_message
-function M.DescribeMetricFiltersSync(...)
+function M.DescribeMetricFiltersSync(DescribeMetricFiltersRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeMetricFiltersAsync(..., function(response, error_message)
+	M.DescribeMetricFiltersAsync(DescribeMetricFiltersRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3242,10 +3242,10 @@ end
 -- @param FilterLogEventsRequest
 -- @return response
 -- @return error_message
-function M.FilterLogEventsSync(...)
+function M.FilterLogEventsSync(FilterLogEventsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.FilterLogEventsAsync(..., function(response, error_message)
+	M.FilterLogEventsAsync(FilterLogEventsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3274,10 +3274,10 @@ end
 -- @param CreateLogGroupRequest
 -- @return response
 -- @return error_message
-function M.CreateLogGroupSync(...)
+function M.CreateLogGroupSync(CreateLogGroupRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateLogGroupAsync(..., function(response, error_message)
+	M.CreateLogGroupAsync(CreateLogGroupRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3306,10 +3306,10 @@ end
 -- @param DeleteSubscriptionFilterRequest
 -- @return response
 -- @return error_message
-function M.DeleteSubscriptionFilterSync(...)
+function M.DeleteSubscriptionFilterSync(DeleteSubscriptionFilterRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteSubscriptionFilterAsync(..., function(response, error_message)
+	M.DeleteSubscriptionFilterAsync(DeleteSubscriptionFilterRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3338,10 +3338,10 @@ end
 -- @param PutMetricFilterRequest
 -- @return response
 -- @return error_message
-function M.PutMetricFilterSync(...)
+function M.PutMetricFilterSync(PutMetricFilterRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutMetricFilterAsync(..., function(response, error_message)
+	M.PutMetricFilterAsync(PutMetricFilterRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3370,10 +3370,10 @@ end
 -- @param PutLogEventsRequest
 -- @return response
 -- @return error_message
-function M.PutLogEventsSync(...)
+function M.PutLogEventsSync(PutLogEventsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutLogEventsAsync(..., function(response, error_message)
+	M.PutLogEventsAsync(PutLogEventsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3402,10 +3402,10 @@ end
 -- @param DescribeLogGroupsRequest
 -- @return response
 -- @return error_message
-function M.DescribeLogGroupsSync(...)
+function M.DescribeLogGroupsSync(DescribeLogGroupsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeLogGroupsAsync(..., function(response, error_message)
+	M.DescribeLogGroupsAsync(DescribeLogGroupsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3434,10 +3434,10 @@ end
 -- @param DescribeDestinationsRequest
 -- @return response
 -- @return error_message
-function M.DescribeDestinationsSync(...)
+function M.DescribeDestinationsSync(DescribeDestinationsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeDestinationsAsync(..., function(response, error_message)
+	M.DescribeDestinationsAsync(DescribeDestinationsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3466,10 +3466,10 @@ end
 -- @param PutRetentionPolicyRequest
 -- @return response
 -- @return error_message
-function M.PutRetentionPolicySync(...)
+function M.PutRetentionPolicySync(PutRetentionPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutRetentionPolicyAsync(..., function(response, error_message)
+	M.PutRetentionPolicyAsync(PutRetentionPolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3498,10 +3498,10 @@ end
 -- @param DescribeSubscriptionFiltersRequest
 -- @return response
 -- @return error_message
-function M.DescribeSubscriptionFiltersSync(...)
+function M.DescribeSubscriptionFiltersSync(DescribeSubscriptionFiltersRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeSubscriptionFiltersAsync(..., function(response, error_message)
+	M.DescribeSubscriptionFiltersAsync(DescribeSubscriptionFiltersRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3530,10 +3530,10 @@ end
 -- @param DescribeExportTasksRequest
 -- @return response
 -- @return error_message
-function M.DescribeExportTasksSync(...)
+function M.DescribeExportTasksSync(DescribeExportTasksRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeExportTasksAsync(..., function(response, error_message)
+	M.DescribeExportTasksAsync(DescribeExportTasksRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3562,10 +3562,10 @@ end
 -- @param TagLogGroupRequest
 -- @return response
 -- @return error_message
-function M.TagLogGroupSync(...)
+function M.TagLogGroupSync(TagLogGroupRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.TagLogGroupAsync(..., function(response, error_message)
+	M.TagLogGroupAsync(TagLogGroupRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3594,10 +3594,10 @@ end
 -- @param PutSubscriptionFilterRequest
 -- @return response
 -- @return error_message
-function M.PutSubscriptionFilterSync(...)
+function M.PutSubscriptionFilterSync(PutSubscriptionFilterRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutSubscriptionFilterAsync(..., function(response, error_message)
+	M.PutSubscriptionFilterAsync(PutSubscriptionFilterRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3626,10 +3626,10 @@ end
 -- @param DeleteMetricFilterRequest
 -- @return response
 -- @return error_message
-function M.DeleteMetricFilterSync(...)
+function M.DeleteMetricFilterSync(DeleteMetricFilterRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteMetricFilterAsync(..., function(response, error_message)
+	M.DeleteMetricFilterAsync(DeleteMetricFilterRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3658,10 +3658,10 @@ end
 -- @param PutDestinationPolicyRequest
 -- @return response
 -- @return error_message
-function M.PutDestinationPolicySync(...)
+function M.PutDestinationPolicySync(PutDestinationPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutDestinationPolicyAsync(..., function(response, error_message)
+	M.PutDestinationPolicyAsync(PutDestinationPolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3690,10 +3690,10 @@ end
 -- @param CreateLogStreamRequest
 -- @return response
 -- @return error_message
-function M.CreateLogStreamSync(...)
+function M.CreateLogStreamSync(CreateLogStreamRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateLogStreamAsync(..., function(response, error_message)
+	M.CreateLogStreamAsync(CreateLogStreamRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3722,10 +3722,10 @@ end
 -- @param CancelExportTaskRequest
 -- @return response
 -- @return error_message
-function M.CancelExportTaskSync(...)
+function M.CancelExportTaskSync(CancelExportTaskRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CancelExportTaskAsync(..., function(response, error_message)
+	M.CancelExportTaskAsync(CancelExportTaskRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3754,10 +3754,10 @@ end
 -- @param UntagLogGroupRequest
 -- @return response
 -- @return error_message
-function M.UntagLogGroupSync(...)
+function M.UntagLogGroupSync(UntagLogGroupRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UntagLogGroupAsync(..., function(response, error_message)
+	M.UntagLogGroupAsync(UntagLogGroupRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3786,10 +3786,10 @@ end
 -- @param DeleteRetentionPolicyRequest
 -- @return response
 -- @return error_message
-function M.DeleteRetentionPolicySync(...)
+function M.DeleteRetentionPolicySync(DeleteRetentionPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteRetentionPolicyAsync(..., function(response, error_message)
+	M.DeleteRetentionPolicyAsync(DeleteRetentionPolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3818,10 +3818,10 @@ end
 -- @param GetLogEventsRequest
 -- @return response
 -- @return error_message
-function M.GetLogEventsSync(...)
+function M.GetLogEventsSync(GetLogEventsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetLogEventsAsync(..., function(response, error_message)
+	M.GetLogEventsAsync(GetLogEventsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3850,10 +3850,10 @@ end
 -- @param DeleteLogStreamRequest
 -- @return response
 -- @return error_message
-function M.DeleteLogStreamSync(...)
+function M.DeleteLogStreamSync(DeleteLogStreamRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteLogStreamAsync(..., function(response, error_message)
+	M.DeleteLogStreamAsync(DeleteLogStreamRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

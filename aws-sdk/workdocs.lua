@@ -4674,10 +4674,10 @@ end
 -- @param DeactivateUserRequest
 -- @return response
 -- @return error_message
-function M.DeactivateUserSync(...)
+function M.DeactivateUserSync(DeactivateUserRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeactivateUserAsync(..., function(response, error_message)
+	M.DeactivateUserAsync(DeactivateUserRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4706,10 +4706,10 @@ end
 -- @param DescribeRootFoldersRequest
 -- @return response
 -- @return error_message
-function M.DescribeRootFoldersSync(...)
+function M.DescribeRootFoldersSync(DescribeRootFoldersRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeRootFoldersAsync(..., function(response, error_message)
+	M.DescribeRootFoldersAsync(DescribeRootFoldersRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4738,10 +4738,10 @@ end
 -- @param AddResourcePermissionsRequest
 -- @return response
 -- @return error_message
-function M.AddResourcePermissionsSync(...)
+function M.AddResourcePermissionsSync(AddResourcePermissionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddResourcePermissionsAsync(..., function(response, error_message)
+	M.AddResourcePermissionsAsync(AddResourcePermissionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4770,10 +4770,10 @@ end
 -- @param DeleteFolderRequest
 -- @return response
 -- @return error_message
-function M.DeleteFolderSync(...)
+function M.DeleteFolderSync(DeleteFolderRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteFolderAsync(..., function(response, error_message)
+	M.DeleteFolderAsync(DeleteFolderRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4802,10 +4802,10 @@ end
 -- @param DescribeUsersRequest
 -- @return response
 -- @return error_message
-function M.DescribeUsersSync(...)
+function M.DescribeUsersSync(DescribeUsersRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeUsersAsync(..., function(response, error_message)
+	M.DescribeUsersAsync(DescribeUsersRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4834,10 +4834,10 @@ end
 -- @param UpdateDocumentVersionRequest
 -- @return response
 -- @return error_message
-function M.UpdateDocumentVersionSync(...)
+function M.UpdateDocumentVersionSync(UpdateDocumentVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateDocumentVersionAsync(..., function(response, error_message)
+	M.UpdateDocumentVersionAsync(UpdateDocumentVersionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4866,10 +4866,10 @@ end
 -- @param DeleteCustomMetadataRequest
 -- @return response
 -- @return error_message
-function M.DeleteCustomMetadataSync(...)
+function M.DeleteCustomMetadataSync(DeleteCustomMetadataRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteCustomMetadataAsync(..., function(response, error_message)
+	M.DeleteCustomMetadataAsync(DeleteCustomMetadataRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4898,10 +4898,10 @@ end
 -- @param CreateLabelsRequest
 -- @return response
 -- @return error_message
-function M.CreateLabelsSync(...)
+function M.CreateLabelsSync(CreateLabelsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateLabelsAsync(..., function(response, error_message)
+	M.CreateLabelsAsync(CreateLabelsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4930,10 +4930,10 @@ end
 -- @param InitiateDocumentVersionUploadRequest
 -- @return response
 -- @return error_message
-function M.InitiateDocumentVersionUploadSync(...)
+function M.InitiateDocumentVersionUploadSync(InitiateDocumentVersionUploadRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.InitiateDocumentVersionUploadAsync(..., function(response, error_message)
+	M.InitiateDocumentVersionUploadAsync(InitiateDocumentVersionUploadRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4962,10 +4962,10 @@ end
 -- @param CreateCustomMetadataRequest
 -- @return response
 -- @return error_message
-function M.CreateCustomMetadataSync(...)
+function M.CreateCustomMetadataSync(CreateCustomMetadataRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateCustomMetadataAsync(..., function(response, error_message)
+	M.CreateCustomMetadataAsync(CreateCustomMetadataRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4994,10 +4994,10 @@ end
 -- @param GetDocumentRequest
 -- @return response
 -- @return error_message
-function M.GetDocumentSync(...)
+function M.GetDocumentSync(GetDocumentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetDocumentAsync(..., function(response, error_message)
+	M.GetDocumentAsync(GetDocumentRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5026,10 +5026,10 @@ end
 -- @param GetDocumentPathRequest
 -- @return response
 -- @return error_message
-function M.GetDocumentPathSync(...)
+function M.GetDocumentPathSync(GetDocumentPathRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetDocumentPathAsync(..., function(response, error_message)
+	M.GetDocumentPathAsync(GetDocumentPathRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5058,10 +5058,10 @@ end
 -- @param RemoveAllResourcePermissionsRequest
 -- @return response
 -- @return error_message
-function M.RemoveAllResourcePermissionsSync(...)
+function M.RemoveAllResourcePermissionsSync(RemoveAllResourcePermissionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RemoveAllResourcePermissionsAsync(..., function(response, error_message)
+	M.RemoveAllResourcePermissionsAsync(RemoveAllResourcePermissionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5090,10 +5090,10 @@ end
 -- @param UpdateUserRequest
 -- @return response
 -- @return error_message
-function M.UpdateUserSync(...)
+function M.UpdateUserSync(UpdateUserRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateUserAsync(..., function(response, error_message)
+	M.UpdateUserAsync(UpdateUserRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5122,10 +5122,10 @@ end
 -- @param GetCurrentUserRequest
 -- @return response
 -- @return error_message
-function M.GetCurrentUserSync(...)
+function M.GetCurrentUserSync(GetCurrentUserRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetCurrentUserAsync(..., function(response, error_message)
+	M.GetCurrentUserAsync(GetCurrentUserRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5154,10 +5154,10 @@ end
 -- @param UpdateFolderRequest
 -- @return response
 -- @return error_message
-function M.UpdateFolderSync(...)
+function M.UpdateFolderSync(UpdateFolderRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateFolderAsync(..., function(response, error_message)
+	M.UpdateFolderAsync(UpdateFolderRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5186,10 +5186,10 @@ end
 -- @param DeleteCommentRequest
 -- @return response
 -- @return error_message
-function M.DeleteCommentSync(...)
+function M.DeleteCommentSync(DeleteCommentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteCommentAsync(..., function(response, error_message)
+	M.DeleteCommentAsync(DeleteCommentRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5218,10 +5218,10 @@ end
 -- @param CreateUserRequest
 -- @return response
 -- @return error_message
-function M.CreateUserSync(...)
+function M.CreateUserSync(CreateUserRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateUserAsync(..., function(response, error_message)
+	M.CreateUserAsync(CreateUserRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5250,10 +5250,10 @@ end
 -- @param DeleteFolderContentsRequest
 -- @return response
 -- @return error_message
-function M.DeleteFolderContentsSync(...)
+function M.DeleteFolderContentsSync(DeleteFolderContentsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteFolderContentsAsync(..., function(response, error_message)
+	M.DeleteFolderContentsAsync(DeleteFolderContentsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5282,10 +5282,10 @@ end
 -- @param DeleteNotificationSubscriptionRequest
 -- @return response
 -- @return error_message
-function M.DeleteNotificationSubscriptionSync(...)
+function M.DeleteNotificationSubscriptionSync(DeleteNotificationSubscriptionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteNotificationSubscriptionAsync(..., function(response, error_message)
+	M.DeleteNotificationSubscriptionAsync(DeleteNotificationSubscriptionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5314,10 +5314,10 @@ end
 -- @param AbortDocumentVersionUploadRequest
 -- @return response
 -- @return error_message
-function M.AbortDocumentVersionUploadSync(...)
+function M.AbortDocumentVersionUploadSync(AbortDocumentVersionUploadRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AbortDocumentVersionUploadAsync(..., function(response, error_message)
+	M.AbortDocumentVersionUploadAsync(AbortDocumentVersionUploadRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5346,10 +5346,10 @@ end
 -- @param DescribeNotificationSubscriptionsRequest
 -- @return response
 -- @return error_message
-function M.DescribeNotificationSubscriptionsSync(...)
+function M.DescribeNotificationSubscriptionsSync(DescribeNotificationSubscriptionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeNotificationSubscriptionsAsync(..., function(response, error_message)
+	M.DescribeNotificationSubscriptionsAsync(DescribeNotificationSubscriptionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5378,10 +5378,10 @@ end
 -- @param CreateCommentRequest
 -- @return response
 -- @return error_message
-function M.CreateCommentSync(...)
+function M.CreateCommentSync(CreateCommentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateCommentAsync(..., function(response, error_message)
+	M.CreateCommentAsync(CreateCommentRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5410,10 +5410,10 @@ end
 -- @param GetDocumentVersionRequest
 -- @return response
 -- @return error_message
-function M.GetDocumentVersionSync(...)
+function M.GetDocumentVersionSync(GetDocumentVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetDocumentVersionAsync(..., function(response, error_message)
+	M.GetDocumentVersionAsync(GetDocumentVersionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5442,10 +5442,10 @@ end
 -- @param GetFolderPathRequest
 -- @return response
 -- @return error_message
-function M.GetFolderPathSync(...)
+function M.GetFolderPathSync(GetFolderPathRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetFolderPathAsync(..., function(response, error_message)
+	M.GetFolderPathAsync(GetFolderPathRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5474,10 +5474,10 @@ end
 -- @param DescribeFolderContentsRequest
 -- @return response
 -- @return error_message
-function M.DescribeFolderContentsSync(...)
+function M.DescribeFolderContentsSync(DescribeFolderContentsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeFolderContentsAsync(..., function(response, error_message)
+	M.DescribeFolderContentsAsync(DescribeFolderContentsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5506,10 +5506,10 @@ end
 -- @param CreateFolderRequest
 -- @return response
 -- @return error_message
-function M.CreateFolderSync(...)
+function M.CreateFolderSync(CreateFolderRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateFolderAsync(..., function(response, error_message)
+	M.CreateFolderAsync(CreateFolderRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5538,10 +5538,10 @@ end
 -- @param DescribeResourcePermissionsRequest
 -- @return response
 -- @return error_message
-function M.DescribeResourcePermissionsSync(...)
+function M.DescribeResourcePermissionsSync(DescribeResourcePermissionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeResourcePermissionsAsync(..., function(response, error_message)
+	M.DescribeResourcePermissionsAsync(DescribeResourcePermissionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5570,10 +5570,10 @@ end
 -- @param CreateNotificationSubscriptionRequest
 -- @return response
 -- @return error_message
-function M.CreateNotificationSubscriptionSync(...)
+function M.CreateNotificationSubscriptionSync(CreateNotificationSubscriptionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateNotificationSubscriptionAsync(..., function(response, error_message)
+	M.CreateNotificationSubscriptionAsync(CreateNotificationSubscriptionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5602,10 +5602,10 @@ end
 -- @param UpdateDocumentRequest
 -- @return response
 -- @return error_message
-function M.UpdateDocumentSync(...)
+function M.UpdateDocumentSync(UpdateDocumentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateDocumentAsync(..., function(response, error_message)
+	M.UpdateDocumentAsync(UpdateDocumentRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5634,10 +5634,10 @@ end
 -- @param DescribeCommentsRequest
 -- @return response
 -- @return error_message
-function M.DescribeCommentsSync(...)
+function M.DescribeCommentsSync(DescribeCommentsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeCommentsAsync(..., function(response, error_message)
+	M.DescribeCommentsAsync(DescribeCommentsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5666,10 +5666,10 @@ end
 -- @param DeleteUserRequest
 -- @return response
 -- @return error_message
-function M.DeleteUserSync(...)
+function M.DeleteUserSync(DeleteUserRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteUserAsync(..., function(response, error_message)
+	M.DeleteUserAsync(DeleteUserRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5698,10 +5698,10 @@ end
 -- @param DeleteDocumentRequest
 -- @return response
 -- @return error_message
-function M.DeleteDocumentSync(...)
+function M.DeleteDocumentSync(DeleteDocumentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteDocumentAsync(..., function(response, error_message)
+	M.DeleteDocumentAsync(DeleteDocumentRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5730,10 +5730,10 @@ end
 -- @param DescribeActivitiesRequest
 -- @return response
 -- @return error_message
-function M.DescribeActivitiesSync(...)
+function M.DescribeActivitiesSync(DescribeActivitiesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeActivitiesAsync(..., function(response, error_message)
+	M.DescribeActivitiesAsync(DescribeActivitiesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5762,10 +5762,10 @@ end
 -- @param ActivateUserRequest
 -- @return response
 -- @return error_message
-function M.ActivateUserSync(...)
+function M.ActivateUserSync(ActivateUserRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ActivateUserAsync(..., function(response, error_message)
+	M.ActivateUserAsync(ActivateUserRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5794,10 +5794,10 @@ end
 -- @param GetFolderRequest
 -- @return response
 -- @return error_message
-function M.GetFolderSync(...)
+function M.GetFolderSync(GetFolderRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetFolderAsync(..., function(response, error_message)
+	M.GetFolderAsync(GetFolderRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5826,10 +5826,10 @@ end
 -- @param RemoveResourcePermissionRequest
 -- @return response
 -- @return error_message
-function M.RemoveResourcePermissionSync(...)
+function M.RemoveResourcePermissionSync(RemoveResourcePermissionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RemoveResourcePermissionAsync(..., function(response, error_message)
+	M.RemoveResourcePermissionAsync(RemoveResourcePermissionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5858,10 +5858,10 @@ end
 -- @param DeleteLabelsRequest
 -- @return response
 -- @return error_message
-function M.DeleteLabelsSync(...)
+function M.DeleteLabelsSync(DeleteLabelsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteLabelsAsync(..., function(response, error_message)
+	M.DeleteLabelsAsync(DeleteLabelsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5890,10 +5890,10 @@ end
 -- @param DescribeDocumentVersionsRequest
 -- @return response
 -- @return error_message
-function M.DescribeDocumentVersionsSync(...)
+function M.DescribeDocumentVersionsSync(DescribeDocumentVersionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeDocumentVersionsAsync(..., function(response, error_message)
+	M.DescribeDocumentVersionsAsync(DescribeDocumentVersionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

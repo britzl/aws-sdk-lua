@@ -3143,10 +3143,10 @@ end
 -- @param EncryptRequest
 -- @return response
 -- @return error_message
-function M.EncryptSync(...)
+function M.EncryptSync(EncryptRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.EncryptAsync(..., function(response, error_message)
+	M.EncryptAsync(EncryptRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3175,10 +3175,10 @@ end
 -- @param DecryptRequest
 -- @return response
 -- @return error_message
-function M.DecryptSync(...)
+function M.DecryptSync(DecryptRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DecryptAsync(..., function(response, error_message)
+	M.DecryptAsync(DecryptRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3207,10 +3207,10 @@ end
 -- @param UpdateAliasRequest
 -- @return response
 -- @return error_message
-function M.UpdateAliasSync(...)
+function M.UpdateAliasSync(UpdateAliasRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateAliasAsync(..., function(response, error_message)
+	M.UpdateAliasAsync(UpdateAliasRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3239,10 +3239,10 @@ end
 -- @param ImportKeyMaterialRequest
 -- @return response
 -- @return error_message
-function M.ImportKeyMaterialSync(...)
+function M.ImportKeyMaterialSync(ImportKeyMaterialRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ImportKeyMaterialAsync(..., function(response, error_message)
+	M.ImportKeyMaterialAsync(ImportKeyMaterialRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3271,10 +3271,10 @@ end
 -- @param DisableKeyRequest
 -- @return response
 -- @return error_message
-function M.DisableKeySync(...)
+function M.DisableKeySync(DisableKeyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisableKeyAsync(..., function(response, error_message)
+	M.DisableKeyAsync(DisableKeyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3303,10 +3303,10 @@ end
 -- @param GenerateDataKeyWithoutPlaintextRequest
 -- @return response
 -- @return error_message
-function M.GenerateDataKeyWithoutPlaintextSync(...)
+function M.GenerateDataKeyWithoutPlaintextSync(GenerateDataKeyWithoutPlaintextRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GenerateDataKeyWithoutPlaintextAsync(..., function(response, error_message)
+	M.GenerateDataKeyWithoutPlaintextAsync(GenerateDataKeyWithoutPlaintextRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3335,10 +3335,10 @@ end
 -- @param GenerateDataKeyRequest
 -- @return response
 -- @return error_message
-function M.GenerateDataKeySync(...)
+function M.GenerateDataKeySync(GenerateDataKeyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GenerateDataKeyAsync(..., function(response, error_message)
+	M.GenerateDataKeyAsync(GenerateDataKeyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3367,10 +3367,10 @@ end
 -- @param ListResourceTagsRequest
 -- @return response
 -- @return error_message
-function M.ListResourceTagsSync(...)
+function M.ListResourceTagsSync(ListResourceTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListResourceTagsAsync(..., function(response, error_message)
+	M.ListResourceTagsAsync(ListResourceTagsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3399,10 +3399,10 @@ end
 -- @param ListAliasesRequest
 -- @return response
 -- @return error_message
-function M.ListAliasesSync(...)
+function M.ListAliasesSync(ListAliasesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListAliasesAsync(..., function(response, error_message)
+	M.ListAliasesAsync(ListAliasesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3431,10 +3431,10 @@ end
 -- @param CancelKeyDeletionRequest
 -- @return response
 -- @return error_message
-function M.CancelKeyDeletionSync(...)
+function M.CancelKeyDeletionSync(CancelKeyDeletionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CancelKeyDeletionAsync(..., function(response, error_message)
+	M.CancelKeyDeletionAsync(CancelKeyDeletionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3463,10 +3463,10 @@ end
 -- @param GetKeyRotationStatusRequest
 -- @return response
 -- @return error_message
-function M.GetKeyRotationStatusSync(...)
+function M.GetKeyRotationStatusSync(GetKeyRotationStatusRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetKeyRotationStatusAsync(..., function(response, error_message)
+	M.GetKeyRotationStatusAsync(GetKeyRotationStatusRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3495,10 +3495,10 @@ end
 -- @param ListKeyPoliciesRequest
 -- @return response
 -- @return error_message
-function M.ListKeyPoliciesSync(...)
+function M.ListKeyPoliciesSync(ListKeyPoliciesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListKeyPoliciesAsync(..., function(response, error_message)
+	M.ListKeyPoliciesAsync(ListKeyPoliciesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3527,10 +3527,10 @@ end
 -- @param DeleteAliasRequest
 -- @return response
 -- @return error_message
-function M.DeleteAliasSync(...)
+function M.DeleteAliasSync(DeleteAliasRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteAliasAsync(..., function(response, error_message)
+	M.DeleteAliasAsync(DeleteAliasRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3559,10 +3559,10 @@ end
 -- @param RetireGrantRequest
 -- @return response
 -- @return error_message
-function M.RetireGrantSync(...)
+function M.RetireGrantSync(RetireGrantRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RetireGrantAsync(..., function(response, error_message)
+	M.RetireGrantAsync(RetireGrantRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3591,10 +3591,10 @@ end
 -- @param TagResourceRequest
 -- @return response
 -- @return error_message
-function M.TagResourceSync(...)
+function M.TagResourceSync(TagResourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.TagResourceAsync(..., function(response, error_message)
+	M.TagResourceAsync(TagResourceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3623,10 +3623,10 @@ end
 -- @param DescribeKeyRequest
 -- @return response
 -- @return error_message
-function M.DescribeKeySync(...)
+function M.DescribeKeySync(DescribeKeyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeKeyAsync(..., function(response, error_message)
+	M.DescribeKeyAsync(DescribeKeyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3655,10 +3655,10 @@ end
 -- @param ListKeysRequest
 -- @return response
 -- @return error_message
-function M.ListKeysSync(...)
+function M.ListKeysSync(ListKeysRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListKeysAsync(..., function(response, error_message)
+	M.ListKeysAsync(ListKeysRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3687,10 +3687,10 @@ end
 -- @param GenerateRandomRequest
 -- @return response
 -- @return error_message
-function M.GenerateRandomSync(...)
+function M.GenerateRandomSync(GenerateRandomRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GenerateRandomAsync(..., function(response, error_message)
+	M.GenerateRandomAsync(GenerateRandomRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3719,10 +3719,10 @@ end
 -- @param GetKeyPolicyRequest
 -- @return response
 -- @return error_message
-function M.GetKeyPolicySync(...)
+function M.GetKeyPolicySync(GetKeyPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetKeyPolicyAsync(..., function(response, error_message)
+	M.GetKeyPolicyAsync(GetKeyPolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3751,10 +3751,10 @@ end
 -- @param CreateGrantRequest
 -- @return response
 -- @return error_message
-function M.CreateGrantSync(...)
+function M.CreateGrantSync(CreateGrantRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateGrantAsync(..., function(response, error_message)
+	M.CreateGrantAsync(CreateGrantRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3783,10 +3783,10 @@ end
 -- @param CreateKeyRequest
 -- @return response
 -- @return error_message
-function M.CreateKeySync(...)
+function M.CreateKeySync(CreateKeyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateKeyAsync(..., function(response, error_message)
+	M.CreateKeyAsync(CreateKeyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3815,10 +3815,10 @@ end
 -- @param ReEncryptRequest
 -- @return response
 -- @return error_message
-function M.ReEncryptSync(...)
+function M.ReEncryptSync(ReEncryptRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ReEncryptAsync(..., function(response, error_message)
+	M.ReEncryptAsync(ReEncryptRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3847,10 +3847,10 @@ end
 -- @param GetParametersForImportRequest
 -- @return response
 -- @return error_message
-function M.GetParametersForImportSync(...)
+function M.GetParametersForImportSync(GetParametersForImportRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetParametersForImportAsync(..., function(response, error_message)
+	M.GetParametersForImportAsync(GetParametersForImportRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3879,10 +3879,10 @@ end
 -- @param DisableKeyRotationRequest
 -- @return response
 -- @return error_message
-function M.DisableKeyRotationSync(...)
+function M.DisableKeyRotationSync(DisableKeyRotationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisableKeyRotationAsync(..., function(response, error_message)
+	M.DisableKeyRotationAsync(DisableKeyRotationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3911,10 +3911,10 @@ end
 -- @param ListRetirableGrantsRequest
 -- @return response
 -- @return error_message
-function M.ListRetirableGrantsSync(...)
+function M.ListRetirableGrantsSync(ListRetirableGrantsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListRetirableGrantsAsync(..., function(response, error_message)
+	M.ListRetirableGrantsAsync(ListRetirableGrantsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3943,10 +3943,10 @@ end
 -- @param ScheduleKeyDeletionRequest
 -- @return response
 -- @return error_message
-function M.ScheduleKeyDeletionSync(...)
+function M.ScheduleKeyDeletionSync(ScheduleKeyDeletionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ScheduleKeyDeletionAsync(..., function(response, error_message)
+	M.ScheduleKeyDeletionAsync(ScheduleKeyDeletionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3975,10 +3975,10 @@ end
 -- @param CreateAliasRequest
 -- @return response
 -- @return error_message
-function M.CreateAliasSync(...)
+function M.CreateAliasSync(CreateAliasRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateAliasAsync(..., function(response, error_message)
+	M.CreateAliasAsync(CreateAliasRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4007,10 +4007,10 @@ end
 -- @param EnableKeyRotationRequest
 -- @return response
 -- @return error_message
-function M.EnableKeyRotationSync(...)
+function M.EnableKeyRotationSync(EnableKeyRotationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.EnableKeyRotationAsync(..., function(response, error_message)
+	M.EnableKeyRotationAsync(EnableKeyRotationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4039,10 +4039,10 @@ end
 -- @param UntagResourceRequest
 -- @return response
 -- @return error_message
-function M.UntagResourceSync(...)
+function M.UntagResourceSync(UntagResourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UntagResourceAsync(..., function(response, error_message)
+	M.UntagResourceAsync(UntagResourceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4071,10 +4071,10 @@ end
 -- @param ListGrantsRequest
 -- @return response
 -- @return error_message
-function M.ListGrantsSync(...)
+function M.ListGrantsSync(ListGrantsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListGrantsAsync(..., function(response, error_message)
+	M.ListGrantsAsync(ListGrantsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4103,10 +4103,10 @@ end
 -- @param EnableKeyRequest
 -- @return response
 -- @return error_message
-function M.EnableKeySync(...)
+function M.EnableKeySync(EnableKeyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.EnableKeyAsync(..., function(response, error_message)
+	M.EnableKeyAsync(EnableKeyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4135,10 +4135,10 @@ end
 -- @param DeleteImportedKeyMaterialRequest
 -- @return response
 -- @return error_message
-function M.DeleteImportedKeyMaterialSync(...)
+function M.DeleteImportedKeyMaterialSync(DeleteImportedKeyMaterialRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteImportedKeyMaterialAsync(..., function(response, error_message)
+	M.DeleteImportedKeyMaterialAsync(DeleteImportedKeyMaterialRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4167,10 +4167,10 @@ end
 -- @param UpdateKeyDescriptionRequest
 -- @return response
 -- @return error_message
-function M.UpdateKeyDescriptionSync(...)
+function M.UpdateKeyDescriptionSync(UpdateKeyDescriptionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateKeyDescriptionAsync(..., function(response, error_message)
+	M.UpdateKeyDescriptionAsync(UpdateKeyDescriptionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4199,10 +4199,10 @@ end
 -- @param RevokeGrantRequest
 -- @return response
 -- @return error_message
-function M.RevokeGrantSync(...)
+function M.RevokeGrantSync(RevokeGrantRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RevokeGrantAsync(..., function(response, error_message)
+	M.RevokeGrantAsync(RevokeGrantRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4231,10 +4231,10 @@ end
 -- @param PutKeyPolicyRequest
 -- @return response
 -- @return error_message
-function M.PutKeyPolicySync(...)
+function M.PutKeyPolicySync(PutKeyPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutKeyPolicyAsync(..., function(response, error_message)
+	M.PutKeyPolicyAsync(PutKeyPolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

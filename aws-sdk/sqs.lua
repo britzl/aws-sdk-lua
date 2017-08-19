@@ -2001,10 +2001,10 @@ end
 -- @param CreateQueueRequest
 -- @return response
 -- @return error_message
-function M.CreateQueueSync(...)
+function M.CreateQueueSync(CreateQueueRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateQueueAsync(..., function(response, error_message)
+	M.CreateQueueAsync(CreateQueueRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2033,10 +2033,10 @@ end
 -- @param GetQueueAttributesRequest
 -- @return response
 -- @return error_message
-function M.GetQueueAttributesSync(...)
+function M.GetQueueAttributesSync(GetQueueAttributesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetQueueAttributesAsync(..., function(response, error_message)
+	M.GetQueueAttributesAsync(GetQueueAttributesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2065,10 +2065,10 @@ end
 -- @param SetQueueAttributesRequest
 -- @return response
 -- @return error_message
-function M.SetQueueAttributesSync(...)
+function M.SetQueueAttributesSync(SetQueueAttributesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetQueueAttributesAsync(..., function(response, error_message)
+	M.SetQueueAttributesAsync(SetQueueAttributesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2097,10 +2097,10 @@ end
 -- @param GetQueueUrlRequest
 -- @return response
 -- @return error_message
-function M.GetQueueUrlSync(...)
+function M.GetQueueUrlSync(GetQueueUrlRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetQueueUrlAsync(..., function(response, error_message)
+	M.GetQueueUrlAsync(GetQueueUrlRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2129,10 +2129,10 @@ end
 -- @param DeleteMessageBatchRequest
 -- @return response
 -- @return error_message
-function M.DeleteMessageBatchSync(...)
+function M.DeleteMessageBatchSync(DeleteMessageBatchRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteMessageBatchAsync(..., function(response, error_message)
+	M.DeleteMessageBatchAsync(DeleteMessageBatchRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2161,10 +2161,10 @@ end
 -- @param SendMessageBatchRequest
 -- @return response
 -- @return error_message
-function M.SendMessageBatchSync(...)
+function M.SendMessageBatchSync(SendMessageBatchRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SendMessageBatchAsync(..., function(response, error_message)
+	M.SendMessageBatchAsync(SendMessageBatchRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2193,10 +2193,10 @@ end
 -- @param ListDeadLetterSourceQueuesRequest
 -- @return response
 -- @return error_message
-function M.ListDeadLetterSourceQueuesSync(...)
+function M.ListDeadLetterSourceQueuesSync(ListDeadLetterSourceQueuesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListDeadLetterSourceQueuesAsync(..., function(response, error_message)
+	M.ListDeadLetterSourceQueuesAsync(ListDeadLetterSourceQueuesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2225,10 +2225,10 @@ end
 -- @param ChangeMessageVisibilityRequest
 -- @return response
 -- @return error_message
-function M.ChangeMessageVisibilitySync(...)
+function M.ChangeMessageVisibilitySync(ChangeMessageVisibilityRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ChangeMessageVisibilityAsync(..., function(response, error_message)
+	M.ChangeMessageVisibilityAsync(ChangeMessageVisibilityRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2257,10 +2257,10 @@ end
 -- @param AddPermissionRequest
 -- @return response
 -- @return error_message
-function M.AddPermissionSync(...)
+function M.AddPermissionSync(AddPermissionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddPermissionAsync(..., function(response, error_message)
+	M.AddPermissionAsync(AddPermissionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2289,10 +2289,10 @@ end
 -- @param ChangeMessageVisibilityBatchRequest
 -- @return response
 -- @return error_message
-function M.ChangeMessageVisibilityBatchSync(...)
+function M.ChangeMessageVisibilityBatchSync(ChangeMessageVisibilityBatchRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ChangeMessageVisibilityBatchAsync(..., function(response, error_message)
+	M.ChangeMessageVisibilityBatchAsync(ChangeMessageVisibilityBatchRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2321,10 +2321,10 @@ end
 -- @param SendMessageRequest
 -- @return response
 -- @return error_message
-function M.SendMessageSync(...)
+function M.SendMessageSync(SendMessageRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SendMessageAsync(..., function(response, error_message)
+	M.SendMessageAsync(SendMessageRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2353,10 +2353,10 @@ end
 -- @param DeleteQueueRequest
 -- @return response
 -- @return error_message
-function M.DeleteQueueSync(...)
+function M.DeleteQueueSync(DeleteQueueRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteQueueAsync(..., function(response, error_message)
+	M.DeleteQueueAsync(DeleteQueueRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2385,10 +2385,10 @@ end
 -- @param PurgeQueueRequest
 -- @return response
 -- @return error_message
-function M.PurgeQueueSync(...)
+function M.PurgeQueueSync(PurgeQueueRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PurgeQueueAsync(..., function(response, error_message)
+	M.PurgeQueueAsync(PurgeQueueRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2417,10 +2417,10 @@ end
 -- @param ReceiveMessageRequest
 -- @return response
 -- @return error_message
-function M.ReceiveMessageSync(...)
+function M.ReceiveMessageSync(ReceiveMessageRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ReceiveMessageAsync(..., function(response, error_message)
+	M.ReceiveMessageAsync(ReceiveMessageRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2449,10 +2449,10 @@ end
 -- @param DeleteMessageRequest
 -- @return response
 -- @return error_message
-function M.DeleteMessageSync(...)
+function M.DeleteMessageSync(DeleteMessageRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteMessageAsync(..., function(response, error_message)
+	M.DeleteMessageAsync(DeleteMessageRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2481,10 +2481,10 @@ end
 -- @param ListQueuesRequest
 -- @return response
 -- @return error_message
-function M.ListQueuesSync(...)
+function M.ListQueuesSync(ListQueuesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListQueuesAsync(..., function(response, error_message)
+	M.ListQueuesAsync(ListQueuesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2513,10 +2513,10 @@ end
 -- @param RemovePermissionRequest
 -- @return response
 -- @return error_message
-function M.RemovePermissionSync(...)
+function M.RemovePermissionSync(RemovePermissionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RemovePermissionAsync(..., function(response, error_message)
+	M.RemovePermissionAsync(RemovePermissionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

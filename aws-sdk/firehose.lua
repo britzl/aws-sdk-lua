@@ -2467,10 +2467,10 @@ end
 -- @param CreateDeliveryStreamInput
 -- @return response
 -- @return error_message
-function M.CreateDeliveryStreamSync(...)
+function M.CreateDeliveryStreamSync(CreateDeliveryStreamInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDeliveryStreamAsync(..., function(response, error_message)
+	M.CreateDeliveryStreamAsync(CreateDeliveryStreamInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2499,10 +2499,10 @@ end
 -- @param DescribeDeliveryStreamInput
 -- @return response
 -- @return error_message
-function M.DescribeDeliveryStreamSync(...)
+function M.DescribeDeliveryStreamSync(DescribeDeliveryStreamInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeDeliveryStreamAsync(..., function(response, error_message)
+	M.DescribeDeliveryStreamAsync(DescribeDeliveryStreamInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2531,10 +2531,10 @@ end
 -- @param UpdateDestinationInput
 -- @return response
 -- @return error_message
-function M.UpdateDestinationSync(...)
+function M.UpdateDestinationSync(UpdateDestinationInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateDestinationAsync(..., function(response, error_message)
+	M.UpdateDestinationAsync(UpdateDestinationInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2563,10 +2563,10 @@ end
 -- @param DeleteDeliveryStreamInput
 -- @return response
 -- @return error_message
-function M.DeleteDeliveryStreamSync(...)
+function M.DeleteDeliveryStreamSync(DeleteDeliveryStreamInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteDeliveryStreamAsync(..., function(response, error_message)
+	M.DeleteDeliveryStreamAsync(DeleteDeliveryStreamInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2595,10 +2595,10 @@ end
 -- @param ListDeliveryStreamsInput
 -- @return response
 -- @return error_message
-function M.ListDeliveryStreamsSync(...)
+function M.ListDeliveryStreamsSync(ListDeliveryStreamsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListDeliveryStreamsAsync(..., function(response, error_message)
+	M.ListDeliveryStreamsAsync(ListDeliveryStreamsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2627,10 +2627,10 @@ end
 -- @param PutRecordBatchInput
 -- @return response
 -- @return error_message
-function M.PutRecordBatchSync(...)
+function M.PutRecordBatchSync(PutRecordBatchInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutRecordBatchAsync(..., function(response, error_message)
+	M.PutRecordBatchAsync(PutRecordBatchInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2659,10 +2659,10 @@ end
 -- @param PutRecordInput
 -- @return response
 -- @return error_message
-function M.PutRecordSync(...)
+function M.PutRecordSync(PutRecordInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutRecordAsync(..., function(response, error_message)
+	M.PutRecordAsync(PutRecordInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

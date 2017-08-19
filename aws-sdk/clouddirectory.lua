@@ -7327,10 +7327,10 @@ end
 -- @param ListTypedLinkFacetNamesRequest
 -- @return response
 -- @return error_message
-function M.ListTypedLinkFacetNamesSync(...)
+function M.ListTypedLinkFacetNamesSync(ListTypedLinkFacetNamesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTypedLinkFacetNamesAsync(..., function(response, error_message)
+	M.ListTypedLinkFacetNamesAsync(ListTypedLinkFacetNamesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7359,10 +7359,10 @@ end
 -- @param ListIncomingTypedLinksRequest
 -- @return response
 -- @return error_message
-function M.ListIncomingTypedLinksSync(...)
+function M.ListIncomingTypedLinksSync(ListIncomingTypedLinksRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListIncomingTypedLinksAsync(..., function(response, error_message)
+	M.ListIncomingTypedLinksAsync(ListIncomingTypedLinksRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7391,10 +7391,10 @@ end
 -- @param ListDirectoriesRequest
 -- @return response
 -- @return error_message
-function M.ListDirectoriesSync(...)
+function M.ListDirectoriesSync(ListDirectoriesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListDirectoriesAsync(..., function(response, error_message)
+	M.ListDirectoriesAsync(ListDirectoriesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7423,10 +7423,10 @@ end
 -- @param CreateSchemaRequest
 -- @return response
 -- @return error_message
-function M.CreateSchemaSync(...)
+function M.CreateSchemaSync(CreateSchemaRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateSchemaAsync(..., function(response, error_message)
+	M.CreateSchemaAsync(CreateSchemaRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7455,10 +7455,10 @@ end
 -- @param UpdateSchemaRequest
 -- @return response
 -- @return error_message
-function M.UpdateSchemaSync(...)
+function M.UpdateSchemaSync(UpdateSchemaRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateSchemaAsync(..., function(response, error_message)
+	M.UpdateSchemaAsync(UpdateSchemaRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7487,10 +7487,10 @@ end
 -- @param CreateObjectRequest
 -- @return response
 -- @return error_message
-function M.CreateObjectSync(...)
+function M.CreateObjectSync(CreateObjectRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateObjectAsync(..., function(response, error_message)
+	M.CreateObjectAsync(CreateObjectRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7519,10 +7519,10 @@ end
 -- @param EnableDirectoryRequest
 -- @return response
 -- @return error_message
-function M.EnableDirectorySync(...)
+function M.EnableDirectorySync(EnableDirectoryRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.EnableDirectoryAsync(..., function(response, error_message)
+	M.EnableDirectoryAsync(EnableDirectoryRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7551,10 +7551,10 @@ end
 -- @param GetObjectInformationRequest
 -- @return response
 -- @return error_message
-function M.GetObjectInformationSync(...)
+function M.GetObjectInformationSync(GetObjectInformationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetObjectInformationAsync(..., function(response, error_message)
+	M.GetObjectInformationAsync(GetObjectInformationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7583,10 +7583,10 @@ end
 -- @param GetSchemaAsJsonRequest
 -- @return response
 -- @return error_message
-function M.GetSchemaAsJsonSync(...)
+function M.GetSchemaAsJsonSync(GetSchemaAsJsonRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetSchemaAsJsonAsync(..., function(response, error_message)
+	M.GetSchemaAsJsonAsync(GetSchemaAsJsonRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7615,10 +7615,10 @@ end
 -- @param BatchWriteRequest
 -- @return response
 -- @return error_message
-function M.BatchWriteSync(...)
+function M.BatchWriteSync(BatchWriteRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchWriteAsync(..., function(response, error_message)
+	M.BatchWriteAsync(BatchWriteRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7647,10 +7647,10 @@ end
 -- @param ListFacetNamesRequest
 -- @return response
 -- @return error_message
-function M.ListFacetNamesSync(...)
+function M.ListFacetNamesSync(ListFacetNamesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListFacetNamesAsync(..., function(response, error_message)
+	M.ListFacetNamesAsync(ListFacetNamesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7679,10 +7679,10 @@ end
 -- @param CreateDirectoryRequest
 -- @return response
 -- @return error_message
-function M.CreateDirectorySync(...)
+function M.CreateDirectorySync(CreateDirectoryRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDirectoryAsync(..., function(response, error_message)
+	M.CreateDirectoryAsync(CreateDirectoryRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7711,10 +7711,10 @@ end
 -- @param CreateIndexRequest
 -- @return response
 -- @return error_message
-function M.CreateIndexSync(...)
+function M.CreateIndexSync(CreateIndexRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateIndexAsync(..., function(response, error_message)
+	M.CreateIndexAsync(CreateIndexRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7743,10 +7743,10 @@ end
 -- @param DeleteFacetRequest
 -- @return response
 -- @return error_message
-function M.DeleteFacetSync(...)
+function M.DeleteFacetSync(DeleteFacetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteFacetAsync(..., function(response, error_message)
+	M.DeleteFacetAsync(DeleteFacetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7775,10 +7775,10 @@ end
 -- @param DetachPolicyRequest
 -- @return response
 -- @return error_message
-function M.DetachPolicySync(...)
+function M.DetachPolicySync(DetachPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DetachPolicyAsync(..., function(response, error_message)
+	M.DetachPolicyAsync(DetachPolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7807,10 +7807,10 @@ end
 -- @param DetachObjectRequest
 -- @return response
 -- @return error_message
-function M.DetachObjectSync(...)
+function M.DetachObjectSync(DetachObjectRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DetachObjectAsync(..., function(response, error_message)
+	M.DetachObjectAsync(DetachObjectRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7839,10 +7839,10 @@ end
 -- @param ListObjectChildrenRequest
 -- @return response
 -- @return error_message
-function M.ListObjectChildrenSync(...)
+function M.ListObjectChildrenSync(ListObjectChildrenRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListObjectChildrenAsync(..., function(response, error_message)
+	M.ListObjectChildrenAsync(ListObjectChildrenRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7871,10 +7871,10 @@ end
 -- @param ListObjectAttributesRequest
 -- @return response
 -- @return error_message
-function M.ListObjectAttributesSync(...)
+function M.ListObjectAttributesSync(ListObjectAttributesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListObjectAttributesAsync(..., function(response, error_message)
+	M.ListObjectAttributesAsync(ListObjectAttributesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7903,10 +7903,10 @@ end
 -- @param AddFacetToObjectRequest
 -- @return response
 -- @return error_message
-function M.AddFacetToObjectSync(...)
+function M.AddFacetToObjectSync(AddFacetToObjectRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddFacetToObjectAsync(..., function(response, error_message)
+	M.AddFacetToObjectAsync(AddFacetToObjectRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7935,10 +7935,10 @@ end
 -- @param PutSchemaFromJsonRequest
 -- @return response
 -- @return error_message
-function M.PutSchemaFromJsonSync(...)
+function M.PutSchemaFromJsonSync(PutSchemaFromJsonRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutSchemaFromJsonAsync(..., function(response, error_message)
+	M.PutSchemaFromJsonAsync(PutSchemaFromJsonRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7967,10 +7967,10 @@ end
 -- @param ListPolicyAttachmentsRequest
 -- @return response
 -- @return error_message
-function M.ListPolicyAttachmentsSync(...)
+function M.ListPolicyAttachmentsSync(ListPolicyAttachmentsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListPolicyAttachmentsAsync(..., function(response, error_message)
+	M.ListPolicyAttachmentsAsync(ListPolicyAttachmentsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7999,10 +7999,10 @@ end
 -- @param CreateFacetRequest
 -- @return response
 -- @return error_message
-function M.CreateFacetSync(...)
+function M.CreateFacetSync(CreateFacetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateFacetAsync(..., function(response, error_message)
+	M.CreateFacetAsync(CreateFacetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8031,10 +8031,10 @@ end
 -- @param ListObjectParentsRequest
 -- @return response
 -- @return error_message
-function M.ListObjectParentsSync(...)
+function M.ListObjectParentsSync(ListObjectParentsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListObjectParentsAsync(..., function(response, error_message)
+	M.ListObjectParentsAsync(ListObjectParentsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8063,10 +8063,10 @@ end
 -- @param BatchReadRequest
 -- @return response
 -- @return error_message
-function M.BatchReadSync(...)
+function M.BatchReadSync(BatchReadRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchReadAsync(..., function(response, error_message)
+	M.BatchReadAsync(BatchReadRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8095,10 +8095,10 @@ end
 -- @param DetachTypedLinkRequest
 -- @return response
 -- @return error_message
-function M.DetachTypedLinkSync(...)
+function M.DetachTypedLinkSync(DetachTypedLinkRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DetachTypedLinkAsync(..., function(response, error_message)
+	M.DetachTypedLinkAsync(DetachTypedLinkRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8127,10 +8127,10 @@ end
 -- @param RemoveFacetFromObjectRequest
 -- @return response
 -- @return error_message
-function M.RemoveFacetFromObjectSync(...)
+function M.RemoveFacetFromObjectSync(RemoveFacetFromObjectRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RemoveFacetFromObjectAsync(..., function(response, error_message)
+	M.RemoveFacetFromObjectAsync(RemoveFacetFromObjectRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8159,10 +8159,10 @@ end
 -- @param LookupPolicyRequest
 -- @return response
 -- @return error_message
-function M.LookupPolicySync(...)
+function M.LookupPolicySync(LookupPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.LookupPolicyAsync(..., function(response, error_message)
+	M.LookupPolicyAsync(LookupPolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8191,10 +8191,10 @@ end
 -- @param ListObjectParentPathsRequest
 -- @return response
 -- @return error_message
-function M.ListObjectParentPathsSync(...)
+function M.ListObjectParentPathsSync(ListObjectParentPathsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListObjectParentPathsAsync(..., function(response, error_message)
+	M.ListObjectParentPathsAsync(ListObjectParentPathsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8223,10 +8223,10 @@ end
 -- @param TagResourceRequest
 -- @return response
 -- @return error_message
-function M.TagResourceSync(...)
+function M.TagResourceSync(TagResourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.TagResourceAsync(..., function(response, error_message)
+	M.TagResourceAsync(TagResourceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8255,10 +8255,10 @@ end
 -- @param ListAttachedIndicesRequest
 -- @return response
 -- @return error_message
-function M.ListAttachedIndicesSync(...)
+function M.ListAttachedIndicesSync(ListAttachedIndicesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListAttachedIndicesAsync(..., function(response, error_message)
+	M.ListAttachedIndicesAsync(ListAttachedIndicesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8287,10 +8287,10 @@ end
 -- @param AttachTypedLinkRequest
 -- @return response
 -- @return error_message
-function M.AttachTypedLinkSync(...)
+function M.AttachTypedLinkSync(AttachTypedLinkRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AttachTypedLinkAsync(..., function(response, error_message)
+	M.AttachTypedLinkAsync(AttachTypedLinkRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8319,10 +8319,10 @@ end
 -- @param UpdateObjectAttributesRequest
 -- @return response
 -- @return error_message
-function M.UpdateObjectAttributesSync(...)
+function M.UpdateObjectAttributesSync(UpdateObjectAttributesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateObjectAttributesAsync(..., function(response, error_message)
+	M.UpdateObjectAttributesAsync(UpdateObjectAttributesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8351,10 +8351,10 @@ end
 -- @param ListTypedLinkFacetAttributesRequest
 -- @return response
 -- @return error_message
-function M.ListTypedLinkFacetAttributesSync(...)
+function M.ListTypedLinkFacetAttributesSync(ListTypedLinkFacetAttributesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTypedLinkFacetAttributesAsync(..., function(response, error_message)
+	M.ListTypedLinkFacetAttributesAsync(ListTypedLinkFacetAttributesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8383,10 +8383,10 @@ end
 -- @param ListPublishedSchemaArnsRequest
 -- @return response
 -- @return error_message
-function M.ListPublishedSchemaArnsSync(...)
+function M.ListPublishedSchemaArnsSync(ListPublishedSchemaArnsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListPublishedSchemaArnsAsync(..., function(response, error_message)
+	M.ListPublishedSchemaArnsAsync(ListPublishedSchemaArnsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8415,10 +8415,10 @@ end
 -- @param DeleteDirectoryRequest
 -- @return response
 -- @return error_message
-function M.DeleteDirectorySync(...)
+function M.DeleteDirectorySync(DeleteDirectoryRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteDirectoryAsync(..., function(response, error_message)
+	M.DeleteDirectoryAsync(DeleteDirectoryRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8447,10 +8447,10 @@ end
 -- @param PublishSchemaRequest
 -- @return response
 -- @return error_message
-function M.PublishSchemaSync(...)
+function M.PublishSchemaSync(PublishSchemaRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PublishSchemaAsync(..., function(response, error_message)
+	M.PublishSchemaAsync(PublishSchemaRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8479,10 +8479,10 @@ end
 -- @param GetFacetRequest
 -- @return response
 -- @return error_message
-function M.GetFacetSync(...)
+function M.GetFacetSync(GetFacetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetFacetAsync(..., function(response, error_message)
+	M.GetFacetAsync(GetFacetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8511,10 +8511,10 @@ end
 -- @param DeleteSchemaRequest
 -- @return response
 -- @return error_message
-function M.DeleteSchemaSync(...)
+function M.DeleteSchemaSync(DeleteSchemaRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteSchemaAsync(..., function(response, error_message)
+	M.DeleteSchemaAsync(DeleteSchemaRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8543,10 +8543,10 @@ end
 -- @param AttachPolicyRequest
 -- @return response
 -- @return error_message
-function M.AttachPolicySync(...)
+function M.AttachPolicySync(AttachPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AttachPolicyAsync(..., function(response, error_message)
+	M.AttachPolicyAsync(AttachPolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8575,10 +8575,10 @@ end
 -- @param DisableDirectoryRequest
 -- @return response
 -- @return error_message
-function M.DisableDirectorySync(...)
+function M.DisableDirectorySync(DisableDirectoryRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisableDirectoryAsync(..., function(response, error_message)
+	M.DisableDirectoryAsync(DisableDirectoryRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8607,10 +8607,10 @@ end
 -- @param ListFacetAttributesRequest
 -- @return response
 -- @return error_message
-function M.ListFacetAttributesSync(...)
+function M.ListFacetAttributesSync(ListFacetAttributesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListFacetAttributesAsync(..., function(response, error_message)
+	M.ListFacetAttributesAsync(ListFacetAttributesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8639,10 +8639,10 @@ end
 -- @param DeleteTypedLinkFacetRequest
 -- @return response
 -- @return error_message
-function M.DeleteTypedLinkFacetSync(...)
+function M.DeleteTypedLinkFacetSync(DeleteTypedLinkFacetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteTypedLinkFacetAsync(..., function(response, error_message)
+	M.DeleteTypedLinkFacetAsync(DeleteTypedLinkFacetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8671,10 +8671,10 @@ end
 -- @param UpdateTypedLinkFacetRequest
 -- @return response
 -- @return error_message
-function M.UpdateTypedLinkFacetSync(...)
+function M.UpdateTypedLinkFacetSync(UpdateTypedLinkFacetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateTypedLinkFacetAsync(..., function(response, error_message)
+	M.UpdateTypedLinkFacetAsync(UpdateTypedLinkFacetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8703,10 +8703,10 @@ end
 -- @param DetachFromIndexRequest
 -- @return response
 -- @return error_message
-function M.DetachFromIndexSync(...)
+function M.DetachFromIndexSync(DetachFromIndexRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DetachFromIndexAsync(..., function(response, error_message)
+	M.DetachFromIndexAsync(DetachFromIndexRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8735,10 +8735,10 @@ end
 -- @param ListAppliedSchemaArnsRequest
 -- @return response
 -- @return error_message
-function M.ListAppliedSchemaArnsSync(...)
+function M.ListAppliedSchemaArnsSync(ListAppliedSchemaArnsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListAppliedSchemaArnsAsync(..., function(response, error_message)
+	M.ListAppliedSchemaArnsAsync(ListAppliedSchemaArnsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8767,10 +8767,10 @@ end
 -- @param ListObjectPoliciesRequest
 -- @return response
 -- @return error_message
-function M.ListObjectPoliciesSync(...)
+function M.ListObjectPoliciesSync(ListObjectPoliciesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListObjectPoliciesAsync(..., function(response, error_message)
+	M.ListObjectPoliciesAsync(ListObjectPoliciesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8799,10 +8799,10 @@ end
 -- @param ApplySchemaRequest
 -- @return response
 -- @return error_message
-function M.ApplySchemaSync(...)
+function M.ApplySchemaSync(ApplySchemaRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ApplySchemaAsync(..., function(response, error_message)
+	M.ApplySchemaAsync(ApplySchemaRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8831,10 +8831,10 @@ end
 -- @param ListDevelopmentSchemaArnsRequest
 -- @return response
 -- @return error_message
-function M.ListDevelopmentSchemaArnsSync(...)
+function M.ListDevelopmentSchemaArnsSync(ListDevelopmentSchemaArnsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListDevelopmentSchemaArnsAsync(..., function(response, error_message)
+	M.ListDevelopmentSchemaArnsAsync(ListDevelopmentSchemaArnsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8863,10 +8863,10 @@ end
 -- @param GetDirectoryRequest
 -- @return response
 -- @return error_message
-function M.GetDirectorySync(...)
+function M.GetDirectorySync(GetDirectoryRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetDirectoryAsync(..., function(response, error_message)
+	M.GetDirectoryAsync(GetDirectoryRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8895,10 +8895,10 @@ end
 -- @param AttachObjectRequest
 -- @return response
 -- @return error_message
-function M.AttachObjectSync(...)
+function M.AttachObjectSync(AttachObjectRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AttachObjectAsync(..., function(response, error_message)
+	M.AttachObjectAsync(AttachObjectRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8927,10 +8927,10 @@ end
 -- @param ListTagsForResourceRequest
 -- @return response
 -- @return error_message
-function M.ListTagsForResourceSync(...)
+function M.ListTagsForResourceSync(ListTagsForResourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTagsForResourceAsync(..., function(response, error_message)
+	M.ListTagsForResourceAsync(ListTagsForResourceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8959,10 +8959,10 @@ end
 -- @param UntagResourceRequest
 -- @return response
 -- @return error_message
-function M.UntagResourceSync(...)
+function M.UntagResourceSync(UntagResourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UntagResourceAsync(..., function(response, error_message)
+	M.UntagResourceAsync(UntagResourceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -8991,10 +8991,10 @@ end
 -- @param CreateTypedLinkFacetRequest
 -- @return response
 -- @return error_message
-function M.CreateTypedLinkFacetSync(...)
+function M.CreateTypedLinkFacetSync(CreateTypedLinkFacetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateTypedLinkFacetAsync(..., function(response, error_message)
+	M.CreateTypedLinkFacetAsync(CreateTypedLinkFacetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9023,10 +9023,10 @@ end
 -- @param AttachToIndexRequest
 -- @return response
 -- @return error_message
-function M.AttachToIndexSync(...)
+function M.AttachToIndexSync(AttachToIndexRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AttachToIndexAsync(..., function(response, error_message)
+	M.AttachToIndexAsync(AttachToIndexRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9055,10 +9055,10 @@ end
 -- @param ListIndexRequest
 -- @return response
 -- @return error_message
-function M.ListIndexSync(...)
+function M.ListIndexSync(ListIndexRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListIndexAsync(..., function(response, error_message)
+	M.ListIndexAsync(ListIndexRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9087,10 +9087,10 @@ end
 -- @param UpdateFacetRequest
 -- @return response
 -- @return error_message
-function M.UpdateFacetSync(...)
+function M.UpdateFacetSync(UpdateFacetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateFacetAsync(..., function(response, error_message)
+	M.UpdateFacetAsync(UpdateFacetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9119,10 +9119,10 @@ end
 -- @param ListOutgoingTypedLinksRequest
 -- @return response
 -- @return error_message
-function M.ListOutgoingTypedLinksSync(...)
+function M.ListOutgoingTypedLinksSync(ListOutgoingTypedLinksRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListOutgoingTypedLinksAsync(..., function(response, error_message)
+	M.ListOutgoingTypedLinksAsync(ListOutgoingTypedLinksRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9151,10 +9151,10 @@ end
 -- @param DeleteObjectRequest
 -- @return response
 -- @return error_message
-function M.DeleteObjectSync(...)
+function M.DeleteObjectSync(DeleteObjectRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteObjectAsync(..., function(response, error_message)
+	M.DeleteObjectAsync(DeleteObjectRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -9183,10 +9183,10 @@ end
 -- @param GetTypedLinkFacetInformationRequest
 -- @return response
 -- @return error_message
-function M.GetTypedLinkFacetInformationSync(...)
+function M.GetTypedLinkFacetInformationSync(GetTypedLinkFacetInformationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetTypedLinkFacetInformationAsync(..., function(response, error_message)
+	M.GetTypedLinkFacetInformationAsync(GetTypedLinkFacetInformationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

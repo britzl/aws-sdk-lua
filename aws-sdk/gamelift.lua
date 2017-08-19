@@ -5321,10 +5321,10 @@ end
 -- @param RequestUploadCredentialsInput
 -- @return response
 -- @return error_message
-function M.RequestUploadCredentialsSync(...)
+function M.RequestUploadCredentialsSync(RequestUploadCredentialsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RequestUploadCredentialsAsync(..., function(response, error_message)
+	M.RequestUploadCredentialsAsync(RequestUploadCredentialsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5353,10 +5353,10 @@ end
 -- @param UpdateRuntimeConfigurationInput
 -- @return response
 -- @return error_message
-function M.UpdateRuntimeConfigurationSync(...)
+function M.UpdateRuntimeConfigurationSync(UpdateRuntimeConfigurationInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateRuntimeConfigurationAsync(..., function(response, error_message)
+	M.UpdateRuntimeConfigurationAsync(UpdateRuntimeConfigurationInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5385,10 +5385,10 @@ end
 -- @param DeleteFleetInput
 -- @return response
 -- @return error_message
-function M.DeleteFleetSync(...)
+function M.DeleteFleetSync(DeleteFleetInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteFleetAsync(..., function(response, error_message)
+	M.DeleteFleetAsync(DeleteFleetInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5417,10 +5417,10 @@ end
 -- @param UpdateFleetCapacityInput
 -- @return response
 -- @return error_message
-function M.UpdateFleetCapacitySync(...)
+function M.UpdateFleetCapacitySync(UpdateFleetCapacityInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateFleetCapacityAsync(..., function(response, error_message)
+	M.UpdateFleetCapacityAsync(UpdateFleetCapacityInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5449,10 +5449,10 @@ end
 -- @param DescribeRuntimeConfigurationInput
 -- @return response
 -- @return error_message
-function M.DescribeRuntimeConfigurationSync(...)
+function M.DescribeRuntimeConfigurationSync(DescribeRuntimeConfigurationInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeRuntimeConfigurationAsync(..., function(response, error_message)
+	M.DescribeRuntimeConfigurationAsync(DescribeRuntimeConfigurationInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5481,10 +5481,10 @@ end
 -- @param DescribeGameSessionsInput
 -- @return response
 -- @return error_message
-function M.DescribeGameSessionsSync(...)
+function M.DescribeGameSessionsSync(DescribeGameSessionsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeGameSessionsAsync(..., function(response, error_message)
+	M.DescribeGameSessionsAsync(DescribeGameSessionsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5513,10 +5513,10 @@ end
 -- @param SearchGameSessionsInput
 -- @return response
 -- @return error_message
-function M.SearchGameSessionsSync(...)
+function M.SearchGameSessionsSync(SearchGameSessionsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SearchGameSessionsAsync(..., function(response, error_message)
+	M.SearchGameSessionsAsync(SearchGameSessionsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5545,10 +5545,10 @@ end
 -- @param CreatePlayerSessionsInput
 -- @return response
 -- @return error_message
-function M.CreatePlayerSessionsSync(...)
+function M.CreatePlayerSessionsSync(CreatePlayerSessionsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreatePlayerSessionsAsync(..., function(response, error_message)
+	M.CreatePlayerSessionsAsync(CreatePlayerSessionsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5577,10 +5577,10 @@ end
 -- @param UpdateFleetPortSettingsInput
 -- @return response
 -- @return error_message
-function M.UpdateFleetPortSettingsSync(...)
+function M.UpdateFleetPortSettingsSync(UpdateFleetPortSettingsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateFleetPortSettingsAsync(..., function(response, error_message)
+	M.UpdateFleetPortSettingsAsync(UpdateFleetPortSettingsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5609,10 +5609,10 @@ end
 -- @param ListFleetsInput
 -- @return response
 -- @return error_message
-function M.ListFleetsSync(...)
+function M.ListFleetsSync(ListFleetsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListFleetsAsync(..., function(response, error_message)
+	M.ListFleetsAsync(ListFleetsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5641,10 +5641,10 @@ end
 -- @param UpdateGameSessionInput
 -- @return response
 -- @return error_message
-function M.UpdateGameSessionSync(...)
+function M.UpdateGameSessionSync(UpdateGameSessionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateGameSessionAsync(..., function(response, error_message)
+	M.UpdateGameSessionAsync(UpdateGameSessionInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5673,10 +5673,10 @@ end
 -- @param CreateGameSessionInput
 -- @return response
 -- @return error_message
-function M.CreateGameSessionSync(...)
+function M.CreateGameSessionSync(CreateGameSessionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateGameSessionAsync(..., function(response, error_message)
+	M.CreateGameSessionAsync(CreateGameSessionInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5705,10 +5705,10 @@ end
 -- @param DescribeFleetCapacityInput
 -- @return response
 -- @return error_message
-function M.DescribeFleetCapacitySync(...)
+function M.DescribeFleetCapacitySync(DescribeFleetCapacityInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeFleetCapacityAsync(..., function(response, error_message)
+	M.DescribeFleetCapacityAsync(DescribeFleetCapacityInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5737,10 +5737,10 @@ end
 -- @param ListAliasesInput
 -- @return response
 -- @return error_message
-function M.ListAliasesSync(...)
+function M.ListAliasesSync(ListAliasesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListAliasesAsync(..., function(response, error_message)
+	M.ListAliasesAsync(ListAliasesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5769,10 +5769,10 @@ end
 -- @param UpdateBuildInput
 -- @return response
 -- @return error_message
-function M.UpdateBuildSync(...)
+function M.UpdateBuildSync(UpdateBuildInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateBuildAsync(..., function(response, error_message)
+	M.UpdateBuildAsync(UpdateBuildInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5801,10 +5801,10 @@ end
 -- @param DeleteBuildInput
 -- @return response
 -- @return error_message
-function M.DeleteBuildSync(...)
+function M.DeleteBuildSync(DeleteBuildInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteBuildAsync(..., function(response, error_message)
+	M.DeleteBuildAsync(DeleteBuildInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5833,10 +5833,10 @@ end
 -- @param PutScalingPolicyInput
 -- @return response
 -- @return error_message
-function M.PutScalingPolicySync(...)
+function M.PutScalingPolicySync(PutScalingPolicyInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutScalingPolicyAsync(..., function(response, error_message)
+	M.PutScalingPolicyAsync(PutScalingPolicyInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5865,10 +5865,10 @@ end
 -- @param DescribeScalingPoliciesInput
 -- @return response
 -- @return error_message
-function M.DescribeScalingPoliciesSync(...)
+function M.DescribeScalingPoliciesSync(DescribeScalingPoliciesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeScalingPoliciesAsync(..., function(response, error_message)
+	M.DescribeScalingPoliciesAsync(DescribeScalingPoliciesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5897,10 +5897,10 @@ end
 -- @param DescribeInstancesInput
 -- @return response
 -- @return error_message
-function M.DescribeInstancesSync(...)
+function M.DescribeInstancesSync(DescribeInstancesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeInstancesAsync(..., function(response, error_message)
+	M.DescribeInstancesAsync(DescribeInstancesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5929,10 +5929,10 @@ end
 -- @param CreateBuildInput
 -- @return response
 -- @return error_message
-function M.CreateBuildSync(...)
+function M.CreateBuildSync(CreateBuildInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateBuildAsync(..., function(response, error_message)
+	M.CreateBuildAsync(CreateBuildInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5961,10 +5961,10 @@ end
 -- @param DeleteGameSessionQueueInput
 -- @return response
 -- @return error_message
-function M.DeleteGameSessionQueueSync(...)
+function M.DeleteGameSessionQueueSync(DeleteGameSessionQueueInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteGameSessionQueueAsync(..., function(response, error_message)
+	M.DeleteGameSessionQueueAsync(DeleteGameSessionQueueInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5993,10 +5993,10 @@ end
 -- @param CreatePlayerSessionInput
 -- @return response
 -- @return error_message
-function M.CreatePlayerSessionSync(...)
+function M.CreatePlayerSessionSync(CreatePlayerSessionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreatePlayerSessionAsync(..., function(response, error_message)
+	M.CreatePlayerSessionAsync(CreatePlayerSessionInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6025,10 +6025,10 @@ end
 -- @param UpdateFleetAttributesInput
 -- @return response
 -- @return error_message
-function M.UpdateFleetAttributesSync(...)
+function M.UpdateFleetAttributesSync(UpdateFleetAttributesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateFleetAttributesAsync(..., function(response, error_message)
+	M.UpdateFleetAttributesAsync(UpdateFleetAttributesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6057,10 +6057,10 @@ end
 -- @param DeleteAliasInput
 -- @return response
 -- @return error_message
-function M.DeleteAliasSync(...)
+function M.DeleteAliasSync(DeleteAliasInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteAliasAsync(..., function(response, error_message)
+	M.DeleteAliasAsync(DeleteAliasInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6089,10 +6089,10 @@ end
 -- @param DescribeFleetPortSettingsInput
 -- @return response
 -- @return error_message
-function M.DescribeFleetPortSettingsSync(...)
+function M.DescribeFleetPortSettingsSync(DescribeFleetPortSettingsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeFleetPortSettingsAsync(..., function(response, error_message)
+	M.DescribeFleetPortSettingsAsync(DescribeFleetPortSettingsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6121,10 +6121,10 @@ end
 -- @param DescribePlayerSessionsInput
 -- @return response
 -- @return error_message
-function M.DescribePlayerSessionsSync(...)
+function M.DescribePlayerSessionsSync(DescribePlayerSessionsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribePlayerSessionsAsync(..., function(response, error_message)
+	M.DescribePlayerSessionsAsync(DescribePlayerSessionsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6153,10 +6153,10 @@ end
 -- @param DeleteScalingPolicyInput
 -- @return response
 -- @return error_message
-function M.DeleteScalingPolicySync(...)
+function M.DeleteScalingPolicySync(DeleteScalingPolicyInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteScalingPolicyAsync(..., function(response, error_message)
+	M.DeleteScalingPolicyAsync(DeleteScalingPolicyInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6185,10 +6185,10 @@ end
 -- @param DescribeGameSessionQueuesInput
 -- @return response
 -- @return error_message
-function M.DescribeGameSessionQueuesSync(...)
+function M.DescribeGameSessionQueuesSync(DescribeGameSessionQueuesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeGameSessionQueuesAsync(..., function(response, error_message)
+	M.DescribeGameSessionQueuesAsync(DescribeGameSessionQueuesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6217,10 +6217,10 @@ end
 -- @param CreateAliasInput
 -- @return response
 -- @return error_message
-function M.CreateAliasSync(...)
+function M.CreateAliasSync(CreateAliasInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateAliasAsync(..., function(response, error_message)
+	M.CreateAliasAsync(CreateAliasInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6249,10 +6249,10 @@ end
 -- @param UpdateAliasInput
 -- @return response
 -- @return error_message
-function M.UpdateAliasSync(...)
+function M.UpdateAliasSync(UpdateAliasInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateAliasAsync(..., function(response, error_message)
+	M.UpdateAliasAsync(UpdateAliasInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6281,10 +6281,10 @@ end
 -- @param CreateFleetInput
 -- @return response
 -- @return error_message
-function M.CreateFleetSync(...)
+function M.CreateFleetSync(CreateFleetInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateFleetAsync(..., function(response, error_message)
+	M.CreateFleetAsync(CreateFleetInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6313,10 +6313,10 @@ end
 -- @param DescribeGameSessionPlacementInput
 -- @return response
 -- @return error_message
-function M.DescribeGameSessionPlacementSync(...)
+function M.DescribeGameSessionPlacementSync(DescribeGameSessionPlacementInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeGameSessionPlacementAsync(..., function(response, error_message)
+	M.DescribeGameSessionPlacementAsync(DescribeGameSessionPlacementInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6345,10 +6345,10 @@ end
 -- @param GetInstanceAccessInput
 -- @return response
 -- @return error_message
-function M.GetInstanceAccessSync(...)
+function M.GetInstanceAccessSync(GetInstanceAccessInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetInstanceAccessAsync(..., function(response, error_message)
+	M.GetInstanceAccessAsync(GetInstanceAccessInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6377,10 +6377,10 @@ end
 -- @param ListBuildsInput
 -- @return response
 -- @return error_message
-function M.ListBuildsSync(...)
+function M.ListBuildsSync(ListBuildsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListBuildsAsync(..., function(response, error_message)
+	M.ListBuildsAsync(ListBuildsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6409,10 +6409,10 @@ end
 -- @param DescribeFleetAttributesInput
 -- @return response
 -- @return error_message
-function M.DescribeFleetAttributesSync(...)
+function M.DescribeFleetAttributesSync(DescribeFleetAttributesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeFleetAttributesAsync(..., function(response, error_message)
+	M.DescribeFleetAttributesAsync(DescribeFleetAttributesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6441,10 +6441,10 @@ end
 -- @param ResolveAliasInput
 -- @return response
 -- @return error_message
-function M.ResolveAliasSync(...)
+function M.ResolveAliasSync(ResolveAliasInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ResolveAliasAsync(..., function(response, error_message)
+	M.ResolveAliasAsync(ResolveAliasInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6473,10 +6473,10 @@ end
 -- @param DescribeGameSessionDetailsInput
 -- @return response
 -- @return error_message
-function M.DescribeGameSessionDetailsSync(...)
+function M.DescribeGameSessionDetailsSync(DescribeGameSessionDetailsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeGameSessionDetailsAsync(..., function(response, error_message)
+	M.DescribeGameSessionDetailsAsync(DescribeGameSessionDetailsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6505,10 +6505,10 @@ end
 -- @param StopGameSessionPlacementInput
 -- @return response
 -- @return error_message
-function M.StopGameSessionPlacementSync(...)
+function M.StopGameSessionPlacementSync(StopGameSessionPlacementInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StopGameSessionPlacementAsync(..., function(response, error_message)
+	M.StopGameSessionPlacementAsync(StopGameSessionPlacementInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6537,10 +6537,10 @@ end
 -- @param CreateGameSessionQueueInput
 -- @return response
 -- @return error_message
-function M.CreateGameSessionQueueSync(...)
+function M.CreateGameSessionQueueSync(CreateGameSessionQueueInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateGameSessionQueueAsync(..., function(response, error_message)
+	M.CreateGameSessionQueueAsync(CreateGameSessionQueueInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6569,10 +6569,10 @@ end
 -- @param DescribeAliasInput
 -- @return response
 -- @return error_message
-function M.DescribeAliasSync(...)
+function M.DescribeAliasSync(DescribeAliasInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAliasAsync(..., function(response, error_message)
+	M.DescribeAliasAsync(DescribeAliasInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6601,10 +6601,10 @@ end
 -- @param StartGameSessionPlacementInput
 -- @return response
 -- @return error_message
-function M.StartGameSessionPlacementSync(...)
+function M.StartGameSessionPlacementSync(StartGameSessionPlacementInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartGameSessionPlacementAsync(..., function(response, error_message)
+	M.StartGameSessionPlacementAsync(StartGameSessionPlacementInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6633,10 +6633,10 @@ end
 -- @param DescribeEC2InstanceLimitsInput
 -- @return response
 -- @return error_message
-function M.DescribeEC2InstanceLimitsSync(...)
+function M.DescribeEC2InstanceLimitsSync(DescribeEC2InstanceLimitsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEC2InstanceLimitsAsync(..., function(response, error_message)
+	M.DescribeEC2InstanceLimitsAsync(DescribeEC2InstanceLimitsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6665,10 +6665,10 @@ end
 -- @param UpdateGameSessionQueueInput
 -- @return response
 -- @return error_message
-function M.UpdateGameSessionQueueSync(...)
+function M.UpdateGameSessionQueueSync(UpdateGameSessionQueueInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateGameSessionQueueAsync(..., function(response, error_message)
+	M.UpdateGameSessionQueueAsync(UpdateGameSessionQueueInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6697,10 +6697,10 @@ end
 -- @param GetGameSessionLogUrlInput
 -- @return response
 -- @return error_message
-function M.GetGameSessionLogUrlSync(...)
+function M.GetGameSessionLogUrlSync(GetGameSessionLogUrlInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetGameSessionLogUrlAsync(..., function(response, error_message)
+	M.GetGameSessionLogUrlAsync(GetGameSessionLogUrlInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6729,10 +6729,10 @@ end
 -- @param DescribeBuildInput
 -- @return response
 -- @return error_message
-function M.DescribeBuildSync(...)
+function M.DescribeBuildSync(DescribeBuildInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeBuildAsync(..., function(response, error_message)
+	M.DescribeBuildAsync(DescribeBuildInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6761,10 +6761,10 @@ end
 -- @param DescribeFleetEventsInput
 -- @return response
 -- @return error_message
-function M.DescribeFleetEventsSync(...)
+function M.DescribeFleetEventsSync(DescribeFleetEventsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeFleetEventsAsync(..., function(response, error_message)
+	M.DescribeFleetEventsAsync(DescribeFleetEventsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6793,10 +6793,10 @@ end
 -- @param DescribeFleetUtilizationInput
 -- @return response
 -- @return error_message
-function M.DescribeFleetUtilizationSync(...)
+function M.DescribeFleetUtilizationSync(DescribeFleetUtilizationInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeFleetUtilizationAsync(..., function(response, error_message)
+	M.DescribeFleetUtilizationAsync(DescribeFleetUtilizationInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

@@ -6020,10 +6020,10 @@ end
 -- @param ReplaceTopicRuleRequest
 -- @return response
 -- @return error_message
-function M.ReplaceTopicRuleSync(...)
+function M.ReplaceTopicRuleSync(ReplaceTopicRuleRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ReplaceTopicRuleAsync(..., function(response, error_message)
+	M.ReplaceTopicRuleAsync(ReplaceTopicRuleRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6052,10 +6052,10 @@ end
 -- @param DeleteThingTypeRequest
 -- @return response
 -- @return error_message
-function M.DeleteThingTypeSync(...)
+function M.DeleteThingTypeSync(DeleteThingTypeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteThingTypeAsync(..., function(response, error_message)
+	M.DeleteThingTypeAsync(DeleteThingTypeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6084,10 +6084,10 @@ end
 -- @param DetachThingPrincipalRequest
 -- @return response
 -- @return error_message
-function M.DetachThingPrincipalSync(...)
+function M.DetachThingPrincipalSync(DetachThingPrincipalRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DetachThingPrincipalAsync(..., function(response, error_message)
+	M.DetachThingPrincipalAsync(DetachThingPrincipalRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6116,10 +6116,10 @@ end
 -- @param DeprecateThingTypeRequest
 -- @return response
 -- @return error_message
-function M.DeprecateThingTypeSync(...)
+function M.DeprecateThingTypeSync(DeprecateThingTypeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeprecateThingTypeAsync(..., function(response, error_message)
+	M.DeprecateThingTypeAsync(DeprecateThingTypeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6148,10 +6148,10 @@ end
 -- @param ListPolicyVersionsRequest
 -- @return response
 -- @return error_message
-function M.ListPolicyVersionsSync(...)
+function M.ListPolicyVersionsSync(ListPolicyVersionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListPolicyVersionsAsync(..., function(response, error_message)
+	M.ListPolicyVersionsAsync(ListPolicyVersionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6180,10 +6180,10 @@ end
 -- @param DeletePolicyRequest
 -- @return response
 -- @return error_message
-function M.DeletePolicySync(...)
+function M.DeletePolicySync(DeletePolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeletePolicyAsync(..., function(response, error_message)
+	M.DeletePolicyAsync(DeletePolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6212,10 +6212,10 @@ end
 -- @param DeletePolicyVersionRequest
 -- @return response
 -- @return error_message
-function M.DeletePolicyVersionSync(...)
+function M.DeletePolicyVersionSync(DeletePolicyVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeletePolicyVersionAsync(..., function(response, error_message)
+	M.DeletePolicyVersionAsync(DeletePolicyVersionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6244,10 +6244,10 @@ end
 -- @param CreateTopicRuleRequest
 -- @return response
 -- @return error_message
-function M.CreateTopicRuleSync(...)
+function M.CreateTopicRuleSync(CreateTopicRuleRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateTopicRuleAsync(..., function(response, error_message)
+	M.CreateTopicRuleAsync(CreateTopicRuleRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6276,10 +6276,10 @@ end
 -- @param SetDefaultPolicyVersionRequest
 -- @return response
 -- @return error_message
-function M.SetDefaultPolicyVersionSync(...)
+function M.SetDefaultPolicyVersionSync(SetDefaultPolicyVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetDefaultPolicyVersionAsync(..., function(response, error_message)
+	M.SetDefaultPolicyVersionAsync(SetDefaultPolicyVersionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6308,10 +6308,10 @@ end
 -- @param DisableTopicRuleRequest
 -- @return response
 -- @return error_message
-function M.DisableTopicRuleSync(...)
+function M.DisableTopicRuleSync(DisableTopicRuleRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisableTopicRuleAsync(..., function(response, error_message)
+	M.DisableTopicRuleAsync(DisableTopicRuleRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6340,10 +6340,10 @@ end
 -- @param ListPrincipalPoliciesRequest
 -- @return response
 -- @return error_message
-function M.ListPrincipalPoliciesSync(...)
+function M.ListPrincipalPoliciesSync(ListPrincipalPoliciesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListPrincipalPoliciesAsync(..., function(response, error_message)
+	M.ListPrincipalPoliciesAsync(ListPrincipalPoliciesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6372,10 +6372,10 @@ end
 -- @param GetLoggingOptionsRequest
 -- @return response
 -- @return error_message
-function M.GetLoggingOptionsSync(...)
+function M.GetLoggingOptionsSync(GetLoggingOptionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetLoggingOptionsAsync(..., function(response, error_message)
+	M.GetLoggingOptionsAsync(GetLoggingOptionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6404,10 +6404,10 @@ end
 -- @param TransferCertificateRequest
 -- @return response
 -- @return error_message
-function M.TransferCertificateSync(...)
+function M.TransferCertificateSync(TransferCertificateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.TransferCertificateAsync(..., function(response, error_message)
+	M.TransferCertificateAsync(TransferCertificateRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6436,10 +6436,10 @@ end
 -- @param GetPolicyRequest
 -- @return response
 -- @return error_message
-function M.GetPolicySync(...)
+function M.GetPolicySync(GetPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetPolicyAsync(..., function(response, error_message)
+	M.GetPolicyAsync(GetPolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6468,10 +6468,10 @@ end
 -- @param RejectCertificateTransferRequest
 -- @return response
 -- @return error_message
-function M.RejectCertificateTransferSync(...)
+function M.RejectCertificateTransferSync(RejectCertificateTransferRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RejectCertificateTransferAsync(..., function(response, error_message)
+	M.RejectCertificateTransferAsync(RejectCertificateTransferRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6500,10 +6500,10 @@ end
 -- @param ListCertificatesRequest
 -- @return response
 -- @return error_message
-function M.ListCertificatesSync(...)
+function M.ListCertificatesSync(ListCertificatesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListCertificatesAsync(..., function(response, error_message)
+	M.ListCertificatesAsync(ListCertificatesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6532,10 +6532,10 @@ end
 -- @param DeleteCACertificateRequest
 -- @return response
 -- @return error_message
-function M.DeleteCACertificateSync(...)
+function M.DeleteCACertificateSync(DeleteCACertificateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteCACertificateAsync(..., function(response, error_message)
+	M.DeleteCACertificateAsync(DeleteCACertificateRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6564,10 +6564,10 @@ end
 -- @param DeleteCertificateRequest
 -- @return response
 -- @return error_message
-function M.DeleteCertificateSync(...)
+function M.DeleteCertificateSync(DeleteCertificateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteCertificateAsync(..., function(response, error_message)
+	M.DeleteCertificateAsync(DeleteCertificateRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6596,10 +6596,10 @@ end
 -- @param ListPolicyPrincipalsRequest
 -- @return response
 -- @return error_message
-function M.ListPolicyPrincipalsSync(...)
+function M.ListPolicyPrincipalsSync(ListPolicyPrincipalsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListPolicyPrincipalsAsync(..., function(response, error_message)
+	M.ListPolicyPrincipalsAsync(ListPolicyPrincipalsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6628,10 +6628,10 @@ end
 -- @param AttachPrincipalPolicyRequest
 -- @return response
 -- @return error_message
-function M.AttachPrincipalPolicySync(...)
+function M.AttachPrincipalPolicySync(AttachPrincipalPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AttachPrincipalPolicyAsync(..., function(response, error_message)
+	M.AttachPrincipalPolicyAsync(AttachPrincipalPolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6660,10 +6660,10 @@ end
 -- @param ListCACertificatesRequest
 -- @return response
 -- @return error_message
-function M.ListCACertificatesSync(...)
+function M.ListCACertificatesSync(ListCACertificatesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListCACertificatesAsync(..., function(response, error_message)
+	M.ListCACertificatesAsync(ListCACertificatesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6692,10 +6692,10 @@ end
 -- @param CreateThingTypeRequest
 -- @return response
 -- @return error_message
-function M.CreateThingTypeSync(...)
+function M.CreateThingTypeSync(CreateThingTypeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateThingTypeAsync(..., function(response, error_message)
+	M.CreateThingTypeAsync(CreateThingTypeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6724,10 +6724,10 @@ end
 -- @param ListOutgoingCertificatesRequest
 -- @return response
 -- @return error_message
-function M.ListOutgoingCertificatesSync(...)
+function M.ListOutgoingCertificatesSync(ListOutgoingCertificatesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListOutgoingCertificatesAsync(..., function(response, error_message)
+	M.ListOutgoingCertificatesAsync(ListOutgoingCertificatesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6756,10 +6756,10 @@ end
 -- @param DeleteRegistrationCodeRequest
 -- @return response
 -- @return error_message
-function M.DeleteRegistrationCodeSync(...)
+function M.DeleteRegistrationCodeSync(DeleteRegistrationCodeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteRegistrationCodeAsync(..., function(response, error_message)
+	M.DeleteRegistrationCodeAsync(DeleteRegistrationCodeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6788,10 +6788,10 @@ end
 -- @param DescribeCACertificateRequest
 -- @return response
 -- @return error_message
-function M.DescribeCACertificateSync(...)
+function M.DescribeCACertificateSync(DescribeCACertificateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeCACertificateAsync(..., function(response, error_message)
+	M.DescribeCACertificateAsync(DescribeCACertificateRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6820,10 +6820,10 @@ end
 -- @param GetPolicyVersionRequest
 -- @return response
 -- @return error_message
-function M.GetPolicyVersionSync(...)
+function M.GetPolicyVersionSync(GetPolicyVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetPolicyVersionAsync(..., function(response, error_message)
+	M.GetPolicyVersionAsync(GetPolicyVersionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6852,10 +6852,10 @@ end
 -- @param ListThingTypesRequest
 -- @return response
 -- @return error_message
-function M.ListThingTypesSync(...)
+function M.ListThingTypesSync(ListThingTypesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListThingTypesAsync(..., function(response, error_message)
+	M.ListThingTypesAsync(ListThingTypesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6884,10 +6884,10 @@ end
 -- @param GetTopicRuleRequest
 -- @return response
 -- @return error_message
-function M.GetTopicRuleSync(...)
+function M.GetTopicRuleSync(GetTopicRuleRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetTopicRuleAsync(..., function(response, error_message)
+	M.GetTopicRuleAsync(GetTopicRuleRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6916,10 +6916,10 @@ end
 -- @param CreateKeysAndCertificateRequest
 -- @return response
 -- @return error_message
-function M.CreateKeysAndCertificateSync(...)
+function M.CreateKeysAndCertificateSync(CreateKeysAndCertificateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateKeysAndCertificateAsync(..., function(response, error_message)
+	M.CreateKeysAndCertificateAsync(CreateKeysAndCertificateRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6948,10 +6948,10 @@ end
 -- @param AcceptCertificateTransferRequest
 -- @return response
 -- @return error_message
-function M.AcceptCertificateTransferSync(...)
+function M.AcceptCertificateTransferSync(AcceptCertificateTransferRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AcceptCertificateTransferAsync(..., function(response, error_message)
+	M.AcceptCertificateTransferAsync(AcceptCertificateTransferRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6980,10 +6980,10 @@ end
 -- @param DeleteThingRequest
 -- @return response
 -- @return error_message
-function M.DeleteThingSync(...)
+function M.DeleteThingSync(DeleteThingRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteThingAsync(..., function(response, error_message)
+	M.DeleteThingAsync(DeleteThingRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7012,10 +7012,10 @@ end
 -- @param ListThingsRequest
 -- @return response
 -- @return error_message
-function M.ListThingsSync(...)
+function M.ListThingsSync(ListThingsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListThingsAsync(..., function(response, error_message)
+	M.ListThingsAsync(ListThingsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7044,10 +7044,10 @@ end
 -- @param ListCertificatesByCARequest
 -- @return response
 -- @return error_message
-function M.ListCertificatesByCASync(...)
+function M.ListCertificatesByCASync(ListCertificatesByCARequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListCertificatesByCAAsync(..., function(response, error_message)
+	M.ListCertificatesByCAAsync(ListCertificatesByCARequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7076,10 +7076,10 @@ end
 -- @param UpdateCertificateRequest
 -- @return response
 -- @return error_message
-function M.UpdateCertificateSync(...)
+function M.UpdateCertificateSync(UpdateCertificateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateCertificateAsync(..., function(response, error_message)
+	M.UpdateCertificateAsync(UpdateCertificateRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7108,10 +7108,10 @@ end
 -- @param GetRegistrationCodeRequest
 -- @return response
 -- @return error_message
-function M.GetRegistrationCodeSync(...)
+function M.GetRegistrationCodeSync(GetRegistrationCodeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetRegistrationCodeAsync(..., function(response, error_message)
+	M.GetRegistrationCodeAsync(GetRegistrationCodeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7140,10 +7140,10 @@ end
 -- @param ListPrincipalThingsRequest
 -- @return response
 -- @return error_message
-function M.ListPrincipalThingsSync(...)
+function M.ListPrincipalThingsSync(ListPrincipalThingsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListPrincipalThingsAsync(..., function(response, error_message)
+	M.ListPrincipalThingsAsync(ListPrincipalThingsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7172,10 +7172,10 @@ end
 -- @param CancelCertificateTransferRequest
 -- @return response
 -- @return error_message
-function M.CancelCertificateTransferSync(...)
+function M.CancelCertificateTransferSync(CancelCertificateTransferRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CancelCertificateTransferAsync(..., function(response, error_message)
+	M.CancelCertificateTransferAsync(CancelCertificateTransferRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7204,10 +7204,10 @@ end
 -- @param RegisterCACertificateRequest
 -- @return response
 -- @return error_message
-function M.RegisterCACertificateSync(...)
+function M.RegisterCACertificateSync(RegisterCACertificateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RegisterCACertificateAsync(..., function(response, error_message)
+	M.RegisterCACertificateAsync(RegisterCACertificateRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7236,10 +7236,10 @@ end
 -- @param DescribeCertificateRequest
 -- @return response
 -- @return error_message
-function M.DescribeCertificateSync(...)
+function M.DescribeCertificateSync(DescribeCertificateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeCertificateAsync(..., function(response, error_message)
+	M.DescribeCertificateAsync(DescribeCertificateRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7268,10 +7268,10 @@ end
 -- @param DescribeEndpointRequest
 -- @return response
 -- @return error_message
-function M.DescribeEndpointSync(...)
+function M.DescribeEndpointSync(DescribeEndpointRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEndpointAsync(..., function(response, error_message)
+	M.DescribeEndpointAsync(DescribeEndpointRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7300,10 +7300,10 @@ end
 -- @param ListTopicRulesRequest
 -- @return response
 -- @return error_message
-function M.ListTopicRulesSync(...)
+function M.ListTopicRulesSync(ListTopicRulesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTopicRulesAsync(..., function(response, error_message)
+	M.ListTopicRulesAsync(ListTopicRulesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7332,10 +7332,10 @@ end
 -- @param CreatePolicyVersionRequest
 -- @return response
 -- @return error_message
-function M.CreatePolicyVersionSync(...)
+function M.CreatePolicyVersionSync(CreatePolicyVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreatePolicyVersionAsync(..., function(response, error_message)
+	M.CreatePolicyVersionAsync(CreatePolicyVersionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7364,10 +7364,10 @@ end
 -- @param CreateCertificateFromCsrRequest
 -- @return response
 -- @return error_message
-function M.CreateCertificateFromCsrSync(...)
+function M.CreateCertificateFromCsrSync(CreateCertificateFromCsrRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateCertificateFromCsrAsync(..., function(response, error_message)
+	M.CreateCertificateFromCsrAsync(CreateCertificateFromCsrRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7396,10 +7396,10 @@ end
 -- @param DescribeThingTypeRequest
 -- @return response
 -- @return error_message
-function M.DescribeThingTypeSync(...)
+function M.DescribeThingTypeSync(DescribeThingTypeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeThingTypeAsync(..., function(response, error_message)
+	M.DescribeThingTypeAsync(DescribeThingTypeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7428,10 +7428,10 @@ end
 -- @param ListPoliciesRequest
 -- @return response
 -- @return error_message
-function M.ListPoliciesSync(...)
+function M.ListPoliciesSync(ListPoliciesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListPoliciesAsync(..., function(response, error_message)
+	M.ListPoliciesAsync(ListPoliciesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7460,10 +7460,10 @@ end
 -- @param CreateThingRequest
 -- @return response
 -- @return error_message
-function M.CreateThingSync(...)
+function M.CreateThingSync(CreateThingRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateThingAsync(..., function(response, error_message)
+	M.CreateThingAsync(CreateThingRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7492,10 +7492,10 @@ end
 -- @param UpdateCACertificateRequest
 -- @return response
 -- @return error_message
-function M.UpdateCACertificateSync(...)
+function M.UpdateCACertificateSync(UpdateCACertificateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateCACertificateAsync(..., function(response, error_message)
+	M.UpdateCACertificateAsync(UpdateCACertificateRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7524,10 +7524,10 @@ end
 -- @param UpdateThingRequest
 -- @return response
 -- @return error_message
-function M.UpdateThingSync(...)
+function M.UpdateThingSync(UpdateThingRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateThingAsync(..., function(response, error_message)
+	M.UpdateThingAsync(UpdateThingRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7556,10 +7556,10 @@ end
 -- @param AttachThingPrincipalRequest
 -- @return response
 -- @return error_message
-function M.AttachThingPrincipalSync(...)
+function M.AttachThingPrincipalSync(AttachThingPrincipalRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AttachThingPrincipalAsync(..., function(response, error_message)
+	M.AttachThingPrincipalAsync(AttachThingPrincipalRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7588,10 +7588,10 @@ end
 -- @param DetachPrincipalPolicyRequest
 -- @return response
 -- @return error_message
-function M.DetachPrincipalPolicySync(...)
+function M.DetachPrincipalPolicySync(DetachPrincipalPolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DetachPrincipalPolicyAsync(..., function(response, error_message)
+	M.DetachPrincipalPolicyAsync(DetachPrincipalPolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7620,10 +7620,10 @@ end
 -- @param EnableTopicRuleRequest
 -- @return response
 -- @return error_message
-function M.EnableTopicRuleSync(...)
+function M.EnableTopicRuleSync(EnableTopicRuleRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.EnableTopicRuleAsync(..., function(response, error_message)
+	M.EnableTopicRuleAsync(EnableTopicRuleRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7652,10 +7652,10 @@ end
 -- @param CreatePolicyRequest
 -- @return response
 -- @return error_message
-function M.CreatePolicySync(...)
+function M.CreatePolicySync(CreatePolicyRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreatePolicyAsync(..., function(response, error_message)
+	M.CreatePolicyAsync(CreatePolicyRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7684,10 +7684,10 @@ end
 -- @param RegisterCertificateRequest
 -- @return response
 -- @return error_message
-function M.RegisterCertificateSync(...)
+function M.RegisterCertificateSync(RegisterCertificateRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RegisterCertificateAsync(..., function(response, error_message)
+	M.RegisterCertificateAsync(RegisterCertificateRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7716,10 +7716,10 @@ end
 -- @param DescribeThingRequest
 -- @return response
 -- @return error_message
-function M.DescribeThingSync(...)
+function M.DescribeThingSync(DescribeThingRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeThingAsync(..., function(response, error_message)
+	M.DescribeThingAsync(DescribeThingRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7748,10 +7748,10 @@ end
 -- @param SetLoggingOptionsRequest
 -- @return response
 -- @return error_message
-function M.SetLoggingOptionsSync(...)
+function M.SetLoggingOptionsSync(SetLoggingOptionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetLoggingOptionsAsync(..., function(response, error_message)
+	M.SetLoggingOptionsAsync(SetLoggingOptionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7780,10 +7780,10 @@ end
 -- @param ListThingPrincipalsRequest
 -- @return response
 -- @return error_message
-function M.ListThingPrincipalsSync(...)
+function M.ListThingPrincipalsSync(ListThingPrincipalsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListThingPrincipalsAsync(..., function(response, error_message)
+	M.ListThingPrincipalsAsync(ListThingPrincipalsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7812,10 +7812,10 @@ end
 -- @param DeleteTopicRuleRequest
 -- @return response
 -- @return error_message
-function M.DeleteTopicRuleSync(...)
+function M.DeleteTopicRuleSync(DeleteTopicRuleRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteTopicRuleAsync(..., function(response, error_message)
+	M.DeleteTopicRuleAsync(DeleteTopicRuleRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

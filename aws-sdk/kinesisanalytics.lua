@@ -3290,10 +3290,10 @@ end
 -- @param DiscoverInputSchemaRequest
 -- @return response
 -- @return error_message
-function M.DiscoverInputSchemaSync(...)
+function M.DiscoverInputSchemaSync(DiscoverInputSchemaRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DiscoverInputSchemaAsync(..., function(response, error_message)
+	M.DiscoverInputSchemaAsync(DiscoverInputSchemaRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3322,10 +3322,10 @@ end
 -- @param DeleteApplicationOutputRequest
 -- @return response
 -- @return error_message
-function M.DeleteApplicationOutputSync(...)
+function M.DeleteApplicationOutputSync(DeleteApplicationOutputRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteApplicationOutputAsync(..., function(response, error_message)
+	M.DeleteApplicationOutputAsync(DeleteApplicationOutputRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3354,10 +3354,10 @@ end
 -- @param AddApplicationReferenceDataSourceRequest
 -- @return response
 -- @return error_message
-function M.AddApplicationReferenceDataSourceSync(...)
+function M.AddApplicationReferenceDataSourceSync(AddApplicationReferenceDataSourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddApplicationReferenceDataSourceAsync(..., function(response, error_message)
+	M.AddApplicationReferenceDataSourceAsync(AddApplicationReferenceDataSourceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3386,10 +3386,10 @@ end
 -- @param ListApplicationsRequest
 -- @return response
 -- @return error_message
-function M.ListApplicationsSync(...)
+function M.ListApplicationsSync(ListApplicationsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListApplicationsAsync(..., function(response, error_message)
+	M.ListApplicationsAsync(ListApplicationsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3418,10 +3418,10 @@ end
 -- @param UpdateApplicationRequest
 -- @return response
 -- @return error_message
-function M.UpdateApplicationSync(...)
+function M.UpdateApplicationSync(UpdateApplicationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateApplicationAsync(..., function(response, error_message)
+	M.UpdateApplicationAsync(UpdateApplicationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3450,10 +3450,10 @@ end
 -- @param StopApplicationRequest
 -- @return response
 -- @return error_message
-function M.StopApplicationSync(...)
+function M.StopApplicationSync(StopApplicationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StopApplicationAsync(..., function(response, error_message)
+	M.StopApplicationAsync(StopApplicationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3482,10 +3482,10 @@ end
 -- @param AddApplicationOutputRequest
 -- @return response
 -- @return error_message
-function M.AddApplicationOutputSync(...)
+function M.AddApplicationOutputSync(AddApplicationOutputRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddApplicationOutputAsync(..., function(response, error_message)
+	M.AddApplicationOutputAsync(AddApplicationOutputRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3514,10 +3514,10 @@ end
 -- @param DeleteApplicationRequest
 -- @return response
 -- @return error_message
-function M.DeleteApplicationSync(...)
+function M.DeleteApplicationSync(DeleteApplicationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteApplicationAsync(..., function(response, error_message)
+	M.DeleteApplicationAsync(DeleteApplicationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3546,10 +3546,10 @@ end
 -- @param AddApplicationCloudWatchLoggingOptionRequest
 -- @return response
 -- @return error_message
-function M.AddApplicationCloudWatchLoggingOptionSync(...)
+function M.AddApplicationCloudWatchLoggingOptionSync(AddApplicationCloudWatchLoggingOptionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddApplicationCloudWatchLoggingOptionAsync(..., function(response, error_message)
+	M.AddApplicationCloudWatchLoggingOptionAsync(AddApplicationCloudWatchLoggingOptionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3578,10 +3578,10 @@ end
 -- @param DeleteApplicationCloudWatchLoggingOptionRequest
 -- @return response
 -- @return error_message
-function M.DeleteApplicationCloudWatchLoggingOptionSync(...)
+function M.DeleteApplicationCloudWatchLoggingOptionSync(DeleteApplicationCloudWatchLoggingOptionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteApplicationCloudWatchLoggingOptionAsync(..., function(response, error_message)
+	M.DeleteApplicationCloudWatchLoggingOptionAsync(DeleteApplicationCloudWatchLoggingOptionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3610,10 +3610,10 @@ end
 -- @param AddApplicationInputRequest
 -- @return response
 -- @return error_message
-function M.AddApplicationInputSync(...)
+function M.AddApplicationInputSync(AddApplicationInputRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddApplicationInputAsync(..., function(response, error_message)
+	M.AddApplicationInputAsync(AddApplicationInputRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3642,10 +3642,10 @@ end
 -- @param DescribeApplicationRequest
 -- @return response
 -- @return error_message
-function M.DescribeApplicationSync(...)
+function M.DescribeApplicationSync(DescribeApplicationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeApplicationAsync(..., function(response, error_message)
+	M.DescribeApplicationAsync(DescribeApplicationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3674,10 +3674,10 @@ end
 -- @param DeleteApplicationReferenceDataSourceRequest
 -- @return response
 -- @return error_message
-function M.DeleteApplicationReferenceDataSourceSync(...)
+function M.DeleteApplicationReferenceDataSourceSync(DeleteApplicationReferenceDataSourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteApplicationReferenceDataSourceAsync(..., function(response, error_message)
+	M.DeleteApplicationReferenceDataSourceAsync(DeleteApplicationReferenceDataSourceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3706,10 +3706,10 @@ end
 -- @param StartApplicationRequest
 -- @return response
 -- @return error_message
-function M.StartApplicationSync(...)
+function M.StartApplicationSync(StartApplicationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartApplicationAsync(..., function(response, error_message)
+	M.StartApplicationAsync(StartApplicationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3738,10 +3738,10 @@ end
 -- @param CreateApplicationRequest
 -- @return response
 -- @return error_message
-function M.CreateApplicationSync(...)
+function M.CreateApplicationSync(CreateApplicationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateApplicationAsync(..., function(response, error_message)
+	M.CreateApplicationAsync(CreateApplicationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

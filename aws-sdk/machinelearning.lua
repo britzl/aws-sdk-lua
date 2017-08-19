@@ -3983,10 +3983,10 @@ end
 -- @param DeleteTagsInput
 -- @return response
 -- @return error_message
-function M.DeleteTagsSync(...)
+function M.DeleteTagsSync(DeleteTagsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteTagsAsync(..., function(response, error_message)
+	M.DeleteTagsAsync(DeleteTagsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4015,10 +4015,10 @@ end
 -- @param UpdateBatchPredictionInput
 -- @return response
 -- @return error_message
-function M.UpdateBatchPredictionSync(...)
+function M.UpdateBatchPredictionSync(UpdateBatchPredictionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateBatchPredictionAsync(..., function(response, error_message)
+	M.UpdateBatchPredictionAsync(UpdateBatchPredictionInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4047,10 +4047,10 @@ end
 -- @param GetEvaluationInput
 -- @return response
 -- @return error_message
-function M.GetEvaluationSync(...)
+function M.GetEvaluationSync(GetEvaluationInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetEvaluationAsync(..., function(response, error_message)
+	M.GetEvaluationAsync(GetEvaluationInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4079,10 +4079,10 @@ end
 -- @param DescribeBatchPredictionsInput
 -- @return response
 -- @return error_message
-function M.DescribeBatchPredictionsSync(...)
+function M.DescribeBatchPredictionsSync(DescribeBatchPredictionsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeBatchPredictionsAsync(..., function(response, error_message)
+	M.DescribeBatchPredictionsAsync(DescribeBatchPredictionsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4111,10 +4111,10 @@ end
 -- @param CreateEvaluationInput
 -- @return response
 -- @return error_message
-function M.CreateEvaluationSync(...)
+function M.CreateEvaluationSync(CreateEvaluationInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateEvaluationAsync(..., function(response, error_message)
+	M.CreateEvaluationAsync(CreateEvaluationInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4143,10 +4143,10 @@ end
 -- @param DescribeMLModelsInput
 -- @return response
 -- @return error_message
-function M.DescribeMLModelsSync(...)
+function M.DescribeMLModelsSync(DescribeMLModelsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeMLModelsAsync(..., function(response, error_message)
+	M.DescribeMLModelsAsync(DescribeMLModelsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4175,10 +4175,10 @@ end
 -- @param DeleteMLModelInput
 -- @return response
 -- @return error_message
-function M.DeleteMLModelSync(...)
+function M.DeleteMLModelSync(DeleteMLModelInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteMLModelAsync(..., function(response, error_message)
+	M.DeleteMLModelAsync(DeleteMLModelInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4207,10 +4207,10 @@ end
 -- @param CreateDataSourceFromS3Input
 -- @return response
 -- @return error_message
-function M.CreateDataSourceFromS3Sync(...)
+function M.CreateDataSourceFromS3Sync(CreateDataSourceFromS3Input, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDataSourceFromS3Async(..., function(response, error_message)
+	M.CreateDataSourceFromS3Async(CreateDataSourceFromS3Input, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4239,10 +4239,10 @@ end
 -- @param UpdateDataSourceInput
 -- @return response
 -- @return error_message
-function M.UpdateDataSourceSync(...)
+function M.UpdateDataSourceSync(UpdateDataSourceInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateDataSourceAsync(..., function(response, error_message)
+	M.UpdateDataSourceAsync(UpdateDataSourceInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4271,10 +4271,10 @@ end
 -- @param DescribeEvaluationsInput
 -- @return response
 -- @return error_message
-function M.DescribeEvaluationsSync(...)
+function M.DescribeEvaluationsSync(DescribeEvaluationsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeEvaluationsAsync(..., function(response, error_message)
+	M.DescribeEvaluationsAsync(DescribeEvaluationsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4303,10 +4303,10 @@ end
 -- @param CreateDataSourceFromRedshiftInput
 -- @return response
 -- @return error_message
-function M.CreateDataSourceFromRedshiftSync(...)
+function M.CreateDataSourceFromRedshiftSync(CreateDataSourceFromRedshiftInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDataSourceFromRedshiftAsync(..., function(response, error_message)
+	M.CreateDataSourceFromRedshiftAsync(CreateDataSourceFromRedshiftInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4335,10 +4335,10 @@ end
 -- @param DescribeDataSourcesInput
 -- @return response
 -- @return error_message
-function M.DescribeDataSourcesSync(...)
+function M.DescribeDataSourcesSync(DescribeDataSourcesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeDataSourcesAsync(..., function(response, error_message)
+	M.DescribeDataSourcesAsync(DescribeDataSourcesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4367,10 +4367,10 @@ end
 -- @param GetDataSourceInput
 -- @return response
 -- @return error_message
-function M.GetDataSourceSync(...)
+function M.GetDataSourceSync(GetDataSourceInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetDataSourceAsync(..., function(response, error_message)
+	M.GetDataSourceAsync(GetDataSourceInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4399,10 +4399,10 @@ end
 -- @param CreateRealtimeEndpointInput
 -- @return response
 -- @return error_message
-function M.CreateRealtimeEndpointSync(...)
+function M.CreateRealtimeEndpointSync(CreateRealtimeEndpointInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateRealtimeEndpointAsync(..., function(response, error_message)
+	M.CreateRealtimeEndpointAsync(CreateRealtimeEndpointInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4431,10 +4431,10 @@ end
 -- @param UpdateMLModelInput
 -- @return response
 -- @return error_message
-function M.UpdateMLModelSync(...)
+function M.UpdateMLModelSync(UpdateMLModelInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateMLModelAsync(..., function(response, error_message)
+	M.UpdateMLModelAsync(UpdateMLModelInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4463,10 +4463,10 @@ end
 -- @param DeleteRealtimeEndpointInput
 -- @return response
 -- @return error_message
-function M.DeleteRealtimeEndpointSync(...)
+function M.DeleteRealtimeEndpointSync(DeleteRealtimeEndpointInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteRealtimeEndpointAsync(..., function(response, error_message)
+	M.DeleteRealtimeEndpointAsync(DeleteRealtimeEndpointInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4495,10 +4495,10 @@ end
 -- @param DescribeTagsInput
 -- @return response
 -- @return error_message
-function M.DescribeTagsSync(...)
+function M.DescribeTagsSync(DescribeTagsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTagsAsync(..., function(response, error_message)
+	M.DescribeTagsAsync(DescribeTagsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4527,10 +4527,10 @@ end
 -- @param DeleteDataSourceInput
 -- @return response
 -- @return error_message
-function M.DeleteDataSourceSync(...)
+function M.DeleteDataSourceSync(DeleteDataSourceInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteDataSourceAsync(..., function(response, error_message)
+	M.DeleteDataSourceAsync(DeleteDataSourceInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4559,10 +4559,10 @@ end
 -- @param CreateDataSourceFromRDSInput
 -- @return response
 -- @return error_message
-function M.CreateDataSourceFromRDSSync(...)
+function M.CreateDataSourceFromRDSSync(CreateDataSourceFromRDSInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDataSourceFromRDSAsync(..., function(response, error_message)
+	M.CreateDataSourceFromRDSAsync(CreateDataSourceFromRDSInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4591,10 +4591,10 @@ end
 -- @param UpdateEvaluationInput
 -- @return response
 -- @return error_message
-function M.UpdateEvaluationSync(...)
+function M.UpdateEvaluationSync(UpdateEvaluationInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateEvaluationAsync(..., function(response, error_message)
+	M.UpdateEvaluationAsync(UpdateEvaluationInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4623,10 +4623,10 @@ end
 -- @param AddTagsInput
 -- @return response
 -- @return error_message
-function M.AddTagsSync(...)
+function M.AddTagsSync(AddTagsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddTagsAsync(..., function(response, error_message)
+	M.AddTagsAsync(AddTagsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4655,10 +4655,10 @@ end
 -- @param PredictInput
 -- @return response
 -- @return error_message
-function M.PredictSync(...)
+function M.PredictSync(PredictInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PredictAsync(..., function(response, error_message)
+	M.PredictAsync(PredictInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4687,10 +4687,10 @@ end
 -- @param GetBatchPredictionInput
 -- @return response
 -- @return error_message
-function M.GetBatchPredictionSync(...)
+function M.GetBatchPredictionSync(GetBatchPredictionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetBatchPredictionAsync(..., function(response, error_message)
+	M.GetBatchPredictionAsync(GetBatchPredictionInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4719,10 +4719,10 @@ end
 -- @param DeleteEvaluationInput
 -- @return response
 -- @return error_message
-function M.DeleteEvaluationSync(...)
+function M.DeleteEvaluationSync(DeleteEvaluationInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteEvaluationAsync(..., function(response, error_message)
+	M.DeleteEvaluationAsync(DeleteEvaluationInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4751,10 +4751,10 @@ end
 -- @param DeleteBatchPredictionInput
 -- @return response
 -- @return error_message
-function M.DeleteBatchPredictionSync(...)
+function M.DeleteBatchPredictionSync(DeleteBatchPredictionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteBatchPredictionAsync(..., function(response, error_message)
+	M.DeleteBatchPredictionAsync(DeleteBatchPredictionInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4783,10 +4783,10 @@ end
 -- @param CreateMLModelInput
 -- @return response
 -- @return error_message
-function M.CreateMLModelSync(...)
+function M.CreateMLModelSync(CreateMLModelInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateMLModelAsync(..., function(response, error_message)
+	M.CreateMLModelAsync(CreateMLModelInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4815,10 +4815,10 @@ end
 -- @param CreateBatchPredictionInput
 -- @return response
 -- @return error_message
-function M.CreateBatchPredictionSync(...)
+function M.CreateBatchPredictionSync(CreateBatchPredictionInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateBatchPredictionAsync(..., function(response, error_message)
+	M.CreateBatchPredictionAsync(CreateBatchPredictionInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4847,10 +4847,10 @@ end
 -- @param GetMLModelInput
 -- @return response
 -- @return error_message
-function M.GetMLModelSync(...)
+function M.GetMLModelSync(GetMLModelInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetMLModelAsync(..., function(response, error_message)
+	M.GetMLModelAsync(GetMLModelInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

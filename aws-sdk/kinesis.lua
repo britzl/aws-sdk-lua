@@ -1995,10 +1995,10 @@ end
 -- @param GetRecordsInput
 -- @return response
 -- @return error_message
-function M.GetRecordsSync(...)
+function M.GetRecordsSync(GetRecordsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetRecordsAsync(..., function(response, error_message)
+	M.GetRecordsAsync(GetRecordsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2027,10 +2027,10 @@ end
 -- @param IncreaseStreamRetentionPeriodInput
 -- @return response
 -- @return error_message
-function M.IncreaseStreamRetentionPeriodSync(...)
+function M.IncreaseStreamRetentionPeriodSync(IncreaseStreamRetentionPeriodInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.IncreaseStreamRetentionPeriodAsync(..., function(response, error_message)
+	M.IncreaseStreamRetentionPeriodAsync(IncreaseStreamRetentionPeriodInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2059,10 +2059,10 @@ end
 -- @param DescribeLimitsInput
 -- @return response
 -- @return error_message
-function M.DescribeLimitsSync(...)
+function M.DescribeLimitsSync(DescribeLimitsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeLimitsAsync(..., function(response, error_message)
+	M.DescribeLimitsAsync(DescribeLimitsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2091,10 +2091,10 @@ end
 -- @param ListTagsForStreamInput
 -- @return response
 -- @return error_message
-function M.ListTagsForStreamSync(...)
+function M.ListTagsForStreamSync(ListTagsForStreamInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTagsForStreamAsync(..., function(response, error_message)
+	M.ListTagsForStreamAsync(ListTagsForStreamInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2123,10 +2123,10 @@ end
 -- @param PutRecordsInput
 -- @return response
 -- @return error_message
-function M.PutRecordsSync(...)
+function M.PutRecordsSync(PutRecordsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutRecordsAsync(..., function(response, error_message)
+	M.PutRecordsAsync(PutRecordsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2155,10 +2155,10 @@ end
 -- @param GetShardIteratorInput
 -- @return response
 -- @return error_message
-function M.GetShardIteratorSync(...)
+function M.GetShardIteratorSync(GetShardIteratorInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetShardIteratorAsync(..., function(response, error_message)
+	M.GetShardIteratorAsync(GetShardIteratorInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2187,10 +2187,10 @@ end
 -- @param DeleteStreamInput
 -- @return response
 -- @return error_message
-function M.DeleteStreamSync(...)
+function M.DeleteStreamSync(DeleteStreamInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteStreamAsync(..., function(response, error_message)
+	M.DeleteStreamAsync(DeleteStreamInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2219,10 +2219,10 @@ end
 -- @param AddTagsToStreamInput
 -- @return response
 -- @return error_message
-function M.AddTagsToStreamSync(...)
+function M.AddTagsToStreamSync(AddTagsToStreamInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddTagsToStreamAsync(..., function(response, error_message)
+	M.AddTagsToStreamAsync(AddTagsToStreamInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2251,10 +2251,10 @@ end
 -- @param RemoveTagsFromStreamInput
 -- @return response
 -- @return error_message
-function M.RemoveTagsFromStreamSync(...)
+function M.RemoveTagsFromStreamSync(RemoveTagsFromStreamInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RemoveTagsFromStreamAsync(..., function(response, error_message)
+	M.RemoveTagsFromStreamAsync(RemoveTagsFromStreamInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2283,10 +2283,10 @@ end
 -- @param DecreaseStreamRetentionPeriodInput
 -- @return response
 -- @return error_message
-function M.DecreaseStreamRetentionPeriodSync(...)
+function M.DecreaseStreamRetentionPeriodSync(DecreaseStreamRetentionPeriodInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DecreaseStreamRetentionPeriodAsync(..., function(response, error_message)
+	M.DecreaseStreamRetentionPeriodAsync(DecreaseStreamRetentionPeriodInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2315,10 +2315,10 @@ end
 -- @param DisableEnhancedMonitoringInput
 -- @return response
 -- @return error_message
-function M.DisableEnhancedMonitoringSync(...)
+function M.DisableEnhancedMonitoringSync(DisableEnhancedMonitoringInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisableEnhancedMonitoringAsync(..., function(response, error_message)
+	M.DisableEnhancedMonitoringAsync(DisableEnhancedMonitoringInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2347,10 +2347,10 @@ end
 -- @param SplitShardInput
 -- @return response
 -- @return error_message
-function M.SplitShardSync(...)
+function M.SplitShardSync(SplitShardInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SplitShardAsync(..., function(response, error_message)
+	M.SplitShardAsync(SplitShardInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2379,10 +2379,10 @@ end
 -- @param DescribeStreamInput
 -- @return response
 -- @return error_message
-function M.DescribeStreamSync(...)
+function M.DescribeStreamSync(DescribeStreamInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeStreamAsync(..., function(response, error_message)
+	M.DescribeStreamAsync(DescribeStreamInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2411,10 +2411,10 @@ end
 -- @param CreateStreamInput
 -- @return response
 -- @return error_message
-function M.CreateStreamSync(...)
+function M.CreateStreamSync(CreateStreamInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateStreamAsync(..., function(response, error_message)
+	M.CreateStreamAsync(CreateStreamInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2443,10 +2443,10 @@ end
 -- @param PutRecordInput
 -- @return response
 -- @return error_message
-function M.PutRecordSync(...)
+function M.PutRecordSync(PutRecordInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutRecordAsync(..., function(response, error_message)
+	M.PutRecordAsync(PutRecordInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2475,10 +2475,10 @@ end
 -- @param ListStreamsInput
 -- @return response
 -- @return error_message
-function M.ListStreamsSync(...)
+function M.ListStreamsSync(ListStreamsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListStreamsAsync(..., function(response, error_message)
+	M.ListStreamsAsync(ListStreamsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2507,10 +2507,10 @@ end
 -- @param MergeShardsInput
 -- @return response
 -- @return error_message
-function M.MergeShardsSync(...)
+function M.MergeShardsSync(MergeShardsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.MergeShardsAsync(..., function(response, error_message)
+	M.MergeShardsAsync(MergeShardsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2539,10 +2539,10 @@ end
 -- @param UpdateShardCountInput
 -- @return response
 -- @return error_message
-function M.UpdateShardCountSync(...)
+function M.UpdateShardCountSync(UpdateShardCountInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateShardCountAsync(..., function(response, error_message)
+	M.UpdateShardCountAsync(UpdateShardCountInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2571,10 +2571,10 @@ end
 -- @param EnableEnhancedMonitoringInput
 -- @return response
 -- @return error_message
-function M.EnableEnhancedMonitoringSync(...)
+function M.EnableEnhancedMonitoringSync(EnableEnhancedMonitoringInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.EnableEnhancedMonitoringAsync(..., function(response, error_message)
+	M.EnableEnhancedMonitoringAsync(EnableEnhancedMonitoringInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

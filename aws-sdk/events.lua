@@ -1763,10 +1763,10 @@ end
 -- @param PutEventsRequest
 -- @return response
 -- @return error_message
-function M.PutEventsSync(...)
+function M.PutEventsSync(PutEventsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutEventsAsync(..., function(response, error_message)
+	M.PutEventsAsync(PutEventsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1795,10 +1795,10 @@ end
 -- @param DescribeRuleRequest
 -- @return response
 -- @return error_message
-function M.DescribeRuleSync(...)
+function M.DescribeRuleSync(DescribeRuleRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeRuleAsync(..., function(response, error_message)
+	M.DescribeRuleAsync(DescribeRuleRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1827,10 +1827,10 @@ end
 -- @param ListTargetsByRuleRequest
 -- @return response
 -- @return error_message
-function M.ListTargetsByRuleSync(...)
+function M.ListTargetsByRuleSync(ListTargetsByRuleRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTargetsByRuleAsync(..., function(response, error_message)
+	M.ListTargetsByRuleAsync(ListTargetsByRuleRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1859,10 +1859,10 @@ end
 -- @param PutTargetsRequest
 -- @return response
 -- @return error_message
-function M.PutTargetsSync(...)
+function M.PutTargetsSync(PutTargetsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutTargetsAsync(..., function(response, error_message)
+	M.PutTargetsAsync(PutTargetsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1891,10 +1891,10 @@ end
 -- @param DeleteRuleRequest
 -- @return response
 -- @return error_message
-function M.DeleteRuleSync(...)
+function M.DeleteRuleSync(DeleteRuleRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteRuleAsync(..., function(response, error_message)
+	M.DeleteRuleAsync(DeleteRuleRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1923,10 +1923,10 @@ end
 -- @param ListRuleNamesByTargetRequest
 -- @return response
 -- @return error_message
-function M.ListRuleNamesByTargetSync(...)
+function M.ListRuleNamesByTargetSync(ListRuleNamesByTargetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListRuleNamesByTargetAsync(..., function(response, error_message)
+	M.ListRuleNamesByTargetAsync(ListRuleNamesByTargetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1955,10 +1955,10 @@ end
 -- @param EnableRuleRequest
 -- @return response
 -- @return error_message
-function M.EnableRuleSync(...)
+function M.EnableRuleSync(EnableRuleRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.EnableRuleAsync(..., function(response, error_message)
+	M.EnableRuleAsync(EnableRuleRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1987,10 +1987,10 @@ end
 -- @param TestEventPatternRequest
 -- @return response
 -- @return error_message
-function M.TestEventPatternSync(...)
+function M.TestEventPatternSync(TestEventPatternRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.TestEventPatternAsync(..., function(response, error_message)
+	M.TestEventPatternAsync(TestEventPatternRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2019,10 +2019,10 @@ end
 -- @param ListRulesRequest
 -- @return response
 -- @return error_message
-function M.ListRulesSync(...)
+function M.ListRulesSync(ListRulesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListRulesAsync(..., function(response, error_message)
+	M.ListRulesAsync(ListRulesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2051,10 +2051,10 @@ end
 -- @param DisableRuleRequest
 -- @return response
 -- @return error_message
-function M.DisableRuleSync(...)
+function M.DisableRuleSync(DisableRuleRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisableRuleAsync(..., function(response, error_message)
+	M.DisableRuleAsync(DisableRuleRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2083,10 +2083,10 @@ end
 -- @param PutRuleRequest
 -- @return response
 -- @return error_message
-function M.PutRuleSync(...)
+function M.PutRuleSync(PutRuleRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutRuleAsync(..., function(response, error_message)
+	M.PutRuleAsync(PutRuleRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2115,10 +2115,10 @@ end
 -- @param RemoveTargetsRequest
 -- @return response
 -- @return error_message
-function M.RemoveTargetsSync(...)
+function M.RemoveTargetsSync(RemoveTargetsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RemoveTargetsAsync(..., function(response, error_message)
+	M.RemoveTargetsAsync(RemoveTargetsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

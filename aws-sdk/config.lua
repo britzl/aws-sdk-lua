@@ -3912,10 +3912,10 @@ end
 -- @param StopConfigurationRecorderRequest
 -- @return response
 -- @return error_message
-function M.StopConfigurationRecorderSync(...)
+function M.StopConfigurationRecorderSync(StopConfigurationRecorderRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StopConfigurationRecorderAsync(..., function(response, error_message)
+	M.StopConfigurationRecorderAsync(StopConfigurationRecorderRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3944,10 +3944,10 @@ end
 -- @param GetComplianceDetailsByResourceRequest
 -- @return response
 -- @return error_message
-function M.GetComplianceDetailsByResourceSync(...)
+function M.GetComplianceDetailsByResourceSync(GetComplianceDetailsByResourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetComplianceDetailsByResourceAsync(..., function(response, error_message)
+	M.GetComplianceDetailsByResourceAsync(GetComplianceDetailsByResourceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3976,10 +3976,10 @@ end
 -- @param ListDiscoveredResourcesRequest
 -- @return response
 -- @return error_message
-function M.ListDiscoveredResourcesSync(...)
+function M.ListDiscoveredResourcesSync(ListDiscoveredResourcesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListDiscoveredResourcesAsync(..., function(response, error_message)
+	M.ListDiscoveredResourcesAsync(ListDiscoveredResourcesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4008,10 +4008,10 @@ end
 -- @param DeleteDeliveryChannelRequest
 -- @return response
 -- @return error_message
-function M.DeleteDeliveryChannelSync(...)
+function M.DeleteDeliveryChannelSync(DeleteDeliveryChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteDeliveryChannelAsync(..., function(response, error_message)
+	M.DeleteDeliveryChannelAsync(DeleteDeliveryChannelRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4040,10 +4040,10 @@ end
 -- @param PutEvaluationsRequest
 -- @return response
 -- @return error_message
-function M.PutEvaluationsSync(...)
+function M.PutEvaluationsSync(PutEvaluationsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutEvaluationsAsync(..., function(response, error_message)
+	M.PutEvaluationsAsync(PutEvaluationsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4072,10 +4072,10 @@ end
 -- @param DeleteConfigRuleRequest
 -- @return response
 -- @return error_message
-function M.DeleteConfigRuleSync(...)
+function M.DeleteConfigRuleSync(DeleteConfigRuleRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteConfigRuleAsync(..., function(response, error_message)
+	M.DeleteConfigRuleAsync(DeleteConfigRuleRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4104,10 +4104,10 @@ end
 -- @param DescribeConfigurationRecordersRequest
 -- @return response
 -- @return error_message
-function M.DescribeConfigurationRecordersSync(...)
+function M.DescribeConfigurationRecordersSync(DescribeConfigurationRecordersRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeConfigurationRecordersAsync(..., function(response, error_message)
+	M.DescribeConfigurationRecordersAsync(DescribeConfigurationRecordersRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4136,10 +4136,10 @@ end
 -- @param PutConfigurationRecorderRequest
 -- @return response
 -- @return error_message
-function M.PutConfigurationRecorderSync(...)
+function M.PutConfigurationRecorderSync(PutConfigurationRecorderRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutConfigurationRecorderAsync(..., function(response, error_message)
+	M.PutConfigurationRecorderAsync(PutConfigurationRecorderRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4168,10 +4168,10 @@ end
 -- @param DescribeConfigurationRecorderStatusRequest
 -- @return response
 -- @return error_message
-function M.DescribeConfigurationRecorderStatusSync(...)
+function M.DescribeConfigurationRecorderStatusSync(DescribeConfigurationRecorderStatusRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeConfigurationRecorderStatusAsync(..., function(response, error_message)
+	M.DescribeConfigurationRecorderStatusAsync(DescribeConfigurationRecorderStatusRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4200,10 +4200,10 @@ end
 -- @param GetComplianceDetailsByConfigRuleRequest
 -- @return response
 -- @return error_message
-function M.GetComplianceDetailsByConfigRuleSync(...)
+function M.GetComplianceDetailsByConfigRuleSync(GetComplianceDetailsByConfigRuleRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetComplianceDetailsByConfigRuleAsync(..., function(response, error_message)
+	M.GetComplianceDetailsByConfigRuleAsync(GetComplianceDetailsByConfigRuleRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4232,10 +4232,10 @@ end
 -- @param DescribeDeliveryChannelStatusRequest
 -- @return response
 -- @return error_message
-function M.DescribeDeliveryChannelStatusSync(...)
+function M.DescribeDeliveryChannelStatusSync(DescribeDeliveryChannelStatusRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeDeliveryChannelStatusAsync(..., function(response, error_message)
+	M.DescribeDeliveryChannelStatusAsync(DescribeDeliveryChannelStatusRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4264,10 +4264,10 @@ end
 -- @param DeliverConfigSnapshotRequest
 -- @return response
 -- @return error_message
-function M.DeliverConfigSnapshotSync(...)
+function M.DeliverConfigSnapshotSync(DeliverConfigSnapshotRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeliverConfigSnapshotAsync(..., function(response, error_message)
+	M.DeliverConfigSnapshotAsync(DeliverConfigSnapshotRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4296,10 +4296,10 @@ end
 -- @param StartConfigRulesEvaluationRequest
 -- @return response
 -- @return error_message
-function M.StartConfigRulesEvaluationSync(...)
+function M.StartConfigRulesEvaluationSync(StartConfigRulesEvaluationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartConfigRulesEvaluationAsync(..., function(response, error_message)
+	M.StartConfigRulesEvaluationAsync(StartConfigRulesEvaluationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4328,7 +4328,7 @@ end
 function M.GetComplianceSummaryByConfigRuleSync(...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetComplianceSummaryByConfigRuleAsync(..., function(response, error_message)
+	M.GetComplianceSummaryByConfigRuleAsync(function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4357,10 +4357,10 @@ end
 -- @param StartConfigurationRecorderRequest
 -- @return response
 -- @return error_message
-function M.StartConfigurationRecorderSync(...)
+function M.StartConfigurationRecorderSync(StartConfigurationRecorderRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartConfigurationRecorderAsync(..., function(response, error_message)
+	M.StartConfigurationRecorderAsync(StartConfigurationRecorderRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4389,10 +4389,10 @@ end
 -- @param DescribeComplianceByResourceRequest
 -- @return response
 -- @return error_message
-function M.DescribeComplianceByResourceSync(...)
+function M.DescribeComplianceByResourceSync(DescribeComplianceByResourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeComplianceByResourceAsync(..., function(response, error_message)
+	M.DescribeComplianceByResourceAsync(DescribeComplianceByResourceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4421,10 +4421,10 @@ end
 -- @param GetResourceConfigHistoryRequest
 -- @return response
 -- @return error_message
-function M.GetResourceConfigHistorySync(...)
+function M.GetResourceConfigHistorySync(GetResourceConfigHistoryRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetResourceConfigHistoryAsync(..., function(response, error_message)
+	M.GetResourceConfigHistoryAsync(GetResourceConfigHistoryRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4453,10 +4453,10 @@ end
 -- @param DescribeConfigRuleEvaluationStatusRequest
 -- @return response
 -- @return error_message
-function M.DescribeConfigRuleEvaluationStatusSync(...)
+function M.DescribeConfigRuleEvaluationStatusSync(DescribeConfigRuleEvaluationStatusRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeConfigRuleEvaluationStatusAsync(..., function(response, error_message)
+	M.DescribeConfigRuleEvaluationStatusAsync(DescribeConfigRuleEvaluationStatusRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4485,10 +4485,10 @@ end
 -- @param DescribeDeliveryChannelsRequest
 -- @return response
 -- @return error_message
-function M.DescribeDeliveryChannelsSync(...)
+function M.DescribeDeliveryChannelsSync(DescribeDeliveryChannelsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeDeliveryChannelsAsync(..., function(response, error_message)
+	M.DescribeDeliveryChannelsAsync(DescribeDeliveryChannelsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4517,10 +4517,10 @@ end
 -- @param GetComplianceSummaryByResourceTypeRequest
 -- @return response
 -- @return error_message
-function M.GetComplianceSummaryByResourceTypeSync(...)
+function M.GetComplianceSummaryByResourceTypeSync(GetComplianceSummaryByResourceTypeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetComplianceSummaryByResourceTypeAsync(..., function(response, error_message)
+	M.GetComplianceSummaryByResourceTypeAsync(GetComplianceSummaryByResourceTypeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4549,10 +4549,10 @@ end
 -- @param DescribeConfigRulesRequest
 -- @return response
 -- @return error_message
-function M.DescribeConfigRulesSync(...)
+function M.DescribeConfigRulesSync(DescribeConfigRulesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeConfigRulesAsync(..., function(response, error_message)
+	M.DescribeConfigRulesAsync(DescribeConfigRulesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4581,10 +4581,10 @@ end
 -- @param PutConfigRuleRequest
 -- @return response
 -- @return error_message
-function M.PutConfigRuleSync(...)
+function M.PutConfigRuleSync(PutConfigRuleRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutConfigRuleAsync(..., function(response, error_message)
+	M.PutConfigRuleAsync(PutConfigRuleRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4613,10 +4613,10 @@ end
 -- @param DeleteEvaluationResultsRequest
 -- @return response
 -- @return error_message
-function M.DeleteEvaluationResultsSync(...)
+function M.DeleteEvaluationResultsSync(DeleteEvaluationResultsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteEvaluationResultsAsync(..., function(response, error_message)
+	M.DeleteEvaluationResultsAsync(DeleteEvaluationResultsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4645,10 +4645,10 @@ end
 -- @param DescribeComplianceByConfigRuleRequest
 -- @return response
 -- @return error_message
-function M.DescribeComplianceByConfigRuleSync(...)
+function M.DescribeComplianceByConfigRuleSync(DescribeComplianceByConfigRuleRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeComplianceByConfigRuleAsync(..., function(response, error_message)
+	M.DescribeComplianceByConfigRuleAsync(DescribeComplianceByConfigRuleRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4677,10 +4677,10 @@ end
 -- @param PutDeliveryChannelRequest
 -- @return response
 -- @return error_message
-function M.PutDeliveryChannelSync(...)
+function M.PutDeliveryChannelSync(PutDeliveryChannelRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutDeliveryChannelAsync(..., function(response, error_message)
+	M.PutDeliveryChannelAsync(PutDeliveryChannelRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4709,10 +4709,10 @@ end
 -- @param DeleteConfigurationRecorderRequest
 -- @return response
 -- @return error_message
-function M.DeleteConfigurationRecorderSync(...)
+function M.DeleteConfigurationRecorderSync(DeleteConfigurationRecorderRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteConfigurationRecorderAsync(..., function(response, error_message)
+	M.DeleteConfigurationRecorderAsync(DeleteConfigurationRecorderRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

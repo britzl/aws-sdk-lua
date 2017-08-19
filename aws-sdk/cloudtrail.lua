@@ -2418,10 +2418,10 @@ end
 -- @param DeleteTrailRequest
 -- @return response
 -- @return error_message
-function M.DeleteTrailSync(...)
+function M.DeleteTrailSync(DeleteTrailRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteTrailAsync(..., function(response, error_message)
+	M.DeleteTrailAsync(DeleteTrailRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2450,10 +2450,10 @@ end
 -- @param RemoveTagsRequest
 -- @return response
 -- @return error_message
-function M.RemoveTagsSync(...)
+function M.RemoveTagsSync(RemoveTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RemoveTagsAsync(..., function(response, error_message)
+	M.RemoveTagsAsync(RemoveTagsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2482,10 +2482,10 @@ end
 -- @param GetEventSelectorsRequest
 -- @return response
 -- @return error_message
-function M.GetEventSelectorsSync(...)
+function M.GetEventSelectorsSync(GetEventSelectorsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetEventSelectorsAsync(..., function(response, error_message)
+	M.GetEventSelectorsAsync(GetEventSelectorsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2514,10 +2514,10 @@ end
 -- @param AddTagsRequest
 -- @return response
 -- @return error_message
-function M.AddTagsSync(...)
+function M.AddTagsSync(AddTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddTagsAsync(..., function(response, error_message)
+	M.AddTagsAsync(AddTagsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2546,10 +2546,10 @@ end
 -- @param StartLoggingRequest
 -- @return response
 -- @return error_message
-function M.StartLoggingSync(...)
+function M.StartLoggingSync(StartLoggingRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartLoggingAsync(..., function(response, error_message)
+	M.StartLoggingAsync(StartLoggingRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2578,10 +2578,10 @@ end
 -- @param GetTrailStatusRequest
 -- @return response
 -- @return error_message
-function M.GetTrailStatusSync(...)
+function M.GetTrailStatusSync(GetTrailStatusRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetTrailStatusAsync(..., function(response, error_message)
+	M.GetTrailStatusAsync(GetTrailStatusRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2610,10 +2610,10 @@ end
 -- @param ListPublicKeysRequest
 -- @return response
 -- @return error_message
-function M.ListPublicKeysSync(...)
+function M.ListPublicKeysSync(ListPublicKeysRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListPublicKeysAsync(..., function(response, error_message)
+	M.ListPublicKeysAsync(ListPublicKeysRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2642,10 +2642,10 @@ end
 -- @param StopLoggingRequest
 -- @return response
 -- @return error_message
-function M.StopLoggingSync(...)
+function M.StopLoggingSync(StopLoggingRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StopLoggingAsync(..., function(response, error_message)
+	M.StopLoggingAsync(StopLoggingRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2674,10 +2674,10 @@ end
 -- @param PutEventSelectorsRequest
 -- @return response
 -- @return error_message
-function M.PutEventSelectorsSync(...)
+function M.PutEventSelectorsSync(PutEventSelectorsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutEventSelectorsAsync(..., function(response, error_message)
+	M.PutEventSelectorsAsync(PutEventSelectorsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2706,10 +2706,10 @@ end
 -- @param DescribeTrailsRequest
 -- @return response
 -- @return error_message
-function M.DescribeTrailsSync(...)
+function M.DescribeTrailsSync(DescribeTrailsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTrailsAsync(..., function(response, error_message)
+	M.DescribeTrailsAsync(DescribeTrailsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2738,10 +2738,10 @@ end
 -- @param CreateTrailRequest
 -- @return response
 -- @return error_message
-function M.CreateTrailSync(...)
+function M.CreateTrailSync(CreateTrailRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateTrailAsync(..., function(response, error_message)
+	M.CreateTrailAsync(CreateTrailRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2770,10 +2770,10 @@ end
 -- @param UpdateTrailRequest
 -- @return response
 -- @return error_message
-function M.UpdateTrailSync(...)
+function M.UpdateTrailSync(UpdateTrailRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateTrailAsync(..., function(response, error_message)
+	M.UpdateTrailAsync(UpdateTrailRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2802,10 +2802,10 @@ end
 -- @param ListTagsRequest
 -- @return response
 -- @return error_message
-function M.ListTagsSync(...)
+function M.ListTagsSync(ListTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTagsAsync(..., function(response, error_message)
+	M.ListTagsAsync(ListTagsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2834,10 +2834,10 @@ end
 -- @param LookupEventsRequest
 -- @return response
 -- @return error_message
-function M.LookupEventsSync(...)
+function M.LookupEventsSync(LookupEventsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.LookupEventsAsync(..., function(response, error_message)
+	M.LookupEventsAsync(LookupEventsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

@@ -5837,10 +5837,10 @@ end
 -- @param UpdateStreamingDistributionRequest
 -- @return response
 -- @return error_message
-function M.UpdateStreamingDistribution2017_03_25Sync(...)
+function M.UpdateStreamingDistribution2017_03_25Sync(UpdateStreamingDistributionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateStreamingDistribution2017_03_25Async(..., function(response, error_message)
+	M.UpdateStreamingDistribution2017_03_25Async(UpdateStreamingDistributionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5869,10 +5869,10 @@ end
 -- @param ListDistributionsRequest
 -- @return response
 -- @return error_message
-function M.ListDistributions2017_03_25Sync(...)
+function M.ListDistributions2017_03_25Sync(ListDistributionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListDistributions2017_03_25Async(..., function(response, error_message)
+	M.ListDistributions2017_03_25Async(ListDistributionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5901,10 +5901,10 @@ end
 -- @param GetStreamingDistributionRequest
 -- @return response
 -- @return error_message
-function M.GetStreamingDistribution2017_03_25Sync(...)
+function M.GetStreamingDistribution2017_03_25Sync(GetStreamingDistributionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetStreamingDistribution2017_03_25Async(..., function(response, error_message)
+	M.GetStreamingDistribution2017_03_25Async(GetStreamingDistributionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5933,10 +5933,10 @@ end
 -- @param CreateStreamingDistributionWithTagsRequest
 -- @return response
 -- @return error_message
-function M.CreateStreamingDistributionWithTags2017_03_25Sync(...)
+function M.CreateStreamingDistributionWithTags2017_03_25Sync(CreateStreamingDistributionWithTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateStreamingDistributionWithTags2017_03_25Async(..., function(response, error_message)
+	M.CreateStreamingDistributionWithTags2017_03_25Async(CreateStreamingDistributionWithTagsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5965,10 +5965,10 @@ end
 -- @param CreateDistributionRequest
 -- @return response
 -- @return error_message
-function M.CreateDistribution2017_03_25Sync(...)
+function M.CreateDistribution2017_03_25Sync(CreateDistributionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDistribution2017_03_25Async(..., function(response, error_message)
+	M.CreateDistribution2017_03_25Async(CreateDistributionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5997,10 +5997,10 @@ end
 -- @param ListInvalidationsRequest
 -- @return response
 -- @return error_message
-function M.ListInvalidations2017_03_25Sync(...)
+function M.ListInvalidations2017_03_25Sync(ListInvalidationsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListInvalidations2017_03_25Async(..., function(response, error_message)
+	M.ListInvalidations2017_03_25Async(ListInvalidationsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6029,10 +6029,10 @@ end
 -- @param ListStreamingDistributionsRequest
 -- @return response
 -- @return error_message
-function M.ListStreamingDistributions2017_03_25Sync(...)
+function M.ListStreamingDistributions2017_03_25Sync(ListStreamingDistributionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListStreamingDistributions2017_03_25Async(..., function(response, error_message)
+	M.ListStreamingDistributions2017_03_25Async(ListStreamingDistributionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6061,10 +6061,10 @@ end
 -- @param UpdateDistributionRequest
 -- @return response
 -- @return error_message
-function M.UpdateDistribution2017_03_25Sync(...)
+function M.UpdateDistribution2017_03_25Sync(UpdateDistributionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateDistribution2017_03_25Async(..., function(response, error_message)
+	M.UpdateDistribution2017_03_25Async(UpdateDistributionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6093,10 +6093,10 @@ end
 -- @param CreateStreamingDistributionRequest
 -- @return response
 -- @return error_message
-function M.CreateStreamingDistribution2017_03_25Sync(...)
+function M.CreateStreamingDistribution2017_03_25Sync(CreateStreamingDistributionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateStreamingDistribution2017_03_25Async(..., function(response, error_message)
+	M.CreateStreamingDistribution2017_03_25Async(CreateStreamingDistributionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6125,10 +6125,10 @@ end
 -- @param DeleteDistributionRequest
 -- @return response
 -- @return error_message
-function M.DeleteDistribution2017_03_25Sync(...)
+function M.DeleteDistribution2017_03_25Sync(DeleteDistributionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteDistribution2017_03_25Async(..., function(response, error_message)
+	M.DeleteDistribution2017_03_25Async(DeleteDistributionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6157,10 +6157,10 @@ end
 -- @param TagResourceRequest
 -- @return response
 -- @return error_message
-function M.TagResource2017_03_25Sync(...)
+function M.TagResource2017_03_25Sync(TagResourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.TagResource2017_03_25Async(..., function(response, error_message)
+	M.TagResource2017_03_25Async(TagResourceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6189,10 +6189,10 @@ end
 -- @param GetInvalidationRequest
 -- @return response
 -- @return error_message
-function M.GetInvalidation2017_03_25Sync(...)
+function M.GetInvalidation2017_03_25Sync(GetInvalidationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetInvalidation2017_03_25Async(..., function(response, error_message)
+	M.GetInvalidation2017_03_25Async(GetInvalidationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6221,10 +6221,10 @@ end
 -- @param DeleteCloudFrontOriginAccessIdentityRequest
 -- @return response
 -- @return error_message
-function M.DeleteCloudFrontOriginAccessIdentity2017_03_25Sync(...)
+function M.DeleteCloudFrontOriginAccessIdentity2017_03_25Sync(DeleteCloudFrontOriginAccessIdentityRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteCloudFrontOriginAccessIdentity2017_03_25Async(..., function(response, error_message)
+	M.DeleteCloudFrontOriginAccessIdentity2017_03_25Async(DeleteCloudFrontOriginAccessIdentityRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6253,10 +6253,10 @@ end
 -- @param ListCloudFrontOriginAccessIdentitiesRequest
 -- @return response
 -- @return error_message
-function M.ListCloudFrontOriginAccessIdentities2017_03_25Sync(...)
+function M.ListCloudFrontOriginAccessIdentities2017_03_25Sync(ListCloudFrontOriginAccessIdentitiesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListCloudFrontOriginAccessIdentities2017_03_25Async(..., function(response, error_message)
+	M.ListCloudFrontOriginAccessIdentities2017_03_25Async(ListCloudFrontOriginAccessIdentitiesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6285,10 +6285,10 @@ end
 -- @param GetStreamingDistributionConfigRequest
 -- @return response
 -- @return error_message
-function M.GetStreamingDistributionConfig2017_03_25Sync(...)
+function M.GetStreamingDistributionConfig2017_03_25Sync(GetStreamingDistributionConfigRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetStreamingDistributionConfig2017_03_25Async(..., function(response, error_message)
+	M.GetStreamingDistributionConfig2017_03_25Async(GetStreamingDistributionConfigRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6317,10 +6317,10 @@ end
 -- @param GetCloudFrontOriginAccessIdentityRequest
 -- @return response
 -- @return error_message
-function M.GetCloudFrontOriginAccessIdentity2017_03_25Sync(...)
+function M.GetCloudFrontOriginAccessIdentity2017_03_25Sync(GetCloudFrontOriginAccessIdentityRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetCloudFrontOriginAccessIdentity2017_03_25Async(..., function(response, error_message)
+	M.GetCloudFrontOriginAccessIdentity2017_03_25Async(GetCloudFrontOriginAccessIdentityRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6349,10 +6349,10 @@ end
 -- @param GetDistributionRequest
 -- @return response
 -- @return error_message
-function M.GetDistribution2017_03_25Sync(...)
+function M.GetDistribution2017_03_25Sync(GetDistributionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetDistribution2017_03_25Async(..., function(response, error_message)
+	M.GetDistribution2017_03_25Async(GetDistributionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6381,10 +6381,10 @@ end
 -- @param GetCloudFrontOriginAccessIdentityConfigRequest
 -- @return response
 -- @return error_message
-function M.GetCloudFrontOriginAccessIdentityConfig2017_03_25Sync(...)
+function M.GetCloudFrontOriginAccessIdentityConfig2017_03_25Sync(GetCloudFrontOriginAccessIdentityConfigRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetCloudFrontOriginAccessIdentityConfig2017_03_25Async(..., function(response, error_message)
+	M.GetCloudFrontOriginAccessIdentityConfig2017_03_25Async(GetCloudFrontOriginAccessIdentityConfigRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6413,10 +6413,10 @@ end
 -- @param GetDistributionConfigRequest
 -- @return response
 -- @return error_message
-function M.GetDistributionConfig2017_03_25Sync(...)
+function M.GetDistributionConfig2017_03_25Sync(GetDistributionConfigRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetDistributionConfig2017_03_25Async(..., function(response, error_message)
+	M.GetDistributionConfig2017_03_25Async(GetDistributionConfigRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6445,10 +6445,10 @@ end
 -- @param CreateCloudFrontOriginAccessIdentityRequest
 -- @return response
 -- @return error_message
-function M.CreateCloudFrontOriginAccessIdentity2017_03_25Sync(...)
+function M.CreateCloudFrontOriginAccessIdentity2017_03_25Sync(CreateCloudFrontOriginAccessIdentityRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateCloudFrontOriginAccessIdentity2017_03_25Async(..., function(response, error_message)
+	M.CreateCloudFrontOriginAccessIdentity2017_03_25Async(CreateCloudFrontOriginAccessIdentityRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6477,10 +6477,10 @@ end
 -- @param DeleteStreamingDistributionRequest
 -- @return response
 -- @return error_message
-function M.DeleteStreamingDistribution2017_03_25Sync(...)
+function M.DeleteStreamingDistribution2017_03_25Sync(DeleteStreamingDistributionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteStreamingDistribution2017_03_25Async(..., function(response, error_message)
+	M.DeleteStreamingDistribution2017_03_25Async(DeleteStreamingDistributionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6509,10 +6509,10 @@ end
 -- @param CreateDistributionWithTagsRequest
 -- @return response
 -- @return error_message
-function M.CreateDistributionWithTags2017_03_25Sync(...)
+function M.CreateDistributionWithTags2017_03_25Sync(CreateDistributionWithTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDistributionWithTags2017_03_25Async(..., function(response, error_message)
+	M.CreateDistributionWithTags2017_03_25Async(CreateDistributionWithTagsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6541,10 +6541,10 @@ end
 -- @param UpdateCloudFrontOriginAccessIdentityRequest
 -- @return response
 -- @return error_message
-function M.UpdateCloudFrontOriginAccessIdentity2017_03_25Sync(...)
+function M.UpdateCloudFrontOriginAccessIdentity2017_03_25Sync(UpdateCloudFrontOriginAccessIdentityRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateCloudFrontOriginAccessIdentity2017_03_25Async(..., function(response, error_message)
+	M.UpdateCloudFrontOriginAccessIdentity2017_03_25Async(UpdateCloudFrontOriginAccessIdentityRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6573,10 +6573,10 @@ end
 -- @param UntagResourceRequest
 -- @return response
 -- @return error_message
-function M.UntagResource2017_03_25Sync(...)
+function M.UntagResource2017_03_25Sync(UntagResourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UntagResource2017_03_25Async(..., function(response, error_message)
+	M.UntagResource2017_03_25Async(UntagResourceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6605,10 +6605,10 @@ end
 -- @param CreateInvalidationRequest
 -- @return response
 -- @return error_message
-function M.CreateInvalidation2017_03_25Sync(...)
+function M.CreateInvalidation2017_03_25Sync(CreateInvalidationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateInvalidation2017_03_25Async(..., function(response, error_message)
+	M.CreateInvalidation2017_03_25Async(CreateInvalidationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6637,10 +6637,10 @@ end
 -- @param ListDistributionsByWebACLIdRequest
 -- @return response
 -- @return error_message
-function M.ListDistributionsByWebACLId2017_03_25Sync(...)
+function M.ListDistributionsByWebACLId2017_03_25Sync(ListDistributionsByWebACLIdRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListDistributionsByWebACLId2017_03_25Async(..., function(response, error_message)
+	M.ListDistributionsByWebACLId2017_03_25Async(ListDistributionsByWebACLIdRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6669,10 +6669,10 @@ end
 -- @param ListTagsForResourceRequest
 -- @return response
 -- @return error_message
-function M.ListTagsForResource2017_03_25Sync(...)
+function M.ListTagsForResource2017_03_25Sync(ListTagsForResourceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListTagsForResource2017_03_25Async(..., function(response, error_message)
+	M.ListTagsForResource2017_03_25Async(ListTagsForResourceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

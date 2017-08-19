@@ -2255,10 +2255,10 @@ end
 -- @param ListJobsRequest
 -- @return response
 -- @return error_message
-function M.ListJobsSync(...)
+function M.ListJobsSync(ListJobsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListJobsAsync(..., function(response, error_message)
+	M.ListJobsAsync(ListJobsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2287,10 +2287,10 @@ end
 -- @param ListClusterJobsRequest
 -- @return response
 -- @return error_message
-function M.ListClusterJobsSync(...)
+function M.ListClusterJobsSync(ListClusterJobsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListClusterJobsAsync(..., function(response, error_message)
+	M.ListClusterJobsAsync(ListClusterJobsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2319,10 +2319,10 @@ end
 -- @param GetJobUnlockCodeRequest
 -- @return response
 -- @return error_message
-function M.GetJobUnlockCodeSync(...)
+function M.GetJobUnlockCodeSync(GetJobUnlockCodeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetJobUnlockCodeAsync(..., function(response, error_message)
+	M.GetJobUnlockCodeAsync(GetJobUnlockCodeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2351,10 +2351,10 @@ end
 -- @param CreateJobRequest
 -- @return response
 -- @return error_message
-function M.CreateJobSync(...)
+function M.CreateJobSync(CreateJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateJobAsync(..., function(response, error_message)
+	M.CreateJobAsync(CreateJobRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2383,10 +2383,10 @@ end
 -- @param ListClustersRequest
 -- @return response
 -- @return error_message
-function M.ListClustersSync(...)
+function M.ListClustersSync(ListClustersRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListClustersAsync(..., function(response, error_message)
+	M.ListClustersAsync(ListClustersRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2415,10 +2415,10 @@ end
 -- @param CreateClusterRequest
 -- @return response
 -- @return error_message
-function M.CreateClusterSync(...)
+function M.CreateClusterSync(CreateClusterRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateClusterAsync(..., function(response, error_message)
+	M.CreateClusterAsync(CreateClusterRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2447,10 +2447,10 @@ end
 -- @param UpdateJobRequest
 -- @return response
 -- @return error_message
-function M.UpdateJobSync(...)
+function M.UpdateJobSync(UpdateJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateJobAsync(..., function(response, error_message)
+	M.UpdateJobAsync(UpdateJobRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2479,10 +2479,10 @@ end
 -- @param GetSnowballUsageRequest
 -- @return response
 -- @return error_message
-function M.GetSnowballUsageSync(...)
+function M.GetSnowballUsageSync(GetSnowballUsageRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetSnowballUsageAsync(..., function(response, error_message)
+	M.GetSnowballUsageAsync(GetSnowballUsageRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2511,10 +2511,10 @@ end
 -- @param GetJobManifestRequest
 -- @return response
 -- @return error_message
-function M.GetJobManifestSync(...)
+function M.GetJobManifestSync(GetJobManifestRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetJobManifestAsync(..., function(response, error_message)
+	M.GetJobManifestAsync(GetJobManifestRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2543,10 +2543,10 @@ end
 -- @param CreateAddressRequest
 -- @return response
 -- @return error_message
-function M.CreateAddressSync(...)
+function M.CreateAddressSync(CreateAddressRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateAddressAsync(..., function(response, error_message)
+	M.CreateAddressAsync(CreateAddressRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2575,10 +2575,10 @@ end
 -- @param DescribeAddressRequest
 -- @return response
 -- @return error_message
-function M.DescribeAddressSync(...)
+function M.DescribeAddressSync(DescribeAddressRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAddressAsync(..., function(response, error_message)
+	M.DescribeAddressAsync(DescribeAddressRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2607,10 +2607,10 @@ end
 -- @param DescribeAddressesRequest
 -- @return response
 -- @return error_message
-function M.DescribeAddressesSync(...)
+function M.DescribeAddressesSync(DescribeAddressesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAddressesAsync(..., function(response, error_message)
+	M.DescribeAddressesAsync(DescribeAddressesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2639,10 +2639,10 @@ end
 -- @param CancelJobRequest
 -- @return response
 -- @return error_message
-function M.CancelJobSync(...)
+function M.CancelJobSync(CancelJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CancelJobAsync(..., function(response, error_message)
+	M.CancelJobAsync(CancelJobRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2671,10 +2671,10 @@ end
 -- @param CancelClusterRequest
 -- @return response
 -- @return error_message
-function M.CancelClusterSync(...)
+function M.CancelClusterSync(CancelClusterRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CancelClusterAsync(..., function(response, error_message)
+	M.CancelClusterAsync(CancelClusterRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2703,10 +2703,10 @@ end
 -- @param DescribeJobRequest
 -- @return response
 -- @return error_message
-function M.DescribeJobSync(...)
+function M.DescribeJobSync(DescribeJobRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeJobAsync(..., function(response, error_message)
+	M.DescribeJobAsync(DescribeJobRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2735,10 +2735,10 @@ end
 -- @param DescribeClusterRequest
 -- @return response
 -- @return error_message
-function M.DescribeClusterSync(...)
+function M.DescribeClusterSync(DescribeClusterRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeClusterAsync(..., function(response, error_message)
+	M.DescribeClusterAsync(DescribeClusterRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2767,10 +2767,10 @@ end
 -- @param UpdateClusterRequest
 -- @return response
 -- @return error_message
-function M.UpdateClusterSync(...)
+function M.UpdateClusterSync(UpdateClusterRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateClusterAsync(..., function(response, error_message)
+	M.UpdateClusterAsync(UpdateClusterRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

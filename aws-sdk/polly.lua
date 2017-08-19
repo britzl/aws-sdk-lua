@@ -1249,10 +1249,10 @@ end
 -- @param DescribeVoicesInput
 -- @return response
 -- @return error_message
-function M.DescribeVoicesSync(...)
+function M.DescribeVoicesSync(DescribeVoicesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeVoicesAsync(..., function(response, error_message)
+	M.DescribeVoicesAsync(DescribeVoicesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1281,10 +1281,10 @@ end
 -- @param GetLexiconInput
 -- @return response
 -- @return error_message
-function M.GetLexiconSync(...)
+function M.GetLexiconSync(GetLexiconInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetLexiconAsync(..., function(response, error_message)
+	M.GetLexiconAsync(GetLexiconInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1313,10 +1313,10 @@ end
 -- @param PutLexiconInput
 -- @return response
 -- @return error_message
-function M.PutLexiconSync(...)
+function M.PutLexiconSync(PutLexiconInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutLexiconAsync(..., function(response, error_message)
+	M.PutLexiconAsync(PutLexiconInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1345,10 +1345,10 @@ end
 -- @param ListLexiconsInput
 -- @return response
 -- @return error_message
-function M.ListLexiconsSync(...)
+function M.ListLexiconsSync(ListLexiconsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListLexiconsAsync(..., function(response, error_message)
+	M.ListLexiconsAsync(ListLexiconsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1377,10 +1377,10 @@ end
 -- @param SynthesizeSpeechInput
 -- @return response
 -- @return error_message
-function M.SynthesizeSpeechSync(...)
+function M.SynthesizeSpeechSync(SynthesizeSpeechInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SynthesizeSpeechAsync(..., function(response, error_message)
+	M.SynthesizeSpeechAsync(SynthesizeSpeechInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1409,10 +1409,10 @@ end
 -- @param DeleteLexiconInput
 -- @return response
 -- @return error_message
-function M.DeleteLexiconSync(...)
+function M.DeleteLexiconSync(DeleteLexiconInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteLexiconAsync(..., function(response, error_message)
+	M.DeleteLexiconAsync(DeleteLexiconInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

@@ -5268,10 +5268,10 @@ end
 -- @param GetDeviceDefinitionVersionRequest
 -- @return response
 -- @return error_message
-function M.GetDeviceDefinitionVersionSync(...)
+function M.GetDeviceDefinitionVersionSync(GetDeviceDefinitionVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetDeviceDefinitionVersionAsync(..., function(response, error_message)
+	M.GetDeviceDefinitionVersionAsync(GetDeviceDefinitionVersionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5300,10 +5300,10 @@ end
 -- @param ListDeviceDefinitionVersionsRequest
 -- @return response
 -- @return error_message
-function M.ListDeviceDefinitionVersionsSync(...)
+function M.ListDeviceDefinitionVersionsSync(ListDeviceDefinitionVersionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListDeviceDefinitionVersionsAsync(..., function(response, error_message)
+	M.ListDeviceDefinitionVersionsAsync(ListDeviceDefinitionVersionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5332,10 +5332,10 @@ end
 -- @param AssociateRoleToGroupRequest
 -- @return response
 -- @return error_message
-function M.AssociateRoleToGroupSync(...)
+function M.AssociateRoleToGroupSync(AssociateRoleToGroupRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AssociateRoleToGroupAsync(..., function(response, error_message)
+	M.AssociateRoleToGroupAsync(AssociateRoleToGroupRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5364,10 +5364,10 @@ end
 -- @param ListSubscriptionDefinitionVersionsRequest
 -- @return response
 -- @return error_message
-function M.ListSubscriptionDefinitionVersionsSync(...)
+function M.ListSubscriptionDefinitionVersionsSync(ListSubscriptionDefinitionVersionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListSubscriptionDefinitionVersionsAsync(..., function(response, error_message)
+	M.ListSubscriptionDefinitionVersionsAsync(ListSubscriptionDefinitionVersionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5396,10 +5396,10 @@ end
 -- @param ListCoreDefinitionsRequest
 -- @return response
 -- @return error_message
-function M.ListCoreDefinitionsSync(...)
+function M.ListCoreDefinitionsSync(ListCoreDefinitionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListCoreDefinitionsAsync(..., function(response, error_message)
+	M.ListCoreDefinitionsAsync(ListCoreDefinitionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5428,10 +5428,10 @@ end
 -- @param ListGroupVersionsRequest
 -- @return response
 -- @return error_message
-function M.ListGroupVersionsSync(...)
+function M.ListGroupVersionsSync(ListGroupVersionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListGroupVersionsAsync(..., function(response, error_message)
+	M.ListGroupVersionsAsync(ListGroupVersionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5460,10 +5460,10 @@ end
 -- @param UpdateCoreDefinitionRequest
 -- @return response
 -- @return error_message
-function M.UpdateCoreDefinitionSync(...)
+function M.UpdateCoreDefinitionSync(UpdateCoreDefinitionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateCoreDefinitionAsync(..., function(response, error_message)
+	M.UpdateCoreDefinitionAsync(UpdateCoreDefinitionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5492,10 +5492,10 @@ end
 -- @param CreateCoreDefinitionRequest
 -- @return response
 -- @return error_message
-function M.CreateCoreDefinitionSync(...)
+function M.CreateCoreDefinitionSync(CreateCoreDefinitionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateCoreDefinitionAsync(..., function(response, error_message)
+	M.CreateCoreDefinitionAsync(CreateCoreDefinitionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5524,10 +5524,10 @@ end
 -- @param GetSubscriptionDefinitionRequest
 -- @return response
 -- @return error_message
-function M.GetSubscriptionDefinitionSync(...)
+function M.GetSubscriptionDefinitionSync(GetSubscriptionDefinitionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetSubscriptionDefinitionAsync(..., function(response, error_message)
+	M.GetSubscriptionDefinitionAsync(GetSubscriptionDefinitionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5556,10 +5556,10 @@ end
 -- @param GetDeploymentStatusRequest
 -- @return response
 -- @return error_message
-function M.GetDeploymentStatusSync(...)
+function M.GetDeploymentStatusSync(GetDeploymentStatusRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetDeploymentStatusAsync(..., function(response, error_message)
+	M.GetDeploymentStatusAsync(GetDeploymentStatusRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5588,10 +5588,10 @@ end
 -- @param ListDeviceDefinitionsRequest
 -- @return response
 -- @return error_message
-function M.ListDeviceDefinitionsSync(...)
+function M.ListDeviceDefinitionsSync(ListDeviceDefinitionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListDeviceDefinitionsAsync(..., function(response, error_message)
+	M.ListDeviceDefinitionsAsync(ListDeviceDefinitionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5620,10 +5620,10 @@ end
 -- @param CreateGroupRequest
 -- @return response
 -- @return error_message
-function M.CreateGroupSync(...)
+function M.CreateGroupSync(CreateGroupRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateGroupAsync(..., function(response, error_message)
+	M.CreateGroupAsync(CreateGroupRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5652,10 +5652,10 @@ end
 -- @param GetGroupCertificateAuthorityRequest
 -- @return response
 -- @return error_message
-function M.GetGroupCertificateAuthoritySync(...)
+function M.GetGroupCertificateAuthoritySync(GetGroupCertificateAuthorityRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetGroupCertificateAuthorityAsync(..., function(response, error_message)
+	M.GetGroupCertificateAuthorityAsync(GetGroupCertificateAuthorityRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5684,10 +5684,10 @@ end
 -- @param CreateDeploymentRequest
 -- @return response
 -- @return error_message
-function M.CreateDeploymentSync(...)
+function M.CreateDeploymentSync(CreateDeploymentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDeploymentAsync(..., function(response, error_message)
+	M.CreateDeploymentAsync(CreateDeploymentRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5716,10 +5716,10 @@ end
 -- @param ListSubscriptionDefinitionsRequest
 -- @return response
 -- @return error_message
-function M.ListSubscriptionDefinitionsSync(...)
+function M.ListSubscriptionDefinitionsSync(ListSubscriptionDefinitionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListSubscriptionDefinitionsAsync(..., function(response, error_message)
+	M.ListSubscriptionDefinitionsAsync(ListSubscriptionDefinitionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5748,10 +5748,10 @@ end
 -- @param UpdateDeviceDefinitionRequest
 -- @return response
 -- @return error_message
-function M.UpdateDeviceDefinitionSync(...)
+function M.UpdateDeviceDefinitionSync(UpdateDeviceDefinitionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateDeviceDefinitionAsync(..., function(response, error_message)
+	M.UpdateDeviceDefinitionAsync(UpdateDeviceDefinitionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5780,10 +5780,10 @@ end
 -- @param ListLoggerDefinitionVersionsRequest
 -- @return response
 -- @return error_message
-function M.ListLoggerDefinitionVersionsSync(...)
+function M.ListLoggerDefinitionVersionsSync(ListLoggerDefinitionVersionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListLoggerDefinitionVersionsAsync(..., function(response, error_message)
+	M.ListLoggerDefinitionVersionsAsync(ListLoggerDefinitionVersionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5812,10 +5812,10 @@ end
 -- @param CreateDeviceDefinitionRequest
 -- @return response
 -- @return error_message
-function M.CreateDeviceDefinitionSync(...)
+function M.CreateDeviceDefinitionSync(CreateDeviceDefinitionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDeviceDefinitionAsync(..., function(response, error_message)
+	M.CreateDeviceDefinitionAsync(CreateDeviceDefinitionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5844,10 +5844,10 @@ end
 -- @param AssociateServiceRoleToAccountRequest
 -- @return response
 -- @return error_message
-function M.AssociateServiceRoleToAccountSync(...)
+function M.AssociateServiceRoleToAccountSync(AssociateServiceRoleToAccountRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AssociateServiceRoleToAccountAsync(..., function(response, error_message)
+	M.AssociateServiceRoleToAccountAsync(AssociateServiceRoleToAccountRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5876,10 +5876,10 @@ end
 -- @param DeleteGroupRequest
 -- @return response
 -- @return error_message
-function M.DeleteGroupSync(...)
+function M.DeleteGroupSync(DeleteGroupRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteGroupAsync(..., function(response, error_message)
+	M.DeleteGroupAsync(DeleteGroupRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5908,10 +5908,10 @@ end
 -- @param CreateDeviceDefinitionVersionRequest
 -- @return response
 -- @return error_message
-function M.CreateDeviceDefinitionVersionSync(...)
+function M.CreateDeviceDefinitionVersionSync(CreateDeviceDefinitionVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateDeviceDefinitionVersionAsync(..., function(response, error_message)
+	M.CreateDeviceDefinitionVersionAsync(CreateDeviceDefinitionVersionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5940,10 +5940,10 @@ end
 -- @param GetCoreDefinitionRequest
 -- @return response
 -- @return error_message
-function M.GetCoreDefinitionSync(...)
+function M.GetCoreDefinitionSync(GetCoreDefinitionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetCoreDefinitionAsync(..., function(response, error_message)
+	M.GetCoreDefinitionAsync(GetCoreDefinitionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5972,10 +5972,10 @@ end
 -- @param GetSubscriptionDefinitionVersionRequest
 -- @return response
 -- @return error_message
-function M.GetSubscriptionDefinitionVersionSync(...)
+function M.GetSubscriptionDefinitionVersionSync(GetSubscriptionDefinitionVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetSubscriptionDefinitionVersionAsync(..., function(response, error_message)
+	M.GetSubscriptionDefinitionVersionAsync(GetSubscriptionDefinitionVersionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6004,10 +6004,10 @@ end
 -- @param ListFunctionDefinitionVersionsRequest
 -- @return response
 -- @return error_message
-function M.ListFunctionDefinitionVersionsSync(...)
+function M.ListFunctionDefinitionVersionsSync(ListFunctionDefinitionVersionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListFunctionDefinitionVersionsAsync(..., function(response, error_message)
+	M.ListFunctionDefinitionVersionsAsync(ListFunctionDefinitionVersionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6036,10 +6036,10 @@ end
 -- @param GetFunctionDefinitionRequest
 -- @return response
 -- @return error_message
-function M.GetFunctionDefinitionSync(...)
+function M.GetFunctionDefinitionSync(GetFunctionDefinitionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetFunctionDefinitionAsync(..., function(response, error_message)
+	M.GetFunctionDefinitionAsync(GetFunctionDefinitionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6068,10 +6068,10 @@ end
 -- @param GetGroupRequest
 -- @return response
 -- @return error_message
-function M.GetGroupSync(...)
+function M.GetGroupSync(GetGroupRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetGroupAsync(..., function(response, error_message)
+	M.GetGroupAsync(GetGroupRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6100,10 +6100,10 @@ end
 -- @param UpdateGroupRequest
 -- @return response
 -- @return error_message
-function M.UpdateGroupSync(...)
+function M.UpdateGroupSync(UpdateGroupRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateGroupAsync(..., function(response, error_message)
+	M.UpdateGroupAsync(UpdateGroupRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6132,10 +6132,10 @@ end
 -- @param DeleteCoreDefinitionRequest
 -- @return response
 -- @return error_message
-function M.DeleteCoreDefinitionSync(...)
+function M.DeleteCoreDefinitionSync(DeleteCoreDefinitionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteCoreDefinitionAsync(..., function(response, error_message)
+	M.DeleteCoreDefinitionAsync(DeleteCoreDefinitionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6164,10 +6164,10 @@ end
 -- @param CreateGroupVersionRequest
 -- @return response
 -- @return error_message
-function M.CreateGroupVersionSync(...)
+function M.CreateGroupVersionSync(CreateGroupVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateGroupVersionAsync(..., function(response, error_message)
+	M.CreateGroupVersionAsync(CreateGroupVersionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6196,10 +6196,10 @@ end
 -- @param CreateLoggerDefinitionVersionRequest
 -- @return response
 -- @return error_message
-function M.CreateLoggerDefinitionVersionSync(...)
+function M.CreateLoggerDefinitionVersionSync(CreateLoggerDefinitionVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateLoggerDefinitionVersionAsync(..., function(response, error_message)
+	M.CreateLoggerDefinitionVersionAsync(CreateLoggerDefinitionVersionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6228,10 +6228,10 @@ end
 -- @param GetDeviceDefinitionRequest
 -- @return response
 -- @return error_message
-function M.GetDeviceDefinitionSync(...)
+function M.GetDeviceDefinitionSync(GetDeviceDefinitionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetDeviceDefinitionAsync(..., function(response, error_message)
+	M.GetDeviceDefinitionAsync(GetDeviceDefinitionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6260,10 +6260,10 @@ end
 -- @param GetFunctionDefinitionVersionRequest
 -- @return response
 -- @return error_message
-function M.GetFunctionDefinitionVersionSync(...)
+function M.GetFunctionDefinitionVersionSync(GetFunctionDefinitionVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetFunctionDefinitionVersionAsync(..., function(response, error_message)
+	M.GetFunctionDefinitionVersionAsync(GetFunctionDefinitionVersionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6292,10 +6292,10 @@ end
 -- @param GetLoggerDefinitionVersionRequest
 -- @return response
 -- @return error_message
-function M.GetLoggerDefinitionVersionSync(...)
+function M.GetLoggerDefinitionVersionSync(GetLoggerDefinitionVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetLoggerDefinitionVersionAsync(..., function(response, error_message)
+	M.GetLoggerDefinitionVersionAsync(GetLoggerDefinitionVersionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6324,10 +6324,10 @@ end
 -- @param CreateCoreDefinitionVersionRequest
 -- @return response
 -- @return error_message
-function M.CreateCoreDefinitionVersionSync(...)
+function M.CreateCoreDefinitionVersionSync(CreateCoreDefinitionVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateCoreDefinitionVersionAsync(..., function(response, error_message)
+	M.CreateCoreDefinitionVersionAsync(CreateCoreDefinitionVersionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6356,10 +6356,10 @@ end
 -- @param ListCoreDefinitionVersionsRequest
 -- @return response
 -- @return error_message
-function M.ListCoreDefinitionVersionsSync(...)
+function M.ListCoreDefinitionVersionsSync(ListCoreDefinitionVersionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListCoreDefinitionVersionsAsync(..., function(response, error_message)
+	M.ListCoreDefinitionVersionsAsync(ListCoreDefinitionVersionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6388,10 +6388,10 @@ end
 -- @param UpdateGroupCertificateConfigurationRequest
 -- @return response
 -- @return error_message
-function M.UpdateGroupCertificateConfigurationSync(...)
+function M.UpdateGroupCertificateConfigurationSync(UpdateGroupCertificateConfigurationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateGroupCertificateConfigurationAsync(..., function(response, error_message)
+	M.UpdateGroupCertificateConfigurationAsync(UpdateGroupCertificateConfigurationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6420,10 +6420,10 @@ end
 -- @param CreateGroupCertificateAuthorityRequest
 -- @return response
 -- @return error_message
-function M.CreateGroupCertificateAuthoritySync(...)
+function M.CreateGroupCertificateAuthoritySync(CreateGroupCertificateAuthorityRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateGroupCertificateAuthorityAsync(..., function(response, error_message)
+	M.CreateGroupCertificateAuthorityAsync(CreateGroupCertificateAuthorityRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6452,10 +6452,10 @@ end
 -- @param GetServiceRoleForAccountRequest
 -- @return response
 -- @return error_message
-function M.GetServiceRoleForAccountSync(...)
+function M.GetServiceRoleForAccountSync(GetServiceRoleForAccountRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetServiceRoleForAccountAsync(..., function(response, error_message)
+	M.GetServiceRoleForAccountAsync(GetServiceRoleForAccountRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6484,10 +6484,10 @@ end
 -- @param UpdateConnectivityInfoRequest
 -- @return response
 -- @return error_message
-function M.UpdateConnectivityInfoSync(...)
+function M.UpdateConnectivityInfoSync(UpdateConnectivityInfoRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateConnectivityInfoAsync(..., function(response, error_message)
+	M.UpdateConnectivityInfoAsync(UpdateConnectivityInfoRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6516,10 +6516,10 @@ end
 -- @param DisassociateRoleFromGroupRequest
 -- @return response
 -- @return error_message
-function M.DisassociateRoleFromGroupSync(...)
+function M.DisassociateRoleFromGroupSync(DisassociateRoleFromGroupRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisassociateRoleFromGroupAsync(..., function(response, error_message)
+	M.DisassociateRoleFromGroupAsync(DisassociateRoleFromGroupRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6548,10 +6548,10 @@ end
 -- @param CreateLoggerDefinitionRequest
 -- @return response
 -- @return error_message
-function M.CreateLoggerDefinitionSync(...)
+function M.CreateLoggerDefinitionSync(CreateLoggerDefinitionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateLoggerDefinitionAsync(..., function(response, error_message)
+	M.CreateLoggerDefinitionAsync(CreateLoggerDefinitionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6580,10 +6580,10 @@ end
 -- @param ListGroupCertificateAuthoritiesRequest
 -- @return response
 -- @return error_message
-function M.ListGroupCertificateAuthoritiesSync(...)
+function M.ListGroupCertificateAuthoritiesSync(ListGroupCertificateAuthoritiesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListGroupCertificateAuthoritiesAsync(..., function(response, error_message)
+	M.ListGroupCertificateAuthoritiesAsync(ListGroupCertificateAuthoritiesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6612,10 +6612,10 @@ end
 -- @param UpdateSubscriptionDefinitionRequest
 -- @return response
 -- @return error_message
-function M.UpdateSubscriptionDefinitionSync(...)
+function M.UpdateSubscriptionDefinitionSync(UpdateSubscriptionDefinitionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateSubscriptionDefinitionAsync(..., function(response, error_message)
+	M.UpdateSubscriptionDefinitionAsync(UpdateSubscriptionDefinitionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6644,10 +6644,10 @@ end
 -- @param DeleteSubscriptionDefinitionRequest
 -- @return response
 -- @return error_message
-function M.DeleteSubscriptionDefinitionSync(...)
+function M.DeleteSubscriptionDefinitionSync(DeleteSubscriptionDefinitionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteSubscriptionDefinitionAsync(..., function(response, error_message)
+	M.DeleteSubscriptionDefinitionAsync(DeleteSubscriptionDefinitionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6676,10 +6676,10 @@ end
 -- @param CreateFunctionDefinitionVersionRequest
 -- @return response
 -- @return error_message
-function M.CreateFunctionDefinitionVersionSync(...)
+function M.CreateFunctionDefinitionVersionSync(CreateFunctionDefinitionVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateFunctionDefinitionVersionAsync(..., function(response, error_message)
+	M.CreateFunctionDefinitionVersionAsync(CreateFunctionDefinitionVersionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6708,10 +6708,10 @@ end
 -- @param ListDeploymentsRequest
 -- @return response
 -- @return error_message
-function M.ListDeploymentsSync(...)
+function M.ListDeploymentsSync(ListDeploymentsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListDeploymentsAsync(..., function(response, error_message)
+	M.ListDeploymentsAsync(ListDeploymentsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6740,10 +6740,10 @@ end
 -- @param GetGroupVersionRequest
 -- @return response
 -- @return error_message
-function M.GetGroupVersionSync(...)
+function M.GetGroupVersionSync(GetGroupVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetGroupVersionAsync(..., function(response, error_message)
+	M.GetGroupVersionAsync(GetGroupVersionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6772,10 +6772,10 @@ end
 -- @param DisassociateServiceRoleFromAccountRequest
 -- @return response
 -- @return error_message
-function M.DisassociateServiceRoleFromAccountSync(...)
+function M.DisassociateServiceRoleFromAccountSync(DisassociateServiceRoleFromAccountRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisassociateServiceRoleFromAccountAsync(..., function(response, error_message)
+	M.DisassociateServiceRoleFromAccountAsync(DisassociateServiceRoleFromAccountRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6804,10 +6804,10 @@ end
 -- @param GetCoreDefinitionVersionRequest
 -- @return response
 -- @return error_message
-function M.GetCoreDefinitionVersionSync(...)
+function M.GetCoreDefinitionVersionSync(GetCoreDefinitionVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetCoreDefinitionVersionAsync(..., function(response, error_message)
+	M.GetCoreDefinitionVersionAsync(GetCoreDefinitionVersionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6836,10 +6836,10 @@ end
 -- @param ListFunctionDefinitionsRequest
 -- @return response
 -- @return error_message
-function M.ListFunctionDefinitionsSync(...)
+function M.ListFunctionDefinitionsSync(ListFunctionDefinitionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListFunctionDefinitionsAsync(..., function(response, error_message)
+	M.ListFunctionDefinitionsAsync(ListFunctionDefinitionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6868,10 +6868,10 @@ end
 -- @param GetGroupCertificateConfigurationRequest
 -- @return response
 -- @return error_message
-function M.GetGroupCertificateConfigurationSync(...)
+function M.GetGroupCertificateConfigurationSync(GetGroupCertificateConfigurationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetGroupCertificateConfigurationAsync(..., function(response, error_message)
+	M.GetGroupCertificateConfigurationAsync(GetGroupCertificateConfigurationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6900,10 +6900,10 @@ end
 -- @param DeleteFunctionDefinitionRequest
 -- @return response
 -- @return error_message
-function M.DeleteFunctionDefinitionSync(...)
+function M.DeleteFunctionDefinitionSync(DeleteFunctionDefinitionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteFunctionDefinitionAsync(..., function(response, error_message)
+	M.DeleteFunctionDefinitionAsync(DeleteFunctionDefinitionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6932,10 +6932,10 @@ end
 -- @param GetAssociatedRoleRequest
 -- @return response
 -- @return error_message
-function M.GetAssociatedRoleSync(...)
+function M.GetAssociatedRoleSync(GetAssociatedRoleRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetAssociatedRoleAsync(..., function(response, error_message)
+	M.GetAssociatedRoleAsync(GetAssociatedRoleRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6964,10 +6964,10 @@ end
 -- @param UpdateLoggerDefinitionRequest
 -- @return response
 -- @return error_message
-function M.UpdateLoggerDefinitionSync(...)
+function M.UpdateLoggerDefinitionSync(UpdateLoggerDefinitionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateLoggerDefinitionAsync(..., function(response, error_message)
+	M.UpdateLoggerDefinitionAsync(UpdateLoggerDefinitionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -6996,10 +6996,10 @@ end
 -- @param CreateFunctionDefinitionRequest
 -- @return response
 -- @return error_message
-function M.CreateFunctionDefinitionSync(...)
+function M.CreateFunctionDefinitionSync(CreateFunctionDefinitionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateFunctionDefinitionAsync(..., function(response, error_message)
+	M.CreateFunctionDefinitionAsync(CreateFunctionDefinitionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7028,10 +7028,10 @@ end
 -- @param GetLoggerDefinitionRequest
 -- @return response
 -- @return error_message
-function M.GetLoggerDefinitionSync(...)
+function M.GetLoggerDefinitionSync(GetLoggerDefinitionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetLoggerDefinitionAsync(..., function(response, error_message)
+	M.GetLoggerDefinitionAsync(GetLoggerDefinitionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7060,10 +7060,10 @@ end
 -- @param UpdateFunctionDefinitionRequest
 -- @return response
 -- @return error_message
-function M.UpdateFunctionDefinitionSync(...)
+function M.UpdateFunctionDefinitionSync(UpdateFunctionDefinitionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateFunctionDefinitionAsync(..., function(response, error_message)
+	M.UpdateFunctionDefinitionAsync(UpdateFunctionDefinitionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7092,10 +7092,10 @@ end
 -- @param ListLoggerDefinitionsRequest
 -- @return response
 -- @return error_message
-function M.ListLoggerDefinitionsSync(...)
+function M.ListLoggerDefinitionsSync(ListLoggerDefinitionsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListLoggerDefinitionsAsync(..., function(response, error_message)
+	M.ListLoggerDefinitionsAsync(ListLoggerDefinitionsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7124,10 +7124,10 @@ end
 -- @param CreateSubscriptionDefinitionRequest
 -- @return response
 -- @return error_message
-function M.CreateSubscriptionDefinitionSync(...)
+function M.CreateSubscriptionDefinitionSync(CreateSubscriptionDefinitionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateSubscriptionDefinitionAsync(..., function(response, error_message)
+	M.CreateSubscriptionDefinitionAsync(CreateSubscriptionDefinitionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7156,10 +7156,10 @@ end
 -- @param GetConnectivityInfoRequest
 -- @return response
 -- @return error_message
-function M.GetConnectivityInfoSync(...)
+function M.GetConnectivityInfoSync(GetConnectivityInfoRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetConnectivityInfoAsync(..., function(response, error_message)
+	M.GetConnectivityInfoAsync(GetConnectivityInfoRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7188,10 +7188,10 @@ end
 -- @param ListGroupsRequest
 -- @return response
 -- @return error_message
-function M.ListGroupsSync(...)
+function M.ListGroupsSync(ListGroupsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListGroupsAsync(..., function(response, error_message)
+	M.ListGroupsAsync(ListGroupsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7220,10 +7220,10 @@ end
 -- @param DeleteLoggerDefinitionRequest
 -- @return response
 -- @return error_message
-function M.DeleteLoggerDefinitionSync(...)
+function M.DeleteLoggerDefinitionSync(DeleteLoggerDefinitionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteLoggerDefinitionAsync(..., function(response, error_message)
+	M.DeleteLoggerDefinitionAsync(DeleteLoggerDefinitionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7252,10 +7252,10 @@ end
 -- @param DeleteDeviceDefinitionRequest
 -- @return response
 -- @return error_message
-function M.DeleteDeviceDefinitionSync(...)
+function M.DeleteDeviceDefinitionSync(DeleteDeviceDefinitionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteDeviceDefinitionAsync(..., function(response, error_message)
+	M.DeleteDeviceDefinitionAsync(DeleteDeviceDefinitionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -7284,10 +7284,10 @@ end
 -- @param CreateSubscriptionDefinitionVersionRequest
 -- @return response
 -- @return error_message
-function M.CreateSubscriptionDefinitionVersionSync(...)
+function M.CreateSubscriptionDefinitionVersionSync(CreateSubscriptionDefinitionVersionRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateSubscriptionDefinitionVersionAsync(..., function(response, error_message)
+	M.CreateSubscriptionDefinitionVersionAsync(CreateSubscriptionDefinitionVersionRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

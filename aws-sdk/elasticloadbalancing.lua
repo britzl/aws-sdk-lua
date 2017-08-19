@@ -4459,10 +4459,10 @@ end
 -- @param RegisterTargetsInput
 -- @return response
 -- @return error_message
-function M.RegisterTargetsSync(...)
+function M.RegisterTargetsSync(RegisterTargetsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RegisterTargetsAsync(..., function(response, error_message)
+	M.RegisterTargetsAsync(RegisterTargetsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4491,10 +4491,10 @@ end
 -- @param DescribeSSLPoliciesInput
 -- @return response
 -- @return error_message
-function M.DescribeSSLPoliciesSync(...)
+function M.DescribeSSLPoliciesSync(DescribeSSLPoliciesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeSSLPoliciesAsync(..., function(response, error_message)
+	M.DescribeSSLPoliciesAsync(DescribeSSLPoliciesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4523,10 +4523,10 @@ end
 -- @param SetSecurityGroupsInput
 -- @return response
 -- @return error_message
-function M.SetSecurityGroupsSync(...)
+function M.SetSecurityGroupsSync(SetSecurityGroupsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetSecurityGroupsAsync(..., function(response, error_message)
+	M.SetSecurityGroupsAsync(SetSecurityGroupsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4555,10 +4555,10 @@ end
 -- @param DeleteListenerInput
 -- @return response
 -- @return error_message
-function M.DeleteListenerSync(...)
+function M.DeleteListenerSync(DeleteListenerInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteListenerAsync(..., function(response, error_message)
+	M.DeleteListenerAsync(DeleteListenerInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4587,10 +4587,10 @@ end
 -- @param ModifyTargetGroupInput
 -- @return response
 -- @return error_message
-function M.ModifyTargetGroupSync(...)
+function M.ModifyTargetGroupSync(ModifyTargetGroupInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ModifyTargetGroupAsync(..., function(response, error_message)
+	M.ModifyTargetGroupAsync(ModifyTargetGroupInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4619,10 +4619,10 @@ end
 -- @param CreateRuleInput
 -- @return response
 -- @return error_message
-function M.CreateRuleSync(...)
+function M.CreateRuleSync(CreateRuleInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateRuleAsync(..., function(response, error_message)
+	M.CreateRuleAsync(CreateRuleInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4651,10 +4651,10 @@ end
 -- @param SetRulePrioritiesInput
 -- @return response
 -- @return error_message
-function M.SetRulePrioritiesSync(...)
+function M.SetRulePrioritiesSync(SetRulePrioritiesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetRulePrioritiesAsync(..., function(response, error_message)
+	M.SetRulePrioritiesAsync(SetRulePrioritiesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4683,10 +4683,10 @@ end
 -- @param ModifyTargetGroupAttributesInput
 -- @return response
 -- @return error_message
-function M.ModifyTargetGroupAttributesSync(...)
+function M.ModifyTargetGroupAttributesSync(ModifyTargetGroupAttributesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ModifyTargetGroupAttributesAsync(..., function(response, error_message)
+	M.ModifyTargetGroupAttributesAsync(ModifyTargetGroupAttributesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4715,10 +4715,10 @@ end
 -- @param DescribeLoadBalancerAttributesInput
 -- @return response
 -- @return error_message
-function M.DescribeLoadBalancerAttributesSync(...)
+function M.DescribeLoadBalancerAttributesSync(DescribeLoadBalancerAttributesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeLoadBalancerAttributesAsync(..., function(response, error_message)
+	M.DescribeLoadBalancerAttributesAsync(DescribeLoadBalancerAttributesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4747,10 +4747,10 @@ end
 -- @param SetIpAddressTypeInput
 -- @return response
 -- @return error_message
-function M.SetIpAddressTypeSync(...)
+function M.SetIpAddressTypeSync(SetIpAddressTypeInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetIpAddressTypeAsync(..., function(response, error_message)
+	M.SetIpAddressTypeAsync(SetIpAddressTypeInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4779,10 +4779,10 @@ end
 -- @param ModifyListenerInput
 -- @return response
 -- @return error_message
-function M.ModifyListenerSync(...)
+function M.ModifyListenerSync(ModifyListenerInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ModifyListenerAsync(..., function(response, error_message)
+	M.ModifyListenerAsync(ModifyListenerInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4811,10 +4811,10 @@ end
 -- @param DeleteLoadBalancerInput
 -- @return response
 -- @return error_message
-function M.DeleteLoadBalancerSync(...)
+function M.DeleteLoadBalancerSync(DeleteLoadBalancerInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteLoadBalancerAsync(..., function(response, error_message)
+	M.DeleteLoadBalancerAsync(DeleteLoadBalancerInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4843,10 +4843,10 @@ end
 -- @param DeleteRuleInput
 -- @return response
 -- @return error_message
-function M.DeleteRuleSync(...)
+function M.DeleteRuleSync(DeleteRuleInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteRuleAsync(..., function(response, error_message)
+	M.DeleteRuleAsync(DeleteRuleInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4875,10 +4875,10 @@ end
 -- @param DeleteTargetGroupInput
 -- @return response
 -- @return error_message
-function M.DeleteTargetGroupSync(...)
+function M.DeleteTargetGroupSync(DeleteTargetGroupInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteTargetGroupAsync(..., function(response, error_message)
+	M.DeleteTargetGroupAsync(DeleteTargetGroupInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4907,10 +4907,10 @@ end
 -- @param DescribeTargetGroupAttributesInput
 -- @return response
 -- @return error_message
-function M.DescribeTargetGroupAttributesSync(...)
+function M.DescribeTargetGroupAttributesSync(DescribeTargetGroupAttributesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTargetGroupAttributesAsync(..., function(response, error_message)
+	M.DescribeTargetGroupAttributesAsync(DescribeTargetGroupAttributesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4939,10 +4939,10 @@ end
 -- @param DescribeLoadBalancersInput
 -- @return response
 -- @return error_message
-function M.DescribeLoadBalancersSync(...)
+function M.DescribeLoadBalancersSync(DescribeLoadBalancersInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeLoadBalancersAsync(..., function(response, error_message)
+	M.DescribeLoadBalancersAsync(DescribeLoadBalancersInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4971,10 +4971,10 @@ end
 -- @param DescribeListenersInput
 -- @return response
 -- @return error_message
-function M.DescribeListenersSync(...)
+function M.DescribeListenersSync(DescribeListenersInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeListenersAsync(..., function(response, error_message)
+	M.DescribeListenersAsync(DescribeListenersInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5003,10 +5003,10 @@ end
 -- @param RemoveTagsInput
 -- @return response
 -- @return error_message
-function M.RemoveTagsSync(...)
+function M.RemoveTagsSync(RemoveTagsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RemoveTagsAsync(..., function(response, error_message)
+	M.RemoveTagsAsync(RemoveTagsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5035,10 +5035,10 @@ end
 -- @param CreateListenerInput
 -- @return response
 -- @return error_message
-function M.CreateListenerSync(...)
+function M.CreateListenerSync(CreateListenerInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateListenerAsync(..., function(response, error_message)
+	M.CreateListenerAsync(CreateListenerInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5067,10 +5067,10 @@ end
 -- @param SetSubnetsInput
 -- @return response
 -- @return error_message
-function M.SetSubnetsSync(...)
+function M.SetSubnetsSync(SetSubnetsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SetSubnetsAsync(..., function(response, error_message)
+	M.SetSubnetsAsync(SetSubnetsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5099,10 +5099,10 @@ end
 -- @param DescribeTagsInput
 -- @return response
 -- @return error_message
-function M.DescribeTagsSync(...)
+function M.DescribeTagsSync(DescribeTagsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTagsAsync(..., function(response, error_message)
+	M.DescribeTagsAsync(DescribeTagsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5131,10 +5131,10 @@ end
 -- @param ModifyRuleInput
 -- @return response
 -- @return error_message
-function M.ModifyRuleSync(...)
+function M.ModifyRuleSync(ModifyRuleInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ModifyRuleAsync(..., function(response, error_message)
+	M.ModifyRuleAsync(ModifyRuleInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5163,10 +5163,10 @@ end
 -- @param CreateTargetGroupInput
 -- @return response
 -- @return error_message
-function M.CreateTargetGroupSync(...)
+function M.CreateTargetGroupSync(CreateTargetGroupInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateTargetGroupAsync(..., function(response, error_message)
+	M.CreateTargetGroupAsync(CreateTargetGroupInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5195,10 +5195,10 @@ end
 -- @param AddTagsInput
 -- @return response
 -- @return error_message
-function M.AddTagsSync(...)
+function M.AddTagsSync(AddTagsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AddTagsAsync(..., function(response, error_message)
+	M.AddTagsAsync(AddTagsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5227,10 +5227,10 @@ end
 -- @param DescribeTargetGroupsInput
 -- @return response
 -- @return error_message
-function M.DescribeTargetGroupsSync(...)
+function M.DescribeTargetGroupsSync(DescribeTargetGroupsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTargetGroupsAsync(..., function(response, error_message)
+	M.DescribeTargetGroupsAsync(DescribeTargetGroupsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5259,10 +5259,10 @@ end
 -- @param DeregisterTargetsInput
 -- @return response
 -- @return error_message
-function M.DeregisterTargetsSync(...)
+function M.DeregisterTargetsSync(DeregisterTargetsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeregisterTargetsAsync(..., function(response, error_message)
+	M.DeregisterTargetsAsync(DeregisterTargetsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5291,10 +5291,10 @@ end
 -- @param ModifyLoadBalancerAttributesInput
 -- @return response
 -- @return error_message
-function M.ModifyLoadBalancerAttributesSync(...)
+function M.ModifyLoadBalancerAttributesSync(ModifyLoadBalancerAttributesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ModifyLoadBalancerAttributesAsync(..., function(response, error_message)
+	M.ModifyLoadBalancerAttributesAsync(ModifyLoadBalancerAttributesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5323,10 +5323,10 @@ end
 -- @param DescribeRulesInput
 -- @return response
 -- @return error_message
-function M.DescribeRulesSync(...)
+function M.DescribeRulesSync(DescribeRulesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeRulesAsync(..., function(response, error_message)
+	M.DescribeRulesAsync(DescribeRulesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5355,10 +5355,10 @@ end
 -- @param DescribeTargetHealthInput
 -- @return response
 -- @return error_message
-function M.DescribeTargetHealthSync(...)
+function M.DescribeTargetHealthSync(DescribeTargetHealthInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTargetHealthAsync(..., function(response, error_message)
+	M.DescribeTargetHealthAsync(DescribeTargetHealthInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5387,10 +5387,10 @@ end
 -- @param CreateLoadBalancerInput
 -- @return response
 -- @return error_message
-function M.CreateLoadBalancerSync(...)
+function M.CreateLoadBalancerSync(CreateLoadBalancerInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateLoadBalancerAsync(..., function(response, error_message)
+	M.CreateLoadBalancerAsync(CreateLoadBalancerInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5419,10 +5419,10 @@ end
 -- @param DescribeAccountLimitsInput
 -- @return response
 -- @return error_message
-function M.DescribeAccountLimitsSync(...)
+function M.DescribeAccountLimitsSync(DescribeAccountLimitsInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAccountLimitsAsync(..., function(response, error_message)
+	M.DescribeAccountLimitsAsync(DescribeAccountLimitsInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

@@ -3955,10 +3955,10 @@ end
 -- @param SendBonusRequest
 -- @return response
 -- @return error_message
-function M.SendBonusSync(...)
+function M.SendBonusSync(SendBonusRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SendBonusAsync(..., function(response, error_message)
+	M.SendBonusAsync(SendBonusRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -3987,10 +3987,10 @@ end
 -- @param AssociateQualificationWithWorkerRequest
 -- @return response
 -- @return error_message
-function M.AssociateQualificationWithWorkerSync(...)
+function M.AssociateQualificationWithWorkerSync(AssociateQualificationWithWorkerRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AssociateQualificationWithWorkerAsync(..., function(response, error_message)
+	M.AssociateQualificationWithWorkerAsync(AssociateQualificationWithWorkerRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4019,10 +4019,10 @@ end
 -- @param UpdateHITTypeOfHITRequest
 -- @return response
 -- @return error_message
-function M.UpdateHITTypeOfHITSync(...)
+function M.UpdateHITTypeOfHITSync(UpdateHITTypeOfHITRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateHITTypeOfHITAsync(..., function(response, error_message)
+	M.UpdateHITTypeOfHITAsync(UpdateHITTypeOfHITRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4051,10 +4051,10 @@ end
 -- @param UpdateNotificationSettingsRequest
 -- @return response
 -- @return error_message
-function M.UpdateNotificationSettingsSync(...)
+function M.UpdateNotificationSettingsSync(UpdateNotificationSettingsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateNotificationSettingsAsync(..., function(response, error_message)
+	M.UpdateNotificationSettingsAsync(UpdateNotificationSettingsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4083,10 +4083,10 @@ end
 -- @param ListWorkerBlocksRequest
 -- @return response
 -- @return error_message
-function M.ListWorkerBlocksSync(...)
+function M.ListWorkerBlocksSync(ListWorkerBlocksRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListWorkerBlocksAsync(..., function(response, error_message)
+	M.ListWorkerBlocksAsync(ListWorkerBlocksRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4115,10 +4115,10 @@ end
 -- @param ListReviewableHITsRequest
 -- @return response
 -- @return error_message
-function M.ListReviewableHITsSync(...)
+function M.ListReviewableHITsSync(ListReviewableHITsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListReviewableHITsAsync(..., function(response, error_message)
+	M.ListReviewableHITsAsync(ListReviewableHITsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4147,10 +4147,10 @@ end
 -- @param ListAssignmentsForHITRequest
 -- @return response
 -- @return error_message
-function M.ListAssignmentsForHITSync(...)
+function M.ListAssignmentsForHITSync(ListAssignmentsForHITRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListAssignmentsForHITAsync(..., function(response, error_message)
+	M.ListAssignmentsForHITAsync(ListAssignmentsForHITRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4179,10 +4179,10 @@ end
 -- @param DisassociateQualificationFromWorkerRequest
 -- @return response
 -- @return error_message
-function M.DisassociateQualificationFromWorkerSync(...)
+function M.DisassociateQualificationFromWorkerSync(DisassociateQualificationFromWorkerRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisassociateQualificationFromWorkerAsync(..., function(response, error_message)
+	M.DisassociateQualificationFromWorkerAsync(DisassociateQualificationFromWorkerRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4211,10 +4211,10 @@ end
 -- @param RejectQualificationRequestRequest
 -- @return response
 -- @return error_message
-function M.RejectQualificationRequestSync(...)
+function M.RejectQualificationRequestSync(RejectQualificationRequestRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RejectQualificationRequestAsync(..., function(response, error_message)
+	M.RejectQualificationRequestAsync(RejectQualificationRequestRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4243,10 +4243,10 @@ end
 -- @param CreateHITTypeRequest
 -- @return response
 -- @return error_message
-function M.CreateHITTypeSync(...)
+function M.CreateHITTypeSync(CreateHITTypeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateHITTypeAsync(..., function(response, error_message)
+	M.CreateHITTypeAsync(CreateHITTypeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4275,10 +4275,10 @@ end
 -- @param GetFileUploadURLRequest
 -- @return response
 -- @return error_message
-function M.GetFileUploadURLSync(...)
+function M.GetFileUploadURLSync(GetFileUploadURLRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetFileUploadURLAsync(..., function(response, error_message)
+	M.GetFileUploadURLAsync(GetFileUploadURLRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4307,10 +4307,10 @@ end
 -- @param ListReviewPolicyResultsForHITRequest
 -- @return response
 -- @return error_message
-function M.ListReviewPolicyResultsForHITSync(...)
+function M.ListReviewPolicyResultsForHITSync(ListReviewPolicyResultsForHITRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListReviewPolicyResultsForHITAsync(..., function(response, error_message)
+	M.ListReviewPolicyResultsForHITAsync(ListReviewPolicyResultsForHITRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4339,10 +4339,10 @@ end
 -- @param UpdateExpirationForHITRequest
 -- @return response
 -- @return error_message
-function M.UpdateExpirationForHITSync(...)
+function M.UpdateExpirationForHITSync(UpdateExpirationForHITRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateExpirationForHITAsync(..., function(response, error_message)
+	M.UpdateExpirationForHITAsync(UpdateExpirationForHITRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4371,10 +4371,10 @@ end
 -- @param UpdateQualificationTypeRequest
 -- @return response
 -- @return error_message
-function M.UpdateQualificationTypeSync(...)
+function M.UpdateQualificationTypeSync(UpdateQualificationTypeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateQualificationTypeAsync(..., function(response, error_message)
+	M.UpdateQualificationTypeAsync(UpdateQualificationTypeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4403,10 +4403,10 @@ end
 -- @param NotifyWorkersRequest
 -- @return response
 -- @return error_message
-function M.NotifyWorkersSync(...)
+function M.NotifyWorkersSync(NotifyWorkersRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.NotifyWorkersAsync(..., function(response, error_message)
+	M.NotifyWorkersAsync(NotifyWorkersRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4435,10 +4435,10 @@ end
 -- @param ListQualificationTypesRequest
 -- @return response
 -- @return error_message
-function M.ListQualificationTypesSync(...)
+function M.ListQualificationTypesSync(ListQualificationTypesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListQualificationTypesAsync(..., function(response, error_message)
+	M.ListQualificationTypesAsync(ListQualificationTypesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4467,10 +4467,10 @@ end
 -- @param CreateHITRequest
 -- @return response
 -- @return error_message
-function M.CreateHITSync(...)
+function M.CreateHITSync(CreateHITRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateHITAsync(..., function(response, error_message)
+	M.CreateHITAsync(CreateHITRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4499,10 +4499,10 @@ end
 -- @param ListHITsForQualificationTypeRequest
 -- @return response
 -- @return error_message
-function M.ListHITsForQualificationTypeSync(...)
+function M.ListHITsForQualificationTypeSync(ListHITsForQualificationTypeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListHITsForQualificationTypeAsync(..., function(response, error_message)
+	M.ListHITsForQualificationTypeAsync(ListHITsForQualificationTypeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4531,10 +4531,10 @@ end
 -- @param AcceptQualificationRequestRequest
 -- @return response
 -- @return error_message
-function M.AcceptQualificationRequestSync(...)
+function M.AcceptQualificationRequestSync(AcceptQualificationRequestRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AcceptQualificationRequestAsync(..., function(response, error_message)
+	M.AcceptQualificationRequestAsync(AcceptQualificationRequestRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4563,10 +4563,10 @@ end
 -- @param ListQualificationRequestsRequest
 -- @return response
 -- @return error_message
-function M.ListQualificationRequestsSync(...)
+function M.ListQualificationRequestsSync(ListQualificationRequestsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListQualificationRequestsAsync(..., function(response, error_message)
+	M.ListQualificationRequestsAsync(ListQualificationRequestsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4595,10 +4595,10 @@ end
 -- @param UpdateHITReviewStatusRequest
 -- @return response
 -- @return error_message
-function M.UpdateHITReviewStatusSync(...)
+function M.UpdateHITReviewStatusSync(UpdateHITReviewStatusRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateHITReviewStatusAsync(..., function(response, error_message)
+	M.UpdateHITReviewStatusAsync(UpdateHITReviewStatusRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4627,10 +4627,10 @@ end
 -- @param ListHITsRequest
 -- @return response
 -- @return error_message
-function M.ListHITsSync(...)
+function M.ListHITsSync(ListHITsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListHITsAsync(..., function(response, error_message)
+	M.ListHITsAsync(ListHITsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4659,10 +4659,10 @@ end
 -- @param ListWorkersWithQualificationTypeRequest
 -- @return response
 -- @return error_message
-function M.ListWorkersWithQualificationTypeSync(...)
+function M.ListWorkersWithQualificationTypeSync(ListWorkersWithQualificationTypeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListWorkersWithQualificationTypeAsync(..., function(response, error_message)
+	M.ListWorkersWithQualificationTypeAsync(ListWorkersWithQualificationTypeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4691,10 +4691,10 @@ end
 -- @param GetAccountBalanceRequest
 -- @return response
 -- @return error_message
-function M.GetAccountBalanceSync(...)
+function M.GetAccountBalanceSync(GetAccountBalanceRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetAccountBalanceAsync(..., function(response, error_message)
+	M.GetAccountBalanceAsync(GetAccountBalanceRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4723,10 +4723,10 @@ end
 -- @param DeleteQualificationTypeRequest
 -- @return response
 -- @return error_message
-function M.DeleteQualificationTypeSync(...)
+function M.DeleteQualificationTypeSync(DeleteQualificationTypeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteQualificationTypeAsync(..., function(response, error_message)
+	M.DeleteQualificationTypeAsync(DeleteQualificationTypeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4755,10 +4755,10 @@ end
 -- @param SendTestEventNotificationRequest
 -- @return response
 -- @return error_message
-function M.SendTestEventNotificationSync(...)
+function M.SendTestEventNotificationSync(SendTestEventNotificationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.SendTestEventNotificationAsync(..., function(response, error_message)
+	M.SendTestEventNotificationAsync(SendTestEventNotificationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4787,10 +4787,10 @@ end
 -- @param CreateHITWithHITTypeRequest
 -- @return response
 -- @return error_message
-function M.CreateHITWithHITTypeSync(...)
+function M.CreateHITWithHITTypeSync(CreateHITWithHITTypeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateHITWithHITTypeAsync(..., function(response, error_message)
+	M.CreateHITWithHITTypeAsync(CreateHITWithHITTypeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4819,10 +4819,10 @@ end
 -- @param CreateWorkerBlockRequest
 -- @return response
 -- @return error_message
-function M.CreateWorkerBlockSync(...)
+function M.CreateWorkerBlockSync(CreateWorkerBlockRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateWorkerBlockAsync(..., function(response, error_message)
+	M.CreateWorkerBlockAsync(CreateWorkerBlockRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4851,10 +4851,10 @@ end
 -- @param ApproveAssignmentRequest
 -- @return response
 -- @return error_message
-function M.ApproveAssignmentSync(...)
+function M.ApproveAssignmentSync(ApproveAssignmentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ApproveAssignmentAsync(..., function(response, error_message)
+	M.ApproveAssignmentAsync(ApproveAssignmentRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4883,10 +4883,10 @@ end
 -- @param ListBonusPaymentsRequest
 -- @return response
 -- @return error_message
-function M.ListBonusPaymentsSync(...)
+function M.ListBonusPaymentsSync(ListBonusPaymentsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListBonusPaymentsAsync(..., function(response, error_message)
+	M.ListBonusPaymentsAsync(ListBonusPaymentsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4915,10 +4915,10 @@ end
 -- @param DeleteHITRequest
 -- @return response
 -- @return error_message
-function M.DeleteHITSync(...)
+function M.DeleteHITSync(DeleteHITRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteHITAsync(..., function(response, error_message)
+	M.DeleteHITAsync(DeleteHITRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4947,10 +4947,10 @@ end
 -- @param GetQualificationScoreRequest
 -- @return response
 -- @return error_message
-function M.GetQualificationScoreSync(...)
+function M.GetQualificationScoreSync(GetQualificationScoreRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetQualificationScoreAsync(..., function(response, error_message)
+	M.GetQualificationScoreAsync(GetQualificationScoreRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -4979,10 +4979,10 @@ end
 -- @param DeleteWorkerBlockRequest
 -- @return response
 -- @return error_message
-function M.DeleteWorkerBlockSync(...)
+function M.DeleteWorkerBlockSync(DeleteWorkerBlockRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteWorkerBlockAsync(..., function(response, error_message)
+	M.DeleteWorkerBlockAsync(DeleteWorkerBlockRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5011,10 +5011,10 @@ end
 -- @param GetQualificationTypeRequest
 -- @return response
 -- @return error_message
-function M.GetQualificationTypeSync(...)
+function M.GetQualificationTypeSync(GetQualificationTypeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetQualificationTypeAsync(..., function(response, error_message)
+	M.GetQualificationTypeAsync(GetQualificationTypeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5043,10 +5043,10 @@ end
 -- @param RejectAssignmentRequest
 -- @return response
 -- @return error_message
-function M.RejectAssignmentSync(...)
+function M.RejectAssignmentSync(RejectAssignmentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.RejectAssignmentAsync(..., function(response, error_message)
+	M.RejectAssignmentAsync(RejectAssignmentRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5075,10 +5075,10 @@ end
 -- @param CreateQualificationTypeRequest
 -- @return response
 -- @return error_message
-function M.CreateQualificationTypeSync(...)
+function M.CreateQualificationTypeSync(CreateQualificationTypeRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateQualificationTypeAsync(..., function(response, error_message)
+	M.CreateQualificationTypeAsync(CreateQualificationTypeRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5107,10 +5107,10 @@ end
 -- @param GetAssignmentRequest
 -- @return response
 -- @return error_message
-function M.GetAssignmentSync(...)
+function M.GetAssignmentSync(GetAssignmentRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetAssignmentAsync(..., function(response, error_message)
+	M.GetAssignmentAsync(GetAssignmentRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5139,10 +5139,10 @@ end
 -- @param GetHITRequest
 -- @return response
 -- @return error_message
-function M.GetHITSync(...)
+function M.GetHITSync(GetHITRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetHITAsync(..., function(response, error_message)
+	M.GetHITAsync(GetHITRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -5171,10 +5171,10 @@ end
 -- @param CreateAdditionalAssignmentsForHITRequest
 -- @return response
 -- @return error_message
-function M.CreateAdditionalAssignmentsForHITSync(...)
+function M.CreateAdditionalAssignmentsForHITSync(CreateAdditionalAssignmentsForHITRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateAdditionalAssignmentsForHITAsync(..., function(response, error_message)
+	M.CreateAdditionalAssignmentsForHITAsync(CreateAdditionalAssignmentsForHITRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

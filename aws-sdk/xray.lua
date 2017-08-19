@@ -1638,10 +1638,10 @@ end
 -- @param GetServiceGraphRequest
 -- @return response
 -- @return error_message
-function M.GetServiceGraphSync(...)
+function M.GetServiceGraphSync(GetServiceGraphRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetServiceGraphAsync(..., function(response, error_message)
+	M.GetServiceGraphAsync(GetServiceGraphRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1670,10 +1670,10 @@ end
 -- @param PutTraceSegmentsRequest
 -- @return response
 -- @return error_message
-function M.PutTraceSegmentsSync(...)
+function M.PutTraceSegmentsSync(PutTraceSegmentsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutTraceSegmentsAsync(..., function(response, error_message)
+	M.PutTraceSegmentsAsync(PutTraceSegmentsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1702,10 +1702,10 @@ end
 -- @param GetTraceSummariesRequest
 -- @return response
 -- @return error_message
-function M.GetTraceSummariesSync(...)
+function M.GetTraceSummariesSync(GetTraceSummariesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetTraceSummariesAsync(..., function(response, error_message)
+	M.GetTraceSummariesAsync(GetTraceSummariesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1734,10 +1734,10 @@ end
 -- @param GetTraceGraphRequest
 -- @return response
 -- @return error_message
-function M.GetTraceGraphSync(...)
+function M.GetTraceGraphSync(GetTraceGraphRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetTraceGraphAsync(..., function(response, error_message)
+	M.GetTraceGraphAsync(GetTraceGraphRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1766,10 +1766,10 @@ end
 -- @param BatchGetTracesRequest
 -- @return response
 -- @return error_message
-function M.BatchGetTracesSync(...)
+function M.BatchGetTracesSync(BatchGetTracesRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.BatchGetTracesAsync(..., function(response, error_message)
+	M.BatchGetTracesAsync(BatchGetTracesRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1798,10 +1798,10 @@ end
 -- @param PutTelemetryRecordsRequest
 -- @return response
 -- @return error_message
-function M.PutTelemetryRecordsSync(...)
+function M.PutTelemetryRecordsSync(PutTelemetryRecordsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.PutTelemetryRecordsAsync(..., function(response, error_message)
+	M.PutTelemetryRecordsAsync(PutTelemetryRecordsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

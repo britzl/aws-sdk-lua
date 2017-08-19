@@ -1604,10 +1604,10 @@ end
 -- @param DeleteTagsRequest
 -- @return response
 -- @return error_message
-function M.DeleteTagsSync(...)
+function M.DeleteTagsSync(DeleteTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteTagsAsync(..., function(response, error_message)
+	M.DeleteTagsAsync(DeleteTagsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1636,10 +1636,10 @@ end
 -- @param DescribeMountTargetSecurityGroupsRequest
 -- @return response
 -- @return error_message
-function M.DescribeMountTargetSecurityGroupsSync(...)
+function M.DescribeMountTargetSecurityGroupsSync(DescribeMountTargetSecurityGroupsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeMountTargetSecurityGroupsAsync(..., function(response, error_message)
+	M.DescribeMountTargetSecurityGroupsAsync(DescribeMountTargetSecurityGroupsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1668,10 +1668,10 @@ end
 -- @param DeleteFileSystemRequest
 -- @return response
 -- @return error_message
-function M.DeleteFileSystemSync(...)
+function M.DeleteFileSystemSync(DeleteFileSystemRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteFileSystemAsync(..., function(response, error_message)
+	M.DeleteFileSystemAsync(DeleteFileSystemRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1700,10 +1700,10 @@ end
 -- @param CreateTagsRequest
 -- @return response
 -- @return error_message
-function M.CreateTagsSync(...)
+function M.CreateTagsSync(CreateTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateTagsAsync(..., function(response, error_message)
+	M.CreateTagsAsync(CreateTagsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1732,10 +1732,10 @@ end
 -- @param CreateMountTargetRequest
 -- @return response
 -- @return error_message
-function M.CreateMountTargetSync(...)
+function M.CreateMountTargetSync(CreateMountTargetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateMountTargetAsync(..., function(response, error_message)
+	M.CreateMountTargetAsync(CreateMountTargetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1764,10 +1764,10 @@ end
 -- @param DescribeFileSystemsRequest
 -- @return response
 -- @return error_message
-function M.DescribeFileSystemsSync(...)
+function M.DescribeFileSystemsSync(DescribeFileSystemsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeFileSystemsAsync(..., function(response, error_message)
+	M.DescribeFileSystemsAsync(DescribeFileSystemsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1796,10 +1796,10 @@ end
 -- @param DescribeTagsRequest
 -- @return response
 -- @return error_message
-function M.DescribeTagsSync(...)
+function M.DescribeTagsSync(DescribeTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTagsAsync(..., function(response, error_message)
+	M.DescribeTagsAsync(DescribeTagsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1828,10 +1828,10 @@ end
 -- @param ModifyMountTargetSecurityGroupsRequest
 -- @return response
 -- @return error_message
-function M.ModifyMountTargetSecurityGroupsSync(...)
+function M.ModifyMountTargetSecurityGroupsSync(ModifyMountTargetSecurityGroupsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ModifyMountTargetSecurityGroupsAsync(..., function(response, error_message)
+	M.ModifyMountTargetSecurityGroupsAsync(ModifyMountTargetSecurityGroupsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1860,10 +1860,10 @@ end
 -- @param DescribeMountTargetsRequest
 -- @return response
 -- @return error_message
-function M.DescribeMountTargetsSync(...)
+function M.DescribeMountTargetsSync(DescribeMountTargetsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeMountTargetsAsync(..., function(response, error_message)
+	M.DescribeMountTargetsAsync(DescribeMountTargetsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1892,10 +1892,10 @@ end
 -- @param CreateFileSystemRequest
 -- @return response
 -- @return error_message
-function M.CreateFileSystemSync(...)
+function M.CreateFileSystemSync(CreateFileSystemRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateFileSystemAsync(..., function(response, error_message)
+	M.CreateFileSystemAsync(CreateFileSystemRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1924,10 +1924,10 @@ end
 -- @param DeleteMountTargetRequest
 -- @return response
 -- @return error_message
-function M.DeleteMountTargetSync(...)
+function M.DeleteMountTargetSync(DeleteMountTargetRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteMountTargetAsync(..., function(response, error_message)
+	M.DeleteMountTargetAsync(DeleteMountTargetRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

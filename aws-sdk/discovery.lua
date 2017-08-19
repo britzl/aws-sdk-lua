@@ -2387,10 +2387,10 @@ end
 -- @param DeleteTagsRequest
 -- @return response
 -- @return error_message
-function M.DeleteTagsSync(...)
+function M.DeleteTagsSync(DeleteTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteTagsAsync(..., function(response, error_message)
+	M.DeleteTagsAsync(DeleteTagsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2419,10 +2419,10 @@ end
 -- @param GetDiscoverySummaryRequest
 -- @return response
 -- @return error_message
-function M.GetDiscoverySummarySync(...)
+function M.GetDiscoverySummarySync(GetDiscoverySummaryRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetDiscoverySummaryAsync(..., function(response, error_message)
+	M.GetDiscoverySummaryAsync(GetDiscoverySummaryRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2451,10 +2451,10 @@ end
 -- @param ListConfigurationsRequest
 -- @return response
 -- @return error_message
-function M.ListConfigurationsSync(...)
+function M.ListConfigurationsSync(ListConfigurationsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListConfigurationsAsync(..., function(response, error_message)
+	M.ListConfigurationsAsync(ListConfigurationsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2483,10 +2483,10 @@ end
 -- @param CreateTagsRequest
 -- @return response
 -- @return error_message
-function M.CreateTagsSync(...)
+function M.CreateTagsSync(CreateTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateTagsAsync(..., function(response, error_message)
+	M.CreateTagsAsync(CreateTagsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2515,10 +2515,10 @@ end
 -- @param DescribeExportTasksRequest
 -- @return response
 -- @return error_message
-function M.DescribeExportTasksSync(...)
+function M.DescribeExportTasksSync(DescribeExportTasksRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeExportTasksAsync(..., function(response, error_message)
+	M.DescribeExportTasksAsync(DescribeExportTasksRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2547,10 +2547,10 @@ end
 -- @param DisassociateConfigurationItemsFromApplicationRequest
 -- @return response
 -- @return error_message
-function M.DisassociateConfigurationItemsFromApplicationSync(...)
+function M.DisassociateConfigurationItemsFromApplicationSync(DisassociateConfigurationItemsFromApplicationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DisassociateConfigurationItemsFromApplicationAsync(..., function(response, error_message)
+	M.DisassociateConfigurationItemsFromApplicationAsync(DisassociateConfigurationItemsFromApplicationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2579,10 +2579,10 @@ end
 -- @param StartDataCollectionByAgentIdsRequest
 -- @return response
 -- @return error_message
-function M.StartDataCollectionByAgentIdsSync(...)
+function M.StartDataCollectionByAgentIdsSync(StartDataCollectionByAgentIdsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartDataCollectionByAgentIdsAsync(..., function(response, error_message)
+	M.StartDataCollectionByAgentIdsAsync(StartDataCollectionByAgentIdsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2611,10 +2611,10 @@ end
 -- @param UpdateApplicationRequest
 -- @return response
 -- @return error_message
-function M.UpdateApplicationSync(...)
+function M.UpdateApplicationSync(UpdateApplicationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UpdateApplicationAsync(..., function(response, error_message)
+	M.UpdateApplicationAsync(UpdateApplicationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2643,10 +2643,10 @@ end
 -- @param ListServerNeighborsRequest
 -- @return response
 -- @return error_message
-function M.ListServerNeighborsSync(...)
+function M.ListServerNeighborsSync(ListServerNeighborsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.ListServerNeighborsAsync(..., function(response, error_message)
+	M.ListServerNeighborsAsync(ListServerNeighborsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2675,10 +2675,10 @@ end
 -- @param StopDataCollectionByAgentIdsRequest
 -- @return response
 -- @return error_message
-function M.StopDataCollectionByAgentIdsSync(...)
+function M.StopDataCollectionByAgentIdsSync(StopDataCollectionByAgentIdsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StopDataCollectionByAgentIdsAsync(..., function(response, error_message)
+	M.StopDataCollectionByAgentIdsAsync(StopDataCollectionByAgentIdsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2707,10 +2707,10 @@ end
 -- @param DescribeAgentsRequest
 -- @return response
 -- @return error_message
-function M.DescribeAgentsSync(...)
+function M.DescribeAgentsSync(DescribeAgentsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeAgentsAsync(..., function(response, error_message)
+	M.DescribeAgentsAsync(DescribeAgentsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2739,10 +2739,10 @@ end
 -- @param DescribeConfigurationsRequest
 -- @return response
 -- @return error_message
-function M.DescribeConfigurationsSync(...)
+function M.DescribeConfigurationsSync(DescribeConfigurationsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeConfigurationsAsync(..., function(response, error_message)
+	M.DescribeConfigurationsAsync(DescribeConfigurationsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2771,10 +2771,10 @@ end
 -- @param StartExportTaskRequest
 -- @return response
 -- @return error_message
-function M.StartExportTaskSync(...)
+function M.StartExportTaskSync(StartExportTaskRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.StartExportTaskAsync(..., function(response, error_message)
+	M.StartExportTaskAsync(StartExportTaskRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2803,10 +2803,10 @@ end
 -- @param DescribeTagsRequest
 -- @return response
 -- @return error_message
-function M.DescribeTagsSync(...)
+function M.DescribeTagsSync(DescribeTagsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DescribeTagsAsync(..., function(response, error_message)
+	M.DescribeTagsAsync(DescribeTagsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2835,10 +2835,10 @@ end
 -- @param DeleteApplicationsRequest
 -- @return response
 -- @return error_message
-function M.DeleteApplicationsSync(...)
+function M.DeleteApplicationsSync(DeleteApplicationsRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.DeleteApplicationsAsync(..., function(response, error_message)
+	M.DeleteApplicationsAsync(DeleteApplicationsRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2867,10 +2867,10 @@ end
 -- @param AssociateConfigurationItemsToApplicationRequest
 -- @return response
 -- @return error_message
-function M.AssociateConfigurationItemsToApplicationSync(...)
+function M.AssociateConfigurationItemsToApplicationSync(AssociateConfigurationItemsToApplicationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.AssociateConfigurationItemsToApplicationAsync(..., function(response, error_message)
+	M.AssociateConfigurationItemsToApplicationAsync(AssociateConfigurationItemsToApplicationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -2899,10 +2899,10 @@ end
 -- @param CreateApplicationRequest
 -- @return response
 -- @return error_message
-function M.CreateApplicationSync(...)
+function M.CreateApplicationSync(CreateApplicationRequest, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.CreateApplicationAsync(..., function(response, error_message)
+	M.CreateApplicationAsync(CreateApplicationRequest, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()

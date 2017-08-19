@@ -912,10 +912,10 @@ end
 -- @param GetTagKeysInput
 -- @return response
 -- @return error_message
-function M.GetTagKeysSync(...)
+function M.GetTagKeysSync(GetTagKeysInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetTagKeysAsync(..., function(response, error_message)
+	M.GetTagKeysAsync(GetTagKeysInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -944,10 +944,10 @@ end
 -- @param TagResourcesInput
 -- @return response
 -- @return error_message
-function M.TagResourcesSync(...)
+function M.TagResourcesSync(TagResourcesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.TagResourcesAsync(..., function(response, error_message)
+	M.TagResourcesAsync(TagResourcesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -976,10 +976,10 @@ end
 -- @param UntagResourcesInput
 -- @return response
 -- @return error_message
-function M.UntagResourcesSync(...)
+function M.UntagResourcesSync(UntagResourcesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.UntagResourcesAsync(..., function(response, error_message)
+	M.UntagResourcesAsync(UntagResourcesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1008,10 +1008,10 @@ end
 -- @param GetTagValuesInput
 -- @return response
 -- @return error_message
-function M.GetTagValuesSync(...)
+function M.GetTagValuesSync(GetTagValuesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetTagValuesAsync(..., function(response, error_message)
+	M.GetTagValuesAsync(GetTagValuesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
@@ -1040,10 +1040,10 @@ end
 -- @param GetResourcesInput
 -- @return response
 -- @return error_message
-function M.GetResourcesSync(...)
+function M.GetResourcesSync(GetResourcesInput, ...)
 	local co = coroutine.running()
 	assert(co, "You must call this function from within a coroutine")
-	M.GetResourcesAsync(..., function(response, error_message)
+	M.GetResourcesAsync(GetResourcesInput, function(response, error_message)
 		assert(coroutine.resume(co, response, error_message))
 	end)
 	return coroutine.yield()
