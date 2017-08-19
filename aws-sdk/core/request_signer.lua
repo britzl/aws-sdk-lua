@@ -1,3 +1,8 @@
+--- AWS Service request signer that can generate a proper authentication header
+-- based on the request URI, request parameters, request headers and service
+-- settings
+-- For more details see: http://docs.aws.amazon.com/general/latest/gr/signature-v4-examples.html#signature-v4-examples-python
+
 local hmac = require "aws-sdk.lockbox.mac.hmac"
 local sha2_sha256 = require "aws-sdk.lockbox.digest.sha2_256"
 local Stream = require "aws-sdk.lockbox.util.stream"
@@ -8,8 +13,6 @@ local request_headers = require "aws-sdk.core.request_headers"
 local M = {}
 
 
--- Key derivation functions. See:
--- http://docs.aws.amazon.com/general/latest/gr/signature-v4-examples.html#signature-v4-examples-python
 local function sign(key, msg)
 	return hmac().setDigest(sha2_sha256).setKey(key).init().update(Stream.fromString(msg)).finish().asHex()
 end
@@ -23,17 +26,17 @@ local function get_signature_key(key, date_stamp, regionName, serviceName)
 end
 
 local function get_canonical_and_signed_headers(headers)
-	-- get list of headers	
+	-- get list of headers
 	local header_names = {}
 	for header,_ in pairs(headers) do
 		header_names[#header_names + 1] = header
 	end
-	
+
 	-- sort headers alphabetically
 	table.sort(header_names, function(a, b)
 		return a:lower() < b:lower()
 	end)
-	
+
 	-- create string with sorted headers and values, new line separated
 	local canonical_headers = ""
 	for _,header in ipairs(header_names) do
@@ -43,11 +46,11 @@ local function get_canonical_and_signed_headers(headers)
 	-- create string with sorted headers, semi-colon separated
 	for i,header in ipairs(header_names) do header_names[i] = header:lower() end
 	local signed_headers = table.concat(header_names, ";")
-	
+
 	return canonical_headers, signed_headers
 end
 
-function M.sign_v4(request_uri, request_parameters, headers, settings)
+function M.sign_post_request_v4(request_uri, request_parameters, headers, settings)
 	assert(request_uri, "You must provide a request uri")
 	assert(request_parameters, "You must provide request parameters")
 	assert(headers, "You must provide a headers table")

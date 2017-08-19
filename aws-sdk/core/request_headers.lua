@@ -1,3 +1,5 @@
+--- HTTP Request header constants
+
 local M = {}
 
 M.ACCEPT_HEADER = "accept"

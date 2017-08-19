@@ -1,3 +1,5 @@
+--- AWS SDK config
+
 local M = {}
 
 --- The http_request function to use when calling AWS service endpoints

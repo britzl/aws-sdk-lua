@@ -8,7 +8,7 @@ For release notes, see the [CHANGELOG](CHANGELOG.md).
 ## Installing
 
 ### Defold
-You can use Google Analytics in your own project by adding this project as a [Defold library dependency](http://www.defold.com/manuals/libraries/). Open your game.project file and in the dependencies field under project add:
+You can use the AWS SDK for Lua in your own project by adding this project as a [Defold library dependency](http://www.defold.com/manuals/libraries/). Open your game.project file and in the dependencies field under project add:
 
 	https://github.com/britzl/aws-sdk-lua/archive/master.zip
 
@@ -22,7 +22,17 @@ The SDK is currently not distributed via LuaRocks. LuaRocks distribution will ha
 More here soon
 
 ### Known Limitations
-GameLift is the only service that has been tested.
+GameLift is the only service that has been properly tested.
+
+
+## Generating code
+The SDK generates the code for all AWS services, their input and output including input validation. The code generator uses official AWS SDK API definitions from the [AWS SDK for Javascript project](https://github.com/aws/aws-sdk-js/tree/master/apis). The code generator uses a [Mustache template](https://mustache.github.io/) and a small Python script to parse the API definitions and outputs one Lua file per AWS service. You can run the generator yourself from a terminal:
+
+````
+python generate.py
+````
+
+The script reads the definition files from ````apis/```` folder and outputs generated code to the ````aws-sdk/```` folder.
 
 ## Getting Help
 Please use these community resources for getting help. We use the GitHub issues for tracking bugs and feature requests and have limited bandwidth to address them.
@@ -49,3 +59,11 @@ keeping the list of open issues lean we can respond in a timely manner.
 This SDK is distributed under the
 [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0),
 see LICENSE.txt for more information.
+
+## Third-party code used
+The SDK uses code from the following projects:
+
+* AWS Service definitions from the [AWS SDK for Javascript](https://github.com/aws/aws-sdk-js/tree/master/apis)
+* Cryptographic functions from the [Lua-Lockbox](https://github.com/somesocks/lua-lockbox) project.
+* JSON encoder from [json.lua](https://github.com/rxi/json.lua)
+* URL encode/decode from the [Lua User Wiki]()
